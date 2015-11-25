@@ -51,3 +51,7 @@
 #ifdef SWIGJAVA
 %import typemaps_java.i
 #endif
+
+#ifdef SWIGGO
+%import typemaps_go.i
+#endif

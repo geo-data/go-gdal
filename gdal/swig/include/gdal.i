@@ -232,6 +232,8 @@ typedef enum {
 %include "gdal_perl.i"
 #elif defined(SWIGJAVA)
 %include "gdal_java.i"
+#elif defined(SWIGGO)
+%include "gdal_go.i"
 #else
 %include "gdal_typemaps.i"
 #endif
