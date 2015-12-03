@@ -2,6 +2,14 @@
 
 %typemap(imtype) IF_FALSE_RETURN_NONE "int"
 
+%typemap(gotype) (const void *pBuffer) %{[]byte%}
+%typemap(imtype) (const void *pBuffer) "*C.char"
+%typemap(goin) (const void *pBuffer) %{
+  $result = (*C.char)(unsafe.Pointer(&$input[0]))
+%}
+%apply (const void *pBuffer) {void *pBuffer};
+
+
 %typemap(gotype) (double argin[ANY]), (double argout[ANY]) %{[]float64%}
 %typemap(imtype) (double argin[ANY]), (double argout[ANY]) "*C.double"
 %typemap(goin) (double argin[ANY]), (double argout[ANY]) %{
@@ -76,20 +84,18 @@
 
 %typemap(gotype) ( void* callback_data = NULL ) "interface{}"
 %typemap(imtype) ( void* callback_data = NULL) "unsafe.Pointer"
-%typemap(gotype) ( GDALProgressFunc callback = NULL ) "ProgressFunc"
+%typemap(gotype) ( GDALProgressFunc callback = NULL ) "progress.ProgressFunc"
 %typemap(imtype) ( GDALProgressFunc callback = NULL ) "C.GDALProgressFunc"
 %typemap(goin) ( GDALProgressFunc callback = NULL ) %{
-    var progress ProgressFunc
+    var progf progress.ProgressFunc
 	if $input != nil {
-        progress = $input
-   		$result = C.GDALProgressFunc(C.goGDALProgressFuncProxyA)
+        progf = $input
+        $result = C.GDALProgressFunc(progress.GDALProgressFunc())
     }
 %}
 %typemap(goin) ( void* callback_data = NULL ) %{
-    if progress != nil {
-        $result = unsafe.Pointer(&goGDALProgressFuncProxyArgs{
-            progress, $input,
-        })
+    if progf != nil {
+        $result = progress.New(progf, $input)
     }
 %}
 %typemap(in) ( GDALProgressFunc callback = NULL) 
@@ -108,3 +114,5 @@
 %enddef
 %typemap(goout) GDALDatasetShadow* CHECK_NULL()
 %typemap(goout) GDALDriverShadow* CHECK_NULL()
+%typemap(goout) OGRLayerShadow* CHECK_NULL()
+%typemap(goout) OGRFeatureShadow* CHECK_NULL()

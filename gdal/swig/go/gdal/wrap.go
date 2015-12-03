@@ -2,13 +2,15 @@ package gdal
 
 import "fmt"
 
-func Open(utf8_path string, args ...interface{}) (ret Dataset, err Err) {
-	ret = wrap_Open(utf8_path, args...)
+func Open(filename string, args ...interface{}) (ret Dataset, err error) {
+	ret = wrap_OpenEx(filename, args...)
 	if ret != nil {
 		return
 	}
 	err = lastError()
-	ret = nil
+	if err == nil {
+		err = fmt.Errorf("The dataset cannot be opened: %v", filename)
+	}
 	return
 }
 

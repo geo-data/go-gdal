@@ -35,6 +35,8 @@
 %module "Geo::OGR"
 #elif defined(SWIGCSHARP)
 %module Ogr
+#elif defined(SWIGGO)
+%module "github.com/geo-data/go-gdal/gdal/swig/go/gdal/ogr"
 #else
 %module ogr
 #endif
@@ -385,6 +387,8 @@ typedef int OGRErr;
 %include ogr_perl.i
 #elif defined(SWIGJAVA)
 %include ogr_java.i
+#elif defined(SWIGGO)
+%include ogr_go.i
 #else
 %include gdal_typemaps.i
 #endif
@@ -405,7 +409,7 @@ typedef int OGRErr;
 /* but Python3 not */
 /* We should probably define a new module for MajorObject, or merge gdal and ogr */
 /* modules */
-#if defined(SWIGPYTHON)
+#if defined(SWIGPYTHON) || defined(SWIGGO)
 %{
 #include "gdal.h"
 %}
@@ -543,7 +547,7 @@ public:
     OGRDataSourceShadow *ds = (OGRDataSourceShadow*) OGR_Dr_CopyDataSource(self, copy_ds, utf8_path, options);
     return ds;
   }
-  
+
 %newobject Open;
 #ifndef SWIGJAVA
 %feature( "kwargs" ) Open;
@@ -2874,7 +2878,9 @@ int OGRGetOpenDSCount();
 
 OGRErr OGRSetGenerate_DB2_V72_BYTE_ORDER(int bGenerate_DB2_V72_BYTE_ORDER);
 
+#ifndef SWIGGO
 void OGRRegisterAll();
+#endif
 
 %rename (GeometryTypeToName) OGRGeometryTypeToName;
 const char *OGRGeometryTypeToName( OGRwkbGeometryType eType );
@@ -2937,7 +2943,7 @@ int OGRGetNonLinearGeometriesEnabledFlag(void);
   }
 %}
 
-#if !(defined(FROM_GDAL_I) && (defined(SWIGJAVA) || defined(SWIGPYTHON)))
+#if !(defined(FROM_GDAL_I) && (defined(SWIGJAVA) || defined(SWIGPYTHON) || defined(SWIGGO)))
 
 %newobject Open;
 #ifndef SWIGJAVA
@@ -2978,9 +2984,9 @@ int OGRGetNonLinearGeometriesEnabledFlag(void);
   }
 %}
 
-#endif /* !(defined(FROM_GDAL_I) && (defined(SWIGJAVA) || defined(SWIGPYTHON))) */
+#endif /* !(defined(FROM_GDAL_I) && (defined(SWIGJAVA) || defined(SWIGPYTHON) || defined(SWIGGO))) */
 
-#ifndef FROM_GDAL_I
+#if !defined(FROM_GDAL_I) && !defined(SWIGGO)
 
 %inline %{
 OGRDriverShadow* GetDriverByName( char const *name ) {
@@ -3047,7 +3053,7 @@ OGRDriverShadow* GetDriver(int driver_number) {
 #endif
 %clear char **;
 
-#endif /* FROM_GDAL_I */
+#endif /* !defined(FROM_GDAL_I) && !defined(SWIGGO) */
 
 #endif /* #ifndef SWIGPERL */
 
@@ -3070,7 +3076,7 @@ class GeometryNative {
 
 #ifndef FROM_GDAL_I
 
-#if !defined(SWIGCSHARP) && !defined(SWIGJAVA)
+#if !defined(SWIGCSHARP) && !defined(SWIGJAVA) && !defined(SWIGGO)
 %rename (TermProgress_nocb) GDALTermProgress_nocb;
 %feature( "kwargs" ) GDALTermProgress_nocb;
 %inline %{

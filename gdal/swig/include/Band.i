@@ -456,12 +456,11 @@ public:
       return GDALCreateMaskBand( self, nFlags );
   }
 
-#if defined(SWIGPYTHON) || defined(SWIGPERL)
+#if defined(SWIGPYTHON) || defined(SWIGPERL) || defined(SWIGGO)
 #if defined(SWIGPERL)
 %apply (int len, GUIntBig *output) {(int buckets, GUIntBig *panHistogram)};
 %apply (IF_ERROR_RETURN_NONE) { (CPLErr) }; 
 #endif
-%feature( "kwargs" ) GetHistogram;
   CPLErr GetHistogram( double min=-0.5,
                      double max=255.5,
                      int buckets=256,
@@ -506,7 +505,7 @@ public:
 #endif
 #endif
 
-#if defined(SWIGPYTHON) || defined(SWIGPERL)
+#if defined(SWIGPYTHON) || defined(SWIGPERL) || defined(SWIGGO)
 #if defined(SWIGPERL)
 %apply (double *OUTPUT){double *min_ret, double *max_ret}
 %apply (int *nLen, const GUIntBig **pList) {(int *buckets_ret, GUIntBig **ppanHistogram)};
@@ -540,7 +539,7 @@ CPLErr GetDefaultHistogram( double *min_ret=NULL, double *max_ret=NULL, int *buc
 #endif
 #endif
 
-#if defined(SWIGPYTHON) || defined(SWIGPERL)
+#if defined(SWIGPYTHON) || defined(SWIGPERL) || defined(SWIGGO)
 %apply (int nList, GUIntBig* pList) {(int buckets_in, GUIntBig *panHistogram_in)}
 CPLErr SetDefaultHistogram( double min, double max, 
                             int buckets_in, GUIntBig *panHistogram_in ) {

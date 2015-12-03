@@ -34,6 +34,8 @@
 %module "Geo::GDAL"
 #elif defined(SWIGCSHARP)
 %module Gdal
+#elif defined(SWIGGO)
+%module "github.com/geo-data/go-gdal/gdal/swig/go/gdal"
 #else
 %module gdal
 #endif
@@ -74,7 +76,7 @@ typedef void GDALTransformerInfoShadow;
 typedef void GDALAsyncReaderShadow;
 %}
 
-#if defined(SWIGPYTHON) || defined(SWIGJAVA) || defined(SWIGPERL)
+#if defined(SWIGPYTHON) || defined(SWIGJAVA) || defined(SWIGPERL) || defined(SWIGGO)
 %{
 #ifdef DEBUG 
 typedef struct OGRSpatialReferenceHS OSRSpatialReferenceShadow;
@@ -87,7 +89,7 @@ typedef void OGRGeometryShadow;
 #endif
 typedef struct OGRStyleTableHS OGRStyleTableShadow;
 %}
-#endif /* #if defined(SWIGPYTHON) || defined(SWIGJAVA) */
+#endif /* #if defined(SWIGPYTHON) || defined(SWIGJAVA) || defined(SWIGPERL) || defined(SWIGGO) */
 
 #if defined(SWIGCSHARP)
 typedef int OGRErr;

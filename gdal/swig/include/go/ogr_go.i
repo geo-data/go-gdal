@@ -1,6 +1,8 @@
 %go_import("github.com/geo-data/go-gdal/gdal/swig/go/gdal/progress")
 
-%import "typemaps_go.i"
+%include "typemaps_go.i"
+
+%include "ogr_error_map.i"
 
 %insert("cgo_comment") %{
 // "gdal.h" is needed to declare GDALProgressFunc.
@@ -12,6 +14,3 @@
 // We need to link against GDAL when building the Go module.
 #cgo LDFLAGS: -lgdal
 %}
-
-#define FROM_GDAL_I
-%import ogr.i

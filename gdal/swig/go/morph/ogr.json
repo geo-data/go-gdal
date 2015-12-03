@@ -1,0 +1,12 @@
+{
+    "GetNextFeature": {
+        "Delete": ["Layer"],
+        "Rename": {
+            "Method": {
+                "SwigcptrLayer": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    }
+}

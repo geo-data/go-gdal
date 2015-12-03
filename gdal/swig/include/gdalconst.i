@@ -32,6 +32,8 @@
 %module "Geo::GDAL::Const"
 #elif defined(SWIGCSHARP)
 %module GdalConst
+#elif defined(SWIGGO)
+%module "github.com/geo-data/go-gdal/gdal/swig/go/gdal/constant"
 #else
 %module gdalconst 
 #endif
@@ -143,14 +145,14 @@
 %constant CPLE_UserInterrupt              = CPLE_UserInterrupt;
 
 // Open flags
-%constant OF_ALL     = GDAL_OF_ALL;
-%constant OF_RASTER = GDAL_OF_RASTER;
-%constant OF_VECTOR = GDAL_OF_VECTOR;
-%constant OF_GNM = GDAL_OF_GNM;
-%constant OF_READONLY = GDAL_OF_READONLY;
-%constant OF_UPDATE = GDAL_OF_UPDATE;
-%constant OF_SHARED = GDAL_OF_SHARED;
-%constant OF_VERBOSE_ERROR = GDAL_OF_VERBOSE_ERROR;
+%constant unsigned int OF_ALL     = GDAL_OF_ALL;
+%constant unsigned int OF_RASTER = GDAL_OF_RASTER;
+%constant unsigned int OF_VECTOR = GDAL_OF_VECTOR;
+%constant unsigned int OF_GNM = GDAL_OF_GNM;
+%constant unsigned int OF_READONLY = GDAL_OF_READONLY;
+%constant unsigned int OF_UPDATE = GDAL_OF_UPDATE;
+%constant unsigned int OF_SHARED = GDAL_OF_SHARED;
+%constant unsigned int OF_VERBOSE_ERROR = GDAL_OF_VERBOSE_ERROR;
 
 #if !defined(SWIGCSHARP) && !defined(SWIGJAVA)
 

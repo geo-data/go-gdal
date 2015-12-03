@@ -27,7 +27,7 @@
  * DEALINGS IN THE SOFTWARE.
  *****************************************************************************/
 
-#ifdef SWIGRUBY
+#if defined(SWIGRUBY) || defined(SWIGGO)
 %header 
 #else
 %fragment("OGRErrMessages","header") 

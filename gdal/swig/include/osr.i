@@ -33,6 +33,8 @@
 %module "Geo::OSR"
 #elif defined(SWIGCSHARP)
 %module Osr
+#elif defined(SWIGGO)
+%module "github.com/geo-data/go-gdal/gdal/swig/go/gdal/osr"
 #else
 %module osr
 #endif
@@ -98,6 +100,8 @@ typedef int OGRErr;
 %include osr_java.i
 #elif defined(SWIGPERL)
 %include osr_perl.i
+#elif defined(SWIGGO)
+%include osr_go.i
 #else
 %include gdal_typemaps.i
 #endif

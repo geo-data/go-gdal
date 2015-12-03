@@ -1,0 +1,84 @@
+{
+    "SetGeoTransform": {
+        "Delete": ["Dataset"],
+        "Rename": {
+            "Method": {
+                "SwigcptrDataset": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "GetGeoTransform": {
+        "Delete": ["Dataset"],
+        "Rename": {
+            "Method": {
+                "SwigcptrDataset": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "GetLayerByName": {
+        "Delete": ["Dataset"],
+        "Rename": {
+            "Method": {
+                "SwigcptrDataset": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "CreateCopy": {
+        "Delete": ["Driver"],
+        "Rename": {
+            "Method": {
+                "SwigcptrDriver": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "ReadDir": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "SetErrorHandler": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "OpenEx": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "Open": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "ApplyGeoTransform": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "InvGeoTransform": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    }
+}

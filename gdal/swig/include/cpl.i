@@ -469,12 +469,20 @@ VSILFILE   *wrapper_VSIFOpenL( const char *utf8_path, const char *pszMode )
     return VSIFOpenL( utf8_path, pszMode );
 }
 %}
+#ifndef SWIGGO
 VSI_RETVAL VSIFCloseL( VSILFILE* fp );
+#endif
 
 #if defined(SWIGPYTHON)
 int     VSIFSeekL( VSILFILE* fp, GIntBig offset, int whence);
 GIntBig    VSIFTellL( VSILFILE* fp );
 int     VSIFTruncateL( VSILFILE* fp, GIntBig length );
+#elif defined(SWIGGO)
+int VSIFCloseL( VSILFILE* fp );
+int VSIFSeekL( VSILFILE* fp, long offset, int whence);
+long    VSIFTellL( VSILFILE* fp );
+int VSIFTruncateL( VSILFILE* fp, long length );
+int VSIFEofL( VSILFILE* fp );
 #else
 VSI_RETVAL VSIFSeekL( VSILFILE* fp, long offset, int whence);
 long    VSIFTellL( VSILFILE* fp );
@@ -494,13 +502,13 @@ int wrapper_VSIFWriteL( int nLen, char *pBuf, int size, int memb, VSILFILE* fp)
     return VSIFWriteL(pBuf, size, memb, fp);
 }
 }
-#elif defined(SWIGPERL)
+#elif defined(SWIGPERL) || defined(SWIGGO)
 size_t VSIFWriteL(const void *pBuffer, size_t nSize, size_t nCount, VSILFILE *fp);
 #else
 int     VSIFWriteL( const char *, int, int, VSILFILE *fp );
 #endif
 
-#if defined(SWIGPERL)
+#if defined(SWIGPERL) || defined(SWIGGO)
 size_t VSIFReadL(void *pBuffer, size_t nSize, size_t nCount, VSILFILE *fp);
 #endif
 /* VSIFReadL() handled specially in python/gdal_python.i */
