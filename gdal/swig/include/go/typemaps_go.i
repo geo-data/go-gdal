@@ -2,13 +2,22 @@
 
 %typemap(imtype) IF_FALSE_RETURN_NONE "int"
 
+/* Replace NULL pointers in go strings with an empty string.  Declaring a string
+   variable in go (var s string) produces a NULL pointer in C: we need to check
+   for this and assign an empty string instead. */
+%typemap(in) (const char * utf8_path) {
+   $1 = (char *)$input.p;       /* From the default swig string typemap. */
+   if (!$1) {
+     $1 = (char *)"";
+   }
+}
+
 %typemap(gotype) (const void *pBuffer) %{[]byte%}
 %typemap(imtype) (const void *pBuffer) "*C.char"
 %typemap(goin) (const void *pBuffer) %{
   $result = (*C.char)(unsafe.Pointer(&$input[0]))
 %}
 %apply (const void *pBuffer) {void *pBuffer};
-
 
 %typemap(gotype) (double argin[ANY]), (double argout[ANY]) %{[]float64%}
 %typemap(imtype) (double argin[ANY]), (double argout[ANY]) "*C.double"
@@ -34,6 +43,17 @@
     }
     }
 %}*/
+
+%typemap(gotype) GDALDatasetShadow** poObjects %{[]Dataset%}
+%typemap(imtype) GDALDatasetShadow** poObjects "unsafe.Pointer"
+%typemap(goin) GDALDatasetShadow** poObjects %{
+  	$input_l := len($input)
+    $result_i := make([]unsafe.Pointer, $input_l)
+	for i := 0; i < $input_l; i++ {
+     $result_i[i] = unsafe.Pointer($input[i].Swigcptr())
+	}
+  $result = unsafe.Pointer(&$result_i[0])
+%}
 
 %typemap(gotype) char **options %{[]string%}
 %typemap(goin) char **options %{
@@ -116,3 +136,11 @@
 %typemap(goout) GDALDriverShadow* CHECK_NULL()
 %typemap(goout) OGRLayerShadow* CHECK_NULL()
 %typemap(goout) OGRFeatureShadow* CHECK_NULL()
+
+/* Allow srs objects to be NULL. */
+%typemap(imtype) OSRSpatialReferenceShadow* srs "uintptr"
+%typemap(goin) OSRSpatialReferenceShadow* srs %{
+  if $input != nil {
+      $result = $input.Swigcptr()
+  }
+%}

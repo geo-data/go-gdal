@@ -661,6 +661,11 @@ SWIGINTERN void delete_GDALDatasetShadow(GDALDatasetShadow *self){
       GDALClose(self);
     }
   }
+SWIGINTERN void GDALDatasetShadow_Close(GDALDatasetShadow *self){
+    if ( GDALDereferenceDataset( self ) <= 0 ) {
+      GDALClose(self);
+    }
+  }
 SWIGINTERN GDALDriverShadow *GDALDatasetShadow_GetDriver(GDALDatasetShadow *self){
     return (GDALDriverShadow*) GDALGetDatasetDriver( self );
   }
@@ -725,7 +730,7 @@ SWIGINTERN CPLErr GDALDatasetShadow_CreateMaskBand(GDALDatasetShadow *self,int n
 SWIGINTERN char **GDALDatasetShadow_GetFileList(GDALDatasetShadow *self){
     return GDALGetFileList( self );
   }
-SWIGINTERN OGRLayerShadow *GDALDatasetShadow_CreateLayer(GDALDatasetShadow *self,char const *name,OSRSpatialReferenceShadow *srs=NULL,OGRwkbGeometryType geom_type=wkbUnknown,char **options=0){
+SWIGINTERN OGRLayerShadow *GDALDatasetShadow_CreateLayer(GDALDatasetShadow *self,char const *name,OSRSpatialReferenceShadow *srs,OGRwkbGeometryType geom_type,char **options){
     OGRLayerShadow* layer = (OGRLayerShadow*) GDALDatasetCreateLayer( self,
                                   name,
                                   srs,
@@ -1891,7 +1896,7 @@ GDALDatasetShadow* wrapper_GDALRasterizeDestName( const char* dest,
 extern "C" {
 #endif
 
-void _wrap_Swig_free_gdal_250791fe60757361(void *_swig_go_0) {
+void _wrap_Swig_free_gdal_6d085214e6134239(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -1901,7 +1906,7 @@ void _wrap_Swig_free_gdal_250791fe60757361(void *_swig_go_0) {
 }
 
 
-void _wrap_Debug_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_Debug_gdal_6d085214e6134239(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1913,7 +1918,7 @@ void _wrap_Debug_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_g
 }
 
 
-intgo _wrap_SetErrorHandler_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0) {
+intgo _wrap_SetErrorHandler_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0) {
   char *arg1 = (char *) NULL ;
   CPLErr result;
   intgo _swig_go_result;
@@ -1928,7 +1933,7 @@ intgo _wrap_SetErrorHandler_gdal_250791fe60757361(intgo _swig_optargc, _gostring
 }
 
 
-intgo _wrap_PushErrorHandler__SWIG_0_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0) {
+intgo _wrap_PushErrorHandler__SWIG_0_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0) {
   char *arg1 = (char *) NULL ;
   CPLErr result;
   intgo _swig_go_result;
@@ -1943,7 +1948,7 @@ intgo _wrap_PushErrorHandler__SWIG_0_gdal_250791fe60757361(intgo _swig_optargc, 
 }
 
 
-void _wrap_Error_gdal_250791fe60757361(intgo _swig_optargc, intgo _swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_Error_gdal_6d085214e6134239(intgo _swig_optargc, intgo _swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
   CPLErr arg1 = (CPLErr) CE_Failure ;
   int arg2 = (int) 0 ;
   char *arg3 = (char *) "error" ;
@@ -1963,7 +1968,7 @@ void _wrap_Error_gdal_250791fe60757361(intgo _swig_optargc, intgo _swig_go_0, in
 }
 
 
-_gostring_ _wrap_GOA2GetAuthorizationURL_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+_gostring_ _wrap_GOA2GetAuthorizationURL_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   retStringAndCPLFree *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1976,7 +1981,7 @@ _gostring_ _wrap_GOA2GetAuthorizationURL_gdal_250791fe60757361(_gostring_ _swig_
 }
 
 
-_gostring_ _wrap_GOA2GetRefreshToken_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_GOA2GetRefreshToken_gdal_6d085214e6134239(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   retStringAndCPLFree *result = 0 ;
@@ -1991,7 +1996,7 @@ _gostring_ _wrap_GOA2GetRefreshToken_gdal_250791fe60757361(_gostring_ _swig_go_0
 }
 
 
-_gostring_ _wrap_GOA2GetAccessToken_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_GOA2GetAccessToken_gdal_6d085214e6134239(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   retStringAndCPLFree *result = 0 ;
@@ -2006,7 +2011,7 @@ _gostring_ _wrap_GOA2GetAccessToken_gdal_250791fe60757361(_gostring_ _swig_go_0,
 }
 
 
-void _wrap_PushErrorHandler__SWIG_1_gdal_250791fe60757361(CPLErrorHandler *_swig_go_0) {
+void _wrap_PushErrorHandler__SWIG_1_gdal_6d085214e6134239(CPLErrorHandler *_swig_go_0) {
   CPLErrorHandler arg1 ;
   CPLErrorHandler *argp1 ;
   
@@ -2023,19 +2028,19 @@ void _wrap_PushErrorHandler__SWIG_1_gdal_250791fe60757361(CPLErrorHandler *_swig
 }
 
 
-void _wrap_PopErrorHandler_gdal_250791fe60757361() {
+void _wrap_PopErrorHandler_gdal_6d085214e6134239() {
   CPLPopErrorHandler();
   
 }
 
 
-void _wrap_ErrorReset_gdal_250791fe60757361() {
+void _wrap_ErrorReset_gdal_6d085214e6134239() {
   CPLErrorReset();
   
 }
 
 
-_gostring_ _wrap_EscapeString_gdal_250791fe60757361(intgo _swig_optargc, intgo _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
+_gostring_ _wrap_EscapeString_gdal_6d085214e6134239(intgo _swig_optargc, intgo _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
   int arg1 ;
   char *arg2 = (char *) 0 ;
   int arg3 = (int) CPLES_SQL ;
@@ -2054,7 +2059,7 @@ _gostring_ _wrap_EscapeString_gdal_250791fe60757361(intgo _swig_optargc, intgo _
 }
 
 
-intgo _wrap_GetLastErrorNo_gdal_250791fe60757361() {
+intgo _wrap_GetLastErrorNo_gdal_6d085214e6134239() {
   int result;
   intgo _swig_go_result;
   
@@ -2065,7 +2070,7 @@ intgo _wrap_GetLastErrorNo_gdal_250791fe60757361() {
 }
 
 
-intgo _wrap_GetLastErrorType_gdal_250791fe60757361() {
+intgo _wrap_GetLastErrorType_gdal_6d085214e6134239() {
   CPLErr result;
   intgo _swig_go_result;
   
@@ -2076,7 +2081,7 @@ intgo _wrap_GetLastErrorType_gdal_250791fe60757361() {
 }
 
 
-_gostring_ _wrap_GetLastErrorMsg_gdal_250791fe60757361() {
+_gostring_ _wrap_GetLastErrorMsg_gdal_6d085214e6134239() {
   char *result = 0 ;
   _gostring_ _swig_go_result;
   
@@ -2087,10 +2092,15 @@ _gostring_ _wrap_GetLastErrorMsg_gdal_250791fe60757361() {
 }
 
 
-void _wrap_PushFinderLocation_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+void _wrap_PushFinderLocation_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   
   {
     if (!arg1) {
@@ -2103,26 +2113,31 @@ void _wrap_PushFinderLocation_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-void _wrap_PopFinderLocation_gdal_250791fe60757361() {
+void _wrap_PopFinderLocation_gdal_6d085214e6134239() {
   CPLPopFinderLocation();
   
 }
 
 
-void _wrap_FinderClean_gdal_250791fe60757361() {
+void _wrap_FinderClean_gdal_6d085214e6134239() {
   CPLFinderClean();
   
 }
 
 
-_gostring_ _wrap_FindFile_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_FindFile_gdal_6d085214e6134239(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
   
   arg1 = (char *)_swig_go_0.p; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   
   {
     if (!arg2) {
@@ -2136,12 +2151,17 @@ _gostring_ _wrap_FindFile_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring
 }
 
 
-char **_wrap_ReadDir_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+char **_wrap_ReadDir_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   
   {
     if (!arg1) {
@@ -2155,12 +2175,17 @@ char **_wrap_ReadDir_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-char **_wrap_ReadDirRecursive_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+char **_wrap_ReadDirRecursive_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   
   {
     if (!arg1) {
@@ -2174,7 +2199,7 @@ char **_wrap_ReadDirRecursive_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-void _wrap_SetConfigOption_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_SetConfigOption_gdal_6d085214e6134239(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2192,7 +2217,7 @@ void _wrap_SetConfigOption_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostrin
 }
 
 
-_gostring_ _wrap_GetConfigOption_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_GetConfigOption_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) NULL ;
   char *result = 0 ;
@@ -2215,7 +2240,7 @@ _gostring_ _wrap_GetConfigOption_gdal_250791fe60757361(intgo _swig_optargc, _gos
 }
 
 
-_gostring_ _wrap_CPLBinaryToHex_gdal_250791fe60757361(intgo _swig_go_0, GByte *_swig_go_1) {
+_gostring_ _wrap_CPLBinaryToHex_gdal_6d085214e6134239(intgo _swig_go_0, GByte *_swig_go_1) {
   int arg1 ;
   GByte *arg2 = (GByte *) 0 ;
   char *result = 0 ;
@@ -2230,7 +2255,7 @@ _gostring_ _wrap_CPLBinaryToHex_gdal_250791fe60757361(intgo _swig_go_0, GByte *_
 }
 
 
-GByte *_wrap_CPLHexToBinary_gdal_250791fe60757361(_gostring_ _swig_go_0, intgo *_swig_go_1) {
+GByte *_wrap_CPLHexToBinary_gdal_6d085214e6134239(_gostring_ _swig_go_0, intgo *_swig_go_1) {
   char *arg1 = (char *) 0 ;
   int *arg2 = (int *) 0 ;
   GByte *result = 0 ;
@@ -2245,12 +2270,17 @@ GByte *_wrap_CPLHexToBinary_gdal_250791fe60757361(_gostring_ _swig_go_0, intgo *
 }
 
 
-void _wrap_FileFromMemBuffer_gdal_250791fe60757361(_gostring_ _swig_go_0, intgo _swig_go_1, GByte *_swig_go_2) {
+void _wrap_FileFromMemBuffer_gdal_6d085214e6134239(_gostring_ _swig_go_0, intgo _swig_go_1, GByte *_swig_go_2) {
   char *arg1 = (char *) 0 ;
   int arg2 ;
   GByte *arg3 = (GByte *) 0 ;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = (int)_swig_go_1; 
   arg3 = *(GByte **)&_swig_go_2; 
   
@@ -2265,12 +2295,17 @@ void _wrap_FileFromMemBuffer_gdal_250791fe60757361(_gostring_ _swig_go_0, intgo 
 }
 
 
-VSI_RETVAL *_wrap_Unlink_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+VSI_RETVAL *_wrap_Unlink_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   VSI_RETVAL result;
   VSI_RETVAL *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   
   {
     if (!arg1) {
@@ -2284,7 +2319,7 @@ VSI_RETVAL *_wrap_Unlink_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-intgo _wrap_HasThreadSupport_gdal_250791fe60757361() {
+intgo _wrap_HasThreadSupport_gdal_6d085214e6134239() {
   int result;
   intgo _swig_go_result;
   
@@ -2295,13 +2330,18 @@ intgo _wrap_HasThreadSupport_gdal_250791fe60757361() {
 }
 
 
-VSI_RETVAL *_wrap_Mkdir_gdal_250791fe60757361(_gostring_ _swig_go_0, intgo _swig_go_1) {
+VSI_RETVAL *_wrap_Mkdir_gdal_6d085214e6134239(_gostring_ _swig_go_0, intgo _swig_go_1) {
   char *arg1 = (char *) 0 ;
   int arg2 ;
   VSI_RETVAL result;
   VSI_RETVAL *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = (int)_swig_go_1; 
   
   {
@@ -2316,12 +2356,17 @@ VSI_RETVAL *_wrap_Mkdir_gdal_250791fe60757361(_gostring_ _swig_go_0, intgo _swig
 }
 
 
-VSI_RETVAL *_wrap_Rmdir_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+VSI_RETVAL *_wrap_Rmdir_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   VSI_RETVAL result;
   VSI_RETVAL *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   
   {
     if (!arg1) {
@@ -2335,14 +2380,24 @@ VSI_RETVAL *_wrap_Rmdir_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-VSI_RETVAL *_wrap_Rename_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+VSI_RETVAL *_wrap_Rename_gdal_6d085214e6134239(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   VSI_RETVAL result;
   VSI_RETVAL *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   
   {
     if (!arg1) {
@@ -2362,13 +2417,18 @@ VSI_RETVAL *_wrap_Rename_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_
 }
 
 
-VSILFILE *_wrap_VSIFOpenL_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
+VSILFILE *_wrap_VSIFOpenL_gdal_6d085214e6134239(_gostring_ _swig_go_0, _gostring_ _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   VSILFILE *result = 0 ;
   VSILFILE *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = (char *)_swig_go_1.p; 
   
   {
@@ -2383,7 +2443,7 @@ VSILFILE *_wrap_VSIFOpenL_gdal_250791fe60757361(_gostring_ _swig_go_0, _gostring
 }
 
 
-intgo _wrap_VSIFCloseL_gdal_250791fe60757361(VSILFILE *_swig_go_0) {
+intgo _wrap_VSIFCloseL_gdal_6d085214e6134239(VSILFILE *_swig_go_0) {
   VSILFILE *arg1 = (VSILFILE *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -2402,7 +2462,7 @@ intgo _wrap_VSIFCloseL_gdal_250791fe60757361(VSILFILE *_swig_go_0) {
 }
 
 
-intgo _wrap_VSIFSeekL_gdal_250791fe60757361(VSILFILE *_swig_go_0, long long _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_VSIFSeekL_gdal_6d085214e6134239(VSILFILE *_swig_go_0, long long _swig_go_1, intgo _swig_go_2) {
   VSILFILE *arg1 = (VSILFILE *) 0 ;
   long arg2 ;
   int arg3 ;
@@ -2425,7 +2485,7 @@ intgo _wrap_VSIFSeekL_gdal_250791fe60757361(VSILFILE *_swig_go_0, long long _swi
 }
 
 
-long long _wrap_VSIFTellL_gdal_250791fe60757361(VSILFILE *_swig_go_0) {
+long long _wrap_VSIFTellL_gdal_6d085214e6134239(VSILFILE *_swig_go_0) {
   VSILFILE *arg1 = (VSILFILE *) 0 ;
   long result;
   long long _swig_go_result;
@@ -2444,7 +2504,7 @@ long long _wrap_VSIFTellL_gdal_250791fe60757361(VSILFILE *_swig_go_0) {
 }
 
 
-intgo _wrap_VSIFTruncateL_gdal_250791fe60757361(VSILFILE *_swig_go_0, long long _swig_go_1) {
+intgo _wrap_VSIFTruncateL_gdal_6d085214e6134239(VSILFILE *_swig_go_0, long long _swig_go_1) {
   VSILFILE *arg1 = (VSILFILE *) 0 ;
   long arg2 ;
   int result;
@@ -2465,7 +2525,7 @@ intgo _wrap_VSIFTruncateL_gdal_250791fe60757361(VSILFILE *_swig_go_0, long long 
 }
 
 
-intgo _wrap_VSIFEofL_gdal_250791fe60757361(VSILFILE *_swig_go_0) {
+intgo _wrap_VSIFEofL_gdal_6d085214e6134239(VSILFILE *_swig_go_0) {
   VSILFILE *arg1 = (VSILFILE *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -2484,7 +2544,7 @@ intgo _wrap_VSIFEofL_gdal_250791fe60757361(VSILFILE *_swig_go_0) {
 }
 
 
-long long _wrap_VSIFWriteL_gdal_250791fe60757361(void *_swig_go_0, long long _swig_go_1, long long _swig_go_2, VSILFILE *_swig_go_3) {
+long long _wrap_VSIFWriteL_gdal_6d085214e6134239(void *_swig_go_0, long long _swig_go_1, long long _swig_go_2, VSILFILE *_swig_go_3) {
   void *arg1 = (void *) 0 ;
   size_t arg2 ;
   size_t arg3 ;
@@ -2509,7 +2569,7 @@ long long _wrap_VSIFWriteL_gdal_250791fe60757361(void *_swig_go_0, long long _sw
 }
 
 
-long long _wrap_VSIFReadL_gdal_250791fe60757361(void *_swig_go_0, long long _swig_go_1, long long _swig_go_2, VSILFILE *_swig_go_3) {
+long long _wrap_VSIFReadL_gdal_6d085214e6134239(void *_swig_go_0, long long _swig_go_1, long long _swig_go_2, VSILFILE *_swig_go_3) {
   void *arg1 = (void *) 0 ;
   size_t arg2 ;
   size_t arg3 ;
@@ -2534,12 +2594,17 @@ long long _wrap_VSIFReadL_gdal_250791fe60757361(void *_swig_go_0, long long _swi
 }
 
 
-char **_wrap_ParseCommandLine_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+char **_wrap_ParseCommandLine_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   
   {
     if (!arg1) {
@@ -2553,7 +2618,7 @@ char **_wrap_ParseCommandLine_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-_gostring_ _wrap_MajorObject_GetDescription_gdal_250791fe60757361(GDALMajorObjectShadow *_swig_go_0) {
+_gostring_ _wrap_MajorObject_GetDescription_gdal_6d085214e6134239(GDALMajorObjectShadow *_swig_go_0) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2566,7 +2631,7 @@ _gostring_ _wrap_MajorObject_GetDescription_gdal_250791fe60757361(GDALMajorObjec
 }
 
 
-void _wrap_MajorObject_SetDescription_gdal_250791fe60757361(GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_MajorObject_SetDescription_gdal_6d085214e6134239(GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -2584,7 +2649,7 @@ void _wrap_MajorObject_SetDescription_gdal_250791fe60757361(GDALMajorObjectShado
 }
 
 
-char **_wrap_MajorObject_GetMetadataDomainList_gdal_250791fe60757361(GDALMajorObjectShadow *_swig_go_0) {
+char **_wrap_MajorObject_GetMetadataDomainList_gdal_6d085214e6134239(GDALMajorObjectShadow *_swig_go_0) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
@@ -2597,7 +2662,7 @@ char **_wrap_MajorObject_GetMetadataDomainList_gdal_250791fe60757361(GDALMajorOb
 }
 
 
-_gostring_* _wrap_MajorObject_GetMetadata_Dict_gdal_250791fe60757361(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_* _wrap_MajorObject_GetMetadata_Dict_gdal_6d085214e6134239(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) "" ;
   char **result = 0 ;
@@ -2614,7 +2679,7 @@ _gostring_* _wrap_MajorObject_GetMetadata_Dict_gdal_250791fe60757361(intgo _swig
 }
 
 
-char **_wrap_MajorObject_GetMetadata_List_gdal_250791fe60757361(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
+char **_wrap_MajorObject_GetMetadata_List_gdal_6d085214e6134239(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) "" ;
   char **result = 0 ;
@@ -2631,7 +2696,7 @@ char **_wrap_MajorObject_GetMetadata_List_gdal_250791fe60757361(intgo _swig_opta
 }
 
 
-intgo _wrap_MajorObject_SetMetadata__SWIG_0_gdal_250791fe60757361(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_MajorObject_SetMetadata__SWIG_0_gdal_6d085214e6134239(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_ _swig_go_2) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   char *arg3 = (char *) "" ;
@@ -2650,7 +2715,7 @@ intgo _wrap_MajorObject_SetMetadata__SWIG_0_gdal_250791fe60757361(intgo _swig_op
 }
 
 
-intgo _wrap_MajorObject_SetMetadata__SWIG_1_gdal_250791fe60757361(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_MajorObject_SetMetadata__SWIG_1_gdal_6d085214e6134239(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) "" ;
@@ -2669,7 +2734,7 @@ intgo _wrap_MajorObject_SetMetadata__SWIG_1_gdal_250791fe60757361(intgo _swig_op
 }
 
 
-_gostring_ _wrap_MajorObject_GetMetadataItem_gdal_250791fe60757361(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+_gostring_ _wrap_MajorObject_GetMetadataItem_gdal_6d085214e6134239(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) "" ;
@@ -2694,7 +2759,7 @@ _gostring_ _wrap_MajorObject_GetMetadataItem_gdal_250791fe60757361(intgo _swig_o
 }
 
 
-intgo _wrap_MajorObject_SetMetadataItem_gdal_250791fe60757361(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
+intgo _wrap_MajorObject_SetMetadataItem_gdal_6d085214e6134239(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -2721,7 +2786,7 @@ intgo _wrap_MajorObject_SetMetadataItem_gdal_250791fe60757361(intgo _swig_optarg
 }
 
 
-_gostring_ _wrap_Driver_ShortName_get_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0) {
+_gostring_ _wrap_Driver_ShortName_get_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2734,7 +2799,7 @@ _gostring_ _wrap_Driver_ShortName_get_gdal_250791fe60757361(GDALDriverShadow *_s
 }
 
 
-_gostring_ _wrap_Driver_LongName_get_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0) {
+_gostring_ _wrap_Driver_LongName_get_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2747,7 +2812,7 @@ _gostring_ _wrap_Driver_LongName_get_gdal_250791fe60757361(GDALDriverShadow *_sw
 }
 
 
-_gostring_ _wrap_Driver_HelpTopic_get_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0) {
+_gostring_ _wrap_Driver_HelpTopic_get_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2760,7 +2825,7 @@ _gostring_ _wrap_Driver_HelpTopic_get_gdal_250791fe60757361(GDALDriverShadow *_s
 }
 
 
-GDALDatasetShadow *_wrap_Driver_Create_gdal_250791fe60757361(intgo _swig_optargc, GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo _swig_go_4, intgo _swig_go_5, char **_swig_go_6) {
+GDALDatasetShadow *_wrap_Driver_Create_gdal_6d085214e6134239(intgo _swig_optargc, GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo _swig_go_4, intgo _swig_go_5, char **_swig_go_6) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
@@ -2772,7 +2837,12 @@ GDALDatasetShadow *_wrap_Driver_Create_gdal_250791fe60757361(intgo _swig_optargc
   GDALDatasetShadow *_swig_go_result;
   
   arg1 = *(GDALDriverShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   arg3 = (int)_swig_go_2; 
   arg4 = (int)_swig_go_3; 
   if (_swig_optargc > 0) {
@@ -2797,7 +2867,7 @@ GDALDatasetShadow *_wrap_Driver_Create_gdal_250791fe60757361(intgo _swig_optargc
 }
 
 
-GDALDatasetShadow *_wrap_Driver_CreateCopy_gdal_250791fe60757361(intgo _swig_optargc, GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, GDALDatasetShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
+GDALDatasetShadow *_wrap_Driver_CreateCopy_gdal_6d085214e6134239(intgo _swig_optargc, GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, GDALDatasetShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   GDALDatasetShadow *arg3 = (GDALDatasetShadow *) 0 ;
@@ -2809,7 +2879,12 @@ GDALDatasetShadow *_wrap_Driver_CreateCopy_gdal_250791fe60757361(intgo _swig_opt
   GDALDatasetShadow *_swig_go_result;
   
   arg1 = *(GDALDriverShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   arg3 = *(GDALDatasetShadow **)&_swig_go_2; 
   if (_swig_optargc > 0) {
     arg4 = (int)_swig_go_3; 
@@ -2844,14 +2919,19 @@ GDALDatasetShadow *_wrap_Driver_CreateCopy_gdal_250791fe60757361(intgo _swig_opt
 }
 
 
-intgo _wrap_Driver_Delete_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Driver_Delete_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   CPLErr result;
   intgo _swig_go_result;
   
   arg1 = *(GDALDriverShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   
   {
     if (!arg2) {
@@ -2865,7 +2945,7 @@ intgo _wrap_Driver_Delete_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0, _g
 }
 
 
-intgo _wrap_Driver_Rename_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_Driver_Rename_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -2894,7 +2974,7 @@ intgo _wrap_Driver_Rename_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0, _g
 }
 
 
-intgo _wrap_Driver_CopyFiles_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_Driver_CopyFiles_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -2923,7 +3003,7 @@ intgo _wrap_Driver_CopyFiles_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0,
 }
 
 
-intgo _wrap_Driver_Register_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0) {
+intgo _wrap_Driver_Register_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -2936,7 +3016,7 @@ intgo _wrap_Driver_Register_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0) 
 }
 
 
-void _wrap_Driver_Deregister_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0) {
+void _wrap_Driver_Deregister_gdal_6d085214e6134239(GDALDriverShadow *_swig_go_0) {
   GDALDriverShadow *arg1 = (GDALDriverShadow *) 0 ;
   
   arg1 = *(GDALDriverShadow **)&_swig_go_0; 
@@ -2946,7 +3026,7 @@ void _wrap_Driver_Deregister_gdal_250791fe60757361(GDALDriverShadow *_swig_go_0)
 }
 
 
-void _wrap_ColorEntry_c1_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, short _swig_go_1) {
+void _wrap_ColorEntry_c1_set_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0, short _swig_go_1) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short arg2 ;
   
@@ -2958,7 +3038,7 @@ void _wrap_ColorEntry_c1_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, s
 }
 
 
-short _wrap_ColorEntry_c1_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) {
+short _wrap_ColorEntry_c1_get_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short result;
   short _swig_go_result;
@@ -2971,7 +3051,7 @@ short _wrap_ColorEntry_c1_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) 
 }
 
 
-void _wrap_ColorEntry_c2_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, short _swig_go_1) {
+void _wrap_ColorEntry_c2_set_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0, short _swig_go_1) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short arg2 ;
   
@@ -2983,7 +3063,7 @@ void _wrap_ColorEntry_c2_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, s
 }
 
 
-short _wrap_ColorEntry_c2_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) {
+short _wrap_ColorEntry_c2_get_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short result;
   short _swig_go_result;
@@ -2996,7 +3076,7 @@ short _wrap_ColorEntry_c2_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) 
 }
 
 
-void _wrap_ColorEntry_c3_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, short _swig_go_1) {
+void _wrap_ColorEntry_c3_set_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0, short _swig_go_1) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short arg2 ;
   
@@ -3008,7 +3088,7 @@ void _wrap_ColorEntry_c3_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, s
 }
 
 
-short _wrap_ColorEntry_c3_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) {
+short _wrap_ColorEntry_c3_get_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short result;
   short _swig_go_result;
@@ -3021,7 +3101,7 @@ short _wrap_ColorEntry_c3_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) 
 }
 
 
-void _wrap_ColorEntry_c4_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, short _swig_go_1) {
+void _wrap_ColorEntry_c4_set_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0, short _swig_go_1) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short arg2 ;
   
@@ -3033,7 +3113,7 @@ void _wrap_ColorEntry_c4_set_gdal_250791fe60757361(GDALColorEntry *_swig_go_0, s
 }
 
 
-short _wrap_ColorEntry_c4_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) {
+short _wrap_ColorEntry_c4_get_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   short result;
   short _swig_go_result;
@@ -3046,7 +3126,7 @@ short _wrap_ColorEntry_c4_get_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) 
 }
 
 
-GDALColorEntry *_wrap_new_ColorEntry_gdal_250791fe60757361() {
+GDALColorEntry *_wrap_new_ColorEntry_gdal_6d085214e6134239() {
   GDALColorEntry *result = 0 ;
   GDALColorEntry *_swig_go_result;
   
@@ -3057,7 +3137,7 @@ GDALColorEntry *_wrap_new_ColorEntry_gdal_250791fe60757361() {
 }
 
 
-void _wrap_delete_ColorEntry_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) {
+void _wrap_delete_ColorEntry_gdal_6d085214e6134239(GDALColorEntry *_swig_go_0) {
   GDALColorEntry *arg1 = (GDALColorEntry *) 0 ;
   
   arg1 = *(GDALColorEntry **)&_swig_go_0; 
@@ -3067,7 +3147,7 @@ void _wrap_delete_ColorEntry_gdal_250791fe60757361(GDALColorEntry *_swig_go_0) {
 }
 
 
-void _wrap_GCP_GCPX_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GCP_GCPX_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3079,7 +3159,7 @@ void _wrap_GCP_GCPX_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig
 }
 
 
-double _wrap_GCP_GCPX_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GCP_GCPX_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3092,7 +3172,7 @@ double _wrap_GCP_GCPX_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GCP_GCPY_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GCP_GCPY_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3104,7 +3184,7 @@ void _wrap_GCP_GCPY_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig
 }
 
 
-double _wrap_GCP_GCPY_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GCP_GCPY_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3117,7 +3197,7 @@ double _wrap_GCP_GCPY_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GCP_GCPZ_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GCP_GCPZ_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3129,7 +3209,7 @@ void _wrap_GCP_GCPZ_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig
 }
 
 
-double _wrap_GCP_GCPZ_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GCP_GCPZ_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3142,7 +3222,7 @@ double _wrap_GCP_GCPZ_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GCP_GCPPixel_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GCP_GCPPixel_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3154,7 +3234,7 @@ void _wrap_GCP_GCPPixel_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _
 }
 
 
-double _wrap_GCP_GCPPixel_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GCP_GCPPixel_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3167,7 +3247,7 @@ double _wrap_GCP_GCPPixel_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GCP_GCPLine_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GCP_GCPLine_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3179,7 +3259,7 @@ void _wrap_GCP_GCPLine_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _s
 }
 
 
-double _wrap_GCP_GCPLine_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GCP_GCPLine_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3192,7 +3272,7 @@ double _wrap_GCP_GCPLine_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GCP_Info_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_GCP_Info_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3204,7 +3284,7 @@ void _wrap_GCP_Info_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostring_ _
 }
 
 
-_gostring_ _wrap_GCP_Info_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+_gostring_ _wrap_GCP_Info_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -3217,7 +3297,7 @@ _gostring_ _wrap_GCP_Info_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GCP_Id_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_GCP_Id_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3229,7 +3309,7 @@ void _wrap_GCP_Id_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostring_ _sw
 }
 
 
-_gostring_ _wrap_GCP_Id_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+_gostring_ _wrap_GCP_Id_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -3242,7 +3322,7 @@ _gostring_ _wrap_GCP_Id_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-GDAL_GCP *_wrap_new_GCP_gdal_250791fe60757361(intgo _swig_optargc, double _swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, _gostring_ _swig_go_5, _gostring_ _swig_go_6) {
+GDAL_GCP *_wrap_new_GCP_gdal_6d085214e6134239(intgo _swig_optargc, double _swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, _gostring_ _swig_go_5, _gostring_ _swig_go_6) {
   double arg1 = (double) 0.0 ;
   double arg2 = (double) 0.0 ;
   double arg3 = (double) 0.0 ;
@@ -3281,7 +3361,7 @@ GDAL_GCP *_wrap_new_GCP_gdal_250791fe60757361(intgo _swig_optargc, double _swig_
 }
 
 
-void _wrap_delete_GCP_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+void _wrap_delete_GCP_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   
   arg1 = *(GDAL_GCP **)&_swig_go_0; 
@@ -3291,7 +3371,7 @@ void _wrap_delete_GCP_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-double _wrap_GDAL_GCP_GCPX_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GDAL_GCP_GCPX_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3310,7 +3390,7 @@ double _wrap_GDAL_GCP_GCPX_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GDAL_GCP_GCPX_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GDAL_GCP_GCPX_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3328,7 +3408,7 @@ void _wrap_GDAL_GCP_GCPX_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double 
 }
 
 
-double _wrap_GDAL_GCP_GCPY_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GDAL_GCP_GCPY_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3347,7 +3427,7 @@ double _wrap_GDAL_GCP_GCPY_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GDAL_GCP_GCPY_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GDAL_GCP_GCPY_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3365,7 +3445,7 @@ void _wrap_GDAL_GCP_GCPY_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double 
 }
 
 
-double _wrap_GDAL_GCP_GCPZ_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GDAL_GCP_GCPZ_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3384,7 +3464,7 @@ double _wrap_GDAL_GCP_GCPZ_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GDAL_GCP_GCPZ_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GDAL_GCP_GCPZ_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3402,7 +3482,7 @@ void _wrap_GDAL_GCP_GCPZ_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double 
 }
 
 
-double _wrap_GDAL_GCP_GCPPixel_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GDAL_GCP_GCPPixel_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3421,7 +3501,7 @@ double _wrap_GDAL_GCP_GCPPixel_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GDAL_GCP_GCPPixel_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GDAL_GCP_GCPPixel_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3439,7 +3519,7 @@ void _wrap_GDAL_GCP_GCPPixel_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, dou
 }
 
 
-double _wrap_GDAL_GCP_GCPLine_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+double _wrap_GDAL_GCP_GCPLine_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double result;
   double _swig_go_result;
@@ -3458,7 +3538,7 @@ double _wrap_GDAL_GCP_GCPLine_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GDAL_GCP_GCPLine_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, double _swig_go_1) {
+void _wrap_GDAL_GCP_GCPLine_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, double _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   double arg2 ;
   
@@ -3476,7 +3556,7 @@ void _wrap_GDAL_GCP_GCPLine_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, doub
 }
 
 
-_gostring_ _wrap_GDAL_GCP_Info_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+_gostring_ _wrap_GDAL_GCP_Info_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -3495,7 +3575,7 @@ _gostring_ _wrap_GDAL_GCP_Info_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GDAL_GCP_Info_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_GDAL_GCP_Info_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3513,7 +3593,7 @@ void _wrap_GDAL_GCP_Info_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostri
 }
 
 
-_gostring_ _wrap_GDAL_GCP_Id_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
+_gostring_ _wrap_GDAL_GCP_Id_get_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -3532,7 +3612,7 @@ _gostring_ _wrap_GDAL_GCP_Id_get_gdal_250791fe60757361(GDAL_GCP *_swig_go_0) {
 }
 
 
-void _wrap_GDAL_GCP_Id_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_GDAL_GCP_Id_set_gdal_6d085214e6134239(GDAL_GCP *_swig_go_0, _gostring_ _swig_go_1) {
   GDAL_GCP *arg1 = (GDAL_GCP *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -3550,7 +3630,7 @@ void _wrap_GDAL_GCP_Id_set_gdal_250791fe60757361(GDAL_GCP *_swig_go_0, _gostring
 }
 
 
-intgo _wrap_GCPsToGeoTransform_gdal_250791fe60757361(intgo _swig_optargc, intgo _swig_go_0, GDAL_GCP *_swig_go_1, double *_swig_go_2, intgo _swig_go_3) {
+intgo _wrap_GCPsToGeoTransform_gdal_6d085214e6134239(intgo _swig_optargc, intgo _swig_go_0, GDAL_GCP *_swig_go_1, double *_swig_go_2, intgo _swig_go_3) {
   int arg1 ;
   GDAL_GCP *arg2 = (GDAL_GCP *) 0 ;
   double *arg3 ;
@@ -3571,7 +3651,7 @@ intgo _wrap_GCPsToGeoTransform_gdal_250791fe60757361(intgo _swig_optargc, intgo 
 }
 
 
-void _wrap_delete_AsyncReader_gdal_250791fe60757361(GDALAsyncReaderShadow *_swig_go_0) {
+void _wrap_delete_AsyncReader_gdal_6d085214e6134239(GDALAsyncReaderShadow *_swig_go_0) {
   GDALAsyncReaderShadow *arg1 = (GDALAsyncReaderShadow *) 0 ;
   
   arg1 = *(GDALAsyncReaderShadow **)&_swig_go_0; 
@@ -3581,7 +3661,7 @@ void _wrap_delete_AsyncReader_gdal_250791fe60757361(GDALAsyncReaderShadow *_swig
 }
 
 
-intgo _wrap_AsyncReader_GetNextUpdatedRegion_gdal_250791fe60757361(GDALAsyncReaderShadow *_swig_go_0, double _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5) {
+intgo _wrap_AsyncReader_GetNextUpdatedRegion_gdal_6d085214e6134239(GDALAsyncReaderShadow *_swig_go_0, double _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5) {
   GDALAsyncReaderShadow *arg1 = (GDALAsyncReaderShadow *) 0 ;
   double arg2 ;
   int *arg3 = (int *) 0 ;
@@ -3648,7 +3728,7 @@ intgo _wrap_AsyncReader_GetNextUpdatedRegion_gdal_250791fe60757361(GDALAsyncRead
 }
 
 
-intgo _wrap_AsyncReader_LockBuffer_gdal_250791fe60757361(GDALAsyncReaderShadow *_swig_go_0, double _swig_go_1) {
+intgo _wrap_AsyncReader_LockBuffer_gdal_6d085214e6134239(GDALAsyncReaderShadow *_swig_go_0, double _swig_go_1) {
   GDALAsyncReaderShadow *arg1 = (GDALAsyncReaderShadow *) 0 ;
   double arg2 ;
   int result;
@@ -3663,7 +3743,7 @@ intgo _wrap_AsyncReader_LockBuffer_gdal_250791fe60757361(GDALAsyncReaderShadow *
 }
 
 
-void _wrap_AsyncReader_UnlockBuffer_gdal_250791fe60757361(GDALAsyncReaderShadow *_swig_go_0) {
+void _wrap_AsyncReader_UnlockBuffer_gdal_6d085214e6134239(GDALAsyncReaderShadow *_swig_go_0) {
   GDALAsyncReaderShadow *arg1 = (GDALAsyncReaderShadow *) 0 ;
   
   arg1 = *(GDALAsyncReaderShadow **)&_swig_go_0; 
@@ -3673,7 +3753,7 @@ void _wrap_AsyncReader_UnlockBuffer_gdal_250791fe60757361(GDALAsyncReaderShadow 
 }
 
 
-intgo _wrap_Dataset_RasterXSize_get_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+intgo _wrap_Dataset_RasterXSize_get_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -3686,7 +3766,7 @@ intgo _wrap_Dataset_RasterXSize_get_gdal_250791fe60757361(GDALDatasetShadow *_sw
 }
 
 
-intgo _wrap_Dataset_RasterYSize_get_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+intgo _wrap_Dataset_RasterYSize_get_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -3699,7 +3779,7 @@ intgo _wrap_Dataset_RasterYSize_get_gdal_250791fe60757361(GDALDatasetShadow *_sw
 }
 
 
-intgo _wrap_Dataset_RasterCount_get_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+intgo _wrap_Dataset_RasterCount_get_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -3712,7 +3792,7 @@ intgo _wrap_Dataset_RasterCount_get_gdal_250791fe60757361(GDALDatasetShadow *_sw
 }
 
 
-void _wrap_delete_Dataset_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+void _wrap_delete_Dataset_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   
   arg1 = *(GDALDatasetShadow **)&_swig_go_0; 
@@ -3722,7 +3802,17 @@ void _wrap_delete_Dataset_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
 }
 
 
-GDALDriverShadow *_wrap_Dataset_GetDriver_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+void _wrap_Dataset_Close_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
+  GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
+  
+  arg1 = *(GDALDatasetShadow **)&_swig_go_0; 
+  
+  GDALDatasetShadow_Close(arg1);
+  
+}
+
+
+GDALDriverShadow *_wrap_Dataset_GetDriver_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALDriverShadow *result = 0 ;
   GDALDriverShadow *_swig_go_result;
@@ -3735,7 +3825,7 @@ GDALDriverShadow *_wrap_Dataset_GetDriver_gdal_250791fe60757361(GDALDatasetShado
 }
 
 
-GDALRasterBandShadow *_wrap_Dataset_GetRasterBand_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
+GDALRasterBandShadow *_wrap_Dataset_GetRasterBand_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 ;
   GDALRasterBandShadow *result = 0 ;
@@ -3750,7 +3840,7 @@ GDALRasterBandShadow *_wrap_Dataset_GetRasterBand_gdal_250791fe60757361(GDALData
 }
 
 
-_gostring_ _wrap_Dataset_GetProjection_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+_gostring_ _wrap_Dataset_GetProjection_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -3763,7 +3853,7 @@ _gostring_ _wrap_Dataset_GetProjection_gdal_250791fe60757361(GDALDatasetShadow *
 }
 
 
-_gostring_ _wrap_Dataset_GetProjectionRef_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+_gostring_ _wrap_Dataset_GetProjectionRef_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -3776,7 +3866,7 @@ _gostring_ _wrap_Dataset_GetProjectionRef_gdal_250791fe60757361(GDALDatasetShado
 }
 
 
-intgo _wrap_Dataset_SetProjection_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Dataset_SetProjection_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   CPLErr result;
@@ -3797,7 +3887,7 @@ intgo _wrap_Dataset_SetProjection_gdal_250791fe60757361(GDALDatasetShadow *_swig
 }
 
 
-void _wrap_Dataset_GetGeoTransform_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, double *_swig_go_1) {
+void _wrap_Dataset_GetGeoTransform_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, double *_swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   double *arg2 ;
   
@@ -3809,7 +3899,7 @@ void _wrap_Dataset_GetGeoTransform_gdal_250791fe60757361(GDALDatasetShadow *_swi
 }
 
 
-intgo _wrap_Dataset_SetGeoTransform_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, double *_swig_go_1) {
+intgo _wrap_Dataset_SetGeoTransform_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, double *_swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   double *arg2 ;
   CPLErr result;
@@ -3824,7 +3914,7 @@ intgo _wrap_Dataset_SetGeoTransform_gdal_250791fe60757361(GDALDatasetShadow *_sw
 }
 
 
-intgo _wrap_Dataset_BuildOverviews_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Dataset_BuildOverviews_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *arg2 = (char *) "NEAREST" ;
   int arg3 = (int) 0 ;
@@ -3859,7 +3949,7 @@ intgo _wrap_Dataset_BuildOverviews_gdal_250791fe60757361(intgo _swig_optargc, GD
 }
 
 
-intgo _wrap_Dataset_GetGCPCount_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+intgo _wrap_Dataset_GetGCPCount_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -3872,7 +3962,7 @@ intgo _wrap_Dataset_GetGCPCount_gdal_250791fe60757361(GDALDatasetShadow *_swig_g
 }
 
 
-_gostring_ _wrap_Dataset_GetGCPProjection_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+_gostring_ _wrap_Dataset_GetGCPProjection_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -3885,7 +3975,7 @@ _gostring_ _wrap_Dataset_GetGCPProjection_gdal_250791fe60757361(GDALDatasetShado
 }
 
 
-void _wrap_Dataset_GetGCPs_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, intgo *_swig_go_1, GDAL_GCP **_swig_go_2) {
+void _wrap_Dataset_GetGCPs_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, intgo *_swig_go_1, GDAL_GCP **_swig_go_2) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int *arg2 = (int *) 0 ;
   GDAL_GCP **arg3 = (GDAL_GCP **) 0 ;
@@ -3899,7 +3989,7 @@ void _wrap_Dataset_GetGCPs_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, 
 }
 
 
-intgo _wrap_Dataset_SetGCPs_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, GDAL_GCP *_swig_go_2, _gostring_ _swig_go_3) {
+intgo _wrap_Dataset_SetGCPs_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, GDAL_GCP *_swig_go_2, _gostring_ _swig_go_3) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 ;
   GDAL_GCP *arg3 = (GDAL_GCP *) 0 ;
@@ -3918,7 +4008,7 @@ intgo _wrap_Dataset_SetGCPs_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0,
 }
 
 
-void _wrap_Dataset_FlushCache_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+void _wrap_Dataset_FlushCache_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   
   arg1 = *(GDALDatasetShadow **)&_swig_go_0; 
@@ -3928,7 +4018,7 @@ void _wrap_Dataset_FlushCache_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_
 }
 
 
-intgo _wrap_Dataset_AddBand_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
+intgo _wrap_Dataset_AddBand_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALDataType arg2 = (GDALDataType) GDT_Byte ;
   char **arg3 = (char **) 0 ;
@@ -3949,7 +4039,7 @@ intgo _wrap_Dataset_AddBand_gdal_250791fe60757361(intgo _swig_optargc, GDALDatas
 }
 
 
-intgo _wrap_Dataset_CreateMaskBand_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Dataset_CreateMaskBand_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 ;
   CPLErr result;
@@ -3964,7 +4054,7 @@ intgo _wrap_Dataset_CreateMaskBand_gdal_250791fe60757361(GDALDatasetShadow *_swi
 }
 
 
-char **_wrap_Dataset_GetFileList_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+char **_wrap_Dataset_GetFileList_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
@@ -3977,26 +4067,20 @@ char **_wrap_Dataset_GetFileList_gdal_250791fe60757361(GDALDatasetShadow *_swig_
 }
 
 
-OGRLayerShadow *_wrap_Dataset_CreateLayer_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4) {
+OGRLayerShadow *_wrap_Dataset_CreateLayer_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *arg2 = (char *) 0 ;
-  OSRSpatialReferenceShadow *arg3 = (OSRSpatialReferenceShadow *) NULL ;
-  OGRwkbGeometryType arg4 = (OGRwkbGeometryType) wkbUnknown ;
+  OSRSpatialReferenceShadow *arg3 = (OSRSpatialReferenceShadow *) 0 ;
+  OGRwkbGeometryType arg4 ;
   char **arg5 = (char **) 0 ;
   OGRLayerShadow *result = 0 ;
   OGRLayerShadow *_swig_go_result;
   
   arg1 = *(GDALDatasetShadow **)&_swig_go_0; 
   arg2 = (char *)_swig_go_1.p; 
-  if (_swig_optargc > 0) {
-    arg3 = *(OSRSpatialReferenceShadow **)&_swig_go_2; 
-  }
-  if (_swig_optargc > 1) {
-    arg4 = (OGRwkbGeometryType)_swig_go_3; 
-  }
-  if (_swig_optargc > 2) {
-    arg5 = *(char ***)&_swig_go_4; 
-  }
+  arg3 = *(OSRSpatialReferenceShadow **)&_swig_go_2; 
+  arg4 = (OGRwkbGeometryType)_swig_go_3; 
+  arg5 = *(char ***)&_swig_go_4; 
   
   result = (OGRLayerShadow *)GDALDatasetShadow_CreateLayer(arg1,(char const *)arg2,arg3,arg4,arg5);
   *(OGRLayerShadow **)&_swig_go_result = (OGRLayerShadow *)result; 
@@ -4004,7 +4088,7 @@ OGRLayerShadow *_wrap_Dataset_CreateLayer_gdal_250791fe60757361(intgo _swig_opta
 }
 
 
-OGRLayerShadow *_wrap_Dataset_CopyLayer_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, _gostring_ _swig_go_2, char **_swig_go_3) {
+OGRLayerShadow *_wrap_Dataset_CopyLayer_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, _gostring_ _swig_go_2, char **_swig_go_3) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -4031,7 +4115,7 @@ OGRLayerShadow *_wrap_Dataset_CopyLayer_gdal_250791fe60757361(intgo _swig_optarg
 }
 
 
-intgo _wrap_Dataset_DeleteLayer_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Dataset_DeleteLayer_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 ;
   OGRErr result;
@@ -4046,7 +4130,7 @@ intgo _wrap_Dataset_DeleteLayer_gdal_250791fe60757361(GDALDatasetShadow *_swig_g
 }
 
 
-intgo _wrap_Dataset_GetLayerCount_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+intgo _wrap_Dataset_GetLayerCount_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4059,7 +4143,7 @@ intgo _wrap_Dataset_GetLayerCount_gdal_250791fe60757361(GDALDatasetShadow *_swig
 }
 
 
-OGRLayerShadow *_wrap_Dataset_GetLayerByIndex_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
+OGRLayerShadow *_wrap_Dataset_GetLayerByIndex_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 = (int) 0 ;
   OGRLayerShadow *result = 0 ;
@@ -4076,7 +4160,7 @@ OGRLayerShadow *_wrap_Dataset_GetLayerByIndex_gdal_250791fe60757361(intgo _swig_
 }
 
 
-OGRLayerShadow *_wrap_Dataset_GetLayerByName_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1) {
+OGRLayerShadow *_wrap_Dataset_GetLayerByName_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRLayerShadow *result = 0 ;
@@ -4091,7 +4175,7 @@ OGRLayerShadow *_wrap_Dataset_GetLayerByName_gdal_250791fe60757361(GDALDatasetSh
 }
 
 
-bool _wrap_Dataset_TestCapability_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1) {
+bool _wrap_Dataset_TestCapability_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   bool result;
@@ -4106,7 +4190,7 @@ bool _wrap_Dataset_TestCapability_gdal_250791fe60757361(GDALDatasetShadow *_swig
 }
 
 
-OGRLayerShadow *_wrap_Dataset_ExecuteSQL_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2, _gostring_ _swig_go_3) {
+OGRLayerShadow *_wrap_Dataset_ExecuteSQL_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2, _gostring_ _swig_go_3) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRGeometryShadow *arg3 = (OGRGeometryShadow *) NULL ;
@@ -4135,7 +4219,7 @@ OGRLayerShadow *_wrap_Dataset_ExecuteSQL_gdal_250791fe60757361(intgo _swig_optar
 }
 
 
-void _wrap_Dataset_ReleaseResultSet_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, OGRLayerShadow *_swig_go_1) {
+void _wrap_Dataset_ReleaseResultSet_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, OGRLayerShadow *_swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   
@@ -4147,7 +4231,7 @@ void _wrap_Dataset_ReleaseResultSet_gdal_250791fe60757361(GDALDatasetShadow *_sw
 }
 
 
-OGRStyleTableShadow *_wrap_Dataset_GetStyleTable_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+OGRStyleTableShadow *_wrap_Dataset_GetStyleTable_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   OGRStyleTableShadow *result = 0 ;
   OGRStyleTableShadow *_swig_go_result;
@@ -4160,7 +4244,7 @@ OGRStyleTableShadow *_wrap_Dataset_GetStyleTable_gdal_250791fe60757361(GDALDatas
 }
 
 
-void _wrap_Dataset_SetStyleTable_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, OGRStyleTableShadow *_swig_go_1) {
+void _wrap_Dataset_SetStyleTable_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, OGRStyleTableShadow *_swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   OGRStyleTableShadow *arg2 = (OGRStyleTableShadow *) 0 ;
   
@@ -4172,7 +4256,7 @@ void _wrap_Dataset_SetStyleTable_gdal_250791fe60757361(GDALDatasetShadow *_swig_
 }
 
 
-intgo _wrap_Dataset_StartTransaction_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Dataset_StartTransaction_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 = (int) FALSE ;
   OGRErr result;
@@ -4189,7 +4273,7 @@ intgo _wrap_Dataset_StartTransaction_gdal_250791fe60757361(intgo _swig_optargc, 
 }
 
 
-intgo _wrap_Dataset_CommitTransaction_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+intgo _wrap_Dataset_CommitTransaction_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -4202,7 +4286,7 @@ intgo _wrap_Dataset_CommitTransaction_gdal_250791fe60757361(GDALDatasetShadow *_
 }
 
 
-intgo _wrap_Dataset_RollbackTransaction_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0) {
+intgo _wrap_Dataset_RollbackTransaction_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -4215,7 +4299,7 @@ intgo _wrap_Dataset_RollbackTransaction_gdal_250791fe60757361(GDALDatasetShadow 
 }
 
 
-intgo _wrap_Band_XSize_get_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_XSize_get_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4228,7 +4312,7 @@ intgo _wrap_Band_XSize_get_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_
 }
 
 
-intgo _wrap_Band_YSize_get_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_YSize_get_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4241,7 +4325,7 @@ intgo _wrap_Band_YSize_get_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_
 }
 
 
-intgo _wrap_Band_DataType_get_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_DataType_get_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALDataType result;
   intgo _swig_go_result;
@@ -4254,7 +4338,7 @@ intgo _wrap_Band_DataType_get_gdal_250791fe60757361(GDALRasterBandShadow *_swig_
 }
 
 
-GDALDatasetShadow *_wrap_Band_GetDataset_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+GDALDatasetShadow *_wrap_Band_GetDataset_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
@@ -4267,7 +4351,7 @@ GDALDatasetShadow *_wrap_Band_GetDataset_gdal_250791fe60757361(GDALRasterBandSha
 }
 
 
-intgo _wrap_Band_GetBand_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_GetBand_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4280,7 +4364,7 @@ intgo _wrap_Band_GetBand_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0)
 }
 
 
-void _wrap_Band_GetBlockSize_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2) {
+void _wrap_Band_GetBlockSize_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int *arg2 = (int *) 0 ;
   int *arg3 = (int *) 0 ;
@@ -4316,7 +4400,7 @@ void _wrap_Band_GetBlockSize_gdal_250791fe60757361(GDALRasterBandShadow *_swig_g
 }
 
 
-intgo _wrap_Band_GetColorInterpretation_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_GetColorInterpretation_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorInterp result;
   intgo _swig_go_result;
@@ -4329,7 +4413,7 @@ intgo _wrap_Band_GetColorInterpretation_gdal_250791fe60757361(GDALRasterBandShad
 }
 
 
-intgo _wrap_Band_GetRasterColorInterpretation_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_GetRasterColorInterpretation_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorInterp result;
   intgo _swig_go_result;
@@ -4342,7 +4426,7 @@ intgo _wrap_Band_GetRasterColorInterpretation_gdal_250791fe60757361(GDALRasterBa
 }
 
 
-intgo _wrap_Band_SetColorInterpretation_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Band_SetColorInterpretation_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorInterp arg2 ;
   CPLErr result;
@@ -4357,7 +4441,7 @@ intgo _wrap_Band_SetColorInterpretation_gdal_250791fe60757361(GDALRasterBandShad
 }
 
 
-intgo _wrap_Band_SetRasterColorInterpretation_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Band_SetRasterColorInterpretation_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorInterp arg2 ;
   CPLErr result;
@@ -4372,7 +4456,7 @@ intgo _wrap_Band_SetRasterColorInterpretation_gdal_250791fe60757361(GDALRasterBa
 }
 
 
-void _wrap_Band_GetNoDataValue_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
+void _wrap_Band_GetNoDataValue_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 = (double *) 0 ;
   int *arg3 = (int *) 0 ;
@@ -4386,7 +4470,7 @@ void _wrap_Band_GetNoDataValue_gdal_250791fe60757361(GDALRasterBandShadow *_swig
 }
 
 
-intgo _wrap_Band_SetNoDataValue_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double _swig_go_1) {
+intgo _wrap_Band_SetNoDataValue_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 ;
   CPLErr result;
@@ -4401,7 +4485,7 @@ intgo _wrap_Band_SetNoDataValue_gdal_250791fe60757361(GDALRasterBandShadow *_swi
 }
 
 
-intgo _wrap_Band_DeleteNoDataValue_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_DeleteNoDataValue_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   CPLErr result;
   intgo _swig_go_result;
@@ -4414,7 +4498,7 @@ intgo _wrap_Band_DeleteNoDataValue_gdal_250791fe60757361(GDALRasterBandShadow *_
 }
 
 
-_gostring_ _wrap_Band_GetUnitType_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+_gostring_ _wrap_Band_GetUnitType_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -4427,7 +4511,7 @@ _gostring_ _wrap_Band_GetUnitType_gdal_250791fe60757361(GDALRasterBandShadow *_s
 }
 
 
-intgo _wrap_Band_SetUnitType_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Band_SetUnitType_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   CPLErr result;
@@ -4442,7 +4526,7 @@ intgo _wrap_Band_SetUnitType_gdal_250791fe60757361(GDALRasterBandShadow *_swig_g
 }
 
 
-char **_wrap_Band_GetRasterCategoryNames_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+char **_wrap_Band_GetRasterCategoryNames_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
@@ -4455,7 +4539,7 @@ char **_wrap_Band_GetRasterCategoryNames_gdal_250791fe60757361(GDALRasterBandSha
 }
 
 
-intgo _wrap_Band_SetRasterCategoryNames_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, char **_swig_go_1) {
+intgo _wrap_Band_SetRasterCategoryNames_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, char **_swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   CPLErr result;
@@ -4470,7 +4554,7 @@ intgo _wrap_Band_SetRasterCategoryNames_gdal_250791fe60757361(GDALRasterBandShad
 }
 
 
-void _wrap_Band_GetMinimum_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
+void _wrap_Band_GetMinimum_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 = (double *) 0 ;
   int *arg3 = (int *) 0 ;
@@ -4484,7 +4568,7 @@ void _wrap_Band_GetMinimum_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_
 }
 
 
-void _wrap_Band_GetMaximum_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
+void _wrap_Band_GetMaximum_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 = (double *) 0 ;
   int *arg3 = (int *) 0 ;
@@ -4498,7 +4582,7 @@ void _wrap_Band_GetMaximum_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_
 }
 
 
-void _wrap_Band_GetOffset_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
+void _wrap_Band_GetOffset_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 = (double *) 0 ;
   int *arg3 = (int *) 0 ;
@@ -4512,7 +4596,7 @@ void _wrap_Band_GetOffset_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0
 }
 
 
-void _wrap_Band_GetScale_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
+void _wrap_Band_GetScale_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo *_swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 = (double *) 0 ;
   int *arg3 = (int *) 0 ;
@@ -4526,7 +4610,7 @@ void _wrap_Band_GetScale_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0,
 }
 
 
-intgo _wrap_Band_SetOffset_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double _swig_go_1) {
+intgo _wrap_Band_SetOffset_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 ;
   CPLErr result;
@@ -4541,7 +4625,7 @@ intgo _wrap_Band_SetOffset_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_
 }
 
 
-intgo _wrap_Band_SetScale_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double _swig_go_1) {
+intgo _wrap_Band_SetScale_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 ;
   CPLErr result;
@@ -4556,7 +4640,7 @@ intgo _wrap_Band_SetScale_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0
 }
 
 
-intgo _wrap_Band_GetStatistics_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5, _goslice_ _swig_go_6) {
+intgo _wrap_Band_GetStatistics_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5, _goslice_ _swig_go_6) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -4625,7 +4709,7 @@ intgo _wrap_Band_GetStatistics_gdal_250791fe60757361(GDALRasterBandShadow *_swig
 }
 
 
-intgo _wrap_Band_ComputeStatistics_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, bool _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5, GDALProgressFunc _swig_go_6, void *_swig_go_7) {
+intgo _wrap_Band_ComputeStatistics_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, bool _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5, GDALProgressFunc _swig_go_6, void *_swig_go_7) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   bool arg2 ;
   double *arg3 = (double *) NULL ;
@@ -4710,7 +4794,7 @@ intgo _wrap_Band_ComputeStatistics_gdal_250791fe60757361(intgo _swig_optargc, GD
 }
 
 
-intgo _wrap_Band_SetStatistics_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_Band_SetStatistics_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -4731,7 +4815,7 @@ intgo _wrap_Band_SetStatistics_gdal_250791fe60757361(GDALRasterBandShadow *_swig
 }
 
 
-intgo _wrap_Band_GetOverviewCount_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_GetOverviewCount_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4744,7 +4828,7 @@ intgo _wrap_Band_GetOverviewCount_gdal_250791fe60757361(GDALRasterBandShadow *_s
 }
 
 
-GDALRasterBandShadow *_wrap_Band_GetOverview_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
+GDALRasterBandShadow *_wrap_Band_GetOverview_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int arg2 ;
   GDALRasterBandShadow *result = 0 ;
@@ -4759,7 +4843,7 @@ GDALRasterBandShadow *_wrap_Band_GetOverview_gdal_250791fe60757361(GDALRasterBan
 }
 
 
-intgo _wrap_Band_Checksum_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo *_swig_go_3, intgo *_swig_go_4) {
+intgo _wrap_Band_Checksum_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo *_swig_go_3, intgo *_swig_go_4) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int arg2 = (int) 0 ;
   int arg3 = (int) 0 ;
@@ -4788,7 +4872,7 @@ intgo _wrap_Band_Checksum_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterB
 }
 
 
-void _wrap_Band_ComputeRasterMinMax_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2) {
+void _wrap_Band_ComputeRasterMinMax_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 ;
   int arg3 = (int) 0 ;
@@ -4804,7 +4888,7 @@ void _wrap_Band_ComputeRasterMinMax_gdal_250791fe60757361(intgo _swig_optargc, G
 }
 
 
-void _wrap_Band_ComputeBandStats_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2) {
+void _wrap_Band_ComputeBandStats_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 ;
   int arg3 = (int) 1 ;
@@ -4820,7 +4904,7 @@ void _wrap_Band_ComputeBandStats_gdal_250791fe60757361(intgo _swig_optargc, GDAL
 }
 
 
-intgo _wrap_Band_Fill_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2) {
+intgo _wrap_Band_Fill_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 ;
   double arg3 = (double) 0.0 ;
@@ -4839,7 +4923,7 @@ intgo _wrap_Band_Fill_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandS
 }
 
 
-void _wrap_Band_FlushCache_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+void _wrap_Band_FlushCache_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   
   arg1 = *(GDALRasterBandShadow **)&_swig_go_0; 
@@ -4849,7 +4933,7 @@ void _wrap_Band_FlushCache_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_
 }
 
 
-GDALColorTableShadow *_wrap_Band_GetRasterColorTable_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+GDALColorTableShadow *_wrap_Band_GetRasterColorTable_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorTableShadow *result = 0 ;
   GDALColorTableShadow *_swig_go_result;
@@ -4862,7 +4946,7 @@ GDALColorTableShadow *_wrap_Band_GetRasterColorTable_gdal_250791fe60757361(GDALR
 }
 
 
-GDALColorTableShadow *_wrap_Band_GetColorTable_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+GDALColorTableShadow *_wrap_Band_GetColorTable_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorTableShadow *result = 0 ;
   GDALColorTableShadow *_swig_go_result;
@@ -4875,7 +4959,7 @@ GDALColorTableShadow *_wrap_Band_GetColorTable_gdal_250791fe60757361(GDALRasterB
 }
 
 
-intgo _wrap_Band_SetRasterColorTable_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, GDALColorTableShadow *_swig_go_1) {
+intgo _wrap_Band_SetRasterColorTable_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, GDALColorTableShadow *_swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorTableShadow *arg2 = (GDALColorTableShadow *) 0 ;
   int result;
@@ -4890,7 +4974,7 @@ intgo _wrap_Band_SetRasterColorTable_gdal_250791fe60757361(GDALRasterBandShadow 
 }
 
 
-intgo _wrap_Band_SetColorTable_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, GDALColorTableShadow *_swig_go_1) {
+intgo _wrap_Band_SetColorTable_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, GDALColorTableShadow *_swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALColorTableShadow *arg2 = (GDALColorTableShadow *) 0 ;
   int result;
@@ -4905,7 +4989,7 @@ intgo _wrap_Band_SetColorTable_gdal_250791fe60757361(GDALRasterBandShadow *_swig
 }
 
 
-GDALRasterAttributeTableShadow *_wrap_Band_GetDefaultRAT_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+GDALRasterAttributeTableShadow *_wrap_Band_GetDefaultRAT_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterAttributeTableShadow *result = 0 ;
   GDALRasterAttributeTableShadow *_swig_go_result;
@@ -4918,7 +5002,7 @@ GDALRasterAttributeTableShadow *_wrap_Band_GetDefaultRAT_gdal_250791fe60757361(G
 }
 
 
-intgo _wrap_Band_SetDefaultRAT_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, GDALRasterAttributeTableShadow *_swig_go_1) {
+intgo _wrap_Band_SetDefaultRAT_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, GDALRasterAttributeTableShadow *_swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterAttributeTableShadow *arg2 = (GDALRasterAttributeTableShadow *) 0 ;
   int result;
@@ -4933,7 +5017,7 @@ intgo _wrap_Band_SetDefaultRAT_gdal_250791fe60757361(GDALRasterBandShadow *_swig
 }
 
 
-GDALRasterBandShadow *_wrap_Band_GetMaskBand_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+GDALRasterBandShadow *_wrap_Band_GetMaskBand_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *result = 0 ;
   GDALRasterBandShadow *_swig_go_result;
@@ -4946,7 +5030,7 @@ GDALRasterBandShadow *_wrap_Band_GetMaskBand_gdal_250791fe60757361(GDALRasterBan
 }
 
 
-intgo _wrap_Band_GetMaskFlags_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+intgo _wrap_Band_GetMaskFlags_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4959,7 +5043,7 @@ intgo _wrap_Band_GetMaskFlags_gdal_250791fe60757361(GDALRasterBandShadow *_swig_
 }
 
 
-intgo _wrap_Band_CreateMaskBand_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Band_CreateMaskBand_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int arg2 ;
   CPLErr result;
@@ -4974,7 +5058,7 @@ intgo _wrap_Band_CreateMaskBand_gdal_250791fe60757361(GDALRasterBandShadow *_swi
 }
 
 
-intgo _wrap_Band_GetHistogram_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, intgo _swig_go_3, GUIntBig *_swig_go_4, intgo _swig_go_5, intgo _swig_go_6, GDALProgressFunc _swig_go_7, void *_swig_go_8) {
+intgo _wrap_Band_GetHistogram_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, intgo _swig_go_3, GUIntBig *_swig_go_4, intgo _swig_go_5, intgo _swig_go_6, GDALProgressFunc _swig_go_7, void *_swig_go_8) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 = (double) -0.5 ;
   double arg3 = (double) 255.5 ;
@@ -5021,7 +5105,7 @@ intgo _wrap_Band_GetHistogram_gdal_250791fe60757361(intgo _swig_optargc, GDALRas
 }
 
 
-intgo _wrap_Band_GetDefaultHistogram_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, double *_swig_go_2, intgo *_swig_go_3, GUIntBig **_swig_go_4, intgo _swig_go_5, GDALProgressFunc _swig_go_6, void *_swig_go_7) {
+intgo _wrap_Band_GetDefaultHistogram_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double *_swig_go_1, double *_swig_go_2, intgo *_swig_go_3, GUIntBig **_swig_go_4, intgo _swig_go_5, GDALProgressFunc _swig_go_6, void *_swig_go_7) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double *arg2 = (double *) NULL ;
   double *arg3 = (double *) NULL ;
@@ -5064,7 +5148,7 @@ intgo _wrap_Band_GetDefaultHistogram_gdal_250791fe60757361(intgo _swig_optargc, 
 }
 
 
-intgo _wrap_Band_SetDefaultHistogram_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, intgo _swig_go_3, GUIntBig *_swig_go_4) {
+intgo _wrap_Band_SetDefaultHistogram_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, intgo _swig_go_3, GUIntBig *_swig_go_4) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -5085,7 +5169,7 @@ intgo _wrap_Band_SetDefaultHistogram_gdal_250791fe60757361(GDALRasterBandShadow 
 }
 
 
-bool _wrap_Band_HasArbitraryOverviews_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+bool _wrap_Band_HasArbitraryOverviews_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -5098,7 +5182,7 @@ bool _wrap_Band_HasArbitraryOverviews_gdal_250791fe60757361(GDALRasterBandShadow
 }
 
 
-char **_wrap_Band_GetCategoryNames_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0) {
+char **_wrap_Band_GetCategoryNames_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
@@ -5111,7 +5195,7 @@ char **_wrap_Band_GetCategoryNames_gdal_250791fe60757361(GDALRasterBandShadow *_
 }
 
 
-intgo _wrap_Band_SetCategoryNames_gdal_250791fe60757361(GDALRasterBandShadow *_swig_go_0, char **_swig_go_1) {
+intgo _wrap_Band_SetCategoryNames_gdal_6d085214e6134239(GDALRasterBandShadow *_swig_go_0, char **_swig_go_1) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   CPLErr result;
@@ -5126,7 +5210,7 @@ intgo _wrap_Band_SetCategoryNames_gdal_250791fe60757361(GDALRasterBandShadow *_s
 }
 
 
-GDALColorTableShadow *_wrap_new_ColorTable_gdal_250791fe60757361(intgo _swig_optargc, intgo _swig_go_0) {
+GDALColorTableShadow *_wrap_new_ColorTable_gdal_6d085214e6134239(intgo _swig_optargc, intgo _swig_go_0) {
   GDALPaletteInterp arg1 = (GDALPaletteInterp) GPI_RGB ;
   GDALColorTableShadow *result = 0 ;
   GDALColorTableShadow *_swig_go_result;
@@ -5141,7 +5225,7 @@ GDALColorTableShadow *_wrap_new_ColorTable_gdal_250791fe60757361(intgo _swig_opt
 }
 
 
-void _wrap_delete_ColorTable_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0) {
+void _wrap_delete_ColorTable_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   
   arg1 = *(GDALColorTableShadow **)&_swig_go_0; 
@@ -5151,7 +5235,7 @@ void _wrap_delete_ColorTable_gdal_250791fe60757361(GDALColorTableShadow *_swig_g
 }
 
 
-GDALColorTableShadow *_wrap_ColorTable_Clone_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0) {
+GDALColorTableShadow *_wrap_ColorTable_Clone_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   GDALColorTableShadow *result = 0 ;
   GDALColorTableShadow *_swig_go_result;
@@ -5164,7 +5248,7 @@ GDALColorTableShadow *_wrap_ColorTable_Clone_gdal_250791fe60757361(GDALColorTabl
 }
 
 
-intgo _wrap_ColorTable_GetPaletteInterpretation_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0) {
+intgo _wrap_ColorTable_GetPaletteInterpretation_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   GDALPaletteInterp result;
   intgo _swig_go_result;
@@ -5177,7 +5261,7 @@ intgo _wrap_ColorTable_GetPaletteInterpretation_gdal_250791fe60757361(GDALColorT
 }
 
 
-intgo _wrap_ColorTable_GetCount_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0) {
+intgo _wrap_ColorTable_GetCount_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5190,7 +5274,7 @@ intgo _wrap_ColorTable_GetCount_gdal_250791fe60757361(GDALColorTableShadow *_swi
 }
 
 
-GDALColorEntry *_wrap_ColorTable_GetColorEntry_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1) {
+GDALColorEntry *_wrap_ColorTable_GetColorEntry_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   int arg2 ;
   GDALColorEntry *result = 0 ;
@@ -5205,7 +5289,7 @@ GDALColorEntry *_wrap_ColorTable_GetColorEntry_gdal_250791fe60757361(GDALColorTa
 }
 
 
-intgo _wrap_ColorTable_GetColorEntryAsRGB_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1, GDALColorEntry *_swig_go_2) {
+intgo _wrap_ColorTable_GetColorEntryAsRGB_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1, GDALColorEntry *_swig_go_2) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   int arg2 ;
   GDALColorEntry *arg3 = (GDALColorEntry *) 0 ;
@@ -5222,7 +5306,7 @@ intgo _wrap_ColorTable_GetColorEntryAsRGB_gdal_250791fe60757361(GDALColorTableSh
 }
 
 
-void _wrap_ColorTable_SetColorEntry_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1, GDALColorEntry *_swig_go_2) {
+void _wrap_ColorTable_SetColorEntry_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1, GDALColorEntry *_swig_go_2) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   int arg2 ;
   GDALColorEntry *arg3 = (GDALColorEntry *) 0 ;
@@ -5236,7 +5320,7 @@ void _wrap_ColorTable_SetColorEntry_gdal_250791fe60757361(GDALColorTableShadow *
 }
 
 
-void _wrap_ColorTable_CreateColorRamp_gdal_250791fe60757361(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1, GDALColorEntry *_swig_go_2, intgo _swig_go_3, GDALColorEntry *_swig_go_4) {
+void _wrap_ColorTable_CreateColorRamp_gdal_6d085214e6134239(GDALColorTableShadow *_swig_go_0, intgo _swig_go_1, GDALColorEntry *_swig_go_2, intgo _swig_go_3, GDALColorEntry *_swig_go_4) {
   GDALColorTableShadow *arg1 = (GDALColorTableShadow *) 0 ;
   int arg2 ;
   GDALColorEntry *arg3 = (GDALColorEntry *) 0 ;
@@ -5254,7 +5338,7 @@ void _wrap_ColorTable_CreateColorRamp_gdal_250791fe60757361(GDALColorTableShadow
 }
 
 
-GDALRasterAttributeTableShadow *_wrap_new_RasterAttributeTable_gdal_250791fe60757361() {
+GDALRasterAttributeTableShadow *_wrap_new_RasterAttributeTable_gdal_6d085214e6134239() {
   GDALRasterAttributeTableShadow *result = 0 ;
   GDALRasterAttributeTableShadow *_swig_go_result;
   
@@ -5265,7 +5349,7 @@ GDALRasterAttributeTableShadow *_wrap_new_RasterAttributeTable_gdal_250791fe6075
 }
 
 
-void _wrap_delete_RasterAttributeTable_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0) {
+void _wrap_delete_RasterAttributeTable_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   
   arg1 = *(GDALRasterAttributeTableShadow **)&_swig_go_0; 
@@ -5275,7 +5359,7 @@ void _wrap_delete_RasterAttributeTable_gdal_250791fe60757361(GDALRasterAttribute
 }
 
 
-GDALRasterAttributeTableShadow *_wrap_RasterAttributeTable_Clone_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0) {
+GDALRasterAttributeTableShadow *_wrap_RasterAttributeTable_Clone_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   GDALRasterAttributeTableShadow *result = 0 ;
   GDALRasterAttributeTableShadow *_swig_go_result;
@@ -5288,7 +5372,7 @@ GDALRasterAttributeTableShadow *_wrap_RasterAttributeTable_Clone_gdal_250791fe60
 }
 
 
-intgo _wrap_RasterAttributeTable_GetColumnCount_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0) {
+intgo _wrap_RasterAttributeTable_GetColumnCount_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5301,7 +5385,7 @@ intgo _wrap_RasterAttributeTable_GetColumnCount_gdal_250791fe60757361(GDALRaster
 }
 
 
-_gostring_ _wrap_RasterAttributeTable_GetNameOfCol_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
+_gostring_ _wrap_RasterAttributeTable_GetNameOfCol_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   char *result = 0 ;
@@ -5316,7 +5400,7 @@ _gostring_ _wrap_RasterAttributeTable_GetNameOfCol_gdal_250791fe60757361(GDALRas
 }
 
 
-intgo _wrap_RasterAttributeTable_GetUsageOfCol_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_RasterAttributeTable_GetUsageOfCol_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   GDALRATFieldUsage result;
@@ -5331,7 +5415,7 @@ intgo _wrap_RasterAttributeTable_GetUsageOfCol_gdal_250791fe60757361(GDALRasterA
 }
 
 
-intgo _wrap_RasterAttributeTable_GetTypeOfCol_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_RasterAttributeTable_GetTypeOfCol_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   GDALRATFieldType result;
@@ -5346,7 +5430,7 @@ intgo _wrap_RasterAttributeTable_GetTypeOfCol_gdal_250791fe60757361(GDALRasterAt
 }
 
 
-intgo _wrap_RasterAttributeTable_GetColOfUsage_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_RasterAttributeTable_GetColOfUsage_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   GDALRATFieldUsage arg2 ;
   int result;
@@ -5361,7 +5445,7 @@ intgo _wrap_RasterAttributeTable_GetColOfUsage_gdal_250791fe60757361(GDALRasterA
 }
 
 
-intgo _wrap_RasterAttributeTable_GetRowCount_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0) {
+intgo _wrap_RasterAttributeTable_GetRowCount_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5374,7 +5458,7 @@ intgo _wrap_RasterAttributeTable_GetRowCount_gdal_250791fe60757361(GDALRasterAtt
 }
 
 
-_gostring_ _wrap_RasterAttributeTable_GetValueAsString_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+_gostring_ _wrap_RasterAttributeTable_GetValueAsString_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -5391,7 +5475,7 @@ _gostring_ _wrap_RasterAttributeTable_GetValueAsString_gdal_250791fe60757361(GDA
 }
 
 
-intgo _wrap_RasterAttributeTable_GetValueAsInt_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_RasterAttributeTable_GetValueAsInt_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -5408,7 +5492,7 @@ intgo _wrap_RasterAttributeTable_GetValueAsInt_gdal_250791fe60757361(GDALRasterA
 }
 
 
-double _wrap_RasterAttributeTable_GetValueAsDouble_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+double _wrap_RasterAttributeTable_GetValueAsDouble_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -5425,7 +5509,7 @@ double _wrap_RasterAttributeTable_GetValueAsDouble_gdal_250791fe60757361(GDALRas
 }
 
 
-void _wrap_RasterAttributeTable_SetValueAsString_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, _gostring_ _swig_go_3) {
+void _wrap_RasterAttributeTable_SetValueAsString_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, _gostring_ _swig_go_3) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -5441,7 +5525,7 @@ void _wrap_RasterAttributeTable_SetValueAsString_gdal_250791fe60757361(GDALRaste
 }
 
 
-void _wrap_RasterAttributeTable_SetValueAsInt_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
+void _wrap_RasterAttributeTable_SetValueAsInt_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -5457,7 +5541,7 @@ void _wrap_RasterAttributeTable_SetValueAsInt_gdal_250791fe60757361(GDALRasterAt
 }
 
 
-void _wrap_RasterAttributeTable_SetValueAsDouble_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double _swig_go_3) {
+void _wrap_RasterAttributeTable_SetValueAsDouble_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double _swig_go_3) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -5473,7 +5557,7 @@ void _wrap_RasterAttributeTable_SetValueAsDouble_gdal_250791fe60757361(GDALRaste
 }
 
 
-void _wrap_RasterAttributeTable_SetRowCount_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_RasterAttributeTable_SetRowCount_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, intgo _swig_go_1) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int arg2 ;
   
@@ -5485,7 +5569,7 @@ void _wrap_RasterAttributeTable_SetRowCount_gdal_250791fe60757361(GDALRasterAttr
 }
 
 
-intgo _wrap_RasterAttributeTable_CreateColumn_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
+intgo _wrap_RasterAttributeTable_CreateColumn_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   GDALRATFieldType arg3 ;
@@ -5504,7 +5588,7 @@ intgo _wrap_RasterAttributeTable_CreateColumn_gdal_250791fe60757361(GDALRasterAt
 }
 
 
-bool _wrap_RasterAttributeTable_GetLinearBinning_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2) {
+bool _wrap_RasterAttributeTable_GetLinearBinning_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, _goslice_ _swig_go_1, _goslice_ _swig_go_2) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   double *arg2 = (double *) 0 ;
   double *arg3 = (double *) 0 ;
@@ -5543,7 +5627,7 @@ bool _wrap_RasterAttributeTable_GetLinearBinning_gdal_250791fe60757361(GDALRaste
 }
 
 
-intgo _wrap_RasterAttributeTable_SetLinearBinning_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, double _swig_go_1, double _swig_go_2) {
+intgo _wrap_RasterAttributeTable_SetLinearBinning_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, double _swig_go_1, double _swig_go_2) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -5560,7 +5644,7 @@ intgo _wrap_RasterAttributeTable_SetLinearBinning_gdal_250791fe60757361(GDALRast
 }
 
 
-intgo _wrap_RasterAttributeTable_GetRowOfValue_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0, double _swig_go_1) {
+intgo _wrap_RasterAttributeTable_GetRowOfValue_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0, double _swig_go_1) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   double arg2 ;
   int result;
@@ -5575,7 +5659,7 @@ intgo _wrap_RasterAttributeTable_GetRowOfValue_gdal_250791fe60757361(GDALRasterA
 }
 
 
-intgo _wrap_RasterAttributeTable_ChangesAreWrittenToFile_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0) {
+intgo _wrap_RasterAttributeTable_ChangesAreWrittenToFile_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5588,7 +5672,7 @@ intgo _wrap_RasterAttributeTable_ChangesAreWrittenToFile_gdal_250791fe60757361(G
 }
 
 
-void _wrap_RasterAttributeTable_DumpReadable_gdal_250791fe60757361(GDALRasterAttributeTableShadow *_swig_go_0) {
+void _wrap_RasterAttributeTable_DumpReadable_gdal_6d085214e6134239(GDALRasterAttributeTableShadow *_swig_go_0) {
   GDALRasterAttributeTableShadow *arg1 = (GDALRasterAttributeTableShadow *) 0 ;
   
   arg1 = *(GDALRasterAttributeTableShadow **)&_swig_go_0; 
@@ -5598,7 +5682,7 @@ void _wrap_RasterAttributeTable_DumpReadable_gdal_250791fe60757361(GDALRasterAtt
 }
 
 
-intgo _wrap_TermProgress_nocb_gdal_250791fe60757361(intgo _swig_optargc, double _swig_go_0, _gostring_ _swig_go_1, void *_swig_go_2) {
+intgo _wrap_TermProgress_nocb_gdal_6d085214e6134239(intgo _swig_optargc, double _swig_go_0, _gostring_ _swig_go_1, void *_swig_go_2) {
   double arg1 ;
   char *arg2 = (char *) NULL ;
   void *arg3 = (void *) NULL ;
@@ -5619,7 +5703,7 @@ intgo _wrap_TermProgress_nocb_gdal_250791fe60757361(intgo _swig_optargc, double 
 }
 
 
-void* _wrap_TermProgress_gdal_250791fe60757361() {
+void* _wrap_TermProgress_gdal_6d085214e6134239() {
   int (*result)(double,char const *,void *) = 0 ;
   void* _swig_go_result;
   
@@ -5631,7 +5715,7 @@ void* _wrap_TermProgress_gdal_250791fe60757361() {
 }
 
 
-intgo _wrap_ComputeMedianCutPCT_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, intgo _swig_go_3, GDALColorTableShadow *_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
+intgo _wrap_ComputeMedianCutPCT_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, intgo _swig_go_3, GDALColorTableShadow *_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg3 = (GDALRasterBandShadow *) 0 ;
@@ -5686,7 +5770,7 @@ intgo _wrap_ComputeMedianCutPCT_gdal_250791fe60757361(intgo _swig_optargc, GDALR
 }
 
 
-intgo _wrap_DitherRGB2PCT_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, GDALRasterBandShadow *_swig_go_3, GDALColorTableShadow *_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
+intgo _wrap_DitherRGB2PCT_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, GDALRasterBandShadow *_swig_go_3, GDALColorTableShadow *_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg3 = (GDALRasterBandShadow *) 0 ;
@@ -5747,7 +5831,7 @@ intgo _wrap_DitherRGB2PCT_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterB
 }
 
 
-intgo _wrap_ReprojectImage_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3, intgo _swig_go_4, double _swig_go_5, double _swig_go_6, GDALProgressFunc _swig_go_7, void *_swig_go_8, char **_swig_go_9) {
+intgo _wrap_ReprojectImage_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3, intgo _swig_go_4, double _swig_go_5, double _swig_go_6, GDALProgressFunc _swig_go_7, void *_swig_go_8, char **_swig_go_9) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   char *arg3 = (char *) NULL ;
@@ -5808,7 +5892,7 @@ intgo _wrap_ReprojectImage_gdal_250791fe60757361(intgo _swig_optargc, GDALDatase
 }
 
 
-intgo _wrap_ComputeProximity_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, char **_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+intgo _wrap_ComputeProximity_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, char **_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   char **arg3 = (char **) NULL ;
@@ -5849,7 +5933,7 @@ intgo _wrap_ComputeProximity_gdal_250791fe60757361(intgo _swig_optargc, GDALRast
 }
 
 
-intgo _wrap_RasterizeLayer_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, OGRLayerShadow *_swig_go_3, void *_swig_go_4, void *_swig_go_5, intgo _swig_go_6, double *_swig_go_7, char **_swig_go_8, GDALProgressFunc _swig_go_9, void *_swig_go_10) {
+intgo _wrap_RasterizeLayer_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, OGRLayerShadow *_swig_go_3, void *_swig_go_4, void *_swig_go_5, intgo _swig_go_6, double *_swig_go_7, char **_swig_go_8, GDALProgressFunc _swig_go_9, void *_swig_go_10) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 ;
   int *arg3 = (int *) 0 ;
@@ -5910,7 +5994,7 @@ intgo _wrap_RasterizeLayer_gdal_250791fe60757361(intgo _swig_optargc, GDALDatase
 }
 
 
-intgo _wrap_Polygonize_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
+intgo _wrap_Polygonize_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -5955,7 +6039,7 @@ intgo _wrap_Polygonize_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBand
 }
 
 
-intgo _wrap_FPolygonize_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
+intgo _wrap_FPolygonize_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -6000,7 +6084,7 @@ intgo _wrap_FPolygonize_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBan
 }
 
 
-intgo _wrap_FillNodata_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, double _swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
+intgo _wrap_FillNodata_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, double _swig_go_2, intgo _swig_go_3, char **_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   double arg3 ;
@@ -6039,7 +6123,7 @@ intgo _wrap_FillNodata_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBand
 }
 
 
-intgo _wrap_SieveFilter_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, intgo _swig_go_3, intgo _swig_go_4, char **_swig_go_5, GDALProgressFunc _swig_go_6, void *_swig_go_7) {
+intgo _wrap_SieveFilter_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, intgo _swig_go_3, intgo _swig_go_4, char **_swig_go_5, GDALProgressFunc _swig_go_6, void *_swig_go_7) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg3 = (GDALRasterBandShadow *) 0 ;
@@ -6088,7 +6172,7 @@ intgo _wrap_SieveFilter_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBan
 }
 
 
-intgo _wrap_RegenerateOverviews_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1, GDALRasterBandShadow **_swig_go_2, _gostring_ _swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_RegenerateOverviews_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, intgo _swig_go_1, GDALRasterBandShadow **_swig_go_2, _gostring_ _swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   int arg2 ;
   GDALRasterBandShadow **arg3 = (GDALRasterBandShadow **) 0 ;
@@ -6125,7 +6209,7 @@ intgo _wrap_RegenerateOverviews_gdal_250791fe60757361(intgo _swig_optargc, GDALR
 }
 
 
-intgo _wrap_RegenerateOverview_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, _gostring_ _swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+intgo _wrap_RegenerateOverview_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, _gostring_ _swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   char *arg3 = (char *) "average" ;
@@ -6166,7 +6250,7 @@ intgo _wrap_RegenerateOverview_gdal_250791fe60757361(intgo _swig_optargc, GDALRa
 }
 
 
-intgo _wrap_ContourGenerate_gdal_250791fe60757361(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, intgo _swig_go_3, double *_swig_go_4, intgo _swig_go_5, double _swig_go_6, OGRLayerShadow *_swig_go_7, intgo _swig_go_8, intgo _swig_go_9, GDALProgressFunc _swig_go_10, void *_swig_go_11) {
+intgo _wrap_ContourGenerate_gdal_6d085214e6134239(intgo _swig_optargc, GDALRasterBandShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, intgo _swig_go_3, double *_swig_go_4, intgo _swig_go_5, double _swig_go_6, OGRLayerShadow *_swig_go_7, intgo _swig_go_8, intgo _swig_go_9, GDALProgressFunc _swig_go_10, void *_swig_go_11) {
   GDALRasterBandShadow *arg1 = (GDALRasterBandShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -6219,7 +6303,7 @@ intgo _wrap_ContourGenerate_gdal_250791fe60757361(intgo _swig_optargc, GDALRaste
 }
 
 
-GDALDatasetShadow *_wrap_AutoCreateWarpedVRT_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, intgo _swig_go_3, double _swig_go_4) {
+GDALDatasetShadow *_wrap_AutoCreateWarpedVRT_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, intgo _swig_go_3, double _swig_go_4) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -6254,7 +6338,7 @@ GDALDatasetShadow *_wrap_AutoCreateWarpedVRT_gdal_250791fe60757361(intgo _swig_o
 }
 
 
-GDALDatasetShadow *_wrap_CreatePansharpenedVRT_gdal_250791fe60757361(_gostring_ _swig_go_0, GDALRasterBandShadow *_swig_go_1, intgo _swig_go_2, GDALRasterBandShadow **_swig_go_3) {
+GDALDatasetShadow *_wrap_CreatePansharpenedVRT_gdal_6d085214e6134239(_gostring_ _swig_go_0, GDALRasterBandShadow *_swig_go_1, intgo _swig_go_2, GDALRasterBandShadow **_swig_go_3) {
   char *arg1 = (char *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   int arg3 ;
@@ -6279,7 +6363,7 @@ GDALDatasetShadow *_wrap_CreatePansharpenedVRT_gdal_250791fe60757361(_gostring_ 
 }
 
 
-GDALTransformerInfoShadow *_wrap_new_Transformer_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, char **_swig_go_2) {
+GDALTransformerInfoShadow *_wrap_new_Transformer_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, char **_swig_go_2) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   char **arg3 = (char **) 0 ;
@@ -6296,7 +6380,7 @@ GDALTransformerInfoShadow *_wrap_new_Transformer_gdal_250791fe60757361(GDALDatas
 }
 
 
-void _wrap_delete_Transformer_gdal_250791fe60757361(GDALTransformerInfoShadow *_swig_go_0) {
+void _wrap_delete_Transformer_gdal_6d085214e6134239(GDALTransformerInfoShadow *_swig_go_0) {
   GDALTransformerInfoShadow *arg1 = (GDALTransformerInfoShadow *) 0 ;
   
   arg1 = *(GDALTransformerInfoShadow **)&_swig_go_0; 
@@ -6306,7 +6390,7 @@ void _wrap_delete_Transformer_gdal_250791fe60757361(GDALTransformerInfoShadow *_
 }
 
 
-intgo _wrap_Transformer_TransformPoint__SWIG_0_gdal_250791fe60757361(GDALTransformerInfoShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2) {
+intgo _wrap_Transformer_TransformPoint__SWIG_0_gdal_6d085214e6134239(GDALTransformerInfoShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2) {
   GDALTransformerInfoShadow *arg1 = (GDALTransformerInfoShadow *) 0 ;
   int arg2 ;
   double *arg3 ;
@@ -6323,7 +6407,7 @@ intgo _wrap_Transformer_TransformPoint__SWIG_0_gdal_250791fe60757361(GDALTransfo
 }
 
 
-intgo _wrap_Transformer_TransformPoint__SWIG_1_gdal_250791fe60757361(intgo _swig_optargc, GDALTransformerInfoShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_Transformer_TransformPoint__SWIG_1_gdal_6d085214e6134239(intgo _swig_optargc, GDALTransformerInfoShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   GDALTransformerInfoShadow *arg1 = (GDALTransformerInfoShadow *) 0 ;
   double *arg2 ;
   int arg3 ;
@@ -6348,7 +6432,7 @@ intgo _wrap_Transformer_TransformPoint__SWIG_1_gdal_250791fe60757361(intgo _swig
 }
 
 
-intgo _wrap_Transformer_TransformPoints_gdal_250791fe60757361(GDALTransformerInfoShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double *_swig_go_3, double *_swig_go_4, double *_swig_go_5, intgo *_swig_go_6) {
+intgo _wrap_Transformer_TransformPoints_gdal_6d085214e6134239(GDALTransformerInfoShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double *_swig_go_3, double *_swig_go_4, double *_swig_go_5, intgo *_swig_go_6) {
   GDALTransformerInfoShadow *arg1 = (GDALTransformerInfoShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -6373,7 +6457,7 @@ intgo _wrap_Transformer_TransformPoints_gdal_250791fe60757361(GDALTransformerInf
 }
 
 
-intgo _wrap_Transformer_TransformGeolocations_gdal_250791fe60757361(intgo _swig_optargc, GDALTransformerInfoShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, GDALRasterBandShadow *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5, char **_swig_go_6) {
+intgo _wrap_Transformer_TransformGeolocations_gdal_6d085214e6134239(intgo _swig_optargc, GDALTransformerInfoShadow *_swig_go_0, GDALRasterBandShadow *_swig_go_1, GDALRasterBandShadow *_swig_go_2, GDALRasterBandShadow *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5, char **_swig_go_6) {
   GDALTransformerInfoShadow *arg1 = (GDALTransformerInfoShadow *) 0 ;
   GDALRasterBandShadow *arg2 = (GDALRasterBandShadow *) 0 ;
   GDALRasterBandShadow *arg3 = (GDALRasterBandShadow *) 0 ;
@@ -6424,7 +6508,7 @@ intgo _wrap_Transformer_TransformGeolocations_gdal_250791fe60757361(intgo _swig_
 }
 
 
-void _wrap_ApplyGeoTransform_gdal_250791fe60757361(double *_swig_go_0, double _swig_go_1, double _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4) {
+void _wrap_ApplyGeoTransform_gdal_6d085214e6134239(double *_swig_go_0, double _swig_go_1, double _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4) {
   double *arg1 ;
   double arg2 ;
   double arg3 ;
@@ -6464,7 +6548,7 @@ void _wrap_ApplyGeoTransform_gdal_250791fe60757361(double *_swig_go_0, double _s
 }
 
 
-intgo _wrap_InvGeoTransform_gdal_250791fe60757361(double *_swig_go_0, double *_swig_go_1) {
+intgo _wrap_InvGeoTransform_gdal_6d085214e6134239(double *_swig_go_0, double *_swig_go_1) {
   double *arg1 ;
   double *arg2 ;
   RETURN_NONE result;
@@ -6479,7 +6563,7 @@ intgo _wrap_InvGeoTransform_gdal_250791fe60757361(double *_swig_go_0, double *_s
 }
 
 
-_gostring_ _wrap_VersionInfo_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0) {
+_gostring_ _wrap_VersionInfo_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0) {
   char *arg1 = (char *) "VERSION_NUM" ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6494,19 +6578,19 @@ _gostring_ _wrap_VersionInfo_gdal_250791fe60757361(intgo _swig_optargc, _gostrin
 }
 
 
-void _wrap_AllRegister_gdal_250791fe60757361() {
+void _wrap_AllRegister_gdal_6d085214e6134239() {
   GDALAllRegister();
   
 }
 
 
-void _wrap_GDALDestroyDriverManager_gdal_250791fe60757361() {
+void _wrap_GDALDestroyDriverManager_gdal_6d085214e6134239() {
   GDALDestroyDriverManager();
   
 }
 
 
-intgo _wrap_GetCacheMax_gdal_250791fe60757361() {
+intgo _wrap_GetCacheMax_gdal_6d085214e6134239() {
   int result;
   intgo _swig_go_result;
   
@@ -6517,7 +6601,7 @@ intgo _wrap_GetCacheMax_gdal_250791fe60757361() {
 }
 
 
-intgo _wrap_GetCacheUsed_gdal_250791fe60757361() {
+intgo _wrap_GetCacheUsed_gdal_6d085214e6134239() {
   int result;
   intgo _swig_go_result;
   
@@ -6528,7 +6612,7 @@ intgo _wrap_GetCacheUsed_gdal_250791fe60757361() {
 }
 
 
-void _wrap_SetCacheMax_gdal_250791fe60757361(intgo _swig_go_0) {
+void _wrap_SetCacheMax_gdal_6d085214e6134239(intgo _swig_go_0) {
   int arg1 ;
   
   arg1 = (int)_swig_go_0; 
@@ -6538,7 +6622,7 @@ void _wrap_SetCacheMax_gdal_250791fe60757361(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GetDataTypeSize_gdal_250791fe60757361(intgo _swig_go_0) {
+intgo _wrap_GetDataTypeSize_gdal_6d085214e6134239(intgo _swig_go_0) {
   GDALDataType arg1 ;
   int result;
   intgo _swig_go_result;
@@ -6551,7 +6635,7 @@ intgo _wrap_GetDataTypeSize_gdal_250791fe60757361(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_DataTypeIsComplex_gdal_250791fe60757361(intgo _swig_go_0) {
+intgo _wrap_DataTypeIsComplex_gdal_6d085214e6134239(intgo _swig_go_0) {
   GDALDataType arg1 ;
   int result;
   intgo _swig_go_result;
@@ -6564,7 +6648,7 @@ intgo _wrap_DataTypeIsComplex_gdal_250791fe60757361(intgo _swig_go_0) {
 }
 
 
-_gostring_ _wrap_GetDataTypeName_gdal_250791fe60757361(intgo _swig_go_0) {
+_gostring_ _wrap_GetDataTypeName_gdal_6d085214e6134239(intgo _swig_go_0) {
   GDALDataType arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6577,7 +6661,7 @@ _gostring_ _wrap_GetDataTypeName_gdal_250791fe60757361(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GetDataTypeByName_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+intgo _wrap_GetDataTypeByName_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   GDALDataType result;
   intgo _swig_go_result;
@@ -6590,7 +6674,7 @@ intgo _wrap_GetDataTypeByName_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-_gostring_ _wrap_GetColorInterpretationName_gdal_250791fe60757361(intgo _swig_go_0) {
+_gostring_ _wrap_GetColorInterpretationName_gdal_6d085214e6134239(intgo _swig_go_0) {
   GDALColorInterp arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6603,7 +6687,7 @@ _gostring_ _wrap_GetColorInterpretationName_gdal_250791fe60757361(intgo _swig_go
 }
 
 
-_gostring_ _wrap_GetPaletteInterpretationName_gdal_250791fe60757361(intgo _swig_go_0) {
+_gostring_ _wrap_GetPaletteInterpretationName_gdal_6d085214e6134239(intgo _swig_go_0) {
   GDALPaletteInterp arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6616,7 +6700,7 @@ _gostring_ _wrap_GetPaletteInterpretationName_gdal_250791fe60757361(intgo _swig_
 }
 
 
-_gostring_ _wrap_DecToDMS_gdal_250791fe60757361(intgo _swig_optargc, double _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
+_gostring_ _wrap_DecToDMS_gdal_6d085214e6134239(intgo _swig_optargc, double _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
   double arg1 ;
   char *arg2 = (char *) 0 ;
   int arg3 = (int) 2 ;
@@ -6635,7 +6719,7 @@ _gostring_ _wrap_DecToDMS_gdal_250791fe60757361(intgo _swig_optargc, double _swi
 }
 
 
-double _wrap_PackedDMSToDec_gdal_250791fe60757361(double _swig_go_0) {
+double _wrap_PackedDMSToDec_gdal_6d085214e6134239(double _swig_go_0) {
   double arg1 ;
   double result;
   double _swig_go_result;
@@ -6648,7 +6732,7 @@ double _wrap_PackedDMSToDec_gdal_250791fe60757361(double _swig_go_0) {
 }
 
 
-double _wrap_DecToPackedDMS_gdal_250791fe60757361(double _swig_go_0) {
+double _wrap_DecToPackedDMS_gdal_6d085214e6134239(double _swig_go_0) {
   double arg1 ;
   double result;
   double _swig_go_result;
@@ -6661,7 +6745,7 @@ double _wrap_DecToPackedDMS_gdal_250791fe60757361(double _swig_go_0) {
 }
 
 
-CPLXMLNode *_wrap_ParseXMLString_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+CPLXMLNode *_wrap_ParseXMLString_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   CPLXMLNode *result = 0 ;
   CPLXMLNode *_swig_go_result;
@@ -6674,7 +6758,7 @@ CPLXMLNode *_wrap_ParseXMLString_gdal_250791fe60757361(_gostring_ _swig_go_0) {
 }
 
 
-_gostring_ _wrap_SerializeXMLTree_gdal_250791fe60757361(CPLXMLNode *_swig_go_0) {
+_gostring_ _wrap_SerializeXMLTree_gdal_6d085214e6134239(CPLXMLNode *_swig_go_0) {
   CPLXMLNode *arg1 = (CPLXMLNode *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6687,7 +6771,7 @@ _gostring_ _wrap_SerializeXMLTree_gdal_250791fe60757361(CPLXMLNode *_swig_go_0) 
 }
 
 
-_gostring_ _wrap_GetJPEG2000StructureAsString_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, char **_swig_go_1) {
+_gostring_ _wrap_GetJPEG2000StructureAsString_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, char **_swig_go_1) {
   char *arg1 = (char *) 0 ;
   char **arg2 = (char **) NULL ;
   retStringAndCPLFree *result = 0 ;
@@ -6710,7 +6794,7 @@ _gostring_ _wrap_GetJPEG2000StructureAsString_gdal_250791fe60757361(intgo _swig_
 }
 
 
-intgo _wrap_GetDriverCount_gdal_250791fe60757361() {
+intgo _wrap_GetDriverCount_gdal_6d085214e6134239() {
   int result;
   intgo _swig_go_result;
   
@@ -6721,7 +6805,7 @@ intgo _wrap_GetDriverCount_gdal_250791fe60757361() {
 }
 
 
-GDALDriverShadow *_wrap_GetDriverByName_gdal_250791fe60757361(_gostring_ _swig_go_0) {
+GDALDriverShadow *_wrap_GetDriverByName_gdal_6d085214e6134239(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   GDALDriverShadow *result = 0 ;
   GDALDriverShadow *_swig_go_result;
@@ -6740,7 +6824,7 @@ GDALDriverShadow *_wrap_GetDriverByName_gdal_250791fe60757361(_gostring_ _swig_g
 }
 
 
-GDALDriverShadow *_wrap_GetDriver_gdal_250791fe60757361(intgo _swig_go_0) {
+GDALDriverShadow *_wrap_GetDriver_gdal_6d085214e6134239(intgo _swig_go_0) {
   int arg1 ;
   GDALDriverShadow *result = 0 ;
   GDALDriverShadow *_swig_go_result;
@@ -6753,13 +6837,18 @@ GDALDriverShadow *_wrap_GetDriver_gdal_250791fe60757361(intgo _swig_go_0) {
 }
 
 
-GDALDatasetShadow *_wrap_Open_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
+GDALDatasetShadow *_wrap_Open_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
   char *arg1 = (char *) 0 ;
   GDALAccess arg2 = (GDALAccess) GA_ReadOnly ;
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg2 = (GDALAccess)_swig_go_1; 
   }
@@ -6776,7 +6865,7 @@ GDALDatasetShadow *_wrap_Open_gdal_250791fe60757361(intgo _swig_optargc, _gostri
 }
 
 
-GDALDatasetShadow *_wrap_OpenEx_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1, char **_swig_go_2, char **_swig_go_3, char **_swig_go_4) {
+GDALDatasetShadow *_wrap_OpenEx_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1, char **_swig_go_2, char **_swig_go_3, char **_swig_go_4) {
   char *arg1 = (char *) 0 ;
   unsigned int arg2 = (unsigned int) 0 ;
   char **arg3 = (char **) NULL ;
@@ -6785,7 +6874,12 @@ GDALDatasetShadow *_wrap_OpenEx_gdal_250791fe60757361(intgo _swig_optargc, _gost
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg2 = (unsigned int)_swig_go_1; 
   }
@@ -6811,13 +6905,18 @@ GDALDatasetShadow *_wrap_OpenEx_gdal_250791fe60757361(intgo _swig_optargc, _gost
 }
 
 
-GDALDatasetShadow *_wrap_OpenShared_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
+GDALDatasetShadow *_wrap_OpenShared_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
   char *arg1 = (char *) 0 ;
   GDALAccess arg2 = (GDALAccess) GA_ReadOnly ;
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg2 = (GDALAccess)_swig_go_1; 
   }
@@ -6834,13 +6933,18 @@ GDALDatasetShadow *_wrap_OpenShared_gdal_250791fe60757361(intgo _swig_optargc, _
 }
 
 
-GDALDriverShadow *_wrap_IdentifyDriver_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, char **_swig_go_1) {
+GDALDriverShadow *_wrap_IdentifyDriver_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, char **_swig_go_1) {
   char *arg1 = (char *) 0 ;
   char **arg2 = (char **) NULL ;
   GDALDriverShadow *result = 0 ;
   GDALDriverShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg2 = *(char ***)&_swig_go_1; 
   }
@@ -6857,7 +6961,7 @@ GDALDriverShadow *_wrap_IdentifyDriver_gdal_250791fe60757361(intgo _swig_optargc
 }
 
 
-char **_wrap_GeneralCmdLineProcessor_gdal_250791fe60757361(intgo _swig_optargc, char **_swig_go_0, intgo _swig_go_1) {
+char **_wrap_GeneralCmdLineProcessor_gdal_6d085214e6134239(intgo _swig_optargc, char **_swig_go_0, intgo _swig_go_1) {
   char **arg1 = (char **) 0 ;
   int arg2 = (int) 0 ;
   char **result = 0 ;
@@ -6874,7 +6978,7 @@ char **_wrap_GeneralCmdLineProcessor_gdal_250791fe60757361(intgo _swig_optargc, 
 }
 
 
-GDALInfoOptions *_wrap_new_GDALInfoOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALInfoOptions *_wrap_new_GDALInfoOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALInfoOptions *result = 0 ;
   GDALInfoOptions *_swig_go_result;
@@ -6887,7 +6991,7 @@ GDALInfoOptions *_wrap_new_GDALInfoOptions_gdal_250791fe60757361(char **_swig_go
 }
 
 
-void _wrap_delete_GDALInfoOptions_gdal_250791fe60757361(GDALInfoOptions *_swig_go_0) {
+void _wrap_delete_GDALInfoOptions_gdal_6d085214e6134239(GDALInfoOptions *_swig_go_0) {
   GDALInfoOptions *arg1 = (GDALInfoOptions *) 0 ;
   
   arg1 = *(GDALInfoOptions **)&_swig_go_0; 
@@ -6897,7 +7001,7 @@ void _wrap_delete_GDALInfoOptions_gdal_250791fe60757361(GDALInfoOptions *_swig_g
 }
 
 
-_gostring_ _wrap_GDALInfo_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, GDALInfoOptions *_swig_go_1) {
+_gostring_ _wrap_GDALInfo_gdal_6d085214e6134239(GDALDatasetShadow *_swig_go_0, GDALInfoOptions *_swig_go_1) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALInfoOptions *arg2 = (GDALInfoOptions *) 0 ;
   retStringAndCPLFree *result = 0 ;
@@ -6912,7 +7016,7 @@ _gostring_ _wrap_GDALInfo_gdal_250791fe60757361(GDALDatasetShadow *_swig_go_0, G
 }
 
 
-GDALTranslateOptions *_wrap_new_GDALTranslateOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALTranslateOptions *_wrap_new_GDALTranslateOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALTranslateOptions *result = 0 ;
   GDALTranslateOptions *_swig_go_result;
@@ -6925,7 +7029,7 @@ GDALTranslateOptions *_wrap_new_GDALTranslateOptions_gdal_250791fe60757361(char 
 }
 
 
-void _wrap_delete_GDALTranslateOptions_gdal_250791fe60757361(GDALTranslateOptions *_swig_go_0) {
+void _wrap_delete_GDALTranslateOptions_gdal_6d085214e6134239(GDALTranslateOptions *_swig_go_0) {
   GDALTranslateOptions *arg1 = (GDALTranslateOptions *) 0 ;
   
   arg1 = *(GDALTranslateOptions **)&_swig_go_0; 
@@ -6935,7 +7039,7 @@ void _wrap_delete_GDALTranslateOptions_gdal_250791fe60757361(GDALTranslateOption
 }
 
 
-GDALDatasetShadow *_wrap_wrapper_GDALTranslate_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALTranslateOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+GDALDatasetShadow *_wrap_wrapper_GDALTranslate_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALTranslateOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   char *arg1 = (char *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALTranslateOptions *arg3 = (GDALTranslateOptions *) 0 ;
@@ -6944,7 +7048,12 @@ GDALDatasetShadow *_wrap_wrapper_GDALTranslate_gdal_250791fe60757361(intgo _swig
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = *(GDALDatasetShadow **)&_swig_go_1; 
   arg3 = *(GDALTranslateOptions **)&_swig_go_2; 
   if (_swig_optargc > 0) {
@@ -6974,7 +7083,7 @@ GDALDatasetShadow *_wrap_wrapper_GDALTranslate_gdal_250791fe60757361(intgo _swig
 }
 
 
-GDALWarpAppOptions *_wrap_new_GDALWarpAppOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALWarpAppOptions *_wrap_new_GDALWarpAppOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALWarpAppOptions *result = 0 ;
   GDALWarpAppOptions *_swig_go_result;
@@ -6987,7 +7096,7 @@ GDALWarpAppOptions *_wrap_new_GDALWarpAppOptions_gdal_250791fe60757361(char **_s
 }
 
 
-void _wrap_delete_GDALWarpAppOptions_gdal_250791fe60757361(GDALWarpAppOptions *_swig_go_0) {
+void _wrap_delete_GDALWarpAppOptions_gdal_6d085214e6134239(GDALWarpAppOptions *_swig_go_0) {
   GDALWarpAppOptions *arg1 = (GDALWarpAppOptions *) 0 ;
   
   arg1 = *(GDALWarpAppOptions **)&_swig_go_0; 
@@ -6997,7 +7106,7 @@ void _wrap_delete_GDALWarpAppOptions_gdal_250791fe60757361(GDALWarpAppOptions *_
 }
 
 
-intgo _wrap_wrapper_GDALWarpDestDS_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, GDALDatasetShadow **_swig_go_2, GDALWarpAppOptions *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_wrapper_GDALWarpDestDS_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, intgo _swig_go_1, GDALDatasetShadow **_swig_go_2, GDALWarpAppOptions *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   int arg2 ;
   GDALDatasetShadow **arg3 = (GDALDatasetShadow **) 0 ;
@@ -7026,7 +7135,7 @@ intgo _wrap_wrapper_GDALWarpDestDS_gdal_250791fe60757361(intgo _swig_optargc, GD
 }
 
 
-GDALDatasetShadow *_wrap_wrapper_GDALWarpDestName_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1, GDALDatasetShadow **_swig_go_2, GDALWarpAppOptions *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+GDALDatasetShadow *_wrap_wrapper_GDALWarpDestName_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1, GDALDatasetShadow **_swig_go_2, GDALWarpAppOptions *_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   char *arg1 = (char *) 0 ;
   int arg2 ;
   GDALDatasetShadow **arg3 = (GDALDatasetShadow **) 0 ;
@@ -7036,7 +7145,12 @@ GDALDatasetShadow *_wrap_wrapper_GDALWarpDestName_gdal_250791fe60757361(intgo _s
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = (int)_swig_go_1; 
   arg3 = *(GDALDatasetShadow ***)&_swig_go_2; 
   arg4 = *(GDALWarpAppOptions **)&_swig_go_3; 
@@ -7061,7 +7175,7 @@ GDALDatasetShadow *_wrap_wrapper_GDALWarpDestName_gdal_250791fe60757361(intgo _s
 }
 
 
-GDALVectorTranslateOptions *_wrap_new_GDALVectorTranslateOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALVectorTranslateOptions *_wrap_new_GDALVectorTranslateOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALVectorTranslateOptions *result = 0 ;
   GDALVectorTranslateOptions *_swig_go_result;
@@ -7074,7 +7188,7 @@ GDALVectorTranslateOptions *_wrap_new_GDALVectorTranslateOptions_gdal_250791fe60
 }
 
 
-void _wrap_delete_GDALVectorTranslateOptions_gdal_250791fe60757361(GDALVectorTranslateOptions *_swig_go_0) {
+void _wrap_delete_GDALVectorTranslateOptions_gdal_6d085214e6134239(GDALVectorTranslateOptions *_swig_go_0) {
   GDALVectorTranslateOptions *arg1 = (GDALVectorTranslateOptions *) 0 ;
   
   arg1 = *(GDALVectorTranslateOptions **)&_swig_go_0; 
@@ -7084,7 +7198,7 @@ void _wrap_delete_GDALVectorTranslateOptions_gdal_250791fe60757361(GDALVectorTra
 }
 
 
-intgo _wrap_wrapper_GDALVectorTranslateDestDS_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, GDALVectorTranslateOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+intgo _wrap_wrapper_GDALVectorTranslateDestDS_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, GDALVectorTranslateOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALVectorTranslateOptions *arg3 = (GDALVectorTranslateOptions *) 0 ;
@@ -7111,7 +7225,7 @@ intgo _wrap_wrapper_GDALVectorTranslateDestDS_gdal_250791fe60757361(intgo _swig_
 }
 
 
-GDALDatasetShadow *_wrap_wrapper_GDALVectorTranslateDestName_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALVectorTranslateOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+GDALDatasetShadow *_wrap_wrapper_GDALVectorTranslateDestName_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALVectorTranslateOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   char *arg1 = (char *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALVectorTranslateOptions *arg3 = (GDALVectorTranslateOptions *) 0 ;
@@ -7120,7 +7234,12 @@ GDALDatasetShadow *_wrap_wrapper_GDALVectorTranslateDestName_gdal_250791fe607573
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = *(GDALDatasetShadow **)&_swig_go_1; 
   arg3 = *(GDALVectorTranslateOptions **)&_swig_go_2; 
   if (_swig_optargc > 0) {
@@ -7144,7 +7263,7 @@ GDALDatasetShadow *_wrap_wrapper_GDALVectorTranslateDestName_gdal_250791fe607573
 }
 
 
-GDALDEMProcessingOptions *_wrap_new_GDALDEMProcessingOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALDEMProcessingOptions *_wrap_new_GDALDEMProcessingOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALDEMProcessingOptions *result = 0 ;
   GDALDEMProcessingOptions *_swig_go_result;
@@ -7157,7 +7276,7 @@ GDALDEMProcessingOptions *_wrap_new_GDALDEMProcessingOptions_gdal_250791fe607573
 }
 
 
-void _wrap_delete_GDALDEMProcessingOptions_gdal_250791fe60757361(GDALDEMProcessingOptions *_swig_go_0) {
+void _wrap_delete_GDALDEMProcessingOptions_gdal_6d085214e6134239(GDALDEMProcessingOptions *_swig_go_0) {
   GDALDEMProcessingOptions *arg1 = (GDALDEMProcessingOptions *) 0 ;
   
   arg1 = *(GDALDEMProcessingOptions **)&_swig_go_0; 
@@ -7167,7 +7286,7 @@ void _wrap_delete_GDALDEMProcessingOptions_gdal_250791fe60757361(GDALDEMProcessi
 }
 
 
-GDALDatasetShadow *_wrap_wrapper_GDALDEMProcessing_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3, GDALDEMProcessingOptions *_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
+GDALDatasetShadow *_wrap_wrapper_GDALDEMProcessing_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3, GDALDEMProcessingOptions *_swig_go_4, GDALProgressFunc _swig_go_5, void *_swig_go_6) {
   char *arg1 = (char *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -7178,7 +7297,12 @@ GDALDatasetShadow *_wrap_wrapper_GDALDEMProcessing_gdal_250791fe60757361(intgo _
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = *(GDALDatasetShadow **)&_swig_go_1; 
   arg3 = (char *)_swig_go_2.p; 
   arg4 = (char *)_swig_go_3.p; 
@@ -7216,7 +7340,7 @@ GDALDatasetShadow *_wrap_wrapper_GDALDEMProcessing_gdal_250791fe60757361(intgo _
 }
 
 
-GDALNearblackOptions *_wrap_new_GDALNearblackOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALNearblackOptions *_wrap_new_GDALNearblackOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALNearblackOptions *result = 0 ;
   GDALNearblackOptions *_swig_go_result;
@@ -7229,7 +7353,7 @@ GDALNearblackOptions *_wrap_new_GDALNearblackOptions_gdal_250791fe60757361(char 
 }
 
 
-void _wrap_delete_GDALNearblackOptions_gdal_250791fe60757361(GDALNearblackOptions *_swig_go_0) {
+void _wrap_delete_GDALNearblackOptions_gdal_6d085214e6134239(GDALNearblackOptions *_swig_go_0) {
   GDALNearblackOptions *arg1 = (GDALNearblackOptions *) 0 ;
   
   arg1 = *(GDALNearblackOptions **)&_swig_go_0; 
@@ -7239,7 +7363,7 @@ void _wrap_delete_GDALNearblackOptions_gdal_250791fe60757361(GDALNearblackOption
 }
 
 
-intgo _wrap_wrapper_GDALNearblackDestDS_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, GDALNearblackOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+intgo _wrap_wrapper_GDALNearblackDestDS_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, GDALNearblackOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALNearblackOptions *arg3 = (GDALNearblackOptions *) 0 ;
@@ -7266,7 +7390,7 @@ intgo _wrap_wrapper_GDALNearblackDestDS_gdal_250791fe60757361(intgo _swig_optarg
 }
 
 
-GDALDatasetShadow *_wrap_wrapper_GDALNearblackDestName_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALNearblackOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+GDALDatasetShadow *_wrap_wrapper_GDALNearblackDestName_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALNearblackOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   char *arg1 = (char *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALNearblackOptions *arg3 = (GDALNearblackOptions *) 0 ;
@@ -7275,7 +7399,12 @@ GDALDatasetShadow *_wrap_wrapper_GDALNearblackDestName_gdal_250791fe60757361(int
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = *(GDALDatasetShadow **)&_swig_go_1; 
   arg3 = *(GDALNearblackOptions **)&_swig_go_2; 
   if (_swig_optargc > 0) {
@@ -7299,7 +7428,7 @@ GDALDatasetShadow *_wrap_wrapper_GDALNearblackDestName_gdal_250791fe60757361(int
 }
 
 
-GDALGridOptions *_wrap_new_GDALGridOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALGridOptions *_wrap_new_GDALGridOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALGridOptions *result = 0 ;
   GDALGridOptions *_swig_go_result;
@@ -7312,7 +7441,7 @@ GDALGridOptions *_wrap_new_GDALGridOptions_gdal_250791fe60757361(char **_swig_go
 }
 
 
-void _wrap_delete_GDALGridOptions_gdal_250791fe60757361(GDALGridOptions *_swig_go_0) {
+void _wrap_delete_GDALGridOptions_gdal_6d085214e6134239(GDALGridOptions *_swig_go_0) {
   GDALGridOptions *arg1 = (GDALGridOptions *) 0 ;
   
   arg1 = *(GDALGridOptions **)&_swig_go_0; 
@@ -7322,7 +7451,7 @@ void _wrap_delete_GDALGridOptions_gdal_250791fe60757361(GDALGridOptions *_swig_g
 }
 
 
-GDALDatasetShadow *_wrap_wrapper_GDALGrid_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALGridOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+GDALDatasetShadow *_wrap_wrapper_GDALGrid_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALGridOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   char *arg1 = (char *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALGridOptions *arg3 = (GDALGridOptions *) 0 ;
@@ -7331,7 +7460,12 @@ GDALDatasetShadow *_wrap_wrapper_GDALGrid_gdal_250791fe60757361(intgo _swig_opta
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = *(GDALDatasetShadow **)&_swig_go_1; 
   arg3 = *(GDALGridOptions **)&_swig_go_2; 
   if (_swig_optargc > 0) {
@@ -7361,7 +7495,7 @@ GDALDatasetShadow *_wrap_wrapper_GDALGrid_gdal_250791fe60757361(intgo _swig_opta
 }
 
 
-GDALRasterizeOptions *_wrap_new_GDALRasterizeOptions_gdal_250791fe60757361(char **_swig_go_0) {
+GDALRasterizeOptions *_wrap_new_GDALRasterizeOptions_gdal_6d085214e6134239(char **_swig_go_0) {
   char **arg1 = (char **) 0 ;
   GDALRasterizeOptions *result = 0 ;
   GDALRasterizeOptions *_swig_go_result;
@@ -7374,7 +7508,7 @@ GDALRasterizeOptions *_wrap_new_GDALRasterizeOptions_gdal_250791fe60757361(char 
 }
 
 
-void _wrap_delete_GDALRasterizeOptions_gdal_250791fe60757361(GDALRasterizeOptions *_swig_go_0) {
+void _wrap_delete_GDALRasterizeOptions_gdal_6d085214e6134239(GDALRasterizeOptions *_swig_go_0) {
   GDALRasterizeOptions *arg1 = (GDALRasterizeOptions *) 0 ;
   
   arg1 = *(GDALRasterizeOptions **)&_swig_go_0; 
@@ -7384,7 +7518,7 @@ void _wrap_delete_GDALRasterizeOptions_gdal_250791fe60757361(GDALRasterizeOption
 }
 
 
-intgo _wrap_wrapper_GDALRasterizeDestDS_gdal_250791fe60757361(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, GDALRasterizeOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+intgo _wrap_wrapper_GDALRasterizeDestDS_gdal_6d085214e6134239(intgo _swig_optargc, GDALDatasetShadow *_swig_go_0, GDALDatasetShadow *_swig_go_1, GDALRasterizeOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   GDALDatasetShadow *arg1 = (GDALDatasetShadow *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALRasterizeOptions *arg3 = (GDALRasterizeOptions *) 0 ;
@@ -7411,7 +7545,7 @@ intgo _wrap_wrapper_GDALRasterizeDestDS_gdal_250791fe60757361(intgo _swig_optarg
 }
 
 
-GDALDatasetShadow *_wrap_wrapper_GDALRasterizeDestName_gdal_250791fe60757361(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALRasterizeOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
+GDALDatasetShadow *_wrap_wrapper_GDALRasterizeDestName_gdal_6d085214e6134239(intgo _swig_optargc, _gostring_ _swig_go_0, GDALDatasetShadow *_swig_go_1, GDALRasterizeOptions *_swig_go_2, GDALProgressFunc _swig_go_3, void *_swig_go_4) {
   char *arg1 = (char *) 0 ;
   GDALDatasetShadow *arg2 = (GDALDatasetShadow *) 0 ;
   GDALRasterizeOptions *arg3 = (GDALRasterizeOptions *) 0 ;
@@ -7420,7 +7554,12 @@ GDALDatasetShadow *_wrap_wrapper_GDALRasterizeDestName_gdal_250791fe60757361(int
   GDALDatasetShadow *result = 0 ;
   GDALDatasetShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   arg2 = *(GDALDatasetShadow **)&_swig_go_1; 
   arg3 = *(GDALRasterizeOptions **)&_swig_go_2; 
   if (_swig_optargc > 0) {

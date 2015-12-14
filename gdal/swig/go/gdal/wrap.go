@@ -14,12 +14,18 @@ func Open(filename string, args ...interface{}) (ret Dataset, err error) {
 	return
 }
 
-func ReadDir(utf8_path string) (ret []string, err error) {
-	ret = wrap_ReadDir(utf8_path)
-	if len(ret) > 0 {
+func GetDriverByName(name string) (driver Driver, err error) {
+	driver = wrap_GetDriverByName(name)
+	if driver != nil {
 		return
 	}
-	err = fmt.Errorf("Cannot read directory %v", utf8_path)
+	err = fmt.Errorf("The driver is not registered: %v", name)
+	return
+}
+
+func ReadDir(utf8_path string) (ret []string, err error) {
+	ret = wrap_ReadDir(utf8_path)
+	err = lastError()
 	return
 }
 

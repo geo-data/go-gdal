@@ -322,6 +322,16 @@ public:
     }
   }
 
+#ifdef SWIGGO
+  /* Go is garbage collected and does not have a `delete` operator like Python;
+     we need more control over closing datasets. */
+  void Close() {
+    if ( GDALDereferenceDataset( self ) <= 0 ) {
+      GDALClose(self);
+    }
+  }
+#endif  /* SWIGGO */
+
   GDALDriverShadow* GetDriver() {
     return (GDALDriverShadow*) GDALGetDatasetDriver( self );
   }
@@ -791,10 +801,18 @@ CPLErr ReadRaster(  int xoff, int yoff, int xsize, int ysize,
 #ifndef SWIGJAVA
   %feature( "kwargs" ) CreateLayer;
 #endif
+#ifndef SWIGGO
   OGRLayerShadow *CreateLayer(const char* name, 
               OSRSpatialReferenceShadow* srs=NULL,
               OGRwkbGeometryType geom_type=wkbUnknown,
-              char** options=0) {
+              char** options=0) 
+#else
+  OGRLayerShadow *CreateLayer(const char* name, 
+              OSRSpatialReferenceShadow* srs,
+              OGRwkbGeometryType geom_type,
+              char** options) 
+#endif
+{
     OGRLayerShadow* layer = (OGRLayerShadow*) GDALDatasetCreateLayer( self,
                                   name,
                                   srs,
@@ -906,4 +924,3 @@ int GDALDatasetShadow_RasterCount_get( GDALDatasetShadow *h ) {
   return GDALGetRasterCount( h );
 }
 %}
-

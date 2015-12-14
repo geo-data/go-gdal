@@ -42,41 +42,6 @@ func TestVersionInfo(t *testing.T) {
 	}
 }
 
-func TestReadDir(t *testing.T) {
-	dir := "."
-	names, err := gdal.ReadDir(dir)
-	if err != nil {
-		t.Fatalf("ReadDir(%v): error is not nil: %s", dir, err.Error())
-	}
-	if len(names) < 4 {
-		t.Errorf("len(ReadDir(%v)) == %v, expected > 4", dir, len(names))
-	}
-
-	expected := []string{"gdal_test.go", "gdal.go", "gdal_wrap.cpp"}
-Check:
-	for _, name := range names {
-		for i, e := range expected {
-			if e != name {
-				continue
-			}
-			expected = append(expected[:i], expected[i+1:]...) // delete the expected name
-			if len(expected) == 0 {
-				break Check
-			}
-		}
-	}
-
-	if len(expected) > 0 {
-		t.Errorf("ReadDir(%v): expected files not found: %v", dir, expected)
-	}
-
-	bad := "oops"
-	names, err = gdal.ReadDir(bad)
-	if err == nil {
-		t.Errorf("ReadDir(%v): bad directory but error is nil", bad)
-	}
-}
-
 func TestOpenFail(t *testing.T) {
 	bad := "nothing here"
 	// Open without GDAL error
@@ -136,5 +101,31 @@ func TestInvGeoTransform(t *testing.T) {
 	expected := []float64{-2, -2, 1, 1, 1.6666666666666665, -0.6666666666666666}
 	if !reflect.DeepEqual(gtout, expected) {
 		t.Errorf("InvGeoTransform(%v) == %v, does not match %v", good, gtout, expected)
+	}
+}
+
+func TestGetDataTypeName(t *testing.T) {
+	var typetests = []struct {
+		in  int
+		out string
+	}{
+		{constant.GDT_Byte, "Byte"},
+		{constant.GDT_UInt16, "UInt16"},
+		{constant.GDT_Int16, "Int16"},
+		{constant.GDT_UInt32, "UInt32"},
+		{constant.GDT_Int32, "Int32"},
+		{constant.GDT_Float32, "Float32"},
+		{constant.GDT_Float64, "Float64"},
+		{constant.GDT_CFloat32, "CFloat32"},
+		{constant.GDT_CFloat64, "CFloat64"},
+		{constant.GDT_Unknown, "Unknown"},
+		{-1, ""},
+	}
+
+	for _, tt := range typetests {
+		s := gdal.GetDataTypeName(tt.in)
+		if s != tt.out {
+			t.Errorf("GetDataTypeName(%q) => %q, want %q", tt.in, s, tt.out)
+		}
 	}
 }

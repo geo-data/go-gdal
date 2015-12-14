@@ -1,9 +1,63 @@
 {
-    "GetNextFeature": {
+    "CreateFeature": {
         "Delete": ["Layer"],
         "Rename": {
             "Method": {
                 "SwigcptrLayer": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "CreateField": {
+        "Delete": ["Layer"],
+        "Rename": {
+            "Method": {
+                "SwigcptrLayer": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "NewFeature": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "NewGeometry": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "SetField": {
+        "Delete": ["Feature"],
+        "Rename": {
+            "Method": {
+                "SwigcptrFeature": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "SetGeometry": {
+        "Delete": ["Feature"],
+        "Rename": {
+            "Method": {
+                "SwigcptrFeature": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "SetPoint_2D": {
+        "Delete": ["Geometry"],
+        "Rename": {
+            "Method": {
+                "SwigcptrGeometry": {
                     "Prefix": "wrap_"
                 }
             }

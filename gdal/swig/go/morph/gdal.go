@@ -4,11 +4,13 @@
 package gdal
 
 type Driver interface {
+	Create(path string, xsize, ysize, bands, etype int, options []string) (ret Dataset, err error)
 	CreateCopy(filename string, ds Dataset, args ...interface{}) (ret Dataset, err Err)
 }
 
 type Dataset interface {
+	CreateLayer(name string, srs osr.SpatialReference, geomtype int, options []string) (lyr ogr.Layer, err error)
 	GetGeoTransform() (gt []float64)
 	SetGeoTransform(gt [6]float64) (err Err)
-	GetLayerByName(name string) (feat ogr.Layer, err error)
+	GetLayerByName(name string) (lyr ogr.Layer, err error)
 }

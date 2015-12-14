@@ -1,4 +1,24 @@
 {
+    "Create": {
+        "Delete": ["Driver"],
+        "Rename": {
+            "Method": {
+                "SwigcptrDriver": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
+    "CreateLayer": {
+        "Delete": ["Dataset"],
+        "Rename": {
+            "Method": {
+                "SwigcptrDataset": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
     "SetGeoTransform": {
         "Delete": ["Dataset"],
         "Rename": {
@@ -6,6 +26,13 @@
                 "SwigcptrDataset": {
                     "Prefix": "wrap_"
                 }
+            }
+        }
+    },
+    "GetDriverByName": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
             }
         }
     },
@@ -29,6 +56,16 @@
             }
         }
     },
+    "Create": {
+        "Delete": ["Driver"],
+        "Rename": {
+            "Method": {
+                "SwigcptrDriver": {
+                    "Prefix": "wrap_"
+                }
+            }
+        }
+    },
     "CreateCopy": {
         "Delete": ["Driver"],
         "Rename": {
@@ -36,6 +73,118 @@
                 "SwigcptrDriver": {
                     "Prefix": "wrap_"
                 }
+            }
+        }
+    },
+    "DeleteGDALDEMProcessingOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "DeleteGDALGridOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "DeleteGDALInfoOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "DeleteGDALNearblackOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "DeleteGDALRasterizeOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "DeleteGDALTranslateOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "DeleteGDALWarpAppOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "DeleteGDALVectorTranslateOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALDEMProcessingOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALGridOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALInfoOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALNearblackOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALRasterizeOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALTranslateOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALWarpAppOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "NewGDALVectorTranslateOptions": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
             }
         }
     },
@@ -78,6 +227,90 @@
         "Rename": {
             "Function": {
                 "Prefix": "wrap_"
+            }
+        }
+    },
+    "Wrapper_GDALDEMProcessing": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALGrid": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "GDALInfo": {
+        "Rename": {
+            "Function": {
+                "Prefix": "wrap_"
+            }
+        }
+    },
+    "Wrapper_GDALNearblackDestDS": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALNearblackDestName": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALRasterizeDestDS": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALRasterizeDestName": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALTranslate": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALWarpDestDS": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALWarpDestName": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALVectorTranslateDestDS": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
+            }
+        }
+    },
+    "Wrapper_GDALVectorTranslateDestName": {
+        "Rename": {
+            "Function": {
+                "Unexport": true
             }
         }
     }

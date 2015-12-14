@@ -10,9 +10,9 @@ import (
 func TestProgress(t *testing.T) {
 	_, ds := memDatasetTest(256, 200, t)
 
-	mem_driver := gdal.GetDriverByName("MEM")
-	if mem_driver == nil {
-		t.Fatal("Cannot get MEM driver")
+	mem_driver, err := gdal.GetDriverByName("MEM")
+	if err != nil {
+		t.Fatal(err)
 	}
 
 	results := []string{}

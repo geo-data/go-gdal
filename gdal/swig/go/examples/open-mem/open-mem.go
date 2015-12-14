@@ -6,15 +6,12 @@ import (
 	"log"
 )
 
-// This maps to the gdal Byte data type.
-type Byte uint8
-
 // memDataset creates an new buffer of type Byte along with a GDAL MEM dataset
 // associated with the buffer.  The buffer is of size width * height, as is the
 // raster.  Note that when the buffer goes out of scope and is garbage collected
 // this invalidates the dataset which must no longer be used.
-func memDataset(width uint, height uint) (buf []Byte, ds gdal.Dataset, err error) {
-	buf = make([]Byte, width*height)
+func memDataset(width uint, height uint) (buf []byte, ds gdal.Dataset, err error) {
+	buf = make([]byte, width*height)
 	connstr := fmt.Sprintf("MEM:::DATAPOINTER=%p,PIXELS=%d,LINES=%d,DATATYPE=Byte", &buf[0], width, height)
 	ds, err = gdal.Open(connstr)
 	return

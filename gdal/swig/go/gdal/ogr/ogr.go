@@ -1159,7 +1159,12 @@ func (arg1 SwigcptrDataSource) CreateLayer(arg2 string, _swig_args ...interface{
 	var swig_r Layer
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	_swig_i_2 := arg3.Swigcptr()
+	var _swig_i_2 uintptr
+
+	if arg3 != nil {
+		_swig_i_2 = arg3.Swigcptr()
+	}
+
 	_swig_i_3 := arg4
 	var _swig_i_4 **C.char
 
@@ -1564,7 +1569,7 @@ func (arg1 SwigcptrLayer) SetFeature(arg2 Feature) (_swig_ret int) {
 	return swig_r
 }
 
-func (arg1 SwigcptrLayer) CreateFeature(arg2 Feature) (_swig_ret int) {
+func (arg1 SwigcptrLayer) wrap_CreateFeature(arg2 Feature) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
@@ -1633,7 +1638,7 @@ func (arg1 SwigcptrLayer) TestCapability(arg2 string) (_swig_ret bool) {
 	return swig_r
 }
 
-func (arg1 SwigcptrLayer) CreateField(arg2 FieldDefn, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) wrap_CreateField(arg2 FieldDefn, _swig_args ...interface{}) (_swig_ret int) {
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -2119,14 +2124,14 @@ type Layer interface {
 	GetNextFeature() (_swig_ret Feature)
 	SetNextByIndex(arg2 GIntBig) (_swig_ret int)
 	SetFeature(arg2 Feature) (_swig_ret int)
-	CreateFeature(arg2 Feature) (_swig_ret int)
+
 	DeleteFeature(arg2 GIntBig) (_swig_ret int)
 	SyncToDisk() (_swig_ret int)
 	GetLayerDefn() (_swig_ret FeatureDefn)
 	GetFeatureCount(_swig_args ...interface{}) (_swig_ret GIntBig)
 	GetExtent(arg2 []float64, _swig_args ...interface{}) (_swig_ret int)
 	TestCapability(arg2 string) (_swig_ret bool)
-	CreateField(arg2 FieldDefn, _swig_args ...interface{}) (_swig_ret int)
+
 	DeleteField(arg2 int) (_swig_ret int)
 	ReorderField(arg2 int, arg3 int) (_swig_ret int)
 	ReorderFields(arg2 int, arg3 *int) (_swig_ret int)
@@ -2150,6 +2155,8 @@ type Layer interface {
 	SetStyleTable(arg2 StyleTable)
 	SwigIsMajorObject()
 	SwigGetMajorObject() MajorObject
+	CreateField(f FieldDefn, approxok int) (err error)
+	CreateFeature(f Feature) (err error)
 }
 
 type SwigcptrFeature uintptr
@@ -2166,7 +2173,7 @@ func DeleteFeature(arg1 Feature) {
 	C._wrap_delete_Feature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
 }
 
-func NewFeature(arg1 FeatureDefn) (_swig_ret Feature) {
+func wrap_NewFeature(arg1 FeatureDefn) (_swig_ret Feature) {
 	var swig_r Feature
 	_swig_i_0 := arg1.Swigcptr()
 	swig_r = (Feature)(SwigcptrFeature(C._wrap_new_Feature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
@@ -2188,7 +2195,7 @@ func (arg1 SwigcptrFeature) GetDefnRef() (_swig_ret FeatureDefn) {
 	return swig_r
 }
 
-func (arg1 SwigcptrFeature) SetGeometry(arg2 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrFeature) wrap_SetGeometry(arg2 Geometry) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
@@ -2860,7 +2867,7 @@ func (arg1 SwigcptrFeature) SetField__SWIG_7(arg2 string, arg3 int, arg4 int, ar
 	}
 }
 
-func (p SwigcptrFeature) SetField(a ...interface{}) {
+func (p SwigcptrFeature) wrap_SetField(a ...interface{}) {
 	argc := len(a)
 	if argc == 2 {
 		if _, ok := a[0].(int); !ok {
@@ -3164,7 +3171,7 @@ type Feature interface {
 	Swigcptr() uintptr
 	SwigIsFeature()
 	GetDefnRef() (_swig_ret FeatureDefn)
-	SetGeometry(arg2 Geometry) (_swig_ret int)
+
 	SetGeometryDirectly(arg2 Geometry) (_swig_ret int)
 	GetGeometryRef() (_swig_ret Geometry)
 	SetGeomField(a ...interface{}) int
@@ -3193,7 +3200,7 @@ type Feature interface {
 	DumpReadable()
 	UnsetField(a ...interface{})
 	SetFieldInteger64(arg2 int, arg3 GIntBig)
-	SetField(a ...interface{})
+
 	SetFieldIntegerList(arg2 int, arg3 int, arg4 *int)
 	SetFieldDoubleList(arg2 int, arg3 int, arg4 *float64)
 	SetFieldStringList(arg2 int, arg3 []string)
@@ -3209,6 +3216,8 @@ type Feature interface {
 	GetNativeMediaType() (_swig_ret string)
 	SetNativeData(arg2 string)
 	SetNativeMediaType(arg2 string)
+	SetField(a ...interface{}) error
+	SetGeometry(geom Geometry) (err error)
 }
 
 type SwigcptrFeatureDefn uintptr
@@ -3709,7 +3718,12 @@ func (arg1 SwigcptrGeomFieldDefn) GetSpatialRef() (_swig_ret osr.SpatialReferenc
 
 func (arg1 SwigcptrGeomFieldDefn) SetSpatialRef(arg2 osr.SpatialReference) {
 	_swig_i_0 := arg1
-	_swig_i_1 := arg2.Swigcptr()
+	var _swig_i_1 uintptr
+
+	if arg2 != nil {
+		_swig_i_1 = arg2.Swigcptr()
+	}
+
 	C._wrap_GeomFieldDefn_SetSpatialRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
@@ -3912,7 +3926,7 @@ func DeleteGeometry(arg1 Geometry) {
 	C._wrap_delete_Geometry_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
 }
 
-func NewGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
+func wrap_NewGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
 	var arg1 int
 	if len(_swig_args) > 0 {
 		arg1 = _swig_args[0].(int)
@@ -4213,7 +4227,7 @@ func (arg1 SwigcptrGeometry) SetPoint(arg2 int, arg3 float64, arg4 float64, _swi
 	C._wrap_Geometry_SetPoint_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
 }
 
-func (arg1 SwigcptrGeometry) SetPoint_2D(arg2 int, arg3 float64, arg4 float64) {
+func (arg1 SwigcptrGeometry) wrap_SetPoint_2D(arg2 int, arg3 float64, arg4 float64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -4665,7 +4679,7 @@ type Geometry interface {
 	GetPoint_2D(_swig_args ...interface{})
 	GetGeometryCount() (_swig_ret int)
 	SetPoint(arg2 int, arg3 float64, arg4 float64, _swig_args ...interface{})
-	SetPoint_2D(arg2 int, arg3 float64, arg4 float64)
+
 	GetGeometryRef(arg2 int) (_swig_ret Geometry)
 	Simplify(arg2 float64) (_swig_ret Geometry)
 	SimplifyPreserveTopology(arg2 float64) (_swig_ret Geometry)
@@ -4715,6 +4729,7 @@ type Geometry interface {
 	GetLinearGeometry(_swig_args ...interface{}) (_swig_ret Geometry)
 	GetCurveGeometry(_swig_args ...interface{}) (_swig_ret Geometry)
 	Value(arg2 float64) (_swig_ret Geometry)
+	SetPoint2D(i int, x, y float64) (err error)
 }
 
 func OGRGetDriverCount() (_swig_ret int) {

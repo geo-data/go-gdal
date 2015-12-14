@@ -39,25 +39,44 @@ MORPH_BIN := $(BUILD_DIR)/morph
 MORPH_MODS_GDAL := ./morph/gdal.json
 MORPH_MERGE_GDAL := ./morph/gdal.go
 
+MORPH_MODS_OGR := ./morph/ogr.json
+MORPH_MERGE_OGR := ./morph/ogr.go
+
 # Files representing the final Go package.
 SRC_FILES := $(CONSTANT_GO) \
 $(CONSTANT_CPP) \
+gdal/apps.go \
 gdal/dataset.go \
+gdal/dem-processing.go \
 gdal/driver.go \
 gdal/error.go \
+gdal/grid.go \
+gdal/info.go \
 $(GDAL_GO) \
 $(GDAL_CPP) \
 $(OGR_GO) \
 $(OGR_CPP) \
+gdal/ogr/feature.go \
+gdal/ogr/geometry.go \
+gdal/ogr/layer.go \
+gdal/ogr/errors/errors.go \
 $(OSR_GO) \
 $(OSR_CPP) \
+gdal/nearblack.go \
 gdal/progress/progress.go \
+gdal/raster/mem/mem.go \
+gdal/rasterize.go \
+gdal/translate.go \
+gdal/vector-translate.go \
 gdal/vsi.go \
+gdal/warp.go \
 gdal/wrap.go
 
 # The test files are in a separate package: they only affect the test target.
 TEST_FILES := gdal/vsi_test.go \
-gdal/progress/progress_test.go \
+gdal/cpl_test.go \
+gdal/error_test.go \
+gdal/progress_test.go \
 gdal/dataset_test.go \
 gdal/gdal_test.go \
 gdal/common_test.go
@@ -90,16 +109,22 @@ SWIG_SRC_OGR := ../include/go/ogr_go.i ../include/go/typemaps_go.i $(SWIG_MOD_OG
 SWIG_SRC_GDAL := ../include/go/gdal_go.i $(SWIG_MOD_GDAL) $(SWIG_SRC_OGR)
 
 # Specify the examples.
-EX_BIN_READ_VECTOR_DATASET := $(BUILD_DIR)/read-vector-dataset
-EX_SRC_READ_VECTOR_DATASET := ./examples/read-vector-dataset/read-vector-dataset.go
+EX_BIN_READ_VECTOR := $(BUILD_DIR)/read-vector
+EX_SRC_READ_VECTOR := ./examples/read-vector/read-vector.go
 
-EX_BIN_CREATE_RASTER_COPY := $(BUILD_DIR)/create-raster-copy
-EX_SRC_CREATE_RASTER_COPY := ./examples/create-raster-copy/create-raster-copy.go
+EX_BIN_WRITE_VECTOR := $(BUILD_DIR)/write-vector
+EX_SRC_WRITE_VECTOR := ./examples/write-vector/write-vector.go
 
-EX_BIN_OPEN_MEM_DATASET := $(BUILD_DIR)/open-mem-dataset
-EX_SRC_OPEN_MEM_DATASET := ./examples/open-mem-dataset/open-mem-dataset.go
+EX_BIN_COPY_RASTER := $(BUILD_DIR)/copy-raster
+EX_SRC_COPY_RASTER := ./examples/copy-raster/copy-raster.go
 
-EXAMPLES := $(EX_BIN_CREATE_RASTER_COPY) $(EX_BIN_READ_VECTOR_DATASET) $(EX_BIN_OPEN_MEM_DATASET)
+EX_BIN_OPEN_MEM := $(BUILD_DIR)/open-mem
+EX_SRC_OPEN_MEM := ./examples/open-mem/open-mem.go
+
+EX_BIN_GDAL_PROCESS := $(BUILD_DIR)/gdal-process
+EX_SRC_GDAL_PROCESS := ./examples/gdal-process/gdal-process.go
+
+EXAMPLES := $(EX_BIN_COPY_RASTER) $(EX_BIN_READ_VECTOR) $(EX_BIN_WRITE_VECTOR) $(EX_BIN_OPEN_MEM) $(EX_BIN_GDAL_PROCESS)
 
 # Files tracking otherwise phony targets.
 TRK_INSTALL := $(BUILD_DIR)/.install
@@ -124,10 +149,21 @@ clean:
 
 # Run the unit tests and example programs.
 test: $(TRK_INSTALL) $(INSTALL_TEST_FILES) $(EXAMPLES)
-	GOPATH=$(GOPATH) go test -cover $(PKG_NAME)...
-	$(EX_BIN_OPEN_MEM_DATASET)
-	$(EX_BIN_CREATE_RASTER_COPY) $(GDAL_ROOT)/../autotest/gcore/data/rgba.tif
-	$(EX_BIN_READ_VECTOR_DATASET) $(GDAL_ROOT)/../autotest/ogr/data/poly.shp
+	GOPATH=$(GOPATH) go test $(PKG_NAME)...
+	$(EX_BIN_OPEN_MEM)
+	$(EX_BIN_COPY_RASTER) $(GDAL_ROOT)/../autotest/gcore/data/rgba.tif
+	$(EX_BIN_READ_VECTOR) $(GDAL_ROOT)/../autotest/ogr/data/poly.shp
+	$(EX_BIN_GDAL_PROCESS) warp $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.tif
+	$(EX_BIN_GDAL_PROCESS) warp -options "-of VRT" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.vrt
+	$(EX_BIN_GDAL_PROCESS) translate -options "-ot Int16" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/int16.tif
+	$(EX_BIN_GDAL_PROCESS) vector-translate -options "-spat 479609 4764629 479764 4764817" $(GDAL_ROOT)/../autotest/ogr/data/poly.shp /vsimem/poly.shp
+	$(EX_BIN_GDAL_PROCESS) nearblack -options "-nb 0 -of GTiff" $(GDAL_ROOT)/../autotest/gdrivers/data/rgbsmall.tif /vsimem/nearblack.tif
+	$(EX_BIN_GDAL_PROCESS) grid -options "-txe 440720.0 441920.0 -tye 3751320.0 3750120.0 -outsize 20 20 -ot Byte -l grid -a nearest:radius1=0.0:radius2=0.0:angle=0.0:nodata=0.0" $(GDAL_ROOT)/../autotest/utilities/data/grid.vrt /vsimem/grid-near.tif
+	$(EX_BIN_GDAL_PROCESS) dem-hillshade -options "-s 111120 -z 30" $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/hillshade.tif
+	$(EX_BIN_GDAL_PROCESS) dem-slope -options "-s 111120" $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/slope.tif
+	$(EX_BIN_GDAL_PROCESS) dem-aspect $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/aspect.tif
+	$(EX_BIN_GDAL_PROCESS) dem-color-relief -color-filename $(GDAL_ROOT)/../autotest/utilities/data/color_file.txt $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/color-relief.tif
+	for i in 1 2 3; do j=`expr $$i + 1`; echo "$$i,$$j,field$$i"; done | $(EX_BIN_WRITE_VECTOR)
 
 # Build the examples.
 examples: $(EXAMPLES)
@@ -150,13 +186,17 @@ generate: $(SRC_FILES)
 # Build the examples.
 #
 
-$(EX_BIN_CREATE_RASTER_COPY): $(TRK_INSTALL) $(EX_SRC_CREATE_RASTER_COPY)
+$(EX_BIN_COPY_RASTER): $(TRK_INSTALL) $(EX_SRC_COPY_RASTER)
 	GOPATH=$(GOPATH) go get github.com/cheggaaa/pb
-	GOPATH=$(GOPATH) go	build -o $(EX_BIN_CREATE_RASTER_COPY) $(EX_SRC_CREATE_RASTER_COPY)
-$(EX_BIN_READ_VECTOR_DATASET): $(TRK_INSTALL) $(EX_SRC_READ_VECTOR_DATASET)
-	GOPATH=$(GOPATH) go	build -o $(EX_BIN_READ_VECTOR_DATASET) $(EX_SRC_READ_VECTOR_DATASET)
-$(EX_BIN_OPEN_MEM_DATASET): $(TRK_INSTALL) $(EX_SRC_OPEN_MEM_DATASET)
-	GOPATH=$(GOPATH) go	build -o $(EX_BIN_OPEN_MEM_DATASET) $(EX_SRC_OPEN_MEM_DATASET)
+	GOPATH=$(GOPATH) go	build -o $(EX_BIN_COPY_RASTER) $(EX_SRC_COPY_RASTER)
+$(EX_BIN_READ_VECTOR): $(TRK_INSTALL) $(EX_SRC_READ_VECTOR)
+	GOPATH=$(GOPATH) go	build -o $(EX_BIN_READ_VECTOR) $(EX_SRC_READ_VECTOR)
+$(EX_BIN_WRITE_VECTOR): $(TRK_INSTALL) $(EX_SRC_WRITE_VECTOR)
+	GOPATH=$(GOPATH) go	build -o $(EX_BIN_WRITE_VECTOR) $(EX_SRC_WRITE_VECTOR)
+$(EX_BIN_OPEN_MEM): $(TRK_INSTALL) $(EX_SRC_OPEN_MEM)
+	GOPATH=$(GOPATH) go	build -o $(EX_BIN_OPEN_MEM) $(EX_SRC_OPEN_MEM)
+$(EX_BIN_GDAL_PROCESS): $(TRK_INSTALL) $(EX_SRC_GDAL_PROCESS)
+	GOPATH=$(GOPATH) go	build -o $(EX_BIN_GDAL_PROCESS) $(EX_SRC_GDAL_PROCESS)
 
 ##
 # Morph the swig generated module files.
@@ -168,8 +208,8 @@ $(EX_BIN_OPEN_MEM_DATASET): $(TRK_INSTALL) $(EX_SRC_OPEN_MEM_DATASET)
 $(GDAL_GO): $(SWIG_OUTPUT_GDAL) $(MORPH_MERGE_GDAL) $(MORPH_MODS_GDAL) $(MORPH_BIN)
 	$(MORPH_BIN) -mods $(MORPH_MODS_GDAL) -merge $(MORPH_MERGE_GDAL) -in $(GDAL_GO_BUILD) -out $(GDAL_GO)
 
-$(OGR_GO): $(SWIG_OUTPUT_OGR)
-	$(MORPH_BIN) -in $(OGR_GO_BUILD) -out $(OGR_GO)
+$(OGR_GO): $(SWIG_OUTPUT_OGR) $(MORPH_MERGE_OGR) $(MORPH_MODS_OGR) $(MORPH_BIN)
+	$(MORPH_BIN) -mods $(MORPH_MODS_OGR) -merge $(MORPH_MERGE_OGR) -in $(OGR_GO_BUILD) -out $(OGR_GO)
 
 $(OSR_GO): $(SWIG_OUTPUT_OSR)
 	cp $(OSR_GO_BUILD) $(OSR_GO)

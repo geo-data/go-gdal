@@ -1898,7 +1898,12 @@ intgo _wrap_StyleTable_LoadStyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *
   intgo _swig_go_result;
   
   arg1 = *(OGRStyleTableShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   
   result = (int)OGRStyleTableShadow_LoadStyleTable(arg1,(char const *)arg2);
   _swig_go_result = result; 
@@ -1913,7 +1918,12 @@ intgo _wrap_StyleTable_SaveStyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *
   intgo _swig_go_result;
   
   arg1 = *(OGRStyleTableShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   
   result = (int)OGRStyleTableShadow_SaveStyleTable(arg1,(char const *)arg2);
   _swig_go_result = result; 
@@ -1993,7 +2003,12 @@ OGRDataSourceShadow *_wrap_Driver_CreateDataSource_ogr_1f1edc2fb82ebe9e(intgo _s
   OGRDataSourceShadow *_swig_go_result;
   
   arg1 = *(OGRDriverShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg3 = *(char ***)&_swig_go_2; 
   }
@@ -2014,7 +2029,12 @@ OGRDataSourceShadow *_wrap_Driver_CopyDataSource_ogr_1f1edc2fb82ebe9e(intgo _swi
   
   arg1 = *(OGRDriverShadow **)&_swig_go_0; 
   arg2 = *(OGRDataSourceShadow **)&_swig_go_1; 
-  arg3 = (char *)_swig_go_2.p; 
+  {
+    arg3 = (char *)_swig_go_2.p;       /* From the default swig string typemap. */
+    if (!arg3) {
+      arg3 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg4 = *(char ***)&_swig_go_3; 
   }
@@ -2033,7 +2053,12 @@ OGRDataSourceShadow *_wrap_Driver_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc,
   OGRDataSourceShadow *_swig_go_result;
   
   arg1 = *(OGRDriverShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg3 = (int)_swig_go_2; 
   }
@@ -2051,7 +2076,12 @@ intgo _wrap_Driver_DeleteDataSource_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_
   intgo _swig_go_result;
   
   arg1 = *(OGRDriverShadow **)&_swig_go_0; 
-  arg2 = (char *)_swig_go_1.p; 
+  {
+    arg2 = (char *)_swig_go_1.p;       /* From the default swig string typemap. */
+    if (!arg2) {
+      arg2 = (char *)"";
+    }
+  }
   
   result = (int)OGRDriverShadow_DeleteDataSource(arg1,(char const *)arg2);
   _swig_go_result = result; 
@@ -7065,7 +7095,12 @@ OGRDataSourceShadow *_wrap_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostr
   OGRDataSourceShadow *result = 0 ;
   OGRDataSourceShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg2 = (int)_swig_go_1; 
   }
@@ -7082,7 +7117,12 @@ OGRDataSourceShadow *_wrap_OpenShared_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, 
   OGRDataSourceShadow *result = 0 ;
   OGRDataSourceShadow *_swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
   if (_swig_optargc > 0) {
     arg2 = (int)_swig_go_1; 
   }

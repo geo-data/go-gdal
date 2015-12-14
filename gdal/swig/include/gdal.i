@@ -863,7 +863,7 @@ GDALDriverShadow *IdentifyDriver( const char *utf8_path,
 // GCPsToGeoTransform
 
 
-#if defined(SWIGPYTHON) || defined(SWIGJAVA)
+#if defined(SWIGPYTHON) || defined(SWIGJAVA) || defined(SWIGGO)
 /* FIXME: other bindings should also use those typemaps to avoid memory leaks */
 %apply (char **options) {char ** papszArgv};
 %apply (char **CSL) {(char **)};

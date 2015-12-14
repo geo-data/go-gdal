@@ -44,6 +44,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Delete the directory if required when the program exits.
 	defer func() {
 		if !*keep {
 			log.Printf("Removing output directory %s", output_dir)
@@ -57,29 +59,30 @@ func main() {
 	kcache := *keep
 	*keep = false
 
-	png_driver := gdal.GetDriverByName("PNG")
-	if png_driver != nil {
-		count := 10000.0
-		bar := pb.StartNew(int(count))
-		bar.ShowCounters = false
-		options := []string{"WORLDFILE=YES"}
-
-		prog := func(complete float64, message string, progressArg interface{}) int {
-			bar.Set(int(count * complete))
-			return 1
-		}
-
-		output := path.Join(output_dir, "copy.png")
-		png, gerr := png_driver.CreateCopy(output, ds, 0, options, progress.ProgressFunc(prog), "")
-		bar.Finish()
-		if gerr != nil {
-			log.Fatal(gerr)
-		}
-
-		fmt.Printf("PNG dataset created (%dx%d): %s\n", png.GetRasterXSize(), png.GetRasterYSize(), output)
-	} else {
-		log.Fatal(fmt.Errorf("The driver could not be found: %s", "PNG"))
+	var png_driver gdal.Driver
+	png_driver, err = gdal.GetDriverByName("PNG")
+	if err != nil {
+		log.Fatal(err)
 	}
+
+	count := 10000.0
+	bar := pb.StartNew(int(count))
+	bar.ShowCounters = false
+	options := []string{"WORLDFILE=YES"}
+
+	prog := progress.ProgressFunc(func(complete float64, message string, progressArg interface{}) int {
+		bar.Set(int(count * complete))
+		return 1
+	})
+
+	output := path.Join(output_dir, "copy.png")
+	png, gerr := png_driver.CreateCopy(output, ds, 0, options, prog, "")
+	bar.Finish()
+	if gerr != nil {
+		log.Fatal(gerr)
+	}
+
+	fmt.Printf("PNG dataset created (%dx%d): %s\n", png.GetRasterXSize(), png.GetRasterYSize(), output)
 
 	// Reassign the the original choice of whether to remove the directory.
 	*keep = kcache

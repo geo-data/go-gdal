@@ -11,6 +11,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
+	"unicode/utf8"
 )
 
 type ActionVisitor struct {
@@ -130,11 +132,17 @@ type Renames struct {
 }
 
 type Rename struct {
-	Prefix string
+	Prefix   string
+	Unexport bool
 }
 
 func (r *Rename) Rename(name string) string {
-	return r.Prefix + name
+	name = r.Prefix + name
+	if r.Unexport {
+		r, size := utf8.DecodeRuneInString(name)
+		name = strings.ToLower(string(r)) + name[size:]
+	}
+	return name
 }
 
 func loadFunctions(fname string) (Functions, error) {
