@@ -6,7 +6,7 @@ import (
 
 func NewGeometry(geomtype int) (geom Geometry, err error) {
 	geom = wrap_NewGeometry(geomtype)
-	//err = lastError()
+	//err = cpl.LastError()
 	if err == nil && geom == nil {
 		err = errors.New("Geometry creation failed")
 	}

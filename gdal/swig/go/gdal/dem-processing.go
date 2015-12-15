@@ -3,6 +3,7 @@ package gdal
 import (
 	"errors"
 	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -93,7 +94,7 @@ func (d *dem) DestName(name string) (ds Dataset, err error) {
 	}
 
 	ds = wrapper_GDALDEMProcessing(name, d.datasets[0], d.processing, d.colorfile, d.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ds != nil || err != nil {
 		return
 	}

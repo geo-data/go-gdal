@@ -1,41 +1,41 @@
-package gdal
+package cpl
 
 import (
 	"fmt"
 	"strings"
 )
 
-type Err interface {
+type Error interface {
 	error
 	ErrorNo() int
 	ErrorType() int
 }
 
-type gerr struct {
+type cerr struct {
 	n int    // error number
 	t int    // error type
 	m string // error message
 }
 
-func (e *gerr) Error() string {
+func (e *cerr) Error() string {
 	return e.m
 }
 
-func (e *gerr) ErrorNo() int {
+func (e *cerr) ErrorNo() int {
 	return e.n
 }
 
-func (e *gerr) ErrorType() int {
+func (e *cerr) ErrorType() int {
 	return e.t
 }
 
-func lastError() (err Err) {
+func LastError() (err Error) {
 	t := GetLastErrorType()
 	if t == 0 {
 		return
 	}
 
-	err = &gerr{
+	err = &cerr{
 		GetLastErrorNo(),
 		t,
 		strings.TrimSpace(GetLastErrorMsg()),

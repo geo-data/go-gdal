@@ -1,6 +1,7 @@
 package gdal
 
 import (
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -26,6 +27,6 @@ func NewInformer(options []string) (i Informer) {
 
 func (i *info) Info(ds Dataset) (result string, err error) {
 	result = wrap_GDALInfo(ds, i.options)
-	err = lastError()
+	err = cpl.LastError()
 	return
 }

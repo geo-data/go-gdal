@@ -188,20 +188,6 @@
             }
         }
     },
-    "ReadDir": {
-        "Rename": {
-            "Function": {
-                "Prefix": "wrap_"
-            }
-        }
-    },
-    "SetErrorHandler": {
-        "Rename": {
-            "Function": {
-                "Prefix": "wrap_"
-            }
-        }
-    },
     "OpenEx": {
         "Rename": {
             "Function": {

@@ -1,13 +1,16 @@
 package gdal
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
+)
 
 func Open(filename string, args ...interface{}) (ret Dataset, err error) {
 	ret = wrap_OpenEx(filename, args...)
 	if ret != nil {
 		return
 	}
-	err = lastError()
+	err = cpl.LastError()
 	if err == nil {
 		err = fmt.Errorf("The dataset cannot be opened: %v", filename)
 	}
@@ -20,12 +23,6 @@ func GetDriverByName(name string) (driver Driver, err error) {
 		return
 	}
 	err = fmt.Errorf("The driver is not registered: %v", name)
-	return
-}
-
-func ReadDir(utf8_path string) (ret []string, err error) {
-	ret = wrap_ReadDir(utf8_path)
-	err = lastError()
 	return
 }
 

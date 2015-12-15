@@ -3,6 +3,7 @@ package gdal_test
 import (
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal"
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/constant"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/progress"
 	"testing"
 )
@@ -22,9 +23,9 @@ func TestProgress(t *testing.T) {
 	})
 
 	arg := "testing normal progress."
-	_, gerr := mem_driver.CreateCopy("/test.dat", ds, 0, []string{}, cb, arg)
-	if gerr != nil {
-		t.Fatalf("Cannot create copy MEM dataset: %s", gerr)
+	_, err = mem_driver.CreateCopy("/test.dat", ds, 0, []string{}, cb, arg)
+	if err != nil {
+		t.Fatalf("Cannot create copy MEM dataset: %s", err)
 	}
 
 	if len(results) < 3 {
@@ -49,16 +50,20 @@ func TestProgress(t *testing.T) {
 	})
 
 	arg = "testing cancel progress."
-	_, gerr = mem_driver.CreateCopy("/test2.dat", ds, 0, []string{}, cb, arg)
-	if gerr == nil {
+	_, err = mem_driver.CreateCopy("/test2.dat", ds, 0, []string{}, cb, arg)
+	if err == nil {
 		t.Fatal("CreateCopy() err == nil on interrupt")
-	} else {
-		if gerr.ErrorType() != constant.CE_Failure {
-			t.Errorf("CreateCopy() error type == %d, expected %d (CE_Failure)", gerr.ErrorType(), constant.CE_Failure)
-		}
-		if gerr.ErrorNo() != constant.CPLE_UserInterrupt {
-			t.Errorf("CreateCopy() errorno == %d, expected %d (CPLE_UserInterrupt)", gerr.ErrorNo(), constant.CPLE_UserInterrupt)
-		}
+	}
+
+	gerr, ok := err.(cpl.Error)
+	if !ok {
+		t.Fatalf("CreateCopy() expected error type cpl.Error on interrupt, got %T", err)
+	}
+	if gerr.ErrorType() != constant.CE_Failure {
+		t.Errorf("CreateCopy() error type == %d, expected %d (CE_Failure)", gerr.ErrorType(), constant.CE_Failure)
+	}
+	if gerr.ErrorNo() != constant.CPLE_UserInterrupt {
+		t.Errorf("CreateCopy() errorno == %d, expected %d (CPLE_UserInterrupt)", gerr.ErrorNo(), constant.CPLE_UserInterrupt)
 	}
 
 	if len(results) != 2 {

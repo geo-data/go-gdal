@@ -1,7 +1,7 @@
-package gdal_test
+package cpl_test
 
 import (
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"os"
 	"reflect"
 	"testing"
@@ -31,7 +31,7 @@ func TestReadDir(t *testing.T) {
 		var names, expected []string
 		var err error
 
-		names, err = gdal.ReadDir(dir)
+		names, err = cpl.ReadDir(dir)
 		if dt.err {
 			if err == nil {
 				t.Errorf("ReadDir(%q): expected error but none found", dir)
@@ -96,7 +96,7 @@ func TestParseCommandLine(t *testing.T) {
 		opts := pt.opts
 		expect := pt.expect
 
-		result := gdal.ParseCommandLine(opts)
+		result := cpl.ParseCommandLine(opts)
 
 		if !reflect.DeepEqual(result, expect) {
 			t.Errorf("ParseCommandLine(%q) == %q, does not match %q", opts, result, expect)

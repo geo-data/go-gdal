@@ -3,6 +3,7 @@ package gdal
 import (
 	"errors"
 	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -42,7 +43,7 @@ func (nb *nearblack) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 	ds = wrapper_GDALNearblackDestName(name, nb.datasets[0], nb.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ds != nil || err != nil {
 		return
 	}
@@ -56,7 +57,7 @@ func (nb *nearblack) DestDS(ds Dataset) (err error) {
 		return
 	}
 	ok := wrapper_GDALNearblackDestDS(ds, nb.datasets[0], nb.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ok == 1 || err != nil {
 		return
 	}

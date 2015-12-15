@@ -3,6 +3,7 @@ package gdal
 import (
 	"errors"
 	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -43,7 +44,7 @@ func (t *translate) DestName(name string) (ds Dataset, err error) {
 	}
 
 	ds = wrapper_GDALTranslate(name, t.datasets[0], t.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ds != nil || err != nil {
 		return
 	}

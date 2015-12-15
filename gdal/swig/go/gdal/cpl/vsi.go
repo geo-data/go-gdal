@@ -1,4 +1,4 @@
-package gdal
+package cpl
 
 import (
 	"errors"
@@ -17,7 +17,7 @@ type VSIF interface {
 
 func VSIFOpen(name, access string) (visf VSIF, err error) {
 	r := vsi(VSIFOpenL(name, access))
-	err = lastError()
+	err = LastError()
 	if err != nil {
 		return
 	}
@@ -31,13 +31,13 @@ func VSIFOpen(name, access string) (visf VSIF, err error) {
 
 func (v vsi) Tell() (o int64, err error) {
 	o = VSIFTellL(uintptr(v))
-	err = lastError()
+	err = LastError()
 	return
 }
 
 func (v vsi) Seek(offset int64, whence int) (noffset int64, err error) {
 	ret := VSIFSeekL(uintptr(v), offset, whence)
-	err = lastError()
+	err = LastError()
 	if err != nil {
 		return
 	}
@@ -53,7 +53,7 @@ func (v vsi) Read(p []byte) (n int, err error) {
 	l := len(p)
 	up := uintptr(v)
 	n = int(VSIFReadL(p, 1, int64(l), up))
-	err = lastError()
+	err = LastError()
 	if err != nil {
 		return
 	}
@@ -66,7 +66,7 @@ func (v vsi) Read(p []byte) (n int, err error) {
 func (v vsi) Write(p []byte) (n int, err error) {
 	l := len(p)
 	n = int(VSIFWriteL(p, 1, int64(l), uintptr(v)))
-	err = lastError()
+	err = LastError()
 	if err != nil {
 		return
 	}
@@ -78,7 +78,7 @@ func (v vsi) Write(p []byte) (n int, err error) {
 
 func (v vsi) Close() error {
 	r := VSIFCloseL(uintptr(v))
-	err := lastError()
+	err := LastError()
 	if err != nil {
 		return err
 	}
@@ -90,7 +90,7 @@ func (v vsi) Close() error {
 
 func (v vsi) Truncate(size int64) (err error) {
 	r := VSIFTruncateL(uintptr(v), size)
-	err = lastError()
+	err = LastError()
 	if err != nil {
 		return
 	}

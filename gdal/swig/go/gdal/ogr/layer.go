@@ -6,7 +6,7 @@ import (
 
 func (l SwigcptrLayer) CreateFeature(f Feature) (err error) {
 	r := l.wrap_CreateFeature(f)
-	//err = lastError()
+	//err = cpl.LastError()
 	if err == nil && r != 0 {
 		err = errors.New(r, "Feature creation failed")
 	}
@@ -15,7 +15,7 @@ func (l SwigcptrLayer) CreateFeature(f Feature) (err error) {
 
 func (l SwigcptrLayer) CreateField(f FieldDefn, approxok int) (err error) {
 	r := l.wrap_CreateField(f, approxok)
-	//err = lastError()
+	//err = cpl.LastError()
 	if err == nil && r != 0 {
 		err = errors.New(r, "Field creation failed")
 	}

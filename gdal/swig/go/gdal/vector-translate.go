@@ -3,6 +3,7 @@ package gdal
 import (
 	"errors"
 	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -43,7 +44,7 @@ func (t *vtranslate) DestName(name string) (ds Dataset, err error) {
 	}
 
 	ds = wrapper_GDALVectorTranslateDestName(name, t.datasets[0], t.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ds != nil || err != nil {
 		return
 	}
@@ -58,7 +59,7 @@ func (t *vtranslate) DestDS(ds Dataset) (err error) {
 	}
 
 	ok := wrapper_GDALVectorTranslateDestDS(ds, t.datasets[0], t.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ok == 1 || err != nil {
 		return
 	}

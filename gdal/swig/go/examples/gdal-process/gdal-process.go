@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal"
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/constant"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"log"
 	"os"
 )
@@ -170,7 +171,7 @@ func main() {
 	args := action.Args()
 
 	// Get the GDAL specific options.
-	options := gdal.ParseCommandLine(*opts)
+	options := cpl.ParseCommandLine(*opts)
 
 	inputs := args[:len(args)-1]
 	output := args[len(args)-1]
@@ -198,7 +199,7 @@ func main() {
 	}()
 
 	if showInfo {
-		o := gdal.ParseCommandLine(infoOpts)
+		o := cpl.ParseCommandLine(infoOpts)
 		i := gdal.NewInformer(o)
 		info, err := i.Info(ds)
 		if err != nil {

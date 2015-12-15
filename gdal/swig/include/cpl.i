@@ -30,6 +30,11 @@
 
 %include constraints.i
 
+#ifdef SWIGGO
+%module "github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
+typedef int CPLErr;
+#endif
+
 #ifdef SWIGCSHARP
 typedef enum
 {
@@ -43,6 +48,9 @@ typedef enum
 
 %inline %{
 typedef char retStringAndCPLFree;
+
+/* return value that is used for VSI methods that return -1 on error (and set errno) */
+typedef int VSI_RETVAL;
 %}
 
 %inline %{

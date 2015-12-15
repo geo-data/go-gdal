@@ -7,7 +7,7 @@ import (
 
 func NewFeature(f FeatureDefn) (feat Feature, err error) {
 	feat = wrap_NewFeature(f)
-	//err = lastError()
+	//err = cpl.LastError()
 	if err == nil && feat == nil {
 		err = errors.New("Feature creation failed")
 	}

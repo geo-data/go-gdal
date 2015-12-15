@@ -29,55 +29,59 @@ func (v *ActionVisitor) Visit(node ast.Node) (w ast.Visitor) {
 	case *ast.TypeSpec:
 		switch it := t.Type.(type) {
 		case *ast.InterfaceType:
-			// Delete methods.
-			w := 0 // write index
-		loop:
-			for _, field := range it.Methods.List {
-				fname := field.Names[0].Name
-				//log.Printf("Method %v.%v()", t.Name.Name, fname)
-				if action, ok := v.f[fname]; ok == true {
-					for _, iface := range action.Delete {
-						if iface == t.Name.Name {
-							log.Printf("Removing interface method %v.%v()", iface, fname)
-							continue loop
+			if v.f != nil { // Delete methods.
+				w := 0 // write index
+			loop:
+				for _, field := range it.Methods.List {
+					fname := field.Names[0].Name
+					//log.Printf("Method %v.%v()", t.Name.Name, fname)
+					if action, ok := v.f[fname]; ok == true {
+						for _, iface := range action.Delete {
+							if iface == t.Name.Name {
+								log.Printf("Removing interface method %v.%v()", iface, fname)
+								continue loop
+							}
 						}
 					}
+					it.Methods.List[w] = field
+					w++
 				}
-				it.Methods.List[w] = field
-				w++
+				it.Methods.List = it.Methods.List[:w]
 			}
-			it.Methods.List = it.Methods.List[:w]
 
-			// Merge methods.
-			methods, ok := v.l.Tree[t.Name.Name]
-			if !ok {
-				break
+			if v.l != nil { // Merge methods.
+				methods, ok := v.l.Tree[t.Name.Name]
+				if !ok {
+					break
+				}
+				log.Printf("Merging %d methods from interface %s", len(methods.List), t.Name.Name)
+				it.Methods.List = append(it.Methods.List, methods.List...)
 			}
-			log.Printf("Merging %d methods from interface %s", len(methods.List), t.Name.Name)
-			it.Methods.List = append(it.Methods.List, methods.List...)
 		}
 	case *ast.FuncDecl:
-		fname := t.Name.Name
-		if action, ok := v.f[fname]; ok == true {
-			if action.Rename == nil {
-				break
-			}
-			r := action.Rename
+		if v.f != nil { // Rename functions and methods.
+			fname := t.Name.Name
+			if action, ok := v.f[fname]; ok == true {
+				if action.Rename == nil {
+					break
+				}
+				r := action.Rename
 
-			if t.Recv != nil && t.Recv.List != nil && len(t.Recv.List) == 1 { // Is it a method?
-				switch st := t.Recv.List[0].Type.(type) {
-				case *ast.Ident:
-					if rename, ok := r.Method[st.Name]; ok == true {
-						new := rename.Rename(t.Name.Name)
-						log.Printf("Renaming %v.%v() to %v.%v()", st.Name, t.Name.Name, st.Name, new)
+				if t.Recv != nil && t.Recv.List != nil && len(t.Recv.List) == 1 { // Is it a method?
+					switch st := t.Recv.List[0].Type.(type) {
+					case *ast.Ident:
+						if rename, ok := r.Method[st.Name]; ok == true {
+							new := rename.Rename(t.Name.Name)
+							log.Printf("Renaming %v.%v() to %v.%v()", st.Name, t.Name.Name, st.Name, new)
+							t.Name = ast.NewIdent(new)
+						}
+					}
+				} else { // It's a function.
+					if r.Function != nil {
+						new := r.Function.Rename(t.Name.Name)
+						log.Printf("Renaming %v() to %v()", t.Name.Name, new)
 						t.Name = ast.NewIdent(new)
 					}
-				}
-			} else { // It's a function.
-				if r.Function != nil {
-					new := r.Function.Rename(t.Name.Name)
-					log.Printf("Renaming %v() to %v()", t.Name.Name, new)
-					t.Name = ast.NewIdent(new)
 				}
 			}
 		}

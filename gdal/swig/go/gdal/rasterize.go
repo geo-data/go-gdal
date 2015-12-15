@@ -3,6 +3,7 @@ package gdal
 import (
 	"errors"
 	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -42,7 +43,7 @@ func (r *rasterize) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 	ds = wrapper_GDALRasterizeDestName(name, r.datasets[0], r.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ds != nil || err != nil {
 		return
 	}
@@ -56,7 +57,7 @@ func (r *rasterize) DestDS(ds Dataset) (err error) {
 		return
 	}
 	ok := wrapper_GDALRasterizeDestDS(ds, r.datasets[0], r.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ok == 1 || err != nil {
 		return
 	}

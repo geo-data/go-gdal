@@ -3,6 +3,7 @@ package gdal
 import (
 	"errors"
 	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -44,7 +45,7 @@ func (w *warp) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 	ds = wrapper_GDALWarpDestName(name, len(w.datasets), w.datasets, w.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ds != nil || err != nil {
 		return
 	}
@@ -58,7 +59,7 @@ func (w *warp) DestDS(ds Dataset) (err error) {
 		return
 	}
 	ok := wrapper_GDALWarpDestDS(ds, len(w.datasets), w.datasets, w.options)
-	err = lastError()
+	err = cpl.LastError()
 	if ok == 1 || err != nil {
 		return
 	}

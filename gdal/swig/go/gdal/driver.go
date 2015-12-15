@@ -1,11 +1,13 @@
 package gdal
 
-func (d SwigcptrDriver) CreateCopy(path string, ds Dataset, args ...interface{}) (ret Dataset, err Err) {
+import "github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
+
+func (d SwigcptrDriver) CreateCopy(path string, ds Dataset, args ...interface{}) (ret Dataset, err error) {
 	ret = d.wrap_CreateCopy(path, ds, args...)
 	if ret != nil {
 		return
 	}
-	err = lastError()
+	err = cpl.LastError()
 	ret = nil
 	return
 }
@@ -15,7 +17,7 @@ func (d SwigcptrDriver) Create(path string, xsize, ysize, bands, etype int, opti
 	if ret != nil {
 		return
 	}
-	err = lastError()
+	err = cpl.LastError()
 	ret = nil
 	return
 }

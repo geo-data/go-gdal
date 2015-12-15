@@ -1,7 +1,8 @@
-package gdal
+package cpl_test
 
 import (
 	"encoding/csv"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"io"
 	"reflect"
 	"testing"
@@ -10,7 +11,7 @@ import (
 func TestVSIF(t *testing.T) {
 	// Test Open
 	fname := "/vsimem/test.dat"
-	fp, err := VSIFOpen(fname, "rw")
+	fp, err := cpl.VSIFOpen(fname, "rw")
 	if err != nil {
 		t.Errorf("VSIFOpen(%v) error is not nil: %s", fname, err)
 	}
@@ -99,7 +100,7 @@ func TestVSIF(t *testing.T) {
 func TestVSIFReadWriter(t *testing.T) {
 	// Open the CSV
 	fname := "/vsimem/test.csv"
-	fp, err := VSIFOpen(fname, "rw")
+	fp, err := cpl.VSIFOpen(fname, "rw")
 	if err != nil {
 		t.Errorf("VSIFOpen(%v) error is not nil: %s", fname, err)
 	}

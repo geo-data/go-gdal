@@ -3,6 +3,7 @@ package gdal_test
 import (
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal"
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/constant"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"os"
 	"reflect"
 	"regexp"
@@ -55,9 +56,9 @@ func TestOpenFail(t *testing.T) {
 		t.Fatalf("Open(%q): error is nil", bad)
 	}
 
-	gerr, ok := err.(gdal.Err)
+	gerr, ok := err.(cpl.Error)
 	if !ok {
-		t.Fatalf("Open(%q) expected error type Err, got %T", bad, err)
+		t.Fatalf("Open(%q) expected error type cpl.Error, got %T", bad, err)
 	}
 	if gerr.ErrorNo() != 4 {
 		t.Errorf("Open(%q): error number == %v, expected 4", bad, gerr.ErrorNo())

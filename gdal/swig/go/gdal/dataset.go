@@ -2,6 +2,7 @@ package gdal
 
 import (
 	"fmt"
+	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/ogr"
 	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/osr"
 )
@@ -13,9 +14,9 @@ func (d SwigcptrDataset) GetGeoTransform() (gt []float64) {
 	return
 }
 
-func (d SwigcptrDataset) SetGeoTransform(gt [6]float64) (err Err) {
+func (d SwigcptrDataset) SetGeoTransform(gt [6]float64) (err error) {
 	if r := d.wrap_SetGeoTransform(gt[:]); r != 1 {
-		err = lastError()
+		err = cpl.LastError()
 	}
 	return
 }
@@ -25,7 +26,7 @@ func (d SwigcptrDataset) GetLayerByName(name string) (lyr ogr.Layer, err error) 
 	if lyr != nil {
 		return
 	}
-	err = lastError()
+	err = cpl.LastError()
 	if err == nil {
 		err = fmt.Errorf("The layer does not exist: %s", name)
 	}
@@ -37,7 +38,7 @@ func (d SwigcptrDataset) CreateLayer(name string, srs osr.SpatialReference, geom
 	if lyr != nil {
 		return
 	}
-	err = lastError()
+	err = cpl.LastError()
 	if err == nil {
 		err = fmt.Errorf("Layer creation failed: %s", name)
 	}
