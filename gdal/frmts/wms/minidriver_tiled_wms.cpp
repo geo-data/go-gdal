@@ -34,7 +34,7 @@
 
 CPP_GDALWMSMiniDriverFactory(TiledWMS)
 
-static char SIG[]="GDAL_WMS TiledWMS: ";
+static const char SIG[]="GDAL_WMS TiledWMS: ";
 
 /*
  *\brief Read a number from an xml element
@@ -544,7 +544,7 @@ CPLErr GDALWMSMiniDriver_TiledWMS::Initialize(CPLXMLNode *config)
         m_bsx=m_bsy=-1;
         m_data_window.m_sx=m_data_window.m_sy=0;
 
-        for (int once=1;once;once--) { // Something to break out of
+        for (int once2=1;once2;once2--) { // Something to break out of
             while ((NULL!=Pattern)&&(NULL!=(Pattern=SearchXMLSiblings(Pattern,"=TilePattern")))) {
                 int mbsx,mbsy;
 
@@ -574,7 +574,7 @@ CPLErr GDALWMSMiniDriver_TiledWMS::Initialize(CPLXMLNode *config)
 
                 if (-1==m_bsx) m_bsx=mbsx;
                 if (-1==m_bsy) m_bsy=mbsy;
-                if ((m_bsy!=mbsy)||(m_bsy!=mbsy)) {
+                if ((m_bsx!=mbsx)||(m_bsy!=mbsy)) {
                     CPLError(ret=CE_Failure,CPLE_AppDefined,"%s%s",SIG,
                         "Tileset uses different block sizes.");
                     overview_count=0;

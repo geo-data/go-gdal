@@ -50,10 +50,10 @@ OGRCurveCollection::OGRCurveCollection()
 
 /**
  * \brief Copy constructor.
- * 
+ *
  * Note: before GDAL 2.1, only the default implementation of the constructor
  * existed, which could be unsafe to use.
- * 
+ *
  * @since GDAL 2.1
  */
 
@@ -65,7 +65,7 @@ OGRCurveCollection::OGRCurveCollection( const OGRCurveCollection& other ) :
     {
         nCurveCount = other.nCurveCount;
         papoCurves = (OGRCurve **) VSI_CALLOC_VERBOSE(sizeof(void*), nCurveCount);
-        
+
         if( papoCurves )
         {
             for( int i = 0; i < nCurveCount; i++ )
@@ -104,12 +104,12 @@ OGRCurveCollection& OGRCurveCollection::operator=( const OGRCurveCollection& oth
     if( this != &other)
     {
         empty(NULL);
-        
+
         if( other.nCurveCount > 0 )
         {
             nCurveCount = other.nCurveCount;
             papoCurves = (OGRCurve **) VSI_MALLOC2_VERBOSE(sizeof(void*), nCurveCount);
-            
+
             if( papoCurves )
             {
                 for( int i = 0; i < nCurveCount; i++ )
@@ -153,8 +153,11 @@ OGRErr OGRCurveCollection::addCurveDirectly( OGRGeometry* poGeom,
 
     if( bNeedRealloc )
     {
-        papoCurves = (OGRCurve **) OGRRealloc( papoCurves,
+        OGRCurve** papoNewCurves = (OGRCurve **) VSI_REALLOC_VERBOSE( papoCurves,
                                              sizeof(OGRCurve*) * (nCurveCount+1) );
+        if( papoNewCurves == NULL )
+            return OGRERR_FAILURE;
+        papoCurves = papoNewCurves;
     }
 
     papoCurves[nCurveCount] = poCurve;
@@ -187,6 +190,7 @@ OGRErr OGRCurveCollection::importPreambuleFromWkb( OGRGeometry* poGeom,
     if( eErr != OGRERR_NONE )
         return eErr;
 
+    /* coverity[tainted_data] */
     papoCurves = (OGRCurve **) VSI_CALLOC_VERBOSE(sizeof(void*), nCurveCount);
     if (nCurveCount != 0 && papoCurves == NULL)
     {
@@ -299,7 +303,7 @@ OGRErr OGRCurveCollection::exportToWkt( const OGRGeometry* poGeom,
 
         nCumulativeLength += strlen(papszGeoms[iGeom]);
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Allocate the right amount of space for the aggregated string    */
 /* -------------------------------------------------------------------- */
@@ -366,7 +370,7 @@ OGRErr OGRCurveCollection::exportToWkb( const OGRGeometry* poGeom,
                                         OGRwkbVariant eWkbVariant ) const
 {
     int         nOffset;
-    
+
 /* -------------------------------------------------------------------- */
 /*      Set the byte order.                                             */
 /* -------------------------------------------------------------------- */
@@ -393,7 +397,7 @@ OGRErr OGRCurveCollection::exportToWkb( const OGRGeometry* poGeom,
         nGType = CPL_MSBWORD32( nGType );
 
     memcpy( pabyData + 1, &nGType, 4 );
-    
+
 /* -------------------------------------------------------------------- */
 /*      Copy in the raw data.                                           */
 /* -------------------------------------------------------------------- */
@@ -408,9 +412,9 @@ OGRErr OGRCurveCollection::exportToWkb( const OGRGeometry* poGeom,
     {
         memcpy( pabyData+5, &nCurveCount, 4 );
     }
-    
+
     nOffset = 9;
-    
+
 /* ==================================================================== */
 /*      Serialize each of the Geoms.                                    */
 /* ==================================================================== */
@@ -420,7 +424,7 @@ OGRErr OGRCurveCollection::exportToWkb( const OGRGeometry* poGeom,
 
         nOffset += papoCurves[iGeom]->WkbSize();
     }
-    
+
     return OGRERR_NONE;
 }
 
@@ -509,7 +513,7 @@ OGRBoolean  OGRCurveCollection::Equals( OGRCurveCollection *poOCC ) const
 {
     if( getNumCurves() != poOCC->getNumCurves() )
         return FALSE;
-    
+
     // we should eventually test the SRS.
 
     for( int iGeom = 0; iGeom < nCurveCount; iGeom++ )

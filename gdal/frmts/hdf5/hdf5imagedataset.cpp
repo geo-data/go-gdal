@@ -50,7 +50,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void GDALRegister_HDF5Image(void);
+void GDALRegister_HDF5Image();
 CPL_C_END
 
 /* release 1.6.3 or 1.6.4 changed the type of count in some api functions */
@@ -267,13 +267,13 @@ HDF5ImageRasterBand::~HDF5ImageRasterBand()
 /************************************************************************/
 /*                           HDF5ImageRasterBand()                      */
 /************************************************************************/
-HDF5ImageRasterBand::HDF5ImageRasterBand( HDF5ImageDataset *poDS, int nBand,
+HDF5ImageRasterBand::HDF5ImageRasterBand( HDF5ImageDataset *poDSIn, int nBandIn,
                                           GDALDataType eType )
 
 {
     char          **papszMetaGlobal;
-    this->poDS    = poDS;
-    this->nBand   = nBand;
+    this->poDS    = poDSIn;
+    this->nBand   = nBandIn;
     eDataType     = eType;
     bNoDataSet    = FALSE;
     dfNoDataValue = -9999;
@@ -284,26 +284,26 @@ HDF5ImageRasterBand::HDF5ImageRasterBand( HDF5ImageDataset *poDS, int nBand,
 /*      Take a copy of Global Metadata since  I can't pass Raster       */
 /*      variable to Iterate function.                                   */
 /* -------------------------------------------------------------------- */
-    papszMetaGlobal = CSLDuplicate( poDS->papszMetadata );
-    CSLDestroy( poDS->papszMetadata );
-    poDS->papszMetadata = NULL;
+    papszMetaGlobal = CSLDuplicate( poDSIn->papszMetadata );
+    CSLDestroy( poDSIn->papszMetadata );
+    poDSIn->papszMetadata = NULL;
 
-    if( poDS->poH5Objects->nType == H5G_DATASET ) {
-        poDS->CreateMetadata( poDS->poH5Objects, H5G_DATASET );
+    if( poDSIn->poH5Objects->nType == H5G_DATASET ) {
+        poDSIn->CreateMetadata( poDSIn->poH5Objects, H5G_DATASET );
     }
 
 /* -------------------------------------------------------------------- */
-/*      Recover Global Metadat and set Band Metadata                    */
+/*      Recover Global Metadata and set Band Metadata                   */
 /* -------------------------------------------------------------------- */
 
-    SetMetadata( poDS->papszMetadata );
+    SetMetadata( poDSIn->papszMetadata );
 
-    CSLDestroy( poDS->papszMetadata );
-    poDS->papszMetadata = CSLDuplicate( papszMetaGlobal );
+    CSLDestroy( poDSIn->papszMetadata );
+    poDSIn->papszMetadata = CSLDuplicate( papszMetaGlobal );
     CSLDestroy( papszMetaGlobal );
 
     /* check for chunksize and set it as the blocksize (optimizes read) */
-    hid_t listid = H5Dget_create_plist(((HDF5ImageDataset * )poDS)->dataset_id);
+    hid_t listid = H5Dget_create_plist(((HDF5ImageDataset * )poDSIn)->dataset_id);
     if (listid>0)
     {
         if(H5Pget_layout(listid) == H5D_CHUNKED)
@@ -311,9 +311,9 @@ HDF5ImageRasterBand::HDF5ImageRasterBand( HDF5ImageDataset *poDS, int nBand,
             hsize_t panChunkDims[3];
             int nDimSize = H5Pget_chunk(listid, 3, panChunkDims);
             CPL_IGNORE_RET_VAL(nDimSize);
-            CPLAssert(nDimSize == poDS->ndims);
-            nBlockXSize   = (int) panChunkDims[poDS->GetXIndex()];
-            nBlockYSize   = (int) panChunkDims[poDS->GetYIndex()];
+            CPLAssert(nDimSize == poDSIn->ndims);
+            nBlockXSize   = (int) panChunkDims[poDSIn->GetXIndex()];
+            nBlockYSize   = (int) panChunkDims[poDSIn->GetYIndex()];
         }
 
         H5Pclose(listid);
@@ -466,10 +466,8 @@ GDALDataset *HDF5ImageDataset::Open( GDALOpenInfo * poOpenInfo )
 {
     int i;
     HDF5ImageDataset    *poDS;
-    char szFilename[2048];
 
-    if(!STARTS_WITH_CI(poOpenInfo->pszFilename, "HDF5:") ||
-        strlen(poOpenInfo->pszFilename) > sizeof(szFilename) - 3 )
+    if(!STARTS_WITH_CI(poOpenInfo->pszFilename, "HDF5:") )
         return NULL;
 
 /* -------------------------------------------------------------------- */
@@ -507,33 +505,33 @@ GDALDataset *HDF5ImageDataset::Open( GDALOpenInfo * poOpenInfo )
     /* -------------------------------------------------------------------- */
     CPLString osSubdatasetName;
 
-    strcpy(szFilename, papszName[1]);
+    CPLString osFilename(papszName[1]);
 
     if( strlen(papszName[1]) == 1 && papszName[3] != NULL )
     {
-        strcat(szFilename, ":");
-        strcat(szFilename, papszName[2]);
+        osFilename += ":";
+        osFilename += papszName[2];
         osSubdatasetName = papszName[3];
     }
     else
         osSubdatasetName = papszName[2];
-    
+
     poDS->SetSubdatasetName( osSubdatasetName );
 
     CSLDestroy(papszName);
     papszName = NULL;
 
-    if( !H5Fis_hdf5(szFilename) ) {
+    if( !H5Fis_hdf5(osFilename) ) {
         delete poDS;
         return NULL;
     }
 
-    poDS->SetPhysicalFilename( szFilename );
+    poDS->SetPhysicalFilename( osFilename );
 
     /* -------------------------------------------------------------------- */
     /*      Try opening the dataset.                                        */
     /* -------------------------------------------------------------------- */
-    poDS->hHDF5 = H5Fopen(szFilename,
+    poDS->hHDF5 = H5Fopen(osFilename,
                           H5F_ACC_RDONLY,
                           H5P_DEFAULT );
 
@@ -644,26 +642,23 @@ GDALDataset *HDF5ImageDataset::Open( GDALOpenInfo * poOpenInfo )
 void GDALRegister_HDF5Image( )
 
 {
-    GDALDriver  *poDriver;
-
-    if (! GDAL_CHECK_VERSION("HDF5Image driver"))
+    if( !GDAL_CHECK_VERSION( "HDF5Image driver" ) )
         return;
 
-    if(  GDALGetDriverByName( "HDF5Image" ) == NULL )
-    {
-        poDriver = new GDALDriver( );
+    if( GDALGetDriverByName( "HDF5Image" ) != NULL )
+        return;
 
-        poDriver->SetDescription( "HDF5Image" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                                   "HDF5 Dataset" );
-        poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                                   "frmt_hdf5.html" );
-        poDriver->pfnOpen = HDF5ImageDataset::Open;
-        poDriver->pfnIdentify = HDF5ImageDataset::Identify;
+    GDALDriver *poDriver = new GDALDriver( );
 
-        GetGDALDriverManager( )->RegisterDriver( poDriver );
-    }
+    poDriver->SetDescription( "HDF5Image" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "HDF5 Dataset" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_hdf5.html" );
+
+    poDriver->pfnOpen = HDF5ImageDataset::Open;
+    poDriver->pfnIdentify = HDF5ImageDataset::Identify;
+
+    GetGDALDriverManager( )->RegisterDriver( poDriver );
 }
 
 /************************************************************************/
@@ -877,7 +872,7 @@ CPLErr HDF5ImageDataset::CreateProjections()
         CPLFree( Latitude );
         CPLFree( Longitude );
     }
-    
+
     if( LatitudeDatasetID > 0 )
         H5Dclose(LatitudeDatasetID);
     if( LongitudeDatasetID > 0 )
@@ -984,7 +979,7 @@ void HDF5ImageDataset::IdentifyProductType()
         if(EQUAL(pszMissionId,"CSK"))
         {
             iSubdatasetType = CSK_PRODUCT;
-             
+
             const char *osMissionLevel = NULL;
 
             if(GetMetadataItem("Product_Type")!=NULL)
@@ -997,7 +992,7 @@ void HDF5ImageDataset::IdentifyProductType()
 
                 if(STARTS_WITH_CI(osMissionLevel, "SCS"))
                     iCSKProductType  = PROD_CSK_L1A;
-                
+
                 if(STARTS_WITH_CI(osMissionLevel, "DGM"))
                     iCSKProductType  = PROD_CSK_L1B;
 
@@ -1102,7 +1097,7 @@ void HDF5ImageDataset::CaptureCSKGeolocation(int iProductType)
 
 /**
 * Get Geotransform information for COSMO-SKYMED files
-* In case of sucess it stores the transformation
+* In case of success it stores the transformation
 * in adfGeoTransform. In case of failure it doesn't
 * modify adfGeoTransform
 * @param iProductType type of CSK subproduct, see HDF5CSKProduct
@@ -1236,7 +1231,7 @@ void HDF5ImageDataset::CaptureCSKGCPs(int iProductType)
                 CPLError( CE_Failure, CPLE_OpenFailed,
                              "Error retrieving CSK GCPs\n" );
                 // Free on failure, e.g. in case of QLK subdataset.
-                for( int i = 0; i < 4; i++ )
+                for( i = 0; i < 4; i++ )
                 {
                     if( pasGCPList[i].pszId )
                         CPLFree( pasGCPList[i].pszId );

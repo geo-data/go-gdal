@@ -263,7 +263,7 @@ GDALProxyPoolCacheEntry* GDALDatasetPool::_RefDataset(const char* pszFileName,
         }
         CPLFree(lastEntryWithZeroRefCount->pszFileName);
 
-        /* Recycle this entry for the to-be-openeded dataset and */
+        /* Recycle this entry for the to-be-opened dataset and */
         /* moves it to the top of the list */
         if (lastEntryWithZeroRefCount->prev)
             lastEntryWithZeroRefCount->prev->next = lastEntryWithZeroRefCount->next;
@@ -342,7 +342,7 @@ void GDALDatasetPool::_CloseDataset(const char* pszFileName, CPL_UNUSED GDALAcce
             refCountOfDisableRefCount --;
 
             GDALSetResponsiblePIDForCurrentThread(responsiblePID);
-            
+
             cur->poDS = NULL;
             cur->pszFileName[0] = '\0';
             break;
@@ -494,6 +494,7 @@ void free_func_get_metadata(void* _elt)
     GetMetadataElt* elt = (GetMetadataElt*) _elt;
     CPLFree(elt->pszDomain);
     CSLDestroy(elt->papszMetadata);
+    CPLFree(elt);
 }
 
 
@@ -527,6 +528,7 @@ void free_func_get_metadata_item(void* _elt)
     CPLFree(elt->pszName);
     CPLFree(elt->pszDomain);
     CPLFree(elt->pszMetadataItem);
+    CPLFree(elt);
 }
 
 CPL_C_END

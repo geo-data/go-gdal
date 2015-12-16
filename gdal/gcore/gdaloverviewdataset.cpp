@@ -34,7 +34,7 @@ CPL_CVSID("$Id$");
 
 /** In GDAL, GDALRasterBand::GetOverview() returns a stand-alone band, that
     may have no parent dataset. This can be inconvenient in certain contexts, where
-    cross-band processing must be done, or when API expect a fully fledge dataset.
+    cross-band processing must be done, or when API expect a fully fledged dataset.
     Furthermore even if overview band has a container dataset, that one often
     fails to declare its projection, geotransform, etc... which make it somehow
     useless. GDALOverviewDataset remedies to those deficiencies.
@@ -267,7 +267,7 @@ CPLErr GDALOverviewDataset::IRasterIO( GDALRWFlag eRWFlag,
                                GSpacing nPixelSpace, GSpacing nLineSpace,
                                GSpacing nBandSpace,
                                GDALRasterIOExtraArg* psExtraArg)
-    
+
 {
     int iBandIndex; 
     CPLErr eErr = CE_None;
@@ -313,7 +313,7 @@ CPLErr GDALOverviewDataset::IRasterIO( GDALRWFlag eRWFlag,
 
         GDALDestroyScaledProgress( psExtraArg->pProgressData );
     }
-    
+
     psExtraArg->pfnProgress = pfnProgressGlobal;
     psExtraArg->pProgressData = pProgressDataGlobal;
 
@@ -392,7 +392,7 @@ const GDAL_GCP *GDALOverviewDataset::GetGCPs()
 {
     if( pasGCPList != NULL )
         return pasGCPList;
-    
+
     const GDAL_GCP* pasGCPsMain = poMainDS->GetGCPs();
     if( pasGCPsMain == NULL )
         return NULL;

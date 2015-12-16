@@ -139,9 +139,9 @@ int GDALJP2Metadata::ReadAndParse( const char *pszFilename )
 
 {
     VSILFILE *fpLL;
-        
+
     fpLL = VSIFOpenL( pszFilename, "rb" );
-        
+
     if( fpLL == NULL )
     {
         CPLDebug( "GDALJP2Metadata", "Could not even open %s.", 
@@ -216,7 +216,7 @@ void GDALJP2Metadata::CollectGMLData( GDALJP2Box *poGMLData )
 
             if( !oSubChildBox.ReadFirstChild( &oChildBox ) )
                 break;
-            
+
             while( strlen(oSubChildBox.GetType()) > 0 )
             {
                 if( EQUAL(oSubChildBox.GetType(),"lbl ") )
@@ -231,6 +231,7 @@ void GDALJP2Metadata::CollectGMLData( GDALJP2Box *poGMLData )
                     if( pszXML != NULL && nXMLLength < 100 * 1024 * 1024 )
                     {
                         GIntBig i;
+                        /* coverity[tainted_data] */
                         for(i=nXMLLength-1; i >= 0; i--)
                         {
                             if( pszXML[i] == '\0' )
@@ -238,6 +239,7 @@ void GDALJP2Metadata::CollectGMLData( GDALJP2Box *poGMLData )
                             else
                                 break;
                         }
+                        /* coverity[tainted_data] */
                         for(i=0;i<nXMLLength;i++)
                         {
                             if( pszXML[i] == '\0' )
@@ -251,6 +253,7 @@ void GDALJP2Metadata::CollectGMLData( GDALJP2Box *poGMLData )
                             if( psNode == NULL )
                             {
                                 CPLDebug("GMLJP2", "GMLJP2 data contains nul characters inside content. Replacing them by \\n");
+                                /* coverity[tainted_data] */
                                 for(i=0;i<nXMLLength;i++)
                                 {
                                     if( pszXML[i] == '\0' )
@@ -266,7 +269,7 @@ void GDALJP2Metadata::CollectGMLData( GDALJP2Box *poGMLData )
                 if( !oSubChildBox.ReadNextChild( &oChildBox ) )
                     break;
             }
-            
+
             if( pszLabel != NULL && pszXML != NULL )
             {
                 papszGMLMetadata = CSLSetNameValue( papszGMLMetadata, 
@@ -290,7 +293,7 @@ void GDALJP2Metadata::CollectGMLData( GDALJP2Box *poGMLData )
             CPLFree( pszLabel );
             CPLFree( pszXML );
         }
-        
+
         if( !oChildBox.ReadNextChild( poGMLData ) )
             break;
     }
@@ -456,8 +459,8 @@ int GDALJP2Metadata::ReadBoxes( VSILFILE *fpVSIL )
                     GDALJP2Box oResBox( fpVSIL );
 
                     oResBox.ReadFirstChild( &oSubBox );
-                    
-                    // we will use either the resd or resc box, which ever
+
+                    // We will use either the resd or resc box, which ever
                     // happens to be first.  Should we prefer resd?
                     unsigned char *pabyResData = NULL;
                     if( oResBox.GetDataLength() == 10 &&
@@ -465,14 +468,14 @@ int GDALJP2Metadata::ReadBoxes( VSILFILE *fpVSIL )
                     {
                         int nVertNum, nVertDen, nVertExp;
                         int nHorzNum, nHorzDen, nHorzExp;
-                        
+
                         nVertNum = pabyResData[0] * 256 + pabyResData[1];
                         nVertDen = pabyResData[2] * 256 + pabyResData[3];
                         nHorzNum = pabyResData[4] * 256 + pabyResData[5];
                         nHorzDen = pabyResData[6] * 256 + pabyResData[7];
                         nVertExp = pabyResData[8];
                         nHorzExp = pabyResData[9];
-                        
+
                         // compute in pixels/cm 
                         double dfVertRes = 
                             (nVertNum/(double)nVertDen) * pow(10.0,nVertExp)/100;
@@ -484,7 +487,7 @@ int GDALJP2Metadata::ReadBoxes( VSILFILE *fpVSIL )
                             papszMetadata, 
                             "TIFFTAG_XRESOLUTION",
                             osFormatter.Printf("%g",dfHorzRes) );
-                        
+
                         papszMetadata = CSLSetNameValue( 
                             papszMetadata, 
                             "TIFFTAG_YRESOLUTION",
@@ -493,7 +496,7 @@ int GDALJP2Metadata::ReadBoxes( VSILFILE *fpVSIL )
                             papszMetadata, 
                             "TIFFTAG_RESOLUTIONUNIT", 
                             "3 (pixels/cm)" );
-                        
+
                         CPLFree( pabyResData );
                     }
                 }
@@ -749,7 +752,7 @@ GetDictionaryItem( char **papszGMLMetadata, const char *pszURN )
     CPLStripXMLNamespace( psDictTree, NULL, TRUE );
 
     CPLXMLNode *psDictRoot = CPLSearchXMLNode( psDictTree, "=Dictionary" );
-    
+
     if( psDictRoot == NULL )
     {
         CPLDestroyXMLNode( psDictTree );
@@ -772,7 +775,7 @@ GetDictionaryItem( char **papszGMLMetadata, const char *pszURN )
 
         if( !EQUAL(psEntry->pszValue,"dictionaryEntry") )
             continue;
-        
+
         if( psEntry->psChild == NULL )
             continue;
 
@@ -791,7 +794,7 @@ GetDictionaryItem( char **papszGMLMetadata, const char *pszURN )
     return psHit;
 }
 
-        
+
 /************************************************************************/
 /*                            GMLSRSLookup()                            */
 /*                                                                      */
@@ -882,7 +885,7 @@ int GDALJP2Metadata::ParseGMLCoverageDesc()
     {
         psOriginPoint = CPLGetXMLNode( psRG, "origin.Point" );
 
-        
+
         CPLXMLNode *psOffset1 = CPLGetXMLNode( psRG, "offsetVector" );
         if( psOffset1 != NULL )
         {
@@ -965,7 +968,7 @@ int GDALJP2Metadata::ParseGMLCoverageDesc()
 /* -------------------------------------------------------------------- */
 /*      If we still don't have an srsName, check for it on the          */
 /*      boundedBy Envelope.  Some products                              */
-/*      (ie. EuropeRasterTile23.jpx) use this as the only srsName       */
+/*      (i.e. EuropeRasterTile23.jpx) use this as the only srsName      */
 /*      delivery vehicle.                                               */
 /* -------------------------------------------------------------------- */
     if( pszSRSName == NULL )
@@ -985,7 +988,7 @@ int GDALJP2Metadata::ParseGMLCoverageDesc()
     }
 
 /* -------------------------------------------------------------------- */
-/*      If we have gotten a geotransform, then try to interprete the    */
+/*      If we have gotten a geotransform, then try to interpret the     */
 /*      srsName.                                                        */
 /* -------------------------------------------------------------------- */
     bool bNeedAxisFlip = false;
@@ -1039,7 +1042,7 @@ int GDALJP2Metadata::ParseGMLCoverageDesc()
         bNeedAxisFlip = false;
         CPLDebug( "GMLJP2", "Suppressed axis flipping based on GDAL_IGNORE_AXIS_ORIENTATION." );
     }
-    
+
     if( pszSRSName && bNeedAxisFlip )
     {
         // Suppress explicit axis order in SRS definition
@@ -1051,12 +1054,12 @@ int GDALJP2Metadata::ParseGMLCoverageDesc()
         OGR_SRSNode *poPROJCS = oSRS.GetAttrNode( "PROJCS" );
         if (poPROJCS != NULL && oSRS.EPSGTreatsAsNorthingEasting())
             poPROJCS->StripNodes( "AXIS" );
-        
+
         CPLFree(pszProjection);
         oSRS.exportToWkt( &pszProjection );
 
     }
-    
+
     /* Some Pleiades files have explicit <gml:axisName>Easting</gml:axisName> */
     /* <gml:axisName>Northing</gml:axisName> to override default EPSG order */
     if( bNeedAxisFlip && psRG != NULL )
@@ -1223,7 +1226,7 @@ GDALJP2Box *GDALJP2Metadata::CreateJP2GeoTIFF()
     GDALJP2Box *poBox;
 
     poBox = GDALJP2Box::CreateUUIDBox( msi_uuid2, nGTBufSize, pabyGTBuf );
-    
+
     CPLFree( pabyGTBuf );
 
     return poBox;
@@ -1277,7 +1280,7 @@ int GDALJP2Metadata::GetGMLJP2GeoreferencingInfo( int& nEPSGCode,
     CPLErr eErr = CPLGetLastErrorType();
     CPLString osLastErrorMsg = CPLGetLastErrorMsg();
 
-    // Determinte if we need to flix axis. Reimport from EPSG and make
+    // Determine if we need to flip axis. Reimport from EPSG and make
     // sure not to strip axis definitions to determine the axis order.
     if( nEPSGCode != 0 && oSRS.importFromEPSGA(nEPSGCode) == OGRERR_NONE )
     {
@@ -1300,10 +1303,10 @@ int GDALJP2Metadata::GetGMLJP2GeoreferencingInfo( int& nEPSGCode,
         + adfGeoTransform[5] * 0.5;
     adfXVector[0] = adfGeoTransform[1];
     adfXVector[1] = adfGeoTransform[2];
-        
+
     adfYVector[0] = adfGeoTransform[4];
     adfYVector[1] = adfGeoTransform[5];
-    
+
     if( bNeedAxisFlip
         && CSLTestBoolean( CPLGetConfigOption( "GDAL_IGNORE_AXIS_ORIENTATION",
                                                "FALSE" ) ) )
@@ -1316,9 +1319,9 @@ int GDALJP2Metadata::GetGMLJP2GeoreferencingInfo( int& nEPSGCode,
     if( bNeedAxisFlip )
     {
         double dfTemp;
-        
+
         CPLDebug( "GMLJP2", "Flipping GML coverage axis order." );
-        
+
         dfTemp = adfOrigin[0];
         adfOrigin[0] = adfOrigin[1];
         adfOrigin[1] = dfTemp;
@@ -1414,7 +1417,7 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2( int nXSize, int nYSize )
                       "Unable to open GMLJP2OVERRIDE file." );
             return NULL;
         }
-        
+
         CPL_IGNORE_RET_VAL(VSIFSeekL( fp, 0, SEEK_END ));
         int nLength = (int) VSIFTellL( fp );
         pszGML = (char *) CPLCalloc(1,nLength+1);
@@ -1430,12 +1433,12 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2( int nXSize, int nYSize )
                                                 pszGML );
 
         GDALJP2Box *poGMLData = GDALJP2Box::CreateAsocBox( 2, apoGMLBoxes);
-        
+
         delete apoGMLBoxes[0];
         delete apoGMLBoxes[1];
 
         CPLFree( pszGML );
-        
+
         return poGMLData;
     }
 
@@ -1455,9 +1458,9 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2( int nXSize, int nYSize )
 
     char szSRSName[100];
     if( nEPSGCode != 0 )
-        sprintf( szSRSName, "urn:ogc:def:crs:EPSG::%d", nEPSGCode );
+        snprintf( szSRSName, sizeof(szSRSName), "urn:ogc:def:crs:EPSG::%d", nEPSGCode );
     else
-        strcpy( szSRSName, 
+        snprintf( szSRSName, sizeof(szSRSName), "%s",
                 "gmljp2://xml/CRSDictionary.gml#ogrcrs1" );
 
     // Compute bounding box
@@ -1478,7 +1481,7 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2( int nXSize, int nYSize )
         double dfTmp = dfLCX;
         dfLCX = dfLCY;
         dfLCY = dfTmp;
-        
+
         dfTmp = dfUCX;
         dfUCX = dfUCY;
         dfUCY = dfTmp;
@@ -1598,7 +1601,7 @@ static CPLXMLNode* GDALGMLJP2GetXMLRoot(CPLXMLNode* psNode)
 
 static void GDALGMLJP2PatchFeatureCollectionSubstitutionGroup(CPLXMLNode* psRoot)
 {
-    /* GML 3.2 SF profile recommands the feature collection type to derive */
+    /* GML 3.2 SF profile recommends the feature collection type to derive */
     /* from gml:AbstractGML to prevent it to be included in another feature */
     /* collection, but this is what we want to do. So patch that... */
 
@@ -1749,7 +1752,7 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2V2( int nXSize, int nYSize,
                     [ "The metadata file will be generated from a template and a source file.",
                       "The template is a valid GMLJP2 metadata XML tree with placeholders like",
                       "{{{XPATH(some_xpath_expression)}}}",
-                      "that are evalated from the source XML file. Typical use case",
+                      "that are evaluated from the source XML file. Typical use case",
                       "is to generate a gmljp2:eopMetadata from the XML metadata",
                       "provided by the image provider in their own particular format." ],
                 "dynamic_metadata" :
@@ -1793,7 +1796,7 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2V2( int nXSize, int nYSize,
                                   "Ignored for a remote_resource"],
                 "namespace": "http://example.com",
 
-                "#schema_location_doc": ["Value of the substitued schemaLocation. ",
+                "#schema_location_doc": ["Value of the substituted schemaLocation. ",
                                          "Typically a schema box label (link)",
                                          "Ignored for a remote_resource"],
                 "schema_location": "gmljp2://xml/schema_0.xsd",
@@ -1902,7 +1905,7 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2V2( int nXSize, int nYSize,
                         json_object* poFile = json_object_object_get(poMetadata, "file");
                         if( poFile && json_object_get_type(poFile) == json_type_string )
                             pszFile = json_object_get_string(poFile);
-                        
+
                         const char* pszContent = NULL;
                         json_object* poContent = json_object_object_get(poMetadata, "content");
                         if( poContent && json_object_get_type(poContent) == json_type_string )
@@ -2236,12 +2239,14 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2V2( int nXSize, int nYSize,
         if( nEPSGCode != 0 )
         {
             if( bCRSURL )
-                sprintf( szSRSName, "http://www.opengis.net/def/crs/EPSG/0/%d", nEPSGCode );
+                snprintf( szSRSName, sizeof(szSRSName),
+                          "http://www.opengis.net/def/crs/EPSG/0/%d", nEPSGCode );
             else
-                sprintf( szSRSName, "urn:ogc:def:crs:EPSG::%d", nEPSGCode );
+                snprintf( szSRSName, sizeof(szSRSName),
+                          "urn:ogc:def:crs:EPSG::%d", nEPSGCode );
         }
         else
-            strcpy( szSRSName, 
+            snprintf( szSRSName, sizeof(szSRSName), "%s",
                     "gmljp2://xml/CRSDictionary.gml#ogrcrs1" );
 
         osGridCoverage.Printf(
@@ -2369,7 +2374,7 @@ GDALJP2Box *GDALJP2Metadata::CreateGMLJP2V2( int nXSize, int nYSize,
                 }
                 else if( aoMetadata[i].bParentCoverageCollection )
                 {
-                    /*  Insert the gmlcov:metadata link as the next sibbling of */
+                    /* Insert the gmlcov:metadata link as the next sibling of */
                     /* GMLJP2CoverageCollection.rangeType */
                     CPLXMLNode* psRangeType =
                         CPLGetXMLNode(psGMLJP2CoverageCollection, "gmlcov:rangeType");

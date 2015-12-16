@@ -164,7 +164,7 @@ class VSIGZipHandle : public VSIVirtualHandle
                   uLong expected_crc = 0,
                   int transparent = 0);
     ~VSIGZipHandle();
-    
+
     bool              IsInitOK() const { return inbuf != NULL; }
 
     virtual int       Seek( vsi_l_offset nOffset, int nWhence );
@@ -950,6 +950,7 @@ uLong VSIGZipHandle::getLong ()
         return 0;
     }
     x += ((uLong)c)<<24;
+    /* coverity[overflow_sink] */
     return x;
 }
 
@@ -1068,7 +1069,8 @@ VSIGZipWriteHandle::VSIGZipWriteHandle( VSIVirtualHandle *poBaseHandle,
 
             /* Write a very simple .gz header:
             */
-            sprintf( header, "%c%c%c%c%c%c%c%c%c%c", gz_magic[0], gz_magic[1],
+            snprintf( header, sizeof(header),
+                      "%c%c%c%c%c%c%c%c%c%c", gz_magic[0], gz_magic[1],
                     Z_DEFLATED, 0 /*flags*/, 0,0,0,0 /*time*/, 0 /*xflags*/,
                     0x03 );
             m_poBaseHandle->Write( header, 1, 10 );
@@ -1768,7 +1770,7 @@ class VSIZipFilesystemHandler : public VSIArchiveFilesystemHandler
 
 public:
     virtual ~VSIZipFilesystemHandler();
-    
+
     virtual const char* GetPrefix() { return "/vsizip"; }
     virtual std::vector<CPLString> GetExtensions();
     virtual VSIArchiveReader* CreateReader(const char* pszZipFileName);
@@ -2375,13 +2377,13 @@ void  VSIZipWriteHandle::StartNewFile(VSIZipWriteHandle* poSubFile)
  * The syntax to open a file inside a zip file is /vsizip/path/to/the/file.zip/path/inside/the/zip/file
  * were path/to/the/file.zip is relative or absolute and path/inside/the/zip/file
  * is the relative path to the file inside the archive.
- * 
+ *
  * If the path is absolute, it should begin with a / on a Unix-like OS (or C:\ on Windows),
  * so the line looks like /vsizip//home/gdal/...
  * For example gdalinfo /vsizip/myarchive.zip/subdir1/file1.tif
  *
- * Syntaxic sugar : if the .zip file contains only one file located at its root,
- * just mentionning "/vsizip/path/to/the/file.zip" will work
+ * Syntactic sugar : if the .zip file contains only one file located at its
+ * root, just mentioning "/vsizip/path/to/the/file.zip" will work
  *
  * VSIStatL() will return the uncompressed size in st_size member and file
  * nature- file or directory - in st_mode member.

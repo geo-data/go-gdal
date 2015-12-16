@@ -128,6 +128,18 @@ TABMAPObjectBlock::TABMAPObjectBlock(TABAccess eAccessMode /*= TABRead*/):
     TABRawBinBlock(eAccessMode, TRUE)
 {
     m_bLockCenter = FALSE;
+    m_numDataBytes = 0;
+    m_nFirstCoordBlock = 0;
+    m_nLastCoordBlock = 0;
+    m_nCenterX = 0;
+    m_nCenterY = 0;
+    m_nMinX = 0;
+    m_nMinY = 0;
+    m_nMaxX = 0;
+    m_nMaxY = 0;
+    m_nCurObjectOffset = 0;
+    m_nCurObjectId = 0;
+    m_nCurObjectType = TAB_GEOM_UNSET;
 }
 
 /**********************************************************************
@@ -283,8 +295,6 @@ int TABMAPObjectBlock::AdvanceToNextObject( TABMAPHeaderBlock *poHeader )
     {
         m_nCurObjectOffset += poHeader->GetMapObjectSize( m_nCurObjectType );
     }
-    
-    
 
     if( m_nCurObjectOffset + 5 < m_numDataBytes + 20 )
     {
@@ -308,7 +318,7 @@ int TABMAPObjectBlock::AdvanceToNextObject( TABMAPHeaderBlock *poHeader )
 
         // Is this object marked as deleted?  If so, skip it.
         // I check both the top bits but I have only seen this occur
-        // with the second highest bit set (ie. in usa/states.tab). NFW.
+        // with the second highest bit set (i.e. in usa/states.tab). NFW.
 
         if( (((GUInt32)m_nCurObjectId) & (GUInt32) 0xC0000000) != 0 )
         {
@@ -357,7 +367,7 @@ int     TABMAPObjectBlock::CommitToFile()
     WriteInt16(TABMAP_OBJECT_BLOCK);    // Block type code
     m_numDataBytes = m_nSizeUsed - MAP_OBJECT_HEADER_SIZE;
     WriteInt16((GInt16)m_numDataBytes);         // num. bytes used
-    
+
     WriteInt32(m_nCenterX);
     WriteInt32(m_nCenterY);
 
@@ -431,7 +441,7 @@ int     TABMAPObjectBlock::InitNewBlock(VSILFILE *fpSrc, int nBlockSize,
 
         WriteInt16(TABMAP_OBJECT_BLOCK);// Block type code
         WriteInt16(0);                  // num. bytes used, excluding header
-    
+
         // MBR center here... will be written in CommitToFile()
         WriteInt32(0);
         WriteInt32(0);
@@ -649,13 +659,13 @@ int     TABMAPObjectBlock::PrepareNewObject(TABMAPObjHdr *poObjHdr)
     // Maintain MBR of this object block.
     UpdateMBR(poObjHdr->m_nMinX, poObjHdr->m_nMinY);
     UpdateMBR(poObjHdr->m_nMaxX, poObjHdr->m_nMaxY);
-   
+
     /*-----------------------------------------------------------------
      * Keep track of object type, ID and start address for use by
      * CommitNewObject()
      *----------------------------------------------------------------*/
     nStartAddress = GetFirstUnusedByteOffset();
-    
+
     // Backup MBR and bLockCenter as they will be reset by GotoByteInFile()
     // that will call InitBlockFromData()
     GInt32 nXMin, nYMin, nXMax, nYMax;
@@ -1336,7 +1346,7 @@ int TABMAPObjFontPoint::WriteObj(TABMAPObjectBlock *poObjBlock)
     poObjBlock->WriteByte( 0 );
     poObjBlock->WriteByte( 0 );
     poObjBlock->WriteByte( 0 );
-    
+
     poObjBlock->WriteInt16(m_nAngle);
 
     poObjBlock->WriteIntCoord(m_nX, m_nY, IsCompressedType());
@@ -1529,7 +1539,7 @@ int TABMAPObjArc::WriteObj(TABMAPObjectBlock *poObjBlock)
 
     poObjBlock->WriteInt16((GInt16)m_nStartAngle);
     poObjBlock->WriteInt16((GInt16)m_nEndAngle);
-    
+
     // An arc is defined by its defining ellipse's MBR:
     poObjBlock->WriteIntMBRCoord(m_nArcEllipseMinX, m_nArcEllipseMinY, 
                                  m_nArcEllipseMaxX, m_nArcEllipseMaxY, 
@@ -1859,7 +1869,7 @@ int TABMAPObjCollection::ReadObj(TABMAPObjectBlock *poObjBlock)
         /* 6 * int32 */
         SIZE_OF_REGION_PLINE_MINI_HDR = SIZE_OF_MPOINT_MINI_HDR = 24;
     }
-  
+
     if (nVersion >= 800)
     {
         /* extra 4 bytes for num_segments in Region/Pline mini-headers */
@@ -2034,7 +2044,7 @@ int TABMAPObjCollection::WriteObj(TABMAPObjectBlock *poObjBlock)
     poObjBlock->WriteInt32(m_nCoordBlockPtr);    // pointer into coord block
     poObjBlock->WriteInt32(m_nNumMultiPoints);   // no. points in multi point
     poObjBlock->WriteInt32(nRegionDataSizeMI);   // size of region data inc. section hdrs
-    poObjBlock->WriteInt32(nPolylineDataSizeMI); // size of Mpolyline data inc. sction hdrs
+    poObjBlock->WriteInt32(nPolylineDataSizeMI); // size of Mpolyline data inc. section hdrs
 
     if (nVersion < 800)
     {

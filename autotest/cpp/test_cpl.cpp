@@ -727,7 +727,7 @@ namespace tut
 
         CPLErrorReset();
         ensure( "11.3", VSIMalloc3( ~(size_t)0, 1, ~(size_t)0 ) == NULL );
-        ensure( "11.6bis", CPLGetLastErrorType() != CE_None );
+        ensure( "11.3bis", CPLGetLastErrorType() != CE_None );
 
         CPLErrorReset();
         ensure( "11.4", VSIMalloc3( ~(size_t)0, ~(size_t)0, 1 ) == NULL );
@@ -736,6 +736,7 @@ namespace tut
         if( !CSLTestBoolean(CPLGetConfigOption("SKIP_MEM_INTENSIVE_TEST", "NO")) )
         {
             // The following tests will fail because such allocations cannot succeed
+#if SIZEOF_VOIDP == 8
             CPLErrorReset();
             ensure( "11.6", VSIMalloc( ~(size_t)0 ) == NULL );
             ensure( "11.6bis", CPLGetLastErrorType() == CE_None ); /* no error reported */
@@ -775,6 +776,7 @@ namespace tut
             CPLErrorReset();
             ensure( "11.15", VSI_REALLOC_VERBOSE( NULL, ~(size_t)0 ) == NULL );
             ensure( "11.15bis", CPLGetLastErrorType() != CE_None );
+#endif
         }
 
         CPLPopErrorHandler();
@@ -790,6 +792,42 @@ namespace tut
         ensure( "11.18bis", CPLGetLastErrorType() == CE_None );
         ensure( "11.19", VSIMalloc3( 1, 0, 1 ) == NULL );
         ensure( "11.20", VSIMalloc3( 1, 1, 0 ) == NULL );
+    }
+
+    template<>
+    template<>
+    void object::test<12>()
+    {
+        ensure( strcmp(CPLFormFilename("a", "b", NULL), "a/b") == 0 ||
+                strcmp(CPLFormFilename("a", "b", NULL), "a\\b") == 0 );
+        ensure( strcmp(CPLFormFilename("a/", "b", NULL), "a/b") == 0 ||
+                strcmp(CPLFormFilename("a/", "b", NULL), "a\\b") == 0 );
+        ensure( strcmp(CPLFormFilename("a\\", "b", NULL), "a/b") == 0 ||
+                strcmp(CPLFormFilename("a\\", "b", NULL), "a\\b") == 0 );
+        ensure_equals( CPLFormFilename(NULL, "a", "b"), "a.b");
+        ensure_equals( CPLFormFilename(NULL, "a", ".b"), "a.b");
+        ensure_equals( CPLFormFilename("/a", "..", NULL), "/");
+        ensure_equals( CPLFormFilename("/a/", "..", NULL), "/");
+        ensure_equals( CPLFormFilename("/a/b", "..", NULL), "/a");
+        ensure_equals( CPLFormFilename("/a/b/", "..", NULL), "/a");
+        ensure( EQUAL(CPLFormFilename("c:", "..", NULL), "c:/..") ||
+                EQUAL(CPLFormFilename("c:", "..", NULL), "c:\\..") );
+        ensure( EQUAL(CPLFormFilename("c:\\", "..", NULL), "c:/..") ||
+                EQUAL(CPLFormFilename("c:\\", "..", NULL), "c:\\..") );
+        ensure_equals( CPLFormFilename("c:\\a", "..", NULL), "c:");
+        ensure_equals( CPLFormFilename("c:\\a\\", "..", NULL), "c:");
+        ensure_equals( CPLFormFilename("c:\\a\\b", "..", NULL), "c:\\a");
+        ensure_equals( CPLFormFilename("\\\\$\\c:\\a", "..", NULL), "\\\\$\\c:");
+        ensure( EQUAL(CPLFormFilename("\\\\$\\c:", "..", NULL), "\\\\$\\c:/..") ||
+                EQUAL(CPLFormFilename("\\\\$\\c:", "..", NULL), "\\\\$\\c:\\..") );
+    }
+
+    template<>
+    template<>
+    void object::test<13>()
+    {
+        ensure( VSIGetDiskFreeSpace("/vsimem/") > 0 );
+        ensure( VSIGetDiskFreeSpace(".") == -1 || VSIGetDiskFreeSpace(".") >= 0 );
     }
 
 } // namespace tut

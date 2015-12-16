@@ -65,8 +65,8 @@ CPLErr GDALRasterBand::IRasterIO( GDALRWFlag eRWFlag,
 
     if( eRWFlag == GF_Write && eFlushBlockErr != CE_None )
     {
-        CPLError(eFlushBlockErr, CPLE_AppDefined,
-                 "An error occured while writing a dirty block");
+        CPLError( eFlushBlockErr, CPLE_AppDefined,
+                  "An error occurred while writing a dirty block" );
         CPLErr eErr = eFlushBlockErr;
         eFlushBlockErr = CE_None;
         return eErr;
@@ -101,9 +101,9 @@ CPLErr GDALRasterBand::IRasterIO( GDALRWFlag eRWFlag,
                     && nYOff + nYSize >= (nLBlockY+1) * nBlockYSize;
 
                 /* Is this a partial tile at right and/or bottom edges of */
-                /* the raster, and that is going to be completely written ? */
-                /* If so, don't load it from storage, but zeroized it so that */
-                /* the content outsize of the validity area is initialized */
+                /* the raster, and that is going to be completely written? */
+                /* If so, do not load it from storage, but zero it so that */
+                /* the content outsize of the validity area is initialized. */
                 bool bMemZeroBuffer = false;
                 if( eRWFlag == GF_Write && !bJustInitialize &&
                     nXOff == 0 && nXSize == nBlockXSize &&
@@ -139,7 +139,7 @@ CPLErr GDALRasterBand::IRasterIO( GDALRWFlag eRWFlag,
                 }
             }
 
-            // To make Coverity happy. Shouldn't happen by design
+            // To make Coverity happy. Should not happen by design.
             if( pabySrcBlock == NULL )
             {
                 CPLAssert(FALSE);
@@ -280,9 +280,9 @@ CPLErr GDALRasterBand::IRasterIO( GDALRWFlag eRWFlag,
                     && nXOff + nXSize >= (nLBlockX+1) * nBlockXSize;
 
                 /* Is this a partial tile at right and/or bottom edges of */
-                /* the raster, and that is going to be completely written ? */
-                /* If so, don't load it from storage, but zeroized it so that */
-                /* the content outsize of the validity area is initialized */
+                /* the raster, and that is going to be completely written? */
+                /* If so, do not load it from storage, but zero it so that */
+                /* the content outsize of the validity area is initialized. */
                 bool bMemZeroBuffer = false;
                 if( eRWFlag == GF_Write && !bJustInitialize &&
                     nXOff <= nLBlockX * nBlockXSize &&
@@ -480,7 +480,7 @@ CPLErr GDALRasterBand::IRasterIO( GDALRWFlag eRWFlag,
                     }*/
                 }
 
-                // To make Coverity happy. Shouldn't happen by design
+                // To make Coverity happy. Should not happen by design.
                 if( pabyDstBlock == NULL )
                 {
                     CPLAssert(FALSE);
@@ -609,7 +609,7 @@ CPLErr GDALRasterBand::IRasterIO( GDALRWFlag eRWFlag,
                     pabySrcBlock = (GByte *) poBlock->GetDataRef();
                 }
 
-                // To make Coverity happy. Shouldn't happen by design
+                // To make Coverity happy.  Should not happen by design.
                 if( pabySrcBlock == NULL )
                 {
                     CPLAssert(FALSE);
@@ -768,9 +768,9 @@ CPLErr GDALRasterBand::RasterIOResampled( CPL_UNUSED GDALRWFlag eRWFlag,
 
     char* apszOptions[4];
     char szBuffer0[64], szBuffer1[64], szBuffer2[64];
-    sprintf(szBuffer0, "DATAPOINTER=%s", szBuffer);
-    sprintf(szBuffer1, "PIXELOFFSET=" CPL_FRMT_GIB, (GIntBig)nPixelSpace);
-    sprintf(szBuffer2, "LINEOFFSET=" CPL_FRMT_GIB, (GIntBig)nLineSpace);
+    snprintf(szBuffer0, sizeof(szBuffer0), "DATAPOINTER=%s", szBuffer);
+    snprintf(szBuffer1, sizeof(szBuffer1), "PIXELOFFSET=" CPL_FRMT_GIB, (GIntBig)nPixelSpace);
+    snprintf(szBuffer2, sizeof(szBuffer2), "LINEOFFSET=" CPL_FRMT_GIB, (GIntBig)nLineSpace);
     apszOptions[0] = szBuffer0;
     apszOptions[1] = szBuffer1;
     apszOptions[2] = szBuffer2;
@@ -819,13 +819,17 @@ CPLErr GDALRasterBand::RasterIOResampled( CPL_UNUSED GDALRWFlag eRWFlag,
         }
 
         GDALWarpOptions* psWarpOptions = GDALCreateWarpOptions();
-        CPL_STATIC_ASSERT( (int)GRIORA_NearestNeighbour == (int)GRA_NearestNeighbour );
-        CPL_STATIC_ASSERT( (int)GRIORA_Cubic == (int)GRA_Cubic );
-        CPL_STATIC_ASSERT( (int)GRIORA_CubicSpline == (int)GRA_CubicSpline );
-        CPL_STATIC_ASSERT( (int)GRIORA_Lanczos == (int)GRA_Lanczos );
-        CPL_STATIC_ASSERT( (int)GRIORA_Average == (int)GRA_Average );
-        CPLAssert( psExtraArg->eResampleAlg != GRIORA_Gauss );
-        psWarpOptions->eResampleAlg = static_cast<GDALResampleAlg>(static_cast<int>(psExtraArg->eResampleAlg));
+        switch(psExtraArg->eResampleAlg)
+        {
+            case GRIORA_NearestNeighbour: psWarpOptions->eResampleAlg = GRA_NearestNeighbour; break;
+            case GRIORA_Bilinear:         psWarpOptions->eResampleAlg = GRA_Bilinear; break;
+            case GRIORA_Cubic:            psWarpOptions->eResampleAlg = GRA_Cubic; break;
+            case GRIORA_CubicSpline:      psWarpOptions->eResampleAlg = GRA_CubicSpline; break;
+            case GRIORA_Lanczos:          psWarpOptions->eResampleAlg = GRA_Lanczos; break;
+            case GRIORA_Average:          psWarpOptions->eResampleAlg = GRA_Average; break;
+            case GRIORA_Mode:             psWarpOptions->eResampleAlg = GRA_Mode; break;
+            default:                      CPLAssert(FALSE); psWarpOptions->eResampleAlg = GRA_NearestNeighbour; break;
+        }
         psWarpOptions->hSrcDS = (GDALDatasetH) (hVRTDS ? hVRTDS : GetDataset());
         psWarpOptions->hDstDS = (GDALDatasetH) poMEMDS;
         psWarpOptions->nBandCount = 1;
@@ -1175,9 +1179,9 @@ CPLErr GDALDataset::RasterIOResampled( CPL_UNUSED GDALRWFlag eRWFlag,
 
         char* apszOptions[4];
         char szBuffer0[64], szBuffer1[64], szBuffer2[64];
-        sprintf(szBuffer0, "DATAPOINTER=%s", szBuffer);
-        sprintf(szBuffer1, "PIXELOFFSET=" CPL_FRMT_GIB, (GIntBig)nPixelSpace);
-        sprintf(szBuffer2, "LINEOFFSET=" CPL_FRMT_GIB, (GIntBig)nLineSpace);
+        snprintf(szBuffer0, sizeof(szBuffer0), "DATAPOINTER=%s", szBuffer);
+        snprintf(szBuffer1, sizeof(szBuffer1), "PIXELOFFSET=" CPL_FRMT_GIB, (GIntBig)nPixelSpace);
+        snprintf(szBuffer2, sizeof(szBuffer2), "LINEOFFSET=" CPL_FRMT_GIB, (GIntBig)nLineSpace);
         apszOptions[0] = szBuffer0;
         apszOptions[1] = szBuffer1;
         apszOptions[2] = szBuffer2;
@@ -2789,7 +2793,7 @@ int GDALDatasetGetBestOverviewLevel(GDALDataset* poDS,
 /*      much like the GDALRasterBand::IRasterIO(), but it handles       */
 /*      all bands at once, so that a format driver that handles a       */
 /*      request for different bands of the same block efficiently       */
-/*      (ie. without re-reading interleaved data) will efficiently.     */
+/*      (i.e. without re-reading interleaved data) will efficiently.    */
 /*                                                                      */
 /*      This method is intended to be called by an overridden           */
 /*      IRasterIO() method in the driver specific GDALDataset           */

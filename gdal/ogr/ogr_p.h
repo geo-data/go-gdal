@@ -67,7 +67,7 @@
 /*      helper function for parsing well known text format vector objects.*/
 /* -------------------------------------------------------------------- */
 
-#ifdef _OGR_GEOMETRY_H_INCLUDED
+#ifdef OGR_GEOMETRY_H_INCLUDED
 #define OGR_WKT_TOKEN_MAX       64
 
 const char CPL_DLL * OGRWktReadToken( const char * pszInput, char * pszToken );
@@ -116,9 +116,9 @@ int CPL_DLL OGRGeneralCmdLineProcessor( int nArgc, char ***ppapszArgv, int nOpti
 #define SPF_OGR_GEOM_AREA 4
 #define SPECIAL_FIELD_COUNT 5
 
-extern const char* SpecialFieldNames[SPECIAL_FIELD_COUNT];
+extern const char* const SpecialFieldNames[SPECIAL_FIELD_COUNT];
 
-#ifdef _SWQ_H_INCLUDED_
+#ifdef SWQ_H_INCLUDED_
 extern const swq_field_type SpecialFieldTypes[SPECIAL_FIELD_COUNT];
 #endif
 

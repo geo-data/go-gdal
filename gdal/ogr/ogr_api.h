@@ -55,8 +55,8 @@ typedef struct OGRGeometryHS *OGRGeometryH;
 typedef void *OGRGeometryH;
 #endif
 
-#ifndef _DEFINED_OGRSpatialReferenceH
-#define _DEFINED_OGRSpatialReferenceH
+#ifndef DEFINED_OGRSpatialReferenceH
+#define DEFINED_OGRSpatialReferenceH
 
 #ifdef DEBUG
 typedef struct OGRSpatialReferenceHS *OGRSpatialReferenceH;
@@ -175,7 +175,7 @@ int    CPL_DLL OGR_G_IsValid( OGRGeometryH );
 /*char    CPL_DLL *OGR_G_IsValidReason( OGRGeometryH );*/
 int    CPL_DLL OGR_G_IsSimple( OGRGeometryH );
 int    CPL_DLL OGR_G_IsRing( OGRGeometryH );
- 
+
 OGRGeometryH CPL_DLL OGR_G_Polygonize( OGRGeometryH ) CPL_WARN_UNUSED_RESULT;
 
 /* backward compatibility (non-standard methods) */

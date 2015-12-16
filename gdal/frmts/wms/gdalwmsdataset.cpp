@@ -30,10 +30,10 @@
  ****************************************************************************
  *
  * dataset.cpp:
- * Initialization of the GDALWMSdriver, parsing the XML configuration file, 
- * instantiation of the minidrivers and accessors used by minidrivers
+ * Initialization of the GDALWMSdriver, parsing the XML configuration file,
+ * instantiation of the minidrivers and accessors used by minidrivers.
  *
- ***************************************************************************/ 
+ ***************************************************************************/
 
 
 #include "wmsdriver.h"
@@ -372,7 +372,7 @@ CPLErr GDALWMSDataset::Initialize(CPLXMLNode *config) {
             }
         }
     }
-    
+
     // UserPwd 
     const char *pszUserPwd = CPLGetXMLValue(config, "UserPwd", "");
     if (pszUserPwd[0] != '\0')
@@ -381,11 +381,11 @@ CPLErr GDALWMSDataset::Initialize(CPLXMLNode *config) {
     const char *pszUserAgent = CPLGetXMLValue(config, "UserAgent", "");
     if (pszUserAgent[0] != '\0')
         m_osUserAgent = pszUserAgent;
-    
+
     const char *pszReferer = CPLGetXMLValue(config, "Referer", "");
     if (pszReferer[0] != '\0')
         m_osReferer = pszReferer;
-    
+
     if (ret == CE_None) {
         const char *pszHttpZeroBlockCodes = CPLGetXMLValue(config, "ZeroBlockHttpCodes", "");
         if(pszHttpZeroBlockCodes[0] == '\0') {
@@ -522,19 +522,19 @@ CPLErr GDALWMSDataset::Initialize(CPLXMLNode *config) {
             }
         }
     }
-    
+
     if (ret == CE_None) {
     	const int v = StrToBool(CPLGetXMLValue(config, "UnsafeSSL", "false"));
     	if (v == -1) {
 	    CPLError(CE_Failure, CPLE_AppDefined, "GDALWMS: Invalid value of UnsafeSSL: true or false expected.");
 	    ret = CE_Failure;
-	} else {
+        } else {
 	    m_unsafeSsl = v;
-	}
+        }
     }
 
     if (ret == CE_None) {
-        /* If we dont have projection already set ask mini-driver. */
+        /* If we do not have projection already set ask mini-driver. */
         if (!m_projection.size()) {
             const char *proj = m_mini_driver->GetProjectionInWKT();
             if (proj != NULL) {

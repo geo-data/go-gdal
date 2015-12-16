@@ -208,7 +208,7 @@ def hdf5_7():
         try:
             metadata.pop(key)
         except KeyError:
-            gdaltest.post_reason( 'unable to fing "%s" key' % key )
+            gdaltest.post_reason( 'unable to find "%s" key' % key )
             return 'fail'
     return 'success'
 
@@ -396,7 +396,7 @@ def hdf5_11():
             print(got_gt)
             gdaltest.post_reason('fail')
             return 'fail'
-            
+
     ds = None
 
     if gdaltest.is_file_open('data/CSK_GEC.h5'):

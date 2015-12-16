@@ -83,7 +83,7 @@ void GRIB2InventoryFree (inventoryType *inv)
  *
  * PURPOSE
  *   Prints to standard out, an inventory of the file, assuming one has an
- * array of invenories of single grib messages.
+ * array of inventories of single GRIB messages.
  *
  * ARGUMENTS
  *    Inv = Pointer to an Array of inventories to print. (Input)
@@ -275,7 +275,7 @@ static int GRIB2SectToBuffer (DataSource &fp,
    if (*sect == -1) {
       *sect = buffer[5 - 5];
    } else if (buffer[5 - 5] != *sect) {
-      errSprintf ("ERROR: Section %d misslabeled\n", *sect);
+      errSprintf ("ERROR: Section %d mislabeled\n", *sect);
       return -2;
    }
    return 0;
@@ -341,17 +341,17 @@ static int GRIB2SectJump (DataSource &fp,
    if (*sect == -1) {
       *sect = sectNum;
    } else if (sectNum != *sect) {
-      errSprintf ("ERROR: Section %d misslabeled\n", *sect);
-      return -2;
+       errSprintf ("ERROR: Section %d mislabeled\n", *sect);
+       return -2;
    }
-   /* Since fseek does not give an error if we jump outside the file, we test 
+   /* Since fseek does not give an error if we jump outside the file, we test
     * it by using fgetc / ungetc. */
    fp.DataSourceFseek (*secLen - 5, SEEK_CUR);
    if ((c = fp.DataSourceFgetc()) == EOF) {
-      errSprintf ("ERROR: Ran out of file in Section %d\n", *sect);
-      return -1;
+       errSprintf ("ERROR: Ran out of file in Section %d\n", *sect);
+       return -1;
    } else {
-		 fp.DataSourceUngetc(c);
+       fp.DataSourceUngetc(c);
    }
    return 0;
 }
@@ -420,7 +420,7 @@ static int GRIB2Inventory2to7 (sChar sectNum, DataSource &fp, sInt4 gribLen,
    double fstSurfValue; /* Value of first fixed surface. */
    sInt4 value;         /* The scaled value from GRIB2 file. */
    sChar factor;        /* The scaled factor from GRIB2 file */
-   sChar scale;         /* Surface scale as opposed to probility factor. */
+   sChar scale;         /* Surface scale as opposed to probability factor. */
    uChar sndSurfType;   /* Type of the second fixed surface. */
    double sndSurfValue; /* Value of second fixed surface. */
    sChar f_sndValue;    /* flag if SndValue is valid. */
@@ -444,7 +444,7 @@ static int GRIB2Inventory2to7 (sChar sectNum, DataSource &fp, sInt4 gribLen,
          return -6;
       }
       if ((sectNum != 2) && (sectNum != 3)) {
-         errSprintf ("ERROR: Section 2 or 3 misslabeled\n");
+         errSprintf ("ERROR: Section 2 or 3 mislabeled\n");
          return -5;
       } else if (sectNum == 2) {
          /* Jump past section 3. */
@@ -789,7 +789,7 @@ enum { GS4_ANALYSIS, GS4_ENSEMBLE, GS4_DERIVED, GS4_PROBABIL_PNT = 5,
  *   9/2002 Arthur Taylor (MDL/RSIS): Created.
  *  11/2002 AAT: Revised.
  *  12/2002 (TK,AC,TB,&MS): Code Review.
- *   3/2003 AAT: Corrected some satelite type mistakes.
+ *   3/2003 AAT: Corrected some satellite type mistakes.
  *   3/2003 AAT: Implemented multiple grid inventories in the same GRIB2
  *          message.
  *   4/2003 AAT: Started adding GRIB1 support
@@ -801,7 +801,7 @@ enum { GS4_ANALYSIS, GS4_ENSEMBLE, GS4_DERIVED, GS4_PROBABIL_PNT = 5,
  *          after we know we have a GRIB file, we don't want "trailing" bytes
  *          to break the program.
  *   8/2003 AAT: switched fileLen to only be computed for an error message.
- *   8/2003 AAT: curTot no longer serves a purpse.
+ *   8/2003 AAT: curTot no longer serves a purpose.
  *   5/2004 AAT: Added a check for section number 2..8 for the repeated
  *          section (otherwise error)
  *  10/2004 AAT: Added ability to inventory TDLP records.

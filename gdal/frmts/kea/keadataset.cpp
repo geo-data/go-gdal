@@ -152,7 +152,7 @@ GDALDataset *KEADataset::Open( GDALOpenInfo * poOpenInfo )
 
 // static function- pointer set in driver
 // this function is called in preference to Open
-// 
+//
 int KEADataset::Identify( GDALOpenInfo * poOpenInfo )
 {
     bool bisKEA = false;
@@ -253,7 +253,7 @@ H5::H5File *KEADataset::CreateLL( const char * pszFilename,
                   GDALGetDataTypeName(eType) );
         return NULL;
     }
-    
+
     try
     {
         // now create it
@@ -337,7 +337,7 @@ GDALDataset *KEADataset::CreateCopy( const char * pszFilename, GDALDataset *pSrc
     {
         // create the imageio
         kealib::KEAImageIO *pImageIO = new kealib::KEAImageIO();
-        
+
         // open the file
         pImageIO->openKEAImageHeader( keaImgH5File );
 
@@ -381,7 +381,7 @@ GDALDataset *KEADataset::CreateCopy( const char * pszFilename, GDALDataset *pSrc
             pDataset->GetRasterBand(nCount+1)->SetColorInterpretation(
                 pSrcDs->GetRasterBand(nCount+1)->GetColorInterpretation());
         }
-        
+
         // KEA has no concept of per-dataset mask band for now.
         for( int nCount = 0; nCount < nBands; nCount++ )
         {
@@ -412,15 +412,15 @@ GDALDataset *KEADataset::CreateCopy( const char * pszFilename, GDALDataset *pSrc
 }
 
 // constructor
-KEADataset::KEADataset( H5::H5File *keaImgH5File, GDALAccess eAccess )
+KEADataset::KEADataset( H5::H5File *keaImgH5File, GDALAccess eAccessIn )
 {
     try
     {
-        // create the image IO and initilize the refcount
+        // Create the image IO and initialize the refcount.
         m_pImageIO = new kealib::KEAImageIO();
         m_pnRefcount = new int(1);
 
-        // NULL until we read them in 
+        // NULL until we read them in.
         m_papszMetadataList = NULL;
         m_pGCPs = NULL;
         m_pszGCPProjection = NULL;
@@ -433,14 +433,15 @@ KEADataset::KEADataset( H5::H5File *keaImgH5File, GDALAccess eAccess )
         this->nBands = m_pImageIO->getNumOfImageBands();
         this->nRasterXSize = static_cast<int>(pSpatialInfo->xSize);
         this->nRasterYSize = static_cast<int>(pSpatialInfo->ySize);
-        this->eAccess = eAccess;
+        this->eAccess = eAccessIn;
 
         // create all the bands
         for( int nCount = 0; nCount < nBands; nCount++ )
         {
-            // note GDAL uses indices starting at 1 and so does kealib
-            // create band object
-            KEARasterBand *pBand = new KEARasterBand( this, nCount + 1, eAccess, m_pImageIO, m_pnRefcount );
+            // Note: GDAL uses indices starting at 1 and so does kealib.
+            // Create band object.
+            KEARasterBand *pBand = new KEARasterBand(
+                this, nCount + 1, eAccess, m_pImageIO, m_pnRefcount );
             // read in overviews
             pBand->readExistingOverviews();
             // set the band into this dataset
@@ -505,7 +506,7 @@ CPLErr KEADataset::GetGeoTransform( double * padfTransform )
         padfTransform[3] = pSpatialInfo->tlY;
         padfTransform[4] = pSpatialInfo->yRot;
         padfTransform[5] = pSpatialInfo->yRes;
-    
+
         return CE_None;
     }
     catch (const kealib::KEAIOException &e)
@@ -725,7 +726,7 @@ CPLErr KEADataset::AddBand(GDALDataType eType, char **papszOptions)
             ndeflate = atoi(pszValue);
         }
     }
-    
+
     kealib::KEADataType keaDataType = GDAL_to_KEA_Type( eType );
     if( keaDataType == kealib::kea_undefined )
     {
@@ -734,7 +735,7 @@ CPLErr KEADataset::AddBand(GDALDataType eType, char **papszOptions)
                   GDALGetDataTypeName(eType) );
         return CE_Failure;
     }
-    
+
     try {
         m_pImageIO->addImageBand(keaDataType, "", nimageBlockSize,
                 nattBlockSize, ndeflate);

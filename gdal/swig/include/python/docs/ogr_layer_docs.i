@@ -181,7 +181,7 @@ OGR_L_GetNextFeature(OGRLayerH hLayer)
 
 Fetch the next available feature from this layer.
 
-The returned feature becomes the responsiblity of the caller to delete
+The returned feature becomes the responsibility of the caller to delete
 with OGR_F_Destroy(). It is critical that all features associated with
 an OGRLayer (more specifically an OGRFeatureDefn) be deleted before
 that layer/datasource is deleted.
@@ -582,7 +582,7 @@ ie. without counting the features. In some cases this will return TRUE
 until a spatial filter is installed after which it will return FALSE.
 
 OLCFastGetExtent / \"FastGetExtent\": TRUE if this layer can return
-its data extent (via OGR_L_GetExtent()) efficiently ... ie. without
+its data extent (via OGR_L_GetExtent()) efficiently, i.e. without
 scanning all the features. In some cases this will return TRUE until a
 spatial filter is installed after which it will return FALSE.
 
@@ -626,7 +626,7 @@ hLayer:  handle to the layer to get the capability from.
 pszCap:  the name of the capability to test.
 
 TRUE if the layer has the requested capability, or FALSE otherwise.
-OGRLayers will return FALSE for any unrecognised capabilities. ";
+OGRLayers will return FALSE for any unrecognized capabilities. ";
 
 %feature("docstring")  GetSpatialFilter "OGRGeometryH
 OGR_L_GetSpatialFilter(OGRLayerH hLayer)

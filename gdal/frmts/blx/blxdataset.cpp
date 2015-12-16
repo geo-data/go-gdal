@@ -40,7 +40,7 @@ CPL_C_START
 CPL_C_END
 
 CPL_C_START
-void    GDALRegister_BLX(void);
+void GDALRegister_BLX();
 CPL_C_END
 
 class BLXDataset : public GDALPamDataset
@@ -204,14 +204,14 @@ const char *BLXDataset::GetProjectionRef()
         "AUTHORITY[\"EPSG\",\"4326\"]]";
 }
 
-BLXRasterBand::BLXRasterBand( BLXDataset *poDS, int nBand, int overviewLevel )
+BLXRasterBand::BLXRasterBand( BLXDataset *poDSIn, int nBandIn, int overviewLevelIn )
 
 {
-    BLXDataset *poGDS = poDS;
+    BLXDataset *poGDS = poDSIn;
 
-    this->poDS = poDS;
-    this->nBand = nBand;
-    this->overviewLevel = overviewLevel;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
+    this->overviewLevel = overviewLevelIn;
 
     eDataType = GDT_Int16;
 

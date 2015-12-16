@@ -25,8 +25,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_SELAFIN_H_INCLUDED
-#define _OGR_SELAFIN_H_INCLUDED
+#ifndef OGR_SELAFIN_H_INCLUDED
+#define OGR_SELAFIN_H_INCLUDED
 
 #include "io_selafin.h"
 #include "ogrsf_frmts.h"
@@ -126,7 +126,7 @@ class OGRSelafinDataSource : public OGRDataSource {
         virtual OGRLayer *ICreateLayer( const char *pszName, OGRSpatialReference *poSpatialRefP = NULL, OGRwkbGeometryType eGType = wkbUnknown, char ** papszOptions = NULL );
         virtual OGRErr DeleteLayer(int); 
         int TestCapability( const char * );
-        void SetDefaultSelafinName( const char *pszName ) { osDefaultSelafinName = pszName; }
+        void SetDefaultSelafinName( const char *pszNameIn ) { osDefaultSelafinName = pszNameIn; }
 };
 
-#endif /* ndef _OGR_SELAFIN_H_INCLUDED */
+#endif /* ndef OGR_SELAFIN_H_INCLUDED */

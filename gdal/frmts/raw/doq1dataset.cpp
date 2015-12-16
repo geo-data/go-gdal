@@ -37,7 +37,7 @@ static double DOQGetField( unsigned char *, int );
 static void DOQGetDescription( GDALDataset *, unsigned char * );
 
 CPL_C_START
-void	GDALRegister_DOQ1(void);
+void GDALRegister_DOQ1();
 CPL_C_END
 
 #define UTM_FORMAT \
@@ -142,7 +142,7 @@ GDALDataset *DOQ1Dataset::Open( GDALOpenInfo * poOpenInfo )
 
 {
 /* -------------------------------------------------------------------- */
-/*	We assume the user is pointing to the binary (ie. .bil) file.	*/
+/*      We assume the user is pointing to the binary (i.e. .bil) file.  */
 /* -------------------------------------------------------------------- */
     if( poOpenInfo->nHeaderBytes < 212 )
         return NULL;
@@ -341,7 +341,7 @@ void GDALRegister_DOQ1()
     if( GDALGetDriverByName( "DOQ1" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "DOQ1" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

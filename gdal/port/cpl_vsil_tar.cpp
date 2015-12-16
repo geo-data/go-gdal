@@ -155,7 +155,8 @@ int VSITarReader::GotoNextFile()
         return FALSE;
     }
 
-    VSIFSeekL(fp, nBytesToSkip, SEEK_CUR);
+    if( VSIFSeekL(fp, nBytesToSkip, SEEK_CUR) < 0 )
+        return FALSE;
 
     return TRUE;
 }
@@ -166,7 +167,8 @@ int VSITarReader::GotoNextFile()
 
 int VSITarReader::GotoFirstFile()
 {
-    VSIFSeekL(fp, 0, SEEK_SET);
+    if( VSIFSeekL(fp, 0, SEEK_SET) < 0 )
+        return FALSE;
     return GotoNextFile();
 }
 
@@ -177,7 +179,8 @@ int VSITarReader::GotoFirstFile()
 int VSITarReader::GotoFileOffset(VSIArchiveEntryFileOffset* pOffset)
 {
     VSITarEntryFileOffset* pTarEntryOffset = (VSITarEntryFileOffset*)pOffset;
-    VSIFSeekL(fp, pTarEntryOffset->m_nOffset - 512, SEEK_SET);
+    if( VSIFSeekL(fp, pTarEntryOffset->m_nOffset - 512, SEEK_SET) < 0 )
+        return FALSE;
     return GotoNextFile();
 }
 
@@ -319,8 +322,8 @@ VSIVirtualHandle* VSITarFilesystemHandler::Open( const char *pszFilename,
  * so the line looks like /vsitar//home/gdal/...
  * For example gdalinfo /vsitar/myarchive.tar/subdir1/file1.tif
  *
- * Syntaxic sugar : if the tar archive contains only one file located at its root,
- * just mentionning "/vsitar/path/to/the/file.tar" will work
+ * Syntactic sugar : if the tar archive contains only one file located at its
+ * root, just mentionning "/vsitar/path/to/the/file.tar" will work
  *
  * VSIStatL() will return the uncompressed size in st_size member and file
  * nature- file or directory - in st_mode member.

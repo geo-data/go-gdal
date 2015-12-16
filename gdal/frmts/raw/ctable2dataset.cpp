@@ -154,10 +154,10 @@ GDALDataset *CTable2Dataset::Open( GDALOpenInfo * poOpenInfo )
 /*      Read the file header.                                           */
 /* -------------------------------------------------------------------- */
 
-    VSIFSeekL( poDS->fpImage, 0, SEEK_SET );
+    CPL_IGNORE_RET_VAL(VSIFSeekL( poDS->fpImage, 0, SEEK_SET ));
 
     char  achHeader[160];
-    VSIFReadL( achHeader, 1, 160, poDS->fpImage );
+    CPL_IGNORE_RET_VAL(VSIFReadL( achHeader, 1, 160, poDS->fpImage ));
     achHeader[16+79] = '\0';
 
     CPLString osDescription = reinterpret_cast<const char *>( achHeader + 16 );
@@ -275,10 +275,10 @@ CPLErr CTable2Dataset::SetGeoTransform( double * padfTransform )
     const double dfDegToRad = M_PI / 180.0;
 
     // read grid header
-    VSIFSeekL( fpImage, 0, SEEK_SET );
+    CPL_IGNORE_RET_VAL(VSIFSeekL( fpImage, 0, SEEK_SET ));
 
     char achHeader[160];
-    VSIFReadL( achHeader, 1, sizeof(achHeader), fpImage );
+    CPL_IGNORE_RET_VAL(VSIFReadL( achHeader, 1, sizeof(achHeader), fpImage ));
 
     // lower left origin (longitude, center of pixel, radians)
     double dfValue = (adfGeoTransform[0] + adfGeoTransform[1]*0.5) * dfDegToRad;
@@ -302,8 +302,8 @@ CPLErr CTable2Dataset::SetGeoTransform( double * padfTransform )
     memcpy( achHeader + 120, &dfValue, 8 );
 
     // write grid header.
-    VSIFSeekL( fpImage, 0, SEEK_SET );
-    VSIFWriteL( achHeader, 11, 16, fpImage );
+    CPL_IGNORE_RET_VAL(VSIFSeekL( fpImage, 0, SEEK_SET ));
+    CPL_IGNORE_RET_VAL(VSIFWriteL( achHeader, 11, 16, fpImage ));
 
     return CE_None;
 }
@@ -395,7 +395,7 @@ GDALDataset *CTable2Dataset::Create( const char * pszFilename,
     CPL_LSBPTR32( &nValue32 );
     memcpy( achHeader + 132, &nValue32, 4 );
 
-    VSIFWriteL( achHeader, 1, sizeof(achHeader), fp );
+    CPL_IGNORE_RET_VAL(VSIFWriteL( achHeader, 1, sizeof(achHeader), fp ));
 
 /* -------------------------------------------------------------------- */
 /*      Write zeroed grid data.                                         */
@@ -425,7 +425,7 @@ GDALDataset *CTable2Dataset::Create( const char * pszFilename,
 }
 
 /************************************************************************/
-/*                         GDALRegister_CTable2()                          */
+/*                         GDALRegister_CTable2()                       */
 /************************************************************************/
 
 void GDALRegister_CTable2()
@@ -434,16 +434,14 @@ void GDALRegister_CTable2()
     if( GDALGetDriverByName( "CTable2" ) != NULL )
       return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "CTable2" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "CTable2 Datum Grid Shift" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "CTable2 Datum Grid Shift" );
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 
-    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
-                               "Float32" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, "Float32" );
 
     poDriver->pfnOpen = CTable2Dataset::Open;
     poDriver->pfnIdentify = CTable2Dataset::Identify;

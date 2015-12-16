@@ -123,7 +123,7 @@ int SDTSModId::Set( DDFField *poField )
         DDFSubfieldDefn *poSF
             = poField->GetFieldDefn()->FindSubfieldDefn( "MODN" );
         int nBytesRemaining;
-        const char *pachData = poField->GetSubfieldData(poSF, &nBytesRemaining);
+        pachData = poField->GetSubfieldData(poSF, &nBytesRemaining);
         strncpy( szModule,
                  poSF->ExtractStringData( pachData, nBytesRemaining, NULL),
                  sizeof(szModule) );
@@ -144,7 +144,7 @@ int SDTSModId::Set( DDFField *poField )
         if( poSF != NULL )
         {
             int nBytesRemaining;
-            const char *pachData
+            pachData
                 = poField->GetSubfieldData(poSF, &nBytesRemaining);
             if( pachData != NULL )
             {
@@ -167,7 +167,7 @@ int SDTSModId::Set( DDFField *poField )
 const char * SDTSModId::GetName()
 
 {
-    sprintf( szName, "%s:%d", szModule, nRecord );
+    snprintf( szName, sizeof(szName), "%s:%d", szModule, nRecord );
 
     return szName;
 }

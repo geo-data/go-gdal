@@ -38,7 +38,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_Leveller(void);
+void GDALRegister_Leveller();
 CPL_C_END
 
 static bool str_equal(const char *_s1, const char *_s2) {
@@ -324,16 +324,16 @@ class digital_axis
 		bool get(LevellerDataset& ds, VSILFILE* fp, int n)
 		{
 			char szTag[32];
-			sprintf(szTag, "coordsys_da%d_style", n);
+			snprintf(szTag, sizeof(szTag), "coordsys_da%d_style", n);
 			if(!ds.get(m_eStyle, fp, szTag))
 				return false;
-			sprintf(szTag, "coordsys_da%d_fixedend", n);
+			snprintf(szTag, sizeof(szTag), "coordsys_da%d_fixedend", n);
 			if(!ds.get(m_fixedEnd, fp, szTag))
 				return false;
-			sprintf(szTag, "coordsys_da%d_v0", n);
+			snprintf(szTag, sizeof(szTag), "coordsys_da%d_v0", n);
 			if(!ds.get(m_d[0], fp, szTag))
 				return false;
-			sprintf(szTag, "coordsys_da%d_v1", n);
+			snprintf(szTag, sizeof(szTag), "coordsys_da%d_v1", n);
 			if(!ds.get(m_d[1], fp, szTag))
 				return false;
 			return true;
@@ -425,11 +425,11 @@ public:
 /*                         LevellerRasterBand()                         */
 /************************************************************************/
 
-LevellerRasterBand::LevellerRasterBand( LevellerDataset *poDS ) :
+LevellerRasterBand::LevellerRasterBand( LevellerDataset *poDSIn ) :
     m_pLine(NULL),
     m_bFirstTime(true)
 {
-    this->poDS = poDS;
+    this->poDS = poDSIn;
     this->nBand = 1;
 
     eDataType = GDT_Float32;
@@ -1005,12 +1005,12 @@ bool LevellerDataset::write_tag(const char* pszTag, const char* psz)
 	CPLAssert(strlen(pszTag) <= kMaxTagNameLen);
 
 	char sz[kMaxTagNameLen + 1];
-	sprintf(sz, "%sl", pszTag);
+	snprintf(sz, sizeof(sz), "%sl", pszTag);
 	const size_t len = strlen(psz);
 
 	if(len > 0 && this->write_tag(sz, len))
 	{
-		sprintf(sz, "%sd", pszTag);
+		snprintf(sz, sizeof(sz), "%sd", pszTag);
 		this->write_tag_start(sz, len);
 		return (1 == VSIFWriteL(psz, len, 1, m_fp));
 	}
@@ -1116,7 +1116,7 @@ bool LevellerDataset::get(char* pszValue, size_t maxchars, VSILFILE* fp, const c
 
     // We can assume 8-bit encoding, so just go straight
     // to the *_d tag.
-    sprintf(szTag, "%sd", pszTag);
+    snprintf(szTag, sizeof(szTag), "%sd", pszTag);
 
     vsi_l_offset offset;
     size_t		 len;
@@ -1578,12 +1578,9 @@ void GDALRegister_Leveller()
 
     poDriver->SetDescription( "Leveller" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION,
-                               "ter" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "Leveller heightfield" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_leveller.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "ter" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "Leveller heightfield" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_leveller.html" );
 
     poDriver->pfnIdentify = LevellerDataset::Identify;
     poDriver->pfnOpen = LevellerDataset::Open;

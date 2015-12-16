@@ -53,7 +53,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_GSAG(void);
+void GDALRegister_GSAG();
 CPL_C_END
 
 /************************************************************************/
@@ -163,7 +163,7 @@ static bool AlmostEqual( double dfVal1, double dfVal2 )
 /*                           GSAGRasterBand()                           */
 /************************************************************************/
 
-GSAGRasterBand::GSAGRasterBand( GSAGDataset *poDS, int nBand,
+GSAGRasterBand::GSAGRasterBand( GSAGDataset *poDSIn, int nBandIn,
 				vsi_l_offset nDataStart ) :
     dfMinX(0.0),
     dfMaxX(0.0),
@@ -177,8 +177,8 @@ GSAGRasterBand::GSAGRasterBand( GSAGDataset *poDS, int nBand,
     nMinZRow(-1),
     nMaxZRow(-1)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     eDataType = GDT_Float64;
 
@@ -186,14 +186,14 @@ GSAGRasterBand::GSAGRasterBand( GSAGDataset *poDS, int nBand,
     nBlockYSize = 1;
 
     panLineOffset =
-	(vsi_l_offset *)VSI_CALLOC_VERBOSE( poDS->nRasterYSize+1, sizeof(vsi_l_offset) );
+	(vsi_l_offset *)VSI_CALLOC_VERBOSE( poDSIn->nRasterYSize+1, sizeof(vsi_l_offset) );
     if( panLineOffset == NULL )
     {
 	return;
     }
 
-    panLineOffset[poDS->nRasterYSize-1] = nDataStart;
-    nLastReadLine = poDS->nRasterYSize;
+    panLineOffset[poDSIn->nRasterYSize-1] = nDataStart;
+    nLastReadLine = poDSIn->nRasterYSize;
 }
 
 /************************************************************************/
@@ -1180,7 +1180,7 @@ CPLErr GSAGDataset::ShiftFileContents( VSILFILE *fp, vsi_l_offset nShiftStart,
     if( /* nShiftStart < 0
            || */ (nShiftSize < 0
 	    && nShiftStart < static_cast<vsi_l_offset>(-nShiftSize)) )
-	nShiftStart = (nShiftSize > 0) ? 0 : -nShiftSize;
+	nShiftStart = /*(nShiftSize > 0) ? 0 :*/  -nShiftSize;
 
     /* get offset at end of file */
     if( VSIFSeekL( fp, 0, SEEK_END ) != 0 )
@@ -1721,7 +1721,7 @@ GDALDataset *GSAGDataset::CreateCopy( const char *pszFilename,
 }
 
 /************************************************************************/
-/*                          GDALRegister_GSAG()                          */
+/*                          GDALRegister_GSAG()                         */
 /************************************************************************/
 
 void GDALRegister_GSAG()
@@ -1729,18 +1729,18 @@ void GDALRegister_GSAG()
 {
     if( GDALGetDriverByName( "GSAG" ) != NULL )
         return;
+
     GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "GSAG" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
                                "Golden Software ASCII Grid (.grd)" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_various.html#GSAG" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_various.html#GSAG" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "grd" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
-    			   "Byte Int16 UInt16 Int32 UInt32 "
-    			   "Float32 Float64" );
+                               "Byte Int16 UInt16 Int32 UInt32 "
+                               "Float32 Float64" );
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 
     poDriver->pfnIdentify = GSAGDataset::Identify;

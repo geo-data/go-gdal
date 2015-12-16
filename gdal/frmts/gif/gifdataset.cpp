@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_GIF(void);
+void GDALRegister_GIF();
 
 #if !(defined(GIFLIB_MAJOR) && GIFLIB_MAJOR >= 5)
 
@@ -97,9 +97,9 @@ class GIFRasterBand : public GIFAbstractRasterBand
 /*                           GIFRasterBand()                            */
 /************************************************************************/
 
-GIFRasterBand::GIFRasterBand( GIFDataset *poDS, int nBand, 
+GIFRasterBand::GIFRasterBand( GIFDataset *poDSIn, int nBandIn, 
                               SavedImage *psSavedImage, int nBackground ) :
-                GIFAbstractRasterBand(poDS, nBand, psSavedImage, nBackground, FALSE)
+                GIFAbstractRasterBand(poDSIn, nBandIn, psSavedImage, nBackground, FALSE)
 
 {
 }
@@ -187,27 +187,7 @@ GDALDataset *GIFDataset::Open( GDALOpenInfo * poOpenInfo )
     /* -------------------------------------------------------------------- */
     /*      Find the first image record.                                    */
     /* -------------------------------------------------------------------- */
-    GifRecordType RecordType = TERMINATE_RECORD_TYPE;
-
-    while( DGifGetRecordType(hGifFile, &RecordType) != GIF_ERROR
-        && RecordType != TERMINATE_RECORD_TYPE
-        && RecordType != IMAGE_DESC_RECORD_TYPE )
-    {
-        /* Skip extension records found before IMAGE_DESC_RECORD_TYPE */
-        if (RecordType == EXTENSION_RECORD_TYPE)
-        {
-            int nFunction;
-            GifByteType *pExtData;
-            if (DGifGetExtension(hGifFile, &nFunction, &pExtData) == GIF_ERROR)
-                break;
-            while (pExtData != NULL)
-            {
-                if (DGifGetExtensionNext(hGifFile, &pExtData) == GIF_ERROR)
-                    break;
-            }
-        }
-    }
-
+    GifRecordType RecordType = FindFirstImage(hGifFile);
     if( RecordType == IMAGE_DESC_RECORD_TYPE  &&
         DGifGetImageDesc(hGifFile) != GIF_ERROR)
     {
@@ -447,6 +427,14 @@ GIFDataset::CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
     if( poBand->GetColorTable() == NULL )
     {
         psGifCT = GifMakeMapObject( 256, NULL );
+        if( psGifCT == NULL )
+        {
+            CPLError(CE_Failure, CPLE_AppDefined,
+                     "Cannot allocate color table");
+            GIFAbstractDataset::myEGifCloseFile(hGifFile);
+            VSIFCloseL( fp );
+            return NULL;
+        }
         for( int iColor = 0; iColor < 256; iColor++ )
         {
             psGifCT->Colors[iColor].Red = (GifByteType) iColor;
@@ -457,12 +445,20 @@ GIFDataset::CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
     else
     {
         GDALColorTable	*poCT = poBand->GetColorTable();
-        int nFullCount = 1;
+        int nFullCount = 2;
 
         while( nFullCount < poCT->GetColorEntryCount() )
             nFullCount = nFullCount * 2;
 
         psGifCT = GifMakeMapObject( nFullCount, NULL );
+        if( psGifCT == NULL )
+        {
+            CPLError(CE_Failure, CPLE_AppDefined,
+                     "Cannot allocate color table");
+            GIFAbstractDataset::myEGifCloseFile(hGifFile);
+            VSIFCloseL( fp );
+            return NULL;
+        }
         int iColor = 0;
         for( ; iColor < poCT->GetColorEntryCount(); iColor++ )
         {
@@ -614,9 +610,9 @@ GIFDataset::CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
 /* -------------------------------------------------------------------- */
     if( CSLFetchBoolean( papszOptions, "WORLDFILE", FALSE ) )
     {
-    	double      adfGeoTransform[6];
+        double      adfGeoTransform[6];
 
-	if( poSrcDS->GetGeoTransform( adfGeoTransform ) == CE_None )
+        if( poSrcDS->GetGeoTransform( adfGeoTransform ) == CE_None )
             GDALWriteWorldFile( pszFilename, "wld", adfGeoTransform );
     }
 
@@ -624,7 +620,7 @@ GIFDataset::CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
 /*      Re-open dataset, and copy any auxiliary pam information.         */
 /* -------------------------------------------------------------------- */
 
-    /* If outputing to stdout, we can't reopen it, so we'll return */
+    /* If writing to stdout, we can't reopen it, so return */
     /* a fake dataset to make the caller happy */
     CPLPushErrorHandler(CPLQuietErrorHandler);
     poDS = (GDALPamDataset*) GDALOpen(pszFilename, GA_ReadOnly);
@@ -688,7 +684,7 @@ static int VSIGIFWriteFunc( GifFileType *psGFile,
 }
 
 /************************************************************************/
-/*                          GDALRegister_GIF()                        */
+/*                          GDALRegister_GIF()                          */
 /************************************************************************/
 
 void GDALRegister_GIF()
@@ -703,12 +699,10 @@ void GDALRegister_GIF()
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
                                "Graphics Interchange Format (.gif)" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_gif.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_gif.html" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "gif" );
     poDriver->SetMetadataItem( GDAL_DMD_MIMETYPE, "image/gif" );
-    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
-                               "Byte" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, "Byte" );
 
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
 "<CreationOptionList>\n"

@@ -196,7 +196,7 @@ def vrtpansharpen_1():
         gdaltest.post_reason('fail')
         return 'fail'
 
-    # Inconsistant declared VRT dimensions with panchro dataset
+    # Inconsistent declared VRT dimensions with panchro dataset.
     gdal.PushErrorHandler()
     vrt_ds = gdal.Open("""<VRTDataset rasterXSize="1800" rasterYSize="400" subClass="VRTPansharpenedDataset">
     <VRTRasterBand dataType="Byte" band="1" subClass="VRTPansharpenedRasterBand">
@@ -239,7 +239,7 @@ def vrtpansharpen_1():
         gdaltest.post_reason('fail')
         return 'fail'
 
-    # VRTRasterBand of unrecognised subclass 'blabla'
+    # VRTRasterBand of unrecognized subclass 'blabla'
     gdal.PushErrorHandler()
     vrt_ds = gdal.Open("""<VRTDataset rasterXSize="800" rasterYSize="400" subClass="VRTPansharpenedDataset">
     <VRTRasterBand dataType="Byte" band="1" subClass="blabla">
@@ -1050,7 +1050,8 @@ def vrtpansharpen_2():
         print(cs)
         return 'fail'
 
-    # Same, but everything scambled, and with spectral bands not in the same dataset
+    # Same, but everything scrambled, and with spectral bands not in
+    # the same dataset
     vrt_ds = gdal.Open("""<VRTDataset rasterXSize="800" rasterYSize="400" subClass="VRTPansharpenedDataset">
     <SRS>GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433],AUTHORITY["EPSG","4326"]]</SRS>
     <GeoTransform> -1.8000000000000000e+02,  4.5000000000000001e-01,  0.0000000000000000e+00,  9.0000000000000000e+01,  0.0000000000000000e+00, -4.5000000000000001e-01</GeoTransform>

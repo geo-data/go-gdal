@@ -51,15 +51,17 @@ using namespace PCIDSK;
 /*                            SysBlockMap()                             */
 /************************************************************************/
 
-SysBlockMap::SysBlockMap( PCIDSKFile *file, int segment,
+SysBlockMap::SysBlockMap( PCIDSKFile *fileIn, int segmentIn,
                               const char *segment_pointer )
-        : CPCIDSKSegment( file, segment, segment_pointer )
+        : CPCIDSKSegment( fileIn, segmentIn, segment_pointer )
 
 {
     partial_loaded = false;
     full_loaded = false;
     dirty = false;
     growing_segment = 0;
+    block_count = 0;
+    first_free_block = 0;
 }
 
 /************************************************************************/
@@ -239,14 +241,14 @@ void SysBlockMap::AllocateBlocks()
 
     if( growing_segment == 0 )
     {
-        PCIDSKSegment *seg;
+        PCIDSKSegment *l_seg;
         int  previous = 0;
 
-        while( (seg=file->GetSegment( SEG_SYS, "SysBData", previous )) != NULL )
+        while( (l_seg=file->GetSegment( SEG_SYS, "SysBData", previous )) != NULL )
         {
-            previous = seg->GetSegmentNumber();
+            previous = l_seg->GetSegmentNumber();
             
-            if( seg->IsAtEOF() )
+            if( l_seg->IsAtEOF() )
             {
                 growing_segment = previous;
                 break;
@@ -509,7 +511,7 @@ int SysBlockMap::CreateVirtualImageFile( int width, int height,
 /************************************************************************/
 
 int SysBlockMap::GetNextBlockMapEntry( int bm_index,
-                                       uint16 &segment,
+                                       uint16 &segmentOut,
                                        int &block_in_segment )
 
 {
@@ -546,7 +548,7 @@ int SysBlockMap::GetNextBlockMapEntry( int bm_index,
     block_in_segment = atoi(bm_entry+4);
 
     bm_entry[4] = '\0';
-    segment = static_cast<PCIDSK::uint16>(atoi(bm_entry));
+    segmentOut = static_cast<PCIDSK::uint16>(atoi(bm_entry));
     
     return next_block;
 }

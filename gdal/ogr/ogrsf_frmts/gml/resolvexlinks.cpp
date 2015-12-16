@@ -175,8 +175,8 @@ static void RemoveIDs( CPLXMLNode * psRoot )
 /************************************************************************/
 /*                          TrimTree()                                  */
 /*                                                                      */
-/*      Remove all nodes without a gml:id node in the descendents.      */
-/*      Returns TRUE if there is a gml:id node in the descendents.      */
+/*      Remove all nodes without a gml:id node in the descendants.      */
+/*      Returns TRUE if there is a gml:id node in the descendants.      */
 /************************************************************************/
 
 static bool TrimTree( CPLXMLNode * psRoot )
@@ -403,7 +403,7 @@ static CPLErr Resolve( CPLXMLNode * psNode,
     CPLXMLNode *psResource = NULL;
     CPLXMLNode *psTarget = NULL;
     CPLErr eReturn = CE_None, eReturned;
-    
+
     for( psSibling = psNode; psSibling != NULL; psSibling = psSibling->psNext )
     {
         if( psSibling->eType != CXT_Element )

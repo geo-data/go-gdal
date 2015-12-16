@@ -47,7 +47,8 @@
  * Added note saying that SWIG 1.3.26 or higher is required because the bindings need the SWIGTYPE *DISOWN  typemap.
  *
  * Revision 1.3  2005/08/21 23:52:08  cfis
- * The Layer each method was not correctly setting the owernship flag for returned objects.  This has now been fixed and commented.
+ * The Layer each method was not correctly setting the ownership flag
+ * for returned objects.  This has now been fixed and commented.
  *
  * Revision 1.2  2005/08/20 20:50:13  cfis
  * Added GetLayer method that maps to either GetLayerByName or GetLayerByIndex.  Also commented out Open and OpenShared as DataSouce class static methods.
@@ -684,7 +685,7 @@
 		If the parent goes out of scope it will free the child, invalidating
 		the scripting language object that represents the child.  To prevent
 		that create a reference from the child to the parent, thereby telling
-		the garabage collector not to GC the parent.*/
+		the garbage collector not to GC the parent. */
 
 	$result = SWIG_NewPointerObj((void *) $1, $1_descriptor,$owner);
 	rb_iv_set($result, "swig_parent_reference", self);

@@ -48,7 +48,7 @@ static const double NULL3 = -3.4028226550889044521e+38;
 CPL_CVSID("$Id: isis3dataset.cpp 10646 2007-09-18 02:38:10Z xxxx $");
 
 CPL_C_START
-void GDALRegister_ISIS3(void);
+void GDALRegister_ISIS3();
 CPL_C_END
 
 class ISIS3Dataset;
@@ -85,39 +85,39 @@ class ISISTiledBand : public GDALPamRasterBand
 /*                           ISISTiledBand()                            */
 /************************************************************************/
 
-ISISTiledBand::ISISTiledBand( GDALDataset *poDS, VSILFILE *fpVSIL,
-                              int nBand, GDALDataType eDT,
+ISISTiledBand::ISISTiledBand( GDALDataset *poDSIn, VSILFILE *fpVSILIn,
+                              int nBandIn, GDALDataType eDT,
                               int nTileXSize, int nTileYSize, 
-                              GIntBig nFirstTileOffset, 
-                              GIntBig nXTileOffset,
-                              GIntBig nYTileOffset,
-                              int bNativeOrder )
+                              GIntBig nFirstTileOffsetIn, 
+                              GIntBig nXTileOffsetIn,
+                              GIntBig nYTileOffsetIn,
+                              int bNativeOrderIn )
 
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
-    this->fpVSIL = fpVSIL;
-    this->bNativeOrder = bNativeOrder;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
+    this->fpVSIL = fpVSILIn;
+    this->bNativeOrder = bNativeOrderIn;
     eDataType = eDT;
     nBlockXSize = nTileXSize;
     nBlockYSize = nTileYSize;
+    this->nXTileOffset = nXTileOffsetIn;
+    this->nYTileOffset = nYTileOffsetIn;
 
-    const int nBlocksPerRow =
+    const int l_nBlocksPerRow =
             (poDS->GetRasterXSize() + nTileXSize - 1) / nTileXSize;
-    const int nBlocksPerColumn =
+    const int l_nBlocksPerColumn =
             (poDS->GetRasterYSize() + nTileYSize - 1) / nTileYSize;
 
     if( nXTileOffset == 0 && nYTileOffset == 0 )
     {
         nXTileOffset = static_cast<GIntBig>(GDALGetDataTypeSize(eDT)/8) * nTileXSize * nTileYSize;
-        nYTileOffset = nXTileOffset * nBlocksPerRow;
+        nYTileOffset = nXTileOffset * l_nBlocksPerRow;
     }
 
-    this->nFirstTileOffset = nFirstTileOffset
-        + (nBand-1) * nYTileOffset * nBlocksPerColumn;
+    this->nFirstTileOffset = nFirstTileOffsetIn
+        + (nBand-1) * nYTileOffset * l_nBlocksPerColumn;
 
-    this->nXTileOffset = nXTileOffset;
-    this->nYTileOffset = nYTileOffset;
 }
 
 /************************************************************************/
@@ -320,7 +320,7 @@ GDALDataset *ISIS3Dataset::Open( GDALOpenInfo * poOpenInfo )
     VSIFCloseL( fpQube );
 
 /* -------------------------------------------------------------------- */
-/*	Assume user is pointing to label (ie .lbl) file for detached option */
+/* Assume user is pointing to label (i.e. .lbl) file for detached option */
 /* -------------------------------------------------------------------- */
     //  Image can be inline or detached and point to an image name
     //  the Format can be Tiled or Raw
@@ -607,7 +607,8 @@ GDALDataset *ISIS3Dataset::Open( GDALOpenInfo * poOpenInfo )
   	               (EQUAL( map_proj_name, "Orthographic" )) || 
 	               (EQUAL( map_proj_name, "Stereographic" )) || 
 	               (EQUAL( map_proj_name, "Sinusoidal" )) ) {
-            //isis uses the sphereical equation for these projections so force a sphere
+            // ISIS uses the spherical equation for these projections
+            // so force a sphere.
             oSRS.SetGeogCS( geog_name, datum_name, sphere_name,
                             semi_major, 0.0, 
                             "Reference_Meridian", 0.0 );
@@ -776,11 +777,11 @@ GDALDataset *ISIS3Dataset::Open( GDALOpenInfo * poOpenInfo )
 
         char **papszLines = CSLLoad( pszPrjFile );
 
-        OGRSpatialReference oSRS;
-        if( oSRS.importFromESRI( papszLines ) == OGRERR_NONE )
+        OGRSpatialReference oSRS2;
+        if( oSRS2.importFromESRI( papszLines ) == OGRERR_NONE )
         {
             char *pszResult = NULL;
-            oSRS.exportToWkt( &pszResult );
+            oSRS2.exportToWkt( &pszResult );
             poDS->osProjection = pszResult;
             CPLFree( pszResult );
         }

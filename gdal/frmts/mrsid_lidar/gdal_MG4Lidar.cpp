@@ -13,7 +13,7 @@
 *
 *   Redistributions of source code must retain the above copyright notice, 
 *   this list of conditions and the following disclaimer.
-* 
+*
 *   Redistributions in binary form must reproduce the above copyright notice, 
 *   this list of conditions and the following disclaimer in the documentation
 *   and/or other materials provided with the distribution.
@@ -43,8 +43,7 @@ LT_USE_LIDAR_NAMESPACE
 // #include "gdal_alg.h" // 1.6 and later have gridding algorithms
 
 CPL_C_START
-//void __declspec(dllexport) GDALRegister_MG4Lidar(void);
-void CPL_DLL GDALRegister_MG4Lidar(void);
+void CPL_DLL GDALRegister_MG4Lidar();
 CPL_C_END
 
 /************************************************************************/
@@ -191,7 +190,6 @@ default:
    else
       papszFilterReturnNums = CSLTokenizeString(poxmlFilter->psChild->pszValue);
 
-   
    CPLXMLNode * poxmlAggregation = CPLGetXMLNode(poxmlBand, "AggregationMethod");
    if( poxmlAggregation == NULL )
       poxmlAggregation = CPLGetXMLNode(pods->poXMLPCView, "AggregationMethod");
@@ -317,7 +315,7 @@ bool MG4LidarRasterBand::ElementPassesFilter(const PointData &pointdata, size_t 
    // Check if classification code is ok:  it was requested and it does match one of the requested codes
    const int classcode = GetChannelElement<int>(*pointdata.getChannel(CHANNEL_NAME_ClassId), i);
    char bufCode[16];
-   sprintf(bufCode, "%d", classcode);
+   snprintf(bufCode, sizeof(bufCode), "%d", classcode);
    bClassificationOK = (papszFilterClassCodes == NULL ? true :
       (CSLFindString(papszFilterClassCodes,bufCode)!=-1));
 
@@ -325,7 +323,7 @@ bool MG4LidarRasterBand::ElementPassesFilter(const PointData &pointdata, size_t 
    {
       // Check if return num is ok:  it was requested and it does match one of the requested return numbers
       const long returnnum= static_cast<const unsigned char *>(pointdata.getChannel(CHANNEL_NAME_ReturnNum)->getData())[i];
-      sprintf(bufCode, "%d", (int)returnnum);
+      snprintf(bufCode, sizeof(bufCode), "%d", (int)returnnum);
       bReturnNumOK = (papszFilterReturnNums == NULL ? true :
          (CSLFindString(papszFilterReturnNums, bufCode)!=-1));
       if (!bReturnNumOK && CSLFindString(papszFilterReturnNums, "Last")!=-1)
@@ -435,7 +433,7 @@ CPLErr   MG4LidarRasterBand::doReadBlock(int nBlockXOff, int nBlockYOff, void * 
          }
       }
    }
-   
+
    delete[] Accumulator;
    return CE_None;
 }
@@ -641,7 +639,7 @@ CPLErr MG4LidarDataset::OpenZoomLevel( int iZoom )
       const char * name = "Z";
       if (xmlChannel && xmlChannel->psChild && xmlChannel->psChild->pszValue)
          name = xmlChannel->psChild->pszValue;
-      
+
       BandCount++;
       MG4LidarRasterBand *band = new MG4LidarRasterBand(this, BandCount, xmlBand, name);
       SetBand(BandCount, band);
@@ -912,35 +910,30 @@ GDALDataset *MG4LidarDataset::Open( GDALOpenInfo * poOpenInfo )
 }
 
 /************************************************************************/
-/*                          GDALRegister_MG4Lidar()                        */
+/*                          GDALRegister_MG4Lidar()                     */
 /************************************************************************/
 
 void GDALRegister_MG4Lidar()
 
 {
-   GDALDriver	*poDriver;
-
-    if (! GDAL_CHECK_VERSION("MG4Lidar driver"))
+    if( !GDAL_CHECK_VERSION( "MG4Lidar driver" ) )
         return;
 
-   if( GDALGetDriverByName( "MG4Lidar" ) == NULL )
-   {
-      poDriver = new GDALDriver();
+    if( GDALGetDriverByName( "MG4Lidar" ) != NULL )
+        return;
 
-      poDriver->SetDescription( "MG4Lidar" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-      poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, 
-         "MrSID Generation 4 / Lidar (.sid)" );
-      // To do:  update this help file in gdal.org
-      poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, 
-         "frmt_mrsid_lidar.html" );
+    GDALDriver *poDriver = new GDALDriver();
 
-      poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "view" );
-      poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, 
-         "Float64" );
+    poDriver->SetDescription( "MG4Lidar" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
+                               "MrSID Generation 4 / Lidar (.sid)" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,  "frmt_mrsid_lidar.html" );
 
-      poDriver->pfnOpen = MG4LidarDataset::Open;
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "view" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, "Float64" );
 
-      GetGDALDriverManager()->RegisterDriver( poDriver );
-   }
+    poDriver->pfnOpen = MG4LidarDataset::Open;
+
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

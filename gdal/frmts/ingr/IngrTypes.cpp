@@ -70,7 +70,7 @@ static const INGR_FormatDescription INGR_FormatTable[] = {
     {LineArt,                 "LineArt",                     GDT_Byte}
 };
 
-static const char *IngrOrientation[] = {
+static const char * const IngrOrientation[] = {
     "Upper Left Vertical",
     "Upper Right Vertical",
     "Lower Left Vertical",
@@ -293,7 +293,7 @@ void CPL_STDCALL INGR_GetTransMatrix( INGR_HeaderOne *pHeaderOne,
     }
 
     // -------------------------------------------------------------
-    // Calculate Concatened Tranformation Matrix based on Orientation
+    // Calculate Concatenated Transformation Matrix based on Orientation
     // -------------------------------------------------------------
 
     double adfConcat[16];
@@ -546,7 +546,7 @@ uint32 CPL_STDCALL INGR_SetEnvironColors( GDALColorTable *poColorTable,
                                           INGR_ColorTableVar *pEnvironTable )
 {
     GDALColorEntry oEntry;
-    real32 fNormFactor = 0xfff / 255;
+    const real32 fNormFactor = static_cast<real32>(0xfff) / 255;
     int i;
 
     for( i = 0; i < poColorTable->GetColorEntryCount(); i++ )

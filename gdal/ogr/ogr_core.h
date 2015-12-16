@@ -102,7 +102,7 @@ class CPL_DLL OGREnvelope
             MinY = MaxY = dfY;
         }
     }
-    
+
     void Intersect( OGREnvelope const& sOther ) {
         if(Intersects(sOther))
         {
@@ -129,7 +129,7 @@ class CPL_DLL OGREnvelope
             MaxY = 0;
         }
     }
- 
+
     int Intersects(OGREnvelope const& other) const
     {
         return MinX <= other.MaxX && MaxX >= other.MinX && 
@@ -568,7 +568,7 @@ typedef enum
                                                         OFSTBoolean = 1,
     /** Signed 16-bit integer. Only valid for OFTInteger and OFTIntegerList. */
                                                         OFSTInt16 = 2,
-    /** Single precision (32 bit) floatint point. Only valid for OFTReal and OFTRealList. */
+    /** Single precision (32 bit) floating point. Only valid for OFTReal and OFTRealList. */
                                                         OFSTFloat32 = 3,
                                                         OFSTMaxSubType = 3
 } OGRFieldSubType;
@@ -600,12 +600,12 @@ typedef union {
     GIntBig     Integer64;
     double      Real;
     char       *String;
-    
+
     struct {
         int     nCount;
         int     *paList;
     } IntegerList;
-    
+
     struct {
         int     nCount;
         GIntBig *paList;
@@ -615,7 +615,7 @@ typedef union {
         int     nCount;
         double  *paList;
     } RealList;
-    
+
     struct {
         int     nCount;
         char    **paList;
@@ -625,7 +625,7 @@ typedef union {
         int     nCount;
         GByte   *paData;
     } Binary;
-    
+
     struct {
         int     nMarker1;
         int     nMarker2;
@@ -734,7 +734,7 @@ typedef enum ogr_style_tool_param_pen_id
     OGRSTPenJoin        = 6,
     OGRSTPenPriority    = 7,
     OGRSTPenLast        = 8
-              
+
 } OGRSTPenParam;
 
 /**
@@ -751,7 +751,7 @@ typedef enum ogr_style_tool_param_brush_id
     OGRSTBrushDy        = 6,
     OGRSTBrushPriority  = 7,
     OGRSTBrushLast      = 8
-              
+
 } OGRSTBrushParam;
 
 
@@ -773,7 +773,7 @@ typedef enum ogr_style_tool_param_symbol_id
     OGRSTSymbolFontName = 10,
     OGRSTSymbolOColor   = 11,
     OGRSTSymbolLast     = 12
-              
+
 } OGRSTSymbolParam;
 
 /**
@@ -803,7 +803,7 @@ typedef enum ogr_style_tool_param_label_id
     OGRSTLabelHColor    = 19,
     OGRSTLabelOColor    = 20,
     OGRSTLabelLast      = 21
-              
+
 } OGRSTLabelParam;
 
 /* ------------------------------------------------------------------- */
@@ -822,12 +822,12 @@ const char CPL_DLL * CPL_STDCALL GDALVersionInfo( const char * );
 /** Return TRUE if GDAL library version at runtime matches nVersionMajor.nVersionMinor.
 
     The purpose of this method is to ensure that calling code will run with the GDAL
-    version it is compiled for. It is primarly intented for external plugins.
+    version it is compiled for. It is primarily indented for external plugins.
 
     @param nVersionMajor Major version to be tested against
     @param nVersionMinor Minor version to be tested against
     @param pszCallingComponentName If not NULL, in case of version mismatch, the method
-                                   will issue a failure mentionning the name of
+                                   will issue a failure mentioning the name of
                                    the calling component.
   */
 int CPL_DLL CPL_STDCALL GDALCheckVersion( int nVersionMajor, int nVersionMinor,

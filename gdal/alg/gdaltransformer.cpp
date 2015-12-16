@@ -7,7 +7,7 @@
  * Author:   Frank Warmerdam, warmerdam@pobox.com
  *
  ******************************************************************************
- * Copyright (c) 2002, i3 - information integration and imaging 
+ * Copyright (c) 2002, i3 - information integration and imaging
  *                          Fort Collin, CO
  * Copyright (c) 2008-2013, Even Rouault <even dot rouault at mines-paris dot org>
  *
@@ -590,11 +590,11 @@ retry:
             double x_in_after = (double)x_i * nInXSize / nSteps;
             int valid_before = pabSuccess[i-1];
             int valid_after = pabSuccess[i];
-            
-            /* Detect discontinuity in target coordinates when the target x coordinates */
-            /* change sign. This may be a false positive when the targe tx is around 0 */
-            /* Dichotomic search to reduce the interval to near the discontinuity and */
-            /* get a better out extent */
+
+            // Detect discontinuity in target coordinates when the target x
+            // coordinates change sign. This may be a false positive when the
+            // target tx is around 0 Dichotomic search to reduce the interval
+            // to near the discontinuity and get a better out extent.
             while ( (!valid_before || !valid_after ||
                      x_out_before * x_out_after < 0) && nIter < 16 )
             {
@@ -621,7 +621,7 @@ retry:
                 else
                 {
                     //fprintf(stderr, "(%f, %f)\n", x, y);
-                    
+
                     if( !bGotInitialPoint )
                     {
                         bGotInitialPoint = TRUE;
@@ -1139,7 +1139,7 @@ static GDALGenImgProjTransformInfo* GDALCreateGenImgProjTransformerInternal()
  * <li> DST_SRS: WKT SRS to be used as an override for hDstDS.
  * <li> GCPS_OK: If false, GCPs will not be used, default is TRUE. 
  * <li> REFINE_MINIMUM_GCPS: The minimum amount of GCPs that should be available after the refinement.
- * <li> REFINE_TOLERANCE: The tolernace that specifies when a GCP will be eliminated.
+ * <li> REFINE_TOLERANCE: The tolerance that specifies when a GCP will be eliminated.
  * <li> MAX_GCP_ORDER: the maximum order to use for GCP derived polynomials if
  * possible.  The default is to autoselect based on the number of GCPs.  
  * A value of -1 triggers use of Thin Plate Spline instead of polynomials.
@@ -1338,9 +1338,10 @@ GDALCreateGenImgProjTransformer2( GDALDatasetH hSrcDS, GDALDatasetH hDstDS,
 
     else
     {
-        CPLError( CE_Failure, CPLE_AppDefined, 
-                  "Unable to compute a transformation between pixel/line\n"
-                  "and georeferenced coordinates for %s.\n"
+        CPLError( CE_Failure, CPLE_AppDefined,
+                  "The transformation is already \"north up\" or\n"
+                  "a transformation between pixel/line and georeferenced\n"
+                  "coordinates cannot be computed for %s.\n"
                   "There is no affine transformation and no GCPs.\n"
                   "Specify transformation option SRC_METHOD=NO_GEOTRANSFORM to bypass this check.", 
                   GDALGetDescription( hSrcDS ) );
@@ -3316,7 +3317,7 @@ CPLErr GDALDeserializeTransformer( CPLXMLNode *psTree,
         else
         {
             CPLError( CE_Failure, CPLE_AppDefined,
-                    "Unrecognised element '%s' GDALDeserializeTransformer",
+                    "Unrecognized element '%s' GDALDeserializeTransformer",
                     psTree->pszValue );
         }
     }

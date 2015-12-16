@@ -1,5 +1,5 @@
-#ifndef _grib2_H
-#define _grib2_H
+#ifndef grib2_H
+#define grib2_H
 #include<stdio.h>
 
 #define G2_VERSION "g2clib-1.0.4"
@@ -75,11 +75,11 @@
 //        gfld->igdtmpl  = Contains the data values for the specified Grid
 //                         Definition Template ( NN=gfld->igdtnum ).  Each
 //                         element of this integer array contains an entry (in
-//                         the order specified) of Grid Defintion Template 3.NN
+//                         the order specified) of Grid Definition Template 3.NN
 //                         This element is a pointer to an array
 //                         that holds the data.
 //        gfld->igdtlen = Number of elements in gfld->igdtmpl[].  i.e. number of
-//                       entries in Grid Defintion Template 3.NN
+//                       entries in Grid Definition Template 3.NN
 //                       ( NN=gfld->igdtnum ).
 //        gfld->list_opt  = (Used if gfld->numoct_opt .ne. 0)  This array
 //                          contains the number of grid points contained in
@@ -95,11 +95,11 @@
 //        gfld->ipdtmpl  = Contains the data values for the specified Product
 //                         Definition Template ( N=gfdl->ipdtnum ).  Each element
 //                         of this integer array contains an entry (in the
-//                         order specified) of Product Defintion Template 4.N.
+//                         order specified) of Product Definition Template 4.N.
 //                         This element is a pointer to an array
 //                         that holds the data.
 //        gfld->ipdtlen = Number of elements in gfld->ipdtmpl[].  i.e. number of
-//                       entries in Product Defintion Template 4.N
+//                       entries in Product Definition Template 4.N
 //                       ( N=gfdl->ipdtnum ).
 //        gfld->coord_list  = Real array containing floating point values
 //                            intended to document the vertical discretisation
@@ -152,8 +152,8 @@ typedef unsigned int g2intu;
 typedef float g2float;
 
 typedef struct {
-   g2int type;           /* 3=Grid Defintion Template.                       */
-                         /* 4=Product Defintion Template.                    */
+   g2int type;           /* 3=Grid Definition Template.                       */
+                         /* 4=Product Definition Template.                    */
                          /* 5=Data Representation Template.                  */
    g2int num;            /* template number.                                 */
    g2int maplen;         /* number of entries in the static part             */
@@ -227,9 +227,9 @@ extern void simpack(g2float *,g2int,g2int *,unsigned char *,g2int *);
 extern void compack(g2float *,g2int,g2int,g2int *,unsigned char *,g2int *);
 void misspack(g2float *,g2int ,g2int ,g2int *, unsigned char *, g2int *);
 void gbit(unsigned char *,g2int *,g2int ,g2int );
-void sbit(unsigned char *,g2int *,g2int ,g2int );
+void sbit(unsigned char *,const g2int *,g2int ,g2int );
 void gbits(unsigned char *,g2int *,g2int ,g2int ,g2int ,g2int );
-void sbits(unsigned char *,g2int *,g2int ,g2int ,g2int ,g2int );
+void sbits(unsigned char *,const g2int *,g2int ,g2int ,g2int ,g2int );
 
 int pack_gp(g2int *, g2int *, g2int *,
             g2int *, g2int *, g2int *, g2int *, g2int *,
@@ -273,5 +273,5 @@ int enc_jpeg2000(unsigned char *cin,g2int width,g2int height,g2int nbits,
                  g2int ltype, g2int ratio, g2int retry, char *outjpc, 
                  g2int jpclen);
 
-#endif  /*  _grib2_H  */
+#endif  /*  grib2_H  */
 

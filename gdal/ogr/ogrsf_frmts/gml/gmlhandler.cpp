@@ -1105,6 +1105,13 @@ OGRErr GMLHandler::startElementFeatureAttribute(const char *pszName, int nLenNam
             {
                 m_bAlreadyFoundGeometry = true;
                 bReadGeometry = true;
+                m_nGeometryPropertyIndex = poClass->GetGeometryPropertyIndexBySrcElement( poState->osPath.c_str() );
+                if( m_nGeometryPropertyIndex < 0 )
+                {
+                    poClass->AddGeometryProperty( new GMLGeometryPropertyDefn(
+                            "geometry", poState->osPath.c_str(), wkbUnknown, -1, true ) );
+                    m_nGeometryPropertyIndex = poClass->GetGeometryPropertyCount();
+                }
             }
 
             else
@@ -1151,7 +1158,7 @@ OGRErr GMLHandler::startElementFeatureAttribute(const char *pszName, int nLenNam
 
         return OGRERR_NONE;
     }
-    
+
     else if( m_poReader->IsWFSJointLayer() && m_nDepth == m_nDepthFeature + 1 )
     {
     }

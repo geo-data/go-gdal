@@ -271,7 +271,7 @@ tags are emitted by GDAL.</p>
 <li>With <tt>GDALGeoTIFF</tt> (the default) various GDAL custom tags may be written.</li>
 <li>With <tt>GeoTIFF</tt> only GeoTIFF tags will be added to the baseline.</li>
 <li>With <tt>BASELINE</tt> no GDAL or GeoTIFF tags will be written.  BASELINE is occasionally useful when writing files to
-be read by applications intolerant of unrecognised tags.</li>
+be read by applications intolerant of unrecognized tags.</li>
 </ul>
 </li>
 
@@ -382,7 +382,7 @@ gdal_translate my_fifo out.png -of PNG
 <p>
 Note: not all utilities are compatible with such input or output streaming operations,
 and even those which may deal with such files may not manage to deal with them in
-all circumstances, for example if the reading driver drived by the output file is
+all circumstances, for example if the reading driver driven by the output file is
 not compatible with the block order of the streamed input.
 
 <h3>Configuration options</h3>
@@ -402,7 +402,7 @@ Can help reading partially corrupted TIFF files</li>
 <li>USE_RRD: Can be set to TRUE to force external overviews in the RRD format. Default value : FALSE</li>
 <li>TIFF_USE_OVR: Can be set to TRUE to force external overviews in the GeoTIFF (.ovr) format. Default value : FALSE</li>
 <li>GTIFF_POINT_GEO_IGNORE: Can be set to TRUE to revert back to the behaviour of GDAL &lt; 1.8.0
-regarding how PixelIsPoint is interprated w.r.t geotransform. See <a href="http://trac.osgeo.org/gdal/wiki/rfc33_gtiff_pixelispoint">
+regarding how PixelIsPoint is interpreted w.r.t geotransform. See <a href="http://trac.osgeo.org/gdal/wiki/rfc33_gtiff_pixelispoint">
 RFC 33: GTiff - Fixing PixelIsPoint Interpretation</a> for more details. Default value : FALSE</li>
 <li>GTIFF_REPORT_COMPD_CS: (GDAL >= 1.9.0). Can be set to TRUE to avoid stripping the vertical CS of compound CS. Default value : FALSE</li>
 <li>GDAL_ENABLE_TIFF_SPLIT : Can be set to FALSE to avoid all-in-one-strip files being presented as having. Default value : TRUE</li>

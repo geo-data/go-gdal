@@ -6,21 +6,21 @@
 # Project:  GDAL/OGR Test Suite
 # Purpose:  Test basic OGR translation of WKT and WKB geometries.
 # Author:   Frank Warmerdam <warmerdam@pobox.com>
-# 
+#
 ###############################################################################
 # Copyright (c) 2003, Frank Warmerdam <warmerdam@pobox.com>
 # Copyright (c) 2009-2012, Even Rouault <even dot rouault at mines-paris dot org>
-# 
+#
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Library General Public
 # License as published by the Free Software Foundation; either
 # version 2 of the License, or (at your option) any later version.
-# 
+#
 # This library is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # Library General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU Library General Public
 # License along with this library; if not, write to the
 # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
@@ -70,11 +70,11 @@ class wkb_wkt_unit:
         if geom_wkb.GetCoordinateDimension() != geom_wkt.GetCoordinateDimension():
             gdaltest.post_reason( 'Coordinate dimension differs!' )
             return 'fail'
-        
+
         if geom_wkb.GetGeometryType() != geom_wkt.GetGeometryType():
             gdaltest.post_reason( 'Geometry type differs!' )
             return 'fail'
-        
+
         if geom_wkb.GetGeometryName() != geom_wkt.GetGeometryName():
             gdaltest.post_reason( 'Geometry name differs!' )
             return 'fail'
@@ -87,7 +87,7 @@ class wkb_wkt_unit:
  #           return 'fail'
 
         geom_wkb.Destroy()
-        
+
         ######################################################################
         # Convert geometry to WKB and back to verify that WKB encoding is
         # working smoothly.
@@ -115,9 +115,9 @@ class wkb_wkt_unit:
         geom_wkt.Destroy()
 
         return 'success'
-        
+
 ###############################################################################
-# Test geometry with very large exponents of coordiantes values
+# Test geometry with very large exponents of coordinate values.
 
 def ogr_wkbwkt_geom_bigexponents():
 
@@ -139,7 +139,7 @@ def ogr_wkbwkt_geom_bigexponents():
 
 
 ###############################################################################
-# Test importing broken/unhandled wkt
+# Test importing broken/unhandled WKT.
 
 def ogr_wkbwkt_test_broken_geom():
 
@@ -372,7 +372,8 @@ def ogr_wkbwkt_test_broken_geom():
         geom = ogr.CreateGeometryFromWkt(wkt)
         gdal.PopErrorHandler()
         if geom is not None:
-            gdaltest.post_reason( 'geom %s instanciated but not expected' % wkt )
+            gdaltest.post_reason(
+                'geom %s instantiated but not expected' % wkt )
             return 'fail'
 
     return 'success'
@@ -381,7 +382,7 @@ def ogr_wkbwkt_test_broken_geom():
 # Test importing WKT SF1.2
 
 def ogr_wkbwkt_test_import_wkt_sf12():
-    
+
     list_wkt_tuples = [ ('POINT EMPTY', 'POINT EMPTY'),
                         ('POINT Z EMPTY', 'POINT EMPTY'),
                         ('POINT M EMPTY', 'POINT EMPTY'),
@@ -494,11 +495,14 @@ def ogr_wkbwkt_test_import_wkt_sf12():
     for wkt_tuple in list_wkt_tuples:
         geom = ogr.CreateGeometryFromWkt(wkt_tuple[0])
         if geom is None:
-            gdaltest.post_reason( 'could not instanciate geometry %s' % wkt_tuple[0])
+            gdaltest.post_reason(
+                'could not instantiate geometry %s' % wkt_tuple[0])
             return 'fail'
         out_wkt = geom.ExportToWkt()
         if out_wkt != wkt_tuple[1]:
-            gdaltest.post_reason( 'in=%s, out=%s, expected=%s.' % (wkt_tuple[0], out_wkt, wkt_tuple[1]) )
+            gdaltest.post_reason(
+                'in=%s, out=%s, expected=%s.' % (wkt_tuple[0], out_wkt,
+                                                 wkt_tuple[1]) )
             return 'fail'
 
     return 'success'

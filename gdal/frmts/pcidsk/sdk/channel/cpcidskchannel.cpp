@@ -48,16 +48,18 @@ using namespace PCIDSK;
 /************************************************************************/
 
 CPCIDSKChannel::CPCIDSKChannel( PCIDSKBuffer &image_header, 
-                                uint64 ih_offset,
-                                CPCIDSKFile *file, 
-                                eChanType pixel_type,
-                                int channel_number )
+                                uint64 ih_offsetIn,
+                                CPCIDSKFile *fileIn, 
+                                eChanType pixel_typeIn,
+                                int channel_numberIn )
 
 {
-    this->pixel_type = pixel_type;
-    this->file = file;
-    this->channel_number = channel_number;
-    this->ih_offset = ih_offset;
+    this->pixel_type = pixel_typeIn;
+    this->file = fileIn;
+    this->channel_number = channel_numberIn;
+    this->ih_offset = ih_offsetIn;
+    byte_order = 'S';
+    needs_swap = FALSE;
 
     width = file->GetWidth();
     height = file->GetHeight();
@@ -208,7 +210,7 @@ PCIDSKChannel *CPCIDSKChannel::GetOverview( int overview_index )
         PCIDSKBuffer image_header(1024), file_header(1024);
         char  pseudo_filename[65];
 
-        sprintf( pseudo_filename, "/SIS=%d", 
+        snprintf( pseudo_filename, sizeof(pseudo_filename), "/SIS=%d", 
                  atoi(overview_infos[overview_index].c_str()) );
 
         image_header.Put( pseudo_filename, 64, 64 );
@@ -290,14 +292,14 @@ void CPCIDSKChannel::SetOverviewValidity( int overview_index,
 
     char new_info[48];
 
-    sprintf( new_info, "%d %d %s", 
+    snprintf( new_info, sizeof(new_info), "%d %d %s", 
              sis_id, (new_validity ? 1 : 0 ), resampling );
 
     overview_infos[overview_index] = new_info;
 
     // write back to metadata.
     char key[20];
-    sprintf( key, "_Overview_%d", overview_decimations[overview_index] );
+    snprintf( key, sizeof(key), "_Overview_%d", overview_decimations[overview_index] );
 
     SetMetadataValue( key, new_info );
 }

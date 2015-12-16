@@ -80,7 +80,7 @@
 
 /*---------------------------------------------------------------------
  * Define a static flag and set it with the byte ordering on this machine
- * we will then compare with this value to decide if we nned to swap
+ * we will then compare with this value to decide if we need to swap
  * bytes or not.
  *
  * CPL_MSB or CPL_LSB should be set in the makefile... the default is
@@ -270,7 +270,7 @@ void AVCRawBinReadBytes(AVCRawBinFile *psFile, int nBytesToRead, GByte *pBuf)
             /* Attempt to read past EOF... generate an error.
              *
              * Note: AVCRawBinEOF() can set bDisableReadBytesEOFError=TRUE
-             *       to disable the error message whils it is testing
+             *       to disable the error message while it is testing
              *       for EOF.
              *
              * TODO: We are not resetting the buffer. Also, there is no easy
@@ -380,10 +380,11 @@ void AVCRawBinFSeek(AVCRawBinFile *psFile, int nOffset, int nFrom)
          * move the FILE * to the right location and be ready to 
          * read from there.
          */
-        VSIFSeek(psFile->fp, psFile->nOffset+nTarget, SEEK_SET);
         psFile->nCurPos = 0;
         psFile->nCurSize = 0;
         psFile->nOffset = psFile->nOffset+nTarget;
+        if( VSIFSeek(psFile->fp, psFile->nOffset+nTarget, SEEK_SET) < 0 )
+            return;
     }
 
 }
@@ -601,7 +602,7 @@ void  AVCRawBinWriteDouble(AVCRawBinFile *psFile, double dValue)
 /**********************************************************************
  *                          AVCRawBinWriteZeros()
  *
- * Write a number of zeros (sepcified in bytes) at the current position 
+ * Write a number of zeros (specified in bytes) at the current position 
  * in the file.
  *
  * If a problem happens, then CPLError() will be called and 

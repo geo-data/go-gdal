@@ -84,12 +84,12 @@ class GMTRasterBand : public GDALPamRasterBand
 /*                           GMTRasterBand()                            */
 /************************************************************************/
 
-GMTRasterBand::GMTRasterBand( GMTDataset *poDS, int nZId, int nBand )
+GMTRasterBand::GMTRasterBand( GMTDataset *poDSIn, int nZIdIn, int nBandIn )
 
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
-    this->nZId = nZId;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
+    this->nZId = nZIdIn;
 
     nBlockXSize = poDS->GetRasterXSize();
     nBlockYSize = 1;
@@ -97,7 +97,7 @@ GMTRasterBand::GMTRasterBand( GMTDataset *poDS, int nZId, int nBand )
 /* -------------------------------------------------------------------- */
 /*      Get the type of the "z" variable, our target raster array.      */
 /* -------------------------------------------------------------------- */
-    if( nc_inq_var( poDS->cdfid, nZId, NULL, &nc_datatype, NULL, NULL,
+    if( nc_inq_var( poDSIn->cdfid, nZId, NULL, &nc_datatype, NULL, NULL,
                     NULL ) != NC_NOERR )
     {
         CPLError( CE_Failure, CPLE_AppDefined, 
@@ -186,6 +186,7 @@ CPLErr GMTRasterBand::IReadBlock( CPL_UNUSED int nBlockXOff, int nBlockYOff,
 GMTDataset::~GMTDataset()
 
 {
+    CPLMutexHolderD(&hNCMutex);
     FlushCache();
     nc_close (cdfid);
 }
@@ -263,6 +264,21 @@ GDALDataset *GMTDataset::Open( GDALOpenInfo * poOpenInfo )
     }
 
 /* -------------------------------------------------------------------- */
+/*      Get dimensions.  If we can't find this, then this is a          */
+/*      GMT file, but not a normal grid product.                     */
+/* -------------------------------------------------------------------- */
+    int    nm[2];
+    size_t start[2] = {0, 0};
+    size_t edge[2] = {2, 0};
+
+    nc_get_vara_int(cdfid, nm_id, start, edge, nm);
+    if( !GDALCheckDatasetDimensions(nm[0], nm[1]) )
+    {
+        nc_close( cdfid );
+        return NULL;
+    }
+
+/* -------------------------------------------------------------------- */
 /*      Create a corresponding GDALDataset.                             */
 /* -------------------------------------------------------------------- */
     CPLReleaseMutex(hNCMutex);  // Release mutex otherwise we'll deadlock with GDALDataset own mutex
@@ -272,16 +288,6 @@ GDALDataset *GMTDataset::Open( GDALOpenInfo * poOpenInfo )
 
     poDS->cdfid = cdfid;
     poDS->z_id = z_id;
-
-/* -------------------------------------------------------------------- */
-/*      Get dimensions.  If we can't find this, then this is a          */
-/*      GMT file, but not a normal grid product.                     */
-/* -------------------------------------------------------------------- */
-    int    nm[2];
-    size_t start[2] = {0, 0};
-    size_t edge[2] = {2, 0};
-
-    nc_get_vara_int(cdfid, nm_id, start, edge, nm);
 
     poDS->nRasterXSize = nm[0];
     poDS->nRasterYSize = nm[1];
@@ -594,22 +600,19 @@ GMTCreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
 void GDALRegister_GMT()
 
 {
-    if (! GDAL_CHECK_VERSION("GMT driver"))
+    if( !GDAL_CHECK_VERSION( "GMT driver" ) )
         return;
 
     if( GDALGetDriverByName( "GMT" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "GMT" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "GMT NetCDF Grid Format" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_various.html#GMT" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "GMT NetCDF Grid Format" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_various.html#GMT" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "nc" );
-
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
                                "Int16 Int32 Float32 Float64" );
 

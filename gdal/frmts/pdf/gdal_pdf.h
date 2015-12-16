@@ -34,8 +34,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _GDAL_PDF_H_INCLUDED
-#define _GDAL_PDF_H_INCLUDED
+#ifndef GDAL_PDF_H_INCLUDED
+#define GDAL_PDF_H_INCLUDED
 
 #include "pdfsdk_headers.h"
 
@@ -175,7 +175,7 @@ class PDFDataset : public GDALPamDataset
 {
     friend class PDFRasterBand;
     friend class PDFImageRasterBand;
-    
+
     PDFDataset*  poParentDS;
 
     CPLString    osFilename;
@@ -307,7 +307,7 @@ private:
 
     std::map<CPLString, int> oMapOperators;
     void                InitMapOperators();
-    
+
     int                 bSetStyle;
 
     void                ExploreTree(GDALPDFObject* poObj, int nRecLevel);
@@ -392,7 +392,7 @@ private:
 #ifdef HAVE_PDFIUM
     virtual CPLErr IBuildOverviews( const char *, int, int *,
                                     int, int *, GDALProgressFunc, void * );
-    
+
     static int bPdfiumInit;
 #endif
 };
@@ -473,4 +473,4 @@ class PDFWritableVectorDataset : public GDALDataset
 GDALDataset* GDALPDFOpen(const char* pszFilename, GDALAccess eAccess);
 CPLString PDFSanitizeLayerName(const char* pszName);
 
-#endif /* ndef _GDAL_PDF_H_INCLUDED */
+#endif /* ndef GDAL_PDF_H_INCLUDED */

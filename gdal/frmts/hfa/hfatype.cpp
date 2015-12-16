@@ -177,14 +177,14 @@ void HFAType::CompleteDefn( HFADictionary * poDict )
 void HFAType::Dump( FILE * fp )
 
 {
-    VSIFPrintf( fp, "HFAType %s/%d bytes\n", pszTypeName, nBytes );
+    CPL_IGNORE_RET_VAL(VSIFPrintf( fp, "HFAType %s/%d bytes\n", pszTypeName, nBytes ));
 
     for( int i = 0; i < nFields; i++ )
     {
         papoFields[i]->Dump( fp );
     }
 
-    VSIFPrintf( fp, "\n" );
+    CPL_IGNORE_RET_VAL(VSIFPrintf( fp, "\n" ));
 }
 
 /************************************************************************/
@@ -355,7 +355,7 @@ HFAType::GetInstCount( const char * pszFieldPath,
 /*                                                                      */
 /*      Extract the value of a field instance within this type.         */
 /*      Most of the work is done by the ExtractInstValue() for the      */
-/*      HFAField, but this methond does the field name parsing.         */
+/*      HFAField, but this method does the field name parsing.          */
 /*                                                                      */
 /*      field names have the form:                                      */
 /*                                                                      */

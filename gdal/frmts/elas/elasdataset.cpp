@@ -37,17 +37,17 @@ using std::fill;
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_ELAS(void);
+void GDALRegister_ELAS();
 CPL_C_END
 
 typedef struct ELASHeader {
     ELASHeader();
 
-    GInt32	NBIH;	/* bytes in header, normaly 1024 */
+    GInt32      NBIH;   /* bytes in header, normally 1024 */
     GInt32      NBPR;	/* bytes per data record (all bands of scanline) */
     GInt32	IL;	/* initial line - normally 1 */
     GInt32	LL;	/* last line */
-    GInt32	IE;	/* initial element (pixel), normally 1 */
+    GInt32      IE;     /* initial element (pixel), normally 1 */
     GInt32	LE;	/* last element (pixel) */
     GInt32	NC;	/* number of channels (bands) */
     GInt32	H4321;	/* header record identifier - always 4321. */
@@ -172,15 +172,15 @@ class ELASRasterBand : public GDALPamRasterBand
 /*                           ELASRasterBand()                            */
 /************************************************************************/
 
-ELASRasterBand::ELASRasterBand( ELASDataset *poDS, int nBand )
+ELASRasterBand::ELASRasterBand( ELASDataset *poDSIn, int nBandIn )
 
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
-    this->eAccess = poDS->eAccess;
+    this->eAccess = poDSIn->eAccess;
 
-    eDataType = poDS->eRasterDataType;
+    eDataType = poDSIn->eRasterDataType;
 
     nBlockXSize = poDS->GetRasterXSize();
     nBlockYSize = 1;
@@ -300,8 +300,8 @@ void ELASDataset::FlushCache()
 
     if( bHeaderModified )
     {
-        VSIFSeekL( fp, 0, SEEK_SET );
-        VSIFWriteL( &sHeader, 1024, 1, fp );
+        CPL_IGNORE_RET_VAL(VSIFSeekL( fp, 0, SEEK_SET ));
+        CPL_IGNORE_RET_VAL(VSIFWriteL( &sHeader, 1024, 1, fp ));
         bHeaderModified = FALSE;
     }
 }
@@ -413,7 +413,7 @@ GDALDataset *ELASDataset::Open( GDALOpenInfo * poOpenInfo )
     {
         delete poDS;
         CPLError( CE_Failure, CPLE_AppDefined,
-                  "Unrecognised image data type %d, with BytesPerSample=%d.\n",
+                  "Unrecognized image data type %d, with BytesPerSample=%d.\n",
                   nELASDataType, nBytesPerSample );
         return NULL;
     }
@@ -434,6 +434,7 @@ GDALDataset *ELASDataset::Open( GDALOpenInfo * poOpenInfo )
 /* -------------------------------------------------------------------- */
 /*      Create band information objects.                                */
 /* -------------------------------------------------------------------- */
+    /* coverity[tainted_data] */
     for( int iBand = 0; iBand < poDS->nBands; iBand++ )
     {
         poDS->SetBand( iBand+1, new ELASRasterBand( poDS, iBand+1 ) );
@@ -579,7 +580,7 @@ GDALDataset *ELASDataset::Create( const char * pszFilename,
 /* -------------------------------------------------------------------- */
 /*      Write the header data.                                          */
 /* -------------------------------------------------------------------- */
-    VSIFWrite( &sHeader, 1024, 1, fp );
+    CPL_IGNORE_RET_VAL(VSIFWrite( &sHeader, 1024, 1, fp ));
 
 /* -------------------------------------------------------------------- */
 /*      Now write out zero data for all the imagery.  This is           */
@@ -679,7 +680,7 @@ CPLErr ELASDataset::SetGeoTransform( double * padfTransform )
 
 
 /************************************************************************/
-/*                          GDALRegister_ELAS()                        */
+/*                          GDALRegister_ELAS()                         */
 /************************************************************************/
 
 void GDALRegister_ELAS()

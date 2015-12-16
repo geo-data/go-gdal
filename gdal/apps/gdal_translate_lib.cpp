@@ -438,6 +438,25 @@ GDALTranslateOptions* GDALTranslateOptionsClone(const GDALTranslateOptions *psOp
     return psOptions;
 }
 
+/************************************************************************/
+/*                        GDALTranslateFlush()                          */
+/************************************************************************/
+
+static GDALDatasetH GDALTranslateFlush(GDALDatasetH hOutDS)
+{
+    if( hOutDS != NULL )
+    {
+        CPLErr eErrBefore = CPLGetLastErrorType();
+        GDALFlushCache( hOutDS );
+        if (eErrBefore == CE_None &&
+            CPLGetLastErrorType() != CE_None)
+        {
+            GDALClose(hOutDS);
+            hOutDS = NULL;
+        }
+    }
+    return hOutDS;
+}
 
 /************************************************************************/
 /*                             GDALTranslate()                          */
@@ -464,6 +483,7 @@ GDALDatasetH GDALTranslate( const char *pszDest, GDALDatasetH hSrcDataset,
                             const GDALTranslateOptions *psOptionsIn, int *pbUsageError )
 
 {
+    CPLErrorReset();
     if( hSrcDataset == NULL )
     {
         CPLError( CE_Failure, CPLE_AppDefined, "No source dataset specified.");
@@ -830,6 +850,7 @@ GDALDatasetH GDALTranslate( const char *pszDest, GDALDatasetH hSrcDataset,
         hOutDS = GDALCreateCopy( hDriver, pszDest, hSrcDataset, 
                                  psOptions->bStrict, psOptions->papszCreateOptions, 
                                  psOptions->pfnProgress, psOptions->pProgressData );
+        hOutDS = GDALTranslateFlush(hOutDS);
 
         GDALTranslateOptionsFree(psOptions);
         return hOutDS;
@@ -1399,7 +1420,7 @@ GDALDatasetH GDALTranslate( const char *pszDest, GDALDatasetH hSrcDataset,
         }
 
 /* -------------------------------------------------------------------- */
-/*      Set a forcable nodata value?                                    */
+/*      Set a forcible nodata value?                                    */
 /* -------------------------------------------------------------------- */
         if( psOptions->bSetNoData )
         {
@@ -1499,16 +1520,7 @@ GDALDatasetH GDALTranslate( const char *pszDest, GDALDatasetH hSrcDataset,
     hOutDS = GDALCreateCopy( hDriver, pszDest, (GDALDatasetH) poVDS,
                              psOptions->bStrict, psOptions->papszCreateOptions, 
                              psOptions->pfnProgress, psOptions->pProgressData );
-    if( hOutDS != NULL )
-    {
-        int bHasGotErr = FALSE;
-        CPLErrorReset();
-        GDALFlushCache( hOutDS );
-        if (CPLGetLastErrorType() != CE_None)
-            bHasGotErr = TRUE;
-        if (bHasGotErr)
-            hOutDS = NULL;
-    }
+    hOutDS = GDALTranslateFlush(hOutDS);
     
     GDALClose( (GDALDatasetH) poVDS );
 
@@ -1799,10 +1811,10 @@ GDALTranslateOptions *GDALTranslateOptionsNew(char** papszArgv, GDALTranslateOpt
         }
         else if( EQUAL(papszArgv[i],"-not_strict")  )
             psOptions->bStrict = FALSE;
-            
+
         else if( EQUAL(papszArgv[i],"-strict")  )
             psOptions->bStrict = TRUE;
-            
+
         else if( EQUAL(papszArgv[i],"-sds")  )
         {
             if( psOptionsForBinary )

@@ -38,7 +38,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_HFA(void);
+void GDALRegister_HFA();
 CPL_C_END
 
 #ifndef R2D
@@ -51,7 +51,7 @@ CPL_C_END
 int WritePeStringIfNeeded(OGRSpatialReference* poSRS, HFAHandle hHFA);
 void ClearSR(HFAHandle hHFA);
 
-static const char *apszDatumMap[] = {
+static const char * const apszDatumMap[] = {
     /* Imagine name, WKT name */
     "NAD27", "North_American_Datum_1927",
     "NAD83", "North_American_Datum_1983",
@@ -61,7 +61,7 @@ static const char *apszDatumMap[] = {
     NULL, NULL
 };
 
-static const char *apszUnitMap[] = {
+static const char * const apszUnitMap[] = {
     "meters", "1.0",
     "meter", "1.0",
     "m", "1.0",
@@ -1906,16 +1906,16 @@ CPLXMLNode *HFARasterAttributeTable::Serialize() const
 /*                           HFARasterBand()                            */
 /************************************************************************/
 
-HFARasterBand::HFARasterBand( HFADataset *poDS, int nBand, int iOverview )
+HFARasterBand::HFARasterBand( HFADataset *poDSIn, int nBandIn, int iOverview )
 
 {
     if( iOverview == -1 )
-        this->poDS = poDS;
+        poDS = poDSIn;
     else
-        this->poDS = NULL;
+        poDS = NULL;
 
-    this->hHFA = poDS->hHFA;
-    this->nBand = nBand;
+    this->hHFA = poDSIn->hHFA;
+    nBand = nBandIn;
     this->poCT = NULL;
     this->nThisOverview = iOverview;
     this->papoOverviewBands = NULL;
@@ -2098,7 +2098,7 @@ void HFARasterBand::ReadAuxMetadata()
 
     HFABand *poBand = hHFA->papoBand[nBand-1];
 
-    const char ** pszAuxMetaData = GetHFAAuxMetaDataList();
+    const char * const * pszAuxMetaData = GetHFAAuxMetaDataList();
     for( int i = 0; pszAuxMetaData[i] != NULL; i += 4 )
     {
         HFAEntry *poEntry;
@@ -2131,7 +2131,7 @@ void HFARasterBand::ReadAuxMetadata()
                       break;
 
                   char szValueAsString[100];
-                  CPLsprintf( szValueAsString, "%.14g", dfValue );
+                  CPLsnprintf( szValueAsString, sizeof(szValueAsString), "%.14g", dfValue );
 
                   if( iValue > 0 )
                       osValueList += ",";
@@ -2156,7 +2156,7 @@ void HFARasterBand::ReadAuxMetadata()
                       break;
 
                   char szValueAsString[100];
-                  sprintf( szValueAsString, "%d", nValue );
+                  snprintf( szValueAsString, sizeof(szValueAsString), "%d", nValue );
 
                   if( iValue > 0 )
                       osValueList += ",";
@@ -3012,8 +3012,8 @@ GDALRasterAttributeTable *HFARasterBand::GetDefaultRAT()
 /*                            WriteNamedRAT()                            */
 /************************************************************************/
 
-CPLErr HFARasterBand::WriteNamedRAT( CPL_UNUSED const char *pszName,
-                                     CPL_UNUSED const GDALRasterAttributeTable *poRAT )
+CPLErr HFARasterBand::WriteNamedRAT( const char * /*pszName*/,
+                                     const GDALRasterAttributeTable* poRAT )
 {
 /* -------------------------------------------------------------------- */
 /*      Find the requested table.                                       */
@@ -3235,7 +3235,7 @@ HFADataset::~HFADataset()
     FlushCache();
 
 /* -------------------------------------------------------------------- */
-/*      Destroy the raster bands if they exist.  We forcably clean      */
+/*      Destroy the raster bands if they exist.  We forcibly clean      */
 /*      them up now to avoid any effort to write to them after the      */
 /*      file is closed.                                                 */
 /* -------------------------------------------------------------------- */
@@ -4969,8 +4969,8 @@ CPLErr HFADataset::ReadProjection()
     // then do not use the ESRI PE String.
     if( pszProjection != NULL )
     {
-        OGRSpatialReference oSRS(pszProjection);
-        if( oSRS.GetAuthorityCode(NULL) != NULL )
+        OGRSpatialReference oSRS2(pszProjection);
+        if( oSRS2.GetAuthorityCode(NULL) != NULL )
             bTryReadingPEString = FALSE;
     }
 
@@ -5819,7 +5819,7 @@ HFADataset::CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
     }
 
 /* -------------------------------------------------------------------- */
-/*      If we have PIXELTYPE metadadata in the source, pass it          */
+/*      If we have PIXELTYPE metadata in the source, pass it            */
 /*      through as a creation option.                                   */
 /* -------------------------------------------------------------------- */
     if( CSLFetchNameValue( papszOptions, "PIXELTYPE" ) == NULL
@@ -6038,14 +6038,13 @@ void GDALRegister_HFA()
     if( GDALGetDriverByName( "HFA" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "HFA" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
                                "Erdas Imagine Images (.img)" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_hfa.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_hfa.html" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "img" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
                                "Byte Int16 UInt16 Int32 UInt32 Float32 Float64 CFloat32 CFloat64" );

@@ -35,7 +35,7 @@
 CPL_CVSID("$Id: ehdrdataset.cpp 12350 2007-10-08 17:41:32Z rouault $");
 
 CPL_C_START
-void	GDALRegister_GenBin(void);
+void GDALRegister_GenBin();
 CPL_C_END
 
 /* ==================================================================== */
@@ -539,13 +539,13 @@ GDALDataset *GenBinDataset::Open( GDALOpenInfo * poOpenInfo )
 
 {
 /* -------------------------------------------------------------------- */
-/*	We assume the user is pointing to the binary (ie. .bil) file.	*/
+/*      We assume the user is pointing to the binary (i.e. .bil) file.  */
 /* -------------------------------------------------------------------- */
     if( poOpenInfo->nHeaderBytes < 2 )
         return NULL;
 
 /* -------------------------------------------------------------------- */
-/*      Now we need to tear apart tfhe filename to form a .HDR           */
+/*      Now we need to tear apart the filename to form a .HDR           */
 /*      filename.                                                       */
 /* -------------------------------------------------------------------- */
     const CPLString osPath = CPLGetPath( poOpenInfo->pszFilename );
@@ -586,7 +586,7 @@ GDALDataset *GenBinDataset::Open( GDALOpenInfo * poOpenInfo )
 
     int nRead = static_cast<int>(VSIFReadL( achHeader, 1, sizeof(achHeader) - 1, fp ));
     achHeader[nRead] = '\0';
-    VSIFSeekL( fp, 0, SEEK_SET );
+    CPL_IGNORE_RET_VAL(VSIFSeekL( fp, 0, SEEK_SET ));
 
     if( strstr( achHeader, "BANDS:" ) == NULL 
         || strstr( achHeader, "ROWS:" ) == NULL 
@@ -762,13 +762,13 @@ GDALDataset *GenBinDataset::Open( GDALOpenInfo * poOpenInfo )
 
     if( pszInterleaving == NULL )
         pszInterleaving = "BIL";
-    
+
     if( EQUAL(pszInterleaving,"BSQ") || EQUAL(pszInterleaving,"NA") )
     {
         nPixelOffset = nItemSize;
         if (poDS->nRasterXSize > INT_MAX / nItemSize) bIntOverflow = TRUE;
         nLineOffset = nItemSize * poDS->nRasterXSize;
-        nBandOffset = nLineOffset * poDS->nRasterYSize;
+        nBandOffset = nLineOffset * static_cast<vsi_l_offset>(poDS->nRasterYSize);
     }
     else if( EQUAL(pszInterleaving,"BIP") )
     {
@@ -787,7 +787,7 @@ GDALDataset *GenBinDataset::Open( GDALOpenInfo * poOpenInfo )
         nPixelOffset = nItemSize;
         if (poDS->nRasterXSize > INT_MAX / (nPixelOffset * nBands)) bIntOverflow = TRUE;
         nLineOffset = nPixelOffset * nBands * poDS->nRasterXSize;
-        nBandOffset = nItemSize * poDS->nRasterXSize;
+        nBandOffset = nItemSize * static_cast<vsi_l_offset>(poDS->nRasterXSize);
     }
 
     if (bIntOverflow)
@@ -862,7 +862,7 @@ GDALDataset *GenBinDataset::Open( GDALOpenInfo * poOpenInfo )
 }
 
 /************************************************************************/
-/*                         GDALRegister_GenBin()                          */
+/*                         GDALRegister_GenBin()                        */
 /************************************************************************/
 
 void GDALRegister_GenBin()

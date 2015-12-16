@@ -49,7 +49,7 @@ static const int RECORD_SIZE = 512;
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_ISIS2(void);
+void GDALRegister_ISIS2();
 CPL_C_END
 
 /************************************************************************/
@@ -231,7 +231,7 @@ GDALDataset *ISIS2Dataset::Open( GDALOpenInfo * poOpenInfo )
     VSIFCloseL( fpQube );
 
 /* -------------------------------------------------------------------- */
-/*	We assume the user is pointing to the label (ie. .lab) file.  	*/
+/*      We assume the user is pointing to the label (i.e. .lab) file.   */
 /* -------------------------------------------------------------------- */
     // QUBE can be inline or detached and point to an image name
     // ^QUBE = 76
@@ -534,7 +534,8 @@ GDALDataset *ISIS2Dataset::Open( GDALOpenInfo * poOpenInfo )
                   (EQUAL( map_proj_name, "STEREOGRAPHIC" )) ||
                   (EQUAL( map_proj_name, "SINUSOIDAL_EQUAL-AREA" )) ||
                   (EQUAL( map_proj_name, "SINUSOIDAL" ))  ) {
-            //isis uses the sphereical equation for these projections so force a sphere
+            // ISIS uses the spherical equation for these projections so force
+            // a sphere.
             oSRS.SetGeogCS( geog_name, datum_name, sphere_name,
                             semi_major, 0.0, 
                             "Reference_Meridian", 0.0 );
@@ -691,11 +692,11 @@ GDALDataset *ISIS2Dataset::Open( GDALOpenInfo * poOpenInfo )
 
         char **papszLines = CSLLoad( pszPrjFile );
 
-        OGRSpatialReference oSRS;
-        if( oSRS.importFromESRI( papszLines ) == OGRERR_NONE )
+        OGRSpatialReference oSRS2;
+        if( oSRS2.importFromESRI( papszLines ) == OGRERR_NONE )
         {
             char *pszResult = NULL;
-            oSRS.exportToWkt( &pszResult );
+            oSRS2.exportToWkt( &pszResult );
             poDS->osProjection = pszResult;
             CPLFree( pszResult );
         }
@@ -1055,7 +1056,7 @@ int ISIS2Dataset::WriteQUBE_Information(
 /*      osRasterFile : name of raster file but if it is empty we        */
 /*                     have only one file with an attached label        */
 /*      sObjectTag : QUBE, IMAGE or SPECTRAL_QUBE                       */
-/*      bRelaunch : flag to allow recursiv call                         */
+/*      bRelaunch : flag to allow recursive call                        */
 /************************************************************************/
 
 int ISIS2Dataset::WriteLabel(
@@ -1133,7 +1134,7 @@ int ISIS2Dataset::WriteLabel(
 
     {
         CPLString tab = "";
-        iLevel *= 4; // each struct is idented by 4 spaces
+        iLevel *= 4; // each struct is indented by 4 spaces.
 
         return VSIFPrintfL(fpLabel,"%*s%s=%s\n", iLevel, tab.c_str(),
                            key.c_str(), value.c_str());
@@ -1184,5 +1185,4 @@ void GDALRegister_ISIS2()
     poDriver->pfnCreate = ISIS2Dataset::Create;
 
     GetGDALDriverManager()->RegisterDriver( poDriver );
-
 }

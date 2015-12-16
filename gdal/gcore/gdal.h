@@ -906,7 +906,7 @@ typedef struct {
     double      adfLINE_DEN_COEFF[20];
     double      adfSAMP_NUM_COEFF[20];
     double      adfSAMP_DEN_COEFF[20];
-    
+
     double	dfMIN_LONG;
     double      dfMIN_LAT;
     double      dfMAX_LONG;
@@ -1103,7 +1103,7 @@ typedef enum
 {
     /*! Tile Interleaved by Pixel: tile (0,0) with internal band interleaved by pixel organization, tile (1, 0), ...  */
     GTO_TIP,
-    /*! Band Interleaved by Tile : tile (0,0) of first band, tile (0,0) of second band, ... tile (1,0) of fisrt band, tile (1,0) of second band, ... */
+    /*! Band Interleaved by Tile : tile (0,0) of first band, tile (0,0) of second band, ... tile (1,0) of first band, tile (1,0) of second band, ... */
     GTO_BIT,
     /*! Band SeQuential : all the tiles of first band, all the tiles of following band... */
     GTO_BSQ

@@ -894,7 +894,7 @@ class DataSource(MajorObject):
         (destroyed).
 
         For more information on the SQL dialect supported internally by OGR
-        review theOGR SQL document. Some drivers (ie. Oracle and PostGIS) pass
+        review theOGR SQL document. Some drivers (i.e. Oracle and PostGIS) pass
         the SQL directly through to the underlying RDBMS.
 
         This function is the same as the C++ method
@@ -1369,7 +1369,7 @@ class Layer(MajorObject):
 
         nFeatureId:  the feature id of the feature to read.
 
-        an handle to a feature now owned by the caller, or NULL on failure. 
+        an handle to a feature now owned by the caller, or NULL on failure.
         """
         return _ogr.Layer_GetFeature(self, *args)
 
@@ -1382,7 +1382,7 @@ class Layer(MajorObject):
 
         Fetch the next available feature from this layer.
 
-        The returned feature becomes the responsiblity of the caller to delete
+        The returned feature becomes the responsibility of the caller to delete
         with OGR_F_Destroy(). It is critical that all features associated with
         an OGRLayer (more specifically an OGRFeatureDefn) be deleted before
         that layer/datasource is deleted.
@@ -1402,7 +1402,7 @@ class Layer(MajorObject):
 
         hLayer:  handle to the layer from which feature are read.
 
-        an handle to a feature, or NULL if no more features are available. 
+        an handle to a feature, or NULL if no more features are available.
         """
         return _ogr.Layer_GetNextFeature(self, *args)
 
@@ -1700,11 +1700,11 @@ class Layer(MajorObject):
 
         OLCFastFeatureCount / "FastFeatureCount": TRUE if this layer can
         return a feature count (via OGR_L_GetFeatureCount()) efficiently ...
-        ie. without counting the features. In some cases this will return TRUE
+        i.e. without counting the features. In some cases this will return TRUE
         until a spatial filter is installed after which it will return FALSE.
 
         OLCFastGetExtent / "FastGetExtent": TRUE if this layer can return
-        its data extent (via OGR_L_GetExtent()) efficiently ... ie. without
+        its data extent (via OGR_L_GetExtent()) efficiently, i.e. without
         scanning all the features. In some cases this will return TRUE until a
         spatial filter is installed after which it will return FALSE.
 
@@ -1748,7 +1748,7 @@ class Layer(MajorObject):
         pszCap:  the name of the capability to test.
 
         TRUE if the layer has the requested capability, or FALSE otherwise.
-        OGRLayers will return FALSE for any unrecognised capabilities. 
+        OGRLayers will return FALSE for any unrecognized capabilities.
         """
         return _ogr.Layer_TestCapability(self, *args)
 
@@ -3678,7 +3678,7 @@ class FeatureDefn(_object):
         Parameters:
         -----------
 
-        hDefn:  hanlde to the feature definition on witch OGRFeature are based
+        hDefn:  handle to the feature definition on witch OGRFeature are based
         on.
 
         the current reference count. 
@@ -3700,10 +3700,10 @@ class FeatureDefn(_object):
         Parameters:
         -----------
 
-        hDefn:  hanlde to the feature definition on witch OGRFeature are based
+        hDefn:  handle to the feature definition on witch OGRFeature are based
         on.
 
-        ignore state 
+        ignore state
         """
         return _ogr.FeatureDefn_IsGeometryIgnored(self, *args)
 
@@ -3722,10 +3722,10 @@ class FeatureDefn(_object):
         Parameters:
         -----------
 
-        hDefn:  hanlde to the feature definition on witch OGRFeature are based
+        hDefn:  handle to the feature definition on witch OGRFeature are based
         on.
 
-        bIgnore:  ignore state 
+        bIgnore:  ignore state
         """
         return _ogr.FeatureDefn_SetGeometryIgnored(self, *args)
 
@@ -3766,10 +3766,10 @@ class FeatureDefn(_object):
         Parameters:
         -----------
 
-        hDefn:  hanlde to the feature definition on witch OGRFeature are based
+        hDefn:  handle to the feature definition on witch OGRFeature are based
         on.
 
-        bIgnore:  ignore state 
+        bIgnore:  ignore state
         """
         return _ogr.FeatureDefn_SetStyleIgnored(self, *args)
 
@@ -4949,9 +4949,9 @@ class Geometry(_object):
 
         Do these features intersect?
 
-        Currently this is not implemented in a rigerous fashion, and generally
+        Currently this is not implemented in a rigorous fashion, and generally
         just tests whether the envelopes of the two features intersect.
-        Eventually this will be made rigerous.
+        Eventually this will be made rigorous.
 
         This function is the same as the CPP method OGRGeometry::Intersects.
 

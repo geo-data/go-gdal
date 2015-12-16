@@ -617,13 +617,14 @@ const char *GDALGetColorInterpretationName( GDALColorInterp eInterp )
 /************************************************************************/
 
 /**
- * \brief Get color interpreation by symbolic name.
+ * \brief Get color interpretation by symbolic name.
  *
- * Returns a color interpreation corresponding to the given symbolic name. This
+ * Returns a color interpretation corresponding to the given symbolic name. This
  * function is opposite to the GDALGetColorInterpretationName().
  *
- * @param pszName string containing the symbolic name of the color interpretation.
- * 
+ * @param pszName string containing the symbolic name of the color
+ * interpretation.
+ *
  * @return GDAL color interpretation.
  *
  * @since GDAL 1.7.0
@@ -950,7 +951,7 @@ CPLString GDALFindAssociatedFile( const char *pszBaseFilename,
 /************************************************************************/
 
 #define MAX_GCP 30
- 
+
 int CPL_STDCALL GDALLoadOziMapFile( const char *pszFilename,
                                     double *padfGeoTransform, char **ppszWKT, 
                                     int *pnGCPCount, GDAL_GCP **ppasGCPs )
@@ -1121,8 +1122,8 @@ int CPL_STDCALL GDALLoadOziMapFile( const char *pszFilename,
     {
         if ( pnGCPCount && ppasGCPs )
         {
-            CPLDebug( "GDAL", 
-                "GDALLoadOziMapFile(%s) found file, wasn't able to derive a\n"
+            CPLDebug( "GDAL",
+                "GDALLoadOziMapFile(%s) found file, was not able to derive a\n"
                 "first order geotransform.  Using points as GCPs.",
                 pszFilename );
 
@@ -1180,12 +1181,12 @@ int CPL_STDCALL GDALReadOziMapFile( const char * pszBaseFilename,
 /************************************************************************/
 /*                         GDALLoadTabFile()                            */
 /*                                                                      */
-/*      Helper function for translator implementators wanting           */
+/*      Helper function for translator implementer wanting              */
 /*      support for MapInfo .tab-files.                                 */
 /************************************************************************/
 
 #define MAX_GCP 256
- 
+
 int CPL_STDCALL GDALLoadTabFile( const char *pszFilename,
                                  double *padfGeoTransform, char **ppszWKT, 
                                  int *pnGCPCount, GDAL_GCP **ppasGCPs )
@@ -1305,8 +1306,8 @@ int CPL_STDCALL GDALLoadTabFile( const char *pszFilename,
     {
         if (pnGCPCount && ppasGCPs)
         {
-            CPLDebug( "GDAL", 
-                "GDALLoadTabFile(%s) found file, wasn't able to derive a\n"
+            CPLDebug( "GDAL",
+                "GDALLoadTabFile(%s) found file, was not able to derive a\n"
                 "first order geotransform.  Using points as GCPs.",
                 pszFilename );
 
@@ -1329,7 +1330,7 @@ int CPL_STDCALL GDALLoadTabFile( const char *pszFilename,
 /************************************************************************/
 /*                         GDALReadTabFile()                            */
 /*                                                                      */
-/*      Helper function for translator implementators wanting           */
+/*      Helper function for translator implementer wanting              */
 /*      support for MapInfo .tab-files.                                 */
 /************************************************************************/
 
@@ -1392,7 +1393,7 @@ int GDALReadTabFile2( const char * pszBaseFilename,
         pszTAB = CPLResetExtension( pszBaseFilename, "TAB" );
         fpTAB = VSIFOpenL( pszTAB, "rt" );
     }
-    
+
     if( fpTAB == NULL )
         return FALSE;
 
@@ -1467,7 +1468,7 @@ GDALLoadWorldFile( const char *pszFilename, double *padfGeoTransform )
         world[nLines] = CPLAtofM(line);
         ++nLines;
     }
-      
+
     if( nLines == 6 
         && (world[0] != 0.0 || world[2] != 0.0)
         && (world[3] != 0.0 || world[1] != 0.0) )
@@ -1526,10 +1527,10 @@ GDALLoadWorldFile( const char *pszFilename, double *padfGeoTransform )
  * </ul>
  *
  * @param pszBaseFilename the target raster file.
- * @param pszExtension the extension to use (ie. ".wld") or NULL to derive it
+ * @param pszExtension the extension to use (i.e. ".wld") or NULL to derive it
  * from the pszBaseFilename
- * @param padfGeoTransform the six double array into which the 
- * geotransformation should be placed. 
+ * @param padfGeoTransform the six double array into which the
+ * geotransformation should be placed.
  *
  * @return TRUE on success or FALSE on failure.
  */
@@ -1577,7 +1578,7 @@ int GDALReadWorldFile2( const char *pszBaseFilename, const char *pszExtension,
         szDerivedExtension[1] = oBaseExt[oBaseExt.length()-1];
         szDerivedExtension[2] = 'w';
         szDerivedExtension[3] = '\0';
-        
+
         if( GDALReadWorldFile2( pszBaseFilename, szDerivedExtension,
                                 padfGeoTransform, papszSiblingFiles,
                                 ppszWorldFileNameOut ) )
@@ -1646,7 +1647,7 @@ int GDALReadWorldFile2( const char *pszBaseFilename, const char *pszExtension,
         pszTFW = CPLResetExtension( pszBaseFilename, szExtUpper );
         bGotTFW = VSIStatExL( pszTFW, &sStatBuf, VSI_STAT_EXISTS_FLAG ) == 0;
     }
-    
+
     if( !bGotTFW )
         return FALSE;
 
@@ -1663,9 +1664,9 @@ int GDALReadWorldFile2( const char *pszBaseFilename, const char *pszExtension,
 }
 
 /************************************************************************/
-/*                         GDALWriteWorldFile()                          */
+/*                         GDALWriteWorldFile()                         */
 /*                                                                      */
-/*      Helper function for translator implementators wanting           */
+/*      Helper function for translator implementer wanting              */
 /*      support for ESRI world files.                                   */
 /************************************************************************/
 
@@ -1687,9 +1688,9 @@ int GDALReadWorldFile2( const char *pszBaseFilename, const char *pszExtension,
  * </ul>
  *
  * @param pszBaseFilename the target raster file.
- * @param pszExtension the extension to use (ie. ".wld"). Must not be NULL
- * @param padfGeoTransform the six double array from which the 
- * geotransformation should be read. 
+ * @param pszExtension the extension to use (i.e. ".wld"). Must not be NULL
+ * @param padfGeoTransform the six double array from which the
+ * geotransformation should be read.
  *
  * @return TRUE on success or FALSE on failure.
  */
@@ -1746,13 +1747,13 @@ GDALWriteWorldFile( const char * pszBaseFilename, const char *pszExtension,
  *
  * Available pszRequest values:
  * <ul>
- * <li> "VERSION_NUM": Returns GDAL_VERSION_NUM formatted as a string.  ie. "1170"
+ * <li> "VERSION_NUM": Returns GDAL_VERSION_NUM formatted as a string.  i.e. "1170"
  *      Note: starting with GDAL 1.10, this string will be longer than 4 characters.
- * <li> "RELEASE_DATE": Returns GDAL_RELEASE_DATE formatted as a string.  
- * ie. "20020416".
+ * <li> "RELEASE_DATE": Returns GDAL_RELEASE_DATE formatted as a string.
+ * i.e. "20020416".
  * <li> "RELEASE_NAME": Returns the GDAL_RELEASE_NAME. ie. "1.1.7"
- * <li> "--version": Returns one line version message suitable for use in 
- * response to --version requests.  ie. "GDAL 1.1.7, released 2002/04/16"
+ * <li> "--version": Returns one line version message suitable for use in
+ * response to --version requests.  i.e. "GDAL 1.1.7, released 2002/04/16"
  * <li> "LICENSE": Returns the content of the LICENSE.TXT file from the GDAL_DATA directory.
  *      Before GDAL 1.7.0, the returned string was leaking memory but this is now resolved.
  *      So the result should not been freed by the caller.
@@ -1866,16 +1867,18 @@ const char * CPL_STDCALL GDALVersionInfo( const char *pszRequest )
 
 /** Return TRUE if GDAL library version at runtime matches nVersionMajor.nVersionMinor.
 
-    The purpose of this method is to ensure that calling code will run with the GDAL
-    version it is compiled for. It is primarly intented for external plugins.
+    The purpose of this method is to ensure that calling code will run
+    with the GDAL version it is compiled for. It is primarily intended
+    for external plugins.
 
     @param nVersionMajor Major version to be tested against
     @param nVersionMinor Minor version to be tested against
     @param pszCallingComponentName If not NULL, in case of version mismatch, the method
-                                   will issue a failure mentionning the name of
+                                   will issue a failure mentioning the name of
                                    the calling component.
 
-    @return TRUE if GDAL library version at runtime matches nVersionMajor.nVersionMinor, FALSE otherwise.
+    @return TRUE if GDAL library version at runtime matches
+    nVersionMajor.nVersionMinor, FALSE otherwise.
   */
 int CPL_STDCALL GDALCheckVersion( int nVersionMajor, int nVersionMinor,
                                   const char* pszCallingComponentName)
@@ -2074,7 +2077,7 @@ GDALGCPsToGeoTransform( int nGCPCount, const GDAL_GCP *pasGCPs,
     }
 
     double pl_normalize[6], geo_normalize[6];
-    
+
     pl_normalize[0] = -min_pixel / (max_pixel - min_pixel);
     pl_normalize[1] = 1.0 / (max_pixel - min_pixel);
     pl_normalize[2] = 0.0;
@@ -2184,7 +2187,7 @@ GDALGCPsToGeoTransform( int nGCPCount, const GDAL_GCP *pasGCPs,
 
     GDALComposeGeoTransforms(pl_normalize, gt_normalized, gt1p2);
     GDALComposeGeoTransforms(gt1p2, inv_geo_normalize, padfGeoTransform);
-    
+
 /* -------------------------------------------------------------------- */
 /*      Now check if any of the input points fit this poorly.           */
 /* -------------------------------------------------------------------- */
@@ -2604,10 +2607,12 @@ GDALGeneralCmdLineProcessor( int nArgc, char ***ppapszArgv, int nOptions )
             hDriver = GDALGetDriverByName( papszArgv[iArg+1] );
             if( hDriver == NULL )
             {
-                CPLError( CE_Failure, CPLE_AppDefined, 
-                          "--format option given with format '%s', but that format not\n"
-                          "recognised.  Use the --formats option to get a list of available formats,\n"
-                          "and use the short code (ie. GTiff or HFA) as the format identifier.\n", 
+                CPLError( CE_Failure, CPLE_AppDefined,
+                          "--format option given with format '%s', but that "
+                          "format not\nrecognised.  Use the --formats option "
+                          "to get a list of available formats,\n"
+                          "and use the short code (i.e. GTiff or HFA) as the "
+                          "format identifier.\n",
                           papszArgv[iArg+1] );
                 return -1;
             }
@@ -2641,7 +2646,7 @@ GDALGeneralCmdLineProcessor( int nArgc, char ***ppapszArgv, int nOptions )
             if( CSLFetchBoolean( papszMD, GDAL_DCAP_OPEN, FALSE ) )
                 printf( "  Supports: Open() - Open existing dataset.\n" );
             if( CSLFetchBoolean( papszMD, GDAL_DCAP_CREATE, FALSE ) )
-                printf( "  Supports: Create() - Create writeable dataset.\n" );
+                printf( "  Supports: Create() - Create writable dataset.\n" );
             if( CSLFetchBoolean( papszMD, GDAL_DCAP_CREATECOPY, FALSE ) )
                 printf( "  Supports: CreateCopy() - Create dataset by copying another.\n" );
             if( CSLFetchBoolean( papszMD, GDAL_DCAP_VIRTUALIO, FALSE ) )
@@ -2722,7 +2727,8 @@ GDALGeneralCmdLineProcessor( int nArgc, char ***ppapszArgv, int nOptions )
             printf( "  --config key value: set system configuration option.\n" );
             printf( "  --debug [on/off/value]: set debug level.\n" );
             printf( "  --pause: wait for user input, time to attach debugger\n" );
-            printf( "  --locale [locale]: install locale for debugging (ie. en_US.UTF-8)\n" );
+            printf( "  --locale [locale]: install locale for debugging "
+                    "(i.e. en_US.UTF-8)\n" );
             printf( "  --help-general: report detailed help on general options.\n" );
             CSLDestroy( papszReturn );
             return 0;
@@ -2746,7 +2752,7 @@ GDALGeneralCmdLineProcessor( int nArgc, char ***ppapszArgv, int nOptions )
         }
 
 /* -------------------------------------------------------------------- */
-/*      carry through unrecognised options.                             */
+/*      Carry through unrecognized options.                             */
 /* -------------------------------------------------------------------- */
         else
         {
@@ -2770,7 +2776,7 @@ static bool _FetchDblFromMD( char **papszMD, const char *pszKey,
 {
     char szFullKey[200];
 
-    sprintf( szFullKey, "%s", pszKey );
+    snprintf( szFullKey, sizeof(szFullKey), "%s", pszKey );
 
     const char *pszValue = CSLFetchNameValue( papszMD, szFullKey );
 
@@ -2882,7 +2888,7 @@ GDALDataset *GDALFindAssociatedAuxFile( const char *pszBasename,
 /*      file.  Check that we are the dependent file of the aux          */
 /*      file, or if we aren't verify that the dependent file does       */
 /*      not exist, likely mean it is us but some sort of renaming       */
-/*      has occured.                                                    */
+/*      has occurred.                                                   */
 /* -------------------------------------------------------------------- */
     CPLString osJustFile = CPLGetFilename(pszBasename); // without dir
     CPLString osAuxFilename = CPLResetExtension(pszBasename, pszAuxSuffixLC);
@@ -3011,7 +3017,7 @@ GDALDataset *GDALFindAssociatedAuxFile( const char *pszBasename,
             }
             VSIFCloseL( fp );
         }
- 
+
         if( poODS != NULL )
         {
             const char *pszDep
@@ -3105,6 +3111,7 @@ int GDALCheckDatasetDimensions( int nXSize, int nYSize )
   *
   * If the configuration option GDAL_MAX_BAND_COUNT is defined,
   * the band count will be compared to the maximum number of band allowed.
+  * If not defined, the maximum number allowed is 65536.
   *
   * @param nBands the band count
   * @param bIsZeroAllowed TRUE if band count == 0 is allowed
@@ -3114,17 +3121,21 @@ int GDALCheckDatasetDimensions( int nXSize, int nYSize )
 
 int GDALCheckBandCount( int nBands, int bIsZeroAllowed )
 {
-    int nMaxBands = -1;
-    const char* pszMaxBandCount = CPLGetConfigOption("GDAL_MAX_BAND_COUNT", NULL);
-    if (pszMaxBandCount != NULL)
-    {
-        nMaxBands = atoi(pszMaxBandCount);
-    }
-    if (nBands < 0 || (!bIsZeroAllowed && nBands == 0) ||
-        (nMaxBands >= 0 && nBands > nMaxBands) )
+    if (nBands < 0 || (!bIsZeroAllowed && nBands == 0) )
     {
         CPLError(CE_Failure, CPLE_AppDefined,
                  "Invalid band count : %d", nBands);
+        return FALSE;
+    }
+    const char* pszMaxBandCount = CPLGetConfigOption("GDAL_MAX_BAND_COUNT", "65536");
+    /* coverity[tainted_data] */
+    int nMaxBands = atoi(pszMaxBandCount);
+    if ( nBands > nMaxBands )
+    {
+        CPLError(CE_Failure, CPLE_AppDefined,
+                 "Invalid band count : %d. Maximum allowed currently is %d. "
+                 "Define GDAL_MAX_BAND_COUNT to a higher level if it is a legitimate number.",
+                 nBands, nMaxBands);
         return FALSE;
     }
     return TRUE;

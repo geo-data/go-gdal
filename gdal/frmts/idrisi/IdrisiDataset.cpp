@@ -45,7 +45,7 @@
 CPL_CVSID( "$Id$" );
 
 CPL_C_START
-void GDALRegister_IDRISI( void);
+void GDALRegister_IDRISI();
 CPL_C_END
 
 #ifdef WIN32
@@ -59,77 +59,77 @@ CPL_C_END
 #define CPLAtof_nz(s) (s == NULL ? (double) 0.0 : CPLAtof(s))
 
 //----- file extensions:
-static const char *extRST = "rst";
-static const char *extRDC         = "rdc";
-static const char *extSMP         = "smp";
-static const char *extREF         = "ref";
-// static const char *extRSTu        = "RST";
-static const char *extRDCu        = "RDC";
-static const char *extSMPu        = "SMP";
-static const char *extREFu        = "REF";
+static const char * const extRST = "rst";
+static const char * const extRDC         = "rdc";
+static const char * const extSMP         = "smp";
+static const char * const extREF         = "ref";
+// static const char * const extRSTu        = "RST";
+static const char * const extRDCu        = "RDC";
+static const char * const extSMPu        = "SMP";
+static const char * const extREFu        = "REF";
 
 //----- field names on rdc file:
-static const char *rdcFILE_FORMAT  = "file format ";
-static const char *rdcFILE_TITLE   = "file title  ";
-static const char *rdcDATA_TYPE    = "data type   ";
-static const char *rdcFILE_TYPE    = "file type   ";
-static const char *rdcCOLUMNS      = "columns     ";
-static const char *rdcROWS         = "rows        ";
-static const char *rdcREF_SYSTEM   = "ref. system ";
-static const char *rdcREF_UNITS    = "ref. units  ";
-static const char *rdcUNIT_DIST    = "unit dist.  ";
-static const char *rdcMIN_X        = "min. X      ";
-static const char *rdcMAX_X        = "max. X      ";
-static const char *rdcMIN_Y        = "min. Y      ";
-static const char *rdcMAX_Y        = "max. Y      ";
-static const char *rdcPOSN_ERROR   = "pos'n error ";
-static const char *rdcRESOLUTION   = "resolution  ";
-static const char *rdcMIN_VALUE    = "min. value  ";
-static const char *rdcMAX_VALUE    = "max. value  ";
-static const char *rdcDISPLAY_MIN  = "display min ";
-static const char *rdcDISPLAY_MAX  = "display max ";
-static const char *rdcVALUE_UNITS  = "value units ";
-static const char *rdcVALUE_ERROR  = "value error ";
-static const char *rdcFLAG_VALUE   = "flag value  ";
-static const char *rdcFLAG_DEFN    = "flag def'n  ";
-static const char *rdcFLAG_DEFN2   = "flag def`n  ";
-static const char *rdcLEGEND_CATS  = "legend cats ";
-static const char *rdcLINEAGES     = "lineage     ";
-static const char *rdcCOMMENTS     = "comment     ";
-static const char *rdcCODE_N       = "code %6d ";
+static const char * const rdcFILE_FORMAT  = "file format ";
+static const char * const rdcFILE_TITLE   = "file title  ";
+static const char * const rdcDATA_TYPE    = "data type   ";
+static const char * const rdcFILE_TYPE    = "file type   ";
+static const char * const rdcCOLUMNS      = "columns     ";
+static const char * const rdcROWS         = "rows        ";
+static const char * const rdcREF_SYSTEM   = "ref. system ";
+static const char * const rdcREF_UNITS    = "ref. units  ";
+static const char * const rdcUNIT_DIST    = "unit dist.  ";
+static const char * const rdcMIN_X        = "min. X      ";
+static const char * const rdcMAX_X        = "max. X      ";
+static const char * const rdcMIN_Y        = "min. Y      ";
+static const char * const rdcMAX_Y        = "max. Y      ";
+static const char * const rdcPOSN_ERROR   = "pos'n error ";
+static const char * const rdcRESOLUTION   = "resolution  ";
+static const char * const rdcMIN_VALUE    = "min. value  ";
+static const char * const rdcMAX_VALUE    = "max. value  ";
+static const char * const rdcDISPLAY_MIN  = "display min ";
+static const char * const rdcDISPLAY_MAX  = "display max ";
+static const char * const rdcVALUE_UNITS  = "value units ";
+static const char * const rdcVALUE_ERROR  = "value error ";
+static const char * const rdcFLAG_VALUE   = "flag value  ";
+static const char * const rdcFLAG_DEFN    = "flag def'n  ";
+static const char * const rdcFLAG_DEFN2   = "flag def`n  ";
+static const char * const rdcLEGEND_CATS  = "legend cats ";
+static const char * const rdcLINEAGES     = "lineage     ";
+static const char * const rdcCOMMENTS     = "comment     ";
+static const char * const rdcCODE_N       = "code %6d ";
 
 //----- ".ref" file field names:
-static const char *refREF_SYSTEM   = "ref. system ";
-static const char *refREF_SYSTEM2  = "ref.system  ";
-static const char *refPROJECTION   = "projection  ";
-static const char *refDATUM        = "datum       " ;
-static const char *refDELTA_WGS84  = "delta WGS84 " ;
-static const char *refELLIPSOID    = "ellipsoid   ";
-static const char *refMAJOR_SAX    = "major s-ax  " ;
-static const char *refMINOR_SAX    = "minor s-ax  ";
-static const char *refORIGIN_LONG  = "origin long ";
-static const char *refORIGIN_LAT   = "origin lat  ";
-static const char *refORIGIN_X     = "origin X    ";
-static const char *refORIGIN_Y     = "origin Y    ";
-static const char *refSCALE_FAC    = "scale fac   ";
-static const char *refUNITS        = "units       ";
-static const char *refPARAMETERS   = "parameters  ";
-static const char *refSTANDL_1     = "stand ln 1  ";
-static const char *refSTANDL_2     = "stand ln 2  ";
+static const char * const refREF_SYSTEM   = "ref. system ";
+static const char * const refREF_SYSTEM2  = "ref.system  ";
+static const char * const refPROJECTION   = "projection  ";
+static const char * const refDATUM        = "datum       " ;
+static const char * const refDELTA_WGS84  = "delta WGS84 " ;
+static const char * const refELLIPSOID    = "ellipsoid   ";
+static const char * const refMAJOR_SAX    = "major s-ax  " ;
+static const char * const refMINOR_SAX    = "minor s-ax  ";
+static const char * const refORIGIN_LONG  = "origin long ";
+static const char * const refORIGIN_LAT   = "origin lat  ";
+static const char * const refORIGIN_X     = "origin X    ";
+static const char * const refORIGIN_Y     = "origin Y    ";
+static const char * const refSCALE_FAC    = "scale fac   ";
+static const char * const refUNITS        = "units       ";
+static const char * const refPARAMETERS   = "parameters  ";
+static const char * const refSTANDL_1     = "stand ln 1  ";
+static const char * const refSTANDL_2     = "stand ln 2  ";
 
 //----- standard values:
-static const char *rstVERSION      = "Idrisi Raster A.1";
-static const char * rstBYTE         = "byte";
-static const char * rstINTEGER      = "integer";
-static const char * rstREAL         = "real";
-static const char * rstRGB24        = "rgb24";
-static const char * rstDEGREE       = "deg";
-static const char * rstMETER        = "m";
-static const char * rstLATLONG      = "latlong";
-static const char * rstLATLONG2     = "lat/long";
-static const char * rstPLANE        = "plane";
-static const char * rstUTM          = "utm-%d%c";
-static const char * rstSPC          = "spc%2d%2s%d";
+static const char * const rstVERSION      = "Idrisi Raster A.1";
+static const char * const rstBYTE         = "byte";
+static const char * const rstINTEGER      = "integer";
+static const char * const rstREAL         = "real";
+static const char * const rstRGB24        = "rgb24";
+static const char * const rstDEGREE       = "deg";
+static const char * const rstMETER        = "m";
+static const char * const rstLATLONG      = "latlong";
+static const char * const rstLATLONG2     = "lat/long";
+static const char * const rstPLANE        = "plane";
+static const char * const rstUTM          = "utm-%d%c";
+static const char * const rstSPC          = "spc%2d%2s%d";
 
 //----- palette file( .smp ) header size:
 static const int smpHEADERSIZE = 18;
@@ -416,7 +416,7 @@ static const ConvertionTab aoLinearUnitsConv[] = {
 //----- Get the index of a given linear unit
 int GetUnitIndex( const char *pszUnitName );
 
-//----- Get the defaut name
+//----- Get the default name
 char *GetUnitDefault( const char *pszUnitName, const char *pszToMeter = NULL );
 
 //----- Get the "to meter"
@@ -448,9 +448,9 @@ private:
     char *pszProjection;
     char **papszCategories;
     char *pszUnitType;
-	//move GeoReference2Wkt() into header file
+    // Move GeoReference2Wkt() into header file.
     CPLErr Wkt2GeoReference( const char *pszProjString,
-        char **pszRefSystem, 
+        char **pszRefSystem,
         char **pszRefUnit );
 
 protected:
@@ -936,9 +936,9 @@ GDALDataset *IdrisiDataset::Create( const char *pszFilename,
         return NULL;
     }
 
-    // ---------------------------------------------------------------- 
-    //  Create the header file with minimun information
-    // ---------------------------------------------------------------- 
+    // ----------------------------------------------------------------
+    //  Create the header file with minimum information
+    // ----------------------------------------------------------------
 
     const char *pszLDataType;
 
@@ -1437,13 +1437,13 @@ CPLErr IdrisiDataset::SetProjection( const char *pszProjString )
 /*                          IdrisiRasterBand()                          */
 /************************************************************************/
 
-IdrisiRasterBand::IdrisiRasterBand( IdrisiDataset *poDS, 
-                                    int nBand, 
-                                    GDALDataType eDataType )
+IdrisiRasterBand::IdrisiRasterBand( IdrisiDataset *poDSIn, 
+                                    int nBandIn, 
+                                    GDALDataType eDataTypeIn )
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
-    this->eDataType = eDataType;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
+    this->eDataType = eDataTypeIn;
     this->poDefaultRAT = NULL;
     this->fMinimum = 0.0;
     this->fMaximum = 0.0;
@@ -1462,9 +1462,9 @@ IdrisiRasterBand::IdrisiRasterBand( IdrisiDataset *poDS,
 
     nRecordSize  = poDS->GetRasterXSize() * GDALGetDataTypeSize( eDataType ) / 8;
 
-    pabyScanLine = (GByte*) VSI_MALLOC2_VERBOSE( nRecordSize, poDS->nBands );
+    pabyScanLine = (GByte*) VSI_MALLOC2_VERBOSE( nRecordSize, poDSIn->nBands );
 
-    nRecordSize *= poDS->nBands;
+    nRecordSize *= poDSIn->nBands;
 }
 
 /************************************************************************/
@@ -2278,7 +2278,7 @@ GDALRasterAttributeTable *IdrisiRasterBand::GetDefaultRAT()
     poDefaultRAT->CreateColumn( "Class_name", GFT_String,  GFU_Name );
 
     // ----------------------------------------------------------
-    // Loop throught the Category Names
+    // Loop through the Category Names.
     // ----------------------------------------------------------
 
     GDALColorEntry sEntry;
@@ -2855,16 +2855,17 @@ CPLErr IdrisiDataset::Wkt2GeoReference( const char *pszProjString,
     if( EQUAL( pszProjName, SRS_PT_LAMBERT_CONFORMAL_CONIC_2SP ) ||
         EQUAL( pszProjName, SRS_PT_TRANSVERSE_MERCATOR ) )
     {
-        char *pszPCSCode = NULL;
-        char *pszID = CPLStrdup( oSRS.GetAuthorityCode( "PROJCS" ) );
-        if( strlen( pszID ) > 0 )
+        CPLString osPCSCode;
+        const char *pszID = oSRS.GetAuthorityCode( "PROJCS" );
+        if( pszID != NULL && strlen( pszID ) > 0 )
         {
-            pszPCSCode = CPLStrdup( CSVGetField( CSVFilename( "stateplane.csv" ),
-                                                 "EPSG_PCS_CODE", pszID, CC_Integer, "ID" ) );
-            if( strlen( pszPCSCode ) > 0 )
+            const char* pszPCSCode = CSVGetField( CSVFilename( "stateplane.csv" ),
+                                                 "EPSG_PCS_CODE", pszID, CC_Integer, "ID" );
+            osPCSCode = (pszPCSCode) ? pszPCSCode : "";
+            if( osPCSCode.size() )
             {
-                int nZone      = pszPCSCode[strlen( pszPCSCode ) - 1] - '0';
-                int nSPCode    = atoi_nz( pszPCSCode );
+                int nZone      = osPCSCode[osPCSCode.size() - 1] - '0';
+                int nSPCode    = atoi_nz( osPCSCode );
 
                 if( nZone == 0 )
                     nZone = 1;
@@ -2922,8 +2923,6 @@ CPLErr IdrisiDataset::Wkt2GeoReference( const char *pszProjString,
                 *pszRefSystem = CPLStrdup(pszOutRefSystem);
             }
             *pszRefUnit = GetUnitDefault( oSRS.GetAttrValue( "UNIT" ), CPLSPrintf( "%f", oSRS.GetLinearUnits() ) );
-            CPLFree(pszPCSCode);
-            CPLFree(pszID);
             return CE_None;
         }
 
@@ -3292,7 +3291,7 @@ void GDALRegister_IDRISI()
     if( GDALGetDriverByName( "RST" ) != NULL )
         return;
 
-    GDALDriver  *poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "RST" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

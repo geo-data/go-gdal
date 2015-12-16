@@ -2318,16 +2318,17 @@ GDALRegenerateOverviews( GDALRasterBandH hSrcBand,
             {
                 CPLError(CE_Warning, CPLE_AppDefined,
                         "Computing overviews on palette index raster bands "
-                        "with a palette whose color interpreation is not RGB "
+                        "with a palette whose color interpretation is not RGB "
                         "will probably lead to unexpected results.");
                 poColorTable = NULL;
             }
         }
         else
         {
-            CPLError(CE_Warning, CPLE_AppDefined,
-                    "Computing overviews on palette index raster bands "
-                    "without a palette will probably lead to unexpected results.");
+            CPLError( CE_Warning, CPLE_AppDefined,
+                      "Computing overviews on palette index raster bands "
+                      "without a palette will probably lead to unexpected "
+                      "results." );
         }
     }
     // Not ready yet
@@ -2377,7 +2378,7 @@ GDALRegenerateOverviews( GDALRasterBandH hSrcBand,
 
     /* In case the mask made be computed from another band of the dataset, */
     /* we can't use cascaded generation, as the computation of the overviews */
-    /* of the band used for the mask band may not have yet occured (#3033) */
+    /* of the band used for the mask band may not have yet occurred (#3033) */
     if( (STARTS_WITH_CI(pszResampling, "AVER") |
          STARTS_WITH_CI(pszResampling, "GAUSS") ||
          EQUAL(pszResampling,"CUBIC") ||

@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_FAST(void);
+void GDALRegister_FAST();
 CPL_C_END
 
 // static const int ADM_STD_HEADER_SIZE = 4608;  // XXX: Format specification says it
@@ -156,12 +156,12 @@ class FASTRasterBand : public RawRasterBand
 /*                           FASTRasterBand()                           */
 /************************************************************************/
 
-FASTRasterBand::FASTRasterBand( FASTDataset *poDS, int nBand, VSILFILE * fpRaw,
-                                vsi_l_offset nImgOffset, int nPixelOffset,
-                                int nLineOffset, GDALDataType eDataType,
-				int bNativeOrder) :
-                 RawRasterBand( poDS, nBand, fpRaw, nImgOffset, nPixelOffset,
-                               nLineOffset, eDataType, bNativeOrder, TRUE)
+FASTRasterBand::FASTRasterBand( FASTDataset *poDSIn, int nBandIn, VSILFILE * fpRawIn,
+                                vsi_l_offset nImgOffsetIn, int nPixelOffsetIn,
+                                int nLineOffsetIn,
+                                GDALDataType eDataTypeIn, int bNativeOrderIn ) :
+        RawRasterBand(poDSIn, nBandIn, fpRawIn, nImgOffsetIn, nPixelOffsetIn,
+                      nLineOffsetIn, eDataTypeIn, bNativeOrderIn, TRUE)
 {
 
 }
@@ -263,11 +263,11 @@ char** FASTDataset::GetFileList()
 /*                             OpenChannel()                            */
 /************************************************************************/
 
-int FASTDataset::OpenChannel( const char *pszFilename, int iBand )
+int FASTDataset::OpenChannel( const char *pszFilenameIn, int iBand )
 {
-    fpChannels[iBand] = VSIFOpenL( pszFilename, "rb" );
+    fpChannels[iBand] = VSIFOpenL( pszFilenameIn, "rb" );
     if (fpChannels[iBand])
-        apoChannelFilenames[iBand] = pszFilename;
+        apoChannelFilenames[iBand] = pszFilenameIn;
     return fpChannels[iBand] != NULL;
 }
 
@@ -297,7 +297,7 @@ VSILFILE *FASTDataset::FOpenChannel( const char *pszBandname, int iBand, int iFA
                     CPLFormFilename( pszDirname,
                             CPLSPrintf( "%s.b%02d", pszPrefix, iFASTBand ),
                             NULL );
-                OpenChannel( pszChannelFilename, iBand );
+                CPL_IGNORE_RET_VAL(OpenChannel( pszChannelFilename, iBand ));
             }
             break;
 	case IRS:
@@ -352,7 +352,7 @@ VSILFILE *FASTDataset::FOpenChannel( const char *pszBandname, int iBand, int iFA
                 break;
             pszChannelFilename = CPLFormFilename( pszDirname,
                 CPLSPrintf( "band%d.DAT", iFASTBand ), NULL );
-            OpenChannel( pszChannelFilename, iBand );
+            CPL_IGNORE_RET_VAL(OpenChannel( pszChannelFilename, iBand ));
             break;
     }
 
@@ -626,9 +626,9 @@ GDALDataset *FASTDataset::Open( GDALOpenInfo * poOpenInfo )
     char
         *pszHeader = reinterpret_cast<char *>( CPLMalloc( ADM_HEADER_SIZE + 1 ) );
 
-    VSIFSeekL( poDS->fpHeader, 0, SEEK_SET );
-    size_t nBytesRead
-        = VSIFReadL( pszHeader, 1, ADM_HEADER_SIZE, poDS->fpHeader );
+    size_t nBytesRead = 0;
+    if( VSIFSeekL( poDS->fpHeader, 0, SEEK_SET ) >= 0 )
+        nBytesRead = VSIFReadL( pszHeader, 1, ADM_HEADER_SIZE, poDS->fpHeader );
     if ( nBytesRead < ADM_MIN_HEADER_SIZE )
     {
 	CPLDebug( "FAST", "Header file too short. Reading failed" );
@@ -1112,7 +1112,7 @@ GDALDataset *FASTDataset::Open( GDALOpenInfo * poOpenInfo )
 }
 
 /************************************************************************/
-/*                        GDALRegister_FAST()				*/
+/*                        GDALRegister_FAST()                           */
 /************************************************************************/
 
 void GDALRegister_FAST()
@@ -1121,8 +1121,7 @@ void GDALRegister_FAST()
     if( GDALGetDriverByName( "FAST" ) != NULL )
         return;
 
-    GDALDriver	*poDriver;
-    poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "FAST" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

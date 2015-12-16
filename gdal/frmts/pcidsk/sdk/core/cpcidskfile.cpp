@@ -77,6 +77,25 @@ CPCIDSKFile::CPCIDSKFile( std::string filename )
     io_mutex = NULL;
     updatable = false;
     base_filename = filename;
+    width = 0;
+    height = 0;
+    channel_count = 0;
+    segment_count = 0;
+    segment_pointers_offset = 0;
+    block_size = 0;
+    pixel_group_size = 0;
+    segment_count = 0;
+    segment_pointers_offset = 0;
+    block_size = 0;
+    pixel_group_size = 0;
+    first_line_offset = 0;
+    last_block_index = 0;
+    last_block_dirty = 0;
+    last_block_xoff = 0;
+    last_block_xsize = 0;
+    last_block_data = 0;
+    last_block_mutex = 0;
+    file_size = 0;
 
 /* -------------------------------------------------------------------- */
 /*      Initialize the metadata object, but do not try to load till     */
@@ -189,7 +208,7 @@ void CPCIDSKFile::Synchronize()
     }
 
 /* -------------------------------------------------------------------- */
-/*      Ensure the file is synhronized to disk.                         */
+/*      Ensure the file is synchronized to disk.                        */
 /* -------------------------------------------------------------------- */
     MutexHolder oHolder( io_mutex );
 
@@ -349,7 +368,7 @@ PCIDSK::PCIDSKSegment *CPCIDSKFile::GetSegment( int type, std::string name,
     //see function BuildChildrenLayer in jtfile.cpp, the call on GDBSegNext
     //in the loop on gasTypeTable can create issue in PCIDSKSegNext 
     //(in pcic/gdbfrtms/pcidskopen.cpp)
-    sprintf( type_str, "%03d", (type % 1000) );
+    snprintf( type_str, sizeof(type_str), "%03d", (type % 1000) );
 
     for( i = previous; i < segment_count; i++ )
     {
@@ -459,7 +478,7 @@ void CPCIDSKFile::InitializeFromHeader()
         first_line_offset = image_offset;
         pixel_group_size = count_8u + count_16s*2 + count_16u*2 + count_32r*4;
         
-        block_size = pixel_group_size * width;
+        block_size = static_cast<PCIDSK::uint64>(pixel_group_size) * width;
         if( block_size % 512 != 0 )
             block_size += 512 - (block_size % 512);
 
@@ -1080,9 +1099,9 @@ void CPCIDSKFile::ExtendFile( uint64 blocks_requested, bool prezero )
     {
         std::vector<uint8> zeros;
         uint64 blocks_to_zero = blocks_requested;
-        
+
         zeros.resize( 512 * 32 );
-        
+
         while( blocks_to_zero > 0 )
         {
             uint64 this_time = blocks_to_zero;
@@ -1186,8 +1205,8 @@ void CPCIDSKFile::MoveSegmentToEOF( int segment )
     {
         CPCIDSKSegment *seg = 
             dynamic_cast<CPCIDSKSegment *>( segments[segment] );
-
-        seg->LoadSegmentPointer( segment_pointers.buffer + segptr_off );
+        if( seg )
+            seg->LoadSegmentPointer( segment_pointers.buffer + segptr_off );
     }
 }
 
@@ -1251,7 +1270,8 @@ void CPCIDSKFile::CreateOverviews( int chan_count, int *chan_list,
                        SEG_SYS, 0 );
         bm_seg = GetSegment( SEG_SYS, "SysBMDir" );
         bm = dynamic_cast<SysBlockMap *>(bm_seg);
-        bm->Initialize();
+        if( bm )
+            bm->Initialize();
     }
     else
         bm = dynamic_cast<SysBlockMap *>(bm_seg);
@@ -1280,7 +1300,7 @@ void CPCIDSKFile::CreateOverviews( int chan_count, int *chan_list,
             }
         }
 
-        if (overview_exists == false)
+        if (overview_exists == false && bm != NULL)
         {
 /* -------------------------------------------------------------------- */
 /*      Create the overview as a tiled image layer.                     */
@@ -1294,11 +1314,11 @@ void CPCIDSKFile::CreateOverviews( int chan_count, int *chan_list,
 /* -------------------------------------------------------------------- */
 /*      Attach reference to this overview as metadata.                  */
 /* -------------------------------------------------------------------- */
-            char overview_md_value[128];
             char overview_md_key[128];
+            char overview_md_value[128];
 
-            sprintf( overview_md_key, "_Overview_%d", factor );
-            sprintf( overview_md_value, "%d 0 %s",virtual_image,resampling.c_str());
+            snprintf( overview_md_key, sizeof(overview_md_key),  "_Overview_%d", factor );
+            snprintf( overview_md_value, sizeof(overview_md_value), "%d 0 %s",virtual_image,resampling.c_str());
                      
             channel->SetMetadataValue( overview_md_key, overview_md_value );
         }
@@ -1306,7 +1326,9 @@ void CPCIDSKFile::CreateOverviews( int chan_count, int *chan_list,
 /* -------------------------------------------------------------------- */
 /*      Force channel to invalidate it's loaded overview list.          */
 /* -------------------------------------------------------------------- */
-        dynamic_cast<CPCIDSKChannel *>(channel)->InvalidateOverviewInfo();
+        CPCIDSKChannel* cpcidskchannel = dynamic_cast<CPCIDSKChannel *>(channel);
+        if( cpcidskchannel )
+            cpcidskchannel->InvalidateOverviewInfo();
     }
 }
 

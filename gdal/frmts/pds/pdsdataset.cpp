@@ -50,7 +50,7 @@ static const double NULL3 = -3.4028226550889044521e+38;
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_PDS(void);
+void GDALRegister_PDS();
 CPL_C_END
 
 enum PDSLayout
@@ -589,16 +589,16 @@ void PDSDataset::ParseSRS()
         VSILFILE *fp = VSIFOpenL( pszPrjFile, "r" );
         if( fp != NULL )
         {
-            OGRSpatialReference oSRS;
+            OGRSpatialReference oSRS2;
 
             VSIFCloseL( fp );
 
             char **papszLines = CSLLoad( pszPrjFile );
 
-            if( oSRS.importFromESRI( papszLines ) == OGRERR_NONE )
+            if( oSRS2.importFromESRI( papszLines ) == OGRERR_NONE )
             {
                 char *pszResult = NULL;
-                oSRS.exportToWkt( &pszResult );
+                oSRS2.exportToWkt( &pszResult );
                 osProjection = pszResult;
                 CPLFree( pszResult );
             }
@@ -663,7 +663,7 @@ static GUInt32 PDSConvertFromHex(const char* pszVal)
 int PDSDataset::ParseImage( CPLString osPrefix, CPLString osFilenamePrefix )
 {
 /* ------------------------------------------------------------------- */
-/*	We assume the user is pointing to the label (ie. .lbl) file.  	   */
+/*      We assume the user is pointing to the label (i.e. .lbl) file.  */
 /* ------------------------------------------------------------------- */
     // IMAGE can be inline or detached and point to an image name
     // ^IMAGE = 3
@@ -743,32 +743,32 @@ int PDSDataset::ParseImage( CPLString osPrefix, CPLString osFilenamePrefix )
     /** if not NULL then CORE_ITEMS keyword i.e. (234,322,2)  **/
     /***********************************************************/
     int eLayout = PDS_BSQ; //default to band seq.
-    int	nRows, nCols, nBands = 1;
+    int	nRows, nCols, l_nBands = 1;
 
     CPLString value = GetKeyword( osPrefix+osImageKeyword+".AXIS_NAME", "" );
     if (EQUAL(value,"(SAMPLE,LINE,BAND)") ) {
         eLayout = PDS_BSQ;
         nCols = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",1));
         nRows = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",2));
-        nBands = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",3));
+        l_nBands = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",3));
     }
     else if (EQUAL(value,"(BAND,LINE,SAMPLE)") ) {
         eLayout = PDS_BIP;
-        nBands = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",1));
+        l_nBands = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",1));
         nRows = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",2));
         nCols = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",3));
     }
     else if (EQUAL(value,"(SAMPLE,BAND,LINE)") ) {
         eLayout = PDS_BIL;
         nCols = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",1));
-        nBands = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",2));
+        l_nBands = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",2));
         nRows = atoi(GetKeywordSub(osPrefix+osImageKeyword+".CORE_ITEMS",3));
     }
     else if ( EQUAL(value,"") ) {
         eLayout = PDS_BSQ;
         nCols = atoi(GetKeyword(osPrefix+osImageKeyword+".LINE_SAMPLES",""));
         nRows = atoi(GetKeyword(osPrefix+osImageKeyword+".LINES",""));
-        nBands = atoi(GetKeyword(osPrefix+osImageKeyword+".BANDS","1"));
+        l_nBands = atoi(GetKeyword(osPrefix+osImageKeyword+".BANDS","1"));
     }
     else {
         CPLError( CE_Failure, CPLE_OpenFailed, 
@@ -954,7 +954,7 @@ int PDSDataset::ParseImage( CPLString osPrefix, CPLString osFilenamePrefix )
 /*      this never having been considered to be a match. This isn't     */
 /*      an error!                                                       */
 /* -------------------------------------------------------------------- */
-    if( nRows < 1 || nCols < 1 || nBands < 1 )
+    if( nRows < 1 || nCols < 1 || l_nBands < 1 )
     {
         CPLError( CE_Failure, CPLE_AppDefined,
                   "File %s appears to be a PDS file, but failed to find some required keywords.", 
@@ -1007,7 +1007,7 @@ int PDSDataset::ParseImage( CPLString osPrefix, CPLString osFilenamePrefix )
 
     if( eLayout == PDS_BIP )
     {
-        nPixelOffset = nItemSize * nBands;
+        nPixelOffset = nItemSize * l_nBands;
         nBandOffset = nItemSize;
         nLineOffset = ((nPixelOffset * nCols + record_bytes - 1)/record_bytes)
             * record_bytes;
@@ -1031,7 +1031,7 @@ int PDSDataset::ParseImage( CPLString osPrefix, CPLString osFilenamePrefix )
 /* -------------------------------------------------------------------- */
 /*      Create band information objects.                                */
 /* -------------------------------------------------------------------- */
-    for( int i = 0; i < nBands; i++ )
+    for( int i = 0; i < l_nBands; i++ )
     {
         RawRasterBand *poBand =
             new RawRasterBand( this, i+1, fpImage,
@@ -1044,7 +1044,7 @@ int PDSDataset::ParseImage( CPLString osPrefix, CPLString osFilenamePrefix )
 #endif
                                TRUE );
 
-        if( nBands == 1 )
+        if( l_nBands == 1 )
         {
             const char* pszMin = GetKeyword(osPrefix+"IMAGE.MINIMUM", NULL);
             const char* pszMax = GetKeyword(osPrefix+"IMAGE.MAXIMUM", NULL);
@@ -1091,9 +1091,9 @@ class PDSWrapperRasterBand : public GDALProxyRasterBand
     virtual GDALRasterBand* RefUnderlyingRasterBand() { return poBaseBand; }
 
   public:
-    explicit PDSWrapperRasterBand( GDALRasterBand* poBaseBand )
+    explicit PDSWrapperRasterBand( GDALRasterBand* poBaseBandIn )
         {
-            this->poBaseBand = poBaseBand;
+            this->poBaseBand = poBaseBandIn;
             eDataType = poBaseBand->GetRasterDataType();
             poBaseBand->GetBlockSize(&nBlockXSize, &nBlockYSize);
         }
@@ -1251,7 +1251,7 @@ GDALDataset *PDSDataset::Open( GDALOpenInfo * poOpenInfo )
 /* -------------------------------------------------------------------- */
 /*      Transfer a few interesting keywords as metadata.                */
 /* -------------------------------------------------------------------- */
-    static const char *apszKeywords[] = 
+    static const char * const apszKeywords[] = 
         { "FILTER_NAME", "DATA_SET_ID", "PRODUCT_ID", 
           "PRODUCER_INSTITUTION_NAME", "PRODUCT_TYPE", "MISSION_NAME",
           "SPACECRAFT_NAME", "INSTRUMENT_NAME", "INSTRUMENT_ID", 
@@ -1379,7 +1379,7 @@ void PDSDataset::CleanString( CPLString &osInput )
     CPLFree( pszWrk );
 }
 /************************************************************************/
-/*                         GDALRegister_PDS()                         */
+/*                         GDALRegister_PDS()                           */
 /************************************************************************/
 
 void GDALRegister_PDS()

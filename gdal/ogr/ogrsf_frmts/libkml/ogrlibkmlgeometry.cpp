@@ -53,7 +53,7 @@ using kmlbase::Vec3;
 #include "ogrlibkmlgeometry.h"
 
 /******************************************************************************
- funtion to write out a ogr geometry to kml
+ function to write out a ogr geometry to kml
 
 args:
           poOgrGeom     the ogr geometry
@@ -205,7 +205,7 @@ ElementPtr geom2kml (
             break;
         }
 
-      /***** fallthough *****/
+      /***** fallthrough *****/
 
     case wkbLinearRing:        //this case is for readability only
 
@@ -281,7 +281,7 @@ ElementPtr geom2kml (
 
             break;
         }
-            /***** fallthough *****/
+            /***** fallthrough *****/
 
         //case wkbLinearRing25D: // this case is for readability only
 
@@ -573,7 +573,8 @@ static OGRGeometry *kml2geom_rec (
         poKmlMultiGeometry = AsMultiGeometry ( poKmlGeometry );
         nGeom = poKmlMultiGeometry->get_geometry_array_size (  );
 
-        /* Detect subgeometry type to instanciate appropriate Multi geometry type */
+        // Detect subgeometry type to instantiate appropriate
+        // multi geometry type.
         kmldom::KmlDomType type = kmldom::Type_Unknown;
         for ( i = 0; i < nGeom; i++ ) {
             poKmlTmpGeometry = poKmlMultiGeometry->get_geometry_array_at ( i );
@@ -604,7 +605,7 @@ static OGRGeometry *kml2geom_rec (
         poOgrGeometry = poOgrMultiGeometry;
         break;
     }
-    
+
     case kmldom::Type_GxTrack:
         poKmlGxTrack = AsGxTrack ( poKmlGeometry );
         nCoords = poKmlGxTrack->get_gx_coord_array_size();
@@ -751,32 +752,32 @@ OGRGeometry *kml2geom (
 {
 
     /***** get the geometry *****/
-    
+
     OGRGeometry *poOgrGeometry = kml2geom_rec (poKmlGeometry, poOgrSRS);
 
     /***** split the geometry at the dateline? *****/
-    
+
     const char *pszWrap = CPLGetConfigOption ( "LIBKML_WRAPDATELINE", "no" );
     if (CSLTestBoolean(pszWrap)) {
-        
+
         char **papszTransformOptions = NULL;
         papszTransformOptions = CSLAddString( papszTransformOptions,
                                                 "WRAPDATELINE=YES");
 
         /***** transform *****/
-        
+
         OGRGeometry *poOgrDstGeometry = 
             OGRGeometryFactory::transformWithOptions(poOgrGeometry,
                                                         NULL,
                                                         papszTransformOptions);
 
         /***** replace the original geom *****/
-        
+
         if (poOgrDstGeometry) {
             delete poOgrGeometry;
             poOgrGeometry = poOgrDstGeometry;
         }
-        
+
         CSLDestroy(papszTransformOptions);
     }
 
@@ -790,32 +791,32 @@ OGRGeometry *kml2geom_latlonbox (
 {
 
     /***** get the geometry *****/
-    
+
     OGRGeometry *poOgrGeometry = kml2geom_latlonbox_int (poKmlLatLonBox, poOgrSRS);
 
     /***** split the geometry at the dateline? *****/
-    
+
     const char *pszWrap = CPLGetConfigOption ( "LIBKML_WRAPDATELINE", "no" );
     if (CSLTestBoolean(pszWrap)) {
-        
+
         char **papszTransformOptions = NULL;
         papszTransformOptions = CSLAddString( papszTransformOptions,
                                                 "WRAPDATELINE=YES");
 
         /***** transform *****/
-        
+
         OGRGeometry *poOgrDstGeometry = 
             OGRGeometryFactory::transformWithOptions(poOgrGeometry,
                                                         NULL,
                                                         papszTransformOptions);
 
         /***** replace the original geom *****/
-        
+
         if (poOgrDstGeometry) {
             delete poOgrGeometry;
             poOgrGeometry = poOgrDstGeometry;
         }
-        
+
         CSLDestroy(papszTransformOptions);
     }
 
@@ -829,32 +830,32 @@ OGRGeometry *kml2geom_latlonquad (
 {
 
     /***** get the geometry *****/
-    
+
     OGRGeometry *poOgrGeometry = kml2geom_latlonquad_int (poKmlLatLonQuad, poOgrSRS);
 
     /***** split the geometry at the dateline? *****/
-    
+
     const char *pszWrap = CPLGetConfigOption ( "LIBKML_WRAPDATELINE", "no" );
     if (CSLTestBoolean(pszWrap)) {
-        
+
         char **papszTransformOptions = NULL;
         papszTransformOptions = CSLAddString( papszTransformOptions,
                                                 "WRAPDATELINE=YES");
 
         /***** transform *****/
-        
+
         OGRGeometry *poOgrDstGeometry = 
             OGRGeometryFactory::transformWithOptions(poOgrGeometry,
                                                         NULL,
                                                         papszTransformOptions);
 
         /***** replace the original geom *****/
-        
+
         if (poOgrDstGeometry) {
             delete poOgrGeometry;
             poOgrGeometry = poOgrDstGeometry;
         }
-        
+
         CSLDestroy(papszTransformOptions);
     }
 

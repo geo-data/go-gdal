@@ -37,13 +37,14 @@ CPL_CVSID("$Id$");
 /************************************************************************/
 
 OGRPCIDSKLayer::OGRPCIDSKLayer( PCIDSK::PCIDSKSegment *poSegIn,
+                                PCIDSK::PCIDSKVectorSegment * poVecSegIn,
                                 bool bUpdate )
 
 {
     poSRS = NULL;
     bUpdateAccess = bUpdate;
     poSeg = poSegIn;
-    poVecSeg = dynamic_cast<PCIDSK::PCIDSKVectorSegment*>( poSeg );
+    poVecSeg = poVecSegIn;
 
     poFeatureDefn = new OGRFeatureDefn( poSeg->GetName().c_str() );
     SetDescription( poFeatureDefn->GetName() );
@@ -492,8 +493,8 @@ OGRErr OGRPCIDSKLayer::GetExtent (OGREnvelope *psExtent, int bForce)
 /* -------------------------------------------------------------------- */
 /*      Loop over all features, but just read the geometry.  This is    */
 /*      a fair amount quicker than actually processing all the          */
-/*      attributes, forming features and then exaimining the            */
-/*      geometries as the default implemntation would do.               */
+/*      attributes, forming features and then examining the             */
+/*      geometries as the default implementation would do.              */
 /* -------------------------------------------------------------------- */
     try
     {

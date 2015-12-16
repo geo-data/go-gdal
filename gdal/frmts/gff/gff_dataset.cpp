@@ -44,7 +44,7 @@ CPL_CVSID("$Id$");
 
 class GFFRasterBand;
 
-class GFFDataset : public GDALPamDataset 
+class GFFDataset : public GDALPamDataset
 {
     friend class GFFRasterBand;
     VSILFILE *fp;
@@ -55,7 +55,8 @@ class GFFDataset : public GDALPamDataset
     unsigned short nVersionMinor;
     unsigned int nLength;
     //char *pszCreator;
-    /* I am taking this at face value (are they freakin' insane?) */
+    // TODO: Needs a better explanation.
+    /* I am taking this at face value (are they insane?) */
     //float fBPP;
     unsigned int nBPP;
 
@@ -105,13 +106,13 @@ public:
 /************************************************************************/
 /*                           GFFRasterBand()                            */
 /************************************************************************/
-GFFRasterBand::GFFRasterBand( GFFDataset *poDS, int nBand,
-	GDALDataType eDataType ) 
+GFFRasterBand::GFFRasterBand( GFFDataset *poDSIn, int nBandIn,
+	GDALDataType eDataTypeIn ) 
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
-    this->eDataType = eDataType;
+    this->eDataType = eDataTypeIn;
 
     nBlockXSize = poDS->GetRasterXSize();
     nBlockYSize = 1;
@@ -332,12 +333,13 @@ GDALDataset *GFFDataset::Open( GDALOpenInfo *poOpenInfo )
 /*                          GDALRegister_GFF()                          */
 /************************************************************************/
 
-void GDALRegister_GFF(void)
+void GDALRegister_GFF()
 {
-    if ( GDALGetDriverByName("GFF") != NULL )
+    if( GDALGetDriverByName( "GFF" ) != NULL )
         return;
 
     GDALDriver *poDriver = new GDALDriver();
+
     poDriver->SetDescription("GFF");
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem(

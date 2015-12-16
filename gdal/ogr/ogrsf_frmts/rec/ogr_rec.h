@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_REC_H_INCLUDED
-#define _OGR_REC_H_INCLUDED
+#ifndef OGR_REC_H_INCLUDED
+#define OGR_REC_H_INCLUDED
 
 #include "ogrsf_frmts.h"
 
@@ -95,11 +95,11 @@ class OGRRECDataSource : public OGRDataSource
                         ~OGRRECDataSource();
 
     int                 Open( const char * pszFilename );
-    
+
     const char          *GetName() { return pszName; }
     int                 GetLayerCount() { return 1; }
     OGRLayer            *GetLayer( int );
     int                 TestCapability( const char * );
 };
 
-#endif /* ndef _OGR_REC_H_INCLUDED */
+#endif /* ndef OGR_REC_H_INCLUDED */

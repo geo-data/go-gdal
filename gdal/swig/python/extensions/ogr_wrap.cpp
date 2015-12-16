@@ -179,8 +179,8 @@ template <typename T> T SwigValueInit() {
   creating a static or dynamic library from the SWIG runtime code.
   In 99.9% of the cases, SWIG just needs to declare them as 'static'.
 
-  But only do this if strictly necessary, ie, if you have problems
-  with your compiler or suchlike.
+  But only do this if strictly necessary, i.e. if you have problems
+  with your compiler or such.
 */
 
 #ifndef SWIGRUNTIME
@@ -1189,7 +1189,7 @@ SWIGRUNTIME PyObject* SWIG_PyInstanceMethod_New(PyObject *SWIGUNUSEDPARM(self), 
 #define SWIG_ConvertFunctionPtr(obj, pptr, type)        SWIG_Python_ConvertFunctionPtr(obj, pptr, type)
 #define SWIG_NewFunctionPtrObj(ptr, type)               SWIG_Python_NewPointerObj(NULL, ptr, type, 0)
 
-/* for C++ member pointers, ie, member methods */
+/* for C++ member pointers, i.e. member methods */
 #define SWIG_ConvertMember(obj, ptr, sz, ty)            SWIG_Python_ConvertPacked(obj, ptr, sz, ty)
 #define SWIG_NewMemberObj(ptr, sz, type)                SWIG_Python_NewPackedObj(ptr, sz, type)
 
@@ -5430,14 +5430,15 @@ SWIGINTERN PyObject *_wrap_MajorObject_SetMetadata__SWIG_0(PyObject *SWIGUNUSEDP
         PyObject *item_list = PyMapping_Items( obj1 );
         for( int i=0; i<(int)size; i++ ) {
           PyObject *it = PySequence_GetItem( item_list, i );
-          
+
           PyObject *k, *v;
           if ( ! PyArg_ParseTuple( it, "OO", &k, &v ) ) {
             Py_DECREF(it);
-            PyErr_SetString(PyExc_TypeError,"dictionnaire must contain tuples of strings");
+            PyErr_SetString( PyExc_TypeError,
+                             "Dictionary must contain tuples of strings" );
             SWIG_fail;
           }
-          
+
           int bFreeK, bFreeV;
           char* pszK = GDALPythonObjectToCStr(k, &bFreeK);
           char* pszV = GDALPythonObjectToCStr(v, &bFreeV);
@@ -5446,11 +5447,12 @@ SWIGINTERN PyObject *_wrap_MajorObject_SetMetadata__SWIG_0(PyObject *SWIGUNUSEDP
             GDALPythonFreeCStr(pszK, bFreeK);
             GDALPythonFreeCStr(pszV, bFreeV);
             Py_DECREF(it);
-            PyErr_SetString(PyExc_TypeError,"dictionnaire must contain tuples of strings");
+            PyErr_SetString( PyExc_TypeError,
+                             "Dictionary must contain tuples of strings" );
             SWIG_fail;
           }
           arg2 = CSLAddNameValue( arg2, pszK, pszV );
-          
+
           GDALPythonFreeCStr(pszK, bFreeK);
           GDALPythonFreeCStr(pszV, bFreeV);
           Py_DECREF(it);
@@ -5459,7 +5461,8 @@ SWIGINTERN PyObject *_wrap_MajorObject_SetMetadata__SWIG_0(PyObject *SWIGUNUSEDP
       }
     }
     else {
-      PyErr_SetString(PyExc_TypeError,"Argument must be dictionary or sequence of strings");
+      PyErr_SetString( PyExc_TypeError,
+                       "Argument must be dictionary or sequence of strings" );
       SWIG_fail;
     }
   }
@@ -24107,7 +24110,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"papszOptions:  a StringList of name=value options. Options are driver\n"
 		"specific, and driver information can be found at the following\n"
-		"url:http://www.gdal.org/ogr/ogr_formats.html\n"
+		"url:http://www.gdal.org/ogr_formats.html\n"
 		"\n"
 		"NULL is returned on failure, or a new OGRDataSource handle on success.\n"
 		"\n"
@@ -24139,7 +24142,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"papszOptions:  a StringList of name=value options. Options are driver\n"
 		"specific, and driver information can be found at the following\n"
-		"url:http://www.gdal.org/ogr/ogr_formats.html\n"
+		"url:http://www.gdal.org/ogr_formats.html\n"
 		"\n"
 		"NULL is returned on failure, or a new OGRDataSource handle on success.\n"
 		"\n"
@@ -24421,7 +24424,7 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"papszOptions:  a StringList of name=value options. Options are driver\n"
 		"specific, and driver information can be found at the following\n"
-		"url:http://www.gdal.org/ogr/ogr_formats.html\n"
+		"url:http://www.gdal.org/ogr_formats.html\n"
 		"\n"
 		"NULL is returned on failure, or a new OGRLayer handle on success.\n"
 		"Example: \n"
@@ -24529,7 +24532,7 @@ static PyMethodDef SwigMethods[] = {
 		"(destroyed).\n"
 		"\n"
 		"For more information on the SQL dialect supported internally by OGR\n"
-		"review theOGR SQL document. Some drivers (ie. Oracle and PostGIS) pass\n"
+		"review theOGR SQL document. Some drivers (i.e. Oracle and PostGIS) pass\n"
 		"the SQL directly through to the underlying RDBMS.\n"
 		"\n"
 		"This function is the same as the C++ method\n"
@@ -25176,11 +25179,11 @@ static PyMethodDef SwigMethods[] = {
 		"\n"
 		"OLCFastFeatureCount / \"FastFeatureCount\": TRUE if this layer can\n"
 		"return a feature count (via OGR_L_GetFeatureCount()) efficiently ...\n"
-		"ie. without counting the features. In some cases this will return TRUE\n"
+		"i.e. without counting the features. In some cases this will return TRUE\n"
 		"until a spatial filter is installed after which it will return FALSE.\n"
 		"\n"
 		"OLCFastGetExtent / \"FastGetExtent\": TRUE if this layer can return\n"
-		"its data extent (via OGR_L_GetExtent()) efficiently ... ie. without\n"
+		"its data extent (via OGR_L_GetExtent()) efficiently, i.e. without\n"
 		"scanning all the features. In some cases this will return TRUE until a\n"
 		"spatial filter is installed after which it will return FALSE.\n"
 		"\n"
@@ -25224,7 +25227,7 @@ static PyMethodDef SwigMethods[] = {
 		"pszCap:  the name of the capability to test.\n"
 		"\n"
 		"TRUE if the layer has the requested capability, or FALSE otherwise.\n"
-		"OGRLayers will return FALSE for any unrecognised capabilities. \n"
+		"OGRLayers will return FALSE for any unrecognized capabilities. \n"
 		""},
 	 { (char *)"Layer_CreateField", (PyCFunction) _wrap_Layer_CreateField, METH_VARARGS | METH_KEYWORDS, (char *)"\n"
 		"Layer_CreateField(Layer self, FieldDefn field_def, int approx_ok=1) -> OGRErr\n"
@@ -26561,7 +26564,7 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"hDefn:  hanlde to the feature definition on witch OGRFeature are based\n"
+                "hDefn:  handle to the feature definition on witch OGRFeature are based\n"
 		"on.\n"
 		"\n"
 		"the current reference count. \n"
@@ -26580,7 +26583,7 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"hDefn:  hanlde to the feature definition on witch OGRFeature are based\n"
+		"hDefn:  handle to the feature definition on witch OGRFeature are based\n"
 		"on.\n"
 		"\n"
 		"ignore state \n"
@@ -26599,7 +26602,7 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"hDefn:  hanlde to the feature definition on witch OGRFeature are based\n"
+		"hDefn:  handle to the feature definition on witch OGRFeature are based\n"
 		"on.\n"
 		"\n"
 		"bIgnore:  ignore state \n"
@@ -26637,7 +26640,7 @@ static PyMethodDef SwigMethods[] = {
 		"Parameters:\n"
 		"-----------\n"
 		"\n"
-		"hDefn:  hanlde to the feature definition on witch OGRFeature are based\n"
+		"hDefn:  handle to the feature definition on witch OGRFeature are based\n"
 		"on.\n"
 		"\n"
 		"bIgnore:  ignore state \n"

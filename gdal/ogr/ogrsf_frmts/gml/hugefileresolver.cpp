@@ -15,22 +15,22 @@
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
  * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  *
  ******************************************************************************
  * Contributor: Alessandro Furieri, a.furieri@lqt.it
- * This module implents GML_SKIP_RESOLVE_ELEMS HUGE
- * Developed for Faunalia ( http://www.faunalia.it) with funding from 
+ * This module implements GML_SKIP_RESOLVE_ELEMS HUGE
+ * Developed for Faunalia ( http://www.faunalia.it) with funding from
  * Regione Toscana - Settore SISTEMA INFORMATIVO TERRITORIALE ED AMBIENTALE
  *
  ****************************************************************************/
@@ -94,7 +94,7 @@ struct huge_href
     struct huge_href    *pNext;
 };
 
-/* an internal helper struct supporying GML rewriting */
+/* an internal helper struct supporting GML rewriting */
 struct huge_child
 {
     CPLXMLNode          *psChild;
@@ -668,7 +668,8 @@ static bool gmlHugeFileResolveEdges( struct huge_helper *helper )
                         if( rc != SQLITE_OK && rc != SQLITE_DONE )
                         {
                             CPLError( CE_Failure, CPLE_AppDefined,
-                                      "UPDATE resoved Edge \"%s\" sqlite3_step() failed:\n  %s",
+                                      "UPDATE resolved Edge \"%s\" "
+                                      "sqlite3_step() failed:\n  %s",
                                       pszGmlId, sqlite3_errmsg(hDB) );
                         }
                         CPLFree( gmlText );
@@ -1401,7 +1402,7 @@ static void gmlHugeSetHrefGmlText( struct huge_helper *helper,
 static struct huge_parent *gmlHugeFindParent( struct huge_helper *helper,
                                               CPLXMLNode *psParent )
 {
-/* inserting a GML Node (parent) to be rewritted */
+    /* Inserting a GML Node (parent) to be rewritten */
     struct huge_parent *pItem = helper->pFirstParent;
 
     /* checking if already exists */
@@ -1446,7 +1447,7 @@ static struct huge_parent *gmlHugeFindParent( struct huge_helper *helper,
 static int gmlHugeSetChild( struct huge_parent *pParent,
                             struct huge_href *pItem )
 {
-/* setting a Child Node to be rewritted */
+    /* Setting a Child Node to be rewritten. */
     struct huge_child *pChild = pParent->pFirst;
     while( pChild != NULL )
     {
@@ -1526,7 +1527,7 @@ static int gmlHugeResolveEdges( CPL_UNUSED struct huge_helper *helper,
     if( bError )
         return false;
 
-    /* indentifying any GML node to be rewritten */
+    /* Identifying any GML node to be rewritten. */
     pItem = helper->pFirstHref;
     while( pItem != NULL )
     {
@@ -1559,7 +1560,7 @@ static int gmlHugeResolveEdges( CPL_UNUSED struct huge_helper *helper,
             {
                 CPLRemoveXMLChild( pParent->psParent, pChild->psChild );
 
-                /* destroyng any Child Node to be rewritten */
+                /* Destroying any Child Node to be rewritten */
                 if( pChild->pItem != NULL )
                     CPLDestroyXMLNode( pChild->psChild );
                 pChild = pChild->pNext;
@@ -1584,7 +1585,8 @@ static int gmlHugeResolveEdges( CPL_UNUSED struct huge_helper *helper,
                         CPLCreateXMLNode(psOrientationNode, CXT_Text, "-");
                     }
                     CPLXMLNode *psEdge = CPLParseXMLString(pChild->pItem->gmlText->c_str());
-                    CPLAddXMLChild( psNewNode, psEdge );
+                    if( psEdge != NULL )
+                        CPLAddXMLChild( psNewNode, psEdge );
                     CPLAddXMLChild( pParent->psParent, psNewNode );
                 }
                 pChild = pChild->pNext;
@@ -1810,7 +1812,7 @@ static bool gmlHugeFileWriteResolved ( struct huge_helper *helper,
     VSIFPrintfL ( fp, "</ResolvedTopoFeatureCollection>\n" ); 
 
     VSIFCloseL( fp );
-		
+
     gmlUpdateFeatureClasses( pCC, pReader, m_nHasSequentialLayers );
     if ( *m_nHasSequentialLayers )
         pReader->ReArrangeTemplateClasses( pCC );
@@ -1823,7 +1825,7 @@ static bool gmlHugeFileWriteResolved ( struct huge_helper *helper,
 /**************************************************************/
 /*                                                            */
 /* private member(s):                                         */
-/* any other funtion is implemented as "internal" static,     */
+/* any other function is implemented as "internal" static,    */
 /* so to make all the SQLite own stuff nicely "invisible"     */
 /*                                                            */
 /**************************************************************/
@@ -1913,7 +1915,7 @@ bool GMLReader::ParseXMLHugeFile( const char *pszOutputFilename,
                   pszErrMsg );
         sqlite3_free( pszErrMsg );
     }
-    
+
     /* setting the SQLite cache */
     if( iSqliteCacheMB > 0 )
     {
@@ -1922,8 +1924,8 @@ bool GMLReader::ParseXMLHugeFile( const char *pszOutputFilename,
         /* refusing to allocate more than 1GB */
         if( cache_size > 1024 * 1024 )
             cache_size = 1024 * 1024;
-        char sqlPragma[1024];
-        sprintf( sqlPragma, "PRAGMA cache_size = %d", cache_size );
+        char sqlPragma[64];
+        snprintf( sqlPragma, sizeof(sqlPragma), "PRAGMA cache_size = %d", cache_size );
         rc = sqlite3_exec( hDB, sqlPragma, NULL, NULL, &pszErrMsg );
         if( rc != SQLITE_OK )
         {
@@ -1932,7 +1934,7 @@ bool GMLReader::ParseXMLHugeFile( const char *pszOutputFilename,
             sqlite3_free( pszErrMsg );
         }
     }
-	
+
     if( !SetupParser() )
     {
         gmlHugeFileCleanUp ( &helper );

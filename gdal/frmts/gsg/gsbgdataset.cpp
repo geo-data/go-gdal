@@ -64,7 +64,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_GSBG(void);
+void GDALRegister_GSBG();
 CPL_C_END
 
 /************************************************************************/
@@ -156,7 +156,7 @@ class GSBGRasterBand : public GDALPamRasterBand
 /*                           GSBGRasterBand()                           */
 /************************************************************************/
 
-GSBGRasterBand::GSBGRasterBand( GSBGDataset *poDS, int nBand ) :
+GSBGRasterBand::GSBGRasterBand( GSBGDataset *poDSIn, int nBandIn ) :
     dfMinX(0.0),
     dfMaxX(0.0),
     dfMinY(0.0),
@@ -168,8 +168,8 @@ GSBGRasterBand::GSBGRasterBand( GSBGDataset *poDS, int nBand ) :
     nMinZRow(-1),
     nMaxZRow(-1)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     eDataType = GDT_Float32;
 
@@ -287,7 +287,7 @@ CPLErr GSBGRasterBand::IReadBlock( int nBlockXOff, int nBlockYOff,
     if( nBlockYOff < 0 || nBlockYOff > nRasterYSize - 1 || nBlockXOff != 0 )
 	return CE_Failure;
 
-    GSBGDataset *poGDS = dynamic_cast<GSBGDataset *>(poDS);
+    GSBGDataset *poGDS = reinterpret_cast<GSBGDataset *>(poDS);
     if( VSIFSeekL( poGDS->fp,
 		   GSBGDataset::nHEADER_SIZE +
                         4 * nRasterXSize * (nRasterYSize - nBlockYOff - 1),
@@ -566,7 +566,7 @@ GDALDataset *GSBGDataset::Open( GDALOpenInfo * poOpenInfo )
                   poOpenInfo->pszFilename );
         return NULL;
     }
- 
+
 /* -------------------------------------------------------------------- */
 /*      Read the header.                                                */
 /* -------------------------------------------------------------------- */
@@ -933,7 +933,7 @@ GDALDataset *GSBGDataset::Create( const char * pszFilename,
                   pszFilename );
         return NULL;
     }
-    
+
     CPLErr eErr = WriteHeader( fp, (GInt16) nXSize, (GInt16) nYSize,
 			       0.0, nXSize, 0.0, nYSize, 0.0, 0.0 );
     if( eErr != CE_None )
@@ -1136,34 +1136,31 @@ GDALDataset *GSBGDataset::CreateCopy( const char *pszFilename,
 }
 
 /************************************************************************/
-/*                          GDALRegister_GSBG()                          */
+/*                          GDALRegister_GSBG()                         */
 /************************************************************************/
 
 void GDALRegister_GSBG()
 
 {
-    GDALDriver	*poDriver;
+    if( GDALGetDriverByName( "GSBG" ) != NULL )
+        return;
 
-    if( GDALGetDriverByName( "GSBG" ) == NULL )
-    {
-        poDriver = new GDALDriver();
-        
-        poDriver->SetDescription( "GSBG" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, 
-                                   "Golden Software Binary Grid (.grd)" );
-        poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, 
-                                   "frmt_various.html#GSBG" );
-        poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "grd" );
-	poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
-				   "Byte Int16 UInt16 Float32" );
-        poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
+    GDALDriver *poDriver = new GDALDriver();
 
-        poDriver->pfnIdentify = GSBGDataset::Identify;
-        poDriver->pfnOpen = GSBGDataset::Open;
-	poDriver->pfnCreate = GSBGDataset::Create;
-	poDriver->pfnCreateCopy = GSBGDataset::CreateCopy;
+    poDriver->SetDescription( "GSBG" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
+                               "Golden Software Binary Grid (.grd)" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_various.html#GSBG" );
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "grd" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
+                               "Byte Int16 UInt16 Float32" );
+    poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 
-        GetGDALDriverManager()->RegisterDriver( poDriver );
-    }
+    poDriver->pfnIdentify = GSBGDataset::Identify;
+    poDriver->pfnOpen = GSBGDataset::Open;
+    poDriver->pfnCreate = GSBGDataset::Create;
+    poDriver->pfnCreateCopy = GSBGDataset::CreateCopy;
+
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

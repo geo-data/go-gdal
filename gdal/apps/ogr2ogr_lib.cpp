@@ -71,7 +71,7 @@ typedef enum
  */
 struct GDALVectorTranslateOptions
 {
-    /*! continue after a failure, skipping the failured feature */
+    /*! continue after a failure, skipping the failed feature */
     int bSkipFailures;
 
     /*! use layer level transaction. If set to FALSE, then it is interpreted as dataset level transaction. */
@@ -312,7 +312,7 @@ struct GDALVectorTranslateOptions
     /*! pointer to the progress data variable */
     void *pProgressData;
 
-    /*! whether layer and feature native data must be transfered */
+    /*! Whether layer and feature native data must be transferred. */
     bool bNativeData;
 };
 
@@ -2321,10 +2321,10 @@ static OGRLayer* GetLayerAndOverwriteIfNecessary(GDALDataset *poDstDS,
     if( pbErrorOccurred )
         *pbErrorOccurred = FALSE;
 
-    /* GetLayerByName() can instanciate layers that would have been */
+    /* GetLayerByName() can instantiate layers that would have been */
     /* 'hidden' otherwise, for example, non-spatial tables in a */
-    /* Postgis-enabled database, so this apparently useless command is */
-    /* not useless... (#4012) */
+    /* PostGIS-enabled database, so this apparently useless command is */
+    /* not useless. (#4012) */
     CPLPushErrorHandler(CPLQuietErrorHandler);
     OGRLayer* poDstLayer = poDstDS->GetLayerByName(pszNewLayerName);
     CPLPopErrorHandler();
@@ -2342,7 +2342,7 @@ static OGRLayer* GetLayerAndOverwriteIfNecessary(GDALDataset *poDstDS,
         }
 
         if (iLayer == nLayerCount)
-            /* shouldn't happen with an ideal driver */
+            /* should not happen with an ideal driver */
             poDstLayer = NULL;
     }
 

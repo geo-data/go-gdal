@@ -142,7 +142,7 @@ Parameters:
 
 hDefn:  handle to the feature definition.
 
-iField:  the index of the field defintion.
+iField:  the index of the field definition.
 
 OGRERR_NONE in case of success.
 
@@ -260,7 +260,7 @@ OGRFeatureDefn::GetReferenceCount().
 Parameters:
 -----------
 
-hDefn:  hanlde to the feature definition on witch OGRFeature are based
+hDefn:  handle to the feature definition on witch OGRFeature are based
 on.
 
 the current reference count. ";
@@ -296,7 +296,7 @@ OGRFeatureDefn::IsGeometryIgnored().
 Parameters:
 -----------
 
-hDefn:  hanlde to the feature definition on witch OGRFeature are based
+hDefn:  handle to the feature definition on witch OGRFeature are based
 on.
 
 ignore state ";
@@ -312,7 +312,7 @@ OGRFeatureDefn::SetGeometryIgnored().
 Parameters:
 -----------
 
-hDefn:  hanlde to the feature definition on witch OGRFeature are based
+hDefn:  handle to the feature definition on witch OGRFeature are based
 on.
 
 bIgnore:  ignore state ";
@@ -344,7 +344,7 @@ OGRFeatureDefn::SetStyleIgnored().
 Parameters:
 -----------
 
-hDefn:  hanlde to the feature definition on witch OGRFeature are based
+hDefn:  handle to the feature definition on witch OGRFeature are based
 on.
 
 bIgnore:  ignore state ";

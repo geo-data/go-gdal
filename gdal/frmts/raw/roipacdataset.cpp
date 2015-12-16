@@ -33,7 +33,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_ROIPAC(void);
+void GDALRegister_ROIPAC();
 CPL_C_END
 
 /************************************************************************/
@@ -619,8 +619,8 @@ GDALDataset *ROIPACDataset::Create( const char *pszFilename,
 /*      Just write out a couple of bytes to establish the binary        */
 /*      file, and then close it.                                        */
 /* -------------------------------------------------------------------- */
-    VSIFWriteL( reinterpret_cast<void *>( const_cast<char *>( "\0\0" ) ),
-                2, 1, fp );
+    CPL_IGNORE_RET_VAL(VSIFWriteL( reinterpret_cast<void *>( const_cast<char *>( "\0\0" ) ),
+                2, 1, fp ));
     VSIFCloseL( fp );
 
 /* -------------------------------------------------------------------- */
@@ -639,8 +639,8 @@ GDALDataset *ROIPACDataset::Create( const char *pszFilename,
 /* -------------------------------------------------------------------- */
 /*      Write out the header.                                           */
 /* -------------------------------------------------------------------- */
-    VSIFPrintfL( fp, "%-40s %d\n", "WIDTH", nXSize );
-    VSIFPrintfL( fp, "%-40s %d\n", "FILE_LENGTH", nYSize );
+    CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "%-40s %d\n", "WIDTH", nXSize ));
+    CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "%-40s %d\n", "FILE_LENGTH", nYSize ));
     VSIFCloseL( fp );
 
     return reinterpret_cast<GDALDataset *>(
@@ -663,17 +663,17 @@ void ROIPACDataset::FlushCache( void )
     // If opening an existing file in Update mode (i.e. "r+") we need to make
     // sure any existing content is cleared, otherwise the file may contain
     // trailing content from the previous write.
-    VSIFTruncateL( fpRsc, 0 );
+    CPL_IGNORE_RET_VAL(VSIFTruncateL( fpRsc, 0 ));
 
-    VSIFSeekL( fpRsc, 0, SEEK_SET );
+    CPL_IGNORE_RET_VAL(VSIFSeekL( fpRsc, 0, SEEK_SET ));
 /* -------------------------------------------------------------------- */
 /*      Rewrite out the header.                                         */
 /* -------------------------------------------------------------------- */
 /* -------------------------------------------------------------------- */
 /*      Raster dimensions.                                              */
 /* -------------------------------------------------------------------- */
-    VSIFPrintfL( fpRsc, "%-40s %d\n", "WIDTH", nRasterXSize );
-    VSIFPrintfL( fpRsc, "%-40s %d\n", "FILE_LENGTH", nRasterYSize );
+    CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %d\n", "WIDTH", nRasterXSize ));
+    CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %d\n", "FILE_LENGTH", nRasterYSize ));
 
 /* -------------------------------------------------------------------- */
 /*      Georeferencing.                                                 */
@@ -688,11 +688,11 @@ void ROIPACDataset::FlushCache( void )
             int iUTMZone = oSRS.GetUTMZone( &bNorth );
             if ( iUTMZone != 0 )
             {
-                VSIFPrintfL( fpRsc, "%-40s %s%d\n", "PROJECTION", "UTM", iUTMZone );
+                CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %s%d\n", "PROJECTION", "UTM", iUTMZone ));
             }
             else if ( oSRS.IsGeographic() )
             {
-                VSIFPrintfL( fpRsc, "%-40s %s\n", "PROJECTION", "LL" );
+                CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %s\n", "PROJECTION", "LL" ));
             }
             else
             {
@@ -705,7 +705,7 @@ void ROIPACDataset::FlushCache( void )
             {
                 if ( strcmp( oSRS.GetAttrValue( "DATUM" ), "WGS_1984" ) == 0 )
                 {
-                    VSIFPrintfL( fpRsc, "%-40s %s\n", "DATUM", "WGS84" );
+                    CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %s\n", "DATUM", "WGS84" ));
                 }
                 else
                 {
@@ -713,13 +713,13 @@ void ROIPACDataset::FlushCache( void )
                               "Datum \"%s\" probably not supported in the "
                                   "ROI_PAC format, saving it anyway",
                                   oSRS.GetAttrValue( "DATUM" ) );
-                    VSIFPrintfL( fpRsc, "%-40s %s\n", "DATUM", oSRS.GetAttrValue( "DATUM" ) );
+                    CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %s\n", "DATUM", oSRS.GetAttrValue( "DATUM" ) ));
                 }
             }
             if ( oSRS.GetAttrValue( "UNIT" ) != NULL )
             {
-                VSIFPrintfL( fpRsc, "%-40s %s\n", "X_UNIT", oSRS.GetAttrValue( "UNIT" ) );
-                VSIFPrintfL( fpRsc, "%-40s %s\n", "Y_UNIT", oSRS.GetAttrValue( "UNIT" ) );
+                CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %s\n", "X_UNIT", oSRS.GetAttrValue( "UNIT" ) ));
+                CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %s\n", "Y_UNIT", oSRS.GetAttrValue( "UNIT" ) ));
             }
         }
     }
@@ -733,12 +733,12 @@ void ROIPACDataset::FlushCache( void )
         }
         else
         {
-            VSIFPrintfL( fpRsc, "%-40s %.16g\n", "X_FIRST", adfGeoTransform[0] );
-            VSIFPrintfL( fpRsc, "%-40s %.16g\n", "X_STEP", adfGeoTransform[1] );
-            VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Y_FIRST", adfGeoTransform[3] );
-            VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Y_STEP", adfGeoTransform[5] );
-            VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Z_OFFSET", band->GetOffset(NULL) );
-            VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Z_SCALE", band->GetScale(NULL) );
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %.16g\n", "X_FIRST", adfGeoTransform[0] ));
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %.16g\n", "X_STEP", adfGeoTransform[1] ));
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Y_FIRST", adfGeoTransform[3] ));
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Y_STEP", adfGeoTransform[5] ));
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Z_OFFSET", band->GetOffset(NULL) ));
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %.16g\n", "Z_SCALE", band->GetScale(NULL) ));
         }
     }
 
@@ -770,7 +770,7 @@ void ROIPACDataset::FlushCache( void )
             CSLDestroy( papszTokens );
             continue;
         }
-        VSIFPrintfL( fpRsc, "%-40s %s\n", papszTokens[0], papszTokens[1] );
+        CPL_IGNORE_RET_VAL(VSIFPrintfL( fpRsc, "%-40s %s\n", papszTokens[0], papszTokens[1] ));
         CSLDestroy( papszTokens );
     }
 }
@@ -836,13 +836,13 @@ char **ROIPACDataset::GetFileList()
 /*                         ROIPACRasterBand()                           */
 /************************************************************************/
 
-ROIPACRasterBand::ROIPACRasterBand( GDALDataset *poDS, int nBand, void *fpRaw,
-                                    vsi_l_offset nImgOffset, int nPixelOffset,
-                                    int nLineOffset,
-                                    GDALDataType eDataType, int bNativeOrder,
-                                    int bIsVSIL, int bOwnsFP ) :
-        RawRasterBand(poDS, nBand, fpRaw, nImgOffset, nPixelOffset,
-                      nLineOffset, eDataType, bNativeOrder, bIsVSIL, bOwnsFP)
+ROIPACRasterBand::ROIPACRasterBand( GDALDataset *poDSIn, int nBandIn, void *fpRawIn,
+                                    vsi_l_offset nImgOffsetIn, int nPixelOffsetIn,
+                                    int nLineOffsetIn,
+                                    GDALDataType eDataTypeIn, int bNativeOrderIn,
+                                    int bIsVSILIn, int bOwnsFPIn ) :
+        RawRasterBand(poDSIn, nBandIn, fpRawIn, nImgOffsetIn, nPixelOffsetIn,
+                      nLineOffsetIn, eDataTypeIn, bNativeOrderIn, bIsVSILIn, bOwnsFPIn)
 {
 }
 
@@ -850,12 +850,12 @@ ROIPACRasterBand::ROIPACRasterBand( GDALDataset *poDS, int nBand, void *fpRaw,
 /*                        GDALRegister_ROIPAC()                         */
 /************************************************************************/
 
-void GDALRegister_ROIPAC( void )
+void GDALRegister_ROIPAC()
 {
-    if (!GDAL_CHECK_VERSION("ROI_PAC"))
+    if( !GDAL_CHECK_VERSION( "ROI_PAC" ) )
         return;
 
-    if ( GDALGetDriverByName( "ROI_PAC" ) != NULL )
+    if( GDALGetDriverByName( "ROI_PAC" ) != NULL )
         return;
 
     GDALDriver *poDriver = new GDALDriver();

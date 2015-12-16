@@ -228,8 +228,8 @@ CPLErr GDALRasterBand::RasterIO( GDALRWFlag eRWFlag,
 
     if( eRWFlag == GF_Write && eFlushBlockErr != CE_None )
     {
-        ReportError(eFlushBlockErr, CPLE_AppDefined,
-                 "An error occured while writing a dirty block");
+        ReportError( eFlushBlockErr, CPLE_AppDefined,
+                     "An error occurred while writing a dirty block");
         CPLErr eErr = eFlushBlockErr;
         eFlushBlockErr = CE_None;
         return eErr;
@@ -581,8 +581,8 @@ CPLErr GDALRasterBand::WriteBlock( int nXBlockOff, int nYBlockOff,
 
     if( eFlushBlockErr != CE_None )
     {
-        ReportError(eFlushBlockErr, CPLE_AppDefined,
-                 "An error occured while writing a dirty block");
+        ReportError( eFlushBlockErr, CPLE_AppDefined,
+                     "An error occurred while writing a dirty block");
         CPLErr eErr = eFlushBlockErr;
         eFlushBlockErr = CE_None;
         return eErr;
@@ -754,7 +754,7 @@ int GDALRasterBand::InitBlockInfo()
     if (nBlockXSize >= 10000 || nBlockYSize >= 10000)
     {
         /* Check that the block size is not overflowing int capacity as it is */
-        /* (reasonnably) assumed in many places (GDALRasterBlock::Internalize(), */
+        /* (reasonably) assumed in many places (GDALRasterBlock::Internalize(), */
         /* GDALRasterBand::Fill(), many drivers...) */
         /* As 10000 * 10000 * 16 < INT_MAX, we don't need to do the multiplication in other cases */
 
@@ -847,8 +847,8 @@ CPLErr GDALRasterBand::FlushCache()
 
     if (eFlushBlockErr != CE_None)
     {
-        ReportError(eFlushBlockErr, CPLE_AppDefined,
-                 "An error occured while writing a dirty block");
+        ReportError( eFlushBlockErr, CPLE_AppDefined,
+                     "An error occurred while writing a dirty block");
         eFlushBlockErr = CE_None;
     }
 
@@ -2424,7 +2424,7 @@ const char * CPL_STDCALL GDALGetRasterUnitType( GDALRasterBandH hBand )
  *
  * @param pszNewValue the new unit type value.
  *
- * @return CE_None on success or CE_Failure if not succuessful, or
+ * @return CE_None on success or CE_Failure if not successful, or
  * unsupported.
  */
 
@@ -3405,11 +3405,11 @@ GDALRasterAdviseRead( GDALRasterBandH hBand,
  * the bApproxOK flag can be set to true in which case overviews, or a
  * subset of image tiles may be used in computing the statistics.  
  *
- * If bForce is FALSE results will only be returned if it can be done 
- * quickly (ie. without scanning the data).  If bForce is FALSE and 
+ * If bForce is FALSE results will only be returned if it can be done
+ * quickly (i.e. without scanning the data).  If bForce is FALSE and
  * results cannot be returned efficiently, the method will return CE_Warning
  * but no warning will have been issued.   This is a non-standard use of
- * the CE_Warning return value to indicate "nothing done". 
+ * the CE_Warning return value to indicate "nothing done".
  *
  * Note that file formats using PAM (Persistent Auxiliary Metadata) services
  * will generally cache statistics in the .pam file allowing fast fetch
@@ -5033,9 +5033,9 @@ unsigned char* GDALRasterBand::GetIndexColorTranslationTo(GDALRasterBand* poRefe
 /************************************************************************/
 
 /**
- * \brief Store that an error occured while writing a dirty block.
+ * \brief Store that an error occurred while writing a dirty block.
  *
- * This function stores the fact that an error occured while writing a dirty
+ * This function stores the fact that an error occurred while writing a dirty
  * block from GDALRasterBlock::FlushCacheBlock(). Indeed when dirty blocks are
  * flushed when the block cache get full, it is not convenient/possible to
  * report that a dirty block could not be written correctly. This function

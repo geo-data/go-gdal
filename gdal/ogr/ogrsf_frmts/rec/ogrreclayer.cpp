@@ -144,7 +144,7 @@ OGRRECLayer::~OGRRECLayer()
                   (int) m_nFeaturesRead, 
                   poFeatureDefn->GetName() );
     }
-    
+
     if( fpREC != NULL )
         VSIFClose( fpREC );
 
@@ -162,7 +162,7 @@ OGRRECLayer::~OGRRECLayer()
 void OGRRECLayer::ResetReading()
 
 {
-    VSIFSeek( fpREC, nStartOfData, SEEK_SET );
+    CPL_IGNORE_RET_VAL(VSIFSeek( fpREC, nStartOfData, SEEK_SET ));
     nNextFID = 1;
 }
 
@@ -242,7 +242,7 @@ OGRFeature * OGRRECLayer::GetNextUnfilteredFeature()
 /*      Set attributes for any indicated attribute records.             */
 /* -------------------------------------------------------------------- */
     int         iAttr;
-    
+
     for( iAttr = 0; iAttr < nFieldCount; iAttr++)
     {
         const char *pszFieldText = 
@@ -251,9 +251,12 @@ OGRFeature * OGRRECLayer::GetNextUnfilteredFeature()
                          panFieldWidth[iAttr] );
 
         if( strlen(pszFieldText) != 0 )
+        {
+            /* coverity[tainted_data] */
             poFeature->SetField( iAttr, pszFieldText );
+        }
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Translate the record id.                                        */
 /* -------------------------------------------------------------------- */
@@ -274,7 +277,7 @@ OGRFeature *OGRRECLayer::GetNextFeature()
 
 {
     OGRFeature  *poFeature = NULL;
-    
+
 /* -------------------------------------------------------------------- */
 /*      Read features till we find one that satisfies our current       */
 /*      spatial criteria.                                               */

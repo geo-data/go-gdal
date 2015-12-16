@@ -141,7 +141,7 @@ typedef enum
         and OFTIntegerList.*/                           OFSTBoolean = 1,
     /** Signed 16-bit integer. Only valid for OFTInteger and OFTIntegerList. */
                                                         OFSTInt16 = 2,
-    /** Single precision (32 bit) floatint point. Only valid for OFTReal and OFTRealList. */
+    /** Single precision (32 bit) floating point. Only valid for OFTReal and OFTRealList. */
                                                         OFSTFloat32 = 3
 } OGRFieldSubType;
 
@@ -1115,7 +1115,7 @@ public:
     return OGR_F_SetGeometry(self, geom);
   }
 
-/* The feature takes over owernship of the geometry. */
+/* The feature takes over ownership of the geometry. */
 /* Don't change the 'geom' name as Java bindings depends on it */
 %apply SWIGTYPE *DISOWN {OGRGeometryShadow *geom};
   OGRErr SetGeometryDirectly(OGRGeometryShadow* geom) {
@@ -1144,7 +1144,7 @@ public:
         return OGR_F_SetGeomField(self, iField, geom);
   }
 
-/* The feature takes over owernship of the geometry. */
+/* The feature takes over ownership of the geometry. */
 /* Don't change the 'geom' name as Java bindings depends on it */
 %apply SWIGTYPE *DISOWN {OGRGeometryShadow *geom};
   OGRErr SetGeomFieldDirectly(int iField, OGRGeometryShadow* geom) {

@@ -36,10 +36,10 @@
 using namespace PCIDSK;
 
 /* -------------------------------------------------------------------- */
-/*      Size of a block in the record/vertice block tables.  This is    */
+/*      Size of a block in the record/vertex block tables.  This is    */
 /*      determined by the PCIDSK format and may not be changed.         */
 /* -------------------------------------------------------------------- */
-static const int block_page_size = 8192;  
+static const int block_page_size = 8192;
 
 
 /* -------------------------------------------------------------------- */
@@ -54,13 +54,16 @@ static const int shapeid_page_size = 1024;
 /*                        CPCIDSKVectorSegment()                        */
 /************************************************************************/
 
-CPCIDSKVectorSegment::CPCIDSKVectorSegment( PCIDSKFile *file, int segment,
+CPCIDSKVectorSegment::CPCIDSKVectorSegment( PCIDSKFile *fileIn, int segmentIn,
                                             const char *segment_pointer )
-        : CPCIDSKSegment( file, segment, segment_pointer )
+        : CPCIDSKSegment( fileIn, segmentIn, segment_pointer )
 
 {
     base_initialized = false;
-    
+    needs_swap = false;
+
+    shape_count = 0;
+
     last_shapes_id = NullShapeId;
     last_shapes_index = -1;
 
@@ -428,6 +431,10 @@ char *CPCIDSKVectorSegment::GetData( int section, uint32 offset,
         pbuf_offset = &record_loaded_data_offset;
         pbuf_dirty = &record_loaded_data_dirty;
     }
+    else
+    {
+        ThrowPCIDSKException("Unexpected case");
+    }
 
 /* -------------------------------------------------------------------- */
 /*      If the desired data is not within our loaded section, reload    */
@@ -506,12 +513,13 @@ void CPCIDSKVectorSegment::ReadSecFromFile( int section, char *buffer,
 /* -------------------------------------------------------------------- */
     if( section == sec_raw )
     {
-        ReadFromFile( buffer, block_offset*block_page_size, block_count*block_page_size );
+        ReadFromFile( buffer, block_offset*block_page_size,
+                      block_count*block_page_size );
         return;
     }
 
 /* -------------------------------------------------------------------- */
-/*      Process one 8K block at a time in case they are discontigous    */
+/*      Process one 8K block at a time in case they are discontiguous   */
 /*      which they often are.                                           */
 /* -------------------------------------------------------------------- */
     int i;
@@ -562,6 +570,10 @@ void CPCIDSKVectorSegment::FlushDataBuffer( int section )
         pbuf_offset = &record_loaded_data_offset;
         pbuf_dirty = &record_loaded_data_dirty;
     }
+    else
+    {
+        ThrowPCIDSKException("Unexpected case");
+    }
 
     if( ! *pbuf_dirty || pbuf->buffer_size == 0 )
         return;
@@ -610,12 +622,14 @@ void CPCIDSKVectorSegment::WriteSecToFile( int section, char *buffer,
 
     if( block_count + block_offset > (int) block_map->size() )
     {
-        vh.GrowBlockIndex( section, 
-                           static_cast<int>(block_count + block_offset - block_map->size()) );
+        vh.GrowBlockIndex( section,
+                           static_cast<int>(block_count
+                                            + block_offset
+                                            - block_map->size() ) );
     }
 
 /* -------------------------------------------------------------------- */
-/*      Process one 8K block at a time in case they are discontigous    */
+/*      Process one 8K block at a time in case they are discontiguous   */
 /*      which they often are.                                           */
 /* -------------------------------------------------------------------- */
     int i;

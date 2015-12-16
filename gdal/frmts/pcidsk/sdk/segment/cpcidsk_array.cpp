@@ -39,9 +39,9 @@ using namespace PCIDSK;
 /*                            CPCIDSK_ARRAY()                           */
 /************************************************************************/
 
-CPCIDSK_ARRAY::CPCIDSK_ARRAY( PCIDSKFile *file, int segment,
+CPCIDSK_ARRAY::CPCIDSK_ARRAY( PCIDSKFile *fileIn, int segmentIn,
                               const char *segment_pointer )
-        : CPCIDSKSegment( file, segment, segment_pointer ),
+        : CPCIDSKSegment( fileIn, segmentIn, segment_pointer ),
         loaded_(false),mbModified(false)
 {
     MAX_DIMENSIONS = 8;
@@ -175,7 +175,7 @@ void CPCIDSK_ARRAY::Write(void)
 }
 
 /**
- * Synchronize the segement, if it was modified then
+ * Synchronize the segment, if it was modified then
  * write it into disk.
  */
 void CPCIDSK_ARRAY::Synchronize()

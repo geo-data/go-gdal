@@ -54,7 +54,7 @@ static char *szConfiguredFormats = "GDAL_FORMATS";
  *
  * This function will drive any of the following that are configured into
  * GDAL.  See <a href="http://gdal.org/formats_list.html">raster list</a> and
- * <a href="http://gdal.org/ogr/ogr_formats.html">vector full list</a>
+ * <a href="http://gdal.org/ogr_formats.html">vector full list</a>
  *
  * This function should generally be called once at the beginning of the application.
  */
@@ -538,6 +538,10 @@ void CPL_STDCALL GDALAllRegister()
 
 #ifdef FRMT_wmts
     GDALRegister_WMTS();
+#endif
+
+#ifdef FRMT_sentinel2
+    GDALRegister_SENTINEL2();
 #endif
 
 #ifdef GNM_ENABLED

@@ -59,19 +59,19 @@ const int SysVirtualFile::block_size = SYSVIRTUALFILE_BLOCKSIZE;
 /*                           SysVirtualFile()                           */
 /************************************************************************/
 
-SysVirtualFile::SysVirtualFile( CPCIDSKFile *file, int start_block, 
+SysVirtualFile::SysVirtualFile( CPCIDSKFile *fileIn, int start_block, 
                                 uint64 image_length, 
-                                SysBlockMap *sysblockmap,
-                                int image_index )
+                                SysBlockMap *sysblockmapIn,
+                                int image_indexIn )
 
 {
     io_handle = NULL;
     io_mutex = NULL;
 
     file_length = image_length;
-    this->file = file;
-    this->sysblockmap = sysblockmap;
-    this->image_index = image_index;
+    this->file = fileIn;
+    this->sysblockmap = sysblockmapIn;
+    this->image_index = image_indexIn;
 
     loaded_block = -1;
     loaded_block_dirty = false;
@@ -189,13 +189,14 @@ void SysVirtualFile::SetBlockInfo( int requested_block,
     }
 
     // Ah, we see they are now irregular.  We need to build up the
-    // segment/index arrays and proceed to populate them. 
-    Debug( file->GetInterfaces()->Debug, 
-           "SysVirtualFile - Discovered stream is irregulr.  %d/%d follows %d/%d at block %d.\n",
+    // segment/index arrays and proceed to populate them.
+    Debug( file->GetInterfaces()->Debug,
+           "SysVirtualFile - Discovered stream is irregular.  "
+           "%d/%d follows %d/%d at block %d.\n",
            new_block_segment, new_block_index,
            xblock_segment[0], xblock_index[0], 
            requested_block );
-           
+
     regular_blocks = false;
     while( (int) xblock_segment.size() < blocks_loaded )
     {
@@ -528,14 +529,14 @@ void SysVirtualFile::LoadBlocks(int requested_block_start,
         for (unsigned int i = 0 ; i < count_to_read; i++) {
             GrowVirtualFile(i + current_start);
         }
-        
+
         printf("Coalescing the read of %d blocks\n", count_to_read);
 #endif
 
         // Perform the actual read
         PCIDSKSegment *data_seg_obj =
             file->GetSegment( cur_segment );
-        
+
         std::size_t data_size = block_size * count_to_read;
 
 #if 0
@@ -545,10 +546,10 @@ void SysVirtualFile::LoadBlocks(int requested_block_start,
         data_seg_obj->ReadFromFile( ((uint8*)buffer) + buffer_off,
                                     block_size * read_start,
                                     data_size );
-                                    
+
         buffer_off += data_size; // increase buffer offset
-        
-        // Increment the current start by the number of blocks we jsut read
+
+        // Increment the current start by the number of blocks we just read
         current_start += count_to_read;
         blocks_read += count_to_read;
     }

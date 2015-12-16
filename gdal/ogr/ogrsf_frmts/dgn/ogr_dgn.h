@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_DGN_H_INCLUDED
-#define _OGR_DGN_H_INCLUDED
+#ifndef OGR_DGN_H_INCLUDED
+#define OGR_DGN_H_INCLUDED
 
 #include "dgnlib.h"
 #include "ogrsf_frmts.h"
@@ -95,12 +95,12 @@ class OGRDGNDataSource : public OGRDataSource
 {
     OGRDGNLayer     **papoLayers;
     int                 nLayers;
-    
+
     char                *pszName;
     DGNHandle           hDGN;
 
     char                **papszOptions;
-    
+
   public:
                         OGRDGNDataSource();
                         ~OGRDGNDataSource();
@@ -120,4 +120,4 @@ class OGRDGNDataSource : public OGRDataSource
     int                 TestCapability( const char * );
 };
 
-#endif /* ndef _OGR_DGN_H_INCLUDED */
+#endif /* ndef OGR_DGN_H_INCLUDED */

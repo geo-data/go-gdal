@@ -47,7 +47,7 @@
 #  define ODBC_FILENAME_MAX (255 + 1) /* Max path length */
 #endif
 
- 
+
 /**
  * \file cpl_odbc.h
  *
@@ -65,7 +65,7 @@ class CPL_DLL CPLODBCDriverInstaller
     DWORD m_nUsageCount;
 
   public:
-    
+
     // Default constructor.
     CPLODBCDriverInstaller();
 
@@ -123,7 +123,6 @@ class CPL_DLL CPLODBCDriverInstaller
     // error message can be obtained by calling this function.
     // Internally, it calls ODBC's SQLInstallerError function.
     const char* GetLastError() const { return m_szError; }
-   
 
     // If InstallDriver returns FALSE, then GetLastErrorCode then
     // error code can be obtained by calling this function.
@@ -134,7 +133,7 @@ class CPL_DLL CPLODBCDriverInstaller
 
 class CPLODBCStatement;
 
-/* On MSVC SQLULEN is missing in some cases (ie. VC6)
+/* On MSVC SQLULEN is missing in some cases (i.e. VC6)
 ** but it is always a #define so test this way.   On Unix
 ** it is a typedef so we can't always do this.
 */
@@ -144,11 +143,11 @@ class CPLODBCStatement;
 
 #if !defined(MISSING_SQLULEN)
 /* ODBC types to support 64 bit compilation */
-#  define _SQLULEN SQLULEN
-#  define _SQLLEN  SQLLEN
+#  define CPL_SQLULEN SQLULEN
+#  define CPL_SQLLEN  SQLLEN
 #else
-#  define _SQLULEN SQLUINTEGER
-#  define _SQLLEN  SQLINTEGER
+#  define CPL_SQLULEN SQLUINTEGER
+#  define CPL_SQLLEN  SQLINTEGER
 #endif	/* ifdef SQLULEN */
 
 
@@ -209,14 +208,14 @@ class CPL_DLL CPLODBCStatement {
     char         **m_papszColNames;
     SQLSMALLINT   *m_panColType;
     char         **m_papszColTypeNames;
-    _SQLULEN      *m_panColSize;
+    CPL_SQLULEN      *m_panColSize;
     SQLSMALLINT   *m_panColPrecision;
     SQLSMALLINT   *m_panColNullable;
     char         **m_papszColColumnDef;
 
     char         **m_papszColValues;
-    _SQLLEN       *m_panColValueLengths;
-    
+    CPL_SQLLEN       *m_panColValueLengths;
+
     int            Failed( int );
 
     char          *m_pszStatement;

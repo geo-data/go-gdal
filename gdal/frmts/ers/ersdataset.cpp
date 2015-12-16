@@ -739,13 +739,13 @@ class ERSRasterBand : public RawRasterBand
 /*                           ERSRasterBand()                            */
 /************************************************************************/
 
-ERSRasterBand::ERSRasterBand( GDALDataset *poDS, int nBand, void * fpRaw,
-                                vsi_l_offset nImgOffset, int nPixelOffset,
-                                int nLineOffset,
-                                GDALDataType eDataType, int bNativeOrder,
-                                int bIsVSIL, int bOwnsFP ) :
-    RawRasterBand(poDS, nBand, fpRaw, nImgOffset, nPixelOffset,
-                  nLineOffset, eDataType, bNativeOrder, bIsVSIL, bOwnsFP)
+ERSRasterBand::ERSRasterBand( GDALDataset *poDSIn, int nBandIn, void * fpRawIn,
+                                vsi_l_offset nImgOffsetIn, int nPixelOffsetIn,
+                                int nLineOffsetIn,
+                                GDALDataType eDataTypeIn, int bNativeOrderIn,
+                                int bIsVSILIn, int bOwnsFPIn ) :
+    RawRasterBand(poDSIn, nBandIn, fpRawIn, nImgOffsetIn, nPixelOffsetIn,
+                  nLineOffsetIn, eDataTypeIn, bNativeOrderIn, bIsVSILIn, bOwnsFPIn)
 {
 }
 
@@ -1429,12 +1429,11 @@ void GDALRegister_ERS()
 
     poDriver->SetDescription( "ERS" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "ERMapper .ers Labelled" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_ers.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "ERMapper .ers Labelled" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_ers.html" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
-                               "Byte Int16 UInt16 Int32 UInt32 Float32 Float64" );
+                               "Byte Int16 UInt16 Int32 UInt32 "
+                               "Float32 Float64" );
 
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
 "<CreationOptionList>"

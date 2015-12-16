@@ -2021,7 +2021,7 @@ static AVCField   *_AVCE00ParseTableRecord(AVCE00ParseInfo *psInfo)
              * be different from nSize, but nSize has priority since it
              * is the actual size of the field in memory.
              */
-            sprintf(szFormat, "%%%d.%df", nSize, pasDef[i].nFmtPrec);
+            snprintf(szFormat, sizeof(szFormat), "%%%d.%df", nSize, pasDef[i].nFmtPrec);
             pszTmpStr = CPLSPrintf(szFormat, CPLAtof(szTmp));
 
             /* If value is bigger than size, then it's too bad... we 
@@ -2132,6 +2132,10 @@ AVCField   *AVCE00ParseNextTableRecLine(AVCE00ParseInfo *psInfo,
         psInfo->nTableE00RecLength = 
             _AVCE00ComputeRecSize(psTableDef->numFields, 
                                   psTableDef->pasFieldDef, FALSE);
+        if( psInfo->nTableE00RecLength < 0 )
+        {
+            return NULL;
+        }
 
         if (psInfo->nBufSize < psInfo->nTableE00RecLength + 1)
         {

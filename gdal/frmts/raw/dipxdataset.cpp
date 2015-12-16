@@ -39,11 +39,11 @@ using std::fill;
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_DIPEx(void);
+void GDALRegister_DIPEx();
 CPL_C_END
 
 typedef struct {
-    GInt32	NBIH;	/* bytes in header, normaly 1024 */
+    GInt32      NBIH;   /* bytes in header, normally 1024 */
     GInt32      NBPR;	/* bytes per data record (all bands of scanline) */
     GInt32	IL;	/* initial line - normally 1 */
     GInt32	LL;	/* last line */
@@ -265,7 +265,7 @@ GDALDataset *DIPExDataset::Open( GDALOpenInfo * poOpenInfo )
     {
         delete poDS;
         CPLError( CE_Failure, CPLE_AppDefined,
-                  "Unrecognised image data type %d, with BytesPerSample=%d.\n",
+                  "Unrecognized image data type %d, with BytesPerSample=%d.\n",
                   nDIPExDataType, nBytesPerSample );
         return NULL;
     }
@@ -378,7 +378,7 @@ void GDALRegister_DIPEx()
     if( GDALGetDriverByName( "DIPEx" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "DIPEx" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

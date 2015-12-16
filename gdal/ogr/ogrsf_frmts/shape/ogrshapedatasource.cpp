@@ -112,11 +112,11 @@ int OGRShapeDataSource::Open( GDALOpenInfo* poOpenInfo,
 
 {
     CPLAssert( nLayers == 0 );
-    
+
     const char * pszNewName = poOpenInfo->pszFilename;
     int bUpdate = poOpenInfo->eAccess == GA_Update;
     papszOpenOptions = CSLDuplicate( poOpenInfo->papszOpenOptions );
-    
+
     pszName = CPLStrdup( pszNewName );
 
     bDSUpdate = bUpdate;
@@ -132,7 +132,7 @@ int OGRShapeDataSource::Open( GDALOpenInfo* poOpenInfo,
 /* -------------------------------------------------------------------- */
     if( bSingleFileDataSource )
         return TRUE;
-    
+
 /* -------------------------------------------------------------------- */
 /*      Is the given path a directory or a regular file?                */
 /* -------------------------------------------------------------------- */
@@ -145,7 +145,7 @@ int OGRShapeDataSource::Open( GDALOpenInfo* poOpenInfo,
 
         return FALSE;
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Build a list of filenames we figure are Shape files.            */
 /* -------------------------------------------------------------------- */
@@ -311,7 +311,7 @@ int OGRShapeDataSource::OpenFile( const char *pszNewName, int bUpdate,
 
 /* -------------------------------------------------------------------- */
 /*      SHPOpen() should include better (CPL based) error reporting,    */
-/*      and we should be trying to distinquish at this point whether    */
+/*      and we should be trying to distinguish at this point whether    */
 /*      failure is a result of trying to open a non-shapefile, or       */
 /*      whether it was a shapefile and we want to report the error      */
 /*      up.                                                             */
@@ -337,7 +337,7 @@ int OGRShapeDataSource::OpenFile( const char *pszNewName, int bUpdate,
         return FALSE;
     }
     CPLErrorReset();
-    
+
 /* -------------------------------------------------------------------- */
 /*      Open the .dbf file, if it exists.  To open a dbf file, the      */
 /*      filename has to either refer to a successfully opened shp       */
@@ -378,7 +378,7 @@ int OGRShapeDataSource::OpenFile( const char *pszNewName, int bUpdate,
     }
     else
         hDBF = NULL;
-        
+
     if( hDBF == NULL && hSHP == NULL )
         return FALSE;
 
@@ -568,7 +568,7 @@ OGRShapeDataSource::ICreateLayer( const char * pszLayerName,
                   OGRGeometryTypeToName(eType) );
         return NULL;
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      What filename do we use, excluding the extension?               */
 /* -------------------------------------------------------------------- */
@@ -611,7 +611,7 @@ OGRShapeDataSource::ICreateLayer( const char * pszLayerName,
         pszFilename = CPLStrdup(CPLFormFilename( NULL, pszFilenameWithoutExt, "shp" ));
 
         hSHP = SHPCreateLL( pszFilename, nShapeType, (SAHooks*) VSI_SHP_GetHook(l_b2GBLimit) );
-        
+
         if( hSHP == NULL )
         {
             CPLError( CE_Failure, CPLE_OpenFailed,
@@ -621,7 +621,7 @@ OGRShapeDataSource::ICreateLayer( const char * pszLayerName,
             CPLFree( pszFilenameWithoutExt );
             return NULL;
         }
-        
+
         SHPSetFastModeReadObject( hSHP, TRUE );
 
         CPLFree( pszFilename );
@@ -920,7 +920,7 @@ OGRLayer * OGRShapeDataSource::ExecuteSQL( const char *pszStatement,
         }
         return NULL;
     }
-    
+
 /* ==================================================================== */
 /*      Handle command to drop a spatial index.                         */
 /* ==================================================================== */
@@ -965,7 +965,7 @@ OGRLayer * OGRShapeDataSource::ExecuteSQL( const char *pszStatement,
 /*      Parse into keywords.                                            */
 /* -------------------------------------------------------------------- */
     char **papszTokens = CSLTokenizeString( pszStatement );
-    
+
     if( CSLCount(papszTokens) < 5
         || !EQUAL(papszTokens[0],"CREATE")
         || !EQUAL(papszTokens[1],"SPATIAL")
@@ -1077,7 +1077,7 @@ void OGRShapeDataSource::SetLastUsedLayer( OGRShapeLayer* poLayer )
     /* The only rationale for that test is to avoid breaking applications */
     /* that would deal with layers of the same datasource in different */
     /* threads. In GDAL < 1.9.0, this would work in most cases I can */
-    /* imagine as shapefile layers are pretty much independant from each */
+    /* imagine as shapefile layers are pretty much independent from each */
     /* others (although it has never been guaranteed to be a valid use case, */
     /* and the shape driver is likely more the exception than the rule in */
     /* permitting accessing layers from different threads !) */

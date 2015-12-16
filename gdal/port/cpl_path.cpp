@@ -507,9 +507,39 @@ const char *CPLFormFilename( const char * pszPath,
 
     if( pszPath == NULL )
         pszPath = "";
-    else if( strlen(pszPath) > 0
-             && pszPath[strlen(pszPath)-1] != '/'
-             && pszPath[strlen(pszPath)-1] != '\\' )
+    size_t nLenPath = strlen(pszPath);
+    if( !CPLIsFilenameRelative(pszPath) &&
+        strcmp(pszBasename, "..") == 0 )
+    {
+        /* /a/b + .. --> /a */
+        if( pszPath[nLenPath-1] == '\\' || pszPath[nLenPath-1] == '/' )
+            nLenPath --;
+        size_t nLenPathOri = nLenPath;
+        while( nLenPath > 0 && pszPath[nLenPath-1] != '\\' &&
+               pszPath[nLenPath-1] != '/')
+        {
+            nLenPath --;
+        }
+        if( nLenPath == 1 && pszPath[0] == '/' )
+        {
+            pszBasename = "";
+        }
+        else if( (nLenPath > 1 && pszPath[0] == '/') ||
+                 (nLenPath > 2 && pszPath[1] == ':') ||
+                 (nLenPath > 6 && strncmp(pszPath, "\\\\$\\", 4) == 0) )
+        {
+            nLenPath --;
+            pszBasename = "";
+        }
+        else
+        {
+            nLenPath = nLenPathOri;
+            pszAddedPathSep = SEP_STRING;
+        }
+    }
+    else if( nLenPath > 0
+             && pszPath[nLenPath-1] != '/'
+             && pszPath[nLenPath-1] != '\\' )
     {
         /* FIXME? would be better to ask the filesystems what they */
         /* prefer as directory separator */
@@ -526,7 +556,7 @@ const char *CPLFormFilename( const char * pszPath,
     else if( pszExtension[0] != '.' && strlen(pszExtension) > 0 )
         pszAddedExtSep = ".";
 
-    if( CPLStrlcpy( pszStaticResult, pszPath, CPL_PATH_BUF_SIZE )
+    if( CPLStrlcpy( pszStaticResult, pszPath, MIN(nLenPath+1, static_cast<size_t>(CPL_PATH_BUF_SIZE)) )
         >= static_cast<size_t>( CPL_PATH_BUF_SIZE ) ||
         CPLStrlcat( pszStaticResult, pszAddedPathSep, CPL_PATH_BUF_SIZE)
         >= static_cast<size_t>( CPL_PATH_BUF_SIZE ) ||
@@ -596,7 +626,7 @@ const char *CPLFormCIFilename( const char * pszPath,
     else if( pszExtension[0] != '.' && strlen(pszExtension) > 0 )
         pszAddedExtSep = ".";
 
-    sprintf( pszFilename, "%s%s%s", 
+    snprintf( pszFilename, nLen, "%s%s%s", 
              pszBasename, pszAddedExtSep, pszExtension );
 
     const char *pszFullPath = CPLFormFilename( pszPath, pszFilename, NULL );
@@ -731,9 +761,10 @@ const char *CPLProjectRelativeFilename( const char *pszProjectDir,
 int CPLIsFilenameRelative( const char *pszFilename )
 
 {
-    if( (strlen(pszFilename) > 2
+    if( (pszFilename[0] != '\0'
          && (STARTS_WITH(pszFilename+1, ":\\")
              || STARTS_WITH(pszFilename+1, ":/")))
+        || STARTS_WITH(pszFilename, "\\\\?\\") /* Windows extended Length Path */
         || pszFilename[0] == '\\'
         || pszFilename[0] == '/' )
         return FALSE;
@@ -756,7 +787,7 @@ int CPLIsFilenameRelative( const char *pszFilename )
  *
  * @param pszBaseDir the name of the directory relative to which the path 
  * should be computed.  pszBaseDir may be NULL in which case the original
- * target is returned without relitivizing.
+ * target is returned without relativizing.
  *
  * @param pszTarget the filename to be changed to be relative to pszBaseDir.
  *

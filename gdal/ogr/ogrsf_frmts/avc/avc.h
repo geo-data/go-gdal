@@ -112,8 +112,8 @@
  *
  **********************************************************************/
 
-#ifndef _AVC_H_INCLUDED_
-#define _AVC_H_INCLUDED_
+#ifndef AVC_H_INCLUDED_
+#define AVC_H_INCLUDED_
 
 #include "cpl_conv.h"
 #include "cpl_string.h"
@@ -483,7 +483,7 @@ typedef struct AVCE00GenInfo_t
 {
     char        *pszBuf;
     int         nBufSize;
-    
+
     int         nPrecision;     /* AVC_SINGLE/DOUBLE_PREC       */
     int         iCurItem;
     int         numItems;
@@ -563,7 +563,7 @@ typedef struct AVCE00ReadInfo_t
     AVCCoverType eCoverType;
 
     /* pasSections is built when the coverage is opened and describes
-     * the squeleton of the E00 file.
+     * the skeleton of the E00 file.
      */
     AVCE00Section *pasSections;
     int            numSections;
@@ -823,7 +823,7 @@ AVCTableDef *_AVCDupTableDef(AVCTableDef *psSrcDef);
 
 GBool AVCFileExists(const char *pszPath, const char *pszName);
 char *AVCAdjustCaseSensitiveFilename(char *pszFname);
-int  AVCPrintRealValue(char *pszBuf, int nPrecision, AVCFileType eType,
+int  AVCPrintRealValue(char *pszBuf, size_t nBufLen, int nPrecision, AVCFileType eType,
                        double dValue);
 
 /*=====================================================================
@@ -870,6 +870,6 @@ int             AVCE00DeleteCoverage(const char *pszCoverPath);
 
 CPL_C_END
 
-#endif /* _AVC_H_INCLUDED_ */
+#endif /* AVC_H_INCLUDED_ */
 
 

@@ -44,6 +44,7 @@
 #define FIELD_FINISH "end"
 #define FIELD_SCALE_FACTOR "scale"
 #define DELTA 0.00000001 //- delta
+// TODO: TOLLERANCE -> TOLERANCE
 #define TOLLERANCE 0.00008983153
 
 #if defined(HAVE_GEOS)
@@ -114,7 +115,7 @@ static void Usage(const char* pszAdditionalMsg, int bShort = TRUE)
         " -lf field_name: Field name for uniq paths in layer (optional)\n"
         " -p src_repers_datasource_name: Datasource of repers name\n"
         " -pn layer_name: Layer name in datasource (optional)\n"
-        " -pm pos_field_name: Line postion field name\n"
+        " -pm pos_field_name: Line position field name\n"
         " -pf field_name: Field name for correspondence repers of separate paths in layer (optional)\n"
         " -r src_parts_datasource_name: Parts datasource name\n"
         " -rn layer_name: Layer name in datasource (optional)\n"
@@ -146,7 +147,7 @@ static OGRLayer* SetupTargetLayer(OGRLayer * poSrcLayer, GDALDataset *poDstDS, c
     OGRSpatialReference *poOutputSRS;
 
     CPLString szLayerName;
-    
+
     if (pszNewLayerName == NULL)
     {
         szLayerName = CPLGetBasename(poDstDS->GetDescription());
@@ -171,9 +172,9 @@ static OGRLayer* SetupTargetLayer(OGRLayer * poSrcLayer, GDALDataset *poDstDS, c
     /*      Find the layer.                                                 */
     /* -------------------------------------------------------------------- */
 
-    /* GetLayerByName() can instanciate layers that would have been */
+    /* GetLayerByName() can instantiate layers that would have been */
     /* 'hidden' otherwise, for example, non-spatial tables in a */
-    /* Postgis-enabled database, so this apparently useless command is */
+    /* PostGIS-enabled database, so this apparently useless command is */
     /* not useless... (#4012) */
     CPLPushErrorHandler(CPLQuietErrorHandler);
     poDstLayer = poDstDS->GetLayerByName(szLayerName);
@@ -192,7 +193,7 @@ static OGRLayer* SetupTargetLayer(OGRLayer * poSrcLayer, GDALDataset *poDstDS, c
         }
 
         if (iLayer == nLayerCount)
-            /* shouldn't happen with an ideal driver */
+            /* should not happen with an ideal driver */
             poDstLayer = NULL;
     }
 
@@ -536,9 +537,6 @@ static OGRErr CreateSubline(OGRLayer* const poPkLayer,
         //store
         return AddFeature(poOutLayer, pOutLine, dfPosBeg, dfPosEnd, 1.0, bQuiet);
     }
-
-    //should never reach here
-    return OGRERR_NONE;
 }
 
 //------------------------------------------------------------------------
@@ -567,6 +565,7 @@ static double Project(OGRLineString* pLine, OGRPoint* pPoint)
 #ifdef HAVE_GEOS_PROJECT
 static OGRErr CreatePartsFromLineString(OGRLineString* pPathGeom, OGRLayer* const poPkLayer, int nMValField, double dfStep, OGRLayer* const poOutLayer, int bDisplayProgress, int bQuiet, const char* pszOutputSepFieldName = NULL, const char* pszOutputSepFieldValue = NULL)
 {
+    // TODO: What is a reper?
     //check repers type
     OGRwkbGeometryType eGeomType = poPkLayer->GetGeomType();
     if (wkbFlatten(eGeomType) != wkbPoint)
@@ -595,7 +594,7 @@ static OGRErr CreatePartsFromLineString(OGRLineString* pPathGeom, OGRLayer* cons
                         "The distance %f is already present in repers file!", dfReperPos);
                 }
             }
-            //check if reper is incide the path
+            // Check if reper is inside the path
             dfTestDistance = Project(pPathGeom, pPt);
             if (dfTestDistance < 0)
             {
@@ -949,7 +948,7 @@ static OGRErr CreateParts(OGRLayer* const poLnLayer, OGRLayer* const poPkLayer, 
     {
         OGRGeometry* pGeom = pPathFeature->GetGeometryRef();
 
-        if (wkbFlatten(pGeom->getGeometryType()) == wkbMultiLineString)
+        if (pGeom != NULL && wkbFlatten(pGeom->getGeometryType()) == wkbMultiLineString)
         {
             if (!bQuiet)
             {
@@ -1409,7 +1408,7 @@ int main( int nArgc, char ** papszArgv )
         }
     }
 
-    
+
     if(stOper == op_create)
     {
 #ifdef HAVE_GEOS_PROJECT
@@ -1423,7 +1422,7 @@ int main( int nArgc, char ** papszArgv )
             Usage("no position field provided");
         else  if (dfStep == -100000000)
             Usage("no step provided");
-            
+
     /* -------------------------------------------------------------------- */
     /*      Open data source.                                               */
     /* -------------------------------------------------------------------- */
@@ -1441,7 +1440,7 @@ int main( int nArgc, char ** papszArgv )
         if( poLnDS == NULL )
         {
             OGRSFDriverRegistrar    *poR = OGRSFDriverRegistrar::GetRegistrar();
-            
+
             fprintf( stderr, "FAILURE:\n"
                     "Unable to open path datasource `%s' with the following drivers.\n",
                     pszLineDataSource);

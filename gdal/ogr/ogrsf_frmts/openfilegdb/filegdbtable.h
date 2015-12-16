@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _FILEGDBTABLE_H_INCLUDED
-#define _FILEGDBTABLE_H_INCLUDED
+#ifndef FILEGDBTABLE_H_INCLUDED
+#define FILEGDBTABLE_H_INCLUDED
 
 #include "ogr_core.h"
 #include "cpl_vsi.h"
@@ -171,7 +171,7 @@ class FileGDBGeomField: public FileGDBField
         double             GetMOrigin() const { return dfMOrigin; }
         double             GetMScale() const { return dfMScale; }
         double             GetMTolerance() const { return dfMTolerance; }
-        
+
         int                Has3D() const { return bHas3D; }
 };
 
@@ -186,7 +186,7 @@ class FileGDBRasterField: public FileGDBGeomField
         std::string       osRasterColumnName;
 
     public:
-                          FileGDBRasterField(FileGDBTable* poParent) : FileGDBGeomField(poParent) {}
+                          FileGDBRasterField(FileGDBTable* poParentIn) : FileGDBGeomField(poParentIn) {}
         virtual          ~FileGDBRasterField() {}
 
         const std::string& GetRasterColumnName() const { return osRasterColumnName; }
@@ -265,7 +265,7 @@ class FileGDBTable
         void                        Init();
 
         GUIntBig                    nFilterXMin, nFilterXMax, nFilterYMin, nFilterYMax;
-        
+
         GUInt32                     nOffsetHeaderEnd;
 
         int                         ReadTableXHeader();
@@ -299,7 +299,7 @@ class FileGDBTable
        const FileGDBIndex*      GetIndex(int i) const { return apoIndexes[i]; }
 
        vsi_l_offset             GetOffsetInTableForRow(int iRow);
-       
+
        int                      HasDeletedFeaturesListed() const { return bHasDeletedFeaturesListed; }
 
        /* Next call to SelectRow() or GetFieldValue() invalidates previously returned values */
@@ -391,4 +391,4 @@ int FileGDBDoubleDateToOGRDate(double dfVal, OGRField* psField);
 
 }; /* namespace OpenFileGDB */
 
-#endif /* ndef _FILEGDBTABLE_H_INCLUDED */
+#endif /* ndef FILEGDBTABLE_H_INCLUDED */

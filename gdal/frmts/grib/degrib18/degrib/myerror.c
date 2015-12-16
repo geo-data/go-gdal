@@ -86,7 +86,7 @@ static void AllocSprintf (char **Ptr, size_t *LenBuff, const char *fmt,
    size_t lenBuff = *LenBuff; /* Local copy of LenBuff. */
    const char *p;       /* Points to % char in % option. */
    const char *p1;      /* Points to end of % option. */
-   char bufpart[330];   /* Used for formating the int / float options. */
+   char bufpart[330];   /* Used for formatting the int / float options. */
    char format[20];     /* Used to store the % option. */
    char *sval;          /* For pulling strings off va_list. */
    char **Sval;         /* For pulling lists of strings off va_list. */
@@ -560,7 +560,7 @@ static void _myWarn (uChar f_errCode, const char *fmt, va_list ap)
  *   This does the transformation of the "..." parameters, and calls _myWarn.
  * This was broken out when we started to implement myWarnRet, so we had two
  * ways to call _myWarn.  A complicated way (myWarnRet), and a simpler way
- * (myWarn).  After creating the myWarnW# #defines, thought to depricate use
+ * (myWarn).  After creating the myWarnW# #defines, thought to deprecate use
  * of myWarn by making it static.  Still need it, because myWarnRet uses it.
  *
  * ARGUMENTS

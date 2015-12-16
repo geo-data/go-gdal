@@ -80,7 +80,7 @@ const char CPL_DLL *CPLReadLineL( VSILFILE * );
 const char CPL_DLL *CPLReadLine2L( VSILFILE * , int nMaxCols, char** papszOptions);
 
 /* -------------------------------------------------------------------- */
-/*      Convert ASCII string to floationg point number                  */
+/*      Convert ASCII string to floating point number                  */
 /*      (THESE FUNCTIONS ARE NOT LOCALE AWARE!).                        */
 /* -------------------------------------------------------------------- */
 double CPL_DLL CPLAtof(const char *);
@@ -92,7 +92,7 @@ float CPL_DLL CPLStrtofDelim(const char *, char **, char);
 
 /* -------------------------------------------------------------------- */
 /*      Convert number to string.  This function is locale agnostic     */
-/*      (ie. it will support "," or "." regardless of current locale)   */
+/*      (i.e. it will support "," or "." regardless of current locale)  */
 /* -------------------------------------------------------------------- */
 double CPL_DLL CPLAtofM(const char *);
 
@@ -256,7 +256,7 @@ void CPLCleanupSetlocaleMutex(void);
 CPL_C_END
 
 /* -------------------------------------------------------------------- */
-/*      C++ object for temporariliy forcing a LC_NUMERIC locale to "C". */
+/*      C++ object for temporarily forcing a LC_NUMERIC locale to "C".  */
 /* -------------------------------------------------------------------- */
 
 #if defined(__cplusplus) && !defined(CPL_SUPRESS_CPLUSPLUS)
@@ -276,7 +276,7 @@ private:
 };
 
 // Does the same as CPLLocaleC except that, when available, it tries to
-// only affect the current thread. But code that would be dependant of
+// only affect the current thread. But code that would be dependent of
 // setlocale(LC_NUMERIC, NULL) returning "C", such as current proj.4 versions,
 // will not work depending on the actual implementation
 class CPL_DLL CPLThreadLocaleC

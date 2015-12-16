@@ -510,8 +510,8 @@ cl_int alloc_working_arr(struct oclWarper *warper,
 }
 
 /*
- Assemble and create the kernel. For optimization, portabilaty, and
- implimentation limitation reasons, the program is actually assembled from
+ Assemble and create the kernel. For optimization, portability, and
+ implementation limitation reasons, the program is actually assembled from
  several strings, then compiled with as many invariants as possible defined by
  the preprocessor. There is also quite a bit of error-catching code in here
  because the kernel is where many bugs show up.
@@ -528,7 +528,8 @@ cl_kernel get_kernel(struct oclWarper *warper, char useVec,
     cl_kernel kernel;
 	cl_int err = CL_SUCCESS;
     char *buffer = (char *)CPLCalloc(128000, sizeof(char));
-    char *progBuf = (char *)CPLCalloc(128000, sizeof(char));
+#define PROGBUF_SIZE 128000
+    char *progBuf = (char *)CPLCalloc(PROGBUF_SIZE, sizeof(char));
     float dstMinVal, dstMaxVal;
     
     const char *outType;
@@ -1226,11 +1227,11 @@ cl_kernel get_kernel(struct oclWarper *warper, char useVec,
     //Assemble the kernel from parts. The compiler is unable to handle multiple
     //kernels in one string with more than a few __constant modifiers each.
     if (warper->resampAlg == OCL_Bilinear)
-        sprintf(progBuf, "%s\n%s", kernGenFuncs, kernBilinear);
+        snprintf(progBuf, PROGBUF_SIZE, "%s\n%s", kernGenFuncs, kernBilinear);
     else if (warper->resampAlg == OCL_Cubic)
-        sprintf(progBuf, "%s\n%s", kernGenFuncs, kernCubic);
+        snprintf(progBuf, PROGBUF_SIZE, "%s\n%s", kernGenFuncs, kernCubic);
     else
-        sprintf(progBuf, "%s\n%s", kernGenFuncs, kernResampler);
+        snprintf(progBuf, PROGBUF_SIZE, "%s\n%s", kernGenFuncs, kernResampler);
     
     //Actually make the program from assembled source
     program = clCreateProgramWithSource(warper->context, 1, (const char**)&progBuf,
@@ -2037,8 +2038,8 @@ struct oclWarper* GDALWarpKernelOpenCL_createEnv(int srcWidth, int srcHeight,
         for (i = 0; i < warper->numBands; ++i)
             warper->useBandSrcValid[i] = FALSE;
         
-        //Allocate one array for all the band validity masks
-        //Remember that the masks don't use much memeory (they're bitwise)
+        // Allocate one array for all the band validity masks.
+        // Remember that the masks don't use much memory (they're bitwise).
         err = alloc_pinned_mem(warper, 0, sz * sizeof(int),
                                (void **)&(warper->nBandSrcValid),
                                &(warper->nBandSrcValidCL));
@@ -2170,7 +2171,7 @@ cl_int GDALWarpKernelOpenCL_setDstImg(struct oclWarper *warper, void *imgData,
  values from an original matrix. When bilinearly sampled in the GPU hardware,
  the generated values are as close as possible to the original matrix.
  
- Complication: matricies have arbitrary dimensions and the sub-sampling factor
+ Complication: matrices have arbitrary dimensions and the sub-sampling factor
  is an arbitrary integer greater than zero. Getting the edge cases right is 
  difficult.
  

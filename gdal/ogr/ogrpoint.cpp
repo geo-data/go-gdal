@@ -33,6 +33,7 @@
 
 /* for std::numeric_limits */
 #include <limits>
+#include <new>
 
 CPL_CVSID("$Id$");
 
@@ -120,10 +121,10 @@ OGRPoint::~OGRPoint()
 
 /**
  * \brief Assignment operator.
- * 
+ *
  * Note: before GDAL 2.1, only the default implementation of the operator
  * existed, which could be unsafe to use.
- * 
+ *
  * @since GDAL 2.1
  */
 
@@ -132,7 +133,7 @@ OGRPoint& OGRPoint::operator=( const OGRPoint& other )
     if( this != &other)
     {
         OGRGeometry::operator=( other );
-        
+
         x = other.x;
         y = other.y;
         z = other.z;
@@ -149,7 +150,9 @@ OGRPoint& OGRPoint::operator=( const OGRPoint& other )
 OGRGeometry *OGRPoint::clone() const
 
 {
-    OGRPoint    *poNewPoint = new OGRPoint( x, y, z );
+    OGRPoint    *poNewPoint = new (std::nothrow) OGRPoint( x, y, z );
+    if( poNewPoint == NULL )
+        return NULL;
 
     poNewPoint->assignSpatialReference( getSpatialReference() );
     poNewPoint->setCoordinateDimension( nCoordDimension );
@@ -230,7 +233,7 @@ void OGRPoint::setCoordinateDimension( int nNewDimension )
 
 {
     nCoordDimension = (nCoordDimension < 0 ) ? -nNewDimension : nNewDimension;
-    
+
     if( nNewDimension == 2 )
         z = 0;
 }
@@ -278,7 +281,7 @@ OGRErr OGRPoint::importFromWkb( unsigned char * pabyData,
 /* -------------------------------------------------------------------- */
     memcpy( &x, pabyData + 5,     8 );
     memcpy( &y, pabyData + 5 + 8, 8 );
-    
+
     if( OGR_SWAP( eByteOrder ) )
     {
         CPL_SWAPDOUBLE( &x );
@@ -327,17 +330,17 @@ OGRErr  OGRPoint::exportToWkb( OGRwkbByteOrder eByteOrder,
 /*      Set the geometry feature type.                                  */
 /* -------------------------------------------------------------------- */
     GUInt32 nGType = getGeometryType();
-    
+
     if ( eWkbVariant == wkbVariantIso )
         nGType = getIsoGeometryType();
-    
+
     if( eByteOrder == wkbNDR )
         nGType = CPL_LSBWORD32( nGType );
     else
         nGType = CPL_MSBWORD32( nGType );
 
     memcpy( pabyData + 1, &nGType, 4 );
-    
+
 /* -------------------------------------------------------------------- */
 /*      Copy in the raw data.                                           */
 /* -------------------------------------------------------------------- */
@@ -358,7 +361,7 @@ OGRErr  OGRPoint::exportToWkb( OGRwkbByteOrder eByteOrder,
             memcpy( pabyData + 5 + 16, &z, 8 );
         }
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Swap if needed.                                                 */
 /* -------------------------------------------------------------------- */
@@ -470,12 +473,12 @@ OGRErr OGRPoint::exportToWkt( char ** ppszDstText,
     {
         OGRMakeWktCoordinate(szCoordinate, x, y, z, getCoordinateDimension() );
         if( getCoordinateDimension() == 3 && eWkbVariant == wkbVariantIso )
-            sprintf( szTextEquiv, "POINT Z (%s)", szCoordinate );
+            snprintf( szTextEquiv, sizeof(szTextEquiv), "POINT Z (%s)", szCoordinate );
         else
-            sprintf( szTextEquiv, "POINT (%s)", szCoordinate );
+            snprintf( szTextEquiv, sizeof(szTextEquiv), "POINT (%s)", szCoordinate );
         *ppszDstText = CPLStrdup( szTextEquiv );
     }
-    
+
     return OGRERR_NONE;
 }
 
@@ -568,14 +571,14 @@ OGRBoolean OGRPoint::Equals( OGRGeometry * poOther ) const
 {
     if( poOther== this )
         return TRUE;
-    
+
     if( poOther->getGeometryType() != getGeometryType() )
         return FALSE;
 
     OGRPoint    *poOPoint = (OGRPoint *) poOther;
     if ( nCoordDimension != poOPoint->nCoordDimension )
         return FALSE;
-    
+
     if ( IsEmpty() )
         return TRUE;
 

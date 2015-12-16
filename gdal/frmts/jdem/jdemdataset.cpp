@@ -33,7 +33,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_JDEM(void);
+void GDALRegister_JDEM();
 CPL_C_END
 
 /************************************************************************/
@@ -126,12 +126,12 @@ class JDEMRasterBand : public GDALPamRasterBand
 /*                           JDEMRasterBand()                            */
 /************************************************************************/
 
-JDEMRasterBand::JDEMRasterBand( JDEMDataset *poDS, int nBand ) :
+JDEMRasterBand::JDEMRasterBand( JDEMDataset *poDSIn, int nBandIn ) :
     pszRecord(NULL),
     bBufferAllocFailed(FALSE)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     eDataType = GDT_Float32;
 
@@ -175,9 +175,9 @@ CPLErr JDEMRasterBand::IReadBlock( CPL_UNUSED int nBlockXOff,
         }
     }
 
-    VSIFSeekL( poGDS->fp, 1011 + nRecordSize*nBlockYOff, SEEK_SET );
+    CPL_IGNORE_RET_VAL(VSIFSeekL( poGDS->fp, 1011 + nRecordSize*nBlockYOff, SEEK_SET ));
 
-    VSIFReadL( pszRecord, 1, nRecordSize, poGDS->fp );
+    CPL_IGNORE_RET_VAL(VSIFReadL( pszRecord, 1, nRecordSize, poGDS->fp ));
 
     if( !EQUALN((char *) poGDS->abyHeader,pszRecord,6) )
     {
@@ -331,7 +331,7 @@ GDALDataset *JDEMDataset::Open( GDALOpenInfo * poOpenInfo )
 /* -------------------------------------------------------------------- */
 /*      Read the header.                                                */
 /* -------------------------------------------------------------------- */
-    VSIFReadL( poDS->abyHeader, 1, 1012, poDS->fp );
+    CPL_IGNORE_RET_VAL(VSIFReadL( poDS->abyHeader, 1, 1012, poDS->fp ));
 
     poDS->nRasterXSize = JDEMGetField( (char *) poDS->abyHeader + 23, 3 );
     poDS->nRasterYSize = JDEMGetField( (char *) poDS->abyHeader + 26, 3 );
@@ -364,7 +364,7 @@ GDALDataset *JDEMDataset::Open( GDALOpenInfo * poOpenInfo )
 }
 
 /************************************************************************/
-/*                          GDALRegister_JDEM()                          */
+/*                          GDALRegister_JDEM()                         */
 /************************************************************************/
 
 void GDALRegister_JDEM()
@@ -373,14 +373,12 @@ void GDALRegister_JDEM()
     if( GDALGetDriverByName( "JDEM" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "JDEM" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "Japanese DEM (.mem)" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_various.html#JDEM" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "Japanese DEM (.mem)" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_various.html#JDEM" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "mem" );
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 

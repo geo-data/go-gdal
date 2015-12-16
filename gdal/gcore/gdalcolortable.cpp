@@ -72,7 +72,7 @@ GDALColorTableH CPL_STDCALL GDALCreateColorTable( GDALPaletteInterp eInterp )
 /**
  * \brief Destructor.
  *
- * This descructor is the same as the C GDALDestroyColorTable() function.
+ * This destructor is the same as the C GDALDestroyColorTable() function.
  */
 
 GDALColorTable::~GDALColorTable() {}
@@ -325,7 +325,7 @@ int CPL_STDCALL GDALGetColorEntryCount( GDALColorTableH hTable )
 /**
  * \brief Fetch palette interpretation.
  *
- * The returned value is used to interprete the values in the GDALColorEntry.
+ * The returned value is used to interpret the values in the GDALColorEntry.
  *
  * This method is the same as the C function GDALGetPaletteInterpretation().
  *

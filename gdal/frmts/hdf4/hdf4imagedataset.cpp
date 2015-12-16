@@ -59,13 +59,15 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void GDALRegister_HDF4(void);
+void GDALRegister_HDF4();
 CPL_C_END
 
 static const int HDF4_SDS_MAXNAMELEN = 65;
 
+extern const char * const pszGDALSignature;
+
 // Signature to recognize files written by GDAL
-const char      *pszGDALSignature =
+const char      * const pszGDALSignature =
         "Created with GDAL (http://www.remotesensing.org/gdal/)";
 
 extern CPLMutex *hHDF4Mutex;
@@ -203,7 +205,7 @@ class HDF4ImageRasterBand : public GDALPamRasterBand
 /*                           HDF4ImageRasterBand()                      */
 /************************************************************************/
 
-HDF4ImageRasterBand::HDF4ImageRasterBand( HDF4ImageDataset *poDS, int nBand,
+HDF4ImageRasterBand::HDF4ImageRasterBand( HDF4ImageDataset *poDSIn, int nBandIn,
                                           GDALDataType eType ) :
     bNoDataSet(FALSE),
     dfNoDataValue(-9999.0),
@@ -212,24 +214,24 @@ HDF4ImageRasterBand::HDF4ImageRasterBand( HDF4ImageDataset *poDS, int nBand,
     dfScale(1.0),
     dfOffset(0.0)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
     eDataType = eType;
 
-    nBlockXSize = poDS->GetRasterXSize();
+    nBlockXSize = poDSIn->GetRasterXSize();
 
     // Aim for a block of about 1000000 pixels.  Chunking up substantially
     // improves performance in some situations.  For now we only chunk up for
     // SDS and EOS based datasets since other variations haven't been
     // tested. #2208
-    if( poDS->iDatasetType == HDF4_SDS ||
-        poDS->iDatasetType == HDF4_EOS)
+    if( poDSIn->iDatasetType == HDF4_SDS ||
+        poDSIn->iDatasetType == HDF4_EOS)
     {
         const int nChunkSize =
             atoi( CPLGetConfigOption("HDF4_BLOCK_PIXELS", "1000000") );
 
-        nBlockYSize = nChunkSize / poDS->GetRasterXSize();
-        nBlockYSize = MAX(1,MIN(nBlockYSize,poDS->GetRasterYSize()));
+        nBlockYSize = nChunkSize / poDSIn->GetRasterXSize();
+        nBlockYSize = MAX(1,MIN(nBlockYSize,poDSIn->GetRasterYSize()));
     }
     else
     {
@@ -239,19 +241,19 @@ HDF4ImageRasterBand::HDF4ImageRasterBand( HDF4ImageDataset *poDS, int nBand,
     /* HDF4_EOS:EOS_GRID case. We ensure that the block size matches */
     /* the raster width, as the IReadBlock() code can only handle multiple */
     /* blocks per row */
-    if ( poDS->nBlockPreferredXSize == nBlockXSize &&
-         poDS->nBlockPreferredYSize > 0 )
+    if ( poDSIn->nBlockPreferredXSize == nBlockXSize &&
+         poDSIn->nBlockPreferredYSize > 0 )
     {
-        if (poDS->nBlockPreferredYSize == 1)
+        if (poDSIn->nBlockPreferredYSize == 1)
         {
             /* Avoid defaulting to tile reading when the preferred height is 1 */
             /* as it leads to very poor performance with : */
             // ftp://e4ftl01u.ecs.nasa.gov/MODIS_Composites/MOLT/MOD13Q1.005/2006.06.10/MOD13Q1.A2006161.h21v13.005.2008234103220.hd
-            poDS->bReadTile = FALSE;
+            poDSIn->bReadTile = FALSE;
         }
         else
         {
-            nBlockYSize = poDS->nBlockPreferredYSize;
+            nBlockYSize = poDSIn->nBlockPreferredYSize;
         }
     }
 
@@ -259,10 +261,10 @@ HDF4ImageRasterBand::HDF4ImageRasterBand( HDF4ImageDataset *poDS, int nBand,
 /*      We need to avoid using the tile based api if we aren't          */
 /*      matching the tile size. (#4672)                                 */
 /* -------------------------------------------------------------------- */
-    if( nBlockXSize != poDS->nBlockPreferredXSize
-        || nBlockYSize != poDS->nBlockPreferredYSize ) 
+    if( nBlockXSize != poDSIn->nBlockPreferredXSize
+        || nBlockYSize != poDSIn->nBlockPreferredYSize ) 
     {
-        poDS->bReadTile = FALSE;
+        poDSIn->bReadTile = FALSE;
     }
 }
 
@@ -380,7 +382,7 @@ CPLErr HDF4ImageRasterBand::IReadBlock( int nBlockXOff, int nBlockYOff,
               eErr = CE_Failure;
           }
 
-          //SDendaccess( iSDS );
+          //SDendaccess( l_iSDS );
       }
       break;
 
@@ -570,7 +572,7 @@ CPLErr HDF4ImageRasterBand::IWriteBlock( int nBlockXOff, int nBlockYOff,
     {
         case 3:
             {
-                const int32 iSDS = SDselect( poGDS->hSD, poGDS->iDataset );
+                const int32 l_iSDS = SDselect( poGDS->hSD, poGDS->iDataset );
 
                 aiStart[poGDS->iBandDim] = nBand - 1;
                 aiEdges[poGDS->iBandDim] = 1;
@@ -581,28 +583,28 @@ CPLErr HDF4ImageRasterBand::IWriteBlock( int nBlockXOff, int nBlockYOff,
                 aiStart[poGDS->iXDim] = nBlockXOff;
                 aiEdges[poGDS->iXDim] = nBlockXSize;
 
-                if ( (SDwritedata( iSDS, aiStart, NULL,
+                if ( (SDwritedata( l_iSDS, aiStart, NULL,
                                    aiEdges, (VOIDP)pImage )) < 0 )
                     eErr = CE_Failure;
 
-                SDendaccess( iSDS );
+                SDendaccess( l_iSDS );
             }
             break;
 
         case 2:
             {
-                const int32 iSDS = SDselect( poGDS->hSD, nBand - 1 );
+                const int32 l_iSDS = SDselect( poGDS->hSD, nBand - 1 );
                 aiStart[poGDS->iYDim] = nYOff;
                 aiEdges[poGDS->iYDim] = nYSize;
 
                 aiStart[poGDS->iXDim] = nBlockXOff;
                 aiEdges[poGDS->iXDim] = nBlockXSize;
 
-                if ( (SDwritedata( iSDS, aiStart, NULL,
+                if ( (SDwritedata( l_iSDS, aiStart, NULL,
                                    aiEdges, (VOIDP)pImage )) < 0 )
                     eErr = CE_Failure;
 
-                SDendaccess( iSDS );
+                SDendaccess( l_iSDS );
             }
             break;
 
@@ -849,6 +851,7 @@ HDF4ImageDataset::~HDF4ImageDataset()
                         break;
                     case H4ST_EOS_GRID:
                         GDclose( hHDF4 );
+                        break;
                     default:
                         break;
                 }
@@ -1337,7 +1340,7 @@ void HDF4ImageDataset::CaptureNRLGeoTransform()
 /*      Collect the four corners.                                       */
 /* -------------------------------------------------------------------- */
     double adfXY[8];
-    static const char *apszItems[] = {
+    static const char * const apszItems[] = {
         "mapUpperLeft", "mapUpperRight", "mapLowerLeft", "mapLowerRight" };
     bool bLLPossible = true;
 
@@ -1387,22 +1390,22 @@ void HDF4ImageDataset::CaptureNRLGeoTransform()
 /*      Can we find the USGS Projection Parameters?                     */
 /* -------------------------------------------------------------------- */
     bool bGotGCTPProjection = false;
-    int iSDSIndex = FAIL;
-    int iSDS = FAIL;
+    int l_iSDSIndex = FAIL;
+    int l_iSDS = FAIL;
     const char *mapProjection = CSLFetchNameValue( papszGlobalMetadata,
                                                    "mapProjection" );
 
     if( mapProjection )
-        iSDSIndex = SDnametoindex( hSD, mapProjection );
+        l_iSDSIndex = SDnametoindex( hSD, mapProjection );
 
-    if( iSDSIndex != FAIL )
-        iSDS = SDselect( hSD, iSDSIndex );
+    if( l_iSDSIndex != FAIL )
+        l_iSDS = SDselect( hSD, l_iSDSIndex );
 
-    if( iSDS != FAIL )
+    if( l_iSDS != FAIL )
     {
-        char        szName[HDF4_SDS_MAXNAMELEN];
-        int32 iRank, iNumType, nAttrs;
-        int32       aiDimSizes[H4_MAX_VAR_DIMS];
+        char        l_szName[HDF4_SDS_MAXNAMELEN];
+        int32 l_iRank, l_iNumType, l_nAttrs;
+        int32       l_aiDimSizes[H4_MAX_VAR_DIMS];
 
         double adfGCTP[29];
         int32 aiStart[H4_MAX_NC_DIMS];
@@ -1411,12 +1414,12 @@ void HDF4ImageDataset::CaptureNRLGeoTransform()
         aiStart[0] = 0;
         aiEdges[0] = 29;
 
-        if( SDgetinfo( iSDS, szName, &iRank, aiDimSizes, &iNumType,
-                       &nAttrs) == 0
-            && iNumType == DFNT_FLOAT64
-            && iRank == 1
-            && aiDimSizes[0] >= 29
-            && SDreaddata( iSDS, aiStart, NULL, aiEdges, adfGCTP ) == 0
+        if( SDgetinfo( l_iSDS, l_szName, &l_iRank, l_aiDimSizes, &l_iNumType,
+                       &l_nAttrs) == 0
+            && l_iNumType == DFNT_FLOAT64
+            && l_iRank == 1
+            && l_aiDimSizes[0] >= 29
+            && SDreaddata( l_iSDS, aiStart, NULL, aiEdges, adfGCTP ) == 0
             && oSRS.importFromUSGS( static_cast<long>( adfGCTP[1] ),
                                     static_cast<long>( adfGCTP[2] ),
                                     adfGCTP+4,
@@ -1461,7 +1464,7 @@ void HDF4ImageDataset::CaptureNRLGeoTransform()
             bGotGCTPProjection = TRUE;
         }
 
-        SDendaccess(iSDS);
+        SDendaccess(l_iSDS);
     }
 
 /* -------------------------------------------------------------------- */
@@ -1712,23 +1715,23 @@ void HDF4ImageDataset::GetSwatAttrs( int32 hSW )
 
         char **papszAttributes = CSLTokenizeString2( pszAttrList, ",",
                                                      CSLT_HONOURSTRINGS );
-        const int nAttrs = CSLCount( papszAttributes );
-        for( int i = 0; i < nAttrs; i++ )
+        const int l_nAttrs = CSLCount( papszAttributes );
+        for( int i = 0; i < l_nAttrs; i++ )
         {
-            int32 iNumType;
+            int32 l_iNumType;
             int32 nValues;
 
-            SWattrinfo( hSW, papszAttributes[i], &iNumType, &nValues );
+            SWattrinfo( hSW, papszAttributes[i], &l_iNumType, &nValues );
 
             void *pData = NULL;
-            if ( iNumType == DFNT_CHAR8 || iNumType == DFNT_UCHAR8 )
-                pData = CPLMalloc( (nValues + 1) * GetDataTypeSize(iNumType) );
+            if ( l_iNumType == DFNT_CHAR8 || l_iNumType == DFNT_UCHAR8 )
+                pData = CPLMalloc( (nValues + 1) * GetDataTypeSize(l_iNumType) );
             else
-                pData = CPLMalloc( nValues * GetDataTypeSize(iNumType) );
+                pData = CPLMalloc( nValues * GetDataTypeSize(l_iNumType) );
 
             SWreadattr( hSW, papszAttributes[i], pData );
 
-            if ( iNumType == DFNT_CHAR8 || iNumType == DFNT_UCHAR8 )
+            if ( l_iNumType == DFNT_CHAR8 || l_iNumType == DFNT_UCHAR8 )
             {
                 reinterpret_cast<char *>( pData )[nValues] = '\0';
                 papszLocalMetadata = CSLAddNameValue(
@@ -1739,7 +1742,7 @@ void HDF4ImageDataset::GetSwatAttrs( int32 hSW )
             }
             else
             {
-                char *pszTemp = SPrintArray( GetDataType(iNumType), pData,
+                char *pszTemp = SPrintArray( GetDataType(l_iNumType), pData,
                                              nValues, ", " );
                 papszLocalMetadata = CSLAddNameValue( papszLocalMetadata,
                                                       papszAttributes[i],
@@ -1758,25 +1761,25 @@ void HDF4ImageDataset::GetSwatAttrs( int32 hSW )
 /*      After fetching HDF-EOS specific stuff we will read the generic  */
 /*      HDF attributes and append them to the list of metadata.         */
 /* -------------------------------------------------------------------- */
-    int32   iSDS;
-    if ( SWsdid(hSW, pszFieldName, &iSDS) != -1 )
+    int32   l_iSDS;
+    if ( SWsdid(hSW, pszFieldName, &l_iSDS) != -1 )
     {
-        int32 iRank, iNumType, nAttrs;
-        char        szName[HDF4_SDS_MAXNAMELEN];
-        int32       aiDimSizes[H4_MAX_VAR_DIMS];
+        int32 l_iRank, l_iNumType, l_nAttrs;
+        char        l_szName[HDF4_SDS_MAXNAMELEN];
+        int32       l_aiDimSizes[H4_MAX_VAR_DIMS];
 
-        if( SDgetinfo( iSDS, szName, &iRank, aiDimSizes, &iNumType,
-                       &nAttrs) == 0 )
+        if( SDgetinfo( l_iSDS, l_szName, &l_iRank, l_aiDimSizes, &l_iNumType,
+                       &l_nAttrs) == 0 )
         {
-            for( int32 iAttribute = 0; iAttribute < nAttrs; iAttribute++ )
+            for( int32 iAttribute = 0; iAttribute < l_nAttrs; iAttribute++ )
             {
                 char szAttrName[H4_MAX_NC_NAME];
                 int32 nValues;
-                SDattrinfo( iSDS, iAttribute, szAttrName,
-                            &iNumType, &nValues );
+                SDattrinfo( l_iSDS, iAttribute, szAttrName,
+                            &l_iNumType, &nValues );
                 papszLocalMetadata =
-                    TranslateHDF4Attributes( iSDS, iAttribute,
-                                             szAttrName, iNumType,
+                    TranslateHDF4Attributes( l_iSDS, iAttribute,
+                                             szAttrName, l_iNumType,
                                              nValues, papszLocalMetadata );
             }
         }
@@ -1821,22 +1824,22 @@ void HDF4ImageDataset::GetGridAttrs( int32 hGD )
 
         char **papszAttributes = CSLTokenizeString2( pszAttrList, ",",
                                                      CSLT_HONOURSTRINGS );
-        const int nAttrs = CSLCount( papszAttributes );
-        for ( int i = 0; i < nAttrs; i++ )
+        const int l_nAttrs = CSLCount( papszAttributes );
+        for ( int i = 0; i < l_nAttrs; i++ )
         {
-            int32       iNumType, nValues;
+            int32       l_iNumType, nValues;
 
-            GDattrinfo( hGD, papszAttributes[i], &iNumType, &nValues );
+            GDattrinfo( hGD, papszAttributes[i], &l_iNumType, &nValues );
 
             void *pData = NULL;
-            if ( iNumType == DFNT_CHAR8 || iNumType == DFNT_UCHAR8 )
-                pData = CPLMalloc( (nValues + 1) * GetDataTypeSize(iNumType) );
+            if ( l_iNumType == DFNT_CHAR8 || l_iNumType == DFNT_UCHAR8 )
+                pData = CPLMalloc( (nValues + 1) * GetDataTypeSize(l_iNumType) );
             else
-                pData = CPLMalloc( nValues * GetDataTypeSize(iNumType) );
+                pData = CPLMalloc( nValues * GetDataTypeSize(l_iNumType) );
 
             GDreadattr( hGD, papszAttributes[i], pData );
 
-            if ( iNumType == DFNT_CHAR8 || iNumType == DFNT_UCHAR8 )
+            if ( l_iNumType == DFNT_CHAR8 || l_iNumType == DFNT_UCHAR8 )
             {
                 reinterpret_cast<char *>( pData )[nValues] = '\0';
                 papszLocalMetadata = CSLAddNameValue( papszLocalMetadata,
@@ -1845,7 +1848,7 @@ void HDF4ImageDataset::GetGridAttrs( int32 hGD )
             }
             else
             {
-                char *pszTemp = SPrintArray( GetDataType(iNumType), pData,
+                char *pszTemp = SPrintArray( GetDataType(l_iNumType), pData,
                                              nValues, ", " );
                 papszLocalMetadata = CSLAddNameValue( papszLocalMetadata,
                                                       papszAttributes[i],
@@ -1864,24 +1867,24 @@ void HDF4ImageDataset::GetGridAttrs( int32 hGD )
 /*      After fetching HDF-EOS specific stuff we will read the generic  */
 /*      HDF attributes and append them to the list of metadata.         */
 /* -------------------------------------------------------------------- */
-    int32   iSDS;
-    if ( GDsdid(hGD, pszFieldName, &iSDS) != -1 )
+    int32   l_iSDS;
+    if ( GDsdid(hGD, pszFieldName, &l_iSDS) != -1 )
     {
-        int32 iRank, iNumType, nAttrs, nValues;
-        char        szName[HDF4_SDS_MAXNAMELEN];
-        int32       aiDimSizes[H4_MAX_VAR_DIMS];
+        int32 l_iRank, l_iNumType, l_nAttrs, nValues;
+        char        l_szName[HDF4_SDS_MAXNAMELEN];
+        int32       l_aiDimSizes[H4_MAX_VAR_DIMS];
 
-        if( SDgetinfo( iSDS, szName, &iRank, aiDimSizes, &iNumType,
-                       &nAttrs) == 0 )
+        if( SDgetinfo( l_iSDS, l_szName, &l_iRank, l_aiDimSizes, &l_iNumType,
+                       &l_nAttrs) == 0 )
         {
-            for( int32 iAttribute = 0; iAttribute < nAttrs; iAttribute++ )
+            for( int32 iAttribute = 0; iAttribute < l_nAttrs; iAttribute++ )
             {
                 char    szAttrName[H4_MAX_NC_NAME];
-                SDattrinfo( iSDS, iAttribute, szAttrName,
-                            &iNumType, &nValues );
+                SDattrinfo( l_iSDS, iAttribute, szAttrName,
+                            &l_iNumType, &nValues );
                 papszLocalMetadata =
-                    TranslateHDF4Attributes( iSDS, iAttribute,
-                                             szAttrName, iNumType,
+                    TranslateHDF4Attributes( l_iSDS, iAttribute,
+                                             szAttrName, l_iNumType,
                                              nValues, papszLocalMetadata );
             }
         }
@@ -1930,37 +1933,37 @@ void HDF4ImageDataset::ProcessModisSDSGeolocation(void)
     int iYIndex=-1;
     for( int iDSIndex = 0; iDSIndex < nDatasets; iDSIndex++ )
     {
-        int32 iRank, iNumType, nAttrs;
-        char        szName[HDF4_SDS_MAXNAMELEN];
-        int32       aiDimSizes[H4_MAX_VAR_DIMS];
+        int32 l_iRank, l_iNumType, l_nAttrs;
+        char        l_szName[HDF4_SDS_MAXNAMELEN];
+        int32       l_aiDimSizes[H4_MAX_VAR_DIMS];
 
-        const int32 iSDS = SDselect( hSD, iDSIndex );
+        const int32 l_iSDS = SDselect( hSD, iDSIndex );
 
-        if( SDgetinfo( iSDS, szName, &iRank, aiDimSizes, &iNumType,
-                       &nAttrs) == 0 )
+        if( SDgetinfo( l_iSDS, l_szName, &l_iRank, l_aiDimSizes, &l_iNumType,
+                       &l_nAttrs) == 0 )
         {
-            if( EQUAL(szName,"latitude") )
+            if( EQUAL(l_szName,"latitude") )
             {
                 iYIndex = iDSIndex;
-                if( iRank == 2 )
+                if( l_iRank == 2 )
                 {
-                    nLatitudeWidth = aiDimSizes[1];
-                    nLatitudeHeight = aiDimSizes[0];
+                    nLatitudeWidth = l_aiDimSizes[1];
+                    nLatitudeHeight = l_aiDimSizes[0];
                 }
             }
 
-            if( EQUAL(szName,"longitude") )
+            if( EQUAL(l_szName,"longitude") )
             {
                 iXIndex = iDSIndex;
-                if( iRank == 2 )
+                if( l_iRank == 2 )
                 {
-                    nLongitudeWidth = aiDimSizes[1];
-                    nLongitudeHeight = aiDimSizes[0];
+                    nLongitudeWidth = l_aiDimSizes[1];
+                    nLongitudeHeight = l_aiDimSizes[0];
                 }
             }
         }
 
-        SDendaccess(iSDS);
+        SDendaccess(l_iSDS);
     }
 
     if( iXIndex == -1 || iYIndex == -1 )
@@ -2214,13 +2217,13 @@ int HDF4ImageDataset::ProcessSwathGeolocation( int32 hSW, char **papszDimList )
     char    **papszGeolocations = CSLTokenizeString2( pszGeoList, ",",
                                                       CSLT_HONOURSTRINGS );
     int     nGeolocationsCount = CSLCount( papszGeolocations );
-    int32   aiDimSizes[H4_MAX_VAR_DIMS];
+    int32   l_aiDimSizes[H4_MAX_VAR_DIMS];
 
     int32 iWrkNumType = 0;
     void *pLat = NULL;
     void *pLong = NULL;
 
-    int32 iRank;
+    int32 l_iRank;
     int32 nLatCount = 0;
     int32 nLongCount = 0;
     int32 nXPoints = 0;
@@ -2239,8 +2242,8 @@ int HDF4ImageDataset::ProcessSwathGeolocation( int32 hSW, char **papszDimList )
         if ( EQUAL(papszGeolocations[i], "SceneLineNumber") )
             continue;
 
-        if ( SWfieldinfo( hSW, papszGeolocations[i], &iRank,
-                          aiDimSizes, &iWrkNumType, szGeoDimList ) < 0 )
+        if ( SWfieldinfo( hSW, papszGeolocations[i], &l_iRank,
+                          l_aiDimSizes, &iWrkNumType, szGeoDimList ) < 0 )
         {
 
             CPLDebug( "HDF4Image",
@@ -2264,8 +2267,8 @@ int HDF4ImageDataset::ProcessSwathGeolocation( int32 hSW, char **papszDimList )
             return FALSE;
         }
 
-        nXPoints = aiDimSizes[CSLFindString( papszGeoDimList, szXGeo )];
-        nYPoints = aiDimSizes[CSLFindString( papszGeoDimList, szYGeo )];
+        nXPoints = l_aiDimSizes[CSLFindString( papszGeoDimList, szXGeo )];
+        nYPoints = l_aiDimSizes[CSLFindString( papszGeoDimList, szYGeo )];
 
         if ( EQUAL(szPixel, papszDimList[iXDim]) )
         {
@@ -2320,12 +2323,12 @@ int HDF4ImageDataset::ProcessSwathGeolocation( int32 hSW, char **papszDimList )
     void *pLatticeY = NULL;
     int32 iLatticeType;
     int32 iLatticeDataSize = 0;
-    if (SWfieldinfo(hSW, "LatticePoint", &iRank, aiDimSizes,
+    if (SWfieldinfo(hSW, "LatticePoint", &l_iRank, l_aiDimSizes,
                     &iLatticeType, szGeoDimList) == 0
-        && iRank == 3
-        && nXPoints == aiDimSizes[1]
-        && nYPoints == aiDimSizes[0]
-        && aiDimSizes[2] == 2 )
+        && l_iRank == 3
+        && nXPoints == l_aiDimSizes[1]
+        && nYPoints == l_aiDimSizes[0]
+        && l_aiDimSizes[2] == 2 )
     {
         iLatticeDataSize =
             GetDataTypeSize( iLatticeType );
@@ -2450,7 +2453,7 @@ int HDF4ImageDataset::ProcessSwathGeolocation( int32 hSW, char **papszDimList )
                       pszEllipsoidLine, pszEllipsoid );
 #endif
 
-            // Transform all mnemonical codes in the values.
+            // Transform all mnemonic codes in the values.
             int nParms;
             // Projection is UTM by default
             long iProjSys = (pszProj) ?
@@ -2713,9 +2716,10 @@ GDALDataset *HDF4ImageDataset::Open( GDALOpenInfo * poOpenInfo )
     /* -------------------------------------------------------------------- */
     if (strlen(papszSubdatasetName[2]) == 1)
     {
+        const size_t nLen = 2 + strlen(papszSubdatasetName[3]) + 1;
         char* pszFilename = reinterpret_cast<char *>(
-            CPLMalloc( 2 + strlen(papszSubdatasetName[3]) + 1) );
-        sprintf(pszFilename, "%s:%s", papszSubdatasetName[2], papszSubdatasetName[3]);
+            CPLMalloc( nLen ) );
+        snprintf(pszFilename, nLen, "%s:%s", papszSubdatasetName[2], papszSubdatasetName[3]);
         CPLFree(papszSubdatasetName[2]);
         CPLFree(papszSubdatasetName[3]);
         papszSubdatasetName[2] = pszFilename;
@@ -3169,7 +3173,7 @@ GDALDataset *HDF4ImageDataset::Open( GDALOpenInfo * poOpenInfo )
               if ( pszTmp )
               {
                   dfScale = CPLAtof( pszTmp );
-                  // some producers (ie. lndcsm from LEDAPS) emit
+                  // some producers (i.e. lndcsm from LEDAPS) emit
                   // files with scale_factor=0 which is crazy to carry
                   // through.
                   if( dfScale == 0.0 )
@@ -3241,8 +3245,8 @@ GDALDataset *HDF4ImageDataset::Open( GDALOpenInfo * poOpenInfo )
               return NULL;
           }
 
-          int32   nDatasets, nAttrs;
-          if ( SDfileinfo( poDS->hSD, &nDatasets, &nAttrs ) != 0 )
+          int32   nDatasets, l_nAttrs;
+          if ( SDfileinfo( poDS->hSD, &nDatasets, &l_nAttrs ) != 0 )
           {
               CPLReleaseMutex(hHDF4Mutex); // Release mutex otherwise we'll deadlock with GDALDataset own mutex
               delete poDS;
@@ -3911,7 +3915,7 @@ void GDALRegister_HDF4Image()
     if( GDALGetDriverByName( "HDF4Image" ) != NULL )
         return;
 
-    GDALDriver  *poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "HDF4Image" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

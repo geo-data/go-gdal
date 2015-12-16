@@ -78,7 +78,7 @@ TABMAPToolBlock::TABMAPToolBlock(TABAccess eAccessMode /*= TABRead*/):
     m_nNextToolBlock = m_numDataBytes = 0;
 
     m_numBlocksInChain = 1;  // Current block counts as 1
- 
+
     m_poBlockManagerRef = NULL;
 }
 
@@ -87,10 +87,7 @@ TABMAPToolBlock::TABMAPToolBlock(TABAccess eAccessMode /*= TABRead*/):
  *
  * Destructor.
  **********************************************************************/
-TABMAPToolBlock::~TABMAPToolBlock()
-{
-   
-}
+TABMAPToolBlock::~TABMAPToolBlock() {}
 
 
 /**********************************************************************
@@ -240,7 +237,8 @@ int     TABMAPToolBlock::InitNewBlock(VSILFILE *fpSrc, int nBlockSize,
                                         int nFileOffset /* = 0*/)
 {
 #ifdef DEBUG_VERBOSE
-    CPLDebug("MITAB", "Instanciating new TOOL block at offset %d", nFileOffset);
+    CPLDebug( "MITAB",
+              "Instantiating new TOOL block at offset %d", nFileOffset);
 #endif
 
     /*-----------------------------------------------------------------
@@ -253,7 +251,7 @@ int     TABMAPToolBlock::InitNewBlock(VSILFILE *fpSrc, int nBlockSize,
      * And then set default values for the block header.
      *----------------------------------------------------------------*/
     m_nNextToolBlock = 0;
- 
+
     m_numDataBytes = 0;
 
     GotoByteInBlock(0x000);
@@ -353,7 +351,7 @@ int     TABMAPToolBlock::ReadBytes(int numBytes, GByte *pabyDstBuf)
  * Returns 0 if successful or -1 if an error happened, in which case
  * CPLError() will have been called.
  **********************************************************************/
-int  TABMAPToolBlock::WriteBytes(int nBytesToWrite, GByte *pabySrcBuf)
+int  TABMAPToolBlock::WriteBytes(int nBytesToWrite, const GByte *pabySrcBuf)
 {
     if (m_eAccess == TABWrite && m_poBlockManagerRef &&
         (m_nBlockSize - m_nCurPos) < nBytesToWrite)

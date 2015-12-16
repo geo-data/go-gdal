@@ -33,7 +33,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_CTG(void);
+void GDALRegister_CTG();
 CPL_C_END
 
 static const int HEADER_LINE_COUNT = 5;
@@ -94,7 +94,7 @@ static const LULCDescStruct asLULCDesc[] =
     {92, "Glaciers" }
 };
 
-static const char* apszBandDescription[] =
+static const char* const apszBandDescription[] =
 {
     "Land Use and Land Cover",
     "Political units",
@@ -167,11 +167,11 @@ class CTGRasterBand : public GDALPamRasterBand
 /*                           CTGRasterBand()                            */
 /************************************************************************/
 
-CTGRasterBand::CTGRasterBand( CTGDataset *poDS, int nBand ) :
+CTGRasterBand::CTGRasterBand( CTGDataset *poDSIn, int nBandIn ) :
     papszCategories(NULL)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     eDataType = GDT_Int32;
 

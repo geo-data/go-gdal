@@ -18,8 +18,8 @@
  * It is provided "as is" without express or implied warranty.
  ****************************************************************************/
 
-#ifndef _SWQ_H_INCLUDED_
-#define _SWQ_H_INCLUDED_
+#ifndef SWQ_H_INCLUDED_
+#define SWQ_H_INCLUDED_
 
 #include "cpl_conv.h"
 #include "cpl_string.h"
@@ -285,7 +285,7 @@ typedef struct {
 
 typedef struct {
     GIntBig     count;
-    
+
     char        **distinct_list; /* items of the list can be NULL */
     double      sum;
     double      min;
@@ -386,4 +386,4 @@ int swq_is_reserved_keyword(const char* pszStr);
 
 char* OGRHStoreGetValue(const char* pszHStore, const char* pszSearchedKey);
 
-#endif /* def _SWQ_H_INCLUDED_ */
+#endif /* def SWQ_H_INCLUDED_ */

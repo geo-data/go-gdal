@@ -299,7 +299,7 @@ typedef    struct {
 } INGR_ColorTable256;
 
 //  ----------------------------------------------------------------------------
-//    Extra Block( s ) for dynamic allocated color table with intensit level entries
+//    Extra Block(s) for dynamic allocated color table with intensity level entries.
 //  ----------------------------------------------------------------------------
 
 typedef    struct {
@@ -553,7 +553,7 @@ typedef     struct {
     memcpy( &ff, &bb[nn], ss);  \
     nn += ss;                   \
 }
-    
+
 #define STRC2BUF(bb, nn, ff)    \
 {                               \
     int ss = sizeof(ff);        \

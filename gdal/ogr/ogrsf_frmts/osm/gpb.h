@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _GPB_H_INCLUDED
-#define _GPB_H_INCLUDED
+#ifndef GPB_H_INCLUDED
+#define GPB_H_INCLUDED
 
 #include "cpl_port.h"
 #include "cpl_error.h"
@@ -39,12 +39,12 @@
 
 //#define DEBUG_GPB_ERRORS
 #ifdef DEBUG_GPB_ERRORS
-static void error_occured(int nLine)
+static void error_occurred(int nLine)
 {
-    CPLError(CE_Failure, CPLE_AppDefined, "Parsing error occured at line %d", nLine);
+    CPLError(CE_Failure, CPLE_AppDefined, "Parsing error occurred at line %d", nLine);
 }
 
-#define GOTO_END_ERROR do { error_occured(__LINE__); goto end_error; } while(0)
+#define GOTO_END_ERROR do { error_occurred(__LINE__); goto end_error; } while(0)
 #else
 #define GOTO_END_ERROR goto end_error
 #endif
@@ -298,4 +298,4 @@ end_error:
 
 #endif /* DO_NOT_DEFINE_SKIP_UNKNOWN_FIELD */
 
-#endif /* _GPB_H_INCLUDED */
+#endif /* GPB_H_INCLUDED */

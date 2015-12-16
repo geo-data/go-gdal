@@ -36,7 +36,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_AirSAR(void);
+void GDALRegister_AirSAR();
 CPL_C_END
 
 /************************************************************************/
@@ -105,12 +105,12 @@ static const int M22 = 9;
 /*                          AirSARRasterBand()                          */
 /************************************************************************/
 
-AirSARRasterBand::AirSARRasterBand( AirSARDataset *poDS,
-                                    int nBand )
+AirSARRasterBand::AirSARRasterBand( AirSARDataset *poDSIn,
+                                    int nBandIn )
 
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     nBlockXSize = poDS->GetRasterXSize();
     nBlockYSize = 1;
@@ -366,7 +366,7 @@ CPLErr AirSARDataset::LoadLine( int iLine )
 /************************************************************************/
 /*                             ReadHeader()                             */
 /*                                                                      */
-/*      Read the AirSAR header.  We assume an equal sign seperates      */
+/*      Read the AirSAR header.  We assume an equal sign separates      */
 /*      the keyword name from the value.  If not, assume the last       */
 /*      "blank delimited" word is the value and everything else is a    */
 /*      keyword.                                                        */
@@ -491,7 +491,7 @@ char ** AirSARDataset::ReadHeader( VSILFILE * fp, int nFileOffset,
 /* -------------------------------------------------------------------- */
         char szPrefixedKeyName[55];
 
-        sprintf( szPrefixedKeyName, "%s_%s", pszPrefix, szLine );
+        snprintf( szPrefixedKeyName, sizeof(szPrefixedKeyName), "%s_%s", pszPrefix, szLine );
 
         papszHeadInfo = 
             CSLSetNameValue( papszHeadInfo, szPrefixedKeyName, szLine+iValue );
@@ -632,7 +632,7 @@ GDALDataset *AirSARDataset::Open( GDALOpenInfo * poOpenInfo )
 }
 
 /************************************************************************/
-/*                        GDALRegister_AirSAR()                            */
+/*                        GDALRegister_AirSAR()                         */
 /************************************************************************/
 
 void GDALRegister_AirSAR()
@@ -641,7 +641,7 @@ void GDALRegister_AirSAR()
     if( GDALGetDriverByName( "AirSAR" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "AirSAR" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

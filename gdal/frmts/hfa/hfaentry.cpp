@@ -647,7 +647,7 @@ HFAEntry *HFAEntry::GetNamedChild( const char * pszName )
 {
 /* -------------------------------------------------------------------- */
 /*      Establish how much of this name path is for the next child.     */
-/*      Up to the '.' or end of estring.                                */
+/*      Up to the '.' or end of the string.                             */
 /* -------------------------------------------------------------------- */
     int nNameLen = 0;
     for( ;
@@ -796,12 +796,12 @@ GIntBig HFAEntry::GetBigIntField( const char *pszFieldPath, CPLErr *peErr )
 {
     char szFullFieldPath[1024];
 
-    sprintf( szFullFieldPath, "%s[0]", pszFieldPath );
+    snprintf( szFullFieldPath, sizeof(szFullFieldPath), "%s[0]", pszFieldPath );
     const GUInt32 nLower = GetIntField( szFullFieldPath, peErr );
     if( peErr != NULL && *peErr != CE_None )
         return 0;
 
-    sprintf( szFullFieldPath, "%s[1]", pszFieldPath );
+    snprintf( szFullFieldPath, sizeof(szFullFieldPath), "%s[1]", pszFieldPath );
     const GUInt32 nUpper = GetIntField( szFullFieldPath, peErr );
     if( peErr != NULL && *peErr != CE_None )
         return 0;
@@ -1012,39 +1012,40 @@ CPLErr HFAEntry::FlushToDisk()
 
         GUInt32 nLong = nNextPos;
         HFAStandard( 4, &nLong );
-        VSIFWriteL( &nLong, 4, 1, psHFA->fp );
+        bool bOK = VSIFWriteL( &nLong, 4, 1, psHFA->fp ) > 0;
 
         if( poPrev != NULL )
             nLong = poPrev->nFilePos;
         else
             nLong = 0;
         HFAStandard( 4, &nLong );
-        VSIFWriteL( &nLong, 4, 1, psHFA->fp );
+        bOK &= VSIFWriteL( &nLong, 4, 1, psHFA->fp ) > 0;
 
         if( poParent != NULL )
             nLong = poParent->nFilePos;
         else
             nLong = 0;
         HFAStandard( 4, &nLong );
-        VSIFWriteL( &nLong, 4, 1, psHFA->fp );
+        bOK &= VSIFWriteL( &nLong, 4, 1, psHFA->fp ) > 0;
 
         nLong = nChildPos;
         HFAStandard( 4, &nLong );
-        VSIFWriteL( &nLong, 4, 1, psHFA->fp );
+        bOK &= VSIFWriteL( &nLong, 4, 1, psHFA->fp ) > 0;
 
         nLong = nDataPos;
         HFAStandard( 4, &nLong );
-        VSIFWriteL( &nLong, 4, 1, psHFA->fp );
+        bOK &= VSIFWriteL( &nLong, 4, 1, psHFA->fp ) > 0;
 
         nLong = nDataSize;
         HFAStandard( 4, &nLong );
-        VSIFWriteL( &nLong, 4, 1, psHFA->fp );
+        bOK &= VSIFWriteL( &nLong, 4, 1, psHFA->fp ) > 0;
 
-        VSIFWriteL( szName, 1, 64, psHFA->fp );
-        VSIFWriteL( szType, 1, 32, psHFA->fp );
+        bOK &= VSIFWriteL( szName, 1, 64, psHFA->fp ) > 0;
+        bOK &= VSIFWriteL( szType, 1, 32, psHFA->fp ) > 0;
 
         nLong = 0; /* Should we keep the time, or set it more reasonably? */
-        if( VSIFWriteL( &nLong, 4, 1, psHFA->fp ) != 1 )
+        bOK &= VSIFWriteL( &nLong, 4, 1, psHFA->fp ) > 0;
+        if( !bOK )
         {
             CPLError( CE_Failure, CPLE_FileIO, 
                       "Failed to write HFAEntry %s(%s), out of disk space?",

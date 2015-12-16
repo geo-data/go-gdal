@@ -38,7 +38,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_DIMAP(void);
+void GDALRegister_DIMAP();
 CPL_C_END
 
 /************************************************************************/
@@ -78,7 +78,7 @@ class DIMAPDataset : public GDALPamDataset
     int ReadImageInformation();
     int ReadImageInformation2(); /* DIMAP 2 */
 
-    void SetMetadataFromXML(CPLXMLNode *psProduct, const char *apszMetadataTranslation[]);
+    void SetMetadataFromXML(CPLXMLNode *psProduct, const char * const apszMetadataTranslation[]);
   public:
             DIMAPDataset();
             ~DIMAPDataset();
@@ -111,9 +111,9 @@ class DIMAPWrapperRasterBand : public GDALProxyRasterBand
     virtual GDALRasterBand* RefUnderlyingRasterBand() { return poBaseBand; }
 
   public:
-    DIMAPWrapperRasterBand( GDALRasterBand* poBaseBand )
+    DIMAPWrapperRasterBand( GDALRasterBand* poBaseBandIn )
         {
-            this->poBaseBand = poBaseBand;
+            this->poBaseBand = poBaseBandIn;
             eDataType = poBaseBand->GetRasterDataType();
             poBaseBand->GetBlockSize(&nBlockXSize, &nBlockYSize);
         }
@@ -556,7 +556,7 @@ int DIMAPDataset::ReadImageInformation()
 /*      Get overall image information.                                  */
 /* -------------------------------------------------------------------- */
 #ifdef DEBUG
-    int nBands = 
+    int l_nBands = 
         atoi(CPLGetXMLValue( psImageAttributes, "NBANDS", "-1" ));
 #endif
 
@@ -588,7 +588,7 @@ int DIMAPDataset::ReadImageInformation()
 /* -------------------------------------------------------------------- */
 /*      Attach the bands.                                               */
 /* -------------------------------------------------------------------- */
-    CPLAssert( nBands == poImageDS->GetRasterCount() );
+    CPLAssert( l_nBands == poImageDS->GetRasterCount() );
 
     for( int iBand = 1; iBand <= poImageDS->GetRasterCount(); iBand++ )
         SetBand( iBand, new DIMAPWrapperRasterBand(poImageDS->GetRasterBand( iBand )) );
@@ -650,7 +650,7 @@ int DIMAPDataset::ReadImageInformation()
 
             nGCPCount++ ;
 
-            sprintf( szID, "%d", nGCPCount );
+            snprintf( szID, sizeof(szID), "%d", nGCPCount );
             psGCP->pszId = CPLStrdup( szID );
             psGCP->pszInfo = CPLStrdup("");
             psGCP->dfGCPPixel = 
@@ -707,7 +707,7 @@ int DIMAPDataset::ReadImageInformation()
 /* -------------------------------------------------------------------- */
 /*      Translate other metadata of interest.                           */
 /* -------------------------------------------------------------------- */
-    static const char *apszMetadataTranslation[] = 
+    static const char * const apszMetadataTranslation[] = 
         {
             "Production", "", 
             "Production.Facility", "FACILITY_", 
@@ -801,7 +801,7 @@ int DIMAPDataset::ReadImageInformation2()
 /*      Get overall image information.                                  */
 /* -------------------------------------------------------------------- */
 #ifdef DEBUG
-    int nBands = 
+    int l_nBands = 
         atoi(CPLGetXMLValue( psImageAttributes, "NBANDS", "-1" ));
 #endif
 
@@ -847,7 +847,7 @@ int DIMAPDataset::ReadImageInformation2()
 /* -------------------------------------------------------------------- */
 /*      Attach the bands.                                               */
 /* -------------------------------------------------------------------- */
-    CPLAssert( nBands == poImageDS->GetRasterCount() );
+    CPLAssert( l_nBands == poImageDS->GetRasterCount() );
 
     for( int iBand = 1; iBand <= poImageDS->GetRasterCount(); iBand++ )
         SetBand( iBand, new DIMAPWrapperRasterBand(poImageDS->GetRasterBand( iBand )) );
@@ -922,7 +922,7 @@ int DIMAPDataset::ReadImageInformation2()
 /*      Translate other metadata of interest: DIM_<product_name>.XML    */
 /* -------------------------------------------------------------------- */
 
-    static const char *apszMetadataTranslationDim[] = 
+    static const char * const apszMetadataTranslationDim[] = 
     {
         "Product_Information.Delivery_Identification", "DATASET_",
             "Product_Information.Producer_Information", "DATASET_",  
@@ -940,7 +940,7 @@ int DIMAPDataset::ReadImageInformation2()
 /*      Translate other metadata of interest: STRIP_<product_name>.XML    */
 /* -------------------------------------------------------------------- */
 
-    static const char *apszMetadataTranslationStrip[] = 
+    static const char * const apszMetadataTranslationStrip[] = 
     {
         "Catalog.Full_Strip.Notations.Cloud_And_Quality_Notation.Data_Strip_Notation", "CLOUDCOVER_",
         "Acquisition_Configuration.Platform_Configuration.Ephemeris_Configuration", "EPHEMERIS_",
@@ -989,7 +989,7 @@ int DIMAPDataset::ReadImageInformation2()
                             /* BAND_ID is: B0, B1, .... P */
                             if (!EQUAL(psTag->psChild->pszValue, "P")) 
                             {
-                                if (strlen(psTag->psChild->pszValue) < 2) /* shouldn't happen */
+                                if (strlen(psTag->psChild->pszValue) < 2) /* should not happen */
                                 {
                                     CPLError(CE_Warning, CPLE_AppDefined,
                                         "Bad BAND_INDEX value : %s", psTag->psChild->pszValue);
@@ -1043,12 +1043,12 @@ int DIMAPDataset::ReadImageInformation2()
 /*                          SetMetadataFromXML()                        */
 /************************************************************************/
 
-void DIMAPDataset::SetMetadataFromXML(CPLXMLNode *psProduct, const char *apszMetadataTranslation[])
+void DIMAPDataset::SetMetadataFromXML(CPLXMLNode *psProductIn, const char * const apszMetadataTranslation[])
 {
-    CPLXMLNode *psDoc = CPLGetXMLNode( psProduct, "=Dimap_Document" );
+    CPLXMLNode *psDoc = CPLGetXMLNode( psProductIn, "=Dimap_Document" );
     if( psDoc == NULL ) 
     {
-      psDoc = CPLGetXMLNode( psProduct, "=PHR_DIMAP_Document" );
+      psDoc = CPLGetXMLNode( psProductIn, "=PHR_DIMAP_Document" );
     }
 
     for( int iTrItem = 0; apszMetadataTranslation[iTrItem] != NULL; iTrItem += 2 )
@@ -1059,8 +1059,8 @@ void DIMAPDataset::SetMetadataFromXML(CPLXMLNode *psProduct, const char *apszMet
         if( psParent == NULL )
             continue;
 
-        // hackey logic to support directly access a name/value entry
-        // or a parent element with many name/values. 
+        // Hackey logic to support directly access a name/value entry
+        // or a parent element with many name/values.
 
         CPLXMLNode *psTarget;
         if( psParent->psChild != NULL 

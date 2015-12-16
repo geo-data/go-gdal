@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_PAux(void);
+void GDALRegister_PAux();
 CPL_C_END
 
 /************************************************************************/
@@ -115,13 +115,13 @@ class PAuxRasterBand : public RawRasterBand
 /*                           PAuxRasterBand()                           */
 /************************************************************************/
 
-PAuxRasterBand::PAuxRasterBand( GDALDataset *poDS, int nBand,
-                                VSILFILE * fpRaw, vsi_l_offset nImgOffset,
-                                int nPixelOffset, int nLineOffset,
-                                GDALDataType eDataType, int bNativeOrder ) :
-    RawRasterBand( poDS, nBand, fpRaw,
-                   nImgOffset, nPixelOffset, nLineOffset,
-                   eDataType, bNativeOrder, TRUE ),
+PAuxRasterBand::PAuxRasterBand( GDALDataset *poDSIn, int nBandIn,
+                                VSILFILE * fpRawIn, vsi_l_offset nImgOffsetIn,
+                                int nPixelOffsetIn, int nLineOffsetIn,
+                                GDALDataType eDataTypeIn, int bNativeOrderIn ) :
+    RawRasterBand( poDSIn, nBandIn, fpRawIn,
+                   nImgOffsetIn, nPixelOffsetIn, nLineOffsetIn,
+                   eDataTypeIn, bNativeOrderIn, TRUE ),
     poCT(NULL)
 {
     PAuxDataset *poPDS = reinterpret_cast<PAuxDataset *>( poDS );
@@ -131,23 +131,23 @@ PAuxRasterBand::PAuxRasterBand( GDALDataset *poDS, int nBand,
 /* -------------------------------------------------------------------- */
     char	szTarget[128];
 
-    sprintf( szTarget, "ChanDesc-%d", nBand );
+    snprintf( szTarget, sizeof(szTarget), "ChanDesc-%d", nBand );
     if( CSLFetchNameValue( poPDS->papszAuxLines, szTarget ) != NULL )
         GDALRasterBand::SetDescription( 
             CSLFetchNameValue( poPDS->papszAuxLines, szTarget ) );
 
 /* -------------------------------------------------------------------- */
 /*      See if we have colors.  Currently we must have color zero,      */
-/*      but this shouldn't really be a limitation.                      */
+/*      but this should not really be a limitation.                     */
 /* -------------------------------------------------------------------- */
-    sprintf( szTarget, "METADATA_IMG_%d_Class_%d_Color", nBand, 0 );
+    snprintf( szTarget, sizeof(szTarget), "METADATA_IMG_%d_Class_%d_Color", nBand, 0 );
     if( CSLFetchNameValue( poPDS->papszAuxLines, szTarget ) != NULL )
     {
         poCT = new GDALColorTable();
 
         for( int i = 0; i < 256; i++ )
         {
-            sprintf( szTarget, "METADATA_IMG_%d_Class_%d_Color", nBand, i );
+            snprintf( szTarget, sizeof(szTarget), "METADATA_IMG_%d_Class_%d_Color", nBand, i );
             const char *pszLine
                 = CSLFetchNameValue( poPDS->papszAuxLines, szTarget );
             while( pszLine && *pszLine == ' ' )
@@ -191,7 +191,7 @@ double PAuxRasterBand::GetNoDataValue( int *pbSuccess )
 
 {
     char	szTarget[128];
-    sprintf( szTarget, "METADATA_IMG_%d_NO_DATA_VALUE", nBand );
+    snprintf( szTarget, sizeof(szTarget), "METADATA_IMG_%d_NO_DATA_VALUE", nBand );
 
     PAuxDataset *poPDS = reinterpret_cast<PAuxDataset *>( poDS );
     const char  *pszLine = CSLFetchNameValue( poPDS->papszAuxLines, szTarget );
@@ -246,7 +246,7 @@ void PAuxRasterBand::SetDescription( const char *pszNewDescription )
     if( GetAccess() == GA_Update )
     {
         char	szTarget[128];
-        sprintf( szTarget, "ChanDesc-%d", nBand );
+        snprintf( szTarget, sizeof(szTarget), "ChanDesc-%d", nBand );
 
         PAuxDataset *poPDS = reinterpret_cast<PAuxDataset *>( poDS );
         poPDS->papszAuxLines =
@@ -408,7 +408,7 @@ void PAuxDataset::ScanForGCPs()
     for( int i = 0; nGCPCount < MAX_GCP; i++ )
     {
         char	szName[50];
-        sprintf( szName, "GCP_1_%d", i+1 );
+        snprintf( szName, sizeof(szName), "GCP_1_%d", i+1 );
         if( CSLFetchNameValue( papszAuxLines, szName ) == NULL )
             break;
 
@@ -435,7 +435,7 @@ void PAuxDataset::ScanForGCPs()
             }
             else
             {
-                sprintf( szName, "GCP_%d", i+1 );
+                snprintf( szName, sizeof(szName), "GCP_%d", i+1 );
                 pasGCPList[nGCPCount].pszId = CPLStrdup( szName );
             }
 
@@ -752,7 +752,7 @@ GDALDataset *PAuxDataset::Open( GDALOpenInfo * poOpenInfo )
     for( int i = 0; i < poDS->nBands; i++ )
     {
         char	szDefnName[32];
-        sprintf( szDefnName, "ChanDefinition-%d", i+1 );
+        snprintf( szDefnName, sizeof(szDefnName), "ChanDefinition-%d", i+1 );
 
         pszLine = CSLFetchNameValue(poDS->papszAuxLines, szDefnName);
         if (pszLine == NULL)
@@ -890,8 +890,8 @@ GDALDataset *PAuxDataset::Create( const char * pszFilename,
 /*      Just write out a couple of bytes to establish the binary        */
 /*      file, and then close it.                                        */
 /* -------------------------------------------------------------------- */
-    VSIFWriteL( reinterpret_cast<void *>( const_cast<char *>( "\0\0" ) ),
-                2, 1, fp );
+    CPL_IGNORE_RET_VAL(VSIFWriteL( reinterpret_cast<void *>( const_cast<char *>( "\0\0" ) ),
+                2, 1, fp ));
     VSIFCloseL( fp );
 
 /* -------------------------------------------------------------------- */
@@ -934,13 +934,13 @@ GDALDataset *PAuxDataset::Create( const char * pszFilename,
            && pszFilename[iStart-1] != '\\' )
         iStart--;
 
-    VSIFPrintfL( fp, "AuxilaryTarget: %s\n", pszFilename + iStart );
+    CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "AuxilaryTarget: %s\n", pszFilename + iStart ));
 
 /* -------------------------------------------------------------------- */
 /*      Write out the raw definition for the dataset as a whole.        */
 /* -------------------------------------------------------------------- */
-    VSIFPrintfL( fp, "RawDefinition: %d %d %d\n",
-                nXSize, nYSize, nBands );
+    CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "RawDefinition: %d %d %d\n",
+                nXSize, nYSize, nBands ));
 
 /* -------------------------------------------------------------------- */
 /*      Write out a definition for each band.  We always write band     */
@@ -990,7 +990,7 @@ GDALDataset *PAuxDataset::Create( const char * pszFilename,
         else
             pszTypeName = "8U";
 
-        VSIFPrintfL( fp, "ChanDefinition-%d: %s " CPL_FRMT_GIB " %d %d %s\n", 
+        CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "ChanDefinition-%d: %s " CPL_FRMT_GIB " %d %d %s\n", 
 					 iBand+1,
 					 pszTypeName, (GIntBig) nImgOffset,
 					 nPixelOffset, nLineOffset,
@@ -999,7 +999,7 @@ GDALDataset *PAuxDataset::Create( const char * pszFilename,
 #else
                     "Unswapped"
 #endif
-                    );
+                    ));
 
         nImgOffset = nNextImgOffset;
     }

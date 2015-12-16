@@ -106,11 +106,11 @@ static void Usage(const char* pszErrorMsg = NULL)
             "                    [-srcnodata \"value [value...]\"] [-vrtnodata \"value [value...]\"] \n"
             "                    [-a_srs srs_def]\n"
             "                    [-r {nearest,bilinear,cubic,cubicspline,lanczos,average,mode}]\n"
-            "                    [-input_file_list my_liste.txt] [-overwrite] output.vrt [gdalfile]*\n"
+            "                    [-input_file_list my_list.txt] [-overwrite] output.vrt [gdalfile]*\n"
             "\n"
-            "eg.\n"
+            "e.g.\n"
             "  % gdalbuildvrt doq_index.vrt doq/*.tif\n"
-            "  % gdalbuildvrt -input_file_list my_liste.txt doq_index.vrt\n"
+            "  % gdalbuildvrt -input_file_list my_list.txt doq_index.vrt\n"
             "\n"
             "NOTES:\n"
             "  o With -separate, each files goes into a separate band in the VRT band.\n"
@@ -423,8 +423,8 @@ int VRTBuilder::AnalyseRaster( GDALDatasetH hDS, const char* dsFileName,
         if ( nSubdataset < 0 )
         {
             int count = 1;
-            char subdatasetNameKey[256];
-            sprintf(subdatasetNameKey, "SUBDATASET_%d_NAME", count);
+            char subdatasetNameKey[80];
+            snprintf(subdatasetNameKey, sizeof(subdatasetNameKey), "SUBDATASET_%d_NAME", count);
             while(*papszMetadata != NULL)
             {
                 if (EQUALN(*papszMetadata, subdatasetNameKey, strlen(subdatasetNameKey)))
@@ -433,14 +433,14 @@ int VRTBuilder::AnalyseRaster( GDALDatasetH hDS, const char* dsFileName,
                     ppszInputFilenames[nInputFiles++] =
                             CPLStrdup(*papszMetadata+strlen(subdatasetNameKey)+1);
                     count++;
-                    sprintf(subdatasetNameKey, "SUBDATASET_%d_NAME", count);
+                    snprintf(subdatasetNameKey, sizeof(subdatasetNameKey), "SUBDATASET_%d_NAME", count);
                 }
                 papszMetadata++;
             }
         }
         else
         {
-            char        subdatasetNameKey[256];
+            char        subdatasetNameKey[80];
             const char  *pszSubdatasetName;
 
             snprintf( subdatasetNameKey, sizeof(subdatasetNameKey),
@@ -553,8 +553,8 @@ int VRTBuilder::AnalyseRaster( GDALDatasetH hDS, const char* dsFileName,
     {
         if(_nBands < nMaxBandNo)
         {
-            CPLError(CE_Warning, CPLE_AppDefined,
-                        "Skipping %s as it has no sush bands", dsFileName);
+            CPLError( CE_Warning, CPLE_AppDefined,
+                      "Skipping %s as it has no such bands", dsFileName);
             return FALSE;
         }
         else
@@ -681,7 +681,7 @@ int VRTBuilder::AnalyseRaster( GDALDatasetH hDS, const char* dsFileName,
             if (!bAllowProjectionDifference)
             {
                 CPLError(CE_Warning, CPLE_NotSupported,
-                            "gdalbuildvrt does not support heterogenous projection. Skipping %s",
+                            "gdalbuildvrt does not support heterogeneous projection. Skipping %s",
                             dsFileName);
                 return FALSE;
             }
@@ -691,7 +691,7 @@ int VRTBuilder::AnalyseRaster( GDALDatasetH hDS, const char* dsFileName,
             if (nMaxBandNo > _nBands)
             {
                 CPLError(CE_Warning, CPLE_NotSupported,
-                            "gdalbuildvrt does not support heterogenous band numbers. Skipping %s",
+                            "gdalbuildvrt does not support heterogeneous band numbers. Skipping %s",
                         dsFileName);
                 return FALSE;
             }
@@ -702,7 +702,7 @@ int VRTBuilder::AnalyseRaster( GDALDatasetH hDS, const char* dsFileName,
                     pasBandProperties[j].dataType != GDALGetRasterDataType(hRasterBand))
                 {
                     CPLError(CE_Warning, CPLE_NotSupported,
-                                "gdalbuildvrt does not support heterogenous band characteristics. Skipping %s",
+                                "gdalbuildvrt does not support heterogeneous band characteristics. Skipping %s",
                                 dsFileName);
                     return FALSE;
                 }
@@ -1155,8 +1155,9 @@ int VRTBuilder::Build(GDALProgressFunc pfnProgress, void * pProgressData)
 
     if (nRasterXSize == 0 || nRasterYSize == 0)
     {
-        CPLError(CE_Failure, CPLE_AppDefined, 
-                  "Computed VRT dimension is invalid. You've probably specified unappropriate resolution.");
+        CPLError( CE_Failure, CPLE_AppDefined,
+                  "Computed VRT dimension is invalid. You've probably "
+                  "specified inappropriate resolution.");
         return CE_Failure;
     }
 
@@ -1467,6 +1468,7 @@ int main( int nArgc, char ** papszArgv )
                 exit( 1 );
             }
 
+            /* coverity[tainted_data] */
             if( OSRSetFromUserInput( hOutputSRS, papszArgv[iArg+1] ) != OGRERR_NONE )
             {
                 fprintf( stderr, "Failed to process SRS definition: %s\n", 

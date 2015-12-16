@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_ODS_H_INCLUDED
-#define _OGR_ODS_H_INCLUDED
+#ifndef OGR_ODS_H_INCLUDED
+#define OGR_ODS_H_INCLUDED
 
 #include "ogrsf_frmts.h"
 #include "ogr_mem.h"
@@ -38,6 +38,8 @@
 #include <vector>
 #include <string>
 #include <set>
+
+namespace OGRODS {
 
 /************************************************************************/
 /*                             OGRODSLayer                              */
@@ -88,8 +90,8 @@ class OGRODSLayer : public OGRMemLayer
     virtual OGRErr      ReorderFields( int* panMap )
     { SetUpdated(); return OGRMemLayer::ReorderFields(panMap); }
 
-    virtual OGRErr      AlterFieldDefn( int iField, OGRFieldDefn* poNewFieldDefn, int nFlags )
-    { SetUpdated(); return OGRMemLayer::AlterFieldDefn(iField, poNewFieldDefn, nFlags); }
+    virtual OGRErr      AlterFieldDefn( int iField, OGRFieldDefn* poNewFieldDefn, int nFlagsIn )
+    { SetUpdated(); return OGRMemLayer::AlterFieldDefn(iField, poNewFieldDefn, nFlagsIn); }
 
     virtual OGRErr      SyncToDisk();
 };
@@ -217,6 +219,8 @@ class OGRODSDataSource : public OGRDataSource
     void                SetUpdated() { bUpdated = TRUE; }
 };
 
+} /* end of OGRODS namespace */
+
 /************************************************************************/
 /*                             OGRODSDriver                             */
 /************************************************************************/
@@ -235,5 +239,4 @@ class OGRODSDriver : public OGRSFDriver
     virtual OGRErr      DeleteDataSource( const char *pszName );
 };
 
-
-#endif /* ndef _OGR_ODS_H_INCLUDED */
+#endif /* ndef OGR_ODS_H_INCLUDED */

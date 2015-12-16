@@ -93,7 +93,7 @@ OGRLayer *
 PDFWritableVectorDataset::ICreateLayer( const char * pszLayerName,
                                         OGRSpatialReference *poSRS,
                                         OGRwkbGeometryType eType,
-                                        CPL_UNUSED char ** papszOptions )
+                                        char ** )
 {
 /* -------------------------------------------------------------------- */
 /*      Create the layer object.                                        */
@@ -293,7 +293,7 @@ OGRErr PDFWritableVectorDataset::SyncToDisk()
                       bWriteOGRAttributes);
 
     int iObj = 0;
-    
+
     char** papszLayerNames = CSLTokenizeString2(pszOGRDisplayLayerNames,",",0);
 
     for(int i=0;i<nLayers;i++)

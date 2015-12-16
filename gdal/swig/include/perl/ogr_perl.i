@@ -108,6 +108,7 @@ ALTERED_DESTROY(OGRGeometryShadow, OGRc, delete_Geometry)
 %rename (_CreateField) CreateField;
 %rename (_DeleteField) DeleteField;
 %rename (_Validate) Validate;
+%rename (_GetFeature) GetFeature;
 
 /* wrapped feature methods: */
 %rename (_AlterFieldDefn) AlterFieldDefn;
@@ -182,17 +183,19 @@ sub Open {
     Geo::GDAL::OpenEx($p[0], \@flags, [$self->Name()]);
 }
 
+
 package Geo::OGR::DataSource;
 
 *Open = *Geo::OGR::Open;
 *OpenShared = *Geo::OGR::OpenShared;
+
 
 package Geo::OGR::Layer;
 use strict;
 use warnings;
 use Carp;
 use Scalar::Util 'blessed';
-use vars qw /@CAPABILITIES %CAPABILITIES  %DEFNS/;
+use vars qw /@CAPABILITIES %CAPABILITIES %DEFNS %FEATURES/;
 for (keys %Geo::OGR::) {
     push(@CAPABILITIES, $1), next if /^OLC(\w+)/;
 }
@@ -224,6 +227,11 @@ sub RELEASE_PARENTS {
     delete $Geo::GDAL::Dataset::LAYERS{$self};
 }
 
+sub Dataset {
+    my $self = shift;
+    return $Geo::GDAL::Dataset::LAYERS{tied(%$self)};
+}
+
 sub Capabilities {
     return @CAPABILITIES if @_ == 0;
     my $self = shift;
@@ -241,14 +249,14 @@ sub TestCapability {
 
 sub GetDataSource {
     my $self = shift;
-    return $Geo::GDAL::Dataset::LAYERS{$self};
+    return $Geo::GDAL::Dataset::LAYERS{tied(%$self)};
 }
 *DataSource = *GetDataSource;
 
 sub GetDefn {
     my $self = shift;
     my $defn = $self->GetLayerDefn;
-    $DEFNS{$defn} = $self;
+    $DEFNS{tied(%$defn)} = $self;
     return $defn;
 }
 
@@ -394,6 +402,17 @@ sub InsertFeature {
         $new->Row($feature->Row);
     }
     $self->CreateFeature($new);
+    return unless defined wantarray;
+    $FEATURES{tied(%$new)} = $self;
+    return $new;
+}
+
+sub GetFeature {
+    my ($self, $fid) = @_;
+    $fid //= 0;
+    my $f = $self->_GetFeature($fid);
+    $FEATURES{tied(%$f)} = $self;
+    return $f;
 }
 
 sub ForFeatures {
@@ -402,6 +421,7 @@ sub ForFeatures {
     my $in_place = shift;
     $self->ResetReading;
     while (my $f = $self->GetNextFeature) {
+        $FEATURES{tied(%$f)} = $self;
         $code->($f);
         $self->SetFeature($f) if $in_place;
     };
@@ -485,6 +505,11 @@ sub RELEASE_PARENTS {
     delete $Geo::OGR::Feature::DEFNS{$self};
     delete $Geo::OGR::Layer::DEFNS{$self};
 }
+
+sub Feature {
+    my $self = shift;
+    return $Geo::OGR::Feature::DEFNS{tied(%$self)};
+}
 %}
 
 %feature("shadow") OGRFeatureDefnShadow(const char* name_null_ok=NULL)
@@ -566,7 +591,7 @@ sub GetSchema {
 
 sub AddField {
     my $self = shift;
-    Geo::GDAL::error("Read-only definition.") if $Geo::OGR::Feature::DEFNS{$self} or $Geo::OGR::Layer::DEFNS{$self};
+    Geo::GDAL::error("Read-only definition.") if $Geo::OGR::Feature::DEFNS{tied(%$self)} || $Geo::OGR::Layer::DEFNS{tied(%$self)};
     my %params;
     if (@_ == 0) {
     } elsif (ref($_[0]) eq 'HASH') {
@@ -586,7 +611,7 @@ sub AddField {
 
 sub DeleteField {
     my ($self, $name) = @_;
-    Geo::GDAL::error("Read-only definition.") if $Geo::OGR::Feature::DEFNS{$self} or $Geo::OGR::Layer::DEFNS{$self};
+    Geo::GDAL::error("Read-only definition.") if $Geo::OGR::Feature::DEFNS{tied(%$self)} || $Geo::OGR::Layer::DEFNS{tied(%$self)};
     for my $i (0..$self->GetFieldCount-1) {
         Geo::GDAL::error("Non-geometry fields cannot be deleted.") if $self->GetFieldDefn($i)->Name eq $name;
     }
@@ -623,10 +648,9 @@ sub GetFieldDefn {
 
 sub GeomType {
     my ($self, $type) = @_;
-    Geo::GDAL::error("Read-only definition.") if $Geo::OGR::Feature::DEFNS{$self} or $Geo::OGR::Layer::DEFNS{$self};
+    Geo::GDAL::error("Read-only definition.") if $Geo::OGR::Feature::DEFNS{tied(%$self)} || $Geo::OGR::Layer::DEFNS{tied(%$self)};
     if (defined $type) {
-        Geo::GDAL::error(1, $type, \%Geo::OGR::Geometry::TYPE_STRING2INT) unless exists $Geo::OGR::Geometry::TYPE_STRING2INT{$type};
-        $type = $Geo::OGR::Geometry::TYPE_STRING2INT{$type};
+        $type = Geo::GDAL::string2int($type, \%Geo::OGR::Geometry::TYPE_STRING2INT);
         SetGeomType($self, $type);
     }
     return $Geo::OGR::Geometry::TYPE_INT2STRING{GetGeomType($self)} if defined wantarray;
@@ -675,13 +699,23 @@ sub new {
 %}
 
 %perlcode %{
+
+sub RELEASE_PARENTS {
+    my $self = shift;
+    delete $Geo::OGR::Layer::FEATURES{$self};
+}
+
+sub Layer {
+    my $self = shift;
+    return $Geo::OGR::Layer::FEATURES{tied(%$self)};
+}
+
 sub FETCH {
     my($self, $index) = @_;
     my $i;
     eval {$i = $self->_GetFieldIndex($index)};
-    $self->GetField($i) unless $@;
-    $i = $self->_GetGeomFieldIndex($index);
-    $self->GetGeometry($i);
+    return $self->GetField($i) unless $@;
+    Geo::GDAL::error("It is not safe to retrieve geometries from a feature this way.");
 }
 
 sub STORE {
@@ -819,9 +853,11 @@ sub Tuple {
 sub GetDefn {
     my $self = shift;
     my $defn = $self->GetDefnRef;
-    $DEFNS{$defn} = $self;
+    $DEFNS{tied(%$defn)} = $self;
     return $defn;
 }
+
+*GetGeomFieldDefn = *GetGeomFieldDefnRef;
 
 *GetFieldNames = *Geo::OGR::Layer::GetFieldNames;
 *GetFieldDefn = *Geo::OGR::Layer::GetFieldDefn;
@@ -987,7 +1023,7 @@ sub Geometry {
                 $self->SetGeomFieldDirectly($field, $geometry);
             };
             confess Geo::GDAL->last_error if $@;
-            $GEOMETRIES{tied(%{$geometry})} = $self;
+            $GEOMETRIES{tied(%$geometry)} = $self;
         } elsif (ref($geometry) eq 'HASH') {
             $geometry->{GeometryType} //= $type;
             eval {
@@ -1007,7 +1043,7 @@ sub Geometry {
     return unless defined wantarray;
     my $geometry = $self->GetGeomFieldRef($field);
     return unless $geometry;
-    $GEOMETRIES{tied(%{$geometry})} = $self;
+    $GEOMETRIES{tied(%$geometry)} = $self;
     return $geometry;
 }
 *GetGeometry = *Geometry;
@@ -1098,9 +1134,7 @@ sub new {
             }
         }
     }
-    Geo::GDAL::error(1, $params->{Type}, \%Geo::OGR::FieldDefn::TYPE_STRING2INT) 
-        unless exists $Geo::OGR::FieldDefn::TYPE_STRING2INT{$params->{Type}};
-    $params->{Type} = $Geo::OGR::FieldDefn::TYPE_STRING2INT{$params->{Type}};
+    $params->{Type} = Geo::GDAL::string2int($params->{Type}, \%Geo::OGR::FieldDefn::TYPE_STRING2INT);
     my $self = Geo::OGRc::new_FieldDefn($params->{Name}, $params->{Type});
     bless $self, $pkg;
     delete $params->{Name};
@@ -1232,9 +1266,7 @@ sub new {
         }
         $params->{Type} //= $tmp->{GeometryType};
     }
-    Geo::GDAL::error(1, $params->{Type}, \%Geo::OGR::Geometry::TYPE_STRING2INT) 
-        unless exists $Geo::OGR::Geometry::TYPE_STRING2INT{$params->{Type}};
-    $params->{Type} = $Geo::OGR::Geometry::TYPE_STRING2INT{$params->{Type}};
+    $params->{Type} = Geo::GDAL::string2int($params->{Type}, \%Geo::OGR::Geometry::TYPE_STRING2INT);
     my $self = Geo::OGRc::new_GeomFieldDefn($params->{Name}, $params->{Type});
     bless $self, $pkg;
     delete $params->{Name};
@@ -1274,8 +1306,7 @@ sub Name {
 sub Type {
     my($self, $type) = @_;
     if (defined $type) {
-        Geo::GDAL::error(1, $type, \%Geo::OGR::Geometry::TYPE_STRING2INT) unless exists $Geo::OGR::Geometry::TYPE_STRING2INT{$type};
-        $type = $Geo::OGR::Geometry::TYPE_STRING2INT{$type};
+        $type = Geo::GDAL::string2int($type, \%Geo::OGR::Geometry::TYPE_STRING2INT);
         SetType($self, $type);
     }
     $Geo::OGR::Geometry::TYPE_INT2STRING{GetType($self)} if defined wantarray;
@@ -1345,6 +1376,11 @@ sub RELEASE_PARENTS {
     my $self = shift;
     delete $Geo::OGR::Feature::GEOMETRIES{$self};
 }
+
+sub Feature {
+    my $self = shift;
+    return $Geo::OGR::Feature::GEOMETRIES{tied(%$self)};
+}
 %}
 
 %feature("shadow") OGRGeometryShadow( OGRwkbGeometryType type = wkbUnknown, char *wkt = 0, int wkb = 0, char *wkb_buf = 0, char *gml = 0 )
@@ -1393,8 +1429,7 @@ sub new {
     } elsif (defined $json) {
         $self = Geo::OGRc::CreateGeometryFromJson($json);
     } elsif (defined $type) {
-        Geo::GDAL::error(1, $type, \%Geo::OGR::Geometry::TYPE_STRING2INT) unless exists $Geo::OGR::Geometry::TYPE_STRING2INT{$type};
-        $type = $Geo::OGR::Geometry::TYPE_STRING2INT{$type};
+        $type = Geo::GDAL::string2int($type, \%Geo::OGR::Geometry::TYPE_STRING2INT);
         $self = Geo::OGRc::new_Geometry($type); # flattens the type
         SetCoordinateDimension($self, 3) if Geo::OGR::GT_HasZ($type);
     } elsif (defined $arc) {
@@ -1438,18 +1473,8 @@ sub ApproximateArcAngles {
 
 sub As {
     my $self = shift;
-    my %param;
-    if (@_ == 1 and ref($_[0]) eq 'HASH') {
-        %param = %{$_[0]};
-    } elsif (@_ % 2 == 0) {
-        %param = @_;
-    } else {
-        ($param{Format}, $param{x}) = @_;
-    }
-    $param{ByteOrder} //= 'XDR';
-    my $f = $param{Format};
-    my $x = $param{x};
-    $x //= $param{ByteOrder};
+    my $p = Geo::GDAL::named_parameters(\@_, Format => undef, ByteOrder => 'XDR', SRID => undef, Options => undef, AltitudeMode => undef);
+    my $f = $p->{format};
     if ($f =~ /text/i) {
         return $self->AsText;
     } elsif ($f =~ /wkt/i) {
@@ -1459,23 +1484,21 @@ sub As {
             return $self->AsText;
         }
     } elsif ($f =~ /binary/i) {
-        return $self->AsBinary($x);        
+        return $self->ExportToWkb($p->{byteorder});
     } elsif ($f =~ /wkb/i) {
         if ($f =~ /iso/i) {
-            return $self->ExportToIsoWkb;
+            return $self->ExportToIsoWkb($p->{byteorder});
         } elsif ($f =~ /ewkb/i) {
-            $param{srid} //= 'XDR';
-            $x //= $param{srid};
-            return $self->AsHEXEWKB($x);
+            return $self->AsHEXEWKB($p->{srid});
         } elsif ($f =~ /hex/i) {
             return $self->AsHEXWKB;
         } else {
-            return $self->AsBinary($x);
+            return $self->ExportToWkb($p->{byteorder});
         }
     } elsif ($f =~ /gml/i) {
-        return $self->AsGML;
+        return $self->ExportToGML($p->{options});
     } elsif ($f =~ /kml/i) {
-        return $self->AsKML;
+        return $self->ExportToKML($p->{altitudemode});
     } elsif ($f =~ /json/i) {
         return $self->AsJSON;
     } else {
@@ -1666,18 +1689,14 @@ sub _GetPoints {
 
 sub ExportToWkb {
     my($self, $bo) = @_;
-    if (defined $bo) {
-        Geo::GDAL::error(1, $bo, \%BYTE_ORDER_STRING2INT) unless exists $BYTE_ORDER_STRING2INT{$bo};
-        $bo = $BYTE_ORDER_STRING2INT{$bo};
-    }
+    $bo = Geo::GDAL::string2int($bo, \%BYTE_ORDER_STRING2INT);
     return _ExportToWkb($self, $bo);
 }
 
 sub ForceTo {
     my $self = shift;
     my $type = shift;
-    Geo::GDAL::error(1, $type, \%TYPE_STRING2INT) unless exists $TYPE_STRING2INT{$type};
-    $type = $TYPE_STRING2INT{$type};
+    $type = Geo::GDAL::string2int($type, \%TYPE_STRING2INT);
     eval {
         $self = Geo::OGR::ForceTo($self, $type, @_);
     };
@@ -1756,11 +1775,7 @@ use Carp;
 sub GeometryType {
     my($type) = @_;
     if (defined $type) {
-        return $Geo::OGR::Geometry::TYPE_STRING2INT{$type} if
-            exists $Geo::OGR::Geometry::TYPE_STRING2INT{$type};
-        return $Geo::OGR::Geometry::TYPE_INT2STRING{$type} if
-            exists $Geo::OGR::Geometry::TYPE_INT2STRING{$type};
-        Geo::GDAL::error(1, $type, \%Geo::OGR::Geometry::TYPE_STRING2INT);
+        return Geo::GDAL::string2int($type, \%Geo::OGR::Geometry::TYPE_STRING2INT, \%Geo::OGR::Geometry::TYPE_INT2STRING);
     } else {
         return @Geo::OGR::Geometry::GEOMETRY_TYPES;
     }

@@ -34,7 +34,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_IDA(void);
+void GDALRegister_IDA();
 CPL_C_END
 
 // convert a Turbo Pascal real into a double
@@ -131,8 +131,8 @@ class IDARasterBand : public RawRasterBand
 /************************************************************************/
 
 IDARasterBand::IDARasterBand( IDADataset *poDSIn,
-                              VSILFILE *fpRaw, int nXSize ) :
-    RawRasterBand( poDSIn, 1, fpRaw, 512, 1, nXSize,
+                              VSILFILE *fpRawIn, int nXSize ) :
+    RawRasterBand( poDSIn, 1, fpRawIn, 512, 1, nXSize,
                    GDT_Byte, FALSE, TRUE ),
     poRAT(NULL),
     poColorTable(NULL)
@@ -389,8 +389,8 @@ void IDADataset::FlushCache()
 
     if( bHeaderDirty )
     {
-        VSIFSeekL( fpRaw, 0, SEEK_SET );
-        VSIFWriteL( abyHeader, 512, 1, fpRaw );
+        CPL_IGNORE_RET_VAL(VSIFSeekL( fpRaw, 0, SEEK_SET ));
+        CPL_IGNORE_RET_VAL(VSIFWriteL( abyHeader, 512, 1, fpRaw ));
         bHeaderDirty = FALSE;
     }
 }
@@ -496,13 +496,13 @@ CPLErr IDADataset::SetProjection( const char *pszWKTIn )
 /*      Lambert Conformal Conic.  Note that we don't support false      */
 /*      eastings or nothings.                                           */
 /* -------------------------------------------------------------------- */
-    const char *pszProjection = oSRS.GetAttrValue( "PROJECTION" );
+    const char *l_pszProjection = oSRS.GetAttrValue( "PROJECTION" );
 
-    if( pszProjection == NULL )
+    if( l_pszProjection == NULL )
     {
         /* do nothing - presumably geographic  */;
     }
-    else if( EQUAL(pszProjection,SRS_PT_LAMBERT_CONFORMAL_CONIC_2SP) )
+    else if( EQUAL(l_pszProjection,SRS_PT_LAMBERT_CONFORMAL_CONIC_2SP) )
     {
         nProjection = 4;
         dfParallel1 = oSRS.GetNormProjParm(SRS_PP_STANDARD_PARALLEL_1,0.0);
@@ -510,13 +510,13 @@ CPLErr IDADataset::SetProjection( const char *pszWKTIn )
         dfLatCenter = oSRS.GetNormProjParm(SRS_PP_LATITUDE_OF_ORIGIN,0.0);
         dfLongCenter = oSRS.GetNormProjParm(SRS_PP_CENTRAL_MERIDIAN,0.0);
     }
-    else if( EQUAL(pszProjection,SRS_PT_LAMBERT_AZIMUTHAL_EQUAL_AREA) )
+    else if( EQUAL(l_pszProjection,SRS_PT_LAMBERT_AZIMUTHAL_EQUAL_AREA) )
     {
         nProjection = 6;
         dfLatCenter = oSRS.GetNormProjParm(SRS_PP_LATITUDE_OF_ORIGIN,0.0);
         dfLongCenter = oSRS.GetNormProjParm(SRS_PP_CENTRAL_MERIDIAN,0.0);
     }
-    else if( EQUAL(pszProjection,SRS_PT_ALBERS_CONIC_EQUAL_AREA) )
+    else if( EQUAL(l_pszProjection,SRS_PT_ALBERS_CONIC_EQUAL_AREA) )
     {
         nProjection = 8;
         dfParallel1 = oSRS.GetNormProjParm(SRS_PP_STANDARD_PARALLEL_1,0.0);
@@ -524,7 +524,7 @@ CPLErr IDADataset::SetProjection( const char *pszWKTIn )
         dfLatCenter = oSRS.GetNormProjParm(SRS_PP_LATITUDE_OF_ORIGIN,0.0);
         dfLongCenter = oSRS.GetNormProjParm(SRS_PP_CENTRAL_MERIDIAN,0.0);
     }
-    else if( EQUAL(pszProjection,SRS_PT_GOODE_HOMOLOSINE) )
+    else if( EQUAL(l_pszProjection,SRS_PT_GOODE_HOMOLOSINE) )
     {
         nProjection = 9;
         dfLongCenter = oSRS.GetNormProjParm(SRS_PP_CENTRAL_MERIDIAN,0.0);
@@ -704,10 +704,10 @@ GDALDataset *IDADataset::Open( GDALOpenInfo * poOpenInfo )
         return NULL;
 
     // The file just be exactly the image size + header size in length.
-    GIntBig nExpectedFileSize = nXSize * nYSize + 512;
+    vsi_l_offset nExpectedFileSize = static_cast<vsi_l_offset>(nXSize) * nYSize + 512;
 
-    VSIFSeekL( poOpenInfo->fpL, 0, SEEK_END );
-    const GIntBig nActualFileSize = VSIFTellL( poOpenInfo->fpL );
+    CPL_IGNORE_RET_VAL(VSIFSeekL( poOpenInfo->fpL, 0, SEEK_END ));
+    const vsi_l_offset nActualFileSize = VSIFTellL( poOpenInfo->fpL );
     VSIRewindL( poOpenInfo->fpL );
 
     if( nActualFileSize != nExpectedFileSize )
@@ -1082,7 +1082,7 @@ GDALDataset *IDADataset::Create( const char * pszFilename,
 }
 
 /************************************************************************/
-/*                         GDALRegister_IDA()                          */
+/*                         GDALRegister_IDA()                           */
 /************************************************************************/
 
 void GDALRegister_IDA()

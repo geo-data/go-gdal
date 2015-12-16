@@ -112,7 +112,7 @@
 // CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_Terragen(void);
+void GDALRegister_Terragen();
 CPL_C_END
 
 
@@ -805,7 +805,7 @@ int TerragenDataset::LoadFromFile()
             get(m_nHeightScale);
             get(m_nBaseHeight);
             m_nDataOffset = VSIFTellL(m_fp);
-            if( !skip(xpts * ypts * sizeof(GInt16)) )
+            if( !skip(static_cast<size_t>(xpts) * static_cast<size_t>(ypts) * sizeof(GInt16)) )
                 return FALSE;
             continue;
         }
@@ -1105,7 +1105,7 @@ void GDALRegister_Terragen()
     if( GDALGetDriverByName( "Terragen" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "Terragen" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

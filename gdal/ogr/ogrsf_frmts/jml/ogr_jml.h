@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_JML_H_INCLUDED
-#define _OGR_JML_H_INCLUDED
+#ifndef OGR_JML_H_INCLUDED
+#define OGR_JML_H_INCLUDED
 
 #include "ogrsf_frmts.h"
 #include "ogr_p.h"
@@ -77,7 +77,7 @@ class OGRJMLLayer : public OGRLayer
     int                bStopParsing;
     int                nWithoutEventCounter;
     int                nDataHandlerCounter;
-    
+
     int                bAccumulateElementValue;
     char              *pszElementValue;
     int                nElementValueLen;
@@ -123,7 +123,7 @@ class OGRJMLLayer : public OGRLayer
     OGRFeature *        GetNextFeature();
 
     OGRFeatureDefn *    GetLayerDefn();
-    
+
     int                 TestCapability( const char * );
 
     void                startElementCbk(const char *pszName, const char **ppszAttr);
@@ -191,7 +191,7 @@ class OGRJMLDataset : public GDALDataset
 
     int                 GetLayerCount() { return poLayer != NULL ? 1 : 0; }
     OGRLayer*           GetLayer( int );
-    
+
     OGRLayer *          ICreateLayer( const char * pszLayerName,
                                     OGRSpatialReference *poSRS,
                                     OGRwkbGeometryType eType,
@@ -209,4 +209,4 @@ class OGRJMLDataset : public GDALDataset
                                  char **papszOptions );
 };
 
-#endif /* ndef _OGR_JML_H_INCLUDED */
+#endif /* ndef OGR_JML_H_INCLUDED */

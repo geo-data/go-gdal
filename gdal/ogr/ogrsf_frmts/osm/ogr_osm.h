@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_OSM_H_INCLUDED
-#define _OGR_OSM_H_INCLUDED
+#ifndef OGR_OSM_H_INCLUDED
+#define OGR_OSM_H_INCLUDED
 
 // replace O(log2(N)) complexity of FindNode() by O(1)
 #define ENABLE_NODE_LOOKUP_BY_HASHING 1
@@ -42,6 +42,7 @@
 
 #include "osm_parser.h"
 
+#define DO_NOT_INCLUDE_SQLITE_CLASSES
 #include "ogr_sqlite.h"
 
 class ConstCharComp
@@ -86,11 +87,11 @@ class OGROSMLayer : public OGRLayer
 
     std::vector<char*>   apszNames;
     std::map<const char*, int, ConstCharComp> oMapFieldNameToIndex;
-    
+
     std::vector<OGROSMComputedAttribute> oComputedAttributes;
 
     int                  bResetReadingAllowed;
-    
+
     int                  nFeatureArraySize;
     int                  nFeatureArrayMaxSize;
     int                  nFeatureArrayIndex;
@@ -138,13 +139,13 @@ class OGROSMLayer : public OGRLayer
     virtual             ~OGROSMLayer();
 
     virtual OGRFeatureDefn *GetLayerDefn() {return poFeatureDefn;}
-    
+
     virtual void        ResetReading();
     virtual int         TestCapability( const char * );
-                                     
+
     virtual OGRFeature *GetNextFeature();
     virtual GIntBig     GetFeatureCount( int bForce );
-        
+
     virtual OGRErr      SetAttributeFilter( const char* pszAttrQuery );
 
     virtual OGRErr      GetExtent( OGREnvelope *psExtent, int bForce );
@@ -275,7 +276,7 @@ typedef struct
 class OGROSMDataSource : public OGRDataSource
 {
     friend class OGROSMLayer;
-    
+
     int                 nLayers;
     OGROSMLayer**       papoLayers;
     char*               pszName;
@@ -488,5 +489,5 @@ class OGROSMDataSource : public OGRDataSource
     int                 DoesAttributeNameLaundering() const { return bAttributeNameLaundering; }
 };
 
-#endif /* ndef _OGR_OSM_H_INCLUDED */
+#endif /* ndef OGR_OSM_H_INCLUDED */
 

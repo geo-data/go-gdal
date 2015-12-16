@@ -96,7 +96,7 @@ void DDFRecordIndex::Clear()
 /*                                                                      */
 /*      Add a record to the index.  The index will assume ownership     */
 /*      of the record.  If passing a record just read from a            */
-/*      DDFModule it is imperitive that the caller Clone()'s the        */
+/*      DDFModule it is imperative that the caller Clone()'s the        */
 /*      record first.                                                   */
 /************************************************************************/
 
@@ -259,11 +259,7 @@ static int DDFCompare( const void *pRec1, const void *pRec2 )
 /************************************************************************/
 /*                                Sort()                                */
 /*                                                                      */
-/*      Sort the records based on the key.  This is currently           */
-/*      implemented as a bubble sort, and could gain in efficiency      */
-/*      by reimplementing as a quick sort; however, I believe that      */
-/*      the keys will always be in order so a bubble sort should        */
-/*      only require one pass to verify this.                           */
+/*      Sort the records based on the key.                              */
 /************************************************************************/
 
 void DDFRecordIndex::Sort()

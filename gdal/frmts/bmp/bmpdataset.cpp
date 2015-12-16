@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_BMP(void);
+void GDALRegister_BMP();
 CPL_C_END
 
 // Enable if you want to see lots of BMP debugging output.
@@ -281,21 +281,21 @@ class BMPRasterBand : public GDALPamRasterBand
 /*                           BMPRasterBand()                            */
 /************************************************************************/
 
-BMPRasterBand::BMPRasterBand( BMPDataset *poDS, int nBand ) :
+BMPRasterBand::BMPRasterBand( BMPDataset *poDSIn, int nBandIn ) :
     nScanSize(0)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
     eDataType = GDT_Byte;
-    iBytesPerPixel = poDS->sInfoHeader.iBitCount / 8;
+    iBytesPerPixel = poDSIn->sInfoHeader.iBitCount / 8;
 
     // We will read one scanline per time. Scanlines in BMP aligned at 4-byte
     // boundary
     nBlockXSize = poDS->GetRasterXSize();
 
-    if (nBlockXSize < (INT_MAX - 31) / poDS->sInfoHeader.iBitCount)
+    if (nBlockXSize < (INT_MAX - 31) / poDSIn->sInfoHeader.iBitCount)
         nScanSize =
-            ((poDS->GetRasterXSize() * poDS->sInfoHeader.iBitCount + 31) & ~31) / 8;
+            ((poDS->GetRasterXSize() * poDSIn->sInfoHeader.iBitCount + 31) & ~31) / 8;
     else
     {
         pabyScan = NULL;
@@ -381,7 +381,7 @@ CPLErr BMPRasterBand::IReadBlock( CPL_UNUSED int nBlockXOff,
         {
             // Colour triplets in BMP file organized in reverse order:
             // blue, green, red. When we have 32-bit BMP the forth byte
-            // in quadriplet should be discarded as it has no meaning.
+            // in quadruplet should be discarded as it has no meaning.
             // That is why we always use 3 byte count in the following
             // pabyTemp index.
             ((GByte *) pImage)[i] = *pabyTemp;
@@ -689,10 +689,10 @@ class BMPComprRasterBand : public BMPRasterBand
 /*                           BMPComprRasterBand()                       */
 /************************************************************************/
 
-BMPComprRasterBand::BMPComprRasterBand( BMPDataset *poDS, int nBand )
-    : BMPRasterBand( poDS, nBand )
+BMPComprRasterBand::BMPComprRasterBand( BMPDataset *poDSIn, int nBandIn )
+    : BMPRasterBand( poDSIn, nBandIn )
 {
-    GUInt32 iComprSize = poDS->sFileHeader.iSize - poDS->sFileHeader.iOffBits;
+    GUInt32 iComprSize = poDSIn->sFileHeader.iSize - poDSIn->sFileHeader.iOffBits;
     GUInt32 iUncomprSize = poDS->GetRasterXSize() * poDS->GetRasterYSize();
 
 #ifdef DEBUG
@@ -724,12 +724,12 @@ BMPComprRasterBand::BMPComprRasterBand( BMPDataset *poDS, int nBand )
         return;
     }
 
-    VSIFSeekL( poDS->fp, poDS->sFileHeader.iOffBits, SEEK_SET );
-    VSIFReadL( pabyComprBuf, 1, iComprSize, poDS->fp );
+    VSIFSeekL( poDSIn->fp, poDSIn->sFileHeader.iOffBits, SEEK_SET );
+    VSIFReadL( pabyComprBuf, 1, iComprSize, poDSIn->fp );
     unsigned int k, iLength = 0;
     unsigned int i = 0;
     unsigned int j = 0;
-    if ( poDS->sInfoHeader.iBitCount == 8 )         // RLE8
+    if ( poDSIn->sInfoHeader.iBitCount == 8 )         // RLE8
     {
         while( j < iUncomprSize && i < iComprSize )
         {
@@ -1347,7 +1347,7 @@ GDALDataset *BMPDataset::Create( const char * pszFilename,
      *   nScanSize = ((poDS->sInfoHeader.iWidth *
      *            poDS->sInfoHeader.iBitCount + 31) & ~31) / 8
      *
-     * formulae, but we should check for overflow conditions
+     * formula, but we should check for overflow conditions
      * during calculation.
      */
     GUInt32 nScanSize

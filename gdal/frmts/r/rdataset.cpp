@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_R(void);
+void GDALRegister_R();
 CPL_C_END
 
 GDALDataset *
@@ -105,16 +105,16 @@ class RRasterBand : public GDALPamRasterBand
 /*                            RRasterBand()                             */
 /************************************************************************/
 
-RRasterBand::RRasterBand( RDataset *poDS, int nBand, 
-                          const double *padfMatrixValues )
+RRasterBand::RRasterBand( RDataset *poDSIn, int nBandIn, 
+                          const double *padfMatrixValuesIn )
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
-    this->padfMatrixValues = padfMatrixValues;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
+    this->padfMatrixValues = padfMatrixValuesIn;
 
     eDataType = GDT_Float64;
 
-    nBlockXSize = poDS->nRasterXSize;
+    nBlockXSize = poDSIn->nRasterXSize;
     nBlockYSize = 1;
 }
 
@@ -253,7 +253,7 @@ const char *RDataset::ReadString()
     }
 
     size_t nLen = ReadInteger();
-        
+
     char *pachWrkBuf = (char *) VSIMalloc(nLen);
     if (pachWrkBuf == NULL)
     {
@@ -266,13 +266,13 @@ const char *RDataset::ReadString()
         CPLFree( pachWrkBuf );
         return "";
     }
-    
+
     if( bASCII )
     {
         /* suck up newline and any extra junk */
         ASCIIFGets();
     }
-    
+
     osLastStringRead.assign( pachWrkBuf, nLen );
     CPLFree( pachWrkBuf );
 
@@ -333,7 +333,7 @@ int RDataset::Identify( GDALOpenInfo *poOpenInfo )
 
 /* -------------------------------------------------------------------- */
 /*      If the extension is .rda and the file type is gzip              */
-/*      compressed we assume it is a gziped R binary file.              */
+/*      compressed we assume it is a gzipped R binary file.              */
 /* -------------------------------------------------------------------- */
     if( memcmp(poOpenInfo->pabyHeader,"\037\213\b",3) == 0 
         && EQUAL(CPLGetExtension(poOpenInfo->pszFilename),"rda") )
@@ -368,7 +368,7 @@ GDALDataset *RDataset::Open( GDALOpenInfo * poOpenInfo )
                   " datasets.\n" );
         return NULL;
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Do we need to route the file through the decompression          */
 /*      machinery?                                                      */
@@ -560,7 +560,7 @@ GDALDataset *RDataset::Open( GDALOpenInfo * poOpenInfo )
                                         8, poDS->nRasterXSize * 8,
                                         GDT_Float64, !CPL_IS_LSB,
                                         TRUE, FALSE );
-                                      
+
         poDS->SetBand( iBand+1, poBand );
     }
 
@@ -585,32 +585,28 @@ GDALDataset *RDataset::Open( GDALOpenInfo * poOpenInfo )
 void GDALRegister_R()
 
 {
-    GDALDriver  *poDriver;
+    if( GDALGetDriverByName( "R" ) != NULL )
+        return;
 
-    if( GDALGetDriverByName( "R" ) == NULL )
-    {
-        poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
-        poDriver->SetDescription( "R" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                                   "R Object Data Store" );
-        poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                                   "frmt_r.html" );
-        poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "rda" );
-        poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, "Float32" );
-        poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
+    poDriver->SetDescription( "R" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "R Object Data Store" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_r.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "rda" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, "Float32" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
 "<CreationOptionList>"
 "   <Option name='ASCII' type='boolean' description='For ASCII output, default NO'/>"
 "   <Option name='COMPRESS' type='boolean' description='Produced Compressed output, default YES'/>"
 "</CreationOptionList>" );
 
-        poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
+    poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 
-        poDriver->pfnOpen = RDataset::Open;
-        poDriver->pfnIdentify = RDataset::Identify;
-        poDriver->pfnCreateCopy = RCreateCopy;
+    poDriver->pfnOpen = RDataset::Open;
+    poDriver->pfnIdentify = RDataset::Identify;
+    poDriver->pfnCreateCopy = RCreateCopy;
 
-        GetGDALDriverManager()->RegisterDriver( poDriver );
-    }
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

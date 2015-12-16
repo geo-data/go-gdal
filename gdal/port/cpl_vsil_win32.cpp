@@ -62,6 +62,7 @@ public:
     virtual char   **ReadDir( const char *pszDirname );
     virtual int      IsCaseSensitive( const char* pszFilename )
                       { (void) pszFilename; return FALSE; }
+    virtual GIntBig  GetDiskFreeSpace( const char* pszDirname );
 };
 
 /************************************************************************/
@@ -97,11 +98,12 @@ class VSIWin32Handle : public VSIVirtualHandle
 /* complement it with missing codes.                                    */ 
 /************************************************************************/
 
-static int ErrnoFromGetLastError()
+static int ErrnoFromGetLastError(DWORD dwError = 0)
 {
     int err = 0;
-    DWORD dwError = GetLastError();
-    
+    if( dwError == 0 )
+        dwError = GetLastError();
+
     switch( dwError )
     {
     case NO_ERROR:
@@ -162,7 +164,7 @@ static int ErrnoFromGetLastError()
         err = ENOSPC;
         break;
     case ERROR_HANDLE_EOF:          /* Reached the end of the file. */
-        err = 0; /* There is no errno quivalent, in the errno.h */
+        err = 0; /* There is no errno equivalent in the errno.h */
         break;
     default:
         err = 0;
@@ -221,14 +223,14 @@ int VSIWin32Handle::Seek( vsi_l_offset nOffset, int nWhence )
     {
 #ifdef notdef
         LPVOID      lpMsgBuf = NULL;
-        
+
         FormatMessage( FORMAT_MESSAGE_ALLOCATE_BUFFER 
                        | FORMAT_MESSAGE_FROM_SYSTEM
                        | FORMAT_MESSAGE_IGNORE_INSERTS,
                        NULL, GetLastError(), 
                        MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), 
                        (LPTSTR) &lpMsgBuf, 0, NULL );
- 
+
         printf( "[ERROR %d]\n %s\n", GetLastError(), (char *) lpMsgBuf );
         printf( "nOffset=%u, nMoveLow=%u, dwMoveHigh=%u\n", 
                 (GUInt32) nOffset, nMoveLow, dwMoveHigh );
@@ -266,7 +268,7 @@ int VSIWin32Handle::Flush()
     /* Nothing needed to offer the same guarantee as POSIX fflush() */
     /* FlushFileBuffers() would be closer to fsync() */
     /* See http://trac.osgeo.org/gdal/ticket/5556 */
-    
+
     // Add this as a hack to make ogr_mitab_30 and _31 tests pass
     if( CSLTestBoolean(CPLGetConfigOption("VSI_FLUSH", "FALSE")) )
         FlushFileBuffers(hFile);
@@ -375,6 +377,93 @@ static const char* CPLGetWineVersion()
 }
 
 /************************************************************************/
+/*                           VSIWin32StrlenW()                          */
+/************************************************************************/
+
+static size_t VSIWin32StrlenW(const wchar_t* pwszString)
+{
+    size_t nLen = 0;
+    while( pwszString[nLen] != 0 )
+        nLen ++;
+    return nLen;
+}
+
+/************************************************************************/
+/*                        VSIWin32TryLongFilename()                     */
+/************************************************************************/
+
+static void VSIWin32TryLongFilename(wchar_t*& pwszFilename)
+{
+    size_t nLen = VSIWin32StrlenW(pwszFilename);
+    if( pwszFilename[0] != 0 &&
+        pwszFilename[1] == ':' &&
+        (pwszFilename[2] == '\\' || pwszFilename[2] == '/' ) )
+    {
+        pwszFilename = (wchar_t*) CPLRealloc( pwszFilename,
+                    (4 + nLen + 1) * sizeof(wchar_t));
+        memmove( pwszFilename + 4, pwszFilename, (nLen+1) * sizeof(wchar_t));
+    }
+    else
+    {
+        wchar_t* pwszCurDir = (wchar_t*) CPLMalloc(32768 * sizeof(wchar_t));
+        DWORD nCurDirLen = GetCurrentDirectoryW( 32768, pwszCurDir );
+        CPLAssert(nCurDirLen < 32768);
+        pwszFilename = (wchar_t*) CPLRealloc( pwszFilename,
+                    (4 + nCurDirLen + 1 + nLen + 1) * sizeof(wchar_t));
+        int nOffset = 0;
+        if( pwszFilename[0] == '.' &&
+            (pwszFilename[1] == '/' || pwszFilename[1] == '\\') )
+            nOffset = 2;
+        /* \\$\c:\a\b ..\c --> \\$\c:\a\c */
+        while( pwszFilename[nOffset + 0] == '.' && pwszFilename[nOffset + 1] == '.' &&
+              (pwszFilename[nOffset + 2] == '/' || pwszFilename[nOffset + 2] == '\\') )
+        {
+            DWORD nCurDirLenBefore = nCurDirLen;
+            while( nCurDirLen > 0 && pwszCurDir[nCurDirLen-1] != '\\' )
+                nCurDirLen --;
+            if( nCurDirLen <= 2 )
+            {
+                nCurDirLen = nCurDirLenBefore;
+                break;
+            }
+            nCurDirLen --;
+            nOffset += 3;
+        }
+        memmove( pwszFilename + 4 + nCurDirLen + 1,
+                 pwszFilename + nOffset, (nLen-nOffset+1) * sizeof(wchar_t) );
+        memmove( pwszFilename + 4, pwszCurDir, nCurDirLen * sizeof(wchar_t) );
+        pwszFilename[ 4 + nCurDirLen ] = '\\';
+        CPLFree(pwszCurDir);
+    }
+    pwszFilename[0] = '\\';
+    pwszFilename[1] = '\\';
+    pwszFilename[2] = '?';
+    pwszFilename[3] = '\\';
+
+    for(size_t i = 4; pwszFilename[i] != 0; i++)
+    {
+        if( pwszFilename[i] == '/' )
+            pwszFilename[i] = '\\';
+    }
+#if notdef
+    CPLString osFilename;
+    for(size_t i = 0; pwszFilename[i] != 0; i++)
+        osFilename += (char)pwszFilename[i];
+    CPLDebug("VSI", "Trying %s", osFilename.c_str());
+#endif
+}
+
+/************************************************************************/
+/*                         VSIWin32IsLongFilename()                     */
+/************************************************************************/
+
+static bool VSIWin32IsLongFilename( const wchar_t* pwszFilename )
+{
+    return (pwszFilename[0] == '\\' && pwszFilename[1] == '\\' &&
+            pwszFilename[2] == '?' && pwszFilename[3] == '\\');
+}
+
+/************************************************************************/
 /*                                Open()                                */
 /************************************************************************/
 
@@ -439,6 +528,7 @@ VSIVirtualHandle *VSIWin32FilesystemHandler::Open( const char *pszFilename,
 /*      On Win32 consider treating the filename as utf-8 and            */
 /*      converting to wide characters to open.                          */
 /* -------------------------------------------------------------------- */
+    DWORD nLastError = 0;
     if( CSLTestBoolean(
             CPLGetConfigOption( "GDAL_FILENAME_IS_UTF8", "YES" ) ) )
     {
@@ -449,6 +539,34 @@ VSIVirtualHandle *VSIWin32FilesystemHandler::Open( const char *pszFilename,
                             FILE_SHARE_READ | FILE_SHARE_WRITE, 
                             NULL, dwCreationDisposition,  dwFlagsAndAttributes,
                             NULL );
+        if ( hFile == INVALID_HANDLE_VALUE &&
+            !VSIWin32IsLongFilename(pwszFilename) )
+        {
+            nLastError = GetLastError();
+#ifdef notdef
+            switch( nLastError )
+            {
+                    case ERROR_FILE_NOT_FOUND:      CPLDebug("VSI", "ERROR_FILE_NOT_FOUND"); break;
+                    case ERROR_PATH_NOT_FOUND:      CPLDebug("VSI", "ERROR_PATH_NOT_FOUND"); break;
+                    case ERROR_INVALID_DRIVE:       CPLDebug("VSI", "ERROR_INVALID_DRIVE"); break;
+                    case ERROR_NO_MORE_FILES:       CPLDebug("VSI", "ERROR_NO_MORE_FILES"); break;
+                    case ERROR_BAD_PATHNAME:        CPLDebug("VSI", "ERROR_BAD_PATHNAME"); break;
+                    case ERROR_BAD_NETPATH:         CPLDebug("VSI", "ERROR_BAD_NETPATH"); break;
+                    case ERROR_FILENAME_EXCED_RANGE: CPLDebug("VSI", "ERROR_FILENAME_EXCED_RANGE"); break;
+                    default:  CPLDebug("VSI", "other error %d", nLastError); break;
+            }
+#endif
+        }
+        if( nLastError == ERROR_PATH_NOT_FOUND ||
+            nLastError == ERROR_FILENAME_EXCED_RANGE )
+        {
+            VSIWin32TryLongFilename(pwszFilename);
+            nLastError = 0;
+            hFile = CreateFileW( pwszFilename, dwDesiredAccess, 
+                            FILE_SHARE_READ | FILE_SHARE_WRITE, 
+                            NULL, dwCreationDisposition,  dwFlagsAndAttributes,
+                            NULL );
+        }
         CPLFree( pwszFilename );
     }
     else
@@ -461,7 +579,7 @@ VSIVirtualHandle *VSIWin32FilesystemHandler::Open( const char *pszFilename,
 
     if( hFile == INVALID_HANDLE_VALUE )
     {
-        errno = ErrnoFromGetLastError();
+        errno = ErrnoFromGetLastError(nLastError);
         return NULL;
     }
 
@@ -469,13 +587,13 @@ VSIVirtualHandle *VSIWin32FilesystemHandler::Open( const char *pszFilename,
 /*      Create a VSI file handle.                                       */
 /* -------------------------------------------------------------------- */
     VSIWin32Handle *poHandle = new VSIWin32Handle;
-    
+
     poHandle->hFile = hFile;
     poHandle->bEOF = FALSE;
-    
+
     if (strchr(pszAccess, 'a') != 0)
         poHandle->Seek(0, SEEK_END);
-    
+
 /* -------------------------------------------------------------------- */
 /*      If VSI_CACHE is set we want to use a cached reader instead      */
 /*      of more direct io on the underlying file.                       */
@@ -510,7 +628,48 @@ int VSIWin32FilesystemHandler::Stat( const char * pszFilename,
         wchar_t *pwszFilename = 
             CPLRecodeToWChar( pszFilename, CPL_ENC_UTF8, CPL_ENC_UCS2 );
 
-        nResult = _wstat64( pwszFilename, pStatBuf );
+        bool bTryOtherStatImpl = false;
+        if( VSIWin32IsLongFilename(pwszFilename) )
+        {
+            bTryOtherStatImpl = true;
+            nResult = -1;
+        }
+        else
+        {
+            nResult = _wstat64( pwszFilename, pStatBuf );
+            if( nResult < 0 )
+            {
+                DWORD nLastError = GetLastError();
+                if( nLastError == ERROR_PATH_NOT_FOUND ||
+                    nLastError == ERROR_FILENAME_EXCED_RANGE )
+                {
+                    VSIWin32TryLongFilename(pwszFilename);
+                    bTryOtherStatImpl = true;
+                }
+            }
+        }
+
+        if( bTryOtherStatImpl )
+        {
+            // _wstat64 doesn't like \\?\ paths, so do our poor-man
+            // stat like.
+            //nResult = _wstat64( pwszFilename, pStatBuf );
+
+            VSIVirtualHandle* poHandle = Open( pszFilename, "rb");
+            if( poHandle != NULL )
+            {
+                nResult = 0;
+                memset( pStatBuf, 0, sizeof(VSIStatBufL) );
+                CPL_IGNORE_RET_VAL(poHandle->Seek(0, SEEK_END));
+                pStatBuf->st_mode = S_IFREG;
+                pStatBuf->st_size = poHandle->Tell();
+                poHandle->Close();
+                delete poHandle;
+            }
+            else
+                nResult = -1;
+        }
+
         CPLFree( pwszFilename );
 
         return nResult;
@@ -648,14 +807,14 @@ char **VSIWin32FilesystemHandler::ReadDir( const char *pszPath )
         intptr_t hFile;
         char    *pszFileSpec;
         CPLStringList oDir;
-        
+
         if (strlen(pszPath) == 0)
             pszPath = ".";
-        
+
         pszFileSpec = CPLStrdup(CPLSPrintf("%s\\*.*", pszPath));
         wchar_t *pwszFileSpec = 
             CPLRecodeToWChar( pszFileSpec, CPL_ENC_UTF8, CPL_ENC_UCS2 );
-        
+
         if ( (hFile = _wfindfirst( pwszFileSpec, &c_file )) != -1L )
         {
             do
@@ -663,7 +822,7 @@ char **VSIWin32FilesystemHandler::ReadDir( const char *pszPath )
                 oDir.AddStringDirectly(
                     CPLRecodeFromWChar(c_file.name,CPL_ENC_UCS2,CPL_ENC_UTF8));
             } while( _wfindnext( hFile, &c_file ) == 0 );
-            
+
             _findclose( hFile );
         }
         else
@@ -685,19 +844,19 @@ char **VSIWin32FilesystemHandler::ReadDir( const char *pszPath )
         intptr_t hFile;
         char    *pszFileSpec;
         CPLStringList oDir;
-        
+
         if (strlen(pszPath) == 0)
             pszPath = ".";
-        
+
         pszFileSpec = CPLStrdup(CPLSPrintf("%s\\*.*", pszPath));
-        
+
         if ( (hFile = _findfirst( pszFileSpec, &c_file )) != -1L )
         {
             do
             {
                 oDir.AddString(c_file.name);
             } while( _findnext( hFile, &c_file ) == 0 );
-            
+
             _findclose( hFile );
         }
         else
@@ -708,9 +867,24 @@ char **VSIWin32FilesystemHandler::ReadDir( const char *pszPath )
         }
 
         CPLFree(pszFileSpec);
-        
+
         return oDir.StealList();
     }
+}
+
+/************************************************************************/
+/*                        GetDiskFreeSpace()                            */
+/************************************************************************/
+
+GIntBig VSIWin32FilesystemHandler::GetDiskFreeSpace( const char* pszDirname )
+{
+    GIntBig nRet = -1;
+    ULARGE_INTEGER nFreeBytesAvailable;
+    if( GetDiskFreeSpaceEx(pszDirname, &nFreeBytesAvailable, NULL, NULL) )
+    {
+        nRet = static_cast<GIntBig>(nFreeBytesAvailable.QuadPart);
+    }
+    return nRet;
 }
 
 /************************************************************************/

@@ -3,7 +3,7 @@
  *
  * Project:  GDAL SWIG Interface
  * Purpose:  GDAL XML SWIG Interface declarations.
- * Author:   Tamas Szekeres (szekerest@gmeil.com)
+ * Author:   Tamas Szekeres (szekerest@gmail.com)
  *
  ******************************************************************************
  * Copyright (c) 2005, Tamas Szekeres
@@ -112,8 +112,8 @@ typedef struct CPLXMLNode
         return CPLGetXMLValue( self, pszPath, pszDefault );                    
     }
     
-    // for Java, I don't want to deal with ownerships issues
-    // so I just clone
+    // For Java, I don't want to deal with ownership issues,
+    // so I just clone.
 #ifdef SWIGJAVA
     %apply Pointer NONNULL {CPLXMLNode *psChild};
     void AddXMLChild( CPLXMLNode *psChild )

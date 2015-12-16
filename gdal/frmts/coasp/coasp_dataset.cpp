@@ -42,7 +42,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_COASP(void);
+void GDALRegister_COASP();
 CPL_C_END
 
 static const int TYPE_GENERIC = 0;
@@ -141,14 +141,14 @@ char *COASPMetadataItem::GetItemValue()
 	return VSIStrdup(pszItemValue);
 }
 
-COASPMetadataGeorefGridItem::COASPMetadataGeorefGridItem(int nId, int nPixels, 
-	int nLines, double ndLat, double ndLong)
+COASPMetadataGeorefGridItem::COASPMetadataGeorefGridItem(int nIdIn, int nPixelsIn, 
+	int nLinesIn, double ndLatIn, double ndLongIn)
 {
-	this->nId = nId;
-	this->nPixels = nPixels;
-	this->nLines = nLines;
-	this->ndLat = ndLat;
-	this->ndLong = ndLong;
+	this->nId = nIdIn;
+	this->nPixels = nPixelsIn;
+	this->nLines = nLinesIn;
+	this->ndLat = ndLatIn;
+	this->ndLong = ndLongIn;
         pszItemName = VSIStrdup("georef_grid");
 }
 
@@ -202,10 +202,10 @@ COASPMetadataItem *COASPMetadataReader::GetNextItem()
 		int nCount = CSLCount(papszMDTokens);
                 char *pszItemValue = CPLStrdup(papszMDTokens[1]);
 		for (int i = 2; i < nCount; i++) {
-			int nSize = static_cast<int>(strlen(papszMDTokens[i]));
-			pszItemValue = (char *)CPLRealloc(pszItemValue, 
-				strlen(pszItemValue) + 1 + nSize);
-			sprintf(pszItemValue,"%s %s",pszItemValue, 
+			const size_t nSize = strlen(pszItemValue) + 1 + strlen(papszMDTokens[i]);
+			pszItemValue = (char *)CPLRealloc(pszItemValue, nSize);
+			snprintf(pszItemValue + strlen(pszItemValue),
+                                 nSize - strlen(pszItemValue), " %s",
 				papszMDTokens[i]);
 		}
 
@@ -289,13 +289,13 @@ public:
 		void *pImage);
 };
 
-COASPRasterBand::COASPRasterBand( COASPDataset *poDS, GDALDataType eDataType,
-	int ePol, VSILFILE *fp)
+COASPRasterBand::COASPRasterBand( COASPDataset *poDSIn, GDALDataType eDataTypeIn,
+	int ePolIn, VSILFILE *fpIn)
 {
-	this->fp = fp;
-	this->ePol = ePol;
-	this->poDS = poDS;
-	this->eDataType = eDataType;
+	this->fp = fpIn;
+	this->ePol = ePolIn;
+	this->poDS = poDSIn;
+	this->eDataType = eDataTypeIn;
         nBlockXSize = poDS->GetRasterXSize();
         nBlockYSize = 1;
 }
@@ -536,9 +536,9 @@ GDALDataset *COASPDataset::Open( GDALOpenInfo *poOpenInfo )
 /*                         GDALRegister_COASP()                         */
 /************************************************************************/
 
-void GDALRegister_COASP(void)
+void GDALRegister_COASP()
 {
-    if ( GDALGetDriverByName( "COASP" ) != NULL )
+    if( GDALGetDriverByName( "COASP" ) != NULL )
         return;
 
     GDALDriver *poDriver = new GDALDriver();

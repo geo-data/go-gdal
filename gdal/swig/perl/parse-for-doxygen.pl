@@ -97,8 +97,8 @@ for my $dox (@dox) {
     while (<$fh>) {
         chomp;
         next if $_ eq '';
-        s/^[\s#]+//;
-        #next if $_ eq '';
+        s/^[#]+//;
+        s/^ //;
         my ($w) = /^(\S+)\s/;
         $w //= '';
         if ($w eq '@class') {
@@ -262,8 +262,11 @@ for my $package (sort keys %package) {
         if ($at eq '@cmethod') {
             print "# Class method.\n";
         }
-        if ($at eq '@sub') {
+        elsif ($at eq '@sub') {
             print "# Package subroutine.\n";
+        }
+        elsif ($at eq '@method') {
+            print "# Object method.\n";
         }
         for my $c (@{$package{$package}{dox}{$sub}{c}}) {
             if ($c =~ /^\+list/) {

@@ -36,7 +36,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_DTED(void);
+void GDALRegister_DTED();
 CPL_C_END
 
 /************************************************************************/
@@ -100,11 +100,11 @@ class DTEDRasterBand : public GDALPamRasterBand
 /*                           DTEDRasterBand()                            */
 /************************************************************************/
 
-DTEDRasterBand::DTEDRasterBand( DTEDDataset *poDS, int nBand ) :
+DTEDRasterBand::DTEDRasterBand( DTEDDataset *poDSIn, int nBandIn ) :
     bNoDataSet(TRUE)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     eDataType = GDT_Int16;
 
@@ -271,11 +271,11 @@ DTEDDataset::~DTEDDataset()
 /*                            SetFileName()                             */
 /************************************************************************/
 
-void DTEDDataset::SetFileName(const char* pszFilename)
+void DTEDDataset::SetFileName(const char* pszFilenameIn)
 
 {
     CPLFree(this->pszFilename);
-    this->pszFilename = CPLStrdup(pszFilename);
+    this->pszFilename = CPLStrdup(pszFilenameIn);
 }
 
 /************************************************************************/
@@ -791,7 +791,7 @@ DTEDCreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
         if (iPartialCell < 1)
            iPartialCell=1;
     }
-    sprintf(szPartialCell,"%02d",iPartialCell);
+    snprintf( szPartialCell, sizeof(szPartialCell), "%02d",iPartialCell);
     DTEDSetMetadata(psDTED, DTEDMD_PARTIALCELL_DSI, szPartialCell); 
 
 /* -------------------------------------------------------------------- */

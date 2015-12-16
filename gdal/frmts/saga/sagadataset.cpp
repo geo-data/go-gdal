@@ -55,7 +55,7 @@ CPL_CVSID("$Id$");
 
 
 CPL_C_START
-void	GDALRegister_SAGA(void);
+void GDALRegister_SAGA();
 CPL_C_END
 
 
@@ -395,13 +395,13 @@ CPLErr SAGADataset::SetProjection( const char *pszSRS )
 /*      Write to .prj file.                                             */
 /* -------------------------------------------------------------------- */
     const CPLString osPrjFilename = CPLResetExtension( GetDescription(), "prj" );
-    VSILFILE *fp = VSIFOpenL( osPrjFilename.c_str(), "wt" );
-    if( fp != NULL )
+    VSILFILE *l_fp = VSIFOpenL( osPrjFilename.c_str(), "wt" );
+    if( l_fp != NULL )
     {
-        VSIFWriteL( pszESRI_SRS, 1, strlen(pszESRI_SRS), fp );
+        VSIFWriteL( pszESRI_SRS, 1, strlen(pszESRI_SRS), l_fp );
         VSIFWriteL( reinterpret_cast<void *>( const_cast<char *>(  "\n" ) ),
-                    1, 1, fp );
-        VSIFCloseL( fp );
+                    1, 1, l_fp );
+        VSIFCloseL( l_fp );
     }
 
     CPLFree( pszESRI_SRS );
@@ -417,7 +417,7 @@ GDALDataset *SAGADataset::Open( GDALOpenInfo * poOpenInfo )
 
 {
     /* -------------------------------------------------------------------- */
-    /*	We assume the user is pointing to the binary (ie. .sdat) file.	    */
+    /*  We assume the user is pointing to the binary (i.e. .sdat) file.     */
     /* -------------------------------------------------------------------- */
     if( !EQUAL(CPLGetExtension( poOpenInfo->pszFilename ), "sdat"))
     {
@@ -1060,7 +1060,7 @@ void GDALRegister_SAGA()
     if( GDALGetDriverByName( "SAGA" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "SAGA" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

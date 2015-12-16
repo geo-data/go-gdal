@@ -11,6 +11,8 @@
 
 ## @ignore ApproximateArcAngles
 
+## @ignore OLMD_FID64
+
 ## @ignore ForceTo
 ## @ignore ForceToLineString
 ## @ignore ForceToMultiLineString
@@ -18,7 +20,6 @@
 ## @ignore ForceToMultiPolygon
 ## @ignore ForceToPolygon
 
-## @ignore GeneralCmdLineProcessor
 ## @ignore GeometryTypeToName
 ## @ignore GetFieldTypeName
 
@@ -155,6 +156,10 @@
 # compared to each other with methods Clip, Erase, Identity,
 # Intersection, SymDifference, Union, and Update.
 # @isa (Geo::OGR)
+#
+# A layer may have metadata OLMD_FID64 => 'YES' if it holds features
+# with 64 bit FIDs. The metadata of a layer can be obtained with
+# GetMetadata method.
 
 ## @method @Capabilities()
 # Both a package subroutine and an object method.
@@ -169,7 +174,7 @@
 # @cap = $layer->Capabilities(); # the object method
 # \endcode
 
-## @method Clip(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, subref callback, $callback_data)
+## @method Clip(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, coderef callback, $callback_data)
 # Clip off areas that are not covered by the method layer. The schema
 # of the result layer can be set before calling this method, or is
 # initialized to to contain all fields from
@@ -181,7 +186,7 @@
 # be called with parameters (number progress, string msg, callback_data)
 # @param callback_data [optional]
 
-## @method Intersection(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, subref callback, $callback_data)
+## @method Intersection(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, coderef callback, $callback_data)
 # The result layer contains features whose geometries represent areas
 # that are common between features in the input layer and in the
 # method layer. The schema of the result layer can be set before
@@ -194,7 +199,7 @@
 # be called with parameters (number progress, string msg, callback_data)
 # @param callback_data [optional]
 
-## @method Union(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, subref callback, $callback_data)
+## @method Union(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, coderef callback, $callback_data)
 # The result layer contains features whose geometries represent areas
 # that are in either in the input layer or in the method layer. The
 # schema of the result layer can be set before calling this method, or
@@ -206,7 +211,7 @@
 # be called with parameters (number progress, string msg, callback_data)
 # @param callback_data [optional]
 
-## @method SymDifference(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, subref callback, $callback_data)
+## @method SymDifference(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, coderef callback, $callback_data)
 # The result layer contains features whose geometries represent areas
 # that are in either in the input layer or in the method layer but not
 # in both. The features in the result layer have attributes from both
@@ -222,7 +227,7 @@
 # be called with parameters (number progress, string msg, callback_data)
 # @param callback_data [optional]
 
-## @method Identity(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, subref callback, $callback_data)
+## @method Identity(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, coderef callback, $callback_data)
 # The result layer contains features whose geometries represent areas
 # that are in the input layer. The features in the result layer have
 # attributes from both input and method layers. The schema of the
@@ -235,7 +240,7 @@
 # be called with parameters (number progress, string msg, callback_data)
 # @param callback_data [optional]
 
-## @method Update(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, subref callback, $callback_data)
+## @method Update(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, coderef callback, $callback_data)
 # The result layer contains features whose geometries represent areas
 # that are either in the input layer or in the method layer. The
 # features in the result layer have areas of the features of the
@@ -251,7 +256,7 @@
 # be called with parameters (number progress, string msg, callback_data)
 # @param callback_data [optional]
 
-## @method Erase(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, subref callback, $callback_data)
+## @method Erase(Geo::OGR::Layer method, Geo::OGR::Layer result, hashref options, coderef callback, $callback_data)
 # The result layer contains features whose geometries represent areas
 # that are in the input layer but not in the method layer. The
 # features in the result layer have attributes from the input
@@ -442,6 +447,7 @@
 # @param feature a Geo::OGR::Feature object or reference to feature
 # data in a hash (as in Geo::OGR::Feature::Row) or in an array (as in
 # Geo::OGR::Feature::Tuple)
+# @return the new feature.
 
 ## @method DeleteFeature($fid)
 # @param fid feature id
@@ -550,9 +556,9 @@
 #
 # Get and/set the data of the feature. The expected data in the tuple
 # is ([feature_id,] non-spatial fields, spatial fields). The fields in
-# the order they are in the schema. Field values are set using the
-# Geo::OGR::Feature::Field method. Geometries are set and get using
-# the Geo::OGR::Feature::Geometry method.
+# the tuple are in the order they are in the schema. Field values are
+# set using the Geo::OGR::Feature::Field method. Geometries are set
+# and get using the Geo::OGR::Feature::Geometry method.
 # @param tuple [optional] feature data in an array
 # @return feature data in an array
 
@@ -758,7 +764,7 @@
 ## @ignore AddGeomFieldDefn
 
 ## @method AddField(%params)
-# @param params named parameters to create a new Geo::OGR::FieldDefn
+# @param params Named parameters to create a new Geo::OGR::FieldDefn
 # or Geo::OGR::GeomFieldDefn object.
 
 ## @ignore DeleteGeomFieldDefn
@@ -832,20 +838,12 @@
 ## @cmethod Geo::OGR::FieldDefn new(%params)
 # @brief Create a new field definition.
 #
-# This method supports both an argument list and named arguments.
-#
-# @param name Field name (please do not try to name the field as Name or Type etc.).
-# @param type One of supported field types
-# (see Geo::OGR::FieldDefn::Types). Optional. Default is String.
-#
-# or
-#
-# @param params one or more of:
+# @param Named parameters:
 # - \a Name Field name (default is 'unnamed').
 # - \a Type Field type, one of Geo::OGR::FieldDefn::Types (default is 'String').
 # - \a SubType Field sub type, one of Geo::OGR::FieldDefn::SubTypes.
 # - \a Justify Justify value, one of Geo::OGR::FieldDefn::JustifyValues
-# - \a Width
+# - \a Width 
 # - \a Precision
 # - \a Nullable (default is true)
 # - \a Default 
@@ -1030,8 +1028,7 @@
 # Same as Geo::OGR::ByteOrders
 
 ## @cmethod Geo::OGR::Geometry new(%params)
-# @param %params A named parameter, one of: WKT, WKB, HEXWKB,
-# HEXEWKB, GML, GeoJSON, arc, or GeometryType and optionally Points.
+# @param %params A named parameter, one of:
 # - \a GeometryType one the supported geometry types, see Geo::OGR::GeometryTypes.
 # - \a WKT a well known text string, which defines a geometry.
 # - \a WKB a well known binary string, which defines a geometry.
@@ -1046,26 +1043,20 @@
 #      Geo::OGR::Geometry::Points; Note: requires also GeometryType
 #      parameter
 #
-# @note uses CreateGeometryFrom* functions from Geo::OGR
-#
 # @return a new Geo::OGR::Geometry object.
-# Usage:
-# \code
-# $g = Geo::OGR::Geometry->new(...arguments...);
-# \endcode
 
 ## @sub Geo::OGR::Geometry ApproximateArcAngles(%params)
 # Create a line string, which approximates an arc. 
 # @note All angles are in degrees.
 #
-# @param %params named parameters, these are:
+# @param %params Named parameters:
 # - \a Center center point (default is [0, 0, 0])
-# - \a PrimaryRadius default is 1,
-# - \a SecondaryAxis default is 1,
-# - \a Rotation default is 0,
-# - \a StartAngle default is 0,
-# - \a EndAngle default is 360,
-# - \a MaxAngleStepSizeDegrees default is 4 
+# - \a PrimaryRadius default is 1.
+# - \a SecondaryAxis default is 1.
+# - \a Rotation default is 0.
+# - \a StartAngle default is 0.
+# - \a EndAngle default is 360.
+# - \a MaxAngleStepSizeDegrees default is 4. 
 # @return a new Geo::OGR::Geometry object.
 
 ## @method FlattenTo2D()
@@ -1100,13 +1091,24 @@
 
 ## @method $As(%params)
 # Export the geometry into a known format.
-
-# @param params named parameters, either: Text (a.k.a WKT), WKB
-# (a.k.a. Binary) (ByteOrder can also be defined, default is 'XDR'),
-# ISO WKT and WKB, HEXWKB, HEXEWKB (srid can also be given), GML,
-# GeoJSON, Binary.
-
-# @note Uses As\<format\>/ExportTo\<format\> methods.
+#
+# @param params Named parameters:
+# - \a Format One of 
+#     - \a WKT Well Known Text.
+#     - <em>ISO WKT</em>
+#     - \a Text Same as WKT.
+#     - \a WKB Well Known Binary.
+#     - <em>ISO WKB</em>
+#     - \a Binary Same as WKB.
+#     - \a HEXWKB
+#     - \a HEXEWKB
+#     - \a GML
+#     - \a GeoJSON
+# - \a ByteOrder Byte order for binary formats. Default is 'XDR'.
+# - \a SRID Spatial reference id for HEXEWKB.
+# - \a Options GML generation options.
+# - \a AltitudeMode For KML.
+#
 # @return the geometry in a given format.
 
 ## @method AddPoint($x, $y, $z)

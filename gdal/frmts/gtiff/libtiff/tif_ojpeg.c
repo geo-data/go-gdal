@@ -113,7 +113,7 @@
    planarconfig is not separate (vast majority). We may one day use that to build
    converters to JPEG, and/or to new-style JPEG compression inside TIFF.
 
-   A dissadvantage is the lack of random access to the individual striles. This is the
+   A disadvantage is the lack of random access to the individual striles. This is the
    reason for much of the complicated restart-and-position stuff inside OJPEGPreDecode.
    Applications would do well accessing all striles in order, as this will result in
    a single sequential scan of the input stream, and no restarting of LibJpeg decoding
@@ -1381,7 +1381,8 @@ OJPEGReadHeaderInfoSec(TIFF* tif)
 static int
 OJPEGReadHeaderInfoSecStreamDri(TIFF* tif)
 {
-	/* this could easilly cause trouble in some cases... but no such cases have occured sofar */
+	/* This could easily cause trouble in some cases... but no such cases have
+           occurred so far */
 	static const char module[]="OJPEGReadHeaderInfoSecStreamDri";
 	OJPEGState* sp=(OJPEGState*)tif->tif_data;
 	uint16 m;

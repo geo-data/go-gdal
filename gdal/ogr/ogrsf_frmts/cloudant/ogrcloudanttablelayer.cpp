@@ -41,9 +41,9 @@ CPL_CVSID("$Id$");
 /*                       OGRCloudantTableLayer()                         */
 /************************************************************************/
 
-OGRCloudantTableLayer::OGRCloudantTableLayer(OGRCloudantDataSource* poDS,
+OGRCloudantTableLayer::OGRCloudantTableLayer(OGRCloudantDataSource* poDSIn,
                                            const char* pszName) :
-                                                        OGRCouchDBTableLayer((OGRCouchDBDataSource*) poDS, pszName)
+                                                        OGRCouchDBTableLayer((OGRCouchDBDataSource*) poDSIn, pszName)
 
 {
     bHasStandardSpatial = -1;
@@ -65,7 +65,7 @@ OGRCloudantTableLayer::~OGRCloudantTableLayer()
     }
 
     if (pszSpatialDDoc)
-        free((void*)pszSpatialDDoc);
+        CPLFree(pszSpatialDDoc);
 }
 
 /************************************************************************/
@@ -226,12 +226,14 @@ void OGRCloudantTableLayer::GetSpatialView()
         if ((papszTokens[0] == NULL) || (papszTokens[1] == NULL))
         {
             CPLError(CE_Failure, CPLE_AppDefined, "GetSpatialView() failed, invalid spatial design doc.");
+            CSLDestroy(papszTokens);
             return;
         }
 
-        pszSpatialDDoc = (char*) calloc(strlen(papszTokens[0]) + strlen(papszTokens[1]) + 2, 1);
+        const size_t nLen = strlen(papszTokens[0]) + strlen(papszTokens[1]) + 2;
+        pszSpatialDDoc = (char*) CPLCalloc(nLen, 1);
 
-        sprintf(pszSpatialDDoc, "%s/%s", papszTokens[0], papszTokens[1]);
+        snprintf(pszSpatialDDoc, nLen, "%s/%s", papszTokens[0], papszTokens[1]);
 
         CSLDestroy(papszTokens);  
 
@@ -339,7 +341,7 @@ void OGRCloudantTableLayer::WriteMetadata()
     json_object* poFields = json_object_new_array();
     json_object_object_add(poDDocObj, "fields", poFields);
 
-    for(int i=FIRST_FIELD;i<poFeatureDefn->GetFieldCount();i++)
+    for(int i=COUCHDB_FIRST_FIELD;i<poFeatureDefn->GetFieldCount();i++)
     {
         json_object* poField = json_object_new_object();
         json_object_array_add(poFields, poField);

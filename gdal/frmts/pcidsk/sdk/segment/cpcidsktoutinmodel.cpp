@@ -56,10 +56,10 @@ namespace
 #endif
 }
 
-CPCIDSKToutinModelSegment::CPCIDSKToutinModelSegment(PCIDSKFile *file, 
-                                                   int segment,
+CPCIDSKToutinModelSegment::CPCIDSKToutinModelSegment(PCIDSKFile *fileIn, 
+                                                   int segmentIn,
                                                    const char *segment_pointer) :
-    CPCIDSKEphemerisSegment(file, segment, segment_pointer,false)
+    CPCIDSKEphemerisSegment(fileIn, segmentIn, segment_pointer,false)
 {
     loaded_ = false;
     mbModified = false;
@@ -116,15 +116,14 @@ void CPCIDSKToutinModelSegment::Load()
     seg_data.SetSize((int)data_size - 1024);
     
     ReadFromFile(seg_data.buffer, 0, data_size - 1024);
-    
+
     SRITInfo_t* poInfo = BinaryToSRITInfo();
 
     mpoInfo = poInfo;
-    
+
     // We've now loaded the structure up with data. Mark it as being loaded 
     // properly.
     loaded_ = true;
-    
 }
 
 /**
@@ -145,7 +144,7 @@ void CPCIDSKToutinModelSegment::Write(void)
 }
 
 /**
- * Synchronize the segement, if it was modified then
+ * Synchronize the segment, if it was modified then
  * write it into disk.
  */
 void CPCIDSKToutinModelSegment::Synchronize()
@@ -199,7 +198,7 @@ CPCIDSKToutinModelSegment::BinaryToSRITInfo()
 /*      Allocate the SRITModel.                                         */
 /* -------------------------------------------------------------------- */
     SRITModel = new SRITInfo_t();
-    
+
     SRITModel->GCPMeanHtFlag = 0;
     SRITModel->nDownSample = 1;
     if(STARTS_WITH(seg_data.Get(22,2) , "DS"))
@@ -210,7 +209,7 @@ CPCIDSKToutinModelSegment::BinaryToSRITInfo()
 /* -------------------------------------------------------------------- */
 /*      Read the Block 1                                                */
 /* -------------------------------------------------------------------- */
-    
+
     SRITModel->N0x2        = seg_data.GetDouble(512,22);
     SRITModel->aa          = seg_data.GetDouble(512+22,22);
     SRITModel->SmALPHA     = seg_data.GetDouble(512+44,22);
@@ -244,9 +243,9 @@ CPCIDSKToutinModelSegment::BinaryToSRITInfo()
         SRITModel->delL   = 0.0;
         SRITModel->delTau = 0.0;
     }
-                                                                  
+
 /* -------------------------------------------------------------------- */
-/*	Read the GCP information in Block 2     			*/
+/*      Read the GCP information in Block 2                             */
 /* -------------------------------------------------------------------- */
 
     SRITModel->nGCPCount       = seg_data.GetInt(2*512,10); 
@@ -334,8 +333,8 @@ CPCIDSKToutinModelSegment::BinaryToSRITInfo()
             AttitudeSeg_t *attitudeSeg
                 = SRITModel->OrbitPtr->AttitudeSeg;
 
-	    ndata = SRITModel->OrbitPtr->AttitudeSeg->NumberOfLine;
-       
+            ndata = SRITModel->OrbitPtr->AttitudeSeg->NumberOfLine;
+
             for (i=0; i<ndata; i++)
             {
                 SRITModel->Hdeltat.push_back(
@@ -359,14 +358,14 @@ CPCIDSKToutinModelSegment::BinaryToSRITInfo()
 /************************************************************************/
 /**
   * Translate a SRITInfo_t into binary data.
-  * Translate a SRITInfo_t into the corresponding block of          
-  * binary data.  This function is expected to be used by           
-  * ranslators such as iisopen.c (VISTA) so that our satellite     
-  * models can be converted into some opaque serialized form.       
-  * Translate a RFInfo_t into the corresponding block of binary data. 
+  * Translate a SRITInfo_t into the corresponding block of
+  * binary data.  This function is expected to be used by
+  * translators such as iisopen.c (VISTA) so that our satellite
+  * models can be converted into some opaque serialized form.
+  * Translate a RFInfo_t into the corresponding block of binary data.
   *
-  * @param  SRITModel	     Satellite Model structure.
-  * @param  pnBinaryLength	Length of binary data.
+  * @param  SRITModel        Satellite Model structure.
+  * @param  pnBinaryLength   Length of binary data.
   * @return Binary data for a  Satellite Model structure.
   */
 void
@@ -384,7 +383,7 @@ CPCIDSKToutinModelSegment::SRITInfoToBinary( SRITInfo_t *SRITModel )
 
     //clean the buffer
     memset( seg_data.buffer , ' ', 512 * 21 );
-    
+
 /* -------------------------------------------------------------------- */
 /*	Initialize the header.						*/
 /* -------------------------------------------------------------------- */
@@ -398,7 +397,7 @@ CPCIDSKToutinModelSegment::SRITInfoToBinary( SRITInfo_t *SRITModel )
 /*      Write the model results to second segment                       */
 /* -------------------------------------------------------------------- */
     nPos = 512*1;
-    
+
     seg_data.Put(SRITModel->N0x2,nPos,22,"%22.14f");
     seg_data.Put(SRITModel->aa,nPos+22,22,"%22.14f");
     seg_data.Put(SRITModel->SmALPHA,nPos+22*2,22,"%22.14f");
@@ -424,7 +423,7 @@ CPCIDSKToutinModelSegment::SRITInfoToBinary( SRITInfo_t *SRITModel )
     seg_data.Put(SRITModel->delTau,nPos+22*22,22,"%22.14f");
 
 /* -------------------------------------------------------------------- */
-/*      Find the min and max height					*/
+/*      Find the min and max height                                     */
 /* -------------------------------------------------------------------- */
     nPos = 2*512;
 

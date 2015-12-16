@@ -82,9 +82,9 @@ class MAPWrapperRasterBand : public GDALProxyRasterBand
     virtual GDALRasterBand* RefUnderlyingRasterBand() { return poBaseBand; }
 
   public:
-    explicit MAPWrapperRasterBand( GDALRasterBand* poBaseBand )
+    explicit MAPWrapperRasterBand( GDALRasterBand* poBaseBandIn )
         {
-            this->poBaseBand = poBaseBand;
+            this->poBaseBand = poBaseBandIn;
             eDataType = poBaseBand->GetRasterDataType();
             poBaseBand->GetBlockSize(&nBlockXSize, &nBlockYSize);
         }
@@ -484,14 +484,12 @@ void GDALRegister_MAP()
     if( GDALGetDriverByName( "MAP" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "MAP" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "OziExplorer .MAP" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_map.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "OziExplorer .MAP" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_map.html" );
 
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 

@@ -81,10 +81,10 @@ OGRCurvePolygon::~OGRCurvePolygon()
 
 /**
  * \brief Assignment operator.
- * 
+ *
  * Note: before GDAL 2.1, only the default implementation of the operator
  * existed, which could be unsafe to use.
- * 
+ *
  * @since GDAL 2.1
  */
 
@@ -93,7 +93,7 @@ OGRCurvePolygon& OGRCurvePolygon::operator=( const OGRCurvePolygon& other )
     if( this != &other)
     {
         OGRSurface::operator=( other );
-        
+
         oCC = other.oCC;
     }
     return *this;
@@ -110,11 +110,17 @@ OGRGeometry *OGRCurvePolygon::clone() const
 
     poNewPolygon = (OGRCurvePolygon*)
             OGRGeometryFactory::createGeometry(getGeometryType());
+    if( poNewPolygon == NULL )
+        return NULL;
     poNewPolygon->assignSpatialReference( getSpatialReference() );
 
     for( int i = 0; i < oCC.nCurveCount; i++ )
     {
-        poNewPolygon->addRing( oCC.papoCurves[i] );
+        if( poNewPolygon->addRing( oCC.papoCurves[i] ) != OGRERR_NONE )
+        {
+            delete poNewPolygon;
+            return NULL;
+        }
     }
 
     return poNewPolygon;
@@ -301,6 +307,8 @@ OGRErr OGRCurvePolygon::addRing( OGRCurve * poNewRing )
 
 {
     OGRCurve* poNewRingCloned = (OGRCurve* )poNewRing->clone();
+    if( poNewRingCloned == NULL )
+        return OGRERR_FAILURE;
     OGRErr eErr = addRingDirectly(poNewRingCloned);
     if( eErr != OGRERR_NONE )
         delete poNewRingCloned;
@@ -406,6 +414,7 @@ OGRErr OGRCurvePolygon::importFromWkb( unsigned char * pabyData,
 {
     OGRwkbByteOrder eByteOrder;
     int nDataOffset = 0;
+    /* coverity[tainted_data] */
     OGRErr eErr = oCC.importPreambuleFromWkb(this, pabyData, nSize, nDataOffset,
                                              eByteOrder, 9, eWkbVariant);
     if( eErr != OGRERR_NONE )
@@ -551,7 +560,7 @@ void OGRCurvePolygon::getEnvelope( OGREnvelope * psEnvelope ) const
 /************************************************************************/
 /*                            getEnvelope()                             */
 /************************************************************************/
- 
+
 void OGRCurvePolygon::getEnvelope( OGREnvelope3D * psEnvelope ) const
 
 {
@@ -567,13 +576,13 @@ OGRBoolean OGRCurvePolygon::Equals( OGRGeometry * poOther ) const
 {
     if( poOther == this )
         return TRUE;
-    
+
     if( poOther->getGeometryType() != getGeometryType() )
         return FALSE;
 
     if ( IsEmpty() && poOther->IsEmpty() )
         return TRUE;
-    
+
     OGRCurvePolygon *poOPoly = (OGRCurvePolygon *) poOther;
     return oCC.Equals( &(poOPoly->oCC) );
 }

@@ -140,10 +140,10 @@ class OGRProj4CT : public OGRCoordinateTransformation
     int         bWebMercatorToWGS84;
 
     int         nErrorCount;
-    
+
     int         bCheckWithInvertProj;
     double      dfThreshold;
-    
+
     projCtx     pjctx;
 
     int         InitializeNoLock( OGRSpatialReference *poSource, 
@@ -222,6 +222,7 @@ static bool LoadProjLibrary_unlocked()
 #else
     CPLPushErrorHandler( CPLQuietErrorHandler );
 
+    /* coverity[tainted_string] */
     pfn_pj_init = (projPJ (*)(int, char**)) CPLGetSymbol( pszLibName,
                                                        "pj_init" );
     CPLPopErrorHandler();
@@ -363,7 +364,7 @@ char *OCTProj4Normalize( const char *pszProj4Src )
  *
  * @param hCT the object to delete
  */
- 
+
 void CPL_STDCALL
 OCTDestroyCoordinateTransformation( OGRCoordinateTransformationH hCT )
 
@@ -390,7 +391,7 @@ OCTDestroyCoordinateTransformation( OGRCoordinateTransformationH hCT )
  *
  * @since GDAL 1.7.0
  */
- 
+
 void OGRCoordinateTransformation::DestroyCT(OGRCoordinateTransformation* poCT)
 {
     delete poCT;
@@ -468,7 +469,7 @@ OGRCreateCoordinateTransformation( OGRSpatialReference *poSource,
  * @param hTargetSRS target spatial reference system. 
  * @return NULL on failure or a ready to use transformation object.
  */
- 
+
 OGRCoordinateTransformationH CPL_STDCALL 
 OCTNewCoordinateTransformation(
     OGRSpatialReferenceH hSourceSRS, OGRSpatialReferenceH hTargetSRS )
@@ -648,9 +649,9 @@ int OGRProj4CT::InitializeNoLock( OGRSpatialReference * poSourceIn,
         bTargetWrap = TRUE;
         CPLDebug( "OGRCT", "Wrap target at %g.", dfTargetWrapLong );
     }
-    
+
     bCheckWithInvertProj = CSLTestBoolean(CPLGetConfigOption( "CHECK_WITH_INVERT_PROJ", "NO" ));
-    
+
     /* The threshold is rather experimental... Works well with the cases of ticket #2305 */
     if (bSourceLatLong)
         dfThreshold = CPLAtof(CPLGetConfigOption( "THRESHOLD", ".1" ));
@@ -659,9 +660,9 @@ int OGRProj4CT::InitializeNoLock( OGRSpatialReference * poSourceIn,
         /* a tolerance of 10000 */
         dfThreshold = CPLAtof(CPLGetConfigOption( "THRESHOLD", "10000" ));
 
-    // OGRThreadSafety: The following variable is not a thread safety issue 
-    // since the only issue is incrementing while accessing which at worse 
-    // means debug output could be one "increment" late. 
+    // OGRThreadSafety: The following variable is not a thread safety issue
+    // since the only issue is incrementing while accessing which at worse
+    // means debug output could be one "increment" late.
     static int   nDebugReportCount = 0;
 
     char        *pszSrcProj4Defn = NULL;
@@ -764,7 +765,7 @@ int OGRProj4CT::InitializeNoLock( OGRSpatialReference * poSourceIn,
         pszDst = strstr(pszSrcProj4Defn, "+nadgrids=@null ");
         pszSrc = pszDst + strlen("+nadgrids=@null ");
         memmove(pszDst, pszSrc, strlen(pszSrc)+1);
-        
+
         pszDst = strstr(pszSrcProj4Defn, "+wktext ");
         if( pszDst )
         {
@@ -785,7 +786,7 @@ int OGRProj4CT::InitializeNoLock( OGRSpatialReference * poSourceIn,
             psPJSource = pfn_pj_init_plus_ctx( pjctx, pszSrcProj4Defn );
         else
             psPJSource = pfn_pj_init_plus( pszSrcProj4Defn );
-        
+
         if( psPJSource == NULL )
         {
             if( pjctx != NULL)
@@ -815,7 +816,7 @@ int OGRProj4CT::InitializeNoLock( OGRSpatialReference * poSourceIn,
             }
         }
     }
-    
+
     if( nDebugReportCount < 10 )
         CPLDebug( "OGRCT", "Source: %s", pszSrcProj4Defn );
 
@@ -835,7 +836,7 @@ int OGRProj4CT::InitializeNoLock( OGRSpatialReference * poSourceIn,
             psPJTarget = pfn_pj_init_plus_ctx( pjctx, pszDstProj4Defn );
         else
             psPJTarget = pfn_pj_init_plus( pszDstProj4Defn );
-        
+
         if( psPJTarget == NULL )
             CPLError( CE_Failure, CPLE_NotSupported, 
                     "Failed to initialize PROJ.4 with `%s'.", 
@@ -1079,7 +1080,7 @@ int OGRProj4CT::TransformEx( int nCount, double *x, double *y, double *z,
             {
                 memcpy(padfTargetZ, z, sizeof(double)*nCount);
             }
-            
+
             err = pfn_pj_transform( psPJTarget, psPJSource , nCount, 1,
                                     padfTargetX, padfTargetY, (z) ? padfTargetZ : NULL);
             if (err == 0)
@@ -1122,7 +1123,7 @@ int OGRProj4CT::TransformEx( int nCount, double *x, double *y, double *z,
             const char *pszError = NULL;
             if( pfn_pj_strerrno != NULL )
                 pszError = pfn_pj_strerrno( err );
-            
+
             if( pszError == NULL )
                 CPLError( CE_Failure, CPLE_AppDefined, 
                           "Reprojection failed, err = %d", 

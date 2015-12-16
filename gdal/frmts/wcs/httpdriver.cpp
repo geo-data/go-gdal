@@ -86,7 +86,7 @@ static GDALDataset *HTTPOpen( GDALOpenInfo * poOpenInfo )
 /*      Fetch the result.                                               */
 /* -------------------------------------------------------------------- */
     CPLErrorReset();
-    
+
     CPLHTTPResult *psResult = CPLHTTPFetch( poOpenInfo->pszFilename, NULL );
 
 /* -------------------------------------------------------------------- */
@@ -199,20 +199,17 @@ static GDALDataset *HTTPOpen( GDALOpenInfo * poOpenInfo )
 void GDALRegister_HTTP()
 
 {
-    GDALDriver	*poDriver;
+    if( GDALGetDriverByName( "HTTP" ) != NULL )
+        return;
 
-    if( GDALGetDriverByName( "HTTP" ) == NULL )
-    {
-        poDriver = new GDALDriver();
-        
-        poDriver->SetDescription( "HTTP" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DCAP_VECTOR, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, 
-                                   "HTTP Fetching Wrapper" );
-        
-        poDriver->pfnOpen = HTTPOpen;
+    GDALDriver *poDriver = new GDALDriver();
 
-        GetGDALDriverManager()->RegisterDriver( poDriver );
-    }
+    poDriver->SetDescription( "HTTP" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DCAP_VECTOR, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "HTTP Fetching Wrapper" );
+
+    poDriver->pfnOpen = HTTPOpen;
+
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

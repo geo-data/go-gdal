@@ -30,7 +30,6 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
-#define  _USE_MATH_DEFINES
 
 #include "ogr_sxf.h"
 #include "cpl_conv.h"
@@ -59,7 +58,7 @@ OGRSXFLayer::OGRSXFLayer(VSILFILE* fp, CPLMutex** hIOMutex, GByte nID, const cha
     poFeatureDefn = new OGRFeatureDefn(pszLayerName);
     SetDescription( poFeatureDefn->GetName() );
     poFeatureDefn->Reference();
-    
+
     poFeatureDefn->SetGeomType(wkbUnknown);
     if (poFeatureDefn->GetGeomFieldCount() != 0)
         poFeatureDefn->GetGeomFieldDefn(0)->SetSpatialRef(stSXFMapDescription.pSpatRef);
@@ -420,9 +419,9 @@ int OGRSXFLayer::TestCapability( const char * pszCap )
 /*                                TranslateXYH()                        */
 /************************************************************************/
 /****
- * TODO : Take into account informations given in the passport
- * like unit of mesurement, type and dimensions (integer, float, double) of coordinate,
- * the vector format ....
+ * TODO : Take into account information given in the passport
+ * like unit of measurement, type and dimensions (integer, float, double) of
+ * coordinate, the vector format, etc.
  */
 
 GUInt32 OGRSXFLayer::TranslateXYH(const SXFRecordDescription& certifInfo,
@@ -680,6 +679,7 @@ OGRFeature *OGRSXFLayer::GetNextRawFeature(long nFID)
         eGeomType = SXF_GT_Point;
     else if (code == 0x03) // xxxx0011
         eGeomType = SXF_GT_Text;
+#ifdef not_possible_given_above_code /* see below code too if re-enabling this */
     //beginning 4.0
     else if (code == 0x04) // xxxx0100
     {
@@ -687,6 +687,7 @@ OGRFeature *OGRSXFLayer::GetNextRawFeature(long nFID)
             "SXF. Not support type.");
         eGeomType = SXF_GT_Vector;
     }
+#endif
     else if (code == 0x05) // xxxx0101
         eGeomType = SXF_GT_TextTemplate;
     else if (code == 0x21)
@@ -793,6 +794,7 @@ OGRFeature *OGRSXFLayer::GetNextRawFeature(long nFID)
         poFeature = TranslateVetorAngle(stCertInfo, recordCertifBuf,
             stRecordHeader.nGeometryLength);
     }
+#ifdef not_possible_given_above_code
     else if (eGeomType == SXF_GT_Vector )
     {
       CPLError( CE_Warning, CPLE_NotSupported,
@@ -800,6 +802,7 @@ OGRFeature *OGRSXFLayer::GetNextRawFeature(long nFID)
       CPLFree(recordCertifBuf);
       return NULL;
     }
+#endif
     else if (eGeomType == SXF_GT_TextTemplate ) // TODO realise this
     {
       CPLError( CE_Warning, CPLE_NotSupported,
@@ -1157,7 +1160,6 @@ OGRFeature *OGRSXFLayer::TranslateLine(const SXFRecordDescription& certifInfo,
     double dfY = 1.0;
     double dfZ = 0.0;
     GUInt32 nOffset = 0;
-    GUInt32 count;
     GUInt32 nDelta = 0;
 
     //OGRFeatureDefn *fd = poFeatureDefn->Clone();
@@ -1171,7 +1173,7 @@ OGRFeature *OGRSXFLayer::TranslateLine(const SXFRecordDescription& certifInfo,
 
     OGRLineString* poLS = new OGRLineString();
 
-    for(count=0 ; count <  certifInfo.nPointCount ; count++)
+    for(GUInt32 count=0 ; count <  certifInfo.nPointCount ; count++)
     {
         const char * psCoords = psRecordBuf + nOffset ;
 
@@ -1412,7 +1414,7 @@ OGRFeature *OGRSXFLayer::TranslatePolygon(const SXFRecordDescription& certifInfo
             poLS->addPoint( dfX, dfY, dfZ );
         }
 
-        OGRLinearRing *poLR = new OGRLinearRing();
+        poLR = new OGRLinearRing();
         poLR->addSubLineString( poLS, 0 );
 
         poPoly->addRingDirectly( poLR );

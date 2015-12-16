@@ -42,6 +42,9 @@ CPL_CVSID("$Id$");
 #  include "util/Files/EnvisatFile.h"
 #endif
 
+CPL_INLINE static void CPL_IGNORE_RET_VAL_INT(CPL_UNUSED int unused) {}
+CPL_INLINE static void CPL_IGNORE_RET_VAL_SIZET(CPL_UNUSED size_t unused) {}
+
 typedef struct 
 {
     char	*ds_name;
@@ -57,6 +60,7 @@ typedef struct
 {
     char	*key;
     char	*value;
+    size_t      value_len;
     char	*units;
     char	*literal_line;
     int         value_offset;
@@ -155,14 +159,14 @@ static int EnvisatFile_SetupLevel0( EnvisatFile *self )
      * Figure out how long the file is. 
      */
 
-    VSIFSeekL( self->fp, 0, SEEK_END );
+    CPL_IGNORE_RET_VAL_INT(VSIFSeekL( self->fp, 0, SEEK_END ));
     file_length = (int) VSIFTellL( self->fp );
     
     /* 
      * Read the first record header, and verify the well known values.
      */
-    VSIFSeekL( self->fp, 3203, SEEK_SET );
-    VSIFReadL( header, 68, 1, self->fp );
+    CPL_IGNORE_RET_VAL_INT(VSIFSeekL( self->fp, 3203, SEEK_SET ));
+    CPL_IGNORE_RET_VAL_SIZET(VSIFReadL( header, 68, 1, self->fp ));
 
     if( header[38] != 0 || header[39] != 0x1d
         || header[40] != 0 || header[41] != 0x54 )
@@ -250,7 +254,7 @@ int EnvisatFile_Open( EnvisatFile **self_ptr,
     {
         char	error_buf[2048];
 
-        sprintf( error_buf, 
+        snprintf( error_buf, sizeof(error_buf), 
                  "Unable to open file \"%s\" in EnvisatFile_Open().", 
                  filename );
 
@@ -474,7 +478,7 @@ int EnvisatFile_Create( EnvisatFile **self_ptr,
     {
         char	error_buf[2048];
 
-        sprintf( error_buf, 
+        snprintf( error_buf, sizeof(error_buf), 
                  "Unable to open file \"%s\" in EnvisatFile_Create().", 
                  template_file );
 
@@ -482,13 +486,13 @@ int EnvisatFile_Create( EnvisatFile **self_ptr,
         return FAILURE;
     }
 
-    VSIFSeekL( fp, 0, SEEK_END );
+    CPL_IGNORE_RET_VAL_INT(VSIFSeekL( fp, 0, SEEK_END ));
     template_size = (int) VSIFTellL( fp );
 
     template_data = (char *) CPLMalloc(template_size);
     
-    VSIFSeekL( fp, 0, SEEK_SET );
-    VSIFReadL( template_data, template_size, 1, fp );
+    CPL_IGNORE_RET_VAL_INT(VSIFSeekL( fp, 0, SEEK_SET ));
+    CPL_IGNORE_RET_VAL_SIZET(VSIFReadL( template_data, template_size, 1, fp ));
     VSIFCloseL( fp );
 
     /*
@@ -500,7 +504,7 @@ int EnvisatFile_Create( EnvisatFile **self_ptr,
     {
         char	error_buf[2048];
 
-        sprintf( error_buf, 
+        snprintf( error_buf, sizeof(error_buf), 
                  "Unable to open file \"%s\" in EnvisatFile_Create().", 
                  filename );
 
@@ -508,7 +512,7 @@ int EnvisatFile_Create( EnvisatFile **self_ptr,
         return FAILURE;
     }
 
-    VSIFWriteL( template_data, template_size, 1, fp );
+    CPL_IGNORE_RET_VAL_SIZET(VSIFWriteL( template_data, template_size, 1, fp ));
     VSIFCloseL( fp );
 
     CPLFree( template_data );
@@ -642,22 +646,26 @@ static int EnvisatFile_RewriteHeader( EnvisatFile *self )
         if( key_index == -1 )
             continue;
 
-        sprintf( dsdh_entries[key_index]->value, "%+021d", 
+        snprintf( dsdh_entries[key_index]->value,
+                  dsdh_entries[key_index]->value_len, "%+021d", 
                  self->ds_info[dsd]->ds_offset );
 
         key_index = S_NameValueList_FindKey( "DS_SIZE", 
                                              dsdh_count, dsdh_entries );
-        sprintf( dsdh_entries[key_index]->value, "%+021d", 
+        snprintf( dsdh_entries[key_index]->value,
+                  dsdh_entries[key_index]->value_len, "%+021d", 
                  self->ds_info[dsd]->ds_size );
 
         key_index = S_NameValueList_FindKey( "NUM_DSR", 
                                              dsdh_count, dsdh_entries );
-        sprintf( dsdh_entries[key_index]->value, "%+011d", 
+        snprintf( dsdh_entries[key_index]->value,
+                  dsdh_entries[key_index]->value_len, "%+011d", 
                  self->ds_info[dsd]->num_dsr );
 
         key_index = S_NameValueList_FindKey( "DSR_SIZE", 
                                              dsdh_count, dsdh_entries );
-        sprintf( dsdh_entries[key_index]->value, "%+011d", 
+        snprintf( dsdh_entries[key_index]->value,
+                  dsdh_entries[key_index]->value_len, "%+011d", 
                  self->ds_info[dsd]->dsr_size );
 
         if( S_NameValueList_Rewrite( self->fp, dsdh_count, dsdh_entries )
@@ -929,7 +937,7 @@ int EnvisatFile_SetKeyValueAsString( EnvisatFile *self,
     {
         char	error_buf[2048];
 
-        sprintf( error_buf, 
+        snprintf( error_buf, sizeof(error_buf),
                  "Unable to set header field \"%s\", field not found.", 
                  key );
 
@@ -1047,7 +1055,7 @@ int EnvisatFile_SetKeyValueAsInt( EnvisatFile *self,
     {
         char	error_buf[2048];
 
-        sprintf( error_buf, 
+        snprintf( error_buf, sizeof(error_buf), 
                  "Unable to set header field \"%s\", field not found.", 
                  key );
 
@@ -1055,8 +1063,8 @@ int EnvisatFile_SetKeyValueAsInt( EnvisatFile *self,
         return FAILURE;
     }
 
-    sprintf( format, "%%+0%dd", (int) strlen(prototype_value) );
-    sprintf( string_value, format, value );
+    snprintf( format, sizeof(format), "%%+0%dd", (int) strlen(prototype_value) );
+    snprintf( string_value, sizeof(string_value), format, value );
 
     return EnvisatFile_SetKeyValueAsString( self, mph_or_sph, key, string_value );
 }
@@ -1127,7 +1135,7 @@ Purpose:
 
 Description:
     Note that this function attempts to format the new value similarly to
-    the previous value.  In some cases (expecially exponential values) this 
+    the previous value.  In some cases (especially exponential values) this 
     may not work out well.  In case of problems the caller is encourage to
     format the value themselves, and use the EnvisatFile_SetKeyValueAsString
     function, but taking extreme care about the string length.
@@ -1160,7 +1168,7 @@ int EnvisatFile_SetKeyValueAsDouble( EnvisatFile *self,
     {
         char	error_buf[2048];
 
-        sprintf( error_buf, 
+        snprintf( error_buf, sizeof(error_buf), 
                  "Unable to set header field \"%s\", field not found.", 
                  key );
 
@@ -1171,8 +1179,8 @@ int EnvisatFile_SetKeyValueAsDouble( EnvisatFile *self,
     length = (int)strlen(prototype_value);
     if( prototype_value[length-4] == 'E' )
     {
-        sprintf( format, "%%+%dE", length-4 );
-        sprintf( string_value, format, value );
+        snprintf( format, sizeof(format), "%%+%dE", length-4 );
+        snprintf( string_value, sizeof(string_value), format, value );
     }
     else
     {
@@ -1201,7 +1209,7 @@ Name:
     EnvisatFile_GetDatasetIndex()
 
 Purpose:
-    Fetch the datasat index give a dataset name.
+    Fetch the dataset index given a dataset name.
 
 Description:
     The provided name is extended with spaces, so it isn't necessary for the
@@ -1269,8 +1277,8 @@ Inputs:
     ds_index -- the dataset index to fetch
 
 Outputs:
-    ds_name -- the dataset symbolic name, ie 'MDS1 SQ ADS              '.
-    ds_type -- the dataset type, ie. 'A', not sure of valid values.
+    ds_name -- the dataset symbolic name, i.e 'MDS1 SQ ADS              '.
+    ds_type -- the dataset type, i.e. 'A', not sure of valid values.
     filename -- dataset filename, normally spaces, or 'NOT USED          '.
     ds_offset -- the byte offset in the whole file to the first byte of 
                  dataset data.  This is 0 for unused datasets.
@@ -1786,7 +1794,7 @@ int S_NameValueList_Parse( const char *text, int text_offset,
 
         /*
          * Capture the key.  We take everything up to the equal sign.  There
-         * shouldn't be any white space, but if so, we take it as part of the
+         * should not be any white space, but if so, we take it as part of the
          * key.
          */
         equal_index = (int)(strstr(line, "=") - line);
@@ -1807,6 +1815,7 @@ int S_NameValueList_Parse( const char *text, int text_offset,
 
             line[src_char] = '\0';
             entry->value = CPLStrdup(line + equal_index + 2);
+            entry->value_len = strlen(entry->value)+1;
             entry->value_offset += 1;
         }
 
@@ -1835,6 +1844,7 @@ int S_NameValueList_Parse( const char *text, int text_offset,
 
             line[src_char] = '\0';
             entry->value = CPLStrdup( line + equal_index + 1 );
+            entry->value_len = strlen(entry->value)+1;
         }
 
         /*

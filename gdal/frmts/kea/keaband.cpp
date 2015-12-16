@@ -55,7 +55,7 @@
 #include <limits.h>
 
 // constructor
-KEARasterBand::KEARasterBand( KEADataset *pDataset, int nSrcBand, GDALAccess eAccess, kealib::KEAImageIO *pImageIO, int *pRefCount )
+KEARasterBand::KEARasterBand( KEADataset *pDataset, int nSrcBand, GDALAccess eAccessIn, kealib::KEAImageIO *pImageIO, int *pRefCount )
 {
     this->poDS = pDataset; // our pointer onto the dataset
     this->nBand = nSrcBand; // this is the band we are
@@ -65,11 +65,12 @@ KEARasterBand::KEARasterBand( KEADataset *pDataset, int nSrcBand, GDALAccess eAc
     this->nBlockYSize = pImageIO->getImageBlockSize(nSrcBand);
     this->nRasterXSize = this->poDS->GetRasterXSize();          // ask the dataset for the total image size
     this->nRasterYSize = this->poDS->GetRasterYSize();
-    this->eAccess = eAccess;
+    this->eAccess = eAccessIn;
 
     if( pImageIO->attributeTablePresent(nSrcBand) )
     {
-        this->m_nAttributeChunkSize = pImageIO->getAttributeTableChunkSize(nSrcBand);
+        this->m_nAttributeChunkSize
+            = pImageIO->getAttributeTableChunkSize(nSrcBand);
     }
     else
     {
@@ -82,7 +83,7 @@ KEARasterBand::KEARasterBand( KEADataset *pDataset, int nSrcBand, GDALAccess eAc
     // increment the refcount as we now have a reference to imageio
     (*this->m_pnRefCount)++;
 
-    // initialise overview variables
+    // Initialize overview variables
     m_nOverviews = 0;
     m_panOverviewBands = NULL;
 
@@ -96,7 +97,7 @@ KEARasterBand::KEARasterBand( KEADataset *pDataset, int nSrcBand, GDALAccess eAc
     this->m_pAttributeTable = NULL;  // no RAT yet
     this->m_pColorTable = NULL;     // no color table yet
 
-    // initialise the metadata as a CPLStringList
+    // Initialize the metadata as a CPLStringList.
     m_papszMetadataList = NULL;
     this->UpdateMetadataList();
 }
@@ -744,7 +745,7 @@ GDALColorInterp KEARasterBand::GetColorInterpretation()
     {
         return GCI_GrayIndex;
     }
-        
+
     GDALColorInterp egdalinterp;
     switch(ekeainterp)
     {
@@ -801,7 +802,7 @@ GDALColorInterp KEARasterBand::GetColorInterpretation()
             egdalinterp = GCI_GrayIndex;
             break;
     }
-        
+
     return egdalinterp;
 }
 
@@ -869,7 +870,7 @@ CPLErr KEARasterBand::SetColorInterpretation(GDALColorInterp egdalinterp)
     }
     catch(const kealib::KEAException &)
     {
-        // do nothing? The docs say CE_Failure only if unsupporte by format
+        // Do nothing? The docs say CE_Failure only if unsupported by format.
     }
     return CE_None;
 }
@@ -925,7 +926,7 @@ GDALRasterBand* KEARasterBand::GetOverview(int nOverview)
     }
 }
 
-CPLErr KEARasterBand::CreateMaskBand(CPL_UNUSED int nFlags)
+CPLErr KEARasterBand::CreateMaskBand(int)
 {
     if( m_bMaskBandOwned )
         delete m_pMaskBand;

@@ -27,7 +27,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  ******************************************************************************
- * 
+ *
  */
 
 #include "gdal_pam.h"
@@ -44,7 +44,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_GRIB(void);
+void GDALRegister_GRIB();
 CPL_C_END
 
 static CPLMutex *hGRIBMutex = NULL;
@@ -141,23 +141,23 @@ static CPLString ConvertUnitInText(int bMetricUnits, const char* pszTxt)
 /*                           GRIBRasterBand()                            */
 /************************************************************************/
 
-GRIBRasterBand::GRIBRasterBand( GRIBDataset *poDS, int nBand, 
+GRIBRasterBand::GRIBRasterBand( GRIBDataset *poDSIn, int nBandIn, 
                                 inventoryType *psInv )
   : m_Grib_Data(NULL), m_Grib_MetaData(NULL)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
     this->start = psInv->start;
     this->subgNum = psInv->subgNum;
     this->longFstLevel = CPLStrdup(psInv->longFstLevel);
 
     eDataType = GDT_Float64; // let user do -ot Float32 if needed for saving space, GRIB contains Float64 (though not fully utilized most of the time)
 
-    nBlockXSize = poDS->nRasterXSize;
+    nBlockXSize = poDSIn->nRasterXSize;
     nBlockYSize = 1;
 
-    nGribDataXSize = poDS->nRasterXSize;
-    nGribDataYSize = poDS->nRasterYSize;
+    nGribDataXSize = poDSIn->nRasterXSize;
+    nGribDataYSize = poDSIn->nRasterYSize;
 
     const char* pszGribNormalizeUnits = CPLGetConfigOption("GRIB_NORMALIZE_UNITS", "YES");
     int bMetricUnits = CSLTestBoolean(pszGribNormalizeUnits);
@@ -235,9 +235,9 @@ void GRIBRasterBand::FindPDSTemplate()
             char szByte[10];
 
             if( i == 9 )
-                sprintf( szByte, "%d", pabyBody[i-5] );
+                snprintf( szByte, sizeof(szByte), "%d", pabyBody[i-5] );
             else
-                sprintf( szByte, " %d", pabyBody[i-5] );
+                snprintf( szByte, sizeof(szByte), " %d", pabyBody[i-5] );
             osOctet += szByte;
         }
 
@@ -415,7 +415,7 @@ double GRIBRasterBand::GetNoDataValue( int *pbSuccess )
 
 void GRIBRasterBand::ReadGribData( DataSource & fp, sInt4 start, int subgNum, double** data, grib_MetaData** metaData)
 {
-    /* Initialisation, for calling the ReadGrib2Record function */
+    /* Initialization, for calling the ReadGrib2Record function */
     sInt4 f_endMsg = 1;  /* 1 if we read the last grid in a GRIB message, or we haven't read any messages. */
     // int subgNum = 0;     /* The subgrid in the message that we are interested in. */
     sChar f_unit = 2;        /* None = 0, English = 1, Metric = 2 */
@@ -933,10 +933,8 @@ void GDALRegister_GRIB()
 
     poDriver->SetDescription( "GRIB" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "GRIdded Binary (.grb)" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_grib.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "GRIdded Binary (.grb)" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_grib.html" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "grb" );
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 

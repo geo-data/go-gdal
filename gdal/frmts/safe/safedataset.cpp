@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_SAFE(void);
+void GDALRegister_SAFE();
 CPL_C_END
 
 /************************************************************************/
@@ -434,7 +434,7 @@ int SAFEDataset::Identify( GDALOpenInfo *poOpenInfo )
 {
     /* Check for the case where we're trying to read the calibrated data: */
     if (STARTS_WITH_CI(poOpenInfo->pszFilename, "SENTINEL_1_CALIB:")) {
-        return 1;
+        return TRUE;
     }
 
     /* Check for directory access when there is a manifest.safe file in the
@@ -446,25 +446,30 @@ int SAFEDataset::Identify( GDALOpenInfo *poOpenInfo )
         CPLString osMDFilename = 
             CPLFormCIFilename( poOpenInfo->pszFilename, "manifest.safe", NULL );
 
-        if( VSIStatL( osMDFilename, &sStat ) == 0 )
-            return TRUE;
+        if( VSIStatL( osMDFilename, &sStat ) == 0 && VSI_ISREG(sStat.st_mode) )
+        {
+            GDALOpenInfo oOpenInfo( osMDFilename, GA_ReadOnly, NULL );
+            return Identify(&oOpenInfo);
+        }
 
         return FALSE;
     }
 
     /* otherwise, do our normal stuff */
-    if( strlen(poOpenInfo->pszFilename) < 13
-        || !EQUAL(poOpenInfo->pszFilename + strlen(poOpenInfo->pszFilename)-13,
-                  "manifest.safe") )
-        return 0;
+    if( !EQUAL(CPLGetFilename(poOpenInfo->pszFilename), "manifest.safe") )
+        return FALSE;
 
     if( poOpenInfo->nHeaderBytes < 100 )
-        return 0;
+        return FALSE;
 
     if( strstr((const char *) poOpenInfo->pabyHeader, "<xfdu:XFDU" ) == NULL)
-        return 0;
+        return FALSE;
 
-    return 1;
+    // This driver doesn't handle Sentinel-2 data
+    if( strstr((const char *) poOpenInfo->pabyHeader, "sentinel-2" ) != NULL)
+        return FALSE;
+
+    return TRUE;
 }
 
 
@@ -631,7 +636,7 @@ GDALDataset *SAFEDataset::Open( GDALOpenInfo * poOpenInfo )
                 }
 
                 //check object type 
-                const char *pszRepId = CPLGetXMLValue( psDO, "repID", "" );
+                pszRepId = CPLGetXMLValue( psDO, "repID", "" );
 
                 if ( EQUAL(pszRepId, "s1Level1ProductSchema") ) {
                     /* Get annotation filename */
@@ -954,7 +959,7 @@ GDALDataset *SAFEDataset::Open( GDALOpenInfo * poOpenInfo )
             poDS->nGCPCount++ ;
 
             char szID[32];
-            sprintf( szID, "%d", poDS->nGCPCount );
+            snprintf( szID, sizeof(szID), "%d", poDS->nGCPCount );
             psGCP->pszId = CPLStrdup( szID );
             psGCP->pszInfo = CPLStrdup("");
             psGCP->dfGCPPixel = CPLAtof(CPLGetXMLValue(psNode,"pixel","0"));
@@ -1082,7 +1087,8 @@ void GDALRegister_SAFE()
     poDriver->SetDescription( "SAFE" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "Sentinel SAFE Product" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
+                               "Sentinel-1 SAR SAFE Product" );
     poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_safe.html" );
     poDriver->SetMetadataItem( GDAL_DMD_SUBDATASETS, "NO" );
 

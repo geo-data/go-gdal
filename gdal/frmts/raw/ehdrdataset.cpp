@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_EHdr(void);
+void GDALRegister_EHdr();
 CPL_C_END
 
 static const int HAS_MIN_FLAG = 0x1;
@@ -155,15 +155,15 @@ class EHdrRasterBand : public RawRasterBand
 /*                           EHdrRasterBand()                           */
 /************************************************************************/
 
-EHdrRasterBand::EHdrRasterBand( GDALDataset *poDS,
-                                int nBand, VSILFILE * fpRaw,
-                                vsi_l_offset nImgOffset, int nPixelOffset,
-                                int nLineOffset,
-                                GDALDataType eDataType, int bNativeOrder,
-                                int nBits)
-: RawRasterBand( poDS, nBand, fpRaw, nImgOffset, nPixelOffset, nLineOffset, 
-                         eDataType, bNativeOrder, TRUE ),
-  nBits(nBits),
+EHdrRasterBand::EHdrRasterBand( GDALDataset *poDSIn,
+                                int nBandIn, VSILFILE * fpRawIn,
+                                vsi_l_offset nImgOffsetIn, int nPixelOffsetIn,
+                                int nLineOffsetIn,
+                                GDALDataType eDataTypeIn, int bNativeOrderIn,
+                                int nBitsIn)
+: RawRasterBand( poDSIn, nBandIn, fpRawIn, nImgOffsetIn, nPixelOffsetIn, nLineOffsetIn, 
+                         eDataTypeIn, bNativeOrderIn, TRUE ),
+  nBits(nBitsIn),
   nStartBit(0),
   nPixelOffsetBits(0),
   nLineOffsetBits(0),
@@ -513,7 +513,7 @@ void EHdrDataset::ResetKeyValue( const char *pszKey, const char *pszValue )
     }
 
     char szNewLine[82];
-    sprintf( szNewLine, "%-15s%s", pszKey, pszValue );
+    snprintf( szNewLine, sizeof(szNewLine), "%-15s%s", pszKey, pszValue );
 
     for( int i = CSLCount(papszHDR)-1; i >= 0; i-- )
     {
@@ -832,9 +832,9 @@ CPLErr EHdrDataset::ReadSTX()
               if (bNoDataSet && dfNoData == poBand->dfMin)
               {
                   /* Triggered by /vsicurl/http://eros.usgs.gov/archive/nslrsda/GeoTowns/HongKong/srtm/n22e113.zip/n22e113.bil */
-                  CPLDebug("EHDr", "Ignoring .stx file where min == nodata. "
-                           "The nodata value shouldn't be taken into account "
-                           "in minimum value computation.");
+                  CPLDebug( "EHDr", "Ignoring .stx file where min == nodata. "
+                            "The nodata value should not be taken into account "
+                            "in minimum value computation.");
                   CSLDestroy( papszTokens );
                   papszTokens = NULL;
                   break;
@@ -976,7 +976,7 @@ GDALDataset *EHdrDataset::Open( GDALOpenInfo * poOpenInfo )
 
 {
 /* -------------------------------------------------------------------- */
-/*	We assume the user is pointing to the binary (ie. .bil) file.	*/
+/*      We assume the user is pointing to the binary (i.e. .bil) file.  */
 /* -------------------------------------------------------------------- */
     if( poOpenInfo->nHeaderBytes < 2 )
         return NULL;
@@ -1480,7 +1480,6 @@ GDALDataset *EHdrDataset::Open( GDALOpenInfo * poOpenInfo )
         }
         if (fp != NULL)
         {
-            const char  *pszLine;
             bool bUTM = false;
             bool bWGS84 = false;
             int bNorth = FALSE;
@@ -1577,7 +1576,7 @@ GDALDataset *EHdrDataset::Open( GDALOpenInfo * poOpenInfo )
             if (utmZone != 0 && bUTM && bWGS84 && (bNorth || bSouth))
             {
                 char projCSStr[64];
-                sprintf(projCSStr, "WGS 84 / UTM zone %d%c",
+                snprintf(projCSStr, sizeof(projCSStr), "WGS 84 / UTM zone %d%c",
                         utmZone, (bNorth) ? 'N' : 'S');
 
                 OGRSpatialReference oSRS;
@@ -1616,7 +1615,7 @@ GDALDataset *EHdrDataset::Open( GDALOpenInfo * poOpenInfo )
 
         while( true )
         {
-            const char  *pszLine =  CPLReadLineL(fp);
+            pszLine =  CPLReadLineL(fp);
             if ( !pszLine )
                 break;
 
@@ -2014,13 +2013,12 @@ void GDALRegister_EHdr()
     if( GDALGetDriverByName( "EHdr" ) != NULL )
         return;
 
-    GDALDriver	*poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "EHdr" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "ESRI .hdr Labelled" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_various.html#EHdr" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_various.html#EHdr" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
                                "Byte Int16 UInt16 Int32 UInt32 Float32" );
 

@@ -137,7 +137,7 @@ class WMTSDataset : public GDALPamDataset
                                 WMTSTileMatrixSet& oTMS);
     static int          ReadTMLimits(CPLXMLNode* psTMSLimits,
                                      std::map<CPLString, WMTSTileMatrixLimits>& aoMapTileMatrixLimits);
-  
+
   public:
                  WMTSDataset();
     virtual     ~WMTSDataset();
@@ -179,7 +179,7 @@ class WMTSBand : public GDALPamRasterBand
 {
   public:
                   WMTSBand(WMTSDataset* poDS, int nBand);
-                 
+
     virtual GDALRasterBand* GetOverview(int nLevel);
     virtual int GetOverviewCount();
     virtual GDALColorInterp GetColorInterpretation();
@@ -199,12 +199,12 @@ class WMTSBand : public GDALPamRasterBand
 /*                            WMTSBand()                                */
 /************************************************************************/
 
-WMTSBand::WMTSBand(WMTSDataset* poDS, int nBand)
+WMTSBand::WMTSBand(WMTSDataset* poDSIn, int nBandIn)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
     eDataType = GDT_Byte;
-    poDS->apoDatasets[0]->GetRasterBand(1)->GetBlockSize(&nBlockXSize, &nBlockYSize);
+    poDSIn->apoDatasets[0]->GetRasterBand(1)->GetBlockSize(&nBlockXSize, &nBlockYSize);
 }
 
 /************************************************************************/
@@ -230,7 +230,7 @@ CPLErr WMTSBand::IRasterIO( GDALRWFlag eRWFlag,
                             GDALRasterIOExtraArg* psExtraArg )
 {
     WMTSDataset* poGDS = (WMTSDataset*) poDS;
-    
+
     if( (nBufXSize < nXSize || nBufYSize < nYSize)
         && poGDS->apoDatasets.size() > 1 && eRWFlag == GF_Read )
     {
@@ -678,14 +678,14 @@ int WMTSDataset::ReadTMS(CPLXMLNode* psContents,
         {
             if( psSubIter->eType != CXT_Element || strcmp(psSubIter->pszValue, "TileMatrix") != 0 )
                 continue;
-            const char* pszIdentifier = CPLGetXMLValue(psSubIter, "Identifier", NULL);
+            const char* l_pszIdentifier = CPLGetXMLValue(psSubIter, "Identifier", NULL);
             const char* pszScaleDenominator = CPLGetXMLValue(psSubIter, "ScaleDenominator", NULL);
             const char* pszTopLeftCorner = CPLGetXMLValue(psSubIter, "TopLeftCorner", NULL);
             const char* pszTileWidth = CPLGetXMLValue(psSubIter, "TileWidth", NULL);
             const char* pszTileHeight = CPLGetXMLValue(psSubIter, "TileHeight", NULL);
             const char* pszMatrixWidth = CPLGetXMLValue(psSubIter, "MatrixWidth", NULL);
             const char* pszMatrixHeight = CPLGetXMLValue(psSubIter, "MatrixHeight", NULL);
-            if( pszIdentifier == NULL || pszScaleDenominator == NULL ||
+            if( l_pszIdentifier == NULL || pszScaleDenominator == NULL ||
                 pszTopLeftCorner == NULL || strchr(pszTopLeftCorner, ' ') == NULL ||
                 pszTileWidth == NULL || pszTileHeight == NULL ||
                 pszMatrixWidth == NULL || pszMatrixHeight == NULL )
@@ -695,7 +695,7 @@ int WMTSDataset::ReadTMS(CPLXMLNode* psContents,
                 return FALSE;
             }
             WMTSTileMatrix oTM;
-            oTM.osIdentifier = pszIdentifier;
+            oTM.osIdentifier = l_pszIdentifier;
             oTM.dfScaleDenominator = CPLAtof(pszScaleDenominator);
             oTM.dfPixelSize = oTM.dfScaleDenominator * WMTS_PITCH;
             if( oTMS.oSRS.IsGeographic() )
@@ -704,7 +704,7 @@ int WMTSDataset::ReadTMS(CPLXMLNode* psContents,
             double dfVal2 = CPLAtof(strchr(pszTopLeftCorner, ' ')+1);
             if( !bSwap ||
                 /* Hack for http://osm.geobretagne.fr/gwc01/service/wmts?request=getcapabilities */
-                ( STARTS_WITH_CI(pszIdentifier, "EPSG:4326:") &&
+                ( STARTS_WITH_CI(l_pszIdentifier, "EPSG:4326:") &&
                   dfVal1 == -180.0 ) )
             {
                 oTM.dfTLX = dfVal1;
@@ -921,7 +921,7 @@ GDALDataset* WMTSDataset::Open(GDALOpenInfo* poOpenInfo)
 {
     if (!Identify(poOpenInfo))
         return NULL;
-    
+
     CPLXMLNode* psXML = NULL;
     CPLString osTileFormat;
     CPLString osInfoFormat;
@@ -1202,27 +1202,27 @@ GDALDataset* WMTSDataset::Open(GDALOpenInfo* poOpenInfo)
             {
                 int bIsDefault = CSLTestBoolean(CPLGetXMLValue(
                                             psSubIter, "isDefault", "false"));
-                const char* pszIdentifier = CPLGetXMLValue(
+                const char* l_pszIdentifier = CPLGetXMLValue(
                                             psSubIter, "Identifier", "");
-                if( osStyle.size() && strcmp(osStyle, pszIdentifier) != 0 )
+                if( osStyle.size() && strcmp(osStyle, l_pszIdentifier) != 0 )
                     continue;
                 const char* pszStyleTitle = CPLGetXMLValue(
-                                        psSubIter, "Title", pszIdentifier);
+                                        psSubIter, "Title", l_pszIdentifier);
                 if( bIsDefault )
                 {
                     aosStylesIdentifier.insert(aosStylesIdentifier.begin(),
-                                                CPLString(pszIdentifier));
+                                                CPLString(l_pszIdentifier));
                     aosStylesTitle.insert(aosStylesTitle.begin(),
                                             CPLString(pszStyleTitle));
-                    if( strcmp(osSelectLayer, pszIdentifier) == 0 &&
+                    if( strcmp(osSelectLayer, l_pszIdentifier) == 0 &&
                         osSelectStyle.size() == 0 )
                     {
-                        osSelectStyle = pszIdentifier;
+                        osSelectStyle = l_pszIdentifier;
                     }
                 }
                 else
                 {
-                    aosStylesIdentifier.push_back(pszIdentifier);
+                    aosStylesIdentifier.push_back(l_pszIdentifier);
                     aosStylesTitle.push_back(pszStyleTitle);
                 }
             }
@@ -1559,7 +1559,7 @@ GDALDataset* WMTSDataset::Open(GDALOpenInfo* poOpenInfo)
             // Clip with implied BoundingBox of the most precise TM
             // Useful for http://tileserver.maptiler.com/wmts
             const WMTSTileMatrix& oTM = oTMS.aoTM[oTMS.aoTM.size()-1];
-            
+
             // For https://data.linz.govt.nz/services;key=XXXXXXXX/wmts/1.0.0/set/69/WMTSCapabilities.xml
             // only clip in Y since there's a warp over dateline
             //sAOI.MinX = MAX(sAOI.MinX, oTM.dfTLX);
@@ -1982,27 +1982,25 @@ GDALDataset *WMTSDataset::CreateCopy( const char * pszFilename,
 void GDALRegister_WMTS()
 
 {
-    GDALDriver  *poDriver;
 
-    if (! GDAL_CHECK_VERSION("WMTS driver"))
+    if( !GDAL_CHECK_VERSION( "WMTS driver" ) )
         return;
 
-    if( GDALGetDriverByName( "WMTS" ) == NULL )
-    {
-        poDriver = new GDALDriver();
+    if( GDALGetDriverByName( "WMTS" ) != NULL )
+        return;
 
-        poDriver->SetDescription( "WMTS" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                                   "OGC Web Mab Tile Service" );
-        poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                                   "frmt_wmts.html" );
+    GDALDriver *poDriver = new GDALDriver();
 
-        poDriver->SetMetadataItem( GDAL_DMD_CONNECTION_PREFIX, "WMTS:" );
+    poDriver->SetDescription( "WMTS" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "OGC Web Mab Tile Service" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_wmts.html" );
 
-        poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_CONNECTION_PREFIX, "WMTS:" );
 
-        poDriver->SetMetadataItem( GDAL_DMD_OPENOPTIONLIST,
+    poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
+
+    poDriver->SetMetadataItem( GDAL_DMD_OPENOPTIONLIST,
 "<OpenOptionList>"
 "  <Option name='URL' type='string' description='URL that points to GetCapabilities response' required='YES'/>"
 "  <Option name='LAYER' type='string' description='Layer identifier'/>"
@@ -2011,10 +2009,9 @@ void GDALRegister_WMTS()
 "  <Option name='EXTENDBEYONDDATELINE' type='boolean' description='Whether to enable extend-beyond-dateline behaviour' default='NO'/>"
 "</OpenOptionList>");
 
-        poDriver->pfnOpen = WMTSDataset::Open;
-        poDriver->pfnIdentify = WMTSDataset::Identify;
-        poDriver->pfnCreateCopy = WMTSDataset::CreateCopy;
+    poDriver->pfnOpen = WMTSDataset::Open;
+    poDriver->pfnIdentify = WMTSDataset::Identify;
+    poDriver->pfnCreateCopy = WMTSDataset::CreateCopy;
 
-        GetGDALDriverManager()->RegisterDriver( poDriver );
-    }
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

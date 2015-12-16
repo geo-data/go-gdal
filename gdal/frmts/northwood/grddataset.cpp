@@ -40,8 +40,10 @@
 #endif
 
 
-CPL_C_START void GDALRegister_NWT_GRD( void );
+CPL_C_START
+void GDALRegister_NWT_GRD();
 CPL_C_END
+
 /************************************************************************/
 /* ==================================================================== */
 /*                      NWT_GRDDataset                                  */
@@ -98,25 +100,25 @@ class NWT_GRDRasterBand:public GDALPamRasterBand
 /************************************************************************/
 /*                           NWT_GRDRasterBand()                        */
 /************************************************************************/
-NWT_GRDRasterBand::NWT_GRDRasterBand( NWT_GRDDataset * poDS, int nBand )
+NWT_GRDRasterBand::NWT_GRDRasterBand( NWT_GRDDataset * poDSIn, int nBandIn )
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     if( nBand == 4 )
     {
         bHaveOffsetScale = TRUE;
-        dfOffset = poDS->pGrd->fZMin;
+        dfOffset = poDSIn->pGrd->fZMin;
 
-        if( poDS->pGrd->cFormat == 0x01 )
+        if( poDSIn->pGrd->cFormat == 0x01 )
         {
             eDataType = GDT_Float32;
-            dfScale =( poDS->pGrd->fZMax - poDS->pGrd->fZMin ) / 4294967294.0;
+            dfScale =( poDSIn->pGrd->fZMax - poDSIn->pGrd->fZMin ) / 4294967294.0;
         }
         else
         {
             eDataType = GDT_Float32;
-            dfScale =( poDS->pGrd->fZMax - poDS->pGrd->fZMin ) / 65534.0;
+            dfScale =( poDSIn->pGrd->fZMax - poDSIn->pGrd->fZMin ) / 65534.0;
         }
     }
     else
@@ -424,7 +426,6 @@ GDALDataset *NWT_GRDDataset::Open( GDALOpenInfo * poOpenInfo )
 /************************************************************************/
 void GDALRegister_NWT_GRD()
 {
-
     if( GDALGetDriverByName( "NWT_GRD" ) != NULL )
       return;
 

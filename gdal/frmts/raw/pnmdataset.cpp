@@ -35,7 +35,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_PNM(void);
+void GDALRegister_PNM();
 CPL_C_END
 
 /************************************************************************/
@@ -257,8 +257,8 @@ GDALDataset *PNMDataset::Open( GDALOpenInfo * poOpenInfo )
     {
         if (nWidth > INT_MAX / iPixelSize)
         {
-            CPLError( CE_Failure, CPLE_AppDefined, 
-                  "Int overflow occured.");
+            CPLError( CE_Failure, CPLE_AppDefined,
+                      "Int overflow occurred.");
             delete poDS;
             return NULL;
         }
@@ -271,8 +271,8 @@ GDALDataset *PNMDataset::Open( GDALOpenInfo * poOpenInfo )
     {
         if (nWidth > INT_MAX / (3 * iPixelSize))
         {
-            CPLError( CE_Failure, CPLE_AppDefined, 
-                  "Int overflow occured.");
+            CPLError( CE_Failure, CPLE_AppDefined,
+                      "Int overflow occurred.");
             delete poDS;
             return NULL;
         }
@@ -385,9 +385,9 @@ GDALDataset *PNMDataset::Create( const char * pszFilename,
     memset( szHeader, 0, sizeof(szHeader) );
 
     if( nBands == 3 )
-        sprintf( szHeader, "P6\n%d %d\n%d\n", nXSize, nYSize, nMaxValue );
+        snprintf( szHeader, sizeof(szHeader), "P6\n%d %d\n%d\n", nXSize, nYSize, nMaxValue );
     else
-        sprintf( szHeader, "P5\n%d %d\n%d\n", nXSize, nYSize, nMaxValue );
+        snprintf( szHeader, sizeof(szHeader), "P5\n%d %d\n%d\n", nXSize, nYSize, nMaxValue );
 
     bool bOK = VSIFWriteL( reinterpret_cast<void *>( szHeader ),
                 strlen(szHeader) + 2, 1, fp ) == 1;
@@ -399,7 +399,7 @@ GDALDataset *PNMDataset::Create( const char * pszFilename,
 }
 
 /************************************************************************/
-/*                         GDALRegister_PNM()                          */
+/*                         GDALRegister_PNM()                           */
 /************************************************************************/
 
 void GDALRegister_PNM()
@@ -408,7 +408,7 @@ void GDALRegister_PNM()
     if( GDALGetDriverByName( "PNM" ) != NULL )
         return;
 
-    GDALDriver  *poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "PNM" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

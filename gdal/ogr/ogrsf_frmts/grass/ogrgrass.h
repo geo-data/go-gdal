@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGRGRASS_H_INCLUDED
-#define _OGRGRASS_H_INCLUDED
+#ifndef OGRGRASS_H_INCLUDED
+#define OGRGRASS_H_INCLUDED
 
 #include "ogrsf_frmts.h"
 
@@ -78,7 +78,7 @@ class OGRGRASSLayer : public OGRLayer
     virtual OGRErr      CreateField( OGRFieldDefn *poField, int bApproxOK = TRUE );
     OGRErr              ISetFeature( OGRFeature *poFeature );
     OGRErr              ICreateFeature( OGRFeature *poFeature );
-    
+
   private:
     char		*pszName;
     OGRSpatialReference *poSRS;
@@ -103,7 +103,7 @@ class OGRGRASSLayer : public OGRLayer
     dbString		*poDbString;
     dbDriver		*poDriver;
     dbCursor		*poCursor;
-    
+
     bool		bCursorOpened;	// Sequential database cursor opened
     int 		iCurrentCat;	// Current category in select cursor
 
@@ -162,7 +162,7 @@ class OGRGRASSDataSource : public OGRDataSource
 
     struct Map_info 	map;
     int                 nLayers;
-    
+
     int                 bOpened;
 
     static bool SplitPath ( char *, char **, char **, char **, char ** );
@@ -175,7 +175,7 @@ class OGRGRASSDriver : public OGRSFDriver
 {
   public:
 			~OGRGRASSDriver();
-                
+
     const char 		*GetName();
     OGRDataSource 	*Open( const char *, int );
 
@@ -187,4 +187,4 @@ class OGRGRASSDriver : public OGRSFDriver
     OGRErr              DeleteDataSource( const char *pszDataSource );
 };
 
-#endif /* ndef _OGRGRASS_H_INCLUDED */
+#endif /* ndef OGRGRASS_H_INCLUDED */

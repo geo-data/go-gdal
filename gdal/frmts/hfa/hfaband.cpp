@@ -146,7 +146,7 @@ CPLErr HFABand::LoadOverviews()
         for( int iName = 0; true; iName++ )
         {
             char  szField[128];
-            sprintf( szField, "nameList[%d].string", iName );
+            snprintf( szField, sizeof(szField), "nameList[%d].string", iName );
 
             CPLErr eErr;
             const char *pszName = poRRDNames->GetStringField( szField, &eErr );
@@ -337,7 +337,7 @@ CPLErr	HFABand::LoadBlockInfo()
         char	szVarName[64];
         int	nLogvalid, nCompressType;
 
-        sprintf( szVarName, "blockinfo[%d].offset", iBlock );
+        snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].offset", iBlock );
         panBlockStart[iBlock] = (GUInt32)poDMS->GetIntField( szVarName, &eErr);
         if( eErr == CE_Failure )
         {
@@ -345,7 +345,7 @@ CPLErr	HFABand::LoadBlockInfo()
             return eErr;
         }
 
-        sprintf( szVarName, "blockinfo[%d].size", iBlock );
+        snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].size", iBlock );
         panBlockSize[iBlock] = poDMS->GetIntField( szVarName, &eErr );
         if( eErr == CE_Failure )
         {
@@ -353,7 +353,7 @@ CPLErr	HFABand::LoadBlockInfo()
             return eErr;
         }
 
-        sprintf( szVarName, "blockinfo[%d].logvalid", iBlock );
+        snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].logvalid", iBlock );
         nLogvalid = poDMS->GetIntField( szVarName, &eErr );
         if( eErr == CE_Failure )
         {
@@ -361,7 +361,7 @@ CPLErr	HFABand::LoadBlockInfo()
             return eErr;
         }
 
-        sprintf( szVarName, "blockinfo[%d].compressionType", iBlock );
+        snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].compressionType", iBlock );
         nCompressType = poDMS->GetIntField( szVarName, &eErr );
         if( eErr == CE_Failure )
         {
@@ -426,9 +426,8 @@ CPLErr	HFABand::LoadExternalBlockInfo()
 /* -------------------------------------------------------------------- */
     char	szHeader[49];
 
-    VSIFReadL( szHeader, 49, 1, fpExternal );
-
-    if( !STARTS_WITH( szHeader, "ERDAS_IMG_EXTERNAL_RASTER") )
+    if( VSIFReadL( szHeader, 49, 1, fpExternal ) != 1 ||
+        !STARTS_WITH( szHeader, "ERDAS_IMG_EXTERNAL_RASTER") )
     {
         CPLError( CE_Failure, CPLE_AppDefined,
                   "Raw data file %s appears to be corrupt.\n",
@@ -456,11 +455,10 @@ CPLErr	HFABand::LoadExternalBlockInfo()
         return CE_Failure;
     }
 
-    VSIFSeekL( fpExternal, 
+    if( VSIFSeekL( fpExternal, 
                poDMS->GetBigIntField( "layerStackValidFlagsOffset" ),  
-               SEEK_SET );
-
-    if( VSIFReadL( pabyBlockMap, nBytesPerRow * nBlocksPerColumn + 20, 1, 
+               SEEK_SET ) < 0 ||
+        VSIFReadL( pabyBlockMap, nBytesPerRow * nBlocksPerColumn + 20, 1, 
                    fpExternal ) != 1 )
     {
         CPLError( CE_Failure, CPLE_FileIO,
@@ -1281,10 +1279,10 @@ void HFABand::ReAllocBlock( int iBlock, int nSize )
     }
 
     char	szVarName[64];
-    sprintf( szVarName, "blockinfo[%d].offset", iBlock );
+    snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].offset", iBlock );
     poDMS->SetIntField( szVarName, (int) panBlockStart[iBlock] );
 
-    sprintf( szVarName, "blockinfo[%d].size", iBlock );
+    snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].size", iBlock );
     poDMS->SetIntField( szVarName, panBlockSize[iBlock] );
 }
 
@@ -1412,28 +1410,31 @@ CPLErr HFABand::SetRasterBlock( int nXBlock, int nYBlock, void * pData )
 #endif /* def CPL_MSB */
 
        /* Write out the Minimum value */
-            VSIFWriteL( &nMin, (size_t) sizeof( nMin ), 1, fpData );
+            bool bRet = VSIFWriteL( &nMin, (size_t) sizeof( nMin ), 1, fpData ) > 0;
 
             /* the number of runs */
-            VSIFWriteL( &nNumRuns, (size_t) sizeof( nNumRuns ), 1, fpData );
+            bRet &= VSIFWriteL( &nNumRuns, (size_t) sizeof( nNumRuns ), 1, fpData ) > 0;
 
             /* The offset to the data */
-            VSIFWriteL( &nDataOffset, (size_t) sizeof( nDataOffset ), 1, fpData );
+            bRet &= VSIFWriteL( &nDataOffset, (size_t) sizeof( nDataOffset ), 1, fpData ) > 0;
 
             /* The number of bits */
-            VSIFWriteL( &nNumBits, (size_t) sizeof( nNumBits ), 1, fpData );
+            bRet &= VSIFWriteL( &nNumBits, (size_t) sizeof( nNumBits ), 1, fpData ) > 0;
 
             /* The counters - MSB stuff handled in HFACompress */
-            VSIFWriteL( pCounts, (size_t) sizeof( GByte ), nSizeCount, fpData );
+            bRet &= VSIFWriteL( pCounts, nSizeCount, 1, fpData ) > 0;
 
             /* The values - MSB stuff handled in HFACompress */
-            VSIFWriteL( pValues, (size_t) sizeof( GByte ), nSizeValues, fpData );
+            bRet &= VSIFWriteL( pValues, nSizeValues, 1, fpData ) > 0;
+
+            if( !bRet )
+                return CE_Failure;
 
             /* Compressed data is freed in the HFACompress destructor */
         }
         else
         {
-            /* If we have actually made the block bigger - ie does not compress well */
+            /* If we have actually made the block bigger - i.e. does not compress well */
             panBlockFlag[iBlock] ^= BFLG_COMPRESSED;
             // alloc more space for the uncompressed block
             ReAllocBlock( iBlock, nInBlockSize );
@@ -1451,7 +1452,7 @@ CPLErr HFABand::SetRasterBlock( int nXBlock, int nYBlock, void * pData )
             }
 
             char	szVarName[64];
-            sprintf( szVarName, "blockinfo[%d].compressionType", iBlock );
+            snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].compressionType", iBlock );
             poDMS->SetIntField( szVarName, 0 );
         }
 
@@ -1469,7 +1470,7 @@ CPLErr HFABand::SetRasterBlock( int nXBlock, int nYBlock, void * pData )
                 return CE_Failure;
             }
 
-            sprintf( szVarName, "blockinfo[%d].logvalid", iBlock );
+            snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].logvalid", iBlock );
             poDMS->SetStringField( szVarName, "true" );
 
             panBlockFlag[iBlock] |= BFLG_VALID;
@@ -1552,7 +1553,7 @@ CPLErr HFABand::SetRasterBlock( int nXBlock, int nYBlock, void * pData )
                           "block valid." );
                 return CE_Failure;
             }
-            sprintf( szVarName, "blockinfo[%d].logvalid", iBlock );
+            snprintf( szVarName, sizeof(szVarName), "blockinfo[%d].logvalid", iBlock );
             poDMS->SetStringField( szVarName, "true" );
 
             panBlockFlag[iBlock] |= BFLG_VALID;
@@ -1859,7 +1860,7 @@ CPLErr HFABand::SetPCT( int nColors,
 			double *padfAlpha)
 
 {
-    static const char *apszColNames[4] = {"Red", "Green", "Blue", "Opacity"};
+    static const char * const apszColNames[4] = {"Red", "Green", "Blue", "Opacity"};
     HFAEntry	*poEdsc_Table;
 
 /* -------------------------------------------------------------------- */
@@ -1956,9 +1957,11 @@ CPLErr HFABand::SetPCT( int nColors,
             padfFileData[iColor] = padfValues[iColor];
             HFAStandard( 8, padfFileData + iColor );
         }
-        VSIFSeekL( psInfo->fp, nOffset, SEEK_SET );
-        VSIFWriteL( padfFileData, 8, nColors, psInfo->fp );
+        bool bRet = VSIFSeekL( psInfo->fp, nOffset, SEEK_SET ) >= 0;
+        bRet &= VSIFWriteL( padfFileData, 8, nColors, psInfo->fp ) == (size_t)nColors;
         CPLFree( padfFileData );
+        if( !bRet )
+            return CE_Failure;
     }
 
 /* -------------------------------------------------------------------- */
@@ -2094,13 +2097,13 @@ int HFABand::CreateOverview( int nOverviewLevel, const char *pszResampling )
     char szName[50];
     CPLString osNodeName;
 
-    sprintf( szName, "nameList[%d].string", iNextName );
+    snprintf( szName, sizeof(szName), "nameList[%d].string", iNextName );
 
     osLayerName.Printf( "%s(:%s:_ss_%d_)", 
                         psRRDInfo->pszFilename, GetBandName(),
                         nOverviewLevel );
 
-    // TODO: Need to add to end of array (thats pretty hard).
+    // TODO: Need to add to end of array (that is pretty hard).
     if( poRRDNamesList->SetStringField( szName, osLayerName ) != CE_None )
     {
         poRRDNamesList->MakeData( poRRDNamesList->GetDataSize() + 3000 );

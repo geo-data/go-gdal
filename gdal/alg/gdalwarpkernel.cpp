@@ -132,6 +132,7 @@ static CPLErr GWKNearestNoMasksOrDstDensityOnlyByte( GDALWarpKernel *poWK );
 static CPLErr GWKBilinearNoMasksOrDstDensityOnlyByte( GDALWarpKernel *poWK );
 static CPLErr GWKCubicNoMasksOrDstDensityOnlyByte( GDALWarpKernel *poWK );
 static CPLErr GWKCubicNoMasksOrDstDensityOnlyFloat( GDALWarpKernel *poWK );
+// TODO: Spelling INSTANCIATE
 #ifdef INSTANCIATE_FLOAT64_SSE2_IMPL
 static CPLErr GWKCubicNoMasksOrDstDensityOnlyDouble( GDALWarpKernel *poWK );
 #endif
@@ -1023,9 +1024,9 @@ CPLErr GDALWarpKernel::PerformWarp()
             dfYScale = 1.0 / nYReciprocalScale;
     }
     /*CPLDebug("WARP", "dfXScale = %f, dfYScale = %f", dfXScale, dfYScale);*/
-    
+
     int bUse4SamplesFormula = (dfXScale >= 0.95 && dfYScale >= 0.95);
-    
+
     // Safety check for callers that would use GDALWarpKernel without using
     // GDALWarpOperation.
     if( (eResample == GRA_CubicSpline || eResample == GRA_Lanczos ||
@@ -2301,7 +2302,6 @@ static int GWKCubicResample4Sample( GDALWarpKernel *poWK, int iBand,
             adfImag[0], adfImag[1], adfImag[2], adfImag[3]);
     }
 
-    
 /* -------------------------------------------------------------------- */
 /*      For now, if we have any pixels missing in the kernel area,      */
 /*      we fallback on using bilinear interpolation.  Ideally we        */
@@ -2317,7 +2317,7 @@ static int GWKCubicResample4Sample( GDALWarpKernel *poWK, int iBand,
     *pdfImag = CubicConvolution(dfDeltaY, dfDeltaY2, dfDeltaY3,
                                    adfValueImag[0], adfValueImag[1],
                                    adfValueImag[2], adfValueImag[3]);
-    
+
     return TRUE;
 }
 
@@ -3592,7 +3592,7 @@ static void GWKRoundSourceCoordinates(int nDstXSize,
 /*                                                                      */
 /*      This is identical to GWKGeneralCase(), but functions via        */
 /*      OpenCL. This means we have vector optimization (SSE) and/or     */
-/*      GPU optimization depending on our prefs. The code itsef is      */
+/*      GPU optimization depending on our prefs. The code itself is     */
 /*      general and not optimized, but by defining constants we can     */
 /*      make some pretty darn good code on the fly.                     */
 /************************************************************************/
@@ -3611,7 +3611,7 @@ static CPLErr GWKOpenCLCase( GDALWarpKernel *poWK )
     int useImag = FALSE;
     OCLResampAlg resampAlg;
     cl_int err;
-    
+
     switch ( poWK->eWorkingDataType )
     {
       case GDT_Byte:

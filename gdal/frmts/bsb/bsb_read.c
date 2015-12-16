@@ -396,7 +396,7 @@ BSBInfo *BSBOpen( const char *pszFilename )
 /*                                                                      */
 /*      We actually do some funny stuff here to be able to read past    */
 /*      some garbage to try and find the 0x1a 0x00 sequence since in    */
-/*      at least some files (ie. optech/World.kap) we find a few        */
+/*      at least some files (i.e. optech/World.kap) we find a few       */
 /*      bytes of extra junk in the way.                                 */
 /* -------------------------------------------------------------------- */
 /* from optech/World.kap 
@@ -503,7 +503,7 @@ BSBInfo *BSBOpen( const char *pszFilename )
         /* the index table can have one row less than nYSize */
         /* If we look into the file closely, there is no data for */
         /* that last row (the end of line psInfo->nYSize - 1 is the start */
-        /* of the index table), so we can decrement psInfo->nYSize */
+        /* of the index table), so we can decrement psInfo->nYSize. */
         if (nOffsetIndexTable + 4 * (psInfo->nYSize - 1) == nFileLen - 4)
         {
             CPLDebug("BSB", "Index size is one row shorter than declared image height. Correct this");
@@ -739,7 +739,7 @@ int BSBReadScanline( BSBInfo *psInfo, int nScanline,
 
 /* -------------------------------------------------------------------- */
 /*      Do we know where the requested line is?  If not, read all       */
-/*      the preceeding ones to "find" our line.                         */
+/*      the preceding ones to "find" our line.                          */
 /* -------------------------------------------------------------------- */
     if( nScanline < 0 || nScanline >= psInfo->nYSize )
     {
@@ -792,7 +792,7 @@ int BSBReadScanline( BSBInfo *psInfo, int nScanline,
                 !bErrorFlag)
         {
             int	    nPixValue;
-            int     nRunCount, i;
+            int     nRunCount;
 
             nPixValue = (byNext & byValueMask) >> nValueShift;
 
@@ -1033,7 +1033,7 @@ int BSBWriteScanline( BSBInfo *psInfo, unsigned char *pabyScanlineBuf )
     }
 
 /* -------------------------------------------------------------------- */
-/*      If this is the first scanline writen out the EOF marker, and    */
+/*      If this is the first scanline written out the EOF marker, and   */
 /*      the introductory info in the image segment.                     */
 /* -------------------------------------------------------------------- */
     if( psInfo->nLastLineWritten == -1 )

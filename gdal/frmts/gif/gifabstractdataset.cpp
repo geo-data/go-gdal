@@ -419,19 +419,49 @@ int GIFAbstractDataset::ReadFunc( GifFileType *psGFile, GifByteType *pabyBuffer,
 }
 
 /************************************************************************/
+/*                          FindFirstImage()                            */
+/************************************************************************/
+
+GifRecordType GIFAbstractDataset::FindFirstImage( GifFileType* hGifFile )
+{
+    GifRecordType RecordType = TERMINATE_RECORD_TYPE;
+
+    while( DGifGetRecordType(hGifFile, &RecordType) != GIF_ERROR
+           && RecordType != TERMINATE_RECORD_TYPE
+           && RecordType != IMAGE_DESC_RECORD_TYPE )
+    {
+        /* Skip extension records found before IMAGE_DESC_RECORD_TYPE */
+        if (RecordType == EXTENSION_RECORD_TYPE)
+        {
+            int nFunction;
+            GifByteType *pExtData;
+            if (DGifGetExtension(hGifFile, &nFunction, &pExtData) == GIF_ERROR)
+                break;
+            while (pExtData != NULL)
+            {
+                if (DGifGetExtensionNext(hGifFile, &pExtData) == GIF_ERROR)
+                    break;
+            }
+        }
+    }
+
+    return RecordType;
+}
+
+/************************************************************************/
 /*                        GIFAbstractRasterBand()                       */
 /************************************************************************/
 
 GIFAbstractRasterBand::GIFAbstractRasterBand(
-                              GIFAbstractDataset *poDS, int nBand, 
+                              GIFAbstractDataset *poDSIn, int nBandIn, 
                               SavedImage *psSavedImage, int nBackground,
                               int bAdvertizeInterlacedMDI ) :
     panInterlaceMap(NULL),
     poColorTable(NULL),
     nTransparentColor(0)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     eDataType = GDT_Byte;
 
@@ -454,12 +484,12 @@ GIFAbstractRasterBand::GIFAbstractRasterBand(
         if( bAdvertizeInterlacedMDI )
             poDS->SetMetadataItem( "INTERLACED", "YES", "IMAGE_STRUCTURE" );
 
-        panInterlaceMap = (int *) CPLCalloc(poDS->nRasterYSize,sizeof(int));
+        panInterlaceMap = (int *) CPLCalloc(poDSIn->nRasterYSize,sizeof(int));
 
         for (int i = 0; i < 4; i++)
         {
             for (int j = InterlacedOffset[i];
-                 j < poDS->nRasterYSize;
+                 j < poDSIn->nRasterYSize;
                  j += InterlacedJumps[i]) 
                 panInterlaceMap[j] = iLine++;
         }
@@ -494,7 +524,7 @@ GIFAbstractRasterBand::GIFAbstractRasterBand(
 /* -------------------------------------------------------------------- */
     ColorMapObject      *psGifCT = psImage->ImageDesc.ColorMap;
     if( psGifCT == NULL )
-        psGifCT = poDS->hGifFile->SColorMap;
+        psGifCT = poDSIn->hGifFile->SColorMap;
 
     poColorTable = new GDALColorTable();
     for( int iColor = 0; iColor < psGifCT->ColorCount; iColor++ )
@@ -523,7 +553,7 @@ GIFAbstractRasterBand::GIFAbstractRasterBand(
     {
         char szBackground[10];
 
-        sprintf( szBackground, "%d", nBackground );
+        snprintf( szBackground, sizeof(szBackground), "%d", nBackground );
         SetMetadataItem( "GIF_BACKGROUND", szBackground );
     }
 }

@@ -47,16 +47,16 @@ const PCIDSK::PCIDSKInterfaces *PCIDSK2GetInterfaces(void);
 /*      This constructor is used for main file channels.                */
 /************************************************************************/
 
-PCIDSK2Band::PCIDSK2Band( PCIDSK2Dataset *poDS, 
-                          PCIDSKFile *poFile,
-                          int nBand )
+PCIDSK2Band::PCIDSK2Band( PCIDSK2Dataset *poDSIn, 
+                          PCIDSKFile *poFileIn,
+                          int nBandIn )
 
 {
     Initialize();
 
-    this->poDS = poDS;
-    this->poFile = poFile;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->poFile = poFileIn;
+    this->nBand = nBandIn;
 
     poChannel = poFile->GetChannel( nBand );
 
@@ -82,12 +82,12 @@ PCIDSK2Band::PCIDSK2Band( PCIDSK2Dataset *poDS,
 /*      as bands.                                                       */
 /************************************************************************/
 
-PCIDSK2Band::PCIDSK2Band( PCIDSKChannel *poChannel )
+PCIDSK2Band::PCIDSK2Band( PCIDSKChannel *poChannelIn )
 
 {
     Initialize();
 
-    this->poChannel = poChannel;
+    this->poChannel = poChannelIn;
 
     nBand = 1;
 
@@ -286,19 +286,22 @@ bool PCIDSK2Band::CheckForColorTable()
             unsigned char abyPCT[768];
 
             PCIDSK_PCT *poPCT = dynamic_cast<PCIDSK_PCT*>( poPCTSeg );
-            nPCTSegNumber = poPCTSeg->GetSegmentNumber();
-
-            poPCT->ReadPCT( abyPCT );
-
-            for( int i = 0; i < 256; i++ )
+            if( poPCT )
             {
-                GDALColorEntry sEntry;
+                nPCTSegNumber = poPCTSeg->GetSegmentNumber();
 
-                sEntry.c1 = abyPCT[256 * 0 + i];
-                sEntry.c2 = abyPCT[256 * 1 + i];
-                sEntry.c3 = abyPCT[256 * 2 + i];
-                sEntry.c4 = 255;
-                poColorTable->SetColorEntry( i, &sEntry );
+                poPCT->ReadPCT( abyPCT );
+
+                for( int i = 0; i < 256; i++ )
+                {
+                    GDALColorEntry sEntry;
+
+                    sEntry.c1 = abyPCT[256 * 0 + i];
+                    sEntry.c2 = abyPCT[256 * 1 + i];
+                    sEntry.c3 = abyPCT[256 * 2 + i];
+                    sEntry.c4 = 255;
+                    poColorTable->SetColorEntry( i, &sEntry );
+                }
             }
         }
 
@@ -446,8 +449,8 @@ CPLErr PCIDSK2Band::SetColorTable( GDALColorTable *poCT )
 
         PCIDSK_PCT *poPCT = dynamic_cast<PCIDSK_PCT*>( 
             poFile->GetSegment( nPCTSegNumber ) );
-
-        poPCT->WritePCT( abyPCT );
+        if( poPCT )
+            poPCT->WritePCT( abyPCT );
 
         delete poColorTable;
         poColorTable = poCT->Clone();
@@ -784,6 +787,11 @@ PCIDSK2Dataset::PCIDSK2Dataset() :
 /*                            ~PCIDSK2Dataset()                          */
 /************************************************************************/
 
+// FIXME? is an exception can really be thrown in the destructor, then it is very dangerous !
+#ifdef _MSC_VER
+#pragma warning( push )
+#pragma warning( disable : 4702 )  /*  unreachable code */
+#endif
 PCIDSK2Dataset::~PCIDSK2Dataset()
 {
     FlushCache();
@@ -815,6 +823,9 @@ PCIDSK2Dataset::~PCIDSK2Dataset()
 
     CSLDestroy( papszLastMDListValue );
 }
+#ifdef _MSC_VER
+#pragma warning( pop )
+#endif
 
 /************************************************************************/
 /*                            GetFileList()                             */
@@ -1765,7 +1776,8 @@ GDALDataset *PCIDSK2Dataset::LLOpen( const char *pszFilename,
         {
             PCIDSKChannel *poChannel = 
                 dynamic_cast<PCIDSKChannel*>( poBitSeg );
-            if (poChannel->GetBlockWidth() <= 0 ||
+            if (poChannel == NULL ||
+                poChannel->GetBlockWidth() <= 0 ||
                 poChannel->GetBlockHeight() <= 0)
             {
                 delete poDS;
@@ -1788,7 +1800,9 @@ GDALDataset *PCIDSK2Dataset::LLOpen( const char *pszFilename,
              segobj = poFile->GetSegment( PCIDSK::SEG_VEC, "",
                                           segobj->GetSegmentNumber() ) )
         {
-            poDS->apoLayers.push_back( new OGRPCIDSKLayer( segobj, eAccess == GA_Update ) );
+            PCIDSK::PCIDSKVectorSegment* poVecSeg = dynamic_cast<PCIDSK::PCIDSKVectorSegment*>( segobj );
+            if( poVecSeg )
+                poDS->apoLayers.push_back( new OGRPCIDSKLayer( segobj, poVecSeg, eAccess == GA_Update ) );
         }
 
 /* -------------------------------------------------------------------- */
@@ -2016,6 +2030,8 @@ PCIDSK2Dataset::ICreateLayer( const char * pszLayerName,
     PCIDSK::PCIDSKSegment *poSeg = poFile->GetSegment( nSegNum );
     PCIDSK::PCIDSKVectorSegment *poVecSeg = 
         dynamic_cast<PCIDSK::PCIDSKVectorSegment*>( poSeg );
+    if( poVecSeg == NULL )
+        return NULL;
 
     if( osLayerType != "" )
         poSeg->SetMetadataValue( "LAYER_TYPE", osLayerType );
@@ -2071,7 +2087,8 @@ PCIDSK2Dataset::ICreateLayer( const char * pszLayerName,
 /* -------------------------------------------------------------------- */
 /*      Create the layer object.                                        */
 /* -------------------------------------------------------------------- */
-    apoLayers.push_back( new OGRPCIDSKLayer( poSeg, TRUE ) );
+
+    apoLayers.push_back( new OGRPCIDSKLayer( poSeg, poVecSeg, TRUE ) );
 
     return apoLayers[apoLayers.size()-1];
 }
@@ -2091,13 +2108,12 @@ void GDALRegister_PCIDSK()
     poDriver->SetDescription( "PCIDSK" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem( GDAL_DCAP_VECTOR, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "PCIDSK Database File" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_pcidsk.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "PCIDSK Database File" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_pcidsk.html" );
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "pix" );
-    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, "Byte UInt16 Int16 Float32 CInt16 CFloat32" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
+                               "Byte UInt16 Int16 Float32 CInt16 CFloat32" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
 "<CreationOptionList>"
 "   <Option name='INTERLEAVING' type='string-select' default='BAND' description='raster data organization'>"
@@ -2113,7 +2129,8 @@ void GDALRegister_PCIDSK()
 "   </Option>"
 "   <Option name='TILESIZE' type='int' default='127' description='Tile Size (INTERLEAVING=TILED only)'/>"
 "</CreationOptionList>" );
-    poDriver->SetMetadataItem( GDAL_DS_LAYER_CREATIONOPTIONLIST, "<LayerCreationOptionList/>" );
+    poDriver->SetMetadataItem( GDAL_DS_LAYER_CREATIONOPTIONLIST,
+                               "<LayerCreationOptionList/>" );
 
     poDriver->pfnIdentify = PCIDSK2Dataset::Identify;
     poDriver->pfnOpen = PCIDSK2Dataset::Open;

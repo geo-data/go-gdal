@@ -80,7 +80,7 @@ int SDTSIndexedReader::IsIndexed()
   Free all features in the index (if filled).
 
   After this the reader is considered to not be indexed, and IsIndexed()
-  will return FALSE untill the index is forcably filled again. 
+  will return FALSE until the index is forcibly filled again.
   */
 
 void SDTSIndexedReader::ClearIndex()
@@ -141,13 +141,13 @@ SDTSFeature *SDTSIndexedReader::GetNextFeature()
 /**
  Fetch a feature based on it's record number.
 
- This method will forceably fill the feature cache, reading all the
+ This method will forcibly fill the feature cache, reading all the
  features in the file into memory, if they haven't already been loaded.
  The ClearIndex() method can be used to flush this cache when no longer
- needed. 
+ needed.
 
  @param iRecordId the record to fetch, normally based on the nRecord
- field of an SDTSModId. 
+ field of an SDTSModId.
 
  @return a pointer to an internal feature (not to be deleted) or NULL
  if there is no matching feature.
@@ -232,7 +232,7 @@ void SDTSIndexedReader::FillIndex()
   This method will have the side effect of rewinding unindexed readers
   because the scanning operation requires reading all records in the module
   from disk. 
-  
+
   @param pszFName the field name to search for.  By default "ATID" is
   used.
 

@@ -94,7 +94,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_GTA(void);
+void GDALRegister_GTA();
 CPL_C_END
 
 
@@ -310,14 +310,14 @@ class GTARasterBand : public GDALPamRasterBand
 /*                           GTARasterBand()                            */
 /************************************************************************/
 
-GTARasterBand::GTARasterBand( GTADataset *poDS, int nBand )
+GTARasterBand::GTARasterBand( GTADataset *poDSIn, int nBandIn )
 
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     // Data type
-    switch( poDS->oHeader.component_type( nBand-1 ) )
+    switch( poDSIn->oHeader.component_type( nBand-1 ) )
     {
     case gta::int8:
         eDataType = GDT_Byte;
@@ -360,23 +360,23 @@ GTARasterBand::GTARasterBand( GTADataset *poDS, int nBand )
     nBlockYSize = 1;
 
     // Component information
-    sComponentSize = static_cast<size_t>(poDS->oHeader.component_size( nBand-1 ));
+    sComponentSize = static_cast<size_t>(poDSIn->oHeader.component_size( nBand-1 ));
     sComponentOffset = 0;
     for( int i = 0; i < nBand-1; i++ )
     {
-        sComponentOffset += poDS->oHeader.component_size( i );
+        sComponentOffset += poDSIn->oHeader.component_size( i );
     }
 
     // Metadata
     papszCategoryNames = NULL;
     papszMetaData = NULL;
-    if( poDS->oHeader.component_taglist( nBand-1 ).get( "DESCRIPTION" ) )
+    if( poDSIn->oHeader.component_taglist( nBand-1 ).get( "DESCRIPTION" ) )
     {
-        SetDescription( poDS->oHeader.component_taglist( nBand-1 ).get( "DESCRIPTION" ) );
+        SetDescription( poDSIn->oHeader.component_taglist( nBand-1 ).get( "DESCRIPTION" ) );
     }
-    for( uintmax_t i = 0; i < poDS->oHeader.component_taglist( nBand-1 ).tags(); i++)
+    for( uintmax_t i = 0; i < poDSIn->oHeader.component_taglist( nBand-1 ).tags(); i++)
     {
-        const char *pszTagName = poDS->oHeader.component_taglist( nBand-1 ).name( i );
+        const char *pszTagName = poDSIn->oHeader.component_taglist( nBand-1 ).name( i );
         if( STARTS_WITH(pszTagName, "GDAL/META/") )
         {
             const char *pDomainEnd = strchr( pszTagName + 10, '/' );
@@ -394,7 +394,7 @@ GTARasterBand::GTARasterBand( GTADataset *poDS, int nBand )
                 }
                 pszDomain[j] = '\0';
                 const char *pszName = pszTagName + 10 + j + 1;
-                const char *pszValue = poDS->oHeader.component_taglist( nBand-1 ).value( i );
+                const char *pszValue = poDSIn->oHeader.component_taglist( nBand-1 ).value( i );
                 SetMetadataItem( pszName, pszValue,
                         strcmp( pszDomain, "DEFAULT" ) == 0 ? NULL : pszDomain );
                 VSIFree( pszDomain );
@@ -1685,46 +1685,44 @@ GTACreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
 void GDALRegister_GTA()
 
 {
-    GDALDriver  *poDriver;
+    if( GDALGetDriverByName( "GTA" ) != NULL )
+        return;
 
-    if( GDALGetDriverByName( "GTA" ) == NULL )
-    {
-        poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
-        poDriver->SetDescription( "GTA" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                "Generic Tagged Arrays (.gta)" );
-        poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                "frmt_gta.html" );
-        poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "gta" );
-        poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
-                "Byte UInt16 Int16 UInt32 Int32 Float32 Float64 "
-                "CInt16 CInt32 CFloat32 CFloat64" );
-        poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
-                "<CreationOptionList>"
-                "  <Option name='COMPRESS' type='string-select'>"
-                "    <Value>NONE</Value>"
-                "    <Value>BZIP2</Value>"
-                "    <Value>XZ</Value>"
-                "    <Value>ZLIB</Value>"
-                "    <Value>ZLIB1</Value>"
-                "    <Value>ZLIB2</Value>"
-                "    <Value>ZLIB3</Value>"
-                "    <Value>ZLIB4</Value>"
-                "    <Value>ZLIB5</Value>"
-                "    <Value>ZLIB6</Value>"
-                "    <Value>ZLIB7</Value>"
-                "    <Value>ZLIB8</Value>"
-                "    <Value>ZLIB9</Value>"
-                "  </Option>"
-                "</CreationOptionList>" );
+    poDriver->SetDescription( "GTA" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
+                               "Generic Tagged Arrays (.gta)" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_gta.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "gta" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
+                               "Byte UInt16 Int16 UInt32 Int32 Float32 Float64 "
+                               "CInt16 CInt32 CFloat32 CFloat64" );
+    poDriver->SetMetadataItem(
+        GDAL_DMD_CREATIONOPTIONLIST,
+        "<CreationOptionList>"
+        "  <Option name='COMPRESS' type='string-select'>"
+        "    <Value>NONE</Value>"
+        "    <Value>BZIP2</Value>"
+        "    <Value>XZ</Value>"
+        "    <Value>ZLIB</Value>"
+        "    <Value>ZLIB1</Value>"
+        "    <Value>ZLIB2</Value>"
+        "    <Value>ZLIB3</Value>"
+        "    <Value>ZLIB4</Value>"
+        "    <Value>ZLIB5</Value>"
+        "    <Value>ZLIB6</Value>"
+        "    <Value>ZLIB7</Value>"
+        "    <Value>ZLIB8</Value>"
+        "    <Value>ZLIB9</Value>"
+        "  </Option>"
+        "</CreationOptionList>" );
 
-        poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
+    poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 
-        poDriver->pfnOpen = GTADataset::Open;
-        poDriver->pfnCreateCopy = GTACreateCopy;
+    poDriver->pfnOpen = GTADataset::Open;
+    poDriver->pfnCreateCopy = GTACreateCopy;
 
-        GetGDALDriverManager()->RegisterDriver( poDriver );
-    }
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

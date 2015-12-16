@@ -32,7 +32,8 @@
  *
  * $Log: mitab_middatafile.cpp,v $
  * Revision 1.15  2010-10-12 19:02:40  aboudreault
- * Fixed incomplet patch to handle differently indented lines in mif files (gdal #3694)
+ * Fixed incomplete patch to handle differently indented lines in MIF
+ * files (gdal #3694).
  *
  * Revision 1.14  2006-01-27 13:54:06  fwarmerdam
  * fixed memory leak
@@ -93,12 +94,14 @@ MIDDATAFile::MIDDATAFile()
     m_szLastRead[0] = '\0';
     m_szSavedLine[0] = '\0';
     m_pszDelimiter = "\t"; // Encom 2003 (was NULL)
-    
+
     m_dfXMultiplier = 1.0;
     m_dfYMultiplier = 1.0;
     m_dfXDisplacement = 0.0;
     m_dfYDisplacement = 0.0;
-
+    m_pszFname = NULL;
+    m_eAccessMode = TABRead;
+    m_bEof = FALSE;
 }
 
 MIDDATAFile::~MIDDATAFile()
@@ -182,7 +185,7 @@ int MIDDATAFile::Close()
 {
     if (m_fp == NULL)
         return 0;
-   
+
     // Close file
     VSIFCloseL(m_fp);
     m_fp = NULL;
@@ -200,10 +203,10 @@ int MIDDATAFile::Close()
 const char *MIDDATAFile::GetLine()
 {
     const char *pszLine;
-    
+
     if (m_eAccessMode == TABRead)
     {
-        
+
         pszLine = CPLReadLineL(m_fp);
 
         if (pszLine == NULL)
@@ -293,7 +296,7 @@ GBool MIDDATAFile::IsValidFeature(const char *pszString)
     char **papszToken ;
 
     papszToken = CSLTokenizeString(pszString);
-    
+
     //   printf("%s\n",pszString);
 
     if (CSLCount(papszToken) == 0)

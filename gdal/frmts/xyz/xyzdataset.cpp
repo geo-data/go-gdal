@@ -37,7 +37,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void GDALRegister_XYZ(void);
+void GDALRegister_XYZ();
 CPL_C_END
 
 /************************************************************************/
@@ -1192,7 +1192,7 @@ GDALDataset* XYZDataset::CreateCopy( const char * pszFilename,
     poXYZ_DS->nRasterYSize = nYSize;
     poXYZ_DS->nBands = 1;
     poXYZ_DS->SetBand( 1, new XYZRasterBand( poXYZ_DS, 1, eReqDT ) );
-    /* If outputing to stdout, we can't reopen it --> silence warning */
+    /* If writing to stdout, we can't reopen it --> silence warning */
     CPLPushErrorHandler(CPLQuietErrorHandler);
     poXYZ_DS->fp = VSIFOpenL( pszFilename, "rb" );
     CPLPopErrorHandler();
@@ -1231,7 +1231,7 @@ void GDALRegister_XYZ()
     if( GDALGetDriverByName( "XYZ" ) != NULL )
       return;
 
-    GDALDriver  *poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "XYZ" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );

@@ -34,7 +34,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_HF2(void);
+void GDALRegister_HF2();
 CPL_C_END
 
 /************************************************************************/
@@ -98,16 +98,16 @@ class HF2RasterBand : public GDALPamRasterBand
 /*                           HF2RasterBand()                            */
 /************************************************************************/
 
-HF2RasterBand::HF2RasterBand( HF2Dataset *poDS, int nBand, GDALDataType eDT ) :
+HF2RasterBand::HF2RasterBand( HF2Dataset *poDSIn, int nBandIn, GDALDataType eDT ) :
     pafBlockData(NULL),
     nLastBlockYOff(-1)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 
     eDataType = eDT;
 
-    nBlockXSize = poDS->nTileSize;
+    nBlockXSize = poDSIn->nTileSize;
     nBlockYSize = 1;
 }
 
@@ -183,7 +183,7 @@ CPLErr HF2RasterBand::IReadBlock( int nBlockXOff, int nLineYOff,
                 GInt32 nVal;
                 VSIFReadL(&nVal, 4, 1, poGDS->fp);
                 CPL_LSBPTR32(&nVal);
-                VSIFReadL(pabyData, nWordSize * (nTileWidth - 1), 1, poGDS->fp);
+                VSIFReadL(pabyData, static_cast<size_t>(nWordSize * (nTileWidth - 1)), 1, poGDS->fp);
 #if defined(CPL_MSB)
                 if (nWordSize > 1)
                     GDALSwapWords(pabyData, nWordSize, nTileWidth - 1, nWordSize);
@@ -286,7 +286,7 @@ int HF2Dataset::LoadBlockMap()
                 VSIFReadL(&nWordSize, 1, 1, fp);
                 //printf("nWordSize=%d\n", nWordSize);
                 if (nWordSize == 1 || nWordSize == 2 || nWordSize == 4)
-                    VSIFSeekL(fp, 4 + nWordSize * (nCols - 1), SEEK_CUR);
+                    VSIFSeekL(fp, static_cast<vsi_l_offset>(4 + nWordSize * (nCols - 1)), SEEK_CUR);
                 else
                 {
                     CPLError(CE_Failure, CPLE_AppDefined,
@@ -570,7 +570,7 @@ GDALDataset *HF2Dataset::Open( GDALOpenInfo * poOpenInfo )
             else if (nEPSGDatumCode >= 6000)
             {
                 char szName[32];
-                sprintf( szName, "EPSG:%d", nEPSGDatumCode-2000 );
+                snprintf( szName, sizeof(szName), "EPSG:%d", nEPSGDatumCode-2000 );
                 oSRS.SetWellKnownGeogCS( szName );
                 bHasSRS = true;
             }
@@ -1066,14 +1066,13 @@ void GDALRegister_HF2()
     if( GDALGetDriverByName( "HF2" ) != NULL )
         return;
 
-    GDALDriver  *poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "HF2" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
     poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
                                "HF2/HFZ heightfield raster" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_hf2.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_hf2.html" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "hf2" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
 "<CreationOptionList>"

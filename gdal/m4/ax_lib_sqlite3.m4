@@ -8,7 +8,7 @@ dnl This macro takes only one optional argument, required version
 dnl of SQLite 3 library. If required version is not passed,
 dnl 3.0.0 is used in the test of existence of SQLite 3.
 dnl
-dnl If no intallation prefix to the installed SQLite library is given
+dnl If no installation prefix to the installed SQLite library is given
 dnl the macro searches under /usr, /usr/local, and /opt.
 dnl
 dnl This macro calls:
@@ -149,7 +149,7 @@ AC_DEFUN([AX_LIB_SQLITE3],
             [
             AC_MSG_RESULT([not found])
             HAVE_SQLITE3="no"
-            succees="no"
+            success="no"
             ]
         )
         AC_LANG_POP([C++])

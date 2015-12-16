@@ -36,10 +36,11 @@
 using namespace PCIDSK;
 
 /* -------------------------------------------------------------------- */
-/*      Size of a block in the record/vertice block tables.  This is    */
+/*      Size of a block in the record/vertex block tables.  This is    */
 /*      determined by the PCIDSK format and may not be changed.         */
 /* -------------------------------------------------------------------- */
-static const int block_page_size = 8192;  
+static const int block_page_size = 8192;
+template<class T> static void CPL_IGNORE_RET_VAL(T) {}
 
 /************************************************************************/
 /* ==================================================================== */
@@ -219,7 +220,7 @@ std::string CPCIDSKVectorSegment::ConsistencyCheck_DataIndices()
 
     SpaceMap smap;
 
-    smap.AddChunk( 0, vh.header_blocks );
+    CPL_IGNORE_RET_VAL(smap.AddChunk( 0, vh.header_blocks ));
 
     for( section = 0; section < 2; section++ )
     {
@@ -232,7 +233,8 @@ std::string CPCIDSKVectorSegment::ConsistencyCheck_DataIndices()
             {
                 char msg[100];
 
-                sprintf( msg, "Conflict for block %d, held by at least data index '%d'.\n",
+                snprintf( msg,  sizeof(msg),
+                          "Conflict for block %d, held by at least data index '%d'.\n",
                          (*map)[i], section );
 
                 report += msg;
@@ -270,7 +272,8 @@ std::string CPCIDSKVectorSegment::ConsistencyCheck_ShapeIndices()
         {
             char msg[100];
 
-            sprintf( msg, "ShapeID %d is used for shape %d and %d!\n", 
+            snprintf( msg, sizeof(msg),
+                      "ShapeID %d is used for shape %d and %d!\n", 
                      shape_index_ids[toff], 
                      toff, id_map[shape_index_ids[toff]]);
             report += msg;

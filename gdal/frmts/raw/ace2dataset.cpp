@@ -34,7 +34,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void    GDALRegister_ACE2(void);
+void GDALRegister_ACE2();
 CPL_C_END
 
 static const char * const apszCategorySource[] =
@@ -173,11 +173,11 @@ const char *ACE2Dataset::GetProjectionRef()
 /*                          ACE2RasterBand()                            */
 /************************************************************************/
 
-ACE2RasterBand::ACE2RasterBand(VSILFILE* fpRaw,
-                               GDALDataType eDataType,
+ACE2RasterBand::ACE2RasterBand(VSILFILE* fpRawIn,
+                               GDALDataType eDataTypeIn,
                                int nXSize, int nYSize) :
-    RawRasterBand( fpRaw, 0, GDALGetDataTypeSize(eDataType) / 8,
-                   nXSize * GDALGetDataTypeSize(eDataType) / 8, eDataType,
+    RawRasterBand( fpRawIn, 0, GDALGetDataTypeSize(eDataTypeIn) / 8,
+                   nXSize * GDALGetDataTypeSize(eDataTypeIn) / 8, eDataTypeIn,
                    CPL_IS_LSB, nXSize, nYSize, TRUE, TRUE)
 {
 }
@@ -382,14 +382,12 @@ void GDALRegister_ACE2()
     if( GDALGetDriverByName( "ACE2" ) != NULL )
         return;
 
-    GDALDriver  *poDriver = new GDALDriver();
+    GDALDriver *poDriver = new GDALDriver();
 
     poDriver->SetDescription( "ACE2" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "ACE2" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_various.html#ACE2" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "ACE2" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_various.html#ACE2" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "ACE2" );
     poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 

@@ -58,13 +58,15 @@
  * Color table of named colors and lookup code derived from src/libes/gis/named_colr.c
  * of GRASS 4.1
  *
- * TRI - Terrain Ruggedness Index is as descibed in Wilson et al (2007)
- * this is based on the method of Valentine et al. (2004)  
- * 
- * TPI - Topographic Position Index follows the description in Wilson et al (2007), following Weiss (2001)
- * The radius is fixed at 1 cell width/height
- * 
- * Roughness - follows the definition in Wilson et al. (2007), which follows Dartnell (2000)
+ * TRI - Terrain Ruggedness Index is as described in Wilson et al. (2007)
+ * this is based on the method of Valentine et al. (2004)
+ *
+ * TPI - Topographic Position Index follows the description in
+ * Wilson et al. (2007), following Weiss (2001).  The radius is fixed
+ * at 1 cell width/height
+ *
+ * Roughness - follows the definition in Wilson et al. (2007), which follows
+ * Dartnell (2000).
  *
  * References for TRI/TPI/Roughness:
  * Dartnell, P. 2000. Applying Remote Sensing Techniques to map Seafloor 
@@ -1617,20 +1619,20 @@ CPLErr GDALGenerateVRTColorRelief(const char* pszDstFilename,
         return CE_Failure;
     }
 
-    VSIFPrintfL(fp, "<VRTDataset rasterXSize=\"%d\" rasterYSize=\"%d\">\n", nXSize, nYSize);
+    bool bOK = VSIFPrintfL(fp, "<VRTDataset rasterXSize=\"%d\" rasterYSize=\"%d\">\n", nXSize, nYSize) > 0;
     const char* pszProjectionRef = GDALGetProjectionRef(hSrcDataset);
     if (pszProjectionRef && pszProjectionRef[0] != '\0')
     {
         char* pszEscapedString = CPLEscapeString(pszProjectionRef, -1, CPLES_XML);
-        VSIFPrintfL(fp, "  <SRS>%s</SRS>\n", pszEscapedString);
+        bOK &= VSIFPrintfL(fp, "  <SRS>%s</SRS>\n", pszEscapedString) > 0;
         VSIFree(pszEscapedString);
     }
     double adfGT[6];
     if (GDALGetGeoTransform(hSrcDataset, adfGT) == CE_None)
     {
-        VSIFPrintfL(fp, "  <GeoTransform> %.16g, %.16g, %.16g, "
+        bOK &= VSIFPrintfL(fp, "  <GeoTransform> %.16g, %.16g, %.16g, "
                         "%.16g, %.16g, %.16g</GeoTransform>\n",
-                        adfGT[0], adfGT[1], adfGT[2], adfGT[3], adfGT[4], adfGT[5]);
+                        adfGT[0], adfGT[1], adfGT[2], adfGT[3], adfGT[4], adfGT[5]) > 0;
     }
     int nBands = 3 + (bAddAlpha ? 1 : 0);
     int iBand;
@@ -1646,25 +1648,25 @@ CPLErr GDALGenerateVRTColorRelief(const char* pszDstFilename,
 
     for(iBand = 0; iBand < nBands; iBand++)
     {
-        VSIFPrintfL(fp, "  <VRTRasterBand dataType=\"Byte\" band=\"%d\">\n", iBand + 1);
-        VSIFPrintfL(fp, "    <ColorInterp>%s</ColorInterp>\n",
-                    GDALGetColorInterpretationName((GDALColorInterp)(GCI_RedBand + iBand)));
-        VSIFPrintfL(fp, "    <ComplexSource>\n");
-        VSIFPrintfL(fp, "      <SourceFilename relativeToVRT=\"%d\">%s</SourceFilename>\n",
-                        bRelativeToVRT, pszSourceFilename);
-        VSIFPrintfL(fp, "      <SourceBand>%d</SourceBand>\n", GDALGetBandNumber(hSrcBand));
-        VSIFPrintfL(fp, "      <SourceProperties RasterXSize=\"%d\" "
+        bOK &= VSIFPrintfL(fp, "  <VRTRasterBand dataType=\"Byte\" band=\"%d\">\n", iBand + 1) > 0;
+        bOK &= VSIFPrintfL(fp, "    <ColorInterp>%s</ColorInterp>\n",
+                    GDALGetColorInterpretationName((GDALColorInterp)(GCI_RedBand + iBand))) > 0;
+        bOK &= VSIFPrintfL(fp, "    <ComplexSource>\n") > 0;
+        bOK &= VSIFPrintfL(fp, "      <SourceFilename relativeToVRT=\"%d\">%s</SourceFilename>\n",
+                        bRelativeToVRT, pszSourceFilename) > 0;
+        bOK &= VSIFPrintfL(fp, "      <SourceBand>%d</SourceBand>\n", GDALGetBandNumber(hSrcBand)) > 0;
+        bOK &= VSIFPrintfL(fp, "      <SourceProperties RasterXSize=\"%d\" "
                         "RasterYSize=\"%d\" DataType=\"%s\" "
                         "BlockXSize=\"%d\" BlockYSize=\"%d\"/>\n",
                         nXSize, nYSize,
                         GDALGetDataTypeName(GDALGetRasterDataType(hSrcBand)),
-                        nBlockXSize, nBlockYSize);
-        VSIFPrintfL(fp, "      <SrcRect xOff=\"0\" yOff=\"0\" xSize=\"%d\" ySize=\"%d\"/>\n",
-                        nXSize, nYSize);
-        VSIFPrintfL(fp, "      <DstRect xOff=\"0\" yOff=\"0\" xSize=\"%d\" ySize=\"%d\"/>\n",
-                        nXSize, nYSize);
+                        nBlockXSize, nBlockYSize) > 0;
+        bOK &= VSIFPrintfL(fp, "      <SrcRect xOff=\"0\" yOff=\"0\" xSize=\"%d\" ySize=\"%d\"/>\n",
+                        nXSize, nYSize) > 0;
+        bOK &= VSIFPrintfL(fp, "      <DstRect xOff=\"0\" yOff=\"0\" xSize=\"%d\" ySize=\"%d\"/>\n",
+                        nXSize, nYSize) > 0;
 
-        VSIFPrintfL(fp, "      <LUT>");
+        bOK &= VSIFPrintfL(fp, "      <LUT>") > 0;
         int iColor;
 #define EPSILON 1e-8
         for(iColor=0;iColor<nColorAssociation;iColor++)
@@ -1672,68 +1674,68 @@ CPLErr GDALGenerateVRTColorRelief(const char* pszDstFilename,
             if (eColorSelectionMode == COLOR_SELECTION_NEAREST_ENTRY)
             {
                 if (iColor > 1)
-                    VSIFPrintfL(fp, ",");
+                    bOK &= VSIFPrintfL(fp, ",") > 0;
             }
             else if (iColor > 0)
-                VSIFPrintfL(fp, ",");
+                bOK &= VSIFPrintfL(fp, ",") > 0;
 
             double dfVal = pasColorAssociation[iColor].dfVal;
 
             if (eColorSelectionMode == COLOR_SELECTION_EXACT_ENTRY)
             {
-                VSIFPrintfL(fp, "%.12g:0,", dfVal - EPSILON);
+                bOK &= VSIFPrintfL(fp, "%.12g:0,", dfVal - EPSILON) > 0;
             }
             else if (iColor > 0 &&
                      eColorSelectionMode == COLOR_SELECTION_NEAREST_ENTRY)
             {
                 double dfMidVal = (dfVal + pasColorAssociation[iColor-1].dfVal) / 2;
-                VSIFPrintfL(fp, "%.12g:%d", dfMidVal - EPSILON,
+                bOK &= VSIFPrintfL(fp, "%.12g:%d", dfMidVal - EPSILON,
                         (iBand == 0) ? pasColorAssociation[iColor-1].nR :
                         (iBand == 1) ? pasColorAssociation[iColor-1].nG :
                         (iBand == 2) ? pasColorAssociation[iColor-1].nB :
-                                       pasColorAssociation[iColor-1].nA);
-                VSIFPrintfL(fp, ",%.12g:%d", dfMidVal ,
+                                       pasColorAssociation[iColor-1].nA) > 0;
+                bOK &= VSIFPrintfL(fp, ",%.12g:%d", dfMidVal ,
                         (iBand == 0) ? pasColorAssociation[iColor].nR :
                         (iBand == 1) ? pasColorAssociation[iColor].nG :
                         (iBand == 2) ? pasColorAssociation[iColor].nB :
-                                       pasColorAssociation[iColor].nA);
+                                       pasColorAssociation[iColor].nA) > 0;
 
             }
 
             if (eColorSelectionMode != COLOR_SELECTION_NEAREST_ENTRY)
             {
                 if (dfVal != (double)(int)dfVal)
-                    VSIFPrintfL(fp, "%.12g", dfVal);
+                    bOK &= VSIFPrintfL(fp, "%.12g", dfVal) > 0;
                 else
-                    VSIFPrintfL(fp, "%d", (int)dfVal);
-                VSIFPrintfL(fp, ":%d",
+                    bOK &= VSIFPrintfL(fp, "%d", (int)dfVal) > 0;
+                bOK &= VSIFPrintfL(fp, ":%d",
                             (iBand == 0) ? pasColorAssociation[iColor].nR :
                             (iBand == 1) ? pasColorAssociation[iColor].nG :
                             (iBand == 2) ? pasColorAssociation[iColor].nB :
-                                           pasColorAssociation[iColor].nA);
+                                           pasColorAssociation[iColor].nA) > 0;
             }
 
             if (eColorSelectionMode == COLOR_SELECTION_EXACT_ENTRY)
             {
-                VSIFPrintfL(fp, ",%.12g:0", dfVal + EPSILON);
+                bOK &= VSIFPrintfL(fp, ",%.12g:0", dfVal + EPSILON) > 0;
             }
 
         }
-        VSIFPrintfL(fp, "</LUT>\n");
+        bOK &= VSIFPrintfL(fp, "</LUT>\n") > 0;
 
-        VSIFPrintfL(fp, "    </ComplexSource>\n");
-        VSIFPrintfL(fp, "  </VRTRasterBand>\n");
+        bOK &= VSIFPrintfL(fp, "    </ComplexSource>\n") > 0;
+        bOK &= VSIFPrintfL(fp, "  </VRTRasterBand>\n") > 0;
     }
 
     CPLFree(pszSourceFilename);
 
-    VSIFPrintfL(fp, "</VRTDataset>\n");
+    bOK &= VSIFPrintfL(fp, "</VRTDataset>\n") > 0;
 
     VSIFCloseL(fp);
 
     CPLFree(pasColorAssociation);
 
-    return CE_None;
+    return (bOK) ? CE_None : CE_Failure;
 }
 
 
@@ -2288,16 +2290,22 @@ static Algorithm GetAlgorithm(const char* pszProcessing)
  *
  * This is the equivalent of the <a href="gdaldem.html">gdaldem</a> utility.
  *
- * GDALDEMProcessingOptions* must be allocated and freed with GDALDEMProcessingOptionsNew()
- * and GDALDEMProcessingOptionsFree() respectively.
+ * GDALDEMProcessingOptions* must be allocated and freed with
+ * GDALDEMProcessingOptionsNew() and GDALDEMProcessingOptionsFree()
+ * respectively.
  *
  * @param pszDest the destination dataset path.
  * @param hSrcDataset the source dataset handle.
- * @param pszProcessing the processing to apply (one of "hillshade", "slope", "aspect", "color-relief", "TRI", "TPI", "Roughness")
- * @param pszColorFilename color file (mandatory for "color-relief" processing, should be NULL otherwise)
- * @param psOptionsIn the options struct returned by GDALDEMProcessingOptionsNew() or NULL.
- * @param pbUsageError the pointer to int variable to determine any usage error has occured or NULL.
- * @return the output dataset (new dataset that must be closed using GDALClose()) or NULL in case of error.
+ * @param pszProcessing the processing to apply (one of "hillshade", "slope",
+ * "aspect", "color-relief", "TRI", "TPI", "Roughness")
+ * @param pszColorFilename color file (mandatory for "color-relief" processing,
+ * should be NULL otherwise)
+ * @param psOptionsIn the options struct returned by
+ * GDALDEMProcessingOptionsNew() or NULL.
+ * @param pbUsageError the pointer to int variable to determine any usage
+ * error has occurred or NULL.
+ * @return the output dataset (new dataset that must be closed using
+ * GDALClose()) or NULL in case of error.
  *
  * @since GDAL 2.1
  */

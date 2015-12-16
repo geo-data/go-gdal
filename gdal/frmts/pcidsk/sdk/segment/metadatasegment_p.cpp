@@ -43,9 +43,9 @@ using namespace PCIDSK;
 /*                          MetadataSegment()                           */
 /************************************************************************/
 
-MetadataSegment::MetadataSegment( PCIDSKFile *file, int segment,
+MetadataSegment::MetadataSegment( PCIDSKFile *fileIn, int segmentIn,
                                   const char *segment_pointer )
-        : CPCIDSKSegment( file, segment, segment_pointer )
+        : CPCIDSKSegment( fileIn, segmentIn, segment_pointer )
 
 {
     loaded = false;
@@ -111,7 +111,7 @@ void MetadataSegment::FetchGroupMetadata( const char *group, int id,
     char key_prefix[200];
     size_t  prefix_len;
 
-    std::sprintf( key_prefix, "METADATA_%s_%d_", group, id );
+    snprintf( key_prefix, sizeof(key_prefix), "METADATA_%s_%d_", group, id );
     prefix_len = std::strlen(key_prefix);
 
 /* -------------------------------------------------------------------- */
@@ -175,7 +175,7 @@ void MetadataSegment::SetGroupMetadataValue( const char *group, int id,
 
     char key_prefix[200];
 
-    std::sprintf( key_prefix, "METADATA_%s_%d_", group, id );
+    snprintf( key_prefix, sizeof(key_prefix), "METADATA_%s_%d_", group, id );
 
     std::string full_key;
 
@@ -190,7 +190,7 @@ void MetadataSegment::SetGroupMetadataValue( const char *group, int id,
 /*                                                                      */
 /*      When saving we first need to merge in any updates.  We put      */
 /*      this off since scanning and updating the metadata doc could     */
-/*      be epxensive if done for each item.                             */
+/*      be expensive if done for each item.                             */
 /************************************************************************/
 
 void MetadataSegment::Save()
@@ -219,7 +219,7 @@ void MetadataSegment::Save()
                 i_split = i;
         }
 
-        if( pszNext[i] == '\0' )
+        if( i_split < 0 || pszNext[i] == '\0' )
             break;
 
 /* -------------------------------------------------------------------- */

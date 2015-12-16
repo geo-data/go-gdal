@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_AMIGOCLOUD_H_INCLUDED
-#define _OGR_AMIGOCLOUD_H_INCLUDED
+#ifndef OGR_AMIGOCLOUD_H_INCLUDED
+#define OGR_AMIGOCLOUD_H_INCLUDED
 
 #include "ogrsf_frmts.h"
 #include "cpl_http.h"
@@ -52,8 +52,8 @@ class OGRAmigoCloudGeomFieldDefn: public OGRGeomFieldDefn
     public:
         int nSRID;
 
-        OGRAmigoCloudGeomFieldDefn(const char* pszName, OGRwkbGeometryType eType) :
-                OGRGeomFieldDefn(pszName, eType), nSRID(0)
+        OGRAmigoCloudGeomFieldDefn(const char* pszNameIn, OGRwkbGeometryType eType) :
+                OGRGeomFieldDefn(pszNameIn, eType), nSRID(0)
         {
         }
 };
@@ -97,7 +97,6 @@ class OGRAmigoCloudLayer : public OGRLayer
         OGRAmigoCloudDataSource* poDS;
 
         OGRFeatureDefn      *poFeatureDefn;
-        OGRSpatialReference *poSRS;
         CPLString            osBaseSQL;
         CPLString            osFIDColName;
 
@@ -294,4 +293,4 @@ class OGRAmigoCloudDataSource : public OGRDataSource
                                                         int bRunDeferedActions = FALSE );
 };
 
-#endif /* ndef _OGR_AMIGOCLOUD_H_INCLUDED */
+#endif /* ndef OGR_AMIGOCLOUD_H_INCLUDED */

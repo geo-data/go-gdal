@@ -29,6 +29,7 @@
 
 #include "gdal_priv.h"
 #include "gdal_pam.h"
+
 #include "tiff.h"
 
 CPL_CVSID("$Id$");
@@ -79,10 +80,10 @@ class CALSRasterBand: public GDALPamRasterBand
     GDALRasterBand* poUnderlyingBand;
 
   public:
-    CALSRasterBand(CALSDataset* poDS)
+    CALSRasterBand(CALSDataset* poDSIn)
     {
-        this->poDS = poDS;
-        poUnderlyingBand = poDS->poUnderlyingDS->GetRasterBand(1);
+        this->poDS = poDSIn;
+        poUnderlyingBand = poDSIn->poUnderlyingDS->GetRasterBand(1);
         poUnderlyingBand->GetBlockSize(&nBlockXSize, &nBlockYSize);
         nBand = 1;
         eDataType = GDT_Byte;
@@ -140,9 +141,9 @@ class CALSWrapperSrcBand: public GDALPamRasterBand
         int bInvertValues;
 
     public:
-        CALSWrapperSrcBand(GDALDataset* poSrcDS)
+        CALSWrapperSrcBand(GDALDataset* poSrcDSIn)
         {
-            this->poSrcDS = poSrcDS;
+            this->poSrcDS = poSrcDSIn;
             SetMetadataItem("NBITS", "1", "IMAGE_STRUCTURE");
             poSrcDS->GetRasterBand(1)->GetBlockSize(&nBlockXSize, &nBlockYSize);
             eDataType = GDT_Byte;
@@ -487,7 +488,7 @@ GDALDataset *CALSDataset::CreateCopy( const char *pszFilename,
                                            papszOptions);
     if( poDS == NULL )
     {
-        // Shouldn't happen normally (except if CCITTFAX4 not available)
+        // Should not happen normally (except if CCITTFAX4 not available)
         CSLDestroy(papszOptions);
         return NULL;
     }

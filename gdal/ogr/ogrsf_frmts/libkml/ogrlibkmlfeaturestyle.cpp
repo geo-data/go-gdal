@@ -142,7 +142,6 @@ void featurestyle2kml (
         /***** parse the style table *****/
 
         poOgrSTBL->ResetStyleStringReading (  );
-        const char *pszStyleString;
 
         while ( ( pszStyleString = poOgrSTBL->GetNextStyle (  ) ) != NULL ) {
 
@@ -253,7 +252,7 @@ void kml2featurestyle (
         }
 
         /***** is it a dataset style? *****/
-        
+
         else {
 
             int nPathLen = static_cast<int>(strlen ( poOgrDS->GetStylePath (  ) ));
@@ -280,9 +279,9 @@ void kml2featurestyle (
                     pszUrl[nPathLen] = '@';
                     poOgrFeat->SetStyleString ( pszUrl + nPathLen );
                 }
-       
+
             }
-            
+
             /**** its someplace else *****/
 
             else {
@@ -316,11 +315,11 @@ void kml2featurestyle (
                         /***** loop, read and copy to a string *****/
 
                         size_t nRead;
-                    
+
                         do {
-                            
+
                             nRead = VSIFReadL(szbuf, 1, sizeof(szbuf) - 1, fp);
-                            
+
                             if (nRead == 0)
                                 break;
 
@@ -378,9 +377,9 @@ void kml2featurestyle (
 
             OGRStyleMgr *poOgrSM = new OGRStyleMgr;
 
-            /***** if were resolveing style the feature  *****/
+            /***** if were resolving style the feature *****/
             /***** might already have styling to add too *****/
-            
+
             const char *pszResolve = CPLGetConfigOption ( "LIBKML_RESOLVE_STYLE", "no" );
             if (CSLTestBoolean(pszResolve)) {
                  poOgrSM->InitFromFeature ( poOgrFeat );
@@ -388,7 +387,7 @@ void kml2featurestyle (
             else {
 
                 /***** if featyurestyle gets a name tool this needs changed to the above *****/
-                
+
                 poOgrSM->InitStyleString ( NULL );
             }
 
@@ -397,7 +396,7 @@ void kml2featurestyle (
             kml2stylestring ( poKmlStyle, poOgrSM );
 
             /***** add the style to the feature *****/
-            
+
             poOgrFeat->SetStyleString(poOgrSM->GetStyleString(NULL));
 
             delete poOgrSM;

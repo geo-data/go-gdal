@@ -37,7 +37,7 @@
 CPL_CVSID("$Id$");
 
 CPL_C_START
-void	GDALRegister_HKV(void);
+void GDALRegister_HKV();
 CPL_C_END
 
 /************************************************************************/
@@ -230,13 +230,13 @@ class HKVDataset : public RawDataset
 /*                           HKVRasterBand()                            */
 /************************************************************************/
 
-HKVRasterBand::HKVRasterBand( HKVDataset *poDSIn, int nBandIn, VSILFILE * fpRaw,
-                              unsigned int nImgOffset, int nPixelOffset,
-                              int nLineOffset,
-                              GDALDataType eDataType, int bNativeOrder ) :
-    RawRasterBand( reinterpret_cast<GDALDataset *>( poDSIn ), nBandIn, fpRaw,
-                   nImgOffset, nPixelOffset, nLineOffset, eDataType,
-                   bNativeOrder, TRUE )
+HKVRasterBand::HKVRasterBand( HKVDataset *poDSIn, int nBandIn, VSILFILE * fpRawIn,
+                              unsigned int nImgOffsetIn, int nPixelOffsetIn,
+                              int nLineOffsetIn,
+                              GDALDataType eDataTypeIn, int bNativeOrderIn ) :
+    RawRasterBand( reinterpret_cast<GDALDataset *>( poDSIn ), nBandIn, fpRawIn,
+                   nImgOffsetIn, nPixelOffsetIn, nLineOffsetIn, eDataTypeIn,
+                   bNativeOrderIn, TRUE )
 
 {
     poDS = poDSIn;
@@ -476,7 +476,7 @@ CPLErr HKVDataset::SetGeoTransform( double * padfTransform )
 {
     /* NOTE:  Geotransform coordinates must match the current projection   */
     /* of the dataset being changed (not the geotransform source).         */
-    /* ie. be in lat/longs for LL projected; UTM for UTM projected.        */
+    /* i.e. be in lat/longs for LL projected; UTM for UTM projected.       */
     /* SET PROJECTION BEFORE SETTING GEOTRANSFORM TO AVOID SYNCHRONIZATION */
     /* PROBLEMS!                                                           */
 
@@ -907,7 +907,7 @@ const GDAL_GCP *HKVDataset::GetGCPs()
 /*                          ProcessGeorefGCP()                          */
 /************************************************************************/
 
-void HKVDataset::ProcessGeorefGCP( char **papszGeoref, const char *pszBase,
+void HKVDataset::ProcessGeorefGCP( char **papszGeorefIn, const char *pszBase,
                                    double dfRasterX, double dfRasterY )
 
 {
@@ -915,19 +915,19 @@ void HKVDataset::ProcessGeorefGCP( char **papszGeoref, const char *pszBase,
 /*      Fetch the GCP from the string list.                             */
 /* -------------------------------------------------------------------- */
     char szFieldName[128];
-    sprintf( szFieldName, "%s.latitude", pszBase );
+    snprintf( szFieldName, sizeof(szFieldName), "%s.latitude", pszBase );
     double dfLat;
-    if( CSLFetchNameValue(papszGeoref, szFieldName) == NULL )
+    if( CSLFetchNameValue(papszGeorefIn, szFieldName) == NULL )
         return;
     else
-        dfLat = CPLAtof(CSLFetchNameValue(papszGeoref, szFieldName));
+        dfLat = CPLAtof(CSLFetchNameValue(papszGeorefIn, szFieldName));
 
-    sprintf( szFieldName, "%s.longitude", pszBase );
+    snprintf( szFieldName, sizeof(szFieldName), "%s.longitude", pszBase );
     double dfLong;
-    if( CSLFetchNameValue(papszGeoref, szFieldName) == NULL )
+    if( CSLFetchNameValue(papszGeorefIn, szFieldName) == NULL )
         return;
     else
-        dfLong = CPLAtof(CSLFetchNameValue(papszGeoref, szFieldName));
+        dfLong = CPLAtof(CSLFetchNameValue(papszGeorefIn, szFieldName));
 
 /* -------------------------------------------------------------------- */
 /*      Add the gcp to the internal list.                               */
@@ -1427,10 +1427,11 @@ GDALDataset *HKVDataset::Open( GDALOpenInfo * poOpenInfo )
 /* -------------------------------------------------------------------- */
 /*      Build the overview filename, as blob file = "_ovr".             */
 /* -------------------------------------------------------------------- */
+    const size_t nOvrFilenameLen = strlen( pszFilename ) + 5;
     char *pszOvrFilename = reinterpret_cast<char *>(
-        CPLMalloc( strlen( pszFilename ) + 5 ) );
+        CPLMalloc( nOvrFilenameLen ) );
 
-    sprintf( pszOvrFilename, "%s_ovr", pszFilename );
+    snprintf( pszOvrFilename, nOvrFilenameLen, "%s_ovr", pszFilename );
 
 /* -------------------------------------------------------------------- */
 /*      Define the bands.                                               */
@@ -1815,7 +1816,7 @@ HKVDataset::CreateCopy( const char * pszFilename,
 
 
 /************************************************************************/
-/*                         GDALRegister_HKV()                          */
+/*                         GDALRegister_HKV()                           */
 /************************************************************************/
 
 void GDALRegister_HKV()

@@ -19,16 +19,16 @@
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included
  * in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
  * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  **********************************************************************
  *
@@ -37,7 +37,8 @@
  * Fixed missing initializations that cause crashes
  *
  * Revision 1.77  2010-10-08 18:38:13  aboudreault
- * Added attribute index support for the sql queries in mapinfo tab format (GDAL bug #3687)
+ * Added attribute index support for the sql queries in mapinfo tab format
+ * (GDAL bug #3687)
  *
  * Revision 1.76  2010-07-07 19:00:15  aboudreault
  * Cleanup Win32 Compile Warnings (GDAL bug #2930)
@@ -46,7 +47,8 @@
  * Fixed bad feature count after we deleted a feature in MapInfo (bug 2227)
  *
  * Revision 1.74  2010-01-07 20:39:12  aboudreault
- * Added support to handle duplicate field names, Added validation to check if a field name start with a number (bug 2141)
+ * Added support to handle duplicate field names, Added validation to check
+ * if a field name start with a number (bug 2141)
  *
  * Revision 1.73  2008-11-27 20:50:23  aboudreault
  * Improved support for OGR date/time types. New Read/Write methods (bug 1948)
@@ -141,7 +143,7 @@ TABFile::TABFile()
 
     m_panMatchingFIDs = NULL; 
     m_iMatchingFID = 0; 
-    
+
     m_bNeedTABRewrite = FALSE;
     m_bLastOpWasRead = FALSE;
     m_bLastOpWasWrite = FALSE;
@@ -164,7 +166,7 @@ TABFile::~TABFile()
 
 GIntBig TABFile::GetFeatureCount (int bForce)
 {
-    
+
     if( m_poFilterGeom != NULL || m_poAttrQuery != NULL || bForce)
         return OGRLayer::GetFeatureCount( bForce );
     else
@@ -179,7 +181,7 @@ void TABFile::ResetReading()
     CPLFree(m_panMatchingFIDs);
     m_panMatchingFIDs = NULL;
     m_iMatchingFID = 0;
-    
+
     m_nCurFeatureId = 0;
     if( m_poMAPFile != NULL )
         m_poMAPFile->ResetReading();
@@ -192,7 +194,7 @@ void TABFile::ResetReading()
     if( m_poMAPFile )
     {
         bUseSpatialTraversal = FALSE;
-    
+
         m_poMAPFile->ResetCoordFilter();
 
         if( m_poFilterGeom != NULL )
@@ -254,7 +256,7 @@ int TABFile::Open(const char *pszFname, TABAccess eAccess,
     int nFnameLen = 0;
 
     CPLErrorReset();
-   
+
     if (m_poMAPFile)
     {
         CPLError(CE_Failure, CPLE_AssertionFailed,
@@ -262,7 +264,7 @@ int TABFile::Open(const char *pszFname, TABAccess eAccess,
 
         return -1;
     }
-    
+
     m_eAccessMode = eAccess;
 
     /*-----------------------------------------------------------------
@@ -395,7 +397,7 @@ int TABFile::Open(const char *pszFname, TABAccess eAccess,
 #endif
 
     m_poDATFile = new TABDATFile;
-   
+
     if ( m_poDATFile->Open(pszTmpFname, eAccess, m_eTableType) != 0)
     {
         // Open Failed... an error has already been reported, just return.
@@ -1050,7 +1052,7 @@ int TABFile::WriteTABFile()
                             poFieldDefn->GetNameRef(), pszFieldType,
                             GetFieldIndexNumber(iField) );
                 }
-                
+
             }
         }
         else
@@ -1087,7 +1089,7 @@ int TABFile::Close()
     CPLErrorReset();
 
     // Commit the latest changes to the file...
-    
+
     // In Write access, it's time to write the .TAB file.
     if (m_eAccessMode != TABRead)
     {
@@ -1124,11 +1126,11 @@ int TABFile::Close()
     if (m_poDefn )
         m_poDefn->Release();
     m_poDefn = NULL;
-    
+
     if (m_poSpatialRef)
         m_poSpatialRef->Release();
     m_poSpatialRef = NULL;
-    
+
     CSLDestroy(m_papszTABFile);
     m_papszTABFile = NULL;
 
@@ -1299,8 +1301,8 @@ int TABFile::GetNextFeatureId_Spatial(int nPrevId)
  *
  * Fill and return a TABFeature object for the specified feature id.
  *
- * The retruned pointer is a reference to an object owned and maintained
- * by this TABFile object.  It should not be altered or freed by the 
+ * The returned pointer is a reference to an object owned and maintained
+ * by this TABFile object.  It should not be altered or freed by the
  * caller and its contents is guaranteed to be valid only until the next
  * call to GetFeatureRef() or Close().
  *
@@ -1341,7 +1343,7 @@ TABFeature *TABFile::GetFeatureRef(GIntBig nFeatureId)
         //    nFeatureId);
         return NULL;
     }
-    
+
     if( m_poDATFile->IsCurrentRecordDeleted() )
     {
         if( m_poMAPFile->GetCurObjType() != TAB_GEOM_NONE )
@@ -1352,7 +1354,7 @@ TABFeature *TABFile::GetFeatureRef(GIntBig nFeatureId)
         }
         return NULL;
     }
-    
+
     /*-----------------------------------------------------------------
      * Flush current feature object
      * __TODO__ try to reuse if it is already of the right type
@@ -1449,7 +1451,7 @@ OGRErr TABFile::DeleteFeature(GIntBig nFeatureId)
                  nFeatureId);*/
         return OGRERR_NON_EXISTING_FEATURE;
     }
-    
+
     if( m_poDATFile->IsCurrentRecordDeleted() )
     {
         /*CPLError(CE_Failure, CPLE_IllegalArg,
@@ -1462,7 +1464,7 @@ OGRErr TABFile::DeleteFeature(GIntBig nFeatureId)
         delete m_poCurFeature;
         m_poCurFeature = NULL;
     }
-    
+
     if( m_poMAPFile->MarkAsDeleted() != 0 ||
         m_poDATFile->MarkAsDeleted() != 0 )
     {
@@ -1599,7 +1601,7 @@ int TABFile::WriteFeature(TABFeature *poFeature)
             delete poObjHdr;
         return -1;
     }
-    
+
     m_nLastFeatureId = MAX(m_nLastFeatureId, nFeatureId);
     m_nCurFeatureId = nFeatureId;
 
@@ -1683,7 +1685,7 @@ OGRErr TABFile::ISetFeature( OGRFeature *poFeature )
                  "SetFeature() failed: file is not opened!");
         return OGRERR_FAILURE;
     }
-    
+
     GIntBig nFeatureId = poFeature->GetFID();
     if (nFeatureId == OGRNullFID )
     {
@@ -1781,9 +1783,9 @@ OGRErr TABFile::ISetFeature( OGRFeature *poFeature )
     }
 
     int nStatus = WriteFeature(poTABFeature);
-    
+
     delete poTABFeature;
-    
+
     if (nStatus < 0)
         return OGRERR_FAILURE;
 
@@ -1995,10 +1997,10 @@ int TABFile::AddFieldNative(const char *pszName, TABFieldType eMapInfoType,
     szNewFieldName[31] = '\0';
 
     while (m_poDefn->GetFieldIndex(szNewFieldName) >= 0 && nRenameNum < 10) 
-      sprintf( szNewFieldName, "%.29s_%.1d", pszCleanName, nRenameNum++ );
+      snprintf( szNewFieldName, sizeof(szNewFieldName), "%.29s_%.1d", pszCleanName, nRenameNum++ );
 
     while (m_poDefn->GetFieldIndex(szNewFieldName) >= 0 && nRenameNum < 100) 
-      sprintf( szNewFieldName, "%.29s%.2d", pszCleanName, nRenameNum++ );
+      snprintf( szNewFieldName, sizeof(szNewFieldName), "%.29s%.2d", pszCleanName, nRenameNum++ );
 
     if (m_poDefn->GetFieldIndex(szNewFieldName) >= 0)
     {
@@ -2231,7 +2233,7 @@ int TABFile::SetFieldIndexed( int nFieldId )
     if (m_poINDFile == NULL)
     {
         m_poINDFile = new TABINDFile;
-   
+
         if ( m_poINDFile->Open(m_pszFname, "w", TRUE) != 0)
         {
             // File could not be opened... 
@@ -2300,7 +2302,7 @@ TABINDFile  *TABFile::GetINDFileRef()
          * TABINDFile class will automagically adjust the extension.
          *------------------------------------------------------------*/
         m_poINDFile = new TABINDFile;
-   
+
         if ( m_poINDFile->Open(m_pszFname, "r", TRUE) != 0)
         {
             // File could not be opened... probably does not exist
@@ -2704,7 +2706,7 @@ OGRErr TABFile::ReorderFields( int* panMap )
 /*                           AlterFieldDefn()                           */
 /************************************************************************/
 
-OGRErr TABFile::AlterFieldDefn( int iField, OGRFieldDefn* poNewFieldDefn, int nFlags )
+OGRErr TABFile::AlterFieldDefn( int iField, OGRFieldDefn* poNewFieldDefn, int nFlagsIn )
 {
     if( m_poDATFile == NULL || !TestCapability(OLCDeleteField) )
     {
@@ -2721,21 +2723,21 @@ OGRErr TABFile::AlterFieldDefn( int iField, OGRFieldDefn* poNewFieldDefn, int nF
         return OGRERR_FAILURE;
     }
 
-    if ( m_poDATFile->AlterFieldDefn( iField, poNewFieldDefn, nFlags ) == 0 )
+    if ( m_poDATFile->AlterFieldDefn( iField, poNewFieldDefn, nFlagsIn ) == 0 )
     {
         m_bNeedTABRewrite = TRUE;
 
         OGRFieldDefn* poFieldDefn = m_poDefn->GetFieldDefn(iField);
-        if ((nFlags & ALTER_TYPE_FLAG) &&
+        if ((nFlagsIn & ALTER_TYPE_FLAG) &&
             poNewFieldDefn->GetType() != poFieldDefn->GetType())
         {
             poFieldDefn->SetType(poNewFieldDefn->GetType());
-            if( (nFlags & ALTER_WIDTH_PRECISION_FLAG) == 0 )
+            if( (nFlagsIn & ALTER_WIDTH_PRECISION_FLAG) == 0 )
                 poFieldDefn->SetWidth(254);
         }
-        if (nFlags & ALTER_NAME_FLAG)
+        if (nFlagsIn & ALTER_NAME_FLAG)
             poFieldDefn->SetName(poNewFieldDefn->GetNameRef());
-        if ((nFlags & ALTER_WIDTH_PRECISION_FLAG) &&
+        if ((nFlagsIn & ALTER_WIDTH_PRECISION_FLAG) &&
             poFieldDefn->GetType() == OFTString)
         {
             poFieldDefn->SetWidth(m_poDATFile->GetFieldWidth(iField));
@@ -2761,10 +2763,10 @@ OGRErr TABFile::SyncToDisk()
         return OGRERR_NONE;
 
     OGRErr eErr = OGRERR_NONE;
-    
+
     // This is a hack for Windows and VSIFFlushL() issue. See http://trac.osgeo.org/gdal/ticket/5556
     CPLSetConfigOption("VSI_FLUSH", "TRUE"); 
-    
+
     if( WriteTABFile() != 0 )
         eErr = OGRERR_FAILURE;
 
@@ -2773,9 +2775,9 @@ OGRErr TABFile::SyncToDisk()
 
     if( m_poDATFile->SyncToDisk() != 0 )
         eErr = OGRERR_FAILURE;
-    
+
     CPLSetConfigOption("VSI_FLUSH", NULL);
-    
+
     return eErr;
 }
 

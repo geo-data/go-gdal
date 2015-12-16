@@ -95,15 +95,15 @@ CPLString RasterliteGetSpatialFilterCond(double minx, double miny,
 /*                            RasterliteBand()                          */
 /************************************************************************/
 
-RasterliteBand::RasterliteBand(RasterliteDataset* poDS, int nBand,
-                                GDALDataType eDataType,
-                                int nBlockXSize, int nBlockYSize)
+RasterliteBand::RasterliteBand(RasterliteDataset* poDSIn, int nBandIn,
+                                GDALDataType eDataTypeIn,
+                                int nBlockXSizeIn, int nBlockYSizeIn)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
-    this->eDataType = eDataType;
-    this->nBlockXSize = nBlockXSize;
-    this->nBlockYSize = nBlockYSize;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
+    this->eDataType = eDataTypeIn;
+    this->nBlockXSize = nBlockXSizeIn;
+    this->nBlockYSize = nBlockYSizeIn;
 }
 
 /************************************************************************/
@@ -709,11 +709,11 @@ void RasterliteDataset::AddSubDataset( const char* pszDSName)
     char	szName[80];
     const int nCount = CSLCount(papszSubDatasets ) / 2;
 
-    sprintf( szName, "SUBDATASET_%d_NAME", nCount+1 );
+    snprintf( szName, sizeof(szName), "SUBDATASET_%d_NAME", nCount+1 );
     papszSubDatasets = 
         CSLSetNameValue( papszSubDatasets, szName, pszDSName);
 
-    sprintf( szName, "SUBDATASET_%d_DESC", nCount+1 );
+    snprintf( szName, sizeof(szName), "SUBDATASET_%d_DESC", nCount+1 );
     papszSubDatasets = 
         CSLSetNameValue( papszSubDatasets, szName, pszDSName);
 }
@@ -814,7 +814,7 @@ char** RasterliteDataset::GetFileList()
 /*                         GetBlockParams()                             */
 /************************************************************************/
 
-int RasterliteDataset::GetBlockParams(OGRLayerH hRasterLyr, int nLevel,
+int RasterliteDataset::GetBlockParams(OGRLayerH hRasterLyr, int nLevelIn,
                                       int* pnBands, GDALDataType* peDataType,
                                       int* pnBlockXSize, int* pnBlockYSize)
 {
@@ -823,7 +823,7 @@ int RasterliteDataset::GetBlockParams(OGRLayerH hRasterLyr, int nLevel,
                  "FROM \"%s_metadata\" AS m, \"%s_rasters\" AS r "
                  "WHERE %s AND r.id = m.id",
                  osTableName.c_str(), osTableName.c_str(),
-                 RasterliteGetPixelSizeCond(padfXResolutions[nLevel],padfYResolutions[nLevel], "m.").c_str());
+                 RasterliteGetPixelSizeCond(padfXResolutions[nLevelIn],padfYResolutions[nLevelIn], "m.").c_str());
 
     OGRLayerH hSQLLyr = OGR_DS_ExecuteSQL(hDS, osSQL.c_str(), NULL, NULL);
     if (hSQLLyr == NULL)
@@ -913,11 +913,11 @@ int RasterliteDataset::GetBlockParams(OGRLayerH hRasterLyr, int nLevel,
 
         if (*pnBands == 1 && this->poCT == NULL)
         {
-            GDALColorTable* poCT =
+            GDALColorTable* l_poCT =
                 reinterpret_cast<GDALColorTable *>(
                     GDALGetRasterColorTable(GDALGetRasterBand(hDSTile, 1) ) );
-            if (poCT)
-                this->poCT = poCT->Clone();
+            if (l_poCT)
+                this->poCT = l_poCT->Clone();
         }
 
         GDALClose(hDSTile);
@@ -1401,7 +1401,7 @@ end:
 void GDALRegister_Rasterlite()
 
 {
-    if ( ! GDAL_CHECK_VERSION("Rasterlite driver") )
+    if( !GDAL_CHECK_VERSION("Rasterlite driver") )
         return;
 
     if( GDALGetDriverByName( "Rasterlite" ) != NULL )
@@ -1411,10 +1411,8 @@ void GDALRegister_Rasterlite()
 
     poDriver->SetDescription( "Rasterlite" );
     poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                               "Rasterlite" );
-    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                               "frmt_rasterlite.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "Rasterlite" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_rasterlite.html" );
     poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "sqlite" );
     poDriver->SetMetadataItem( GDAL_DMD_SUBDATASETS, "YES" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
@@ -1422,7 +1420,7 @@ void GDALRegister_Rasterlite()
                                "Float64 CInt16 CInt32 CFloat32 CFloat64" );
     poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
 "<CreationOptionList>"
-"   <Option name='WIPE' type='boolean' default='NO' description='Erase all prexisting data in the specified table'/>"
+"   <Option name='WIPE' type='boolean' default='NO' description='Erase all preexisting data in the specified table'/>"
 "   <Option name='TILED' type='boolean' default='YES' description='Use tiling'/>"
 "   <Option name='BLOCKXSIZE' type='int' default='256' description='Tile Width'/>"
 "   <Option name='BLOCKYSIZE' type='int' default='256' description='Tile Height'/>"

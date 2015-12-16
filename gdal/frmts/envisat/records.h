@@ -27,8 +27,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef __RECORDS_H__
-#define __RECORDS_H__
+#ifndef RECORDS_H_
+#define RECORDS_H_
 
 #include "gdal.h"
 
@@ -75,11 +75,11 @@ typedef struct {
 const EnvisatRecordDescr* EnvisatFile_GetRecordDescriptor(const char* pszProduct,
                                               const char* pszDataset);
 
-CPLErr EnvisatFile_GetFieldAsString(const void*, int, const EnvisatFieldDescr*, char*);
+CPLErr EnvisatFile_GetFieldAsString(const void*, int, const EnvisatFieldDescr*, char*, size_t);
 
 
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
 
-#endif /* __RECORDS_H__ */
+#endif /* RECORDS_H_ */

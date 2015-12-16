@@ -52,11 +52,11 @@ class MBTilesBand;
 static OGRDataSourceH MBTILESOpenSQLiteDB(const char* pszFilename,
                                       GDALAccess eAccess)
 {
-    const char* apszAllowedDrivers[] = { "SQLITE", NULL };
+    const char* l_apszAllowedDrivers[] = { "SQLITE", NULL };
     return (OGRDataSourceH)GDALOpenEx(pszFilename,
                                       GDAL_OF_VECTOR |
                                       ((eAccess == GA_Update) ? GDAL_OF_UPDATE : 0),
-                                      apszAllowedDrivers, NULL, NULL);
+                                      l_apszAllowedDrivers, NULL, NULL);
 }
 
 /************************************************************************/
@@ -77,7 +77,7 @@ class MBTilesDataset : public GDALPamDataset
 
     virtual CPLErr GetGeoTransform(double* padfGeoTransform);
     virtual const char* GetProjectionRef();
-    
+
     virtual char      **GetMetadataDomainList();
     virtual char      **GetMetadata( const char * pszDomain = "" );
 
@@ -151,15 +151,15 @@ class MBTilesBand: public GDALPamRasterBand
 /*                            MBTilesBand()                          */
 /************************************************************************/
 
-MBTilesBand::MBTilesBand(MBTilesDataset* poDS, int nBand,
-                                GDALDataType eDataType,
-                                int nBlockXSize, int nBlockYSize)
+MBTilesBand::MBTilesBand(MBTilesDataset* poDSIn, int nBandIn,
+                                GDALDataType eDataTypeIn,
+                                int nBlockXSizeIn, int nBlockYSizeIn)
 {
-    this->poDS = poDS;
-    this->nBand = nBand;
-    this->eDataType = eDataType;
-    this->nBlockXSize = nBlockXSize;
-    this->nBlockYSize = nBlockYSize;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
+    this->eDataType = eDataTypeIn;
+    this->nBlockXSize = nBlockXSizeIn;
+    this->nBlockYSize = nBlockYSizeIn;
 }
 
 /************************************************************************/
@@ -574,7 +574,7 @@ char* MBTilesDataset::FindKey(int iPixel, int iLine,
     int i;
 
     /* See https://github.com/mapbox/utfgrid-spec/blob/master/1.0/utfgrid.md */
-    /* for the explanation of the following processings */
+    /* for the explanation of the following process */
 
     pszSQL = CPLSPrintf("SELECT grid FROM grids WHERE "
                         "zoom_level = %d AND tile_column = %d AND tile_row = %d",
@@ -974,11 +974,11 @@ MBTilesDataset::MBTilesDataset()
 /*                          MBTilesDataset()                            */
 /************************************************************************/
 
-MBTilesDataset::MBTilesDataset(MBTilesDataset* poMainDS, int nLevel)
+MBTilesDataset::MBTilesDataset(MBTilesDataset* poMainDSIn, int nLevelIn)
 {
     bMustFree = FALSE;
-    this->nLevel = nLevel;
-    this->poMainDS = poMainDS;
+    this->nLevel = nLevelIn;
+    this->poMainDS = poMainDSIn;
     nResolutions = poMainDS->nResolutions - nLevel;
     hDS = poMainDS->hDS;
     papoOverviews = poMainDS->papoOverviews + nLevel;
@@ -1576,10 +1576,10 @@ int MBTilesGetBandCount(OGRDataSourceH &hDS,
             OGR_DS_ReleaseResultSet(hDS, hSQLLyr);
             hSQLLyr = NULL;
 
-            /* Re-open OGR SQLite DB, because with our spy we have simulated an I/O error */
-            /* that SQLite will have difficulies to recover within the existing connection */
-            /* No worry ! This will be fast because the /vsicurl/ cache has cached the already */
-            /* read blocks */
+            // Re-open OGR SQLite DB, because with our spy we have simulated an
+            // I/O error that SQLite will have difficulties to recover within
+            // the existing connection.  This will be fast because
+            // the /vsicurl/ cache has cached the already read blocks.
             OGRReleaseDataSource(hDS);
             hDS = MBTILESOpenSQLiteDB(osDSName.c_str(), GA_ReadOnly);
             if (hDS == NULL)
@@ -1917,28 +1917,24 @@ end:
 void GDALRegister_MBTiles()
 
 {
-    GDALDriver  *poDriver;
-
-    if (! GDAL_CHECK_VERSION("MBTiles driver"))
+    if( !GDAL_CHECK_VERSION( "MBTiles driver" ) )
         return;
 
-    if( GDALGetDriverByName( "MBTiles" ) == NULL )
-    {
-        poDriver = new GDALDriver();
+    if( GDALGetDriverByName( "MBTiles" ) != NULL )
+        return;
 
-        poDriver->SetDescription( "MBTiles" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
-                                   "MBTiles" );
-        poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC,
-                                   "frmt_mbtiles.html" );
-        poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "mbtiles" );
+    GDALDriver *poDriver = new GDALDriver();
 
-        poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
+    poDriver->SetDescription( "MBTiles" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, "MBTiles" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_mbtiles.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "mbtiles" );
 
-        poDriver->pfnOpen = MBTilesDataset::Open;
-        poDriver->pfnIdentify = MBTilesDataset::Identify;
+    poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 
-        GetGDALDriverManager()->RegisterDriver( poDriver );
-    }
+    poDriver->pfnOpen = MBTilesDataset::Open;
+    poDriver->pfnIdentify = MBTilesDataset::Identify;
+
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

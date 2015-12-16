@@ -203,7 +203,7 @@ class JP2OpenJPEGDataset : public GDALJP2AbstractDataset
   public:
                 JP2OpenJPEGDataset();
                 ~JP2OpenJPEGDataset();
-    
+
     static int Identify( GDALOpenInfo * poOpenInfo );
     static GDALDataset  *Open( GDALOpenInfo * );
     static GDALDataset  *CreateCopy( const char * pszFilename,
@@ -285,7 +285,7 @@ class JP2OpenJPEGRasterBand : public GDALPamRasterBand
 
     virtual int             GetOverviewCount();
     virtual GDALRasterBand* GetOverview(int iOvrLevel);
-    
+
     virtual int HasArbitraryOverviews() { return poCT == NULL; }
 };
 
@@ -294,16 +294,16 @@ class JP2OpenJPEGRasterBand : public GDALPamRasterBand
 /*                        JP2OpenJPEGRasterBand()                       */
 /************************************************************************/
 
-JP2OpenJPEGRasterBand::JP2OpenJPEGRasterBand( JP2OpenJPEGDataset *poDS, int nBand,
-                                              GDALDataType eDataType, int nBits,
-                                              int bPromoteTo8Bit,
-                                              int nBlockXSize, int nBlockYSize )
+JP2OpenJPEGRasterBand::JP2OpenJPEGRasterBand( JP2OpenJPEGDataset *poDSIn, int nBandIn,
+                                              GDALDataType eDataTypeIn, int nBits,
+                                              int bPromoteTo8BitIn,
+                                              int nBlockXSizeIn, int nBlockYSizeIn )
 
 {
-    this->eDataType = eDataType;
-    this->nBlockXSize = nBlockXSize;
-    this->nBlockYSize = nBlockYSize;
-    this->bPromoteTo8Bit = bPromoteTo8Bit;
+    this->eDataType = eDataTypeIn;
+    this->nBlockXSize = nBlockXSizeIn;
+    this->nBlockYSize = nBlockYSizeIn;
+    this->bPromoteTo8Bit = bPromoteTo8BitIn;
     poCT = NULL;
 
     if( (nBits % 8) != 0 )
@@ -312,8 +312,8 @@ JP2OpenJPEGRasterBand::JP2OpenJPEGRasterBand( JP2OpenJPEGDataset *poDS, int nBan
                         "IMAGE_STRUCTURE" );
     GDALRasterBand::SetMetadataItem("COMPRESSION", "JPEG2000",
                     "IMAGE_STRUCTURE" );
-    this->poDS = poDS;
-    this->nBand = nBand;
+    this->poDS = poDSIn;
+    this->nBand = nBandIn;
 }
 
 /************************************************************************/
@@ -546,15 +546,15 @@ int JP2OpenJPEGDataset::PreloadBlocks(JP2OpenJPEGRasterBand* poBand,
 
         if( nBlocksToLoad > 1 )
         {
-            int nThreads = MIN(nBlocksToLoad, nMaxThreads);
-            CPLJoinableThread** pahThreads = (CPLJoinableThread**) VSI_CALLOC_VERBOSE( sizeof(CPLJoinableThread*), nThreads );
+            int l_nThreads = MIN(nBlocksToLoad, nMaxThreads);
+            CPLJoinableThread** pahThreads = (CPLJoinableThread**) VSI_CALLOC_VERBOSE( sizeof(CPLJoinableThread*), l_nThreads );
             if( pahThreads == NULL )
             {
                 return -1;
             }
             int i;
 
-            CPLDebug("OPENJPEG", "%d blocks to load (%d threads)", nBlocksToLoad, nThreads);
+            CPLDebug("OPENJPEG", "%d blocks to load (%d threads)", nBlocksToLoad, l_nThreads);
 
             oJob.poGDS = this;
             oJob.nBand = poBand->GetBand();
@@ -586,13 +586,13 @@ int JP2OpenJPEGDataset::PreloadBlocks(JP2OpenJPEGRasterBand* poBand,
             /* This is a workaround to a design defect of the block cache */
             GDALRasterBlock::FlushDirtyBlocks();
 
-            for(i=0;i<nThreads;i++)
+            for(i=0;i<l_nThreads;i++)
             {
                 pahThreads[i] = CPLCreateJoinableThread(JP2OpenJPEGReadBlockInThread, &oJob);
                 if( pahThreads[i] == NULL )
                     oJob.bSuccess = false;
             }
-            for(i=0;i<nThreads;i++)
+            for(i=0;i<l_nThreads;i++)
                 CPLJoinThread( pahThreads[i] );
             CPLFree(pahThreads);
             if( !oJob.bSuccess )
@@ -690,7 +690,7 @@ static opj_stream_t* JP2OpenJPEGCreateReadStream(JP2OpenJPEGFile* psJP2OpenJPEGF
 /*                             ReadBlock()                              */
 /************************************************************************/
 
-CPLErr JP2OpenJPEGDataset::ReadBlock( int nBand, VSILFILE* fp,
+CPLErr JP2OpenJPEGDataset::ReadBlock( int nBand, VSILFILE* fpIn,
                                       int nBlockXOff, int nBlockYOff, void * pImage,
                                       int nBandCount, int* panBandMap )
 {
@@ -733,7 +733,7 @@ CPLErr JP2OpenJPEGDataset::ReadBlock( int nBand, VSILFILE* fp,
         goto end;
     }
 
-    sJP2OpenJPEGFile.fp = fp;
+    sJP2OpenJPEGFile.fp = fpIn;
     sJP2OpenJPEGFile.nBaseOffset = nCodeStreamStart;
     pStream = JP2OpenJPEGCreateReadStream(&sJP2OpenJPEGFile, nCodeStreamLength);
     if( pStream == NULL )
@@ -878,7 +878,7 @@ CPLErr JP2OpenJPEGDataset::ReadBlock( int nBand, VSILFILE* fp,
                     }
                 }
             }
-            
+
             if( bPromoteTo8Bit )
             {
                 for(int j=0;j<nHeightToRead;j++)
@@ -894,7 +894,7 @@ CPLErr JP2OpenJPEGDataset::ReadBlock( int nBand, VSILFILE* fp,
         {
             CPLAssert((int)psImage->comps[iBand-1].w >= nWidthToRead);
             CPLAssert((int)psImage->comps[iBand-1].h >= nHeightToRead);
-            
+
             if( bPromoteTo8Bit )
             {
                 for(int j=0;j<nHeightToRead;j++)
@@ -1230,7 +1230,7 @@ JP2OpenJPEGDataset::~JP2OpenJPEGDataset()
                 }
 
                 WriteXMPBox(fp, this, NULL);
-                
+
                 VSIFTruncateL( fp, VSIFTellL(fp) );
 
                 VSIFCloseL( fp );
@@ -1238,7 +1238,7 @@ JP2OpenJPEGDataset::~JP2OpenJPEGDataset()
             else
             {
                 VSIFCloseL( fp );
-                
+
                 CPLDebug("OPENJPEG", "Rewriting whole file");
 
                 const char* apszOptions[] = {
@@ -1397,7 +1397,7 @@ int JP2OpenJPEGDataset::Identify( GDALOpenInfo * poOpenInfo )
                     sizeof(jp2_box_jp) ) == 0
            ) )
         return TRUE;
-    
+
     else
         return FALSE;
 }
@@ -1495,7 +1495,7 @@ GDALDataset *JP2OpenJPEGDataset::Open( GDALOpenInfo * poOpenInfo )
                                                          nCodeStreamLength);
 
     opj_image_t * psImage = NULL;
-    
+
     if( pStream == NULL )
     {
         CPLError(CE_Failure, CPLE_AppDefined, "JP2OpenJPEGCreateReadStream() failed");
@@ -1538,7 +1538,6 @@ GDALDataset *JP2OpenJPEGDataset::Open( GDALOpenInfo * poOpenInfo )
     }
 
 #ifdef DEBUG
-    int i;
     CPLDebug("OPENJPEG", "nX0 = %u", nX0);
     CPLDebug("OPENJPEG", "nY0 = %u", nY0);
     CPLDebug("OPENJPEG", "nTileW = %u", nTileW);
@@ -1553,7 +1552,7 @@ GDALDataset *JP2OpenJPEGDataset::Open( GDALOpenInfo * poOpenInfo )
     CPLDebug("OPENJPEG", "psImage->numcomps = %d", psImage->numcomps);
     //CPLDebug("OPENJPEG", "psImage->color_space = %d", psImage->color_space);
     CPLDebug("OPENJPEG", "numResolutions = %d", numResolutions);
-    for(i=0;i<(int)psImage->numcomps;i++)
+    for(int i=0;i<(int)psImage->numcomps;i++)
     {
         CPLDebug("OPENJPEG", "psImage->comps[%d].dx = %u", i, psImage->comps[i].dx);
         CPLDebug("OPENJPEG", "psImage->comps[%d].dy = %u", i, psImage->comps[i].dy);
@@ -2344,7 +2343,7 @@ GDALDataset * JP2OpenJPEGDataset::CreateCopy( const char * pszFilename,
     const char* pszYCC = CSLFetchNameValue(papszOptions, "YCC");
     int bYCC = ((nBands == 3 || nBands == 4) && eDataType == GDT_Byte &&
             CSLTestBoolean(CSLFetchNameValueDef(papszOptions, "YCC", "TRUE")));
-    
+
     /* TODO: when OpenJPEG 2.2 is released, make this conditional */
     /* Depending on the way OpenJPEG <= r2950 is built, YCC with 4 bands might work on
      * Debug mode, but this relies on unreliable stack buffer overflows, so
@@ -2359,7 +2358,7 @@ GDALDataset * JP2OpenJPEGDataset::CreateCopy( const char * pszFilename,
         }
         bYCC = FALSE;
     }
-    
+
     if( bYCBCR420 && bYCC )
     {
         if( pszYCC != NULL )
@@ -2369,7 +2368,7 @@ GDALDataset * JP2OpenJPEGDataset::CreateCopy( const char * pszFilename,
         }
         bYCC = FALSE;
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Deal with codeblocks size                                       */
 /* -------------------------------------------------------------------- */
@@ -2989,7 +2988,7 @@ GDALDataset * JP2OpenJPEGDataset::CreateCopy( const char * pszFilename,
                 if( nCTComponentCount == 4 )
                     pclrBox.AppendUInt8((GByte)psEntry->c4);
             }
-            
+
             cmapBox.SetType("cmap");
             for(int i=0;i<nCTComponentCount;i++)
             {
@@ -3229,6 +3228,7 @@ GDALDataset * JP2OpenJPEGDataset::CreateCopy( const char * pszFilename,
         GByte abyBuffer[4096];
         VSIFSeekL( fpSrc, nCodeStreamStart, SEEK_SET );
         vsi_l_offset nRead = 0;
+        /* coverity[tainted_data] */
         while( nRead < nCodeStreamLength )
         {
             int nToRead = ( nCodeStreamLength-nRead > 4096 ) ? 4049 :
@@ -3486,7 +3486,7 @@ GDALDataset * JP2OpenJPEGDataset::CreateCopy( const char * pszFilename,
             GUInt32 nBoxSize32 = (GUInt32)nBoxSize;
             if( (vsi_l_offset)nBoxSize32 != nBoxSize )
             {
-                /*  Shouldn't happen hopefully */
+                /*  Should not happen hopefully */
                 if( (bGeoreferencingCompatOfGeoJP2 || poGMLJP2Box) && bGeoBoxesAfter )
                 {
                     CPLError(CE_Warning, CPLE_AppDefined,
@@ -3595,35 +3595,33 @@ GDALDataset * JP2OpenJPEGDataset::CreateCopy( const char * pszFilename,
 void GDALRegister_JP2OpenJPEG()
 
 {
-    GDALDriver  *poDriver;
-    
-    if (! GDAL_CHECK_VERSION("JP2OpenJPEG driver"))
+    if( !GDAL_CHECK_VERSION( "JP2OpenJPEG driver" ) )
         return;
 
-    if( GDALGetDriverByName( "JP2OpenJPEG" ) == NULL )
-    {
-        poDriver = new GDALDriver();
-        
-        poDriver->SetDescription( "JP2OpenJPEG" );
-        poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
-        poDriver->SetMetadataItem( GDAL_DCAP_VECTOR, "YES" );
-        poDriver->SetMetadataItem( GDAL_DMD_LONGNAME, 
-                                   "JPEG-2000 driver based on OpenJPEG library" );
-        poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, 
-                                   "frmt_jp2openjpeg.html" );
-        poDriver->SetMetadataItem( GDAL_DMD_MIMETYPE, "image/jp2" );
-        poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "jp2" );
-        poDriver->SetMetadataItem( GDAL_DMD_EXTENSIONS, "jp2 j2k" );
-        poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES, 
-                                   "Byte Int16 UInt16 Int32 UInt32" );
+    if( GDALGetDriverByName( "JP2OpenJPEG" ) != NULL )
+        return;
 
-        poDriver->SetMetadataItem( GDAL_DMD_OPENOPTIONLIST, 
+    GDALDriver *poDriver = new GDALDriver();
+
+    poDriver->SetDescription( "JP2OpenJPEG" );
+    poDriver->SetMetadataItem( GDAL_DCAP_RASTER, "YES" );
+    poDriver->SetMetadataItem( GDAL_DCAP_VECTOR, "YES" );
+    poDriver->SetMetadataItem( GDAL_DMD_LONGNAME,
+                               "JPEG-2000 driver based on OpenJPEG library" );
+    poDriver->SetMetadataItem( GDAL_DMD_HELPTOPIC, "frmt_jp2openjpeg.html" );
+    poDriver->SetMetadataItem( GDAL_DMD_MIMETYPE, "image/jp2" );
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSION, "jp2" );
+    poDriver->SetMetadataItem( GDAL_DMD_EXTENSIONS, "jp2 j2k" );
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONDATATYPES,
+                               "Byte Int16 UInt16 Int32 UInt32" );
+
+    poDriver->SetMetadataItem( GDAL_DMD_OPENOPTIONLIST,
 "<OpenOptionList>"
 "   <Option name='1BIT_ALPHA_PROMOTION' type='boolean' description='Whether a 1-bit alpha channel should be promoted to 8-bit' default='YES'/>"
 "   <Option name='OPEN_REMOTE_GML' type='boolean' description='Whether to load remote vector layers referenced by a link in a GMLJP2 v2 box' default='NO'/>"
 "</OpenOptionList>" );
 
-        poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
+    poDriver->SetMetadataItem( GDAL_DMD_CREATIONOPTIONLIST,
 "<CreationOptionList>"
 "   <Option name='CODEC' type='string-select' default='according to file extension. If unknown, default to J2K'>"
 "       <Value>JP2</Value>"
@@ -3674,12 +3672,11 @@ void GDALRegister_JP2OpenJPEG()
 "   <Option name='USE_SRC_CODESTREAM' type='boolean' description='When source dataset is JPEG2000, whether to reuse the codestream of the source dataset unmodified' default='NO'/>"
 "</CreationOptionList>"  );
 
-        poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
+    poDriver->SetMetadataItem( GDAL_DCAP_VIRTUALIO, "YES" );
 
-        poDriver->pfnIdentify = JP2OpenJPEGDataset::Identify;
-        poDriver->pfnOpen = JP2OpenJPEGDataset::Open;
-        poDriver->pfnCreateCopy = JP2OpenJPEGDataset::CreateCopy;
+    poDriver->pfnIdentify = JP2OpenJPEGDataset::Identify;
+    poDriver->pfnOpen = JP2OpenJPEGDataset::Open;
+    poDriver->pfnCreateCopy = JP2OpenJPEGDataset::CreateCopy;
 
-        GetGDALDriverManager()->RegisterDriver( poDriver );
-    }
+    GetGDALDriverManager()->RegisterDriver( poDriver );
 }

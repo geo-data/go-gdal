@@ -27,7 +27,7 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
- 
+
 #ifndef GDAL_MDREADER_H_INCLUDED
 #define GDAL_MDREADER_H_INCLUDED
 
@@ -104,8 +104,8 @@ public:
      */
     virtual char ** GetMetadataDomain(const char *pszDomain);
     /**
-     * @brief Fill provided metatada store class
-     * @param poMDMD Metatada store class
+     * @brief Fill provided metadata store class
+     * @param poMDMD Metadata store class
      * @return true on success or false
      */
     virtual bool FillMetadata(GDALMultiDomainMetadata* poMDMD);
@@ -172,7 +172,7 @@ class CPL_DLL GDALMDReaderManager{
 public:
     GDALMDReaderManager();
     virtual ~GDALMDReaderManager();
-    
+
     /**
      * @brief Try to detect metadata reader correspondent to the provided 
      *        datasource path 

@@ -57,11 +57,11 @@ CPL_CVSID("$Id$");
 ** In General:
 **
 ** Multiple threads accessing the memory filesystem are ok as long as
-**  1) A given VSIMemHandle (ie. FILE * at app level) isn't used by multiple 
-**     threads at once. 
+**  1) A given VSIMemHandle (i.e. FILE * at app level) isn't used by multiple
+**     threads at once.
 **  2) A given memory file isn't accessed by more than one thread unless
 **     all threads are just reading.
-*/ 
+*/
 
 /************************************************************************/
 /* ==================================================================== */
@@ -140,6 +140,7 @@ public:
     virtual int      Rmdir( const char *pszDirname );
     virtual char   **ReadDir( const char *pszDirname );
     virtual int      Rename( const char *oldpath, const char *newpath );
+    virtual GIntBig  GetDiskFreeSpace( const char* pszDirname );
 
     static  void     NormalizePath( CPLString & );
 
@@ -290,7 +291,7 @@ int VSIMemHandle::Seek( vsi_l_offset nOffset, int nWhence )
             errno = EACCES;
             return -1;
         }
-        else // Writeable files are zero-extended by seek past end.
+        else // Writable files are zero-extended by seek past end.
         {
             bExtendFileAtNextWrite = TRUE;
         }
@@ -750,6 +751,18 @@ void VSIMemFilesystemHandler::NormalizePath( CPLString &oPath )
 }
 
 /************************************************************************/
+/*                        GetDiskFreeSpace()                            */
+/************************************************************************/
+
+GIntBig VSIMemFilesystemHandler::GetDiskFreeSpace( const char* /*pszDirname*/ )
+{
+    GIntBig nRet = CPLGetUsablePhysicalRAM();
+    if( nRet <= 0 )
+        nRet = -1;
+    return nRet;
+}
+
+/************************************************************************/
 /*                     VSIInstallLargeFileHandler()                     */
 /************************************************************************/
 
@@ -880,10 +893,10 @@ VSILFILE *VSIFileFromMemBuffer( const char *pszFilename,
 /**
  * \brief Fetch buffer underlying memory file. 
  *
- * This function returns a pointer to the memory buffer underlying a 
+ * This function returns a pointer to the memory buffer underlying a
  * virtual "in memory" file.  If bUnlinkAndSeize is TRUE the filesystem
- * object will be deleted, and ownership of the buffer will pass to the 
- * caller otherwise the underlying file will remain in existance. 
+ * object will be deleted, and ownership of the buffer will pass to the
+ * caller otherwise the underlying file will remain in existence.
  *
  * @param pszFilename the name of the file to grab the buffer of.
  * @param pnDataLength (file) length returned in this variable.

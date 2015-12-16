@@ -84,10 +84,10 @@ OGRSimpleCurve::~OGRSimpleCurve()
 
 /**
  * \brief Assignment operator.
- * 
+ *
  * Note: before GDAL 2.1, only the default implementation of the operator
  * existed, which could be unsafe to use.
- * 
+ *
  * @since GDAL 2.1
  */
 
@@ -96,7 +96,7 @@ OGRSimpleCurve& OGRSimpleCurve::operator=( const OGRSimpleCurve& other )
     if( this != &other)
     {
         OGRCurve::operator=( other );
-        
+
         setPoints( other.nPointCount, other.paoPoints, other.padfZ );
     }
     return *this;
@@ -123,11 +123,18 @@ OGRGeometry *OGRSimpleCurve::clone() const
 
     poCurve = (OGRSimpleCurve*)
             OGRGeometryFactory::createGeometry(getGeometryType());
+    if( poCurve == NULL )
+        return NULL;
 
     poCurve->assignSpatialReference( getSpatialReference() );
     poCurve->setPoints( nPointCount, paoPoints, padfZ );
+    if( poCurve->getNumPoints() != nPointCount )
+    {
+        delete poCurve;
+        return NULL;
+    }
     poCurve->setCoordinateDimension( getCoordinateDimension() );
-    
+
     return poCurve;
 }
 
@@ -314,10 +321,10 @@ void OGRSimpleCurve::setNumPoints( int nNewPointCount, int bZeroizeNewContent )
     {
         OGRFree( paoPoints );
         paoPoints = NULL;
-        
+
         OGRFree( padfZ );
         padfZ = NULL;
-        
+
         nPointCount = 0;
         return;
     }
@@ -331,11 +338,11 @@ void OGRSimpleCurve::setNumPoints( int nNewPointCount, int bZeroizeNewContent )
             return;
         }
         paoPoints = paoNewPoints;
-        
+
         if( bZeroizeNewContent )
             memset( paoPoints + nPointCount,
                 0, sizeof(OGRRawPoint) * (nNewPointCount - nPointCount) );
-        
+
         if( getCoordinateDimension() == 3 )
         {
             double* padfNewZ = (double *)
@@ -630,7 +637,7 @@ void OGRSimpleCurve::getPoints( OGRRawPoint * paoPointsOut, double * padfZOut ) 
 {
     if ( ! paoPointsOut || nPointCount == 0 )
         return;
-        
+
     memcpy( paoPointsOut, paoPoints, sizeof(OGRRawPoint) * nPointCount );
 
 /* -------------------------------------------------------------------- */
@@ -802,7 +809,7 @@ void OGRSimpleCurve::addSubLineString( const OGRLineString *poOtherLine,
                     sizeof(double) * nPointsToAdd );
         }
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Copy the x/y points - reverse copies done double by double.     */
 /* -------------------------------------------------------------------- */
@@ -880,7 +887,7 @@ OGRErr OGRSimpleCurve::importFromWkb( unsigned char * pabyData,
 /*      Get the vertex.                                                 */
 /* -------------------------------------------------------------------- */
     int i = 0;
-    
+
     if( getCoordinateDimension() == 3 )
     {
         for( i = 0; i < nPointCount; i++ )
@@ -893,7 +900,7 @@ OGRErr OGRSimpleCurve::importFromWkb( unsigned char * pabyData,
     {
         memcpy( paoPoints, pabyData + 9, 16 * nPointCount );
     }
-    
+
 /* -------------------------------------------------------------------- */
 /*      Byte swap if needed.                                            */
 /* -------------------------------------------------------------------- */
@@ -913,7 +920,7 @@ OGRErr OGRSimpleCurve::importFromWkb( unsigned char * pabyData,
             }
         }
     }
-    
+
     return OGRERR_NONE;
 }
 
@@ -949,7 +956,7 @@ OGRErr  OGRSimpleCurve::exportToWkb( OGRwkbByteOrder eByteOrder,
         nGType = CPL_MSBWORD32( nGType );
 
     memcpy( pabyData + 1, &nGType, 4 );
-    
+
 /* -------------------------------------------------------------------- */
 /*      Copy in the data count.                                         */
 /* -------------------------------------------------------------------- */
@@ -959,7 +966,7 @@ OGRErr  OGRSimpleCurve::exportToWkb( OGRwkbByteOrder eByteOrder,
 /*      Copy in the raw data.                                           */
 /* -------------------------------------------------------------------- */
     int         i;
-    
+
     if( getCoordinateDimension() == 3 )
     {
         for( i = 0; i < nPointCount; i++ )
@@ -986,7 +993,7 @@ OGRErr  OGRSimpleCurve::exportToWkb( OGRwkbByteOrder eByteOrder,
             CPL_SWAP64PTR( pabyData + 9 + 8 * i );
         }
     }
-    
+
     return OGRERR_NONE;
 }
 
@@ -1110,9 +1117,9 @@ OGRErr OGRSimpleCurve::exportToWkt( char ** ppszDstText,
         return OGRERR_NOT_ENOUGH_MEMORY;
 
     if( getCoordinateDimension() == 3 && eWkbVariant == wkbVariantIso )
-        sprintf( *ppszDstText, "%s Z (", getGeometryName() );
+        snprintf( *ppszDstText, nMaxString, "%s Z (", getGeometryName() );
     else
-        sprintf( *ppszDstText, "%s (", getGeometryName() );
+        snprintf( *ppszDstText, nMaxString, "%s (", getGeometryName() );
 
     for( int i = 0; i < nPointCount; i++ )
     {
@@ -1129,7 +1136,7 @@ OGRErr OGRSimpleCurve::exportToWkt( char ** ppszDstText,
             *ppszDstText = NULL;
             return OGRERR_NOT_ENOUGH_MEMORY;
         }
-        
+
         if( i > 0 )
             strcat( *ppszDstText + nRetLen, "," );
 
@@ -1158,7 +1165,7 @@ OGRErr OGRSimpleCurve::exportToWkt( char ** ppszDstText,
 /************************************************************************/
 /*                             get_Length()                             */
 /*                                                                      */
-/*      For now we return a simple euclidian 2D distance.               */
+/*      For now we return a simple euclidean 2D distance.               */
 /************************************************************************/
 
 double OGRSimpleCurve::get_Length() const
@@ -1175,7 +1182,7 @@ double OGRSimpleCurve::get_Length() const
         dfDeltaY = paoPoints[i+1].y - paoPoints[i].y;
         dfLength += sqrt(dfDeltaX*dfDeltaX + dfDeltaY*dfDeltaY);
     }
-    
+
     return dfLength;
 }
 
@@ -1242,7 +1249,7 @@ void OGRSimpleCurve::Value( double dfDistance, OGRPoint * poPoint ) const
                 if( getCoordinateDimension() == 3 )
                     poPoint->setZ( padfZ[i] * (1 - dfRatio)
                                    + padfZ[i+1] * dfRatio );
-                
+
                 return;
             }
 
@@ -1420,7 +1427,7 @@ OGRLineString* OGRSimpleCurve::getSubLine(double dfDistanceFrom, double dfDistan
                     {
                         poNewLineString->addPoint(dfX, dfY);
                     }
-                    
+
                     //check if dfDistanceTo is in same segment
                     if ((dfLength <= dfDistanceTo) && ((dfLength + dfSegLength) >=
                         dfDistanceTo))
@@ -1533,7 +1540,7 @@ void OGRSimpleCurve::getEnvelope( OGREnvelope * psEnvelope ) const
         psEnvelope->MaxY = 0;
         return;
     }
-    
+
     dfMinX = dfMaxX = paoPoints[0].x;
     dfMinY = dfMaxY = paoPoints[0].y;
 
@@ -1597,13 +1604,13 @@ OGRBoolean OGRSimpleCurve::Equals( OGRGeometry * poOther ) const
 {
     if( poOther == this )
         return TRUE;
-    
+
     if( poOther->getGeometryType() != getGeometryType() )
         return FALSE;
 
     if( IsEmpty() && poOther->IsEmpty() )
         return TRUE;
-    
+
     // we should eventually test the SRS.
 
     OGRSimpleCurve       *poOLine = (OGRSimpleCurve *) poOther;
@@ -1860,7 +1867,7 @@ class OGRSimpleCurvePointIterator: public OGRPointIterator
 {
         const OGRSimpleCurve* poSC;
         int                   iCurPoint;
-    
+
     public:
         OGRSimpleCurvePointIterator(const OGRSimpleCurve* poSCIn) : poSC(poSCIn), iCurPoint(0) {}
 

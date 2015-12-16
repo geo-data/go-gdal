@@ -51,7 +51,7 @@ static void Usage(const char* pszErrorMsg)
             "                  [-src_srs_name field_name] [-src_srs_format [AUTO|WKT|EPSG|PROJ]\n"
             "                  [-lyr_name name] index_file [gdal_file]*\n"
             "\n"
-            "eg.\n"
+            "e.g.\n"
             "  % gdaltindex doq_index.shp doq/*.tif\n" 
             "\n"
             "NOTES:\n"
@@ -226,6 +226,7 @@ int main(int argc, char *argv[])
                     "when -t_srs is requested.\n" );
        }
        hTargetSRS = OSRNewSpatialReference("");
+       /* coverity[tainted_data] */
        if( OSRSetFromUserInput( hTargetSRS, pszTargetSRS ) != CE_None )
        {
            OSRDestroySpatialReference( hTargetSRS );

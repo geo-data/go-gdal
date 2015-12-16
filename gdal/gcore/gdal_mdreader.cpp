@@ -54,7 +54,7 @@ CPL_CVSID("$Id$");
  * The RPC parameters names
  */
 
-static const char *apszRPCTXTSingleValItems[] =
+static const char * const apszRPCTXTSingleValItems[] =
 {
     RPC_LINE_OFF,
     RPC_SAMP_OFF,
@@ -69,7 +69,7 @@ static const char *apszRPCTXTSingleValItems[] =
     NULL
 };
 
-static const char *apszRPCTXT20ValItems[] =
+static const char * const apszRPCTXT20ValItems[] =
 {
     RPC_LINE_NUM_COEFF,
     RPC_LINE_DEN_COEFF,
@@ -111,6 +111,10 @@ GDALMDReaderBase* GDALMDReaderManager::GetReader(const char *pszPath,
                                                  char **papszSiblingFiles,
                                                  GUInt32 nType)
 {
+    /* Do no attempt reading side-car files on /vsisubfile/ (#6241) */
+    if( strncmp(pszPath, "/vsisubfile/", strlen("/vsisubfile/")) == 0 )
+        return NULL;
+
     if(nType & MDR_DG)
     {
         INIT_READER(GDALMDReaderDigitalGlobe);
@@ -477,7 +481,7 @@ CPLString CPLStripQuotes(const CPLString& sString)
 /*                          GDALLoadRPBFile()                           */
 /************************************************************************/
 
-static const char *apszRPBMap[] = {
+static const char * const apszRPBMap[] = {
     apszRPCTXTSingleValItems[0], "IMAGE.lineOffset",
     apszRPCTXTSingleValItems[1], "IMAGE.sampOffset",
     apszRPCTXTSingleValItems[2], "IMAGE.latOffset",
@@ -673,7 +677,7 @@ CPLErr GDALWriteRPCTXTFile( const char *pszFilename, char **papszMD )
 /*      Write RPC values from our RPC metadata.                         */
 /* -------------------------------------------------------------------- */
     int i;
-
+    bool bOK = true;
     for( i = 0; apszRPCTXTSingleValItems[i] != NULL; i ++ )
     {
         const char *pszRPCVal = CSLFetchNameValue( papszMD, apszRPCTXTSingleValItems[i] );
@@ -687,7 +691,7 @@ CPLErr GDALWriteRPCTXTFile( const char *pszFilename, char **papszMD )
             return CE_Failure;
         }
 
-        VSIFPrintfL( fp, "%s: %s\n", apszRPCTXTSingleValItems[i], pszRPCVal );
+        bOK &= VSIFPrintfL( fp, "%s: %s\n", apszRPCTXTSingleValItems[i], pszRPCVal ) > 0;
     }
 
 
@@ -723,8 +727,8 @@ CPLErr GDALWriteRPCTXTFile( const char *pszFilename, char **papszMD )
 
         for( j = 0; j < 20; j++ )
         {
-            VSIFPrintfL( fp, "%s_%d: %s\n", apszRPCTXT20ValItems[i], j+1,
-                         papszItems[j] );
+            bOK &= VSIFPrintfL( fp, "%s_%d: %s\n", apszRPCTXT20ValItems[i], j+1,
+                         papszItems[j] ) > 0;
         }
         CSLDestroy( papszItems );
     }
@@ -732,7 +736,7 @@ CPLErr GDALWriteRPCTXTFile( const char *pszFilename, char **papszMD )
 
     VSIFCloseL( fp );
 
-    return CE_None;
+    return (bOK) ? CE_None : CE_Failure;
 }
 
 /************************************************************************/
@@ -761,12 +765,12 @@ CPLErr GDALWriteRPBFile( const char *pszFilename, char **papszMD )
 /* -------------------------------------------------------------------- */
 /*      Write the prefix information.                                   */
 /* -------------------------------------------------------------------- */
-    VSIFPrintfL( fp, "%s", "satId = \"QB02\";\n" );
-    VSIFPrintfL( fp, "%s", "bandId = \"P\";\n" );
-    VSIFPrintfL( fp, "%s", "SpecId = \"RPC00B\";\n" );
-    VSIFPrintfL( fp, "%s", "BEGIN_GROUP = IMAGE\n" );
-    VSIFPrintfL( fp, "%s", "\terrBias = 0.0;\n" );
-    VSIFPrintfL( fp, "%s", "\terrRand = 0.0;\n" );
+    bool bOK= VSIFPrintfL( fp, "%s", "satId = \"QB02\";\n" ) > 0;
+    bOK &= VSIFPrintfL( fp, "%s", "bandId = \"P\";\n" ) > 0;
+    bOK &= VSIFPrintfL( fp, "%s", "SpecId = \"RPC00B\";\n" ) > 0;
+    bOK &= VSIFPrintfL( fp, "%s", "BEGIN_GROUP = IMAGE\n" ) > 0;
+    bOK &= VSIFPrintfL( fp, "%s", "\terrBias = 0.0;\n" ) > 0;
+    bOK &= VSIFPrintfL( fp, "%s", "\terrRand = 0.0;\n" ) > 0;
 
 /* -------------------------------------------------------------------- */
 /*      Write RPC values from our RPC metadata.                         */
@@ -794,13 +798,13 @@ CPLErr GDALWriteRPBFile( const char *pszFilename, char **papszMD )
 
         if( strstr(apszRPBMap[i], "COEF" ) == NULL )
         {
-            VSIFPrintfL( fp, "\t%s = %s;\n", pszRPBTag, pszRPBVal );
+            bOK &= VSIFPrintfL( fp, "\t%s = %s;\n", pszRPBTag, pszRPBVal ) > 0;
         }
         else
         {
             // Reformat in brackets with commas over multiple lines.
 
-            VSIFPrintfL( fp, "\t%s = (\n", pszRPBTag );
+            bOK &= VSIFPrintfL( fp, "\t%s = (\n", pszRPBTag ) > 0;
 
             char **papszItems = CSLTokenizeStringComplex( pszRPBVal, " ,",
                                                           FALSE, FALSE );
@@ -822,9 +826,9 @@ CPLErr GDALWriteRPBFile( const char *pszFilename, char **papszMD )
             for( j = 0; j < 20; j++ )
             {
                 if( j < 19 )
-                    VSIFPrintfL( fp, "\t\t\t%s,\n", papszItems[j] );
+                    bOK &= VSIFPrintfL( fp, "\t\t\t%s,\n", papszItems[j] ) > 0;
                 else
-                    VSIFPrintfL( fp, "\t\t\t%s);\n", papszItems[j] );
+                    bOK &= VSIFPrintfL( fp, "\t\t\t%s);\n", papszItems[j] ) > 0;
             }
             CSLDestroy( papszItems );
         }
@@ -833,11 +837,11 @@ CPLErr GDALWriteRPBFile( const char *pszFilename, char **papszMD )
 /* -------------------------------------------------------------------- */
 /*      Write end part                                                  */
 /* -------------------------------------------------------------------- */
-    VSIFPrintfL( fp, "%s", "END_GROUP = IMAGE\n" );
-    VSIFPrintfL( fp, "END;\n" );
+    bOK &= VSIFPrintfL( fp, "%s", "END_GROUP = IMAGE\n" ) > 0;
+    bOK &= VSIFPrintfL( fp, "END;\n" ) > 0;
     VSIFCloseL( fp );
 
-    return CE_None;
+    return (bOK) ? CE_None : CE_Failure;
 }
 
 /************************************************************************/
@@ -875,7 +879,7 @@ static bool GDAL_IMD_AA2R( char ***ppapszIMD )
 /* -------------------------------------------------------------------- */
 /*      remove a bunch of fields.                                       */
 /* -------------------------------------------------------------------- */
-    static const char *apszToRemove[] = {
+    static const char * const apszToRemove[] = {
         "productCatalogId",
         "childCatalogId",
         "productType",
@@ -897,7 +901,7 @@ static bool GDAL_IMD_AA2R( char ***ppapszIMD )
 /* -------------------------------------------------------------------- */
 /*      Replace various min/mean/max with just the mean.                */
 /* -------------------------------------------------------------------- */
-    static const char *keylist[] = {
+    static const char * const keylist[] = {
         "CollectedRowGSD",
         "CollectedColGSD",
         "SunAz",
@@ -1005,14 +1009,14 @@ static void GDALWriteIMDMultiLine( VSILFILE *fp, const char *pszValue )
     int nItemCount = CSLCount(papszItems);
     int i;
 
-    VSIFPrintfL( fp, "(\n" );
+    CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "(\n" ));
 
     for( i = 0; i < nItemCount; i++ )
     {
         if( i == nItemCount-1 )
-            VSIFPrintfL( fp, "\t%s );\n", papszItems[i] );
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "\t%s );\n", papszItems[i] ));
         else
-            VSIFPrintfL( fp, "\t%s,\n", papszItems[i] );
+            CPL_IGNORE_RET_VAL(VSIFPrintfL( fp, "\t%s,\n", papszItems[i] ));
     }
     CSLDestroy( papszItems );
 }
@@ -1046,6 +1050,7 @@ CPLErr GDALWriteIMDFile( const char *pszFilename, char **papszMD )
 /* ==================================================================== */
     int iKey;
     CPLString osCurSection;
+    bool bOK = true;
 
     for( iKey = 0; papszMD[iKey] != NULL; iKey++ )
     {
@@ -1073,10 +1078,10 @@ CPLErr GDALWriteIMDFile( const char *pszFilename, char **papszMD )
 /*      Close and/or start sections as needed.                          */
 /* -------------------------------------------------------------------- */
         if( osCurSection.size() && !EQUAL(osCurSection,osKeySection) )
-            VSIFPrintfL( fp, "END_GROUP = %s\n", osCurSection.c_str() );
+            bOK &= VSIFPrintfL( fp, "END_GROUP = %s\n", osCurSection.c_str() ) > 0;
 
         if( osKeySection.size() && !EQUAL(osCurSection,osKeySection) )
-            VSIFPrintfL( fp, "BEGIN_GROUP = %s\n", osKeySection.c_str() );
+            bOK &= VSIFPrintfL( fp, "BEGIN_GROUP = %s\n", osKeySection.c_str() ) > 0;
 
         osCurSection = osKeySection;
 
@@ -1084,12 +1089,12 @@ CPLErr GDALWriteIMDFile( const char *pszFilename, char **papszMD )
 /*      Print out simple item.                                          */
 /* -------------------------------------------------------------------- */
         if( osCurSection.size() )
-            VSIFPrintfL( fp, "\t%s = ", osKeyItem.c_str() );
+            bOK &= VSIFPrintfL( fp, "\t%s = ", osKeyItem.c_str() ) > 0;
         else
-            VSIFPrintfL( fp, "%s = ", osKeyItem.c_str() );
+            bOK &= VSIFPrintfL( fp, "%s = ", osKeyItem.c_str() ) > 0;
 
         if( pszValue[0] != '(' )
-            VSIFPrintfL( fp, "%s;\n", pszValue );
+            bOK &= VSIFPrintfL( fp, "%s;\n", pszValue ) > 0;
         else
             GDALWriteIMDMultiLine( fp, pszValue );
     }
@@ -1098,11 +1103,11 @@ CPLErr GDALWriteIMDFile( const char *pszFilename, char **papszMD )
 /*      Close off.                                                      */
 /* -------------------------------------------------------------------- */
     if( osCurSection.size() )
-        VSIFPrintfL( fp, "END_GROUP = %s\n", osCurSection.c_str() );
+        bOK &= VSIFPrintfL( fp, "END_GROUP = %s\n", osCurSection.c_str() ) > 0;
 
-    VSIFPrintfL( fp, "END;\n" );
+    bOK &= VSIFPrintfL( fp, "END;\n" ) > 0;
 
     VSIFCloseL( fp );
 
-    return CE_None;
+    return (bOK) ? CE_None : CE_Failure;
 }

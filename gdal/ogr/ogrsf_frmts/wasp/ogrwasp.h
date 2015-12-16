@@ -26,8 +26,8 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#ifndef _OGR_WASP_H_INCLUDED
-#define _OGR_WASP_H_INCLUDED
+#ifndef OGR_WASP_H_INCLUDED
+#define OGR_WASP_H_INCLUDED
 
 #include "ogrsf_frmts.h"
 
@@ -79,7 +79,7 @@ class OGRWAsPLayer : public OGRLayer
     VSILFILE *            hFile;
 
     /* for roughness zone, two fields for linestrings (left/right), one for polygons */
-    /* for elevation, one fiels (height) */
+    /* for elevation, one field (height) */
     const CPLString       sFirstField;
     const CPLString       sSecondField;
     const CPLString       sGeomField;
@@ -199,7 +199,7 @@ class OGRWAsPDataSource : public OGRDataSource
                                      OGRSpatialReference *poSpatialRef = NULL,
                                      OGRwkbGeometryType eGType = wkbUnknown,
                                      char ** papszOptions = NULL );
-    
+
     virtual int        TestCapability( const char * );
     OGRErr             Load( bool bSilent = false );
 };
@@ -216,7 +216,7 @@ class OGRWAsPDriver : public OGRSFDriver
 
     virtual const char*         GetName() { return "WAsP"; }
     virtual OGRDataSource*      Open( const char *, int );
-    
+
     virtual OGRDataSource       *CreateDataSource( const char *pszName,
                                                    char ** = NULL );
 
@@ -226,4 +226,4 @@ class OGRWAsPDriver : public OGRSFDriver
 };
 
 
-#endif /* ndef _OGR_WASP_H_INCLUDED */
+#endif /* ndef OGR_WASP_H_INCLUDED */
