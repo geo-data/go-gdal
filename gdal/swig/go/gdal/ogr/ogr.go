@@ -139,7 +139,7 @@ typedef _gostring_ swig_type_108;
 typedef _gostring_ swig_type_109;
 typedef _gostring_ swig_type_110;
 typedef _gostring_ swig_type_111;
-extern void _wrap_Swig_free_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
+extern void _wrap_Swig_free_ogr_8e1b66f4430553e5(uintptr_t arg1);
 
 // "gdal.h" is needed to declare GDALProgressFunc.
 #include "gdal.h"
@@ -150,335 +150,335 @@ extern void _wrap_Swig_free_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
 // We need to link against GDAL when building the Go module.
 #cgo LDFLAGS: -lgdal
 
-extern swig_type_1 _wrap_MajorObject_GetDescription_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_MajorObject_SetDescription_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_2 arg2);
-extern swig_voidp _wrap_MajorObject_GetMetadataDomainList_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_voidp _wrap_MajorObject_GetMetadata_Dict_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_3 arg2);
-extern swig_voidp _wrap_MajorObject_GetMetadata_List_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_4 arg2);
-extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_0_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_type_5 arg3);
-extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_1_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_6 arg2, swig_type_7 arg3);
-extern swig_type_8 _wrap_MajorObject_GetMetadataItem_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_9 arg2, swig_type_10 arg3);
-extern swig_intgo _wrap_MajorObject_SetMetadataItem_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_11 arg2, swig_type_12 arg3, swig_type_13 arg4);
-extern uintptr_t _wrap_new_StyleTable_ogr_1f1edc2fb82ebe9e(void);
-extern void _wrap_delete_StyleTable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_StyleTable_AddStyle_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_14 arg2, swig_type_15 arg3);
-extern swig_intgo _wrap_StyleTable_LoadStyleTable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_16 arg2);
-extern swig_intgo _wrap_StyleTable_SaveStyleTable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_17 arg2);
-extern swig_type_18 _wrap_StyleTable_Find_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_19 arg2);
-extern void _wrap_StyleTable_ResetStyleStringReading_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_20 _wrap_StyleTable_GetNextStyle_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_21 _wrap_StyleTable_GetLastStyleName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_22 _wrap_Driver_name_get_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Driver_CreateDataSource_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_23 arg2, swig_voidp arg3);
-extern uintptr_t _wrap_Driver_CopyDataSource_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_24 arg3, swig_voidp arg4);
-extern uintptr_t _wrap_Driver_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_25 arg2, swig_intgo arg3);
-extern swig_intgo _wrap_Driver_DeleteDataSource_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_26 arg2);
-extern _Bool _wrap_Driver_TestCapability_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_27 arg2);
-extern void _wrap_Driver_Register_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Driver_Deregister_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_28 _wrap_DataSource_name_get_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_delete_DataSource_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_DataSource_GetRefCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_DataSource_GetSummaryRefCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_DataSource_GetLayerCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_DataSource_GetDriver_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_DataSource_DeleteLayer_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_DataSource_SyncToDisk_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_DataSource_FlushCache_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_DataSource_CreateLayer_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_29 arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5);
-extern uintptr_t _wrap_DataSource_CopyLayer_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_30 arg3, swig_voidp arg4);
-extern uintptr_t _wrap_DataSource_GetLayerByIndex_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_DataSource_GetLayerByName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_31 arg2);
-extern _Bool _wrap_DataSource_TestCapability_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_32 arg2);
-extern uintptr_t _wrap_DataSource_ExecuteSQL_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_33 arg2, uintptr_t arg3, swig_type_34 arg4);
-extern void _wrap_DataSource_ReleaseResultSet_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_DataSource_GetStyleTable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_DataSource_SetStyleTable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_DataSource_StartTransaction_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_DataSource_CommitTransaction_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_DataSource_RollbackTransaction_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_GetRefCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Layer_SetSpatialFilter__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern void _wrap_Layer_SetSpatialFilter__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern void _wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, double arg3, double arg4, double arg5, double arg6);
-extern uintptr_t _wrap_Layer_GetSpatialFilter_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_SetAttributeFilter_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_35 arg2);
-extern void _wrap_Layer_ResetReading_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_36 _wrap_Layer_GetName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_GetGeomType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_37 _wrap_Layer_GetGeometryColumn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_38 _wrap_Layer_GetFIDColumn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Layer_GetFeature_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Layer_GetNextFeature_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_SetNextByIndex_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Layer_SetFeature_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Layer_CreateFeature_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Layer_DeleteFeature_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Layer_SyncToDisk_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Layer_GetLayerDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Layer_GetFeatureCount_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Layer_GetExtent_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
-extern _Bool _wrap_Layer_TestCapability_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_39 arg2);
-extern swig_intgo _wrap_Layer_CreateField_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern swig_intgo _wrap_Layer_DeleteField_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Layer_ReorderField_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern swig_intgo _wrap_Layer_ReorderFields_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern swig_intgo _wrap_Layer_AlterFieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_intgo arg4);
-extern swig_intgo _wrap_Layer_CreateGeomField_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern swig_intgo _wrap_Layer_StartTransaction_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_CommitTransaction_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_RollbackTransaction_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_FindFieldIndex_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_40 arg2, swig_intgo arg3);
-extern uintptr_t _wrap_Layer_GetSpatialRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Layer_GetFeaturesRead_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Layer_SetIgnoredFields_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_Layer_Intersection_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_Layer_Union_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_Layer_SymDifference_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_Layer_Identity_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_Layer_Update_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_Layer_Clip_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_Layer_Erase_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern uintptr_t _wrap_Layer_GetStyleTable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Layer_SetStyleTable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_delete_Feature_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_new_Feature_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Feature_GetDefnRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Feature_SetGeometry_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Feature_SetGeometryDirectly_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Feature_GetGeometryRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Feature_SetGeomField__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern swig_intgo _wrap_Feature_SetGeomField__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_41 arg2, uintptr_t arg3);
-extern swig_intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern swig_intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_42 arg2, uintptr_t arg3);
-extern uintptr_t _wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_Feature_GetGeomFieldRef__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_43 arg2);
-extern uintptr_t _wrap_Feature_Clone_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern _Bool _wrap_Feature_Equal_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Feature_GetFieldCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_Feature_GetFieldDefnRef__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_44 arg2);
-extern swig_intgo _wrap_Feature_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_Feature_GetGeomFieldDefnRef__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_45 arg2);
-extern swig_type_46 _wrap_Feature_GetFieldAsString__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_type_47 _wrap_Feature_GetFieldAsString__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_48 arg2);
-extern swig_intgo _wrap_Feature_GetFieldAsInteger__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Feature_GetFieldAsInteger__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_49 arg2);
-extern uintptr_t _wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_Feature_GetFieldAsInteger64__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_50 arg2);
-extern double _wrap_Feature_GetFieldAsDouble__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern double _wrap_Feature_GetFieldAsDouble__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_51 arg2);
-extern void _wrap_Feature_GetFieldAsDateTime_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_type_52 arg3, swig_type_53 arg4, swig_type_54 arg5, swig_type_55 arg6, swig_type_56 arg7, swig_type_57 arg8, swig_type_58 arg9);
-extern void _wrap_Feature_GetFieldAsIntegerList_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4);
-extern void _wrap_Feature_GetFieldAsDoubleList_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4);
-extern void _wrap_Feature_GetFieldAsStringList_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern swig_intgo _wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4);
-extern swig_intgo _wrap_Feature_GetFieldAsBinary__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_59 arg2, swig_voidp arg3, swig_voidp arg4);
-extern _Bool _wrap_Feature_IsFieldSet__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern _Bool _wrap_Feature_IsFieldSet__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_60 arg2);
-extern swig_intgo _wrap_Feature_GetFieldIndex_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_61 arg2);
-extern swig_intgo _wrap_Feature_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_62 arg2);
-extern uintptr_t _wrap_Feature_GetFID_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Feature_SetFID_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_Feature_DumpReadable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Feature_UnsetField__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_Feature_UnsetField__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_63 arg2);
-extern void _wrap_Feature_SetField__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_type_64 arg3);
-extern void _wrap_Feature_SetField__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_65 arg2, swig_type_66 arg3);
-extern void _wrap_Feature_SetFieldInteger64_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern void _wrap_Feature_SetField__SWIG_2_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern void _wrap_Feature_SetField__SWIG_3_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_67 arg2, swig_intgo arg3);
-extern void _wrap_Feature_SetField__SWIG_4_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, double arg3);
-extern void _wrap_Feature_SetField__SWIG_5_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_68 arg2, double arg3);
-extern void _wrap_Feature_SetField__SWIG_6_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_intgo arg4, swig_intgo arg5, swig_intgo arg6, swig_intgo arg7, float arg8, swig_intgo arg9);
-extern void _wrap_Feature_SetField__SWIG_7_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_69 arg2, swig_intgo arg3, swig_intgo arg4, swig_intgo arg5, swig_intgo arg6, swig_intgo arg7, float arg8, swig_intgo arg9);
-extern void _wrap_Feature_SetFieldIntegerList_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4);
-extern void _wrap_Feature_SetFieldDoubleList_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4);
-extern void _wrap_Feature_SetFieldStringList_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, swig_type_70 arg3);
-extern void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_71 arg2, swig_type_72 arg3);
-extern swig_intgo _wrap_Feature_SetFrom_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
-extern swig_intgo _wrap_Feature_SetFromWithMap_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, swig_intgo arg4, swig_voidp arg5);
-extern swig_type_73 _wrap_Feature_GetStyleString_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Feature_SetStyleString_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_74 arg2);
-extern swig_intgo _wrap_Feature_GetFieldType__SWIG_0_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Feature_GetFieldType__SWIG_1_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_75 arg2);
-extern swig_intgo _wrap_Feature_Validate_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern void _wrap_Feature_FillUnsetWithDefault_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern swig_type_76 _wrap_Feature_GetNativeData_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_77 _wrap_Feature_GetNativeMediaType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Feature_SetNativeData_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_78 arg2);
-extern void _wrap_Feature_SetNativeMediaType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_79 arg2);
-extern void _wrap_delete_FeatureDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_new_FeatureDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_type_80 arg1);
-extern swig_type_81 _wrap_FeatureDefn_GetName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_FeatureDefn_GetFieldCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_FeatureDefn_GetFieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FeatureDefn_GetFieldIndex_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_82 arg2);
-extern void _wrap_FeatureDefn_AddFieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_FeatureDefn_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_FeatureDefn_GetGeomFieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FeatureDefn_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_83 arg2);
-extern void _wrap_FeatureDefn_AddGeomFieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FeatureDefn_GetGeomType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FeatureDefn_SetGeomType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FeatureDefn_GetReferenceCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_FeatureDefn_IsGeometryIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FeatureDefn_SetGeometryIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FeatureDefn_IsStyleIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FeatureDefn_SetStyleIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FeatureDefn_IsSame_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_delete_FieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_new_FieldDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_type_84 arg1, swig_intgo arg2);
-extern swig_type_85 _wrap_FieldDefn_GetName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_86 _wrap_FieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_87 arg2);
-extern swig_intgo _wrap_FieldDefn_GetType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FieldDefn_GetSubType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetSubType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FieldDefn_GetJustify_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetJustify_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FieldDefn_GetWidth_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetWidth_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FieldDefn_GetPrecision_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetPrecision_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_type_88 _wrap_FieldDefn_GetTypeName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_89 _wrap_FieldDefn_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_FieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_type_90 _wrap_FieldDefn_GetDefault_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_FieldDefn_SetDefault_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_91 arg2);
-extern swig_intgo _wrap_FieldDefn_IsDefaultDriverSpecific_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_delete_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_new_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_type_92 arg1, swig_intgo arg2);
-extern swig_type_93 _wrap_GeomFieldDefn_GetName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_94 _wrap_GeomFieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_GeomFieldDefn_SetName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_type_95 arg2);
-extern swig_intgo _wrap_GeomFieldDefn_GetType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_GeomFieldDefn_SetType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_GeomFieldDefn_GetSpatialRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_GeomFieldDefn_SetSpatialRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_GeomFieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_GeomFieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_GeomFieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_GeomFieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_CreateGeometryFromWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_intgo arg1, swig_type_96 arg2, uintptr_t arg3);
-extern uintptr_t _wrap_CreateGeometryFromWkt_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_voidp arg1, uintptr_t arg2);
-extern uintptr_t _wrap_CreateGeometryFromGML_ogr_1f1edc2fb82ebe9e(swig_type_97 arg1);
-extern uintptr_t _wrap_CreateGeometryFromJson_ogr_1f1edc2fb82ebe9e(swig_type_98 arg1);
-extern uintptr_t _wrap_BuildPolygonFromEdges_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, double arg4);
-extern uintptr_t _wrap_ApproximateArcAngles_ogr_1f1edc2fb82ebe9e(double arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8, double arg9);
-extern uintptr_t _wrap_ForceToPolygon_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_ForceToLineString_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_ForceToMultiPolygon_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_ForceToMultiPoint_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_ForceToMultiLineString_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_ForceTo_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern void _wrap_delete_Geometry_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_new_Geometry_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_intgo arg1, swig_type_99 arg2, swig_intgo arg3, swig_type_100 arg4, swig_type_101 arg5);
-extern swig_intgo _wrap_Geometry_ExportToWkt_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_Geometry_ExportToIsoWkt_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_Geometry_ExportToWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_intgo arg4);
-extern swig_intgo _wrap_Geometry_ExportToIsoWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_intgo arg4);
-extern swig_type_102 _wrap_Geometry_ExportToGML_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_103 _wrap_Geometry_ExportToKML_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_type_104 arg2);
-extern swig_type_105 _wrap_Geometry_ExportToJson_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Geometry_AddPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, double arg4);
-extern void _wrap_Geometry_AddPoint_2D_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, double arg2, double arg3);
-extern swig_intgo _wrap_Geometry_AddGeometryDirectly_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Geometry_AddGeometry_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Geometry_Clone_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Geometry_GetGeometryType_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_type_106 _wrap_Geometry_GetGeometryName_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern double _wrap_Geometry_Length_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern double _wrap_Geometry_Area_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern double _wrap_Geometry_GetArea_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Geometry_GetPointCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern double _wrap_Geometry_GetX_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern double _wrap_Geometry_GetY_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern double _wrap_Geometry_GetZ_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_Geometry_GetPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern void _wrap_Geometry_GetPoint_2D_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern swig_intgo _wrap_Geometry_GetGeometryCount_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Geometry_SetPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, double arg3, double arg4, double arg5);
-extern void _wrap_Geometry_SetPoint_2D_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2, double arg3, double arg4);
-extern uintptr_t _wrap_Geometry_GetGeometryRef_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_Geometry_Simplify_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, double arg2);
-extern uintptr_t _wrap_Geometry_SimplifyPreserveTopology_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, double arg2);
-extern uintptr_t _wrap_Geometry_DelaunayTriangulation_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, double arg2, swig_intgo arg3);
-extern uintptr_t _wrap_Geometry_Boundary_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Geometry_GetBoundary_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Geometry_ConvexHull_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Geometry_Buffer_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, double arg2, swig_intgo arg3);
-extern uintptr_t _wrap_Geometry_Intersection_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Geometry_Union_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Geometry_UnionCascaded_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Geometry_Difference_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Geometry_SymDifference_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Geometry_SymmetricDifference_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern double _wrap_Geometry_Distance_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_Geometry_Empty_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern _Bool _wrap_Geometry_IsEmpty_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern _Bool _wrap_Geometry_IsValid_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern _Bool _wrap_Geometry_IsSimple_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern _Bool _wrap_Geometry_IsRing_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern _Bool _wrap_Geometry_Intersects_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Intersect_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Equals_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Equal_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Disjoint_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Touches_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Crosses_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Within_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Contains_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern _Bool _wrap_Geometry_Overlaps_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Geometry_TransformTo_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Geometry_Transform_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Geometry_GetSpatialReference_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Geometry_AssignSpatialReference_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_Geometry_CloseRings_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Geometry_FlattenTo2D_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Geometry_Segmentize_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, double arg2);
-extern void _wrap_Geometry_GetEnvelope_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_voidp arg2);
-extern void _wrap_Geometry_GetEnvelope3D_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_voidp arg2);
-extern uintptr_t _wrap_Geometry_Centroid_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern uintptr_t _wrap_Geometry_PointOnSurface_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Geometry_WkbSize_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Geometry_GetCoordinateDimension_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern void _wrap_Geometry_SetCoordinateDimension_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Geometry_GetDimension_ogr_1f1edc2fb82ebe9e(uintptr_t arg1);
-extern swig_intgo _wrap_Geometry_HasCurveGeometry_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_Geometry_GetLinearGeometry_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, double arg2, swig_voidp arg3);
-extern uintptr_t _wrap_Geometry_GetCurveGeometry_ogr_1f1edc2fb82ebe9e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2);
-extern uintptr_t _wrap_Geometry_Value_ogr_1f1edc2fb82ebe9e(uintptr_t arg1, double arg2);
-extern swig_intgo _wrap_OGRGetDriverCount_ogr_1f1edc2fb82ebe9e(void);
-extern swig_intgo _wrap_OGRGetOpenDSCount_ogr_1f1edc2fb82ebe9e(void);
-extern swig_intgo _wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_type_107 _wrap_GeometryTypeToName_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_type_108 _wrap_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_type_109 _wrap_GetFieldSubTypeName_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_Flatten_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_SetZ_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_SetModifier_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_intgo arg1, swig_intgo arg2, swig_intgo arg3);
-extern swig_intgo _wrap_GT_HasZ_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_IsSubClassOf_ogr_1f1edc2fb82ebe9e(swig_intgo arg1, swig_intgo arg2);
-extern swig_intgo _wrap_GT_IsCurve_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_IsSurface_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_IsNonLinear_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_GetCollection_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_GetCurve_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GT_GetLinear_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern void _wrap_SetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern swig_intgo _wrap_GetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e(void);
-extern uintptr_t _wrap_GetOpenDS_ogr_1f1edc2fb82ebe9e(swig_intgo arg1);
-extern uintptr_t _wrap_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_type_110 arg1, swig_intgo arg2);
-extern uintptr_t _wrap_OpenShared_ogr_1f1edc2fb82ebe9e(intgo _swig_args, swig_type_111 arg1, swig_intgo arg2);
+extern swig_type_1 _wrap_MajorObject_GetDescription_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_MajorObject_SetDescription_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_2 arg2);
+extern swig_voidp _wrap_MajorObject_GetMetadataDomainList_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_voidp _wrap_MajorObject_GetMetadata_Dict_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_3 arg2);
+extern swig_voidp _wrap_MajorObject_GetMetadata_List_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_4 arg2);
+extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_0_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_type_5 arg3);
+extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_1_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_6 arg2, swig_type_7 arg3);
+extern swig_type_8 _wrap_MajorObject_GetMetadataItem_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_9 arg2, swig_type_10 arg3);
+extern swig_intgo _wrap_MajorObject_SetMetadataItem_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_11 arg2, swig_type_12 arg3, swig_type_13 arg4);
+extern uintptr_t _wrap_new_StyleTable_ogr_8e1b66f4430553e5(void);
+extern void _wrap_delete_StyleTable_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_StyleTable_AddStyle_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_14 arg2, swig_type_15 arg3);
+extern swig_intgo _wrap_StyleTable_LoadStyleTable_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_16 arg2);
+extern swig_intgo _wrap_StyleTable_SaveStyleTable_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_17 arg2);
+extern swig_type_18 _wrap_StyleTable_Find_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_19 arg2);
+extern void _wrap_StyleTable_ResetStyleStringReading_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_20 _wrap_StyleTable_GetNextStyle_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_21 _wrap_StyleTable_GetLastStyleName_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_22 _wrap_Driver_name_get_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Driver_CreateDataSource_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_23 arg2, swig_voidp arg3);
+extern uintptr_t _wrap_Driver_CopyDataSource_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_24 arg3, swig_voidp arg4);
+extern uintptr_t _wrap_Driver_Open_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_25 arg2, swig_intgo arg3);
+extern swig_intgo _wrap_Driver_DeleteDataSource_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_26 arg2);
+extern _Bool _wrap_Driver_TestCapability_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_27 arg2);
+extern void _wrap_Driver_Register_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Driver_Deregister_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_28 _wrap_DataSource_name_get_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_delete_DataSource_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_DataSource_GetRefCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_DataSource_GetSummaryRefCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_DataSource_GetLayerCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_DataSource_GetDriver_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_DataSource_DeleteLayer_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_DataSource_SyncToDisk_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_DataSource_FlushCache_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_DataSource_CreateLayer_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_29 arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5);
+extern uintptr_t _wrap_DataSource_CopyLayer_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_30 arg3, swig_voidp arg4);
+extern uintptr_t _wrap_DataSource_GetLayerByIndex_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_DataSource_GetLayerByName_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_31 arg2);
+extern _Bool _wrap_DataSource_TestCapability_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_32 arg2);
+extern uintptr_t _wrap_DataSource_ExecuteSQL_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_33 arg2, uintptr_t arg3, swig_type_34 arg4);
+extern void _wrap_DataSource_ReleaseResultSet_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_DataSource_GetStyleTable_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_DataSource_SetStyleTable_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_DataSource_StartTransaction_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_DataSource_CommitTransaction_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_DataSource_RollbackTransaction_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_GetRefCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Layer_SetSpatialFilter__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern void _wrap_Layer_SetSpatialFilter__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern void _wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, double arg3, double arg4, double arg5, double arg6);
+extern uintptr_t _wrap_Layer_GetSpatialFilter_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_SetAttributeFilter_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_35 arg2);
+extern void _wrap_Layer_ResetReading_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_36 _wrap_Layer_GetName_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_GetGeomType_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_37 _wrap_Layer_GetGeometryColumn_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_38 _wrap_Layer_GetFIDColumn_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Layer_GetFeature_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Layer_GetNextFeature_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_SetNextByIndex_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Layer_SetFeature_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Layer_CreateFeature_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Layer_DeleteFeature_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Layer_SyncToDisk_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Layer_GetLayerDefn_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Layer_GetFeatureCount_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Layer_GetExtent_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
+extern _Bool _wrap_Layer_TestCapability_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_39 arg2);
+extern swig_intgo _wrap_Layer_CreateField_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern swig_intgo _wrap_Layer_DeleteField_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Layer_ReorderField_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern swig_intgo _wrap_Layer_ReorderFields_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern swig_intgo _wrap_Layer_AlterFieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_intgo arg4);
+extern swig_intgo _wrap_Layer_CreateGeomField_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern swig_intgo _wrap_Layer_StartTransaction_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_CommitTransaction_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_RollbackTransaction_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_FindFieldIndex_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_40 arg2, swig_intgo arg3);
+extern uintptr_t _wrap_Layer_GetSpatialRef_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Layer_GetFeaturesRead_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Layer_SetIgnoredFields_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_Layer_Intersection_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_Layer_Union_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_Layer_SymDifference_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_Layer_Identity_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_Layer_Update_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_Layer_Clip_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_Layer_Erase_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern uintptr_t _wrap_Layer_GetStyleTable_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Layer_SetStyleTable_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_delete_Feature_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_new_Feature_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Feature_GetDefnRef_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Feature_SetGeometry_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Feature_SetGeometryDirectly_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Feature_GetGeometryRef_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Feature_SetGeomField__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern swig_intgo _wrap_Feature_SetGeomField__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_41 arg2, uintptr_t arg3);
+extern swig_intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern swig_intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_42 arg2, uintptr_t arg3);
+extern uintptr_t _wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_Feature_GetGeomFieldRef__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_43 arg2);
+extern uintptr_t _wrap_Feature_Clone_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern _Bool _wrap_Feature_Equal_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Feature_GetFieldCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_Feature_GetFieldDefnRef__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_44 arg2);
+extern swig_intgo _wrap_Feature_GetGeomFieldCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_Feature_GetGeomFieldDefnRef__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_45 arg2);
+extern swig_type_46 _wrap_Feature_GetFieldAsString__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_type_47 _wrap_Feature_GetFieldAsString__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_48 arg2);
+extern swig_intgo _wrap_Feature_GetFieldAsInteger__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Feature_GetFieldAsInteger__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_49 arg2);
+extern uintptr_t _wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_Feature_GetFieldAsInteger64__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_50 arg2);
+extern double _wrap_Feature_GetFieldAsDouble__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern double _wrap_Feature_GetFieldAsDouble__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_51 arg2);
+extern void _wrap_Feature_GetFieldAsDateTime_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_type_52 arg3, swig_type_53 arg4, swig_type_54 arg5, swig_type_55 arg6, swig_type_56 arg7, swig_type_57 arg8, swig_type_58 arg9);
+extern void _wrap_Feature_GetFieldAsIntegerList_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4);
+extern void _wrap_Feature_GetFieldAsDoubleList_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4);
+extern void _wrap_Feature_GetFieldAsStringList_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern swig_intgo _wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4);
+extern swig_intgo _wrap_Feature_GetFieldAsBinary__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_59 arg2, swig_voidp arg3, swig_voidp arg4);
+extern _Bool _wrap_Feature_IsFieldSet__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern _Bool _wrap_Feature_IsFieldSet__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_60 arg2);
+extern swig_intgo _wrap_Feature_GetFieldIndex_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_61 arg2);
+extern swig_intgo _wrap_Feature_GetGeomFieldIndex_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_62 arg2);
+extern uintptr_t _wrap_Feature_GetFID_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Feature_SetFID_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_Feature_DumpReadable_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Feature_UnsetField__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_Feature_UnsetField__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_63 arg2);
+extern void _wrap_Feature_SetField__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_type_64 arg3);
+extern void _wrap_Feature_SetField__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_65 arg2, swig_type_66 arg3);
+extern void _wrap_Feature_SetFieldInteger64_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern void _wrap_Feature_SetField__SWIG_2_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern void _wrap_Feature_SetField__SWIG_3_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_67 arg2, swig_intgo arg3);
+extern void _wrap_Feature_SetField__SWIG_4_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, double arg3);
+extern void _wrap_Feature_SetField__SWIG_5_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_68 arg2, double arg3);
+extern void _wrap_Feature_SetField__SWIG_6_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_intgo arg4, swig_intgo arg5, swig_intgo arg6, swig_intgo arg7, float arg8, swig_intgo arg9);
+extern void _wrap_Feature_SetField__SWIG_7_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_69 arg2, swig_intgo arg3, swig_intgo arg4, swig_intgo arg5, swig_intgo arg6, swig_intgo arg7, float arg8, swig_intgo arg9);
+extern void _wrap_Feature_SetFieldIntegerList_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4);
+extern void _wrap_Feature_SetFieldDoubleList_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4);
+extern void _wrap_Feature_SetFieldStringList_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, swig_type_70 arg3);
+extern void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_71 arg2, swig_type_72 arg3);
+extern swig_intgo _wrap_Feature_SetFrom_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_intgo arg3);
+extern swig_intgo _wrap_Feature_SetFromWithMap_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2, swig_intgo arg3, swig_intgo arg4, swig_voidp arg5);
+extern swig_type_73 _wrap_Feature_GetStyleString_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Feature_SetStyleString_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_74 arg2);
+extern swig_intgo _wrap_Feature_GetFieldType__SWIG_0_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Feature_GetFieldType__SWIG_1_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_75 arg2);
+extern swig_intgo _wrap_Feature_Validate_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern void _wrap_Feature_FillUnsetWithDefault_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern swig_type_76 _wrap_Feature_GetNativeData_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_77 _wrap_Feature_GetNativeMediaType_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Feature_SetNativeData_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_78 arg2);
+extern void _wrap_Feature_SetNativeMediaType_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_79 arg2);
+extern void _wrap_delete_FeatureDefn_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_new_FeatureDefn_ogr_8e1b66f4430553e5(intgo _swig_args, swig_type_80 arg1);
+extern swig_type_81 _wrap_FeatureDefn_GetName_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_FeatureDefn_GetFieldCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_FeatureDefn_GetFieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FeatureDefn_GetFieldIndex_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_82 arg2);
+extern void _wrap_FeatureDefn_AddFieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_FeatureDefn_GetGeomFieldCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_FeatureDefn_GetGeomFieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FeatureDefn_GetGeomFieldIndex_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_83 arg2);
+extern void _wrap_FeatureDefn_AddGeomFieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FeatureDefn_GetGeomType_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FeatureDefn_SetGeomType_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FeatureDefn_GetReferenceCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_FeatureDefn_IsGeometryIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FeatureDefn_SetGeometryIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FeatureDefn_IsStyleIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FeatureDefn_SetStyleIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FeatureDefn_IsSame_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_delete_FieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_new_FieldDefn_ogr_8e1b66f4430553e5(intgo _swig_args, swig_type_84 arg1, swig_intgo arg2);
+extern swig_type_85 _wrap_FieldDefn_GetName_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_86 _wrap_FieldDefn_GetNameRef_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetName_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_87 arg2);
+extern swig_intgo _wrap_FieldDefn_GetType_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetType_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FieldDefn_GetSubType_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetSubType_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FieldDefn_GetJustify_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetJustify_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FieldDefn_GetWidth_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetWidth_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FieldDefn_GetPrecision_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetPrecision_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_type_88 _wrap_FieldDefn_GetTypeName_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_89 _wrap_FieldDefn_GetFieldTypeName_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FieldDefn_IsIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_FieldDefn_IsNullable_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetNullable_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_type_90 _wrap_FieldDefn_GetDefault_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_FieldDefn_SetDefault_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_91 arg2);
+extern swig_intgo _wrap_FieldDefn_IsDefaultDriverSpecific_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_delete_GeomFieldDefn_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_new_GeomFieldDefn_ogr_8e1b66f4430553e5(intgo _swig_args, swig_type_92 arg1, swig_intgo arg2);
+extern swig_type_93 _wrap_GeomFieldDefn_GetName_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_94 _wrap_GeomFieldDefn_GetNameRef_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_GeomFieldDefn_SetName_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_type_95 arg2);
+extern swig_intgo _wrap_GeomFieldDefn_GetType_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_GeomFieldDefn_SetType_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_GeomFieldDefn_GetSpatialRef_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_GeomFieldDefn_SetSpatialRef_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_GeomFieldDefn_IsIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_GeomFieldDefn_SetIgnored_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_GeomFieldDefn_IsNullable_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_GeomFieldDefn_SetNullable_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_CreateGeometryFromWkb_ogr_8e1b66f4430553e5(intgo _swig_args, swig_intgo arg1, swig_type_96 arg2, uintptr_t arg3);
+extern uintptr_t _wrap_CreateGeometryFromWkt_ogr_8e1b66f4430553e5(intgo _swig_args, swig_voidp arg1, uintptr_t arg2);
+extern uintptr_t _wrap_CreateGeometryFromGML_ogr_8e1b66f4430553e5(swig_type_97 arg1);
+extern uintptr_t _wrap_CreateGeometryFromJson_ogr_8e1b66f4430553e5(swig_type_98 arg1);
+extern uintptr_t _wrap_BuildPolygonFromEdges_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, double arg4);
+extern uintptr_t _wrap_ApproximateArcAngles_ogr_8e1b66f4430553e5(double arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8, double arg9);
+extern uintptr_t _wrap_ForceToPolygon_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_ForceToLineString_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_ForceToMultiPolygon_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_ForceToMultiPoint_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_ForceToMultiLineString_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_ForceTo_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern void _wrap_delete_Geometry_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_new_Geometry_ogr_8e1b66f4430553e5(intgo _swig_args, swig_intgo arg1, swig_type_99 arg2, swig_intgo arg3, swig_type_100 arg4, swig_type_101 arg5);
+extern swig_intgo _wrap_Geometry_ExportToWkt_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_Geometry_ExportToIsoWkt_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_Geometry_ExportToWkb_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_intgo arg4);
+extern swig_intgo _wrap_Geometry_ExportToIsoWkb_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_intgo arg4);
+extern swig_type_102 _wrap_Geometry_ExportToGML_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_103 _wrap_Geometry_ExportToKML_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_type_104 arg2);
+extern swig_type_105 _wrap_Geometry_ExportToJson_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Geometry_AddPoint_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, double arg4);
+extern void _wrap_Geometry_AddPoint_2D_ogr_8e1b66f4430553e5(uintptr_t arg1, double arg2, double arg3);
+extern swig_intgo _wrap_Geometry_AddGeometryDirectly_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Geometry_AddGeometry_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Geometry_Clone_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Geometry_GetGeometryType_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_type_106 _wrap_Geometry_GetGeometryName_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern double _wrap_Geometry_Length_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern double _wrap_Geometry_Area_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern double _wrap_Geometry_GetArea_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Geometry_GetPointCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern double _wrap_Geometry_GetX_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern double _wrap_Geometry_GetY_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern double _wrap_Geometry_GetZ_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_Geometry_GetPoint_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern void _wrap_Geometry_GetPoint_2D_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern swig_intgo _wrap_Geometry_GetGeometryCount_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Geometry_SetPoint_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, double arg3, double arg4, double arg5);
+extern void _wrap_Geometry_SetPoint_2D_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2, double arg3, double arg4);
+extern uintptr_t _wrap_Geometry_GetGeometryRef_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_Geometry_Simplify_ogr_8e1b66f4430553e5(uintptr_t arg1, double arg2);
+extern uintptr_t _wrap_Geometry_SimplifyPreserveTopology_ogr_8e1b66f4430553e5(uintptr_t arg1, double arg2);
+extern uintptr_t _wrap_Geometry_DelaunayTriangulation_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, double arg2, swig_intgo arg3);
+extern uintptr_t _wrap_Geometry_Boundary_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Geometry_GetBoundary_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Geometry_ConvexHull_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Geometry_Buffer_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, double arg2, swig_intgo arg3);
+extern uintptr_t _wrap_Geometry_Intersection_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Geometry_Union_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Geometry_UnionCascaded_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Geometry_Difference_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Geometry_SymDifference_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Geometry_SymmetricDifference_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern double _wrap_Geometry_Distance_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_Geometry_Empty_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern _Bool _wrap_Geometry_IsEmpty_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern _Bool _wrap_Geometry_IsValid_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern _Bool _wrap_Geometry_IsSimple_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern _Bool _wrap_Geometry_IsRing_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern _Bool _wrap_Geometry_Intersects_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Intersect_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Equals_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Equal_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Disjoint_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Touches_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Crosses_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Within_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Contains_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern _Bool _wrap_Geometry_Overlaps_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Geometry_TransformTo_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Geometry_Transform_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Geometry_GetSpatialReference_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Geometry_AssignSpatialReference_ogr_8e1b66f4430553e5(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_Geometry_CloseRings_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Geometry_FlattenTo2D_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Geometry_Segmentize_ogr_8e1b66f4430553e5(uintptr_t arg1, double arg2);
+extern void _wrap_Geometry_GetEnvelope_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_voidp arg2);
+extern void _wrap_Geometry_GetEnvelope3D_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_voidp arg2);
+extern uintptr_t _wrap_Geometry_Centroid_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern uintptr_t _wrap_Geometry_PointOnSurface_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Geometry_WkbSize_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Geometry_GetCoordinateDimension_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern void _wrap_Geometry_SetCoordinateDimension_ogr_8e1b66f4430553e5(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Geometry_GetDimension_ogr_8e1b66f4430553e5(uintptr_t arg1);
+extern swig_intgo _wrap_Geometry_HasCurveGeometry_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_Geometry_GetLinearGeometry_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, double arg2, swig_voidp arg3);
+extern uintptr_t _wrap_Geometry_GetCurveGeometry_ogr_8e1b66f4430553e5(intgo _swig_args, uintptr_t arg1, swig_voidp arg2);
+extern uintptr_t _wrap_Geometry_Value_ogr_8e1b66f4430553e5(uintptr_t arg1, double arg2);
+extern swig_intgo _wrap_OGRGetDriverCount_ogr_8e1b66f4430553e5(void);
+extern swig_intgo _wrap_OGRGetOpenDSCount_ogr_8e1b66f4430553e5(void);
+extern swig_intgo _wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_type_107 _wrap_GeometryTypeToName_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_type_108 _wrap_GetFieldTypeName_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_type_109 _wrap_GetFieldSubTypeName_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_Flatten_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_SetZ_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_SetModifier_ogr_8e1b66f4430553e5(intgo _swig_args, swig_intgo arg1, swig_intgo arg2, swig_intgo arg3);
+extern swig_intgo _wrap_GT_HasZ_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_IsSubClassOf_ogr_8e1b66f4430553e5(swig_intgo arg1, swig_intgo arg2);
+extern swig_intgo _wrap_GT_IsCurve_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_IsSurface_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_IsNonLinear_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_GetCollection_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_GetCurve_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GT_GetLinear_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern void _wrap_SetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern swig_intgo _wrap_GetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5(void);
+extern uintptr_t _wrap_GetOpenDS_ogr_8e1b66f4430553e5(swig_intgo arg1);
+extern uintptr_t _wrap_Open_ogr_8e1b66f4430553e5(intgo _swig_args, swig_type_110 arg1, swig_intgo arg2);
+extern uintptr_t _wrap_OpenShared_ogr_8e1b66f4430553e5(intgo _swig_args, swig_type_111 arg1, swig_intgo arg2);
 #undef intgo
 */
 import "C"
@@ -513,7 +513,7 @@ func swigCopyString(s string) string {
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 const Wkb25DBit int = 0x80000000
@@ -619,7 +619,7 @@ func (p SwigcptrMajorObject) SwigIsMajorObject() {
 func (arg1 SwigcptrMajorObject) GetDescription() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_MajorObject_GetDescription_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_MajorObject_GetDescription_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -629,7 +629,7 @@ func (arg1 SwigcptrMajorObject) GetDescription() (_swig_ret string) {
 func (arg1 SwigcptrMajorObject) SetDescription(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_MajorObject_SetDescription_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_2)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_MajorObject_SetDescription_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_2)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -638,7 +638,7 @@ func (arg1 SwigcptrMajorObject) SetDescription(arg2 string) {
 func (arg1 SwigcptrMajorObject) GetMetadataDomainList() (_swig_ret []string) {
 	var swig_r **C.char
 	_swig_i_0 := arg1
-	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadataDomainList_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadataDomainList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	var swig_r_1 []string
 
 	if swig_r != nil {
@@ -666,7 +666,7 @@ func (arg1 SwigcptrMajorObject) GetMetadata_Dict(_swig_args ...interface{}) (_sw
 	var swig_r *string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (*string)(C._wrap_MajorObject_GetMetadata_Dict_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_3)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (*string)(C._wrap_MajorObject_GetMetadata_Dict_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_3)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -681,7 +681,7 @@ func (arg1 SwigcptrMajorObject) GetMetadata_List(_swig_args ...interface{}) (_sw
 	var swig_r **C.char
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadata_List_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_4)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadata_List_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_4)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -712,7 +712,7 @@ func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_0(arg2 *string, _swig_args ...
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_0_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), *(*C.swig_type_5)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_0_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), *(*C.swig_type_5)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -728,7 +728,7 @@ func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_1(arg2 string, _swig_args ...i
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_1_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_1_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -772,7 +772,7 @@ func (arg1 SwigcptrMajorObject) GetMetadataItem(arg2 string, _swig_args ...inter
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r_p := C._wrap_MajorObject_GetMetadataItem_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_2)))
+	swig_r_p := C._wrap_MajorObject_GetMetadataItem_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_2)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -795,7 +795,7 @@ func (arg1 SwigcptrMajorObject) SetMetadataItem(arg2 string, arg3 string, _swig_
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_MajorObject_SetMetadataItem_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_11)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_13)(unsafe.Pointer(&_swig_i_3))))
+	swig_r = (int)(C._wrap_MajorObject_SetMetadataItem_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_11)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_13)(unsafe.Pointer(&_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -832,13 +832,13 @@ func (p SwigcptrStyleTable) SwigIsStyleTable() {
 
 func NewStyleTable() (_swig_ret StyleTable) {
 	var swig_r StyleTable
-	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_new_StyleTable_ogr_1f1edc2fb82ebe9e()))
+	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_new_StyleTable_ogr_8e1b66f4430553e5()))
 	return swig_r
 }
 
 func DeleteStyleTable(arg1 StyleTable) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_StyleTable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_StyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrStyleTable) AddStyle(arg2 string, arg3 string) (_swig_ret int) {
@@ -846,7 +846,7 @@ func (arg1 SwigcptrStyleTable) AddStyle(arg2 string, arg3 string) (_swig_ret int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_StyleTable_AddStyle_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_14)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_15)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_StyleTable_AddStyle_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_14)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_15)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -860,7 +860,7 @@ func (arg1 SwigcptrStyleTable) LoadStyleTable(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_StyleTable_LoadStyleTable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_16)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_StyleTable_LoadStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_16)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -871,7 +871,7 @@ func (arg1 SwigcptrStyleTable) SaveStyleTable(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_StyleTable_SaveStyleTable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_17)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_StyleTable_SaveStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_17)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -882,7 +882,7 @@ func (arg1 SwigcptrStyleTable) Find(arg2 string) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_StyleTable_Find_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_1)))
+	swig_r_p := C._wrap_StyleTable_Find_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_1)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -894,13 +894,13 @@ func (arg1 SwigcptrStyleTable) Find(arg2 string) (_swig_ret string) {
 
 func (arg1 SwigcptrStyleTable) ResetStyleStringReading() {
 	_swig_i_0 := arg1
-	C._wrap_StyleTable_ResetStyleStringReading_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_StyleTable_ResetStyleStringReading_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrStyleTable) GetNextStyle() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_StyleTable_GetNextStyle_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_StyleTable_GetNextStyle_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -910,7 +910,7 @@ func (arg1 SwigcptrStyleTable) GetNextStyle() (_swig_ret string) {
 func (arg1 SwigcptrStyleTable) GetLastStyleName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_StyleTable_GetLastStyleName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_StyleTable_GetLastStyleName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -941,7 +941,7 @@ func (p SwigcptrDriver) SwigIsDriver() {
 func (arg1 SwigcptrDriver) GetName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Driver_name_get_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Driver_name_get_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -967,7 +967,7 @@ func (arg1 SwigcptrDriver) CreateDataSource(arg2 string, _swig_args ...interface
 	_swig_i_2_i[arg3_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_2 = &_swig_i_2_i[0]
 
-	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Driver_CreateDataSource_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_23)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2))))
+	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Driver_CreateDataSource_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_23)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -994,7 +994,7 @@ func (arg1 SwigcptrDriver) CopyDataSource(arg2 DataSource, arg3 string, _swig_ar
 	_swig_i_3_i[arg4_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_3 = &_swig_i_3_i[0]
 
-	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Driver_CopyDataSource_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3))))
+	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Driver_CopyDataSource_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -1010,7 +1010,7 @@ func (arg1 SwigcptrDriver) Open(arg2 string, _swig_args ...interface{}) (_swig_r
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Driver_Open_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_25)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))))
+	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Driver_Open_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_25)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1021,7 +1021,7 @@ func (arg1 SwigcptrDriver) DeleteDataSource(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Driver_DeleteDataSource_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Driver_DeleteDataSource_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1032,7 +1032,7 @@ func (arg1 SwigcptrDriver) TestCapability(arg2 string) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_Driver_TestCapability_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_27)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (bool)(C._wrap_Driver_TestCapability_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_27)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1041,12 +1041,12 @@ func (arg1 SwigcptrDriver) TestCapability(arg2 string) (_swig_ret bool) {
 
 func (arg1 SwigcptrDriver) Register() {
 	_swig_i_0 := arg1
-	C._wrap_Driver_Register_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Driver_Register_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrDriver) Deregister() {
 	_swig_i_0 := arg1
-	C._wrap_Driver_Deregister_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Driver_Deregister_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (p SwigcptrDriver) SwigIsMajorObject() {
@@ -1083,7 +1083,7 @@ func (p SwigcptrDataSource) SwigIsDataSource() {
 func (arg1 SwigcptrDataSource) GetName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_DataSource_name_get_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_DataSource_name_get_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1092,34 +1092,34 @@ func (arg1 SwigcptrDataSource) GetName() (_swig_ret string) {
 
 func DeleteDataSource(arg1 DataSource) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_DataSource_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_DataSource_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrDataSource) GetRefCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_DataSource_GetRefCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_DataSource_GetRefCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) GetSummaryRefCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_DataSource_GetSummaryRefCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_DataSource_GetSummaryRefCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) GetLayerCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_DataSource_GetLayerCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_DataSource_GetLayerCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) GetDriver() (_swig_ret Driver) {
 	var swig_r Driver
 	_swig_i_0 := arg1
-	swig_r = (Driver)(SwigcptrDriver(C._wrap_DataSource_GetDriver_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Driver)(SwigcptrDriver(C._wrap_DataSource_GetDriver_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1127,20 +1127,20 @@ func (arg1 SwigcptrDataSource) DeleteLayer(arg2 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_DataSource_DeleteLayer_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_DataSource_DeleteLayer_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) SyncToDisk() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_DataSource_SyncToDisk_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_DataSource_SyncToDisk_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) FlushCache() {
 	_swig_i_0 := arg1
-	C._wrap_DataSource_FlushCache_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_DataSource_FlushCache_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrDataSource) CreateLayer(arg2 string, _swig_args ...interface{}) (_swig_ret Layer) {
@@ -1177,7 +1177,7 @@ func (arg1 SwigcptrDataSource) CreateLayer(arg2 string, _swig_args ...interface{
 	_swig_i_4_i[arg5_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_4 = &_swig_i_4_i[0]
 
-	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_CreateLayer_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_CreateLayer_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1212,7 +1212,7 @@ func (arg1 SwigcptrDataSource) CopyLayer(arg2 Layer, arg3 string, _swig_args ...
 	_swig_i_3_i[arg4_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_3 = &_swig_i_3_i[0]
 
-	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_CopyLayer_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_30)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3))))
+	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_CopyLayer_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_30)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -1235,7 +1235,7 @@ func (arg1 SwigcptrDataSource) GetLayerByIndex(_swig_args ...interface{}) (_swig
 	var swig_r Layer
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_GetLayerByIndex_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_GetLayerByIndex_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	var swig_r_1 Layer
 
 	if swig_r.Swigcptr() > 0 {
@@ -1251,7 +1251,7 @@ func (arg1 SwigcptrDataSource) GetLayerByName(arg2 string) (_swig_ret Layer) {
 	var swig_r Layer
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_GetLayerByName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_31)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_GetLayerByName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_31)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1270,7 +1270,7 @@ func (arg1 SwigcptrDataSource) TestCapability(arg2 string) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_DataSource_TestCapability_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_32)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (bool)(C._wrap_DataSource_TestCapability_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_32)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1291,7 +1291,7 @@ func (arg1 SwigcptrDataSource) ExecuteSQL(arg2 string, _swig_args ...interface{}
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_ExecuteSQL_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_33)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_3)))))
+	swig_r = (Layer)(SwigcptrLayer(C._wrap_DataSource_ExecuteSQL_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_33)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_3)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1312,20 +1312,20 @@ func (arg1 SwigcptrDataSource) ExecuteSQL(arg2 string, _swig_args ...interface{}
 func (arg1 SwigcptrDataSource) ReleaseResultSet(arg2 Layer) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_DataSource_ReleaseResultSet_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_DataSource_ReleaseResultSet_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrDataSource) GetStyleTable() (_swig_ret StyleTable) {
 	var swig_r StyleTable
 	_swig_i_0 := arg1
-	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_DataSource_GetStyleTable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_DataSource_GetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) SetStyleTable(arg2 StyleTable) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_DataSource_SetStyleTable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_DataSource_SetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrDataSource) StartTransaction(_swig_args ...interface{}) (_swig_ret int) {
@@ -1336,21 +1336,21 @@ func (arg1 SwigcptrDataSource) StartTransaction(_swig_args ...interface{}) (_swi
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_DataSource_StartTransaction_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_DataSource_StartTransaction_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) CommitTransaction() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_DataSource_CommitTransaction_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_DataSource_CommitTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrDataSource) RollbackTransaction() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_DataSource_RollbackTransaction_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_DataSource_RollbackTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1400,14 +1400,14 @@ func (p SwigcptrLayer) SwigIsLayer() {
 func (arg1 SwigcptrLayer) GetRefCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Layer_GetRefCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Layer_GetRefCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) SetSpatialFilter__SWIG_0(arg2 Geometry) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_Layer_SetSpatialFilter__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_Layer_SetSpatialFilter__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_0(arg2 float64, arg3 float64, arg4 float64, arg5 float64) {
@@ -1416,14 +1416,14 @@ func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_0(arg2 float64, arg3 float6
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	C._wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
+	C._wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
 }
 
 func (arg1 SwigcptrLayer) SetSpatialFilter__SWIG_1(arg2 int, arg3 Geometry) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_Layer_SetSpatialFilter__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_Layer_SetSpatialFilter__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func (p SwigcptrLayer) SetSpatialFilter(a ...interface{}) {
@@ -1446,7 +1446,7 @@ func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_1(arg2 int, arg3 float64, a
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	C._wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5))
+	C._wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5))
 }
 
 func (p SwigcptrLayer) SetSpatialFilterRect(a ...interface{}) {
@@ -1465,7 +1465,7 @@ func (p SwigcptrLayer) SetSpatialFilterRect(a ...interface{}) {
 func (arg1 SwigcptrLayer) GetSpatialFilter() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Layer_GetSpatialFilter_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Layer_GetSpatialFilter_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1473,7 +1473,7 @@ func (arg1 SwigcptrLayer) SetAttributeFilter(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Layer_SetAttributeFilter_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_35)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Layer_SetAttributeFilter_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_35)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1482,13 +1482,13 @@ func (arg1 SwigcptrLayer) SetAttributeFilter(arg2 string) (_swig_ret int) {
 
 func (arg1 SwigcptrLayer) ResetReading() {
 	_swig_i_0 := arg1
-	C._wrap_Layer_ResetReading_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Layer_ResetReading_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrLayer) GetName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Layer_GetName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Layer_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1498,14 +1498,14 @@ func (arg1 SwigcptrLayer) GetName() (_swig_ret string) {
 func (arg1 SwigcptrLayer) GetGeomType() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Layer_GetGeomType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Layer_GetGeomType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) GetGeometryColumn() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Layer_GetGeometryColumn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Layer_GetGeometryColumn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1515,7 +1515,7 @@ func (arg1 SwigcptrLayer) GetGeometryColumn() (_swig_ret string) {
 func (arg1 SwigcptrLayer) GetFIDColumn() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Layer_GetFIDColumn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Layer_GetFIDColumn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1526,7 +1526,7 @@ func (arg1 SwigcptrLayer) GetFeature(arg2 GIntBig) (_swig_ret Feature) {
 	var swig_r Feature
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (Feature)(SwigcptrFeature(C._wrap_Layer_GetFeature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (Feature)(SwigcptrFeature(C._wrap_Layer_GetFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	var swig_r_1 Feature
 
 	if swig_r.Swigcptr() > 0 {
@@ -1541,7 +1541,7 @@ func (arg1 SwigcptrLayer) GetFeature(arg2 GIntBig) (_swig_ret Feature) {
 func (arg1 SwigcptrLayer) GetNextFeature() (_swig_ret Feature) {
 	var swig_r Feature
 	_swig_i_0 := arg1
-	swig_r = (Feature)(SwigcptrFeature(C._wrap_Layer_GetNextFeature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Feature)(SwigcptrFeature(C._wrap_Layer_GetNextFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	var swig_r_1 Feature
 
 	if swig_r.Swigcptr() > 0 {
@@ -1557,7 +1557,7 @@ func (arg1 SwigcptrLayer) SetNextByIndex(arg2 GIntBig) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Layer_SetNextByIndex_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Layer_SetNextByIndex_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1565,7 +1565,7 @@ func (arg1 SwigcptrLayer) SetFeature(arg2 Feature) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Layer_SetFeature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Layer_SetFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1573,7 +1573,7 @@ func (arg1 SwigcptrLayer) wrap_CreateFeature(arg2 Feature) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Layer_CreateFeature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Layer_CreateFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1581,21 +1581,21 @@ func (arg1 SwigcptrLayer) DeleteFeature(arg2 GIntBig) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Layer_DeleteFeature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Layer_DeleteFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) SyncToDisk() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Layer_SyncToDisk_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Layer_SyncToDisk_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) GetLayerDefn() (_swig_ret FeatureDefn) {
 	var swig_r FeatureDefn
 	_swig_i_0 := arg1
-	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_Layer_GetLayerDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_Layer_GetLayerDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1607,7 +1607,7 @@ func (arg1 SwigcptrLayer) GetFeatureCount(_swig_args ...interface{}) (_swig_ret 
 	var swig_r GIntBig
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Layer_GetFeatureCount_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Layer_GetFeatureCount_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -1623,7 +1623,7 @@ func (arg1 SwigcptrLayer) GetExtent(arg2 []float64, _swig_args ...interface{}) (
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Layer_GetExtent_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_Layer_GetExtent_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
@@ -1631,7 +1631,7 @@ func (arg1 SwigcptrLayer) TestCapability(arg2 string) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_Layer_TestCapability_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_39)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (bool)(C._wrap_Layer_TestCapability_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_39)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1647,7 +1647,7 @@ func (arg1 SwigcptrLayer) wrap_CreateField(arg2 FieldDefn, _swig_args ...interfa
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Layer_CreateField_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_Layer_CreateField_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
@@ -1655,7 +1655,7 @@ func (arg1 SwigcptrLayer) DeleteField(arg2 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Layer_DeleteField_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Layer_DeleteField_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -1664,7 +1664,7 @@ func (arg1 SwigcptrLayer) ReorderField(arg2 int, arg3 int) (_swig_ret int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Layer_ReorderField_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_Layer_ReorderField_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
@@ -1673,7 +1673,7 @@ func (arg1 SwigcptrLayer) ReorderFields(arg2 int, arg3 *int) (_swig_ret int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Layer_ReorderFields_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_Layer_ReorderFields_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r
 }
 
@@ -1683,7 +1683,7 @@ func (arg1 SwigcptrLayer) AlterFieldDefn(arg2 int, arg3 FieldDefn, arg4 int) (_s
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_Layer_AlterFieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	swig_r = (int)(C._wrap_Layer_AlterFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
 	return swig_r
 }
 
@@ -1696,28 +1696,28 @@ func (arg1 SwigcptrLayer) CreateGeomField(arg2 GeomFieldDefn, _swig_args ...inte
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Layer_CreateGeomField_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_Layer_CreateGeomField_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) StartTransaction() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Layer_StartTransaction_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Layer_StartTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) CommitTransaction() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Layer_CommitTransaction_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Layer_CommitTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) RollbackTransaction() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Layer_RollbackTransaction_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Layer_RollbackTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1726,7 +1726,7 @@ func (arg1 SwigcptrLayer) FindFieldIndex(arg2 string, arg3 int) (_swig_ret int) 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Layer_FindFieldIndex_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_40)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_Layer_FindFieldIndex_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_40)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1736,14 +1736,14 @@ func (arg1 SwigcptrLayer) FindFieldIndex(arg2 string, arg3 int) (_swig_ret int) 
 func (arg1 SwigcptrLayer) GetSpatialRef() (_swig_ret osr.SpatialReference) {
 	var swig_r osr.SpatialReference
 	_swig_i_0 := arg1
-	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_Layer_GetSpatialRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_Layer_GetSpatialRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) GetFeaturesRead() (_swig_ret GIntBig) {
 	var swig_r GIntBig
 	_swig_i_0 := arg1
-	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Layer_GetFeaturesRead_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Layer_GetFeaturesRead_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -1761,7 +1761,7 @@ func (arg1 SwigcptrLayer) SetIgnoredFields(arg2 []string) (_swig_ret int) {
 	_swig_i_1_i[arg2_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_1 = &_swig_i_1_i[0]
 
-	swig_r = (int)(C._wrap_Layer_SetIgnoredFields_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_Layer_SetIgnoredFields_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -1807,7 +1807,7 @@ func (arg1 SwigcptrLayer) Intersection(arg2 Layer, arg3 Layer, _swig_args ...int
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Layer_Intersection_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Layer_Intersection_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -1853,7 +1853,7 @@ func (arg1 SwigcptrLayer) Union(arg2 Layer, arg3 Layer, _swig_args ...interface{
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Layer_Union_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Layer_Union_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -1899,7 +1899,7 @@ func (arg1 SwigcptrLayer) SymDifference(arg2 Layer, arg3 Layer, _swig_args ...in
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Layer_SymDifference_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Layer_SymDifference_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -1945,7 +1945,7 @@ func (arg1 SwigcptrLayer) Identity(arg2 Layer, arg3 Layer, _swig_args ...interfa
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Layer_Identity_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Layer_Identity_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -1991,7 +1991,7 @@ func (arg1 SwigcptrLayer) Update(arg2 Layer, arg3 Layer, _swig_args ...interface
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Layer_Update_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Layer_Update_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -2037,7 +2037,7 @@ func (arg1 SwigcptrLayer) Clip(arg2 Layer, arg3 Layer, _swig_args ...interface{}
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Layer_Clip_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Layer_Clip_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -2083,21 +2083,21 @@ func (arg1 SwigcptrLayer) Erase(arg2 Layer, arg3 Layer, _swig_args ...interface{
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Layer_Erase_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Layer_Erase_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) GetStyleTable() (_swig_ret StyleTable) {
 	var swig_r StyleTable
 	_swig_i_0 := arg1
-	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_Layer_GetStyleTable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_Layer_GetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrLayer) SetStyleTable(arg2 StyleTable) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_Layer_SetStyleTable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_Layer_SetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (p SwigcptrLayer) SwigIsMajorObject() {
@@ -2170,13 +2170,13 @@ func (p SwigcptrFeature) SwigIsFeature() {
 
 func DeleteFeature(arg1 Feature) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_Feature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_Feature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func wrap_NewFeature(arg1 FeatureDefn) (_swig_ret Feature) {
 	var swig_r Feature
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (Feature)(SwigcptrFeature(C._wrap_new_Feature_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Feature)(SwigcptrFeature(C._wrap_new_Feature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	var swig_r_1 Feature
 
 	if swig_r.Swigcptr() > 0 {
@@ -2191,7 +2191,7 @@ func wrap_NewFeature(arg1 FeatureDefn) (_swig_ret Feature) {
 func (arg1 SwigcptrFeature) GetDefnRef() (_swig_ret FeatureDefn) {
 	var swig_r FeatureDefn
 	_swig_i_0 := arg1
-	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_Feature_GetDefnRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_Feature_GetDefnRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -2199,7 +2199,7 @@ func (arg1 SwigcptrFeature) wrap_SetGeometry(arg2 Geometry) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Feature_SetGeometry_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Feature_SetGeometry_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -2207,14 +2207,14 @@ func (arg1 SwigcptrFeature) SetGeometryDirectly(arg2 Geometry) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Feature_SetGeometryDirectly_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Feature_SetGeometryDirectly_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeature) GetGeometryRef() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeometryRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeometryRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -2223,7 +2223,7 @@ func (arg1 SwigcptrFeature) SetGeomField__SWIG_0(arg2 int, arg3 Geometry) (_swig
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_Feature_SetGeomField__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_Feature_SetGeomField__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -2232,7 +2232,7 @@ func (arg1 SwigcptrFeature) SetGeomField__SWIG_1(arg2 string, arg3 Geometry) (_s
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_Feature_SetGeomField__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_41)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_Feature_SetGeomField__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_41)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2259,7 +2259,7 @@ func (arg1 SwigcptrFeature) SetGeomFieldDirectly__SWIG_0(arg2 int, arg3 Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -2268,7 +2268,7 @@ func (arg1 SwigcptrFeature) SetGeomFieldDirectly__SWIG_1(arg2 string, arg3 Geome
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_Feature_SetGeomFieldDirectly__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_42)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_Feature_SetGeomFieldDirectly__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_42)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2294,7 +2294,7 @@ func (arg1 SwigcptrFeature) GetGeomFieldRef__SWIG_0(arg2 int) (_swig_ret Geometr
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -2302,7 +2302,7 @@ func (arg1 SwigcptrFeature) GetGeomFieldRef__SWIG_1(arg2 string) (_swig_ret Geom
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeomFieldRef__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_43)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeomFieldRef__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_43)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2327,7 +2327,7 @@ check_1:
 func (arg1 SwigcptrFeature) Clone() (_swig_ret Feature) {
 	var swig_r Feature
 	_swig_i_0 := arg1
-	swig_r = (Feature)(SwigcptrFeature(C._wrap_Feature_Clone_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Feature)(SwigcptrFeature(C._wrap_Feature_Clone_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	var swig_r_1 Feature
 
 	if swig_r.Swigcptr() > 0 {
@@ -2343,14 +2343,14 @@ func (arg1 SwigcptrFeature) Equal(arg2 Feature) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Feature_Equal_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Feature_Equal_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeature) GetFieldCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Feature_GetFieldCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Feature_GetFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2358,7 +2358,7 @@ func (arg1 SwigcptrFeature) GetFieldDefnRef__SWIG_0(arg2 int) (_swig_ret FieldDe
 	var swig_r FieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -2366,7 +2366,7 @@ func (arg1 SwigcptrFeature) GetFieldDefnRef__SWIG_1(arg2 string) (_swig_ret Fiel
 	var swig_r FieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_Feature_GetFieldDefnRef__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_44)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_Feature_GetFieldDefnRef__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_44)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2391,7 +2391,7 @@ check_1:
 func (arg1 SwigcptrFeature) GetGeomFieldCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Feature_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Feature_GetGeomFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2399,7 +2399,7 @@ func (arg1 SwigcptrFeature) GetGeomFieldDefnRef__SWIG_0(arg2 int) (_swig_ret Geo
 	var swig_r GeomFieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -2407,7 +2407,7 @@ func (arg1 SwigcptrFeature) GetGeomFieldDefnRef__SWIG_1(arg2 string) (_swig_ret 
 	var swig_r GeomFieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_Feature_GetGeomFieldDefnRef__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_45)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_Feature_GetGeomFieldDefnRef__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_45)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2433,7 +2433,7 @@ func (arg1 SwigcptrFeature) GetFieldAsString__SWIG_0(arg2 int) (_swig_ret string
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_Feature_GetFieldAsString__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	swig_r_p := C._wrap_Feature_GetFieldAsString__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -2444,7 +2444,7 @@ func (arg1 SwigcptrFeature) GetFieldAsString__SWIG_1(arg2 string) (_swig_ret str
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_Feature_GetFieldAsString__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_1)))
+	swig_r_p := C._wrap_Feature_GetFieldAsString__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_1)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -2473,7 +2473,7 @@ func (arg1 SwigcptrFeature) GetFieldAsInteger__SWIG_0(arg2 int) (_swig_ret int) 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Feature_GetFieldAsInteger__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Feature_GetFieldAsInteger__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -2481,7 +2481,7 @@ func (arg1 SwigcptrFeature) GetFieldAsInteger__SWIG_1(arg2 string) (_swig_ret in
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Feature_GetFieldAsInteger__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_49)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Feature_GetFieldAsInteger__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_49)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2507,7 +2507,7 @@ func (arg1 SwigcptrFeature) GetFieldAsInteger64__SWIG_0(arg2 int) (_swig_ret GIn
 	var swig_r GIntBig
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -2515,7 +2515,7 @@ func (arg1 SwigcptrFeature) GetFieldAsInteger64__SWIG_1(arg2 string) (_swig_ret 
 	var swig_r GIntBig
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFieldAsInteger64__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_50)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFieldAsInteger64__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_50)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2541,7 +2541,7 @@ func (arg1 SwigcptrFeature) GetFieldAsDouble__SWIG_0(arg2 int) (_swig_ret float6
 	var swig_r float64
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float64)(C._wrap_Feature_GetFieldAsDouble__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (float64)(C._wrap_Feature_GetFieldAsDouble__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -2549,7 +2549,7 @@ func (arg1 SwigcptrFeature) GetFieldAsDouble__SWIG_1(arg2 string) (_swig_ret flo
 	var swig_r float64
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float64)(C._wrap_Feature_GetFieldAsDouble__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_51)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (float64)(C._wrap_Feature_GetFieldAsDouble__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_51)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2581,7 +2581,7 @@ func (arg1 SwigcptrFeature) GetFieldAsDateTime(arg2 int, arg3 []int, arg4 []int,
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	C._wrap_Feature_GetFieldAsDateTime_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_52)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_53)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_55)(unsafe.Pointer(&_swig_i_5)), *(*C.swig_type_56)(unsafe.Pointer(&_swig_i_6)), *(*C.swig_type_57)(unsafe.Pointer(&_swig_i_7)), *(*C.swig_type_58)(unsafe.Pointer(&_swig_i_8)))
+	C._wrap_Feature_GetFieldAsDateTime_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_52)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_53)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_55)(unsafe.Pointer(&_swig_i_5)), *(*C.swig_type_56)(unsafe.Pointer(&_swig_i_6)), *(*C.swig_type_57)(unsafe.Pointer(&_swig_i_7)), *(*C.swig_type_58)(unsafe.Pointer(&_swig_i_8)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -2610,7 +2610,7 @@ func (arg1 SwigcptrFeature) GetFieldAsIntegerList(arg2 int, arg3 *int, arg4 **in
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_Feature_GetFieldAsIntegerList_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3))
+	C._wrap_Feature_GetFieldAsIntegerList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3))
 }
 
 func (arg1 SwigcptrFeature) GetFieldAsDoubleList(arg2 int, arg3 *int, arg4 **float64) {
@@ -2618,14 +2618,14 @@ func (arg1 SwigcptrFeature) GetFieldAsDoubleList(arg2 int, arg3 *int, arg4 **flo
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_Feature_GetFieldAsDoubleList_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3))
+	C._wrap_Feature_GetFieldAsDoubleList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3))
 }
 
 func (arg1 SwigcptrFeature) GetFieldAsStringList(arg2 int, arg3 **string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_GetFieldAsStringList_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Feature_GetFieldAsStringList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
 }
 
 func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_0(arg2 int, arg3 *int, arg4 *string) (_swig_ret int) {
@@ -2634,7 +2634,7 @@ func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_0(arg2 int, arg3 *int, arg4 *
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	return swig_r
 }
 
@@ -2644,7 +2644,7 @@ func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_1(arg2 string, arg3 *int, arg
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_Feature_GetFieldAsBinary__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_59)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_Feature_GetFieldAsBinary__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_59)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2670,7 +2670,7 @@ func (arg1 SwigcptrFeature) IsFieldSet__SWIG_0(arg2 int) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_Feature_IsFieldSet__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Feature_IsFieldSet__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -2678,7 +2678,7 @@ func (arg1 SwigcptrFeature) IsFieldSet__SWIG_1(arg2 string) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_Feature_IsFieldSet__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_60)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (bool)(C._wrap_Feature_IsFieldSet__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_60)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2704,7 +2704,7 @@ func (arg1 SwigcptrFeature) GetFieldIndex(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Feature_GetFieldIndex_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_61)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Feature_GetFieldIndex_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_61)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2715,7 +2715,7 @@ func (arg1 SwigcptrFeature) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Feature_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_62)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Feature_GetGeomFieldIndex_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_62)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2725,7 +2725,7 @@ func (arg1 SwigcptrFeature) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
 func (arg1 SwigcptrFeature) GetFID() (_swig_ret GIntBig) {
 	var swig_r GIntBig
 	_swig_i_0 := arg1
-	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFID_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFID_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -2733,25 +2733,25 @@ func (arg1 SwigcptrFeature) SetFID(arg2 GIntBig) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Feature_SetFID_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Feature_SetFID_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeature) DumpReadable() {
 	_swig_i_0 := arg1
-	C._wrap_Feature_DumpReadable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Feature_DumpReadable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrFeature) UnsetField__SWIG_0(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Feature_UnsetField__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_Feature_UnsetField__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFeature) UnsetField__SWIG_1(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Feature_UnsetField__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_63)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_Feature_UnsetField__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_63)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2778,7 +2778,7 @@ func (arg1 SwigcptrFeature) SetField__SWIG_0(arg2 int, arg3 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetField__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_64)(unsafe.Pointer(&_swig_i_2)))
+	C._wrap_Feature_SetField__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_64)(unsafe.Pointer(&_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -2788,7 +2788,7 @@ func (arg1 SwigcptrFeature) SetField__SWIG_1(arg2 string, arg3 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetField__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_65)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_66)(unsafe.Pointer(&_swig_i_2)))
+	C._wrap_Feature_SetField__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_65)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_66)(unsafe.Pointer(&_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2801,21 +2801,21 @@ func (arg1 SwigcptrFeature) SetFieldInteger64(arg2 int, arg3 GIntBig) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_Feature_SetFieldInteger64_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_Feature_SetFieldInteger64_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
 }
 
 func (arg1 SwigcptrFeature) SetField__SWIG_2(arg2 int, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetField__SWIG_2_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_Feature_SetField__SWIG_2_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2))
 }
 
 func (arg1 SwigcptrFeature) SetField__SWIG_3(arg2 string, arg3 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetField__SWIG_3_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_67)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))
+	C._wrap_Feature_SetField__SWIG_3_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_67)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2825,14 +2825,14 @@ func (arg1 SwigcptrFeature) SetField__SWIG_4(arg2 int, arg3 float64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetField__SWIG_4_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2))
+	C._wrap_Feature_SetField__SWIG_4_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2))
 }
 
 func (arg1 SwigcptrFeature) SetField__SWIG_5(arg2 string, arg3 float64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetField__SWIG_5_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_68)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2))
+	C._wrap_Feature_SetField__SWIG_5_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_68)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2848,7 +2848,7 @@ func (arg1 SwigcptrFeature) SetField__SWIG_6(arg2 int, arg3 int, arg4 int, arg5 
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	C._wrap_Feature_SetField__SWIG_6_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_intgo(_swig_i_6), C.float(_swig_i_7), C.swig_intgo(_swig_i_8))
+	C._wrap_Feature_SetField__SWIG_6_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_intgo(_swig_i_6), C.float(_swig_i_7), C.swig_intgo(_swig_i_8))
 }
 
 func (arg1 SwigcptrFeature) SetField__SWIG_7(arg2 string, arg3 int, arg4 int, arg5 int, arg6 int, arg7 int, arg8 float32, arg9 int) {
@@ -2861,7 +2861,7 @@ func (arg1 SwigcptrFeature) SetField__SWIG_7(arg2 string, arg3 int, arg4 int, ar
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	C._wrap_Feature_SetField__SWIG_7_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_69)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_intgo(_swig_i_6), C.float(_swig_i_7), C.swig_intgo(_swig_i_8))
+	C._wrap_Feature_SetField__SWIG_7_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_69)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_intgo(_swig_i_6), C.float(_swig_i_7), C.swig_intgo(_swig_i_8))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2942,7 +2942,7 @@ func (arg1 SwigcptrFeature) SetFieldIntegerList(arg2 int, arg3 int, arg4 *int) {
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_Feature_SetFieldIntegerList_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3))
+	C._wrap_Feature_SetFieldIntegerList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3))
 }
 
 func (arg1 SwigcptrFeature) SetFieldDoubleList(arg2 int, arg3 int, arg4 *float64) {
@@ -2950,7 +2950,7 @@ func (arg1 SwigcptrFeature) SetFieldDoubleList(arg2 int, arg3 int, arg4 *float64
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_Feature_SetFieldDoubleList_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3))
+	C._wrap_Feature_SetFieldDoubleList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3))
 }
 
 func (arg1 SwigcptrFeature) SetFieldStringList(arg2 int, arg3 []string) {
@@ -2967,14 +2967,14 @@ func (arg1 SwigcptrFeature) SetFieldStringList(arg2 int, arg3 []string) {
 	_swig_i_2_i[arg3_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_2 = &_swig_i_2_i[0]
 
-	C._wrap_Feature_SetFieldStringList_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Feature_SetFieldStringList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
 }
 
 func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_0(arg2 int, arg3 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetFieldBinaryFromHexString__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_70)(unsafe.Pointer(&_swig_i_2)))
+	C._wrap_Feature_SetFieldBinaryFromHexString__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), *(*C.swig_type_70)(unsafe.Pointer(&_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -2984,7 +2984,7 @@ func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_1(arg2 string, arg
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Feature_SetFieldBinaryFromHexString__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_71)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_72)(unsafe.Pointer(&_swig_i_2)))
+	C._wrap_Feature_SetFieldBinaryFromHexString__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_71)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_72)(unsafe.Pointer(&_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3019,7 +3019,7 @@ func (arg1 SwigcptrFeature) SetFrom(arg2 Feature, _swig_args ...interface{}) (_s
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Feature_SetFrom_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_Feature_SetFrom_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
@@ -3030,14 +3030,14 @@ func (arg1 SwigcptrFeature) SetFromWithMap(arg2 Feature, arg3 int, arg4 int, arg
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_Feature_SetFromWithMap_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_Feature_SetFromWithMap_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeature) GetStyleString() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Feature_GetStyleString_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Feature_GetStyleString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3047,7 +3047,7 @@ func (arg1 SwigcptrFeature) GetStyleString() (_swig_ret string) {
 func (arg1 SwigcptrFeature) SetStyleString(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Feature_SetStyleString_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_74)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_Feature_SetStyleString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_74)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3057,7 +3057,7 @@ func (arg1 SwigcptrFeature) GetFieldType__SWIG_0(arg2 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Feature_GetFieldType__SWIG_0_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Feature_GetFieldType__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -3065,7 +3065,7 @@ func (arg1 SwigcptrFeature) GetFieldType__SWIG_1(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Feature_GetFieldType__SWIG_1_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_75)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Feature_GetFieldType__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_75)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3100,7 +3100,7 @@ func (arg1 SwigcptrFeature) Validate(_swig_args ...interface{}) (_swig_ret int) 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Feature_Validate_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_Feature_Validate_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
@@ -3126,13 +3126,13 @@ func (arg1 SwigcptrFeature) FillUnsetWithDefault(_swig_args ...interface{}) {
 	_swig_i_2_i[arg3_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_2 = &_swig_i_2_i[0]
 
-	C._wrap_Feature_FillUnsetWithDefault_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Feature_FillUnsetWithDefault_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
 }
 
 func (arg1 SwigcptrFeature) GetNativeData() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Feature_GetNativeData_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Feature_GetNativeData_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3142,7 +3142,7 @@ func (arg1 SwigcptrFeature) GetNativeData() (_swig_ret string) {
 func (arg1 SwigcptrFeature) GetNativeMediaType() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Feature_GetNativeMediaType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Feature_GetNativeMediaType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3152,7 +3152,7 @@ func (arg1 SwigcptrFeature) GetNativeMediaType() (_swig_ret string) {
 func (arg1 SwigcptrFeature) SetNativeData(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Feature_SetNativeData_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_78)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_Feature_SetNativeData_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_78)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3161,7 +3161,7 @@ func (arg1 SwigcptrFeature) SetNativeData(arg2 string) {
 func (arg1 SwigcptrFeature) SetNativeMediaType(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Feature_SetNativeMediaType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_79)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_Feature_SetNativeMediaType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_79)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3231,7 +3231,7 @@ func (p SwigcptrFeatureDefn) SwigIsFeatureDefn() {
 
 func DeleteFeatureDefn(arg1 FeatureDefn) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_FeatureDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_FeatureDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func NewFeatureDefn(_swig_args ...interface{}) (_swig_ret FeatureDefn) {
@@ -3241,7 +3241,7 @@ func NewFeatureDefn(_swig_args ...interface{}) (_swig_ret FeatureDefn) {
 	}
 	var swig_r FeatureDefn
 	_swig_i_0 := arg1
-	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_new_FeatureDefn_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), *(*C.swig_type_80)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_new_FeatureDefn_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), *(*C.swig_type_80)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -3251,7 +3251,7 @@ func NewFeatureDefn(_swig_args ...interface{}) (_swig_ret FeatureDefn) {
 func (arg1 SwigcptrFeatureDefn) GetName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_FeatureDefn_GetName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_FeatureDefn_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3261,7 +3261,7 @@ func (arg1 SwigcptrFeatureDefn) GetName() (_swig_ret string) {
 func (arg1 SwigcptrFeatureDefn) GetFieldCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FeatureDefn_GetFieldCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FeatureDefn_GetFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -3269,7 +3269,7 @@ func (arg1 SwigcptrFeatureDefn) GetFieldDefn(arg2 int) (_swig_ret FieldDefn) {
 	var swig_r FieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_FeatureDefn_GetFieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_FeatureDefn_GetFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -3277,7 +3277,7 @@ func (arg1 SwigcptrFeatureDefn) GetFieldIndex(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_FeatureDefn_GetFieldIndex_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_82)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_FeatureDefn_GetFieldIndex_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_82)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3287,13 +3287,13 @@ func (arg1 SwigcptrFeatureDefn) GetFieldIndex(arg2 string) (_swig_ret int) {
 func (arg1 SwigcptrFeatureDefn) AddFieldDefn(arg2 FieldDefn) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_FeatureDefn_AddFieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_FeatureDefn_AddFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrFeatureDefn) GetGeomFieldCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FeatureDefn_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FeatureDefn_GetGeomFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -3301,7 +3301,7 @@ func (arg1 SwigcptrFeatureDefn) GetGeomFieldDefn(arg2 int) (_swig_ret GeomFieldD
 	var swig_r GeomFieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_FeatureDefn_GetGeomFieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_FeatureDefn_GetGeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -3309,7 +3309,7 @@ func (arg1 SwigcptrFeatureDefn) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_FeatureDefn_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_83)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_FeatureDefn_GetGeomFieldIndex_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_83)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3319,68 +3319,68 @@ func (arg1 SwigcptrFeatureDefn) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
 func (arg1 SwigcptrFeatureDefn) AddGeomFieldDefn(arg2 GeomFieldDefn) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_FeatureDefn_AddGeomFieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_FeatureDefn_AddGeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrFeatureDefn) DeleteGeomFieldDefn(arg2 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeatureDefn) GetGeomType() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FeatureDefn_GetGeomType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FeatureDefn_GetGeomType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeatureDefn) SetGeomType(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FeatureDefn_SetGeomType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FeatureDefn_SetGeomType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFeatureDefn) GetReferenceCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FeatureDefn_GetReferenceCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FeatureDefn_GetReferenceCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeatureDefn) IsGeometryIgnored() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FeatureDefn_IsGeometryIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FeatureDefn_IsGeometryIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeatureDefn) SetGeometryIgnored(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FeatureDefn_SetGeometryIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FeatureDefn_SetGeometryIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFeatureDefn) IsStyleIgnored() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FeatureDefn_IsStyleIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FeatureDefn_IsStyleIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFeatureDefn) SetStyleIgnored(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FeatureDefn_SetStyleIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FeatureDefn_SetStyleIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFeatureDefn) IsSame(arg2 FeatureDefn) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_FeatureDefn_IsSame_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_FeatureDefn_IsSame_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -3418,7 +3418,7 @@ func (p SwigcptrFieldDefn) SwigIsFieldDefn() {
 
 func DeleteFieldDefn(arg1 FieldDefn) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_FieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_FieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func NewFieldDefn(_swig_args ...interface{}) (_swig_ret FieldDefn) {
@@ -3433,7 +3433,7 @@ func NewFieldDefn(_swig_args ...interface{}) (_swig_ret FieldDefn) {
 	var swig_r FieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_new_FieldDefn_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), *(*C.swig_type_84)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
+	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_new_FieldDefn_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), *(*C.swig_type_84)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -3443,7 +3443,7 @@ func NewFieldDefn(_swig_args ...interface{}) (_swig_ret FieldDefn) {
 func (arg1 SwigcptrFieldDefn) GetName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_FieldDefn_GetName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_FieldDefn_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3453,7 +3453,7 @@ func (arg1 SwigcptrFieldDefn) GetName() (_swig_ret string) {
 func (arg1 SwigcptrFieldDefn) GetNameRef() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_FieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_FieldDefn_GetNameRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3463,7 +3463,7 @@ func (arg1 SwigcptrFieldDefn) GetNameRef() (_swig_ret string) {
 func (arg1 SwigcptrFieldDefn) SetName(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_87)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_FieldDefn_SetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_87)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3472,72 +3472,72 @@ func (arg1 SwigcptrFieldDefn) SetName(arg2 string) {
 func (arg1 SwigcptrFieldDefn) GetType() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_GetType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_GetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFieldDefn) SetType(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FieldDefn_SetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFieldDefn) GetSubType() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_GetSubType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_GetSubType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFieldDefn) SetSubType(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetSubType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FieldDefn_SetSubType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFieldDefn) GetJustify() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_GetJustify_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_GetJustify_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFieldDefn) SetJustify(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetJustify_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FieldDefn_SetJustify_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFieldDefn) GetWidth() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_GetWidth_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_GetWidth_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFieldDefn) SetWidth(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetWidth_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FieldDefn_SetWidth_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFieldDefn) GetPrecision() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_GetPrecision_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_GetPrecision_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFieldDefn) SetPrecision(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetPrecision_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FieldDefn_SetPrecision_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFieldDefn) GetTypeName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_FieldDefn_GetTypeName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_FieldDefn_GetTypeName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3548,7 +3548,7 @@ func (arg1 SwigcptrFieldDefn) GetFieldTypeName(arg2 int) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_FieldDefn_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	swig_r_p := C._wrap_FieldDefn_GetFieldTypeName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3558,33 +3558,33 @@ func (arg1 SwigcptrFieldDefn) GetFieldTypeName(arg2 int) (_swig_ret string) {
 func (arg1 SwigcptrFieldDefn) IsIgnored() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_IsIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFieldDefn) SetIgnored(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FieldDefn_SetIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFieldDefn) IsNullable() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_IsNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrFieldDefn) SetNullable(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_FieldDefn_SetNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrFieldDefn) GetDefault() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_FieldDefn_GetDefault_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_FieldDefn_GetDefault_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3594,7 +3594,7 @@ func (arg1 SwigcptrFieldDefn) GetDefault() (_swig_ret string) {
 func (arg1 SwigcptrFieldDefn) SetDefault(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_FieldDefn_SetDefault_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_91)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_FieldDefn_SetDefault_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_91)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3603,7 +3603,7 @@ func (arg1 SwigcptrFieldDefn) SetDefault(arg2 string) {
 func (arg1 SwigcptrFieldDefn) IsDefaultDriverSpecific() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_FieldDefn_IsDefaultDriverSpecific_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_FieldDefn_IsDefaultDriverSpecific_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -3645,7 +3645,7 @@ func (p SwigcptrGeomFieldDefn) SwigIsGeomFieldDefn() {
 
 func DeleteGeomFieldDefn(arg1 GeomFieldDefn) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func NewGeomFieldDefn(_swig_args ...interface{}) (_swig_ret GeomFieldDefn) {
@@ -3660,7 +3660,7 @@ func NewGeomFieldDefn(_swig_args ...interface{}) (_swig_ret GeomFieldDefn) {
 	var swig_r GeomFieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_new_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), *(*C.swig_type_92)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
+	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_new_GeomFieldDefn_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), *(*C.swig_type_92)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -3670,7 +3670,7 @@ func NewGeomFieldDefn(_swig_args ...interface{}) (_swig_ret GeomFieldDefn) {
 func (arg1 SwigcptrGeomFieldDefn) GetName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GeomFieldDefn_GetName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_GeomFieldDefn_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3680,7 +3680,7 @@ func (arg1 SwigcptrGeomFieldDefn) GetName() (_swig_ret string) {
 func (arg1 SwigcptrGeomFieldDefn) GetNameRef() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GeomFieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_GeomFieldDefn_GetNameRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3690,7 +3690,7 @@ func (arg1 SwigcptrGeomFieldDefn) GetNameRef() (_swig_ret string) {
 func (arg1 SwigcptrGeomFieldDefn) SetName(arg2 string) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GeomFieldDefn_SetName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), *(*C.swig_type_95)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_GeomFieldDefn_SetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_95)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3699,20 +3699,20 @@ func (arg1 SwigcptrGeomFieldDefn) SetName(arg2 string) {
 func (arg1 SwigcptrGeomFieldDefn) GetType() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GeomFieldDefn_GetType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_GeomFieldDefn_GetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeomFieldDefn) SetType(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GeomFieldDefn_SetType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_GeomFieldDefn_SetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeomFieldDefn) GetSpatialRef() (_swig_ret osr.SpatialReference) {
 	var swig_r osr.SpatialReference
 	_swig_i_0 := arg1
-	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_GeomFieldDefn_GetSpatialRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_GeomFieldDefn_GetSpatialRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -3724,33 +3724,33 @@ func (arg1 SwigcptrGeomFieldDefn) SetSpatialRef(arg2 osr.SpatialReference) {
 		_swig_i_1 = arg2.Swigcptr()
 	}
 
-	C._wrap_GeomFieldDefn_SetSpatialRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_GeomFieldDefn_SetSpatialRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeomFieldDefn) IsIgnored() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GeomFieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_GeomFieldDefn_IsIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeomFieldDefn) SetIgnored(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GeomFieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_GeomFieldDefn_SetIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeomFieldDefn) IsNullable() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GeomFieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_GeomFieldDefn_IsNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeomFieldDefn) SetNullable(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GeomFieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_GeomFieldDefn_SetNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 type GeomFieldDefn interface {
@@ -3778,7 +3778,7 @@ func CreateGeometryFromWkb(arg1 int, arg2 string, _swig_args ...interface{}) (_s
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromWkb_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), *(*C.swig_type_96)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromWkb_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), *(*C.swig_type_96)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3793,14 +3793,14 @@ func CreateGeometryFromWkt(arg1 *string, _swig_args ...interface{}) (_swig_ret G
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromWkt_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.swig_voidp(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromWkt_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.swig_voidp(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func CreateGeometryFromGML(arg1 string) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromGML_ogr_1f1edc2fb82ebe9e(*(*C.swig_type_97)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromGML_ogr_8e1b66f4430553e5(*(*C.swig_type_97)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -3810,7 +3810,7 @@ func CreateGeometryFromGML(arg1 string) (_swig_ret Geometry) {
 func CreateGeometryFromJson(arg1 string) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromJson_ogr_1f1edc2fb82ebe9e(*(*C.swig_type_98)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromJson_ogr_8e1b66f4430553e5(*(*C.swig_type_98)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -3835,7 +3835,7 @@ func BuildPolygonFromEdges(arg1 Geometry, _swig_args ...interface{}) (_swig_ret 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_BuildPolygonFromEdges_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.double(_swig_i_3))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_BuildPolygonFromEdges_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.double(_swig_i_3))))
 	return swig_r
 }
 
@@ -3850,42 +3850,42 @@ func ApproximateArcAngles(arg1 float64, arg2 float64, arg3 float64, arg4 float64
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ApproximateArcAngles_ogr_1f1edc2fb82ebe9e(C.double(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7), C.double(_swig_i_8))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ApproximateArcAngles_ogr_8e1b66f4430553e5(C.double(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7), C.double(_swig_i_8))))
 	return swig_r
 }
 
 func ForceToPolygon(arg1 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToPolygon_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToPolygon_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func ForceToLineString(arg1 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToLineString_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToLineString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func ForceToMultiPolygon(arg1 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiPolygon_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiPolygon_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func ForceToMultiPoint(arg1 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiPoint_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiPoint_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func ForceToMultiLineString(arg1 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiLineString_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiLineString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -3908,7 +3908,7 @@ func ForceTo(arg1 Geometry, arg2 int, _swig_args ...interface{}) (_swig_ret Geom
 	_swig_i_2_i[arg3_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_2 = &_swig_i_2_i[0]
 
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceTo_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceTo_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))))
 	return swig_r
 }
 
@@ -3923,7 +3923,7 @@ func (p SwigcptrGeometry) SwigIsGeometry() {
 
 func DeleteGeometry(arg1 Geometry) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_Geometry_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_Geometry_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func wrap_NewGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
@@ -3953,7 +3953,7 @@ func wrap_NewGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_new_Geometry_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), *(*C.swig_type_99)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), *(*C.swig_type_100)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_101)(unsafe.Pointer(&_swig_i_4)))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_new_Geometry_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), *(*C.swig_type_99)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), *(*C.swig_type_100)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_101)(unsafe.Pointer(&_swig_i_4)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3970,7 +3970,7 @@ func (arg1 SwigcptrGeometry) ExportToWkt(arg2 *string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Geometry_ExportToWkt_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_Geometry_ExportToWkt_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -3978,7 +3978,7 @@ func (arg1 SwigcptrGeometry) ExportToIsoWkt(arg2 *string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Geometry_ExportToIsoWkt_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_Geometry_ExportToIsoWkt_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -3992,7 +3992,7 @@ func (arg1 SwigcptrGeometry) ExportToWkb(arg2 *int, arg3 *string, _swig_args ...
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_Geometry_ExportToWkb_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	swig_r = (int)(C._wrap_Geometry_ExportToWkb_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
 	return swig_r
 }
 
@@ -4006,14 +4006,14 @@ func (arg1 SwigcptrGeometry) ExportToIsoWkb(arg2 *int, arg3 *string, _swig_args 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_Geometry_ExportToIsoWkb_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	swig_r = (int)(C._wrap_Geometry_ExportToIsoWkb_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) ExportToGML() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Geometry_ExportToGML_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Geometry_ExportToGML_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -4028,7 +4028,7 @@ func (arg1 SwigcptrGeometry) ExportToKML(_swig_args ...interface{}) (_swig_ret s
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_Geometry_ExportToKML_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_104)(unsafe.Pointer(&_swig_i_1)))
+	swig_r_p := C._wrap_Geometry_ExportToKML_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_104)(unsafe.Pointer(&_swig_i_1)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -4041,7 +4041,7 @@ func (arg1 SwigcptrGeometry) ExportToKML(_swig_args ...interface{}) (_swig_ret s
 func (arg1 SwigcptrGeometry) ExportToJson() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Geometry_ExportToJson_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Geometry_ExportToJson_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -4057,21 +4057,21 @@ func (arg1 SwigcptrGeometry) AddPoint(arg2 float64, arg3 float64, _swig_args ...
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_Geometry_AddPoint_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3))
+	C._wrap_Geometry_AddPoint_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3))
 }
 
 func (arg1 SwigcptrGeometry) AddPoint_2D(arg2 float64, arg3 float64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Geometry_AddPoint_2D_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2))
+	C._wrap_Geometry_AddPoint_2D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2))
 }
 
 func (arg1 SwigcptrGeometry) AddGeometryDirectly(arg2 Geometry) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Geometry_AddGeometryDirectly_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Geometry_AddGeometryDirectly_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4079,28 +4079,28 @@ func (arg1 SwigcptrGeometry) AddGeometry(arg2 Geometry) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Geometry_AddGeometry_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Geometry_AddGeometry_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) Clone() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Clone_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Clone_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) GetGeometryType() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Geometry_GetGeometryType_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Geometry_GetGeometryType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) GetGeometryName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Geometry_GetGeometryName_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Geometry_GetGeometryName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -4110,28 +4110,28 @@ func (arg1 SwigcptrGeometry) GetGeometryName() (_swig_ret string) {
 func (arg1 SwigcptrGeometry) Length() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_Geometry_Length_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_Geometry_Length_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) Area() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_Geometry_Area_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_Geometry_Area_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) GetArea() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_Geometry_GetArea_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_Geometry_GetArea_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) GetPointCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Geometry_GetPointCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Geometry_GetPointCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -4143,7 +4143,7 @@ func (arg1 SwigcptrGeometry) GetX(_swig_args ...interface{}) (_swig_ret float64)
 	var swig_r float64
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float64)(C._wrap_Geometry_GetX_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (float64)(C._wrap_Geometry_GetX_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -4155,7 +4155,7 @@ func (arg1 SwigcptrGeometry) GetY(_swig_args ...interface{}) (_swig_ret float64)
 	var swig_r float64
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float64)(C._wrap_Geometry_GetY_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (float64)(C._wrap_Geometry_GetY_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -4167,7 +4167,7 @@ func (arg1 SwigcptrGeometry) GetZ(_swig_args ...interface{}) (_swig_ret float64)
 	var swig_r float64
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (float64)(C._wrap_Geometry_GetZ_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (float64)(C._wrap_Geometry_GetZ_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -4186,7 +4186,7 @@ func (arg1 SwigcptrGeometry) GetPoint(_swig_args ...interface{}) {
 
 	_swig_i_2 = (*C.double)(unsafe.Pointer(&arg3[0]))
 
-	C._wrap_Geometry_GetPoint_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Geometry_GetPoint_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
 }
 
 func (arg1 SwigcptrGeometry) GetPoint_2D(_swig_args ...interface{}) {
@@ -4204,13 +4204,13 @@ func (arg1 SwigcptrGeometry) GetPoint_2D(_swig_args ...interface{}) {
 
 	_swig_i_2 = (*C.double)(unsafe.Pointer(&arg3[0]))
 
-	C._wrap_Geometry_GetPoint_2D_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Geometry_GetPoint_2D_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
 }
 
 func (arg1 SwigcptrGeometry) GetGeometryCount() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Geometry_GetGeometryCount_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Geometry_GetGeometryCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -4224,7 +4224,7 @@ func (arg1 SwigcptrGeometry) SetPoint(arg2 int, arg3 float64, arg4 float64, _swi
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	C._wrap_Geometry_SetPoint_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
+	C._wrap_Geometry_SetPoint_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
 }
 
 func (arg1 SwigcptrGeometry) wrap_SetPoint_2D(arg2 int, arg3 float64, arg4 float64) {
@@ -4232,14 +4232,14 @@ func (arg1 SwigcptrGeometry) wrap_SetPoint_2D(arg2 int, arg3 float64, arg4 float
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_Geometry_SetPoint_2D_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3))
+	C._wrap_Geometry_SetPoint_2D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3))
 }
 
 func (arg1 SwigcptrGeometry) GetGeometryRef(arg2 int) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetGeometryRef_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetGeometryRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -4247,7 +4247,7 @@ func (arg1 SwigcptrGeometry) Simplify(arg2 float64) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Simplify_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Simplify_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
 	return swig_r
 }
 
@@ -4255,7 +4255,7 @@ func (arg1 SwigcptrGeometry) SimplifyPreserveTopology(arg2 float64) (_swig_ret G
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SimplifyPreserveTopology_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SimplifyPreserveTopology_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
 	return swig_r
 }
 
@@ -4272,28 +4272,28 @@ func (arg1 SwigcptrGeometry) DelaunayTriangulation(_swig_args ...interface{}) (_
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_DelaunayTriangulation_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_intgo(_swig_i_2))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_DelaunayTriangulation_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_intgo(_swig_i_2))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) Boundary() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Boundary_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Boundary_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) GetBoundary() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetBoundary_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetBoundary_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) ConvexHull() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_ConvexHull_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_ConvexHull_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -4306,7 +4306,7 @@ func (arg1 SwigcptrGeometry) Buffer(arg2 float64, _swig_args ...interface{}) (_s
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Buffer_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_intgo(_swig_i_2))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Buffer_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_intgo(_swig_i_2))))
 	return swig_r
 }
 
@@ -4314,7 +4314,7 @@ func (arg1 SwigcptrGeometry) Intersection(arg2 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Intersection_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Intersection_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -4322,14 +4322,14 @@ func (arg1 SwigcptrGeometry) Union(arg2 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Union_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Union_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) UnionCascaded() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_UnionCascaded_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_UnionCascaded_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
@@ -4337,7 +4337,7 @@ func (arg1 SwigcptrGeometry) Difference(arg2 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Difference_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Difference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -4345,7 +4345,7 @@ func (arg1 SwigcptrGeometry) SymDifference(arg2 Geometry) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SymDifference_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SymDifference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -4353,7 +4353,7 @@ func (arg1 SwigcptrGeometry) SymmetricDifference(arg2 Geometry) (_swig_ret Geome
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SymmetricDifference_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SymmetricDifference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
@@ -4361,40 +4361,40 @@ func (arg1 SwigcptrGeometry) Distance(arg2 Geometry) (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (float64)(C._wrap_Geometry_Distance_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (float64)(C._wrap_Geometry_Distance_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) Empty() {
 	_swig_i_0 := arg1
-	C._wrap_Geometry_Empty_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Geometry_Empty_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrGeometry) IsEmpty() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Geometry_IsEmpty_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_Geometry_IsEmpty_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) IsValid() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Geometry_IsValid_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_Geometry_IsValid_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) IsSimple() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Geometry_IsSimple_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_Geometry_IsSimple_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) IsRing() (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Geometry_IsRing_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_Geometry_IsRing_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -4402,7 +4402,7 @@ func (arg1 SwigcptrGeometry) Intersects(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Intersects_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Intersects_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4410,7 +4410,7 @@ func (arg1 SwigcptrGeometry) Intersect(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Intersect_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Intersect_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4418,7 +4418,7 @@ func (arg1 SwigcptrGeometry) Equals(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Equals_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Equals_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4426,7 +4426,7 @@ func (arg1 SwigcptrGeometry) Equal(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Equal_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Equal_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4434,7 +4434,7 @@ func (arg1 SwigcptrGeometry) Disjoint(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Disjoint_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Disjoint_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4442,7 +4442,7 @@ func (arg1 SwigcptrGeometry) Touches(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Touches_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Touches_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4450,7 +4450,7 @@ func (arg1 SwigcptrGeometry) Crosses(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Crosses_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Crosses_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4458,7 +4458,7 @@ func (arg1 SwigcptrGeometry) Within(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Within_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Within_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4466,7 +4466,7 @@ func (arg1 SwigcptrGeometry) Contains(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Contains_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Contains_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4474,7 +4474,7 @@ func (arg1 SwigcptrGeometry) Overlaps(arg2 Geometry) (_swig_ret bool) {
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (bool)(C._wrap_Geometry_Overlaps_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (bool)(C._wrap_Geometry_Overlaps_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4482,7 +4482,7 @@ func (arg1 SwigcptrGeometry) TransformTo(arg2 osr.SpatialReference) (_swig_ret i
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Geometry_TransformTo_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Geometry_TransformTo_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -4490,37 +4490,37 @@ func (arg1 SwigcptrGeometry) Transform(arg2 osr.CoordinateTransformation) (_swig
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Geometry_Transform_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Geometry_Transform_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) GetSpatialReference() (_swig_ret osr.SpatialReference) {
 	var swig_r osr.SpatialReference
 	_swig_i_0 := arg1
-	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_Geometry_GetSpatialReference_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_Geometry_GetSpatialReference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) AssignSpatialReference(arg2 osr.SpatialReference) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_Geometry_AssignSpatialReference_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_Geometry_AssignSpatialReference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeometry) CloseRings() {
 	_swig_i_0 := arg1
-	C._wrap_Geometry_CloseRings_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Geometry_CloseRings_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrGeometry) FlattenTo2D() {
 	_swig_i_0 := arg1
-	C._wrap_Geometry_FlattenTo2D_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))
+	C._wrap_Geometry_FlattenTo2D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrGeometry) Segmentize(arg2 float64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Geometry_Segmentize_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_Geometry_Segmentize_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeometry) GetEnvelope(arg2 []float64) {
@@ -4529,7 +4529,7 @@ func (arg1 SwigcptrGeometry) GetEnvelope(arg2 []float64) {
 
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
-	C._wrap_Geometry_GetEnvelope_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_Geometry_GetEnvelope_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeometry) GetEnvelope3D(arg2 []float64) {
@@ -4538,47 +4538,47 @@ func (arg1 SwigcptrGeometry) GetEnvelope3D(arg2 []float64) {
 
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
-	C._wrap_Geometry_GetEnvelope3D_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_Geometry_GetEnvelope3D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeometry) Centroid() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Centroid_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Centroid_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) PointOnSurface() (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_PointOnSurface_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_PointOnSurface_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) WkbSize() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Geometry_WkbSize_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Geometry_WkbSize_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) GetCoordinateDimension() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Geometry_GetCoordinateDimension_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Geometry_GetCoordinateDimension_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrGeometry) SetCoordinateDimension(arg2 int) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_Geometry_SetCoordinateDimension_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_Geometry_SetCoordinateDimension_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 }
 
 func (arg1 SwigcptrGeometry) GetDimension() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Geometry_GetDimension_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Geometry_GetDimension_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -4590,7 +4590,7 @@ func (arg1 SwigcptrGeometry) HasCurveGeometry(_swig_args ...interface{}) (_swig_
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Geometry_HasCurveGeometry_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Geometry_HasCurveGeometry_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -4617,7 +4617,7 @@ func (arg1 SwigcptrGeometry) GetLinearGeometry(_swig_args ...interface{}) (_swig
 	_swig_i_2_i[arg3_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_2 = &_swig_i_2_i[0]
 
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetLinearGeometry_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_voidp(_swig_i_2))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetLinearGeometry_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_voidp(_swig_i_2))))
 	return swig_r
 }
 
@@ -4639,7 +4639,7 @@ func (arg1 SwigcptrGeometry) GetCurveGeometry(_swig_args ...interface{}) (_swig_
 	_swig_i_1_i[arg2_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_1 = &_swig_i_1_i[0]
 
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetCurveGeometry_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetCurveGeometry_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))))
 	return swig_r
 }
 
@@ -4647,7 +4647,7 @@ func (arg1 SwigcptrGeometry) Value(arg2 float64) (_swig_ret Geometry) {
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Value_ogr_1f1edc2fb82ebe9e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
+	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Value_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
 	return swig_r
 }
 
@@ -4734,27 +4734,27 @@ type Geometry interface {
 
 func OGRGetDriverCount() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_OGRGetDriverCount_ogr_1f1edc2fb82ebe9e())
+	swig_r = (int)(C._wrap_OGRGetDriverCount_ogr_8e1b66f4430553e5())
 	return swig_r
 }
 
 func OGRGetOpenDSCount() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_OGRGetOpenDSCount_ogr_1f1edc2fb82ebe9e())
+	swig_r = (int)(C._wrap_OGRGetOpenDSCount_ogr_8e1b66f4430553e5())
 	return swig_r
 }
 
 func OGRSetGenerate_DB2_V72_BYTE_ORDER(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func GeometryTypeToName(arg1 int) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GeometryTypeToName_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0))
+	swig_r_p := C._wrap_GeometryTypeToName_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -4764,7 +4764,7 @@ func GeometryTypeToName(arg1 int) (_swig_ret string) {
 func GetFieldTypeName(arg1 int) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0))
+	swig_r_p := C._wrap_GetFieldTypeName_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -4774,7 +4774,7 @@ func GetFieldTypeName(arg1 int) (_swig_ret string) {
 func GetFieldSubTypeName(arg1 int) (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GetFieldSubTypeName_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0))
+	swig_r_p := C._wrap_GetFieldSubTypeName_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -4784,14 +4784,14 @@ func GetFieldSubTypeName(arg1 int) (_swig_ret string) {
 func GT_Flatten(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_Flatten_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_Flatten_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func GT_SetZ(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_SetZ_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_SetZ_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
@@ -4804,14 +4804,14 @@ func GT_SetModifier(arg1 int, arg2 int, _swig_args ...interface{}) (_swig_ret in
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_GT_SetModifier_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_GT_SetModifier_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
 func GT_HasZ(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_HasZ_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_HasZ_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
@@ -4819,67 +4819,67 @@ func GT_IsSubClassOf(arg1 int, arg2 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_GT_IsSubClassOf_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_GT_IsSubClassOf_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
 func GT_IsCurve(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_IsCurve_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_IsCurve_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func GT_IsSurface(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_IsSurface_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_IsSurface_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func GT_IsNonLinear(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_IsNonLinear_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_IsNonLinear_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func GT_GetCollection(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_GetCollection_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_GetCollection_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func GT_GetCurve(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_GetCurve_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_GetCurve_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func GT_GetLinear(arg1 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GT_GetLinear_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GT_GetLinear_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
 func SetNonLinearGeometriesEnabledFlag(arg1 int) {
 	_swig_i_0 := arg1
-	C._wrap_SetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0))
+	C._wrap_SetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
 }
 
 func GetNonLinearGeometriesEnabledFlag() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_GetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e())
+	swig_r = (int)(C._wrap_GetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5())
 	return swig_r
 }
 
 func GetOpenDS(arg1 int) (_swig_ret DataSource) {
 	var swig_r DataSource
 	_swig_i_0 := arg1
-	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_GetOpenDS_ogr_1f1edc2fb82ebe9e(C.swig_intgo(_swig_i_0))))
+	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_GetOpenDS_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))))
 	return swig_r
 }
 
@@ -4891,7 +4891,7 @@ func Open(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource) {
 	var swig_r DataSource
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Open_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), *(*C.swig_type_110)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
+	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_Open_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), *(*C.swig_type_110)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -4906,7 +4906,7 @@ func OpenShared(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource) {
 	var swig_r DataSource
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_OpenShared_ogr_1f1edc2fb82ebe9e(C.swig_intgo(len(_swig_args)), *(*C.swig_type_111)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
+	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_OpenShared_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), *(*C.swig_type_111)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}

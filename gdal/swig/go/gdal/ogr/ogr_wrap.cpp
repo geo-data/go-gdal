@@ -1675,7 +1675,7 @@ OGRwkbGeometryType GT_SetModifier( OGRwkbGeometryType eType, int bSetZ, int bSet
 extern "C" {
 #endif
 
-void _wrap_Swig_free_ogr_1f1edc2fb82ebe9e(void *_swig_go_0) {
+void _wrap_Swig_free_ogr_8e1b66f4430553e5(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -1685,7 +1685,7 @@ void _wrap_Swig_free_ogr_1f1edc2fb82ebe9e(void *_swig_go_0) {
 }
 
 
-_gostring_ _wrap_MajorObject_GetDescription_ogr_1f1edc2fb82ebe9e(GDALMajorObjectShadow *_swig_go_0) {
+_gostring_ _wrap_MajorObject_GetDescription_ogr_8e1b66f4430553e5(GDALMajorObjectShadow *_swig_go_0) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1698,7 +1698,7 @@ _gostring_ _wrap_MajorObject_GetDescription_ogr_1f1edc2fb82ebe9e(GDALMajorObject
 }
 
 
-void _wrap_MajorObject_SetDescription_ogr_1f1edc2fb82ebe9e(GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_MajorObject_SetDescription_ogr_8e1b66f4430553e5(GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -1716,7 +1716,7 @@ void _wrap_MajorObject_SetDescription_ogr_1f1edc2fb82ebe9e(GDALMajorObjectShadow
 }
 
 
-char **_wrap_MajorObject_GetMetadataDomainList_ogr_1f1edc2fb82ebe9e(GDALMajorObjectShadow *_swig_go_0) {
+char **_wrap_MajorObject_GetMetadataDomainList_ogr_8e1b66f4430553e5(GDALMajorObjectShadow *_swig_go_0) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
@@ -1729,7 +1729,7 @@ char **_wrap_MajorObject_GetMetadataDomainList_ogr_1f1edc2fb82ebe9e(GDALMajorObj
 }
 
 
-_gostring_* _wrap_MajorObject_GetMetadata_Dict_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_* _wrap_MajorObject_GetMetadata_Dict_ogr_8e1b66f4430553e5(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) "" ;
   char **result = 0 ;
@@ -1746,7 +1746,7 @@ _gostring_* _wrap_MajorObject_GetMetadata_Dict_ogr_1f1edc2fb82ebe9e(intgo _swig_
 }
 
 
-char **_wrap_MajorObject_GetMetadata_List_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
+char **_wrap_MajorObject_GetMetadata_List_ogr_8e1b66f4430553e5(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) "" ;
   char **result = 0 ;
@@ -1763,7 +1763,7 @@ char **_wrap_MajorObject_GetMetadata_List_ogr_1f1edc2fb82ebe9e(intgo _swig_optar
 }
 
 
-intgo _wrap_MajorObject_SetMetadata__SWIG_0_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_MajorObject_SetMetadata__SWIG_0_ogr_8e1b66f4430553e5(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_ _swig_go_2) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   char *arg3 = (char *) "" ;
@@ -1782,7 +1782,7 @@ intgo _wrap_MajorObject_SetMetadata__SWIG_0_ogr_1f1edc2fb82ebe9e(intgo _swig_opt
 }
 
 
-intgo _wrap_MajorObject_SetMetadata__SWIG_1_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_MajorObject_SetMetadata__SWIG_1_ogr_8e1b66f4430553e5(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) "" ;
@@ -1801,7 +1801,7 @@ intgo _wrap_MajorObject_SetMetadata__SWIG_1_ogr_1f1edc2fb82ebe9e(intgo _swig_opt
 }
 
 
-_gostring_ _wrap_MajorObject_GetMetadataItem_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+_gostring_ _wrap_MajorObject_GetMetadataItem_ogr_8e1b66f4430553e5(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) "" ;
@@ -1826,7 +1826,7 @@ _gostring_ _wrap_MajorObject_GetMetadataItem_ogr_1f1edc2fb82ebe9e(intgo _swig_op
 }
 
 
-intgo _wrap_MajorObject_SetMetadataItem_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
+intgo _wrap_MajorObject_SetMetadataItem_ogr_8e1b66f4430553e5(intgo _swig_optargc, GDALMajorObjectShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
   GDALMajorObjectShadow *arg1 = (GDALMajorObjectShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1853,7 +1853,7 @@ intgo _wrap_MajorObject_SetMetadataItem_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc
 }
 
 
-OGRStyleTableShadow *_wrap_new_StyleTable_ogr_1f1edc2fb82ebe9e() {
+OGRStyleTableShadow *_wrap_new_StyleTable_ogr_8e1b66f4430553e5() {
   OGRStyleTableShadow *result = 0 ;
   OGRStyleTableShadow *_swig_go_result;
   
@@ -1864,7 +1864,7 @@ OGRStyleTableShadow *_wrap_new_StyleTable_ogr_1f1edc2fb82ebe9e() {
 }
 
 
-void _wrap_delete_StyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0) {
+void _wrap_delete_StyleTable_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   
   arg1 = *(OGRStyleTableShadow **)&_swig_go_0; 
@@ -1874,7 +1874,7 @@ void _wrap_delete_StyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_
 }
 
 
-intgo _wrap_StyleTable_AddStyle_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_StyleTable_AddStyle_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1891,7 +1891,7 @@ intgo _wrap_StyleTable_AddStyle_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_
 }
 
 
-intgo _wrap_StyleTable_LoadStyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_StyleTable_LoadStyleTable_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -1911,7 +1911,7 @@ intgo _wrap_StyleTable_LoadStyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *
 }
 
 
-intgo _wrap_StyleTable_SaveStyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_StyleTable_SaveStyleTable_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -1931,7 +1931,7 @@ intgo _wrap_StyleTable_SaveStyleTable_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *
 }
 
 
-_gostring_ _wrap_StyleTable_Find_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_StyleTable_Find_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *result = 0 ;
@@ -1946,7 +1946,7 @@ _gostring_ _wrap_StyleTable_Find_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig
 }
 
 
-void _wrap_StyleTable_ResetStyleStringReading_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0) {
+void _wrap_StyleTable_ResetStyleStringReading_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   
   arg1 = *(OGRStyleTableShadow **)&_swig_go_0; 
@@ -1956,7 +1956,7 @@ void _wrap_StyleTable_ResetStyleStringReading_ogr_1f1edc2fb82ebe9e(OGRStyleTable
 }
 
 
-_gostring_ _wrap_StyleTable_GetNextStyle_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0) {
+_gostring_ _wrap_StyleTable_GetNextStyle_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1969,7 +1969,7 @@ _gostring_ _wrap_StyleTable_GetNextStyle_ogr_1f1edc2fb82ebe9e(OGRStyleTableShado
 }
 
 
-_gostring_ _wrap_StyleTable_GetLastStyleName_ogr_1f1edc2fb82ebe9e(OGRStyleTableShadow *_swig_go_0) {
+_gostring_ _wrap_StyleTable_GetLastStyleName_ogr_8e1b66f4430553e5(OGRStyleTableShadow *_swig_go_0) {
   OGRStyleTableShadow *arg1 = (OGRStyleTableShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1982,7 +1982,7 @@ _gostring_ _wrap_StyleTable_GetLastStyleName_ogr_1f1edc2fb82ebe9e(OGRStyleTableS
 }
 
 
-_gostring_ _wrap_Driver_name_get_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_0) {
+_gostring_ _wrap_Driver_name_get_ogr_8e1b66f4430553e5(OGRDriverShadow *_swig_go_0) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1995,7 +1995,7 @@ _gostring_ _wrap_Driver_name_get_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_
 }
 
 
-OGRDataSourceShadow *_wrap_Driver_CreateDataSource_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1, char **_swig_go_2) {
+OGRDataSourceShadow *_wrap_Driver_CreateDataSource_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1, char **_swig_go_2) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char **arg3 = (char **) 0 ;
@@ -2019,7 +2019,7 @@ OGRDataSourceShadow *_wrap_Driver_CreateDataSource_ogr_1f1edc2fb82ebe9e(intgo _s
 }
 
 
-OGRDataSourceShadow *_wrap_Driver_CopyDataSource_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDriverShadow *_swig_go_0, OGRDataSourceShadow *_swig_go_1, _gostring_ _swig_go_2, char **_swig_go_3) {
+OGRDataSourceShadow *_wrap_Driver_CopyDataSource_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDriverShadow *_swig_go_0, OGRDataSourceShadow *_swig_go_1, _gostring_ _swig_go_2, char **_swig_go_3) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   OGRDataSourceShadow *arg2 = (OGRDataSourceShadow *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -2045,7 +2045,7 @@ OGRDataSourceShadow *_wrap_Driver_CopyDataSource_ogr_1f1edc2fb82ebe9e(intgo _swi
 }
 
 
-OGRDataSourceShadow *_wrap_Driver_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
+OGRDataSourceShadow *_wrap_Driver_Open_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int arg3 = (int) 0 ;
@@ -2069,7 +2069,7 @@ OGRDataSourceShadow *_wrap_Driver_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc,
 }
 
 
-intgo _wrap_Driver_DeleteDataSource_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Driver_DeleteDataSource_ogr_8e1b66f4430553e5(OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -2089,7 +2089,7 @@ intgo _wrap_Driver_DeleteDataSource_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_
 }
 
 
-bool _wrap_Driver_TestCapability_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1) {
+bool _wrap_Driver_TestCapability_ogr_8e1b66f4430553e5(OGRDriverShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   bool result;
@@ -2110,7 +2110,7 @@ bool _wrap_Driver_TestCapability_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_
 }
 
 
-void _wrap_Driver_Register_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_0) {
+void _wrap_Driver_Register_ogr_8e1b66f4430553e5(OGRDriverShadow *_swig_go_0) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   
   arg1 = *(OGRDriverShadow **)&_swig_go_0; 
@@ -2120,7 +2120,7 @@ void _wrap_Driver_Register_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_0) {
 }
 
 
-void _wrap_Driver_Deregister_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_0) {
+void _wrap_Driver_Deregister_ogr_8e1b66f4430553e5(OGRDriverShadow *_swig_go_0) {
   OGRDriverShadow *arg1 = (OGRDriverShadow *) 0 ;
   
   arg1 = *(OGRDriverShadow **)&_swig_go_0; 
@@ -2130,7 +2130,7 @@ void _wrap_Driver_Deregister_ogr_1f1edc2fb82ebe9e(OGRDriverShadow *_swig_go_0) {
 }
 
 
-_gostring_ _wrap_DataSource_name_get_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+_gostring_ _wrap_DataSource_name_get_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2143,7 +2143,7 @@ _gostring_ _wrap_DataSource_name_get_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_
 }
 
 
-void _wrap_delete_DataSource_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+void _wrap_delete_DataSource_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   
   arg1 = *(OGRDataSourceShadow **)&_swig_go_0; 
@@ -2153,7 +2153,7 @@ void _wrap_delete_DataSource_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_
 }
 
 
-intgo _wrap_DataSource_GetRefCount_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+intgo _wrap_DataSource_GetRefCount_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -2166,7 +2166,7 @@ intgo _wrap_DataSource_GetRefCount_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_sw
 }
 
 
-intgo _wrap_DataSource_GetSummaryRefCount_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+intgo _wrap_DataSource_GetSummaryRefCount_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -2179,7 +2179,7 @@ intgo _wrap_DataSource_GetSummaryRefCount_ogr_1f1edc2fb82ebe9e(OGRDataSourceShad
 }
 
 
-intgo _wrap_DataSource_GetLayerCount_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+intgo _wrap_DataSource_GetLayerCount_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -2192,7 +2192,7 @@ intgo _wrap_DataSource_GetLayerCount_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_
 }
 
 
-OGRDriverShadow *_wrap_DataSource_GetDriver_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+OGRDriverShadow *_wrap_DataSource_GetDriver_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRDriverShadow *result = 0 ;
   OGRDriverShadow *_swig_go_result;
@@ -2205,7 +2205,7 @@ OGRDriverShadow *_wrap_DataSource_GetDriver_ogr_1f1edc2fb82ebe9e(OGRDataSourceSh
 }
 
 
-intgo _wrap_DataSource_DeleteLayer_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_DataSource_DeleteLayer_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0, intgo _swig_go_1) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   int arg2 ;
   OGRErr result;
@@ -2220,7 +2220,7 @@ intgo _wrap_DataSource_DeleteLayer_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_sw
 }
 
 
-intgo _wrap_DataSource_SyncToDisk_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+intgo _wrap_DataSource_SyncToDisk_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -2233,7 +2233,7 @@ intgo _wrap_DataSource_SyncToDisk_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swi
 }
 
 
-void _wrap_DataSource_FlushCache_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+void _wrap_DataSource_FlushCache_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   
   arg1 = *(OGRDataSourceShadow **)&_swig_go_0; 
@@ -2243,7 +2243,7 @@ void _wrap_DataSource_FlushCache_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig
 }
 
 
-OGRLayerShadow *_wrap_DataSource_CreateLayer_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4) {
+OGRLayerShadow *_wrap_DataSource_CreateLayer_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2, intgo _swig_go_3, char **_swig_go_4) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OSRSpatialReferenceShadow *arg3 = (OSRSpatialReferenceShadow *) NULL ;
@@ -2276,7 +2276,7 @@ OGRLayerShadow *_wrap_DataSource_CreateLayer_ogr_1f1edc2fb82ebe9e(intgo _swig_op
 }
 
 
-OGRLayerShadow *_wrap_DataSource_CopyLayer_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, _gostring_ _swig_go_2, char **_swig_go_3) {
+OGRLayerShadow *_wrap_DataSource_CopyLayer_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, _gostring_ _swig_go_2, char **_swig_go_3) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -2303,7 +2303,7 @@ OGRLayerShadow *_wrap_DataSource_CopyLayer_ogr_1f1edc2fb82ebe9e(intgo _swig_opta
 }
 
 
-OGRLayerShadow *_wrap_DataSource_GetLayerByIndex_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, intgo _swig_go_1) {
+OGRLayerShadow *_wrap_DataSource_GetLayerByIndex_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, intgo _swig_go_1) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   int arg2 = (int) 0 ;
   OGRLayerShadow *result = 0 ;
@@ -2320,7 +2320,7 @@ OGRLayerShadow *_wrap_DataSource_GetLayerByIndex_ogr_1f1edc2fb82ebe9e(intgo _swi
 }
 
 
-OGRLayerShadow *_wrap_DataSource_GetLayerByName_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+OGRLayerShadow *_wrap_DataSource_GetLayerByName_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRLayerShadow *result = 0 ;
@@ -2335,7 +2335,7 @@ OGRLayerShadow *_wrap_DataSource_GetLayerByName_ogr_1f1edc2fb82ebe9e(OGRDataSour
 }
 
 
-bool _wrap_DataSource_TestCapability_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+bool _wrap_DataSource_TestCapability_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   bool result;
@@ -2356,7 +2356,7 @@ bool _wrap_DataSource_TestCapability_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_
 }
 
 
-OGRLayerShadow *_wrap_DataSource_ExecuteSQL_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2, _gostring_ _swig_go_3) {
+OGRLayerShadow *_wrap_DataSource_ExecuteSQL_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2, _gostring_ _swig_go_3) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRGeometryShadow *arg3 = (OGRGeometryShadow *) NULL ;
@@ -2385,7 +2385,7 @@ OGRLayerShadow *_wrap_DataSource_ExecuteSQL_ogr_1f1edc2fb82ebe9e(intgo _swig_opt
 }
 
 
-void _wrap_DataSource_ReleaseResultSet_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0, OGRLayerShadow *_swig_go_1) {
+void _wrap_DataSource_ReleaseResultSet_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0, OGRLayerShadow *_swig_go_1) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   
@@ -2397,7 +2397,7 @@ void _wrap_DataSource_ReleaseResultSet_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow 
 }
 
 
-OGRStyleTableShadow *_wrap_DataSource_GetStyleTable_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+OGRStyleTableShadow *_wrap_DataSource_GetStyleTable_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRStyleTableShadow *result = 0 ;
   OGRStyleTableShadow *_swig_go_result;
@@ -2410,7 +2410,7 @@ OGRStyleTableShadow *_wrap_DataSource_GetStyleTable_ogr_1f1edc2fb82ebe9e(OGRData
 }
 
 
-void _wrap_DataSource_SetStyleTable_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0, OGRStyleTableShadow *_swig_go_1) {
+void _wrap_DataSource_SetStyleTable_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0, OGRStyleTableShadow *_swig_go_1) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRStyleTableShadow *arg2 = (OGRStyleTableShadow *) 0 ;
   
@@ -2422,7 +2422,7 @@ void _wrap_DataSource_SetStyleTable_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_s
 }
 
 
-intgo _wrap_DataSource_StartTransaction_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_DataSource_StartTransaction_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRDataSourceShadow *_swig_go_0, intgo _swig_go_1) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   int arg2 = (int) FALSE ;
   OGRErr result;
@@ -2439,7 +2439,7 @@ intgo _wrap_DataSource_StartTransaction_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc
 }
 
 
-intgo _wrap_DataSource_CommitTransaction_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+intgo _wrap_DataSource_CommitTransaction_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -2452,7 +2452,7 @@ intgo _wrap_DataSource_CommitTransaction_ogr_1f1edc2fb82ebe9e(OGRDataSourceShado
 }
 
 
-intgo _wrap_DataSource_RollbackTransaction_ogr_1f1edc2fb82ebe9e(OGRDataSourceShadow *_swig_go_0) {
+intgo _wrap_DataSource_RollbackTransaction_ogr_8e1b66f4430553e5(OGRDataSourceShadow *_swig_go_0) {
   OGRDataSourceShadow *arg1 = (OGRDataSourceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -2465,7 +2465,7 @@ intgo _wrap_DataSource_RollbackTransaction_ogr_1f1edc2fb82ebe9e(OGRDataSourceSha
 }
 
 
-intgo _wrap_Layer_GetRefCount_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+intgo _wrap_Layer_GetRefCount_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -2478,7 +2478,7 @@ intgo _wrap_Layer_GetRefCount_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
 }
 
 
-void _wrap_Layer_SetSpatialFilter__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+void _wrap_Layer_SetSpatialFilter__SWIG_0_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   
@@ -2490,7 +2490,7 @@ void _wrap_Layer_SetSpatialFilter__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_
 }
 
 
-void _wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+void _wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2508,7 +2508,7 @@ void _wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRLayerShado
 }
 
 
-void _wrap_Layer_SetSpatialFilter__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, OGRGeometryShadow *_swig_go_2) {
+void _wrap_Layer_SetSpatialFilter__SWIG_1_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, OGRGeometryShadow *_swig_go_2) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int arg2 ;
   OGRGeometryShadow *arg3 = (OGRGeometryShadow *) 0 ;
@@ -2522,7 +2522,7 @@ void _wrap_Layer_SetSpatialFilter__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_
 }
 
 
-void _wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+void _wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int arg2 ;
   double arg3 ;
@@ -2542,7 +2542,7 @@ void _wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRLayerShado
 }
 
 
-OGRGeometryShadow *_wrap_Layer_GetSpatialFilter_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Layer_GetSpatialFilter_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -2555,7 +2555,7 @@ OGRGeometryShadow *_wrap_Layer_GetSpatialFilter_ogr_1f1edc2fb82ebe9e(OGRLayerSha
 }
 
 
-intgo _wrap_Layer_SetAttributeFilter_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Layer_SetAttributeFilter_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2570,7 +2570,7 @@ intgo _wrap_Layer_SetAttributeFilter_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_
 }
 
 
-void _wrap_Layer_ResetReading_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+void _wrap_Layer_ResetReading_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   
   arg1 = *(OGRLayerShadow **)&_swig_go_0; 
@@ -2580,7 +2580,7 @@ void _wrap_Layer_ResetReading_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
 }
 
 
-_gostring_ _wrap_Layer_GetName_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+_gostring_ _wrap_Layer_GetName_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2593,7 +2593,7 @@ _gostring_ _wrap_Layer_GetName_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) 
 }
 
 
-intgo _wrap_Layer_GetGeomType_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+intgo _wrap_Layer_GetGeomType_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -2606,7 +2606,7 @@ intgo _wrap_Layer_GetGeomType_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
 }
 
 
-_gostring_ _wrap_Layer_GetGeometryColumn_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+_gostring_ _wrap_Layer_GetGeometryColumn_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2619,7 +2619,7 @@ _gostring_ _wrap_Layer_GetGeometryColumn_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_s
 }
 
 
-_gostring_ _wrap_Layer_GetFIDColumn_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+_gostring_ _wrap_Layer_GetFIDColumn_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -2632,7 +2632,7 @@ _gostring_ _wrap_Layer_GetFIDColumn_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_g
 }
 
 
-OGRFeatureShadow *_wrap_Layer_GetFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, GIntBig *_swig_go_1) {
+OGRFeatureShadow *_wrap_Layer_GetFeature_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, GIntBig *_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   GIntBig arg2 ;
   GIntBig *argp2 ;
@@ -2654,7 +2654,7 @@ OGRFeatureShadow *_wrap_Layer_GetFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_s
 }
 
 
-OGRFeatureShadow *_wrap_Layer_GetNextFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+OGRFeatureShadow *_wrap_Layer_GetNextFeature_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRFeatureShadow *result = 0 ;
   OGRFeatureShadow *_swig_go_result;
@@ -2667,7 +2667,7 @@ OGRFeatureShadow *_wrap_Layer_GetNextFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow
 }
 
 
-intgo _wrap_Layer_SetNextByIndex_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, GIntBig *_swig_go_1) {
+intgo _wrap_Layer_SetNextByIndex_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, GIntBig *_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   GIntBig arg2 ;
   GIntBig *argp2 ;
@@ -2689,7 +2689,7 @@ intgo _wrap_Layer_SetNextByIndex_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0
 }
 
 
-intgo _wrap_Layer_SetFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1) {
+intgo _wrap_Layer_SetFeature_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRFeatureShadow *arg2 = (OGRFeatureShadow *) 0 ;
   OGRErr result;
@@ -2710,7 +2710,7 @@ intgo _wrap_Layer_SetFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, OG
 }
 
 
-intgo _wrap_Layer_CreateFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1) {
+intgo _wrap_Layer_CreateFeature_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRFeatureShadow *arg2 = (OGRFeatureShadow *) 0 ;
   OGRErr result;
@@ -2731,7 +2731,7 @@ intgo _wrap_Layer_CreateFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0,
 }
 
 
-intgo _wrap_Layer_DeleteFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, GIntBig *_swig_go_1) {
+intgo _wrap_Layer_DeleteFeature_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, GIntBig *_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   GIntBig arg2 ;
   GIntBig *argp2 ;
@@ -2753,7 +2753,7 @@ intgo _wrap_Layer_DeleteFeature_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0,
 }
 
 
-intgo _wrap_Layer_SyncToDisk_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+intgo _wrap_Layer_SyncToDisk_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -2766,7 +2766,7 @@ intgo _wrap_Layer_SyncToDisk_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
 }
 
 
-OGRFeatureDefnShadow *_wrap_Layer_GetLayerDefn_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+OGRFeatureDefnShadow *_wrap_Layer_GetLayerDefn_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRFeatureDefnShadow *result = 0 ;
   OGRFeatureDefnShadow *_swig_go_result;
@@ -2779,7 +2779,7 @@ OGRFeatureDefnShadow *_wrap_Layer_GetLayerDefn_ogr_1f1edc2fb82ebe9e(OGRLayerShad
 }
 
 
-GIntBig *_wrap_Layer_GetFeatureCount_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, intgo _swig_go_1) {
+GIntBig *_wrap_Layer_GetFeatureCount_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, intgo _swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int arg2 = (int) 1 ;
   GIntBig result;
@@ -2796,7 +2796,7 @@ GIntBig *_wrap_Layer_GetFeatureCount_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, O
 }
 
 
-intgo _wrap_Layer_GetExtent_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2) {
+intgo _wrap_Layer_GetExtent_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, double *_swig_go_1, intgo _swig_go_2) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   double *arg2 ;
   int arg3 = (int) 1 ;
@@ -2815,7 +2815,7 @@ intgo _wrap_Layer_GetExtent_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerSh
 }
 
 
-bool _wrap_Layer_TestCapability_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, _gostring_ _swig_go_1) {
+bool _wrap_Layer_TestCapability_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   bool result;
@@ -2836,7 +2836,7 @@ bool _wrap_Layer_TestCapability_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0,
 }
 
 
-intgo _wrap_Layer_CreateField_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRFieldDefnShadow *_swig_go_1, intgo _swig_go_2) {
+intgo _wrap_Layer_CreateField_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRFieldDefnShadow *_swig_go_1, intgo _swig_go_2) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRFieldDefnShadow *arg2 = (OGRFieldDefnShadow *) 0 ;
   int arg3 = (int) 1 ;
@@ -2861,7 +2861,7 @@ intgo _wrap_Layer_CreateField_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayer
 }
 
 
-intgo _wrap_Layer_DeleteField_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Layer_DeleteField_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, intgo _swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int arg2 ;
   OGRErr result;
@@ -2876,7 +2876,7 @@ intgo _wrap_Layer_DeleteField_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, i
 }
 
 
-intgo _wrap_Layer_ReorderField_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_Layer_ReorderField_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -2893,7 +2893,7 @@ intgo _wrap_Layer_ReorderField_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, 
 }
 
 
-intgo _wrap_Layer_ReorderFields_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2) {
+intgo _wrap_Layer_ReorderFields_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int arg2 ;
   int *arg3 = (int *) 0 ;
@@ -2910,7 +2910,7 @@ intgo _wrap_Layer_ReorderFields_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0,
 }
 
 
-intgo _wrap_Layer_AlterFieldDefn_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, OGRFieldDefnShadow *_swig_go_2, intgo _swig_go_3) {
+intgo _wrap_Layer_AlterFieldDefn_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, intgo _swig_go_1, OGRFieldDefnShadow *_swig_go_2, intgo _swig_go_3) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   int arg2 ;
   OGRFieldDefnShadow *arg3 = (OGRFieldDefnShadow *) 0 ;
@@ -2935,7 +2935,7 @@ intgo _wrap_Layer_AlterFieldDefn_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0
 }
 
 
-intgo _wrap_Layer_CreateGeomField_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRGeomFieldDefnShadow *_swig_go_1, intgo _swig_go_2) {
+intgo _wrap_Layer_CreateGeomField_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRGeomFieldDefnShadow *_swig_go_1, intgo _swig_go_2) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRGeomFieldDefnShadow *arg2 = (OGRGeomFieldDefnShadow *) 0 ;
   int arg3 = (int) 1 ;
@@ -2960,7 +2960,7 @@ intgo _wrap_Layer_CreateGeomField_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRL
 }
 
 
-intgo _wrap_Layer_StartTransaction_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+intgo _wrap_Layer_StartTransaction_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -2973,7 +2973,7 @@ intgo _wrap_Layer_StartTransaction_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go
 }
 
 
-intgo _wrap_Layer_CommitTransaction_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+intgo _wrap_Layer_CommitTransaction_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -2986,7 +2986,7 @@ intgo _wrap_Layer_CommitTransaction_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_g
 }
 
 
-intgo _wrap_Layer_RollbackTransaction_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+intgo _wrap_Layer_RollbackTransaction_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -2999,7 +2999,7 @@ intgo _wrap_Layer_RollbackTransaction_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig
 }
 
 
-intgo _wrap_Layer_FindFieldIndex_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_Layer_FindFieldIndex_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
@@ -3016,7 +3016,7 @@ intgo _wrap_Layer_FindFieldIndex_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0
 }
 
 
-OSRSpatialReferenceShadow *_wrap_Layer_GetSpatialRef_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+OSRSpatialReferenceShadow *_wrap_Layer_GetSpatialRef_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OSRSpatialReferenceShadow *result = 0 ;
   OSRSpatialReferenceShadow *_swig_go_result;
@@ -3029,7 +3029,7 @@ OSRSpatialReferenceShadow *_wrap_Layer_GetSpatialRef_ogr_1f1edc2fb82ebe9e(OGRLay
 }
 
 
-GIntBig *_wrap_Layer_GetFeaturesRead_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+GIntBig *_wrap_Layer_GetFeaturesRead_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   GIntBig result;
   GIntBig *_swig_go_result;
@@ -3042,7 +3042,7 @@ GIntBig *_wrap_Layer_GetFeaturesRead_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_
 }
 
 
-intgo _wrap_Layer_SetIgnoredFields_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, char **_swig_go_1) {
+intgo _wrap_Layer_SetIgnoredFields_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, char **_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -3057,7 +3057,7 @@ intgo _wrap_Layer_SetIgnoredFields_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go
 }
 
 
-intgo _wrap_Layer_Intersection_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Layer_Intersection_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -3088,7 +3088,7 @@ intgo _wrap_Layer_Intersection_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLaye
 }
 
 
-intgo _wrap_Layer_Union_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Layer_Union_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -3119,7 +3119,7 @@ intgo _wrap_Layer_Union_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow
 }
 
 
-intgo _wrap_Layer_SymDifference_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Layer_SymDifference_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -3150,7 +3150,7 @@ intgo _wrap_Layer_SymDifference_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLay
 }
 
 
-intgo _wrap_Layer_Identity_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Layer_Identity_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -3181,7 +3181,7 @@ intgo _wrap_Layer_Identity_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerSha
 }
 
 
-intgo _wrap_Layer_Update_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Layer_Update_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -3212,7 +3212,7 @@ intgo _wrap_Layer_Update_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShado
 }
 
 
-intgo _wrap_Layer_Clip_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Layer_Clip_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -3243,7 +3243,7 @@ intgo _wrap_Layer_Clip_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow 
 }
 
 
-intgo _wrap_Layer_Erase_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
+intgo _wrap_Layer_Erase_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRLayerShadow *_swig_go_0, OGRLayerShadow *_swig_go_1, OGRLayerShadow *_swig_go_2, char **_swig_go_3, GDALProgressFunc _swig_go_4, void *_swig_go_5) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg2 = (OGRLayerShadow *) 0 ;
   OGRLayerShadow *arg3 = (OGRLayerShadow *) 0 ;
@@ -3274,7 +3274,7 @@ intgo _wrap_Layer_Erase_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRLayerShadow
 }
 
 
-OGRStyleTableShadow *_wrap_Layer_GetStyleTable_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0) {
+OGRStyleTableShadow *_wrap_Layer_GetStyleTable_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRStyleTableShadow *result = 0 ;
   OGRStyleTableShadow *_swig_go_result;
@@ -3287,7 +3287,7 @@ OGRStyleTableShadow *_wrap_Layer_GetStyleTable_ogr_1f1edc2fb82ebe9e(OGRLayerShad
 }
 
 
-void _wrap_Layer_SetStyleTable_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, OGRStyleTableShadow *_swig_go_1) {
+void _wrap_Layer_SetStyleTable_ogr_8e1b66f4430553e5(OGRLayerShadow *_swig_go_0, OGRStyleTableShadow *_swig_go_1) {
   OGRLayerShadow *arg1 = (OGRLayerShadow *) 0 ;
   OGRStyleTableShadow *arg2 = (OGRStyleTableShadow *) 0 ;
   
@@ -3299,7 +3299,7 @@ void _wrap_Layer_SetStyleTable_ogr_1f1edc2fb82ebe9e(OGRLayerShadow *_swig_go_0, 
 }
 
 
-void _wrap_delete_Feature_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+void _wrap_delete_Feature_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   
   arg1 = *(OGRFeatureShadow **)&_swig_go_0; 
@@ -3309,7 +3309,7 @@ void _wrap_delete_Feature_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
 }
 
 
-OGRFeatureShadow *_wrap_new_Feature_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+OGRFeatureShadow *_wrap_new_Feature_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   OGRFeatureShadow *result = 0 ;
   OGRFeatureShadow *_swig_go_result;
@@ -3328,7 +3328,7 @@ OGRFeatureShadow *_wrap_new_Feature_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_
 }
 
 
-OGRFeatureDefnShadow *_wrap_Feature_GetDefnRef_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+OGRFeatureDefnShadow *_wrap_Feature_GetDefnRef_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRFeatureDefnShadow *result = 0 ;
   OGRFeatureDefnShadow *_swig_go_result;
@@ -3341,7 +3341,7 @@ OGRFeatureDefnShadow *_wrap_Feature_GetDefnRef_ogr_1f1edc2fb82ebe9e(OGRFeatureSh
 }
 
 
-intgo _wrap_Feature_SetGeometry_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+intgo _wrap_Feature_SetGeometry_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRErr result;
@@ -3356,7 +3356,7 @@ intgo _wrap_Feature_SetGeometry_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_
 }
 
 
-intgo _wrap_Feature_SetGeometryDirectly_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+intgo _wrap_Feature_SetGeometryDirectly_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRErr result;
@@ -3371,7 +3371,7 @@ intgo _wrap_Feature_SetGeometryDirectly_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_
 }
 
 
-OGRGeometryShadow *_wrap_Feature_GetGeometryRef_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Feature_GetGeometryRef_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -3384,7 +3384,7 @@ OGRGeometryShadow *_wrap_Feature_GetGeometryRef_ogr_1f1edc2fb82ebe9e(OGRFeatureS
 }
 
 
-intgo _wrap_Feature_SetGeomField__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, OGRGeometryShadow *_swig_go_2) {
+intgo _wrap_Feature_SetGeomField__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, OGRGeometryShadow *_swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   OGRGeometryShadow *arg3 = (OGRGeometryShadow *) 0 ;
@@ -3401,7 +3401,7 @@ intgo _wrap_Feature_SetGeomField__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *
 }
 
 
-intgo _wrap_Feature_SetGeomField__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2) {
+intgo _wrap_Feature_SetGeomField__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRGeometryShadow *arg3 = (OGRGeometryShadow *) 0 ;
@@ -3424,7 +3424,7 @@ intgo _wrap_Feature_SetGeomField__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *
 }
 
 
-intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, OGRGeometryShadow *_swig_go_2) {
+intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, OGRGeometryShadow *_swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   OGRGeometryShadow *arg3 = (OGRGeometryShadow *) 0 ;
@@ -3441,7 +3441,7 @@ intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeature
 }
 
 
-intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2) {
+intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, OGRGeometryShadow *_swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRGeometryShadow *arg3 = (OGRGeometryShadow *) 0 ;
@@ -3464,7 +3464,7 @@ intgo _wrap_Feature_SetGeomFieldDirectly__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeature
 }
 
 
-OGRGeometryShadow *_wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+OGRGeometryShadow *_wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   OGRGeometryShadow *result = 0 ;
@@ -3479,7 +3479,7 @@ OGRGeometryShadow *_wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_1f1edc2fb82ebe9e(OG
 }
 
 
-OGRGeometryShadow *_wrap_Feature_GetGeomFieldRef__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+OGRGeometryShadow *_wrap_Feature_GetGeomFieldRef__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRGeometryShadow *result = 0 ;
@@ -3500,7 +3500,7 @@ OGRGeometryShadow *_wrap_Feature_GetGeomFieldRef__SWIG_1_ogr_1f1edc2fb82ebe9e(OG
 }
 
 
-OGRFeatureShadow *_wrap_Feature_Clone_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+OGRFeatureShadow *_wrap_Feature_Clone_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRFeatureShadow *result = 0 ;
   OGRFeatureShadow *_swig_go_result;
@@ -3513,7 +3513,7 @@ OGRFeatureShadow *_wrap_Feature_Clone_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-bool _wrap_Feature_Equal_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1) {
+bool _wrap_Feature_Equal_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRFeatureShadow *arg2 = (OGRFeatureShadow *) 0 ;
   bool result;
@@ -3534,7 +3534,7 @@ bool _wrap_Feature_Equal_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, OGRF
 }
 
 
-intgo _wrap_Feature_GetFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+intgo _wrap_Feature_GetFieldCount_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -3547,7 +3547,7 @@ intgo _wrap_Feature_GetFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_g
 }
 
 
-OGRFieldDefnShadow *_wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+OGRFieldDefnShadow *_wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   OGRFieldDefnShadow *result = 0 ;
@@ -3562,7 +3562,7 @@ OGRFieldDefnShadow *_wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_1f1edc2fb82ebe9e(O
 }
 
 
-OGRFieldDefnShadow *_wrap_Feature_GetFieldDefnRef__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+OGRFieldDefnShadow *_wrap_Feature_GetFieldDefnRef__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRFieldDefnShadow *result = 0 ;
@@ -3583,7 +3583,7 @@ OGRFieldDefnShadow *_wrap_Feature_GetFieldDefnRef__SWIG_1_ogr_1f1edc2fb82ebe9e(O
 }
 
 
-intgo _wrap_Feature_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+intgo _wrap_Feature_GetGeomFieldCount_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -3596,7 +3596,7 @@ intgo _wrap_Feature_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-OGRGeomFieldDefnShadow *_wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+OGRGeomFieldDefnShadow *_wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   OGRGeomFieldDefnShadow *result = 0 ;
@@ -3611,7 +3611,7 @@ OGRGeomFieldDefnShadow *_wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_1f1edc2fb8
 }
 
 
-OGRGeomFieldDefnShadow *_wrap_Feature_GetGeomFieldDefnRef__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+OGRGeomFieldDefnShadow *_wrap_Feature_GetGeomFieldDefnRef__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRGeomFieldDefnShadow *result = 0 ;
@@ -3632,7 +3632,7 @@ OGRGeomFieldDefnShadow *_wrap_Feature_GetGeomFieldDefnRef__SWIG_1_ogr_1f1edc2fb8
 }
 
 
-_gostring_ _wrap_Feature_GetFieldAsString__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+_gostring_ _wrap_Feature_GetFieldAsString__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   char *result = 0 ;
@@ -3647,7 +3647,7 @@ _gostring_ _wrap_Feature_GetFieldAsString__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatur
 }
 
 
-_gostring_ _wrap_Feature_GetFieldAsString__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_Feature_GetFieldAsString__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *result = 0 ;
@@ -3668,7 +3668,7 @@ _gostring_ _wrap_Feature_GetFieldAsString__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatur
 }
 
 
-intgo _wrap_Feature_GetFieldAsInteger__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Feature_GetFieldAsInteger__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int result;
@@ -3683,7 +3683,7 @@ intgo _wrap_Feature_GetFieldAsInteger__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureSha
 }
 
 
-intgo _wrap_Feature_GetFieldAsInteger__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Feature_GetFieldAsInteger__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -3704,7 +3704,7 @@ intgo _wrap_Feature_GetFieldAsInteger__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureSha
 }
 
 
-GIntBig *_wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+GIntBig *_wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   GIntBig result;
@@ -3719,7 +3719,7 @@ GIntBig *_wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatu
 }
 
 
-GIntBig *_wrap_Feature_GetFieldAsInteger64__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+GIntBig *_wrap_Feature_GetFieldAsInteger64__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   GIntBig result;
@@ -3740,7 +3740,7 @@ GIntBig *_wrap_Feature_GetFieldAsInteger64__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatu
 }
 
 
-double _wrap_Feature_GetFieldAsDouble__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+double _wrap_Feature_GetFieldAsDouble__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   double result;
@@ -3755,7 +3755,7 @@ double _wrap_Feature_GetFieldAsDouble__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureSha
 }
 
 
-double _wrap_Feature_GetFieldAsDouble__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+double _wrap_Feature_GetFieldAsDouble__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double result;
@@ -3776,7 +3776,7 @@ double _wrap_Feature_GetFieldAsDouble__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureSha
 }
 
 
-void _wrap_Feature_GetFieldAsDateTime_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5, _goslice_ _swig_go_6, _goslice_ _swig_go_7, _goslice_ _swig_go_8) {
+void _wrap_Feature_GetFieldAsDateTime_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _goslice_ _swig_go_2, _goslice_ _swig_go_3, _goslice_ _swig_go_4, _goslice_ _swig_go_5, _goslice_ _swig_go_6, _goslice_ _swig_go_7, _goslice_ _swig_go_8) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int *arg3 = (int *) 0 ;
@@ -3879,7 +3879,7 @@ void _wrap_Feature_GetFieldAsDateTime_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-void _wrap_Feature_GetFieldAsIntegerList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, intgo **_swig_go_3) {
+void _wrap_Feature_GetFieldAsIntegerList_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, intgo **_swig_go_3) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int *arg3 = (int *) 0 ;
@@ -3895,7 +3895,7 @@ void _wrap_Feature_GetFieldAsIntegerList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *
 }
 
 
-void _wrap_Feature_GetFieldAsDoubleList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, double **_swig_go_3) {
+void _wrap_Feature_GetFieldAsDoubleList_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, double **_swig_go_3) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int *arg3 = (int *) 0 ;
@@ -3911,7 +3911,7 @@ void _wrap_Feature_GetFieldAsDoubleList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_
 }
 
 
-void _wrap_Feature_GetFieldAsStringList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _gostring_** _swig_go_2) {
+void _wrap_Feature_GetFieldAsStringList_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _gostring_** _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   char ***arg3 = (char ***) 0 ;
@@ -3925,7 +3925,7 @@ void _wrap_Feature_GetFieldAsStringList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_
 }
 
 
-intgo _wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, _gostring_* _swig_go_3) {
+intgo _wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo *_swig_go_2, _gostring_* _swig_go_3) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int *arg3 = (int *) 0 ;
@@ -3944,7 +3944,7 @@ intgo _wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShad
 }
 
 
-intgo _wrap_Feature_GetFieldAsBinary__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, intgo *_swig_go_2, _gostring_* _swig_go_3) {
+intgo _wrap_Feature_GetFieldAsBinary__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, intgo *_swig_go_2, _gostring_* _swig_go_3) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int *arg3 = (int *) 0 ;
@@ -3969,7 +3969,7 @@ intgo _wrap_Feature_GetFieldAsBinary__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShad
 }
 
 
-bool _wrap_Feature_IsFieldSet__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+bool _wrap_Feature_IsFieldSet__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   bool result;
@@ -3984,7 +3984,7 @@ bool _wrap_Feature_IsFieldSet__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-bool _wrap_Feature_IsFieldSet__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+bool _wrap_Feature_IsFieldSet__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   bool result;
@@ -4005,7 +4005,7 @@ bool _wrap_Feature_IsFieldSet__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-intgo _wrap_Feature_GetFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Feature_GetFieldIndex_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -4026,7 +4026,7 @@ intgo _wrap_Feature_GetFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_g
 }
 
 
-intgo _wrap_Feature_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Feature_GetGeomFieldIndex_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -4047,7 +4047,7 @@ intgo _wrap_Feature_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-GIntBig *_wrap_Feature_GetFID_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+GIntBig *_wrap_Feature_GetFID_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   GIntBig result;
   GIntBig *_swig_go_result;
@@ -4060,7 +4060,7 @@ GIntBig *_wrap_Feature_GetFID_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0)
 }
 
 
-intgo _wrap_Feature_SetFID_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, GIntBig *_swig_go_1) {
+intgo _wrap_Feature_SetFID_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, GIntBig *_swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   GIntBig arg2 ;
   GIntBig *argp2 ;
@@ -4082,7 +4082,7 @@ intgo _wrap_Feature_SetFID_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, GI
 }
 
 
-void _wrap_Feature_DumpReadable_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+void _wrap_Feature_DumpReadable_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   
   arg1 = *(OGRFeatureShadow **)&_swig_go_0; 
@@ -4092,7 +4092,7 @@ void _wrap_Feature_DumpReadable_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_
 }
 
 
-void _wrap_Feature_UnsetField__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_Feature_UnsetField__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   
@@ -4104,7 +4104,7 @@ void _wrap_Feature_UnsetField__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-void _wrap_Feature_UnsetField__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_Feature_UnsetField__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -4122,7 +4122,7 @@ void _wrap_Feature_UnsetField__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-void _wrap_Feature_SetField__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_Feature_SetField__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
@@ -4136,7 +4136,7 @@ void _wrap_Feature_SetField__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetField__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_Feature_SetField__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -4156,7 +4156,7 @@ void _wrap_Feature_SetField__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetFieldInteger64_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, GIntBig *_swig_go_2) {
+void _wrap_Feature_SetFieldInteger64_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, GIntBig *_swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   GIntBig arg3 ;
@@ -4177,7 +4177,7 @@ void _wrap_Feature_SetFieldInteger64_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swi
 }
 
 
-void _wrap_Feature_SetField__SWIG_2_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+void _wrap_Feature_SetField__SWIG_2_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -4191,7 +4191,7 @@ void _wrap_Feature_SetField__SWIG_2_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetField__SWIG_3_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
+void _wrap_Feature_SetField__SWIG_3_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
@@ -4211,7 +4211,7 @@ void _wrap_Feature_SetField__SWIG_3_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetField__SWIG_4_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2) {
+void _wrap_Feature_SetField__SWIG_4_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   double arg3 ;
@@ -4225,7 +4225,7 @@ void _wrap_Feature_SetField__SWIG_4_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetField__SWIG_5_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+void _wrap_Feature_SetField__SWIG_5_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 ;
@@ -4245,7 +4245,7 @@ void _wrap_Feature_SetField__SWIG_5_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetField__SWIG_6_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo _swig_go_4, intgo _swig_go_5, intgo _swig_go_6, float _swig_go_7, intgo _swig_go_8) {
+void _wrap_Feature_SetField__SWIG_6_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo _swig_go_4, intgo _swig_go_5, intgo _swig_go_6, float _swig_go_7, intgo _swig_go_8) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -4271,7 +4271,7 @@ void _wrap_Feature_SetField__SWIG_6_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetField__SWIG_7_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo _swig_go_4, intgo _swig_go_5, intgo _swig_go_6, float _swig_go_7, intgo _swig_go_8) {
+void _wrap_Feature_SetField__SWIG_7_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo _swig_go_4, intgo _swig_go_5, intgo _swig_go_6, float _swig_go_7, intgo _swig_go_8) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int arg3 ;
@@ -4303,7 +4303,7 @@ void _wrap_Feature_SetField__SWIG_7_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig
 }
 
 
-void _wrap_Feature_SetFieldIntegerList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo *_swig_go_3) {
+void _wrap_Feature_SetFieldIntegerList_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, intgo *_swig_go_3) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -4319,7 +4319,7 @@ void _wrap_Feature_SetFieldIntegerList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_s
 }
 
 
-void _wrap_Feature_SetFieldDoubleList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double *_swig_go_3) {
+void _wrap_Feature_SetFieldDoubleList_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double *_swig_go_3) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   int arg3 ;
@@ -4335,7 +4335,7 @@ void _wrap_Feature_SetFieldDoubleList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-void _wrap_Feature_SetFieldStringList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
+void _wrap_Feature_SetFieldStringList_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   char **arg3 = (char **) 0 ;
@@ -4349,7 +4349,7 @@ void _wrap_Feature_SetFieldStringList_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
@@ -4363,7 +4363,7 @@ void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRF
 }
 
 
-void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -4383,7 +4383,7 @@ void _wrap_Feature_SetFieldBinaryFromHexString__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRF
 }
 
 
-intgo _wrap_Feature_SetFrom_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRFeatureShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1, intgo _swig_go_2) {
+intgo _wrap_Feature_SetFrom_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRFeatureShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1, intgo _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRFeatureShadow *arg2 = (OGRFeatureShadow *) 0 ;
   int arg3 = (int) 1 ;
@@ -4408,7 +4408,7 @@ intgo _wrap_Feature_SetFrom_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRFeature
 }
 
 
-intgo _wrap_Feature_SetFromWithMap_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo *_swig_go_4) {
+intgo _wrap_Feature_SetFromWithMap_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, OGRFeatureShadow *_swig_go_1, intgo _swig_go_2, intgo _swig_go_3, intgo *_swig_go_4) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   OGRFeatureShadow *arg2 = (OGRFeatureShadow *) 0 ;
   int arg3 ;
@@ -4435,7 +4435,7 @@ intgo _wrap_Feature_SetFromWithMap_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_
 }
 
 
-_gostring_ _wrap_Feature_GetStyleString_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+_gostring_ _wrap_Feature_GetStyleString_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -4448,7 +4448,7 @@ _gostring_ _wrap_Feature_GetStyleString_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_
 }
 
 
-void _wrap_Feature_SetStyleString_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_Feature_SetStyleString_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -4460,7 +4460,7 @@ void _wrap_Feature_SetStyleString_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_g
 }
 
 
-intgo _wrap_Feature_GetFieldType__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Feature_GetFieldType__SWIG_0_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 ;
   OGRFieldType result;
@@ -4475,7 +4475,7 @@ intgo _wrap_Feature_GetFieldType__SWIG_0_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *
 }
 
 
-intgo _wrap_Feature_GetFieldType__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_Feature_GetFieldType__SWIG_1_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRFieldType result;
@@ -4496,7 +4496,7 @@ intgo _wrap_Feature_GetFieldType__SWIG_1_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *
 }
 
 
-intgo _wrap_Feature_Validate_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_Feature_Validate_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 = (int) OGR_F_VAL_ALL ;
   int arg3 = (int) TRUE ;
@@ -4517,7 +4517,7 @@ intgo _wrap_Feature_Validate_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRFeatur
 }
 
 
-void _wrap_Feature_FillUnsetWithDefault_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
+void _wrap_Feature_FillUnsetWithDefault_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRFeatureShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   int arg2 = (int) FALSE ;
   char **arg3 = (char **) NULL ;
@@ -4535,7 +4535,7 @@ void _wrap_Feature_FillUnsetWithDefault_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc
 }
 
 
-_gostring_ _wrap_Feature_GetNativeData_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+_gostring_ _wrap_Feature_GetNativeData_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -4548,7 +4548,7 @@ _gostring_ _wrap_Feature_GetNativeData_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_s
 }
 
 
-_gostring_ _wrap_Feature_GetNativeMediaType_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0) {
+_gostring_ _wrap_Feature_GetNativeMediaType_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -4561,7 +4561,7 @@ _gostring_ _wrap_Feature_GetNativeMediaType_ogr_1f1edc2fb82ebe9e(OGRFeatureShado
 }
 
 
-void _wrap_Feature_SetNativeData_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_Feature_SetNativeData_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -4573,7 +4573,7 @@ void _wrap_Feature_SetNativeData_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go
 }
 
 
-void _wrap_Feature_SetNativeMediaType_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_Feature_SetNativeMediaType_ogr_8e1b66f4430553e5(OGRFeatureShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureShadow *arg1 = (OGRFeatureShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -4585,7 +4585,7 @@ void _wrap_Feature_SetNativeMediaType_ogr_1f1edc2fb82ebe9e(OGRFeatureShadow *_sw
 }
 
 
-void _wrap_delete_FeatureDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+void _wrap_delete_FeatureDefn_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   
   arg1 = *(OGRFeatureDefnShadow **)&_swig_go_0; 
@@ -4595,7 +4595,7 @@ void _wrap_delete_FeatureDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_g
 }
 
 
-OGRFeatureDefnShadow *_wrap_new_FeatureDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostring_ _swig_go_0) {
+OGRFeatureDefnShadow *_wrap_new_FeatureDefn_ogr_8e1b66f4430553e5(intgo _swig_optargc, _gostring_ _swig_go_0) {
   char *arg1 = (char *) NULL ;
   OGRFeatureDefnShadow *result = 0 ;
   OGRFeatureDefnShadow *_swig_go_result;
@@ -4610,7 +4610,7 @@ OGRFeatureDefnShadow *_wrap_new_FeatureDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_opt
 }
 
 
-_gostring_ _wrap_FeatureDefn_GetName_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+_gostring_ _wrap_FeatureDefn_GetName_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -4623,7 +4623,7 @@ _gostring_ _wrap_FeatureDefn_GetName_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *
 }
 
 
-intgo _wrap_FeatureDefn_GetFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+intgo _wrap_FeatureDefn_GetFieldCount_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4636,7 +4636,7 @@ intgo _wrap_FeatureDefn_GetFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow 
 }
 
 
-OGRFieldDefnShadow *_wrap_FeatureDefn_GetFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
+OGRFieldDefnShadow *_wrap_FeatureDefn_GetFieldDefn_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int arg2 ;
   OGRFieldDefnShadow *result = 0 ;
@@ -4651,7 +4651,7 @@ OGRFieldDefnShadow *_wrap_FeatureDefn_GetFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatu
 }
 
 
-intgo _wrap_FeatureDefn_GetFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_FeatureDefn_GetFieldIndex_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -4672,7 +4672,7 @@ intgo _wrap_FeatureDefn_GetFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow 
 }
 
 
-void _wrap_FeatureDefn_AddFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, OGRFieldDefnShadow *_swig_go_1) {
+void _wrap_FeatureDefn_AddFieldDefn_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, OGRFieldDefnShadow *_swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   OGRFieldDefnShadow *arg2 = (OGRFieldDefnShadow *) 0 ;
   
@@ -4690,7 +4690,7 @@ void _wrap_FeatureDefn_AddFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_
 }
 
 
-intgo _wrap_FeatureDefn_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+intgo _wrap_FeatureDefn_GetGeomFieldCount_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4703,7 +4703,7 @@ intgo _wrap_FeatureDefn_GetGeomFieldCount_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnSha
 }
 
 
-OGRGeomFieldDefnShadow *_wrap_FeatureDefn_GetGeomFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
+OGRGeomFieldDefnShadow *_wrap_FeatureDefn_GetGeomFieldDefn_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int arg2 ;
   OGRGeomFieldDefnShadow *result = 0 ;
@@ -4718,7 +4718,7 @@ OGRGeomFieldDefnShadow *_wrap_FeatureDefn_GetGeomFieldDefn_ogr_1f1edc2fb82ebe9e(
 }
 
 
-intgo _wrap_FeatureDefn_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_FeatureDefn_GetGeomFieldIndex_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int result;
@@ -4739,7 +4739,7 @@ intgo _wrap_FeatureDefn_GetGeomFieldIndex_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnSha
 }
 
 
-void _wrap_FeatureDefn_AddGeomFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, OGRGeomFieldDefnShadow *_swig_go_1) {
+void _wrap_FeatureDefn_AddGeomFieldDefn_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, OGRGeomFieldDefnShadow *_swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   OGRGeomFieldDefnShadow *arg2 = (OGRGeomFieldDefnShadow *) 0 ;
   
@@ -4757,7 +4757,7 @@ void _wrap_FeatureDefn_AddGeomFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShado
 }
 
 
-intgo _wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int arg2 ;
   OGRErr result;
@@ -4772,7 +4772,7 @@ intgo _wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnS
 }
 
 
-intgo _wrap_FeatureDefn_GetGeomType_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+intgo _wrap_FeatureDefn_GetGeomType_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -4785,7 +4785,7 @@ intgo _wrap_FeatureDefn_GetGeomType_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_
 }
 
 
-void _wrap_FeatureDefn_SetGeomType_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FeatureDefn_SetGeomType_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   OGRwkbGeometryType arg2 ;
   
@@ -4797,7 +4797,7 @@ void _wrap_FeatureDefn_SetGeomType_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_s
 }
 
 
-intgo _wrap_FeatureDefn_GetReferenceCount_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+intgo _wrap_FeatureDefn_GetReferenceCount_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4810,7 +4810,7 @@ intgo _wrap_FeatureDefn_GetReferenceCount_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnSha
 }
 
 
-intgo _wrap_FeatureDefn_IsGeometryIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+intgo _wrap_FeatureDefn_IsGeometryIgnored_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4823,7 +4823,7 @@ intgo _wrap_FeatureDefn_IsGeometryIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnSha
 }
 
 
-void _wrap_FeatureDefn_SetGeometryIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FeatureDefn_SetGeometryIgnored_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int arg2 ;
   
@@ -4835,7 +4835,7 @@ void _wrap_FeatureDefn_SetGeometryIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnSha
 }
 
 
-intgo _wrap_FeatureDefn_IsStyleIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0) {
+intgo _wrap_FeatureDefn_IsStyleIgnored_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -4848,7 +4848,7 @@ intgo _wrap_FeatureDefn_IsStyleIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow
 }
 
 
-void _wrap_FeatureDefn_SetStyleIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FeatureDefn_SetStyleIgnored_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   int arg2 ;
   
@@ -4860,7 +4860,7 @@ void _wrap_FeatureDefn_SetStyleIgnored_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow
 }
 
 
-intgo _wrap_FeatureDefn_IsSame_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_go_0, OGRFeatureDefnShadow *_swig_go_1) {
+intgo _wrap_FeatureDefn_IsSame_ogr_8e1b66f4430553e5(OGRFeatureDefnShadow *_swig_go_0, OGRFeatureDefnShadow *_swig_go_1) {
   OGRFeatureDefnShadow *arg1 = (OGRFeatureDefnShadow *) 0 ;
   OGRFeatureDefnShadow *arg2 = (OGRFeatureDefnShadow *) 0 ;
   int result;
@@ -4881,7 +4881,7 @@ intgo _wrap_FeatureDefn_IsSame_ogr_1f1edc2fb82ebe9e(OGRFeatureDefnShadow *_swig_
 }
 
 
-void _wrap_delete_FieldDefn_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+void _wrap_delete_FieldDefn_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   
   arg1 = *(OGRFieldDefnShadow **)&_swig_go_0; 
@@ -4891,7 +4891,7 @@ void _wrap_delete_FieldDefn_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0)
 }
 
 
-OGRFieldDefnShadow *_wrap_new_FieldDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
+OGRFieldDefnShadow *_wrap_new_FieldDefn_ogr_8e1b66f4430553e5(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
   char *arg1 = (char *) "unnamed" ;
   OGRFieldType arg2 = (OGRFieldType) OFTString ;
   OGRFieldDefnShadow *result = 0 ;
@@ -4910,7 +4910,7 @@ OGRFieldDefnShadow *_wrap_new_FieldDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc
 }
 
 
-_gostring_ _wrap_FieldDefn_GetName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+_gostring_ _wrap_FieldDefn_GetName_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -4923,7 +4923,7 @@ _gostring_ _wrap_FieldDefn_GetName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swi
 }
 
 
-_gostring_ _wrap_FieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+_gostring_ _wrap_FieldDefn_GetNameRef_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -4936,7 +4936,7 @@ _gostring_ _wrap_FieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_
 }
 
 
-void _wrap_FieldDefn_SetName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_FieldDefn_SetName_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -4954,7 +4954,7 @@ void _wrap_FieldDefn_SetName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0
 }
 
 
-intgo _wrap_FieldDefn_GetType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_GetType_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   OGRFieldType result;
   intgo _swig_go_result;
@@ -4967,7 +4967,7 @@ intgo _wrap_FieldDefn_GetType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_
 }
 
 
-void _wrap_FieldDefn_SetType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FieldDefn_SetType_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   OGRFieldType arg2 ;
   
@@ -4979,7 +4979,7 @@ void _wrap_FieldDefn_SetType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0
 }
 
 
-intgo _wrap_FieldDefn_GetSubType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_GetSubType_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   OGRFieldSubType result;
   intgo _swig_go_result;
@@ -4992,7 +4992,7 @@ intgo _wrap_FieldDefn_GetSubType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_
 }
 
 
-void _wrap_FieldDefn_SetSubType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FieldDefn_SetSubType_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   OGRFieldSubType arg2 ;
   
@@ -5004,7 +5004,7 @@ void _wrap_FieldDefn_SetSubType_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_g
 }
 
 
-intgo _wrap_FieldDefn_GetJustify_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_GetJustify_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   OGRJustification result;
   intgo _swig_go_result;
@@ -5017,7 +5017,7 @@ intgo _wrap_FieldDefn_GetJustify_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_
 }
 
 
-void _wrap_FieldDefn_SetJustify_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FieldDefn_SetJustify_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   OGRJustification arg2 ;
   
@@ -5029,7 +5029,7 @@ void _wrap_FieldDefn_SetJustify_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_g
 }
 
 
-intgo _wrap_FieldDefn_GetWidth_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_GetWidth_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5042,7 +5042,7 @@ intgo _wrap_FieldDefn_GetWidth_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go
 }
 
 
-void _wrap_FieldDefn_SetWidth_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FieldDefn_SetWidth_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int arg2 ;
   
@@ -5054,7 +5054,7 @@ void _wrap_FieldDefn_SetWidth_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_
 }
 
 
-intgo _wrap_FieldDefn_GetPrecision_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_GetPrecision_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5067,7 +5067,7 @@ intgo _wrap_FieldDefn_GetPrecision_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swi
 }
 
 
-void _wrap_FieldDefn_SetPrecision_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FieldDefn_SetPrecision_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int arg2 ;
   
@@ -5079,7 +5079,7 @@ void _wrap_FieldDefn_SetPrecision_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig
 }
 
 
-_gostring_ _wrap_FieldDefn_GetTypeName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+_gostring_ _wrap_FieldDefn_GetTypeName_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -5092,7 +5092,7 @@ _gostring_ _wrap_FieldDefn_GetTypeName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *
 }
 
 
-_gostring_ _wrap_FieldDefn_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+_gostring_ _wrap_FieldDefn_GetFieldTypeName_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   OGRFieldType arg2 ;
   char *result = 0 ;
@@ -5107,7 +5107,7 @@ _gostring_ _wrap_FieldDefn_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(OGRFieldDefnSha
 }
 
 
-intgo _wrap_FieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_IsIgnored_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5120,7 +5120,7 @@ intgo _wrap_FieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_g
 }
 
 
-void _wrap_FieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FieldDefn_SetIgnored_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int arg2 ;
   
@@ -5132,7 +5132,7 @@ void _wrap_FieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_g
 }
 
 
-intgo _wrap_FieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_IsNullable_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5145,7 +5145,7 @@ intgo _wrap_FieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_
 }
 
 
-void _wrap_FieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_FieldDefn_SetNullable_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int arg2 ;
   
@@ -5157,7 +5157,7 @@ void _wrap_FieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_
 }
 
 
-_gostring_ _wrap_FieldDefn_GetDefault_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+_gostring_ _wrap_FieldDefn_GetDefault_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -5170,7 +5170,7 @@ _gostring_ _wrap_FieldDefn_GetDefault_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_
 }
 
 
-void _wrap_FieldDefn_SetDefault_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_FieldDefn_SetDefault_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -5182,7 +5182,7 @@ void _wrap_FieldDefn_SetDefault_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_g
 }
 
 
-intgo _wrap_FieldDefn_IsDefaultDriverSpecific_ogr_1f1edc2fb82ebe9e(OGRFieldDefnShadow *_swig_go_0) {
+intgo _wrap_FieldDefn_IsDefaultDriverSpecific_ogr_8e1b66f4430553e5(OGRFieldDefnShadow *_swig_go_0) {
   OGRFieldDefnShadow *arg1 = (OGRFieldDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5195,7 +5195,7 @@ intgo _wrap_FieldDefn_IsDefaultDriverSpecific_ogr_1f1edc2fb82ebe9e(OGRFieldDefnS
 }
 
 
-void _wrap_delete_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0) {
+void _wrap_delete_GeomFieldDefn_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   
   arg1 = *(OGRGeomFieldDefnShadow **)&_swig_go_0; 
@@ -5205,7 +5205,7 @@ void _wrap_delete_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_sw
 }
 
 
-OGRGeomFieldDefnShadow *_wrap_new_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
+OGRGeomFieldDefnShadow *_wrap_new_GeomFieldDefn_ogr_8e1b66f4430553e5(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
   char *arg1 = (char *) "" ;
   OGRwkbGeometryType arg2 = (OGRwkbGeometryType) wkbUnknown ;
   OGRGeomFieldDefnShadow *result = 0 ;
@@ -5224,7 +5224,7 @@ OGRGeomFieldDefnShadow *_wrap_new_GeomFieldDefn_ogr_1f1edc2fb82ebe9e(intgo _swig
 }
 
 
-_gostring_ _wrap_GeomFieldDefn_GetName_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0) {
+_gostring_ _wrap_GeomFieldDefn_GetName_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -5237,7 +5237,7 @@ _gostring_ _wrap_GeomFieldDefn_GetName_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShad
 }
 
 
-_gostring_ _wrap_GeomFieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0) {
+_gostring_ _wrap_GeomFieldDefn_GetNameRef_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -5250,7 +5250,7 @@ _gostring_ _wrap_GeomFieldDefn_GetNameRef_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnS
 }
 
 
-void _wrap_GeomFieldDefn_SetName_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
+void _wrap_GeomFieldDefn_SetName_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   
@@ -5268,7 +5268,7 @@ void _wrap_GeomFieldDefn_SetName_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_s
 }
 
 
-intgo _wrap_GeomFieldDefn_GetType_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0) {
+intgo _wrap_GeomFieldDefn_GetType_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -5281,7 +5281,7 @@ intgo _wrap_GeomFieldDefn_GetType_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_
 }
 
 
-void _wrap_GeomFieldDefn_SetType_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_GeomFieldDefn_SetType_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   OGRwkbGeometryType arg2 ;
   
@@ -5293,7 +5293,7 @@ void _wrap_GeomFieldDefn_SetType_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_s
 }
 
 
-OSRSpatialReferenceShadow *_wrap_GeomFieldDefn_GetSpatialRef_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0) {
+OSRSpatialReferenceShadow *_wrap_GeomFieldDefn_GetSpatialRef_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   OSRSpatialReferenceShadow *result = 0 ;
   OSRSpatialReferenceShadow *_swig_go_result;
@@ -5306,7 +5306,7 @@ OSRSpatialReferenceShadow *_wrap_GeomFieldDefn_GetSpatialRef_ogr_1f1edc2fb82ebe9
 }
 
 
-void _wrap_GeomFieldDefn_SetSpatialRef_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+void _wrap_GeomFieldDefn_SetSpatialRef_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   
@@ -5318,7 +5318,7 @@ void _wrap_GeomFieldDefn_SetSpatialRef_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShad
 }
 
 
-intgo _wrap_GeomFieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0) {
+intgo _wrap_GeomFieldDefn_IsIgnored_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5331,7 +5331,7 @@ intgo _wrap_GeomFieldDefn_IsIgnored_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow 
 }
 
 
-void _wrap_GeomFieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_GeomFieldDefn_SetIgnored_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   int arg2 ;
   
@@ -5343,7 +5343,7 @@ void _wrap_GeomFieldDefn_SetIgnored_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow 
 }
 
 
-intgo _wrap_GeomFieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0) {
+intgo _wrap_GeomFieldDefn_IsNullable_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5356,7 +5356,7 @@ intgo _wrap_GeomFieldDefn_IsNullable_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow
 }
 
 
-void _wrap_GeomFieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_GeomFieldDefn_SetNullable_ogr_8e1b66f4430553e5(OGRGeomFieldDefnShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeomFieldDefnShadow *arg1 = (OGRGeomFieldDefnShadow *) 0 ;
   int arg2 ;
   
@@ -5368,7 +5368,7 @@ void _wrap_GeomFieldDefn_SetNullable_ogr_1f1edc2fb82ebe9e(OGRGeomFieldDefnShadow
 }
 
 
-OGRGeometryShadow *_wrap_CreateGeometryFromWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, intgo _swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2) {
+OGRGeometryShadow *_wrap_CreateGeometryFromWkb_ogr_8e1b66f4430553e5(intgo _swig_optargc, intgo _swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2) {
   int arg1 ;
   char *arg2 = (char *) 0 ;
   OSRSpatialReferenceShadow *arg3 = (OSRSpatialReferenceShadow *) NULL ;
@@ -5387,7 +5387,7 @@ OGRGeometryShadow *_wrap_CreateGeometryFromWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_
 }
 
 
-OGRGeometryShadow *_wrap_CreateGeometryFromWkt_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostring_* _swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+OGRGeometryShadow *_wrap_CreateGeometryFromWkt_ogr_8e1b66f4430553e5(intgo _swig_optargc, _gostring_* _swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   char **arg1 = (char **) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) NULL ;
   OGRGeometryShadow *result = 0 ;
@@ -5404,7 +5404,7 @@ OGRGeometryShadow *_wrap_CreateGeometryFromWkt_ogr_1f1edc2fb82ebe9e(intgo _swig_
 }
 
 
-OGRGeometryShadow *_wrap_CreateGeometryFromGML_ogr_1f1edc2fb82ebe9e(_gostring_ _swig_go_0) {
+OGRGeometryShadow *_wrap_CreateGeometryFromGML_ogr_8e1b66f4430553e5(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5417,7 +5417,7 @@ OGRGeometryShadow *_wrap_CreateGeometryFromGML_ogr_1f1edc2fb82ebe9e(_gostring_ _
 }
 
 
-OGRGeometryShadow *_wrap_CreateGeometryFromJson_ogr_1f1edc2fb82ebe9e(_gostring_ _swig_go_0) {
+OGRGeometryShadow *_wrap_CreateGeometryFromJson_ogr_8e1b66f4430553e5(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5430,7 +5430,7 @@ OGRGeometryShadow *_wrap_CreateGeometryFromJson_ogr_1f1edc2fb82ebe9e(_gostring_ 
 }
 
 
-OGRGeometryShadow *_wrap_BuildPolygonFromEdges_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double _swig_go_3) {
+OGRGeometryShadow *_wrap_BuildPolygonFromEdges_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, double _swig_go_3) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 = (int) 0 ;
   int arg3 = (int) 0 ;
@@ -5455,7 +5455,7 @@ OGRGeometryShadow *_wrap_BuildPolygonFromEdges_ogr_1f1edc2fb82ebe9e(intgo _swig_
 }
 
 
-OGRGeometryShadow *_wrap_ApproximateArcAngles_ogr_1f1edc2fb82ebe9e(double _swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7, double _swig_go_8) {
+OGRGeometryShadow *_wrap_ApproximateArcAngles_ogr_8e1b66f4430553e5(double _swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7, double _swig_go_8) {
   double arg1 ;
   double arg2 ;
   double arg3 ;
@@ -5484,7 +5484,7 @@ OGRGeometryShadow *_wrap_ApproximateArcAngles_ogr_1f1edc2fb82ebe9e(double _swig_
 }
 
 
-OGRGeometryShadow *_wrap_ForceToPolygon_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_ForceToPolygon_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5497,7 +5497,7 @@ OGRGeometryShadow *_wrap_ForceToPolygon_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *
 }
 
 
-OGRGeometryShadow *_wrap_ForceToLineString_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_ForceToLineString_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5510,7 +5510,7 @@ OGRGeometryShadow *_wrap_ForceToLineString_ogr_1f1edc2fb82ebe9e(OGRGeometryShado
 }
 
 
-OGRGeometryShadow *_wrap_ForceToMultiPolygon_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_ForceToMultiPolygon_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5523,7 +5523,7 @@ OGRGeometryShadow *_wrap_ForceToMultiPolygon_ogr_1f1edc2fb82ebe9e(OGRGeometrySha
 }
 
 
-OGRGeometryShadow *_wrap_ForceToMultiPoint_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_ForceToMultiPoint_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5536,7 +5536,7 @@ OGRGeometryShadow *_wrap_ForceToMultiPoint_ogr_1f1edc2fb82ebe9e(OGRGeometryShado
 }
 
 
-OGRGeometryShadow *_wrap_ForceToMultiLineString_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_ForceToMultiLineString_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5549,7 +5549,7 @@ OGRGeometryShadow *_wrap_ForceToMultiLineString_ogr_1f1edc2fb82ebe9e(OGRGeometry
 }
 
 
-OGRGeometryShadow *_wrap_ForceTo_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
+OGRGeometryShadow *_wrap_ForceTo_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, char **_swig_go_2) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRwkbGeometryType arg2 ;
   char **arg3 = (char **) NULL ;
@@ -5568,7 +5568,7 @@ OGRGeometryShadow *_wrap_ForceTo_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGe
 }
 
 
-void _wrap_delete_Geometry_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+void _wrap_delete_Geometry_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   
   arg1 = *(OGRGeometryShadow **)&_swig_go_0; 
@@ -5578,7 +5578,7 @@ void _wrap_delete_Geometry_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
 }
 
 
-OGRGeometryShadow *_wrap_new_Geometry_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, intgo _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, _gostring_ _swig_go_3, _gostring_ _swig_go_4) {
+OGRGeometryShadow *_wrap_new_Geometry_ogr_8e1b66f4430553e5(intgo _swig_optargc, intgo _swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2, _gostring_ _swig_go_3, _gostring_ _swig_go_4) {
   OGRwkbGeometryType arg1 = (OGRwkbGeometryType) wkbUnknown ;
   char *arg2 = (char *) 0 ;
   int arg3 = (int) 0 ;
@@ -5609,7 +5609,7 @@ OGRGeometryShadow *_wrap_new_Geometry_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, 
 }
 
 
-intgo _wrap_Geometry_ExportToWkt_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_Geometry_ExportToWkt_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -5624,7 +5624,7 @@ intgo _wrap_Geometry_ExportToWkt_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_g
 }
 
 
-intgo _wrap_Geometry_ExportToIsoWkt_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_Geometry_ExportToIsoWkt_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -5639,7 +5639,7 @@ intgo _wrap_Geometry_ExportToIsoWkt_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swi
 }
 
 
-intgo _wrap_Geometry_ExportToWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo *_swig_go_1, _gostring_* _swig_go_2, intgo _swig_go_3) {
+intgo _wrap_Geometry_ExportToWkb_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo *_swig_go_1, _gostring_* _swig_go_2, intgo _swig_go_3) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int *arg2 = (int *) 0 ;
   char **arg3 = (char **) 0 ;
@@ -5660,7 +5660,7 @@ intgo _wrap_Geometry_ExportToWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGe
 }
 
 
-intgo _wrap_Geometry_ExportToIsoWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo *_swig_go_1, _gostring_* _swig_go_2, intgo _swig_go_3) {
+intgo _wrap_Geometry_ExportToIsoWkb_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo *_swig_go_1, _gostring_* _swig_go_2, intgo _swig_go_3) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int *arg2 = (int *) 0 ;
   char **arg3 = (char **) 0 ;
@@ -5681,7 +5681,7 @@ intgo _wrap_Geometry_ExportToIsoWkb_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OG
 }
 
 
-_gostring_ _wrap_Geometry_ExportToGML_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+_gostring_ _wrap_Geometry_ExportToGML_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -5694,7 +5694,7 @@ _gostring_ _wrap_Geometry_ExportToGML_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_s
 }
 
 
-_gostring_ _wrap_Geometry_ExportToKML_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_Geometry_ExportToKML_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   char *arg2 = (char *) NULL ;
   char *result = 0 ;
@@ -5711,7 +5711,7 @@ _gostring_ _wrap_Geometry_ExportToKML_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, 
 }
 
 
-_gostring_ _wrap_Geometry_ExportToJson_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+_gostring_ _wrap_Geometry_ExportToJson_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -5724,7 +5724,7 @@ _gostring_ _wrap_Geometry_ExportToJson_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_
 }
 
 
-void _wrap_Geometry_AddPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+void _wrap_Geometry_AddPoint_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -5742,7 +5742,7 @@ void _wrap_Geometry_AddPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeomet
 }
 
 
-void _wrap_Geometry_AddPoint_2D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, double _swig_go_1, double _swig_go_2) {
+void _wrap_Geometry_AddPoint_2D_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, double _swig_go_1, double _swig_go_2) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -5756,7 +5756,7 @@ void _wrap_Geometry_AddPoint_2D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go
 }
 
 
-intgo _wrap_Geometry_AddGeometryDirectly_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+intgo _wrap_Geometry_AddGeometryDirectly_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRErr result;
@@ -5777,7 +5777,7 @@ intgo _wrap_Geometry_AddGeometryDirectly_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow 
 }
 
 
-intgo _wrap_Geometry_AddGeometry_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+intgo _wrap_Geometry_AddGeometry_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRErr result;
@@ -5798,7 +5798,7 @@ intgo _wrap_Geometry_AddGeometry_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_g
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Clone_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Geometry_Clone_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -5811,7 +5811,7 @@ OGRGeometryShadow *_wrap_Geometry_Clone_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *
 }
 
 
-intgo _wrap_Geometry_GetGeometryType_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+intgo _wrap_Geometry_GetGeometryType_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -5824,7 +5824,7 @@ intgo _wrap_Geometry_GetGeometryType_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_sw
 }
 
 
-_gostring_ _wrap_Geometry_GetGeometryName_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+_gostring_ _wrap_Geometry_GetGeometryName_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -5837,7 +5837,7 @@ _gostring_ _wrap_Geometry_GetGeometryName_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow
 }
 
 
-double _wrap_Geometry_Length_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+double _wrap_Geometry_Length_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -5850,7 +5850,7 @@ double _wrap_Geometry_Length_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0)
 }
 
 
-double _wrap_Geometry_Area_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+double _wrap_Geometry_Area_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -5863,7 +5863,7 @@ double _wrap_Geometry_Area_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
 }
 
 
-double _wrap_Geometry_GetArea_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+double _wrap_Geometry_GetArea_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -5876,7 +5876,7 @@ double _wrap_Geometry_GetArea_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0
 }
 
 
-intgo _wrap_Geometry_GetPointCount_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+intgo _wrap_Geometry_GetPointCount_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5889,7 +5889,7 @@ intgo _wrap_Geometry_GetPointCount_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig
 }
 
 
-double _wrap_Geometry_GetX_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
+double _wrap_Geometry_GetX_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 = (int) 0 ;
   double result;
@@ -5906,7 +5906,7 @@ double _wrap_Geometry_GetX_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometry
 }
 
 
-double _wrap_Geometry_GetY_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
+double _wrap_Geometry_GetY_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 = (int) 0 ;
   double result;
@@ -5923,7 +5923,7 @@ double _wrap_Geometry_GetY_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometry
 }
 
 
-double _wrap_Geometry_GetZ_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
+double _wrap_Geometry_GetZ_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 = (int) 0 ;
   double result;
@@ -5940,7 +5940,7 @@ double _wrap_Geometry_GetZ_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometry
 }
 
 
-void _wrap_Geometry_GetPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2) {
+void _wrap_Geometry_GetPoint_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 = (int) 0 ;
   double *arg3 = (double *) (double *)NULL ;
@@ -5958,7 +5958,7 @@ void _wrap_Geometry_GetPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeomet
 }
 
 
-void _wrap_Geometry_GetPoint_2D_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2) {
+void _wrap_Geometry_GetPoint_2D_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 = (int) 0 ;
   double *arg3 = (double *) (double *)NULL ;
@@ -5976,7 +5976,7 @@ void _wrap_Geometry_GetPoint_2D_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeo
 }
 
 
-intgo _wrap_Geometry_GetGeometryCount_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+intgo _wrap_Geometry_GetGeometryCount_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -5989,7 +5989,7 @@ intgo _wrap_Geometry_GetGeometryCount_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_s
 }
 
 
-void _wrap_Geometry_SetPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+void _wrap_Geometry_SetPoint_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 ;
   double arg3 ;
@@ -6009,7 +6009,7 @@ void _wrap_Geometry_SetPoint_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeomet
 }
 
 
-void _wrap_Geometry_SetPoint_2D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2, double _swig_go_3) {
+void _wrap_Geometry_SetPoint_2D_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, intgo _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 ;
   double arg3 ;
@@ -6025,7 +6025,7 @@ void _wrap_Geometry_SetPoint_2D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_GetGeometryRef_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_GetGeometryRef_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 ;
   OGRGeometryShadow *result = 0 ;
@@ -6040,7 +6040,7 @@ OGRGeometryShadow *_wrap_Geometry_GetGeometryRef_ogr_1f1edc2fb82ebe9e(OGRGeometr
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Simplify_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_Simplify_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 ;
   OGRGeometryShadow *result = 0 ;
@@ -6055,7 +6055,7 @@ OGRGeometryShadow *_wrap_Geometry_Simplify_ogr_1f1edc2fb82ebe9e(OGRGeometryShado
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_SimplifyPreserveTopology_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_SimplifyPreserveTopology_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 ;
   OGRGeometryShadow *result = 0 ;
@@ -6070,7 +6070,7 @@ OGRGeometryShadow *_wrap_Geometry_SimplifyPreserveTopology_ogr_1f1edc2fb82ebe9e(
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_DelaunayTriangulation_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, intgo _swig_go_2) {
+OGRGeometryShadow *_wrap_Geometry_DelaunayTriangulation_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, intgo _swig_go_2) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 = (double) 0.0 ;
   int arg3 = (int) FALSE ;
@@ -6091,7 +6091,7 @@ OGRGeometryShadow *_wrap_Geometry_DelaunayTriangulation_ogr_1f1edc2fb82ebe9e(int
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Boundary_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Geometry_Boundary_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -6104,7 +6104,7 @@ OGRGeometryShadow *_wrap_Geometry_Boundary_ogr_1f1edc2fb82ebe9e(OGRGeometryShado
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_GetBoundary_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Geometry_GetBoundary_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -6117,7 +6117,7 @@ OGRGeometryShadow *_wrap_Geometry_GetBoundary_ogr_1f1edc2fb82ebe9e(OGRGeometrySh
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_ConvexHull_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Geometry_ConvexHull_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -6130,7 +6130,7 @@ OGRGeometryShadow *_wrap_Geometry_ConvexHull_ogr_1f1edc2fb82ebe9e(OGRGeometrySha
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Buffer_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, intgo _swig_go_2) {
+OGRGeometryShadow *_wrap_Geometry_Buffer_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, intgo _swig_go_2) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 ;
   int arg3 = (int) 30 ;
@@ -6149,7 +6149,7 @@ OGRGeometryShadow *_wrap_Geometry_Buffer_ogr_1f1edc2fb82ebe9e(intgo _swig_optarg
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Intersection_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_Intersection_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
@@ -6170,7 +6170,7 @@ OGRGeometryShadow *_wrap_Geometry_Intersection_ogr_1f1edc2fb82ebe9e(OGRGeometryS
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Union_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_Union_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
@@ -6191,7 +6191,7 @@ OGRGeometryShadow *_wrap_Geometry_Union_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_UnionCascaded_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Geometry_UnionCascaded_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -6204,7 +6204,7 @@ OGRGeometryShadow *_wrap_Geometry_UnionCascaded_ogr_1f1edc2fb82ebe9e(OGRGeometry
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Difference_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_Difference_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
@@ -6225,7 +6225,7 @@ OGRGeometryShadow *_wrap_Geometry_Difference_ogr_1f1edc2fb82ebe9e(OGRGeometrySha
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_SymDifference_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_SymDifference_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
@@ -6246,7 +6246,7 @@ OGRGeometryShadow *_wrap_Geometry_SymDifference_ogr_1f1edc2fb82ebe9e(OGRGeometry
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_SymmetricDifference_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_SymmetricDifference_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
@@ -6267,7 +6267,7 @@ OGRGeometryShadow *_wrap_Geometry_SymmetricDifference_ogr_1f1edc2fb82ebe9e(OGRGe
 }
 
 
-double _wrap_Geometry_Distance_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+double _wrap_Geometry_Distance_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   double result;
@@ -6288,7 +6288,7 @@ double _wrap_Geometry_Distance_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_
 }
 
 
-void _wrap_Geometry_Empty_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+void _wrap_Geometry_Empty_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   
   arg1 = *(OGRGeometryShadow **)&_swig_go_0; 
@@ -6298,7 +6298,7 @@ void _wrap_Geometry_Empty_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
 }
 
 
-bool _wrap_Geometry_IsEmpty_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+bool _wrap_Geometry_IsEmpty_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6311,7 +6311,7 @@ bool _wrap_Geometry_IsEmpty_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) 
 }
 
 
-bool _wrap_Geometry_IsValid_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+bool _wrap_Geometry_IsValid_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6324,7 +6324,7 @@ bool _wrap_Geometry_IsValid_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) 
 }
 
 
-bool _wrap_Geometry_IsSimple_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+bool _wrap_Geometry_IsSimple_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6337,7 +6337,7 @@ bool _wrap_Geometry_IsSimple_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0)
 }
 
 
-bool _wrap_Geometry_IsRing_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+bool _wrap_Geometry_IsRing_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   bool result;
   bool _swig_go_result;
@@ -6350,7 +6350,7 @@ bool _wrap_Geometry_IsRing_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
 }
 
 
-bool _wrap_Geometry_Intersects_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Intersects_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6371,7 +6371,7 @@ bool _wrap_Geometry_Intersects_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_
 }
 
 
-bool _wrap_Geometry_Intersect_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Intersect_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6392,7 +6392,7 @@ bool _wrap_Geometry_Intersect_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0
 }
 
 
-bool _wrap_Geometry_Equals_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Equals_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6413,7 +6413,7 @@ bool _wrap_Geometry_Equals_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, O
 }
 
 
-bool _wrap_Geometry_Equal_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Equal_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6434,7 +6434,7 @@ bool _wrap_Geometry_Equal_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OG
 }
 
 
-bool _wrap_Geometry_Disjoint_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Disjoint_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6455,7 +6455,7 @@ bool _wrap_Geometry_Disjoint_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0,
 }
 
 
-bool _wrap_Geometry_Touches_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Touches_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6476,7 +6476,7 @@ bool _wrap_Geometry_Touches_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, 
 }
 
 
-bool _wrap_Geometry_Crosses_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Crosses_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6497,7 +6497,7 @@ bool _wrap_Geometry_Crosses_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, 
 }
 
 
-bool _wrap_Geometry_Within_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Within_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6518,7 +6518,7 @@ bool _wrap_Geometry_Within_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, O
 }
 
 
-bool _wrap_Geometry_Contains_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Contains_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6539,7 +6539,7 @@ bool _wrap_Geometry_Contains_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0,
 }
 
 
-bool _wrap_Geometry_Overlaps_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
+bool _wrap_Geometry_Overlaps_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OGRGeometryShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *arg2 = (OGRGeometryShadow *) 0 ;
   bool result;
@@ -6560,7 +6560,7 @@ bool _wrap_Geometry_Overlaps_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0,
 }
 
 
-intgo _wrap_Geometry_TransformTo_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+intgo _wrap_Geometry_TransformTo_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
@@ -6581,7 +6581,7 @@ intgo _wrap_Geometry_TransformTo_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_g
 }
 
 
-intgo _wrap_Geometry_Transform_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OSRCoordinateTransformationShadow *_swig_go_1) {
+intgo _wrap_Geometry_Transform_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OSRCoordinateTransformationShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OSRCoordinateTransformationShadow *arg2 = (OSRCoordinateTransformationShadow *) 0 ;
   OGRErr result;
@@ -6602,7 +6602,7 @@ intgo _wrap_Geometry_Transform_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_
 }
 
 
-OSRSpatialReferenceShadow *_wrap_Geometry_GetSpatialReference_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OSRSpatialReferenceShadow *_wrap_Geometry_GetSpatialReference_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OSRSpatialReferenceShadow *result = 0 ;
   OSRSpatialReferenceShadow *_swig_go_result;
@@ -6615,7 +6615,7 @@ OSRSpatialReferenceShadow *_wrap_Geometry_GetSpatialReference_ogr_1f1edc2fb82ebe
 }
 
 
-void _wrap_Geometry_AssignSpatialReference_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+void _wrap_Geometry_AssignSpatialReference_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   
@@ -6627,7 +6627,7 @@ void _wrap_Geometry_AssignSpatialReference_ogr_1f1edc2fb82ebe9e(OGRGeometryShado
 }
 
 
-void _wrap_Geometry_CloseRings_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+void _wrap_Geometry_CloseRings_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   
   arg1 = *(OGRGeometryShadow **)&_swig_go_0; 
@@ -6637,7 +6637,7 @@ void _wrap_Geometry_CloseRings_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_
 }
 
 
-void _wrap_Geometry_FlattenTo2D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+void _wrap_Geometry_FlattenTo2D_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   
   arg1 = *(OGRGeometryShadow **)&_swig_go_0; 
@@ -6647,7 +6647,7 @@ void _wrap_Geometry_FlattenTo2D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go
 }
 
 
-void _wrap_Geometry_Segmentize_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
+void _wrap_Geometry_Segmentize_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 ;
   
@@ -6659,7 +6659,7 @@ void _wrap_Geometry_Segmentize_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_
 }
 
 
-void _wrap_Geometry_GetEnvelope_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, double *_swig_go_1) {
+void _wrap_Geometry_GetEnvelope_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, double *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double *arg2 ;
   
@@ -6671,7 +6671,7 @@ void _wrap_Geometry_GetEnvelope_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go
 }
 
 
-void _wrap_Geometry_GetEnvelope3D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, double *_swig_go_1) {
+void _wrap_Geometry_GetEnvelope3D_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, double *_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double *arg2 ;
   
@@ -6683,7 +6683,7 @@ void _wrap_Geometry_GetEnvelope3D_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Centroid_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Geometry_Centroid_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -6696,7 +6696,7 @@ OGRGeometryShadow *_wrap_Geometry_Centroid_ogr_1f1edc2fb82ebe9e(OGRGeometryShado
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_PointOnSurface_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+OGRGeometryShadow *_wrap_Geometry_PointOnSurface_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   OGRGeometryShadow *result = 0 ;
   OGRGeometryShadow *_swig_go_result;
@@ -6709,7 +6709,7 @@ OGRGeometryShadow *_wrap_Geometry_PointOnSurface_ogr_1f1edc2fb82ebe9e(OGRGeometr
 }
 
 
-intgo _wrap_Geometry_WkbSize_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+intgo _wrap_Geometry_WkbSize_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -6722,7 +6722,7 @@ intgo _wrap_Geometry_WkbSize_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0)
 }
 
 
-intgo _wrap_Geometry_GetCoordinateDimension_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+intgo _wrap_Geometry_GetCoordinateDimension_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -6735,7 +6735,7 @@ intgo _wrap_Geometry_GetCoordinateDimension_ogr_1f1edc2fb82ebe9e(OGRGeometryShad
 }
 
 
-void _wrap_Geometry_SetCoordinateDimension_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
+void _wrap_Geometry_SetCoordinateDimension_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 ;
   
@@ -6747,7 +6747,7 @@ void _wrap_Geometry_SetCoordinateDimension_ogr_1f1edc2fb82ebe9e(OGRGeometryShado
 }
 
 
-intgo _wrap_Geometry_GetDimension_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0) {
+intgo _wrap_Geometry_GetDimension_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -6760,7 +6760,7 @@ intgo _wrap_Geometry_GetDimension_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_
 }
 
 
-intgo _wrap_Geometry_HasCurveGeometry_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_Geometry_HasCurveGeometry_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, intgo _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   int arg2 = (int) FALSE ;
   int result;
@@ -6777,7 +6777,7 @@ intgo _wrap_Geometry_HasCurveGeometry_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, 
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_GetLinearGeometry_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, char **_swig_go_2) {
+OGRGeometryShadow *_wrap_Geometry_GetLinearGeometry_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, double _swig_go_1, char **_swig_go_2) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 = (double) 0.0 ;
   char **arg3 = (char **) NULL ;
@@ -6798,7 +6798,7 @@ OGRGeometryShadow *_wrap_Geometry_GetLinearGeometry_ogr_1f1edc2fb82ebe9e(intgo _
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_GetCurveGeometry_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, char **_swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_GetCurveGeometry_ogr_8e1b66f4430553e5(intgo _swig_optargc, OGRGeometryShadow *_swig_go_0, char **_swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   char **arg2 = (char **) NULL ;
   OGRGeometryShadow *result = 0 ;
@@ -6815,7 +6815,7 @@ OGRGeometryShadow *_wrap_Geometry_GetCurveGeometry_ogr_1f1edc2fb82ebe9e(intgo _s
 }
 
 
-OGRGeometryShadow *_wrap_Geometry_Value_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
+OGRGeometryShadow *_wrap_Geometry_Value_ogr_8e1b66f4430553e5(OGRGeometryShadow *_swig_go_0, double _swig_go_1) {
   OGRGeometryShadow *arg1 = (OGRGeometryShadow *) 0 ;
   double arg2 ;
   OGRGeometryShadow *result = 0 ;
@@ -6830,7 +6830,7 @@ OGRGeometryShadow *_wrap_Geometry_Value_ogr_1f1edc2fb82ebe9e(OGRGeometryShadow *
 }
 
 
-intgo _wrap_OGRGetDriverCount_ogr_1f1edc2fb82ebe9e() {
+intgo _wrap_OGRGetDriverCount_ogr_8e1b66f4430553e5() {
   int result;
   intgo _swig_go_result;
   
@@ -6841,7 +6841,7 @@ intgo _wrap_OGRGetDriverCount_ogr_1f1edc2fb82ebe9e() {
 }
 
 
-intgo _wrap_OGRGetOpenDSCount_ogr_1f1edc2fb82ebe9e() {
+intgo _wrap_OGRGetOpenDSCount_ogr_8e1b66f4430553e5() {
   int result;
   intgo _swig_go_result;
   
@@ -6852,7 +6852,7 @@ intgo _wrap_OGRGetOpenDSCount_ogr_1f1edc2fb82ebe9e() {
 }
 
 
-intgo _wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   int arg1 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -6865,7 +6865,7 @@ intgo _wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_1f1edc2fb82ebe9e(intgo _swig_g
 }
 
 
-_gostring_ _wrap_GeometryTypeToName_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+_gostring_ _wrap_GeometryTypeToName_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6878,7 +6878,7 @@ _gostring_ _wrap_GeometryTypeToName_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-_gostring_ _wrap_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+_gostring_ _wrap_GetFieldTypeName_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRFieldType arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6891,7 +6891,7 @@ _gostring_ _wrap_GetFieldTypeName_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-_gostring_ _wrap_GetFieldSubTypeName_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+_gostring_ _wrap_GetFieldSubTypeName_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRFieldSubType arg1 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -6904,7 +6904,7 @@ _gostring_ _wrap_GetFieldSubTypeName_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_Flatten_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_Flatten_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -6917,7 +6917,7 @@ intgo _wrap_GT_Flatten_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_SetZ_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_SetZ_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -6930,7 +6930,7 @@ intgo _wrap_GT_SetZ_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_SetModifier_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, intgo _swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_GT_SetModifier_ogr_8e1b66f4430553e5(intgo _swig_optargc, intgo _swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   OGRwkbGeometryType arg1 ;
   int arg2 ;
   int arg3 = (int) FALSE ;
@@ -6949,7 +6949,7 @@ intgo _wrap_GT_SetModifier_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, intgo _swig
 }
 
 
-intgo _wrap_GT_HasZ_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_HasZ_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   int result;
   intgo _swig_go_result;
@@ -6962,7 +6962,7 @@ intgo _wrap_GT_HasZ_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_IsSubClassOf_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0, intgo _swig_go_1) {
+intgo _wrap_GT_IsSubClassOf_ogr_8e1b66f4430553e5(intgo _swig_go_0, intgo _swig_go_1) {
   OGRwkbGeometryType arg1 ;
   OGRwkbGeometryType arg2 ;
   int result;
@@ -6977,7 +6977,7 @@ intgo _wrap_GT_IsSubClassOf_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0, intgo _swig_g
 }
 
 
-intgo _wrap_GT_IsCurve_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_IsCurve_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   int result;
   intgo _swig_go_result;
@@ -6990,7 +6990,7 @@ intgo _wrap_GT_IsCurve_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_IsSurface_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_IsSurface_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   int result;
   intgo _swig_go_result;
@@ -7003,7 +7003,7 @@ intgo _wrap_GT_IsSurface_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_IsNonLinear_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_IsNonLinear_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   int result;
   intgo _swig_go_result;
@@ -7016,7 +7016,7 @@ intgo _wrap_GT_IsNonLinear_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_GetCollection_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_GetCollection_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -7029,7 +7029,7 @@ intgo _wrap_GT_GetCollection_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_GetCurve_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_GetCurve_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -7042,7 +7042,7 @@ intgo _wrap_GT_GetCurve_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-intgo _wrap_GT_GetLinear_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+intgo _wrap_GT_GetLinear_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   OGRwkbGeometryType arg1 ;
   OGRwkbGeometryType result;
   intgo _swig_go_result;
@@ -7055,7 +7055,7 @@ intgo _wrap_GT_GetLinear_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-void _wrap_SetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+void _wrap_SetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   int arg1 ;
   
   arg1 = (int)_swig_go_0; 
@@ -7065,7 +7065,7 @@ void _wrap_SetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e(intgo _swig_go
 }
 
 
-intgo _wrap_GetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e() {
+intgo _wrap_GetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5() {
   int result;
   intgo _swig_go_result;
   
@@ -7076,7 +7076,7 @@ intgo _wrap_GetNonLinearGeometriesEnabledFlag_ogr_1f1edc2fb82ebe9e() {
 }
 
 
-OGRDataSourceShadow *_wrap_GetOpenDS_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
+OGRDataSourceShadow *_wrap_GetOpenDS_ogr_8e1b66f4430553e5(intgo _swig_go_0) {
   int arg1 ;
   OGRDataSourceShadow *result = 0 ;
   OGRDataSourceShadow *_swig_go_result;
@@ -7089,7 +7089,7 @@ OGRDataSourceShadow *_wrap_GetOpenDS_ogr_1f1edc2fb82ebe9e(intgo _swig_go_0) {
 }
 
 
-OGRDataSourceShadow *_wrap_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
+OGRDataSourceShadow *_wrap_Open_ogr_8e1b66f4430553e5(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
   char *arg1 = (char *) 0 ;
   int arg2 = (int) 0 ;
   OGRDataSourceShadow *result = 0 ;
@@ -7111,7 +7111,7 @@ OGRDataSourceShadow *_wrap_Open_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostr
 }
 
 
-OGRDataSourceShadow *_wrap_OpenShared_ogr_1f1edc2fb82ebe9e(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
+OGRDataSourceShadow *_wrap_OpenShared_ogr_8e1b66f4430553e5(intgo _swig_optargc, _gostring_ _swig_go_0, intgo _swig_go_1) {
   char *arg1 = (char *) 0 ;
   int arg2 = (int) 0 ;
   OGRDataSourceShadow *result = 0 ;
