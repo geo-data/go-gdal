@@ -16,8 +16,23 @@ type vtranslate struct {
 	datasets []Dataset
 }
 
-func NewVectorTranslator(options []string) (t VectorTranslator) {
-	opts := newGDALVectorTranslateOptions(options)
+func vectorTranslateOptions(options []string) (opts GDALVectorTranslateOptions, err error) {
+	cpl.ErrorReset()
+	opts = newGDALVectorTranslateOptions(options)
+	err = cpl.LastError()
+	if err != nil && opts != nil {
+		deleteGDALVectorTranslateOptions(opts)
+	}
+	return
+}
+
+func NewVectorTranslator(options []string) (t VectorTranslator, err error) {
+	var opts GDALVectorTranslateOptions
+	opts, err = vectorTranslateOptions(options)
+	if err != nil {
+		return
+	}
+
 	t = &vtranslate{
 		opts,
 		[]Dataset{},
@@ -43,12 +58,12 @@ func (t *vtranslate) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	ds = wrapper_GDALVectorTranslateDestName(name, t.datasets[0], t.options)
-	err = cpl.LastError()
-	if ds != nil || err != nil {
-		return
+	defer cpl.ErrorTrap()(&err)
+
+	if ds = wrapper_GDALVectorTranslateDestName(name, t.datasets[0], t.options); ds == nil {
+		err = fmt.Errorf("Vector translate failed for %s", name)
 	}
-	err = fmt.Errorf("Vector translate failed for %s", name)
+
 	return
 }
 
@@ -58,11 +73,11 @@ func (t *vtranslate) DestDS(ds Dataset) (err error) {
 		return
 	}
 
-	ok := wrapper_GDALVectorTranslateDestDS(ds, t.datasets[0], t.options)
-	err = cpl.LastError()
-	if ok == 1 || err != nil {
-		return
+	defer cpl.ErrorTrap()(&err)
+
+	if ok := wrapper_GDALVectorTranslateDestDS(ds, t.datasets[0], t.options); ok != 1 {
+		err = errors.New("Vector translate failed for dataset")
 	}
-	err = errors.New("Vector translate failed for dataset")
+
 	return
 }

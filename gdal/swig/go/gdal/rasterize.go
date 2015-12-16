@@ -16,8 +16,23 @@ type rasterize struct {
 	datasets []Dataset
 }
 
-func NewRasterizer(options []string) (r Rasterizer) {
-	opts := newGDALRasterizeOptions(options)
+func rasterizeOptions(options []string) (opts GDALRasterizeOptions, err error) {
+	cpl.ErrorReset()
+	opts = newGDALRasterizeOptions(options)
+	err = cpl.LastError()
+	if err != nil && opts != nil {
+		deleteGDALRasterizeOptions(opts)
+	}
+	return
+}
+
+func NewRasterizer(options []string) (r Rasterizer, err error) {
+	var opts GDALRasterizeOptions
+	opts, err = rasterizeOptions(options)
+	if err != nil {
+		return
+	}
+
 	r = &rasterize{
 		opts,
 		[]Dataset{},
@@ -42,12 +57,13 @@ func (r *rasterize) DestName(name string) (ds Dataset, err error) {
 		err = errors.New(dserr)
 		return
 	}
-	ds = wrapper_GDALRasterizeDestName(name, r.datasets[0], r.options)
-	err = cpl.LastError()
-	if ds != nil || err != nil {
-		return
+
+	defer cpl.ErrorTrap()(&err)
+
+	if ds = wrapper_GDALRasterizeDestName(name, r.datasets[0], r.options); ds == nil {
+		err = fmt.Errorf("Rasterize failed for %s", name)
 	}
-	err = fmt.Errorf("Rasterize failed for %s", name)
+
 	return
 }
 
@@ -56,11 +72,12 @@ func (r *rasterize) DestDS(ds Dataset) (err error) {
 		err = errors.New(dserr)
 		return
 	}
-	ok := wrapper_GDALRasterizeDestDS(ds, r.datasets[0], r.options)
-	err = cpl.LastError()
-	if ok == 1 || err != nil {
-		return
+
+	defer cpl.ErrorTrap()(&err)
+
+	if ok := wrapper_GDALRasterizeDestDS(ds, r.datasets[0], r.options); ok != 1 {
+		err = errors.New("Rasterize failed for dataset")
 	}
-	err = errors.New("Rasterize failed for dataset")
+
 	return
 }

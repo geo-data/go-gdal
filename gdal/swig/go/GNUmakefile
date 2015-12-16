@@ -53,6 +53,7 @@ $(CPL_GO) \
 $(CPL_CPP) \
 gdal/cpl/error.go \
 gdal/cpl/error-handler.go \
+gdal/cpl/error-trap.go \
 gdal/cpl/vsi.go \
 gdal/cpl/wrap.go \
 gdal/apps.go \
@@ -170,21 +171,21 @@ clean:
 
 # Run the unit tests and example programs.
 test: $(TRK_INSTALL) $(INSTALL_TEST_FILES) $(EXAMPLES)
-	GOPATH=$(GOPATH) go test $(PKG_NAME)...
-	$(EX_BIN_OPEN_MEM)
-	$(EX_BIN_COPY_RASTER) $(GDAL_ROOT)/../autotest/gcore/data/rgba.tif
-	$(EX_BIN_READ_VECTOR) $(GDAL_ROOT)/../autotest/ogr/data/poly.shp
-	$(EX_BIN_HANDLE_ERRORS)
-	$(EX_BIN_GDAL_PROCESS) warp $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.tif
-	$(EX_BIN_GDAL_PROCESS) warp -options "-of VRT" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.vrt
-	$(EX_BIN_GDAL_PROCESS) translate -options "-ot Int16" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/int16.tif
-	$(EX_BIN_GDAL_PROCESS) vector-translate -options "-spat 479609 4764629 479764 4764817" $(GDAL_ROOT)/../autotest/ogr/data/poly.shp /vsimem/poly.shp
-	$(EX_BIN_GDAL_PROCESS) nearblack -options "-nb 0 -of GTiff" $(GDAL_ROOT)/../autotest/gdrivers/data/rgbsmall.tif /vsimem/nearblack.tif
-	$(EX_BIN_GDAL_PROCESS) grid -options "-txe 440720.0 441920.0 -tye 3751320.0 3750120.0 -outsize 20 20 -ot Byte -l grid -a nearest:radius1=0.0:radius2=0.0:angle=0.0:nodata=0.0" $(GDAL_ROOT)/../autotest/utilities/data/grid.vrt /vsimem/grid-near.tif
-	$(EX_BIN_GDAL_PROCESS) dem-hillshade -options "-s 111120 -z 30" $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/hillshade.tif
-	$(EX_BIN_GDAL_PROCESS) dem-slope -options "-s 111120" $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/slope.tif
-	$(EX_BIN_GDAL_PROCESS) dem-aspect $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/aspect.tif
-	$(EX_BIN_GDAL_PROCESS) dem-color-relief -color-filename $(GDAL_ROOT)/../autotest/utilities/data/color_file.txt $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/color-relief.tif
+	GOPATH=$(GOPATH) go test $(PKG_NAME)... && \
+	$(EX_BIN_OPEN_MEM) && \
+	$(EX_BIN_COPY_RASTER) $(GDAL_ROOT)/../autotest/gcore/data/rgba.tif && \
+	$(EX_BIN_READ_VECTOR) $(GDAL_ROOT)/../autotest/ogr/data/poly.shp && \
+	$(EX_BIN_HANDLE_ERRORS) && \
+	$(EX_BIN_GDAL_PROCESS) warp $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.tif && \
+	$(EX_BIN_GDAL_PROCESS) warp -options "-of VRT" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.vrt && \
+	$(EX_BIN_GDAL_PROCESS) translate -options "-ot Int16" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/int16.tif && \
+	$(EX_BIN_GDAL_PROCESS) vector-translate -options "-spat 479609 4764629 479764 4764817" $(GDAL_ROOT)/../autotest/ogr/data/poly.shp /vsimem/poly.shp && \
+	$(EX_BIN_GDAL_PROCESS) nearblack -options "-nb 0 -of GTiff" $(GDAL_ROOT)/../autotest/gdrivers/data/rgbsmall.tif /vsimem/nearblack.tif && \
+	$(EX_BIN_GDAL_PROCESS) grid -options "-txe 440720.0 441920.0 -tye 3751320.0 3750120.0 -outsize 20 20 -ot Byte -l grid -a nearest:radius1=0.0:radius2=0.0:angle=0.0:nodata=0.0" $(GDAL_ROOT)/../autotest/utilities/data/grid.vrt /vsimem/grid-near.tif && \
+	$(EX_BIN_GDAL_PROCESS) dem-hillshade -options "-s 111120 -z 30" $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/hillshade.tif && \
+	$(EX_BIN_GDAL_PROCESS) dem-slope -options "-s 111120" $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/slope.tif && \
+	$(EX_BIN_GDAL_PROCESS) dem-aspect $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/aspect.tif && \
+	$(EX_BIN_GDAL_PROCESS) dem-color-relief -color-filename $(GDAL_ROOT)/../autotest/utilities/data/color_file.txt $(GDAL_ROOT)/../autotest/gdrivers/data/n43.dt0 /vsimem/color-relief.tif && \
 	for i in 1 2 3; do j=`expr $$i + 1`; echo "$$i,$$j,field$$i"; done | $(EX_BIN_WRITE_VECTOR)
 
 # Build the examples.

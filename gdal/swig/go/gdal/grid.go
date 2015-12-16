@@ -16,8 +16,23 @@ type grid struct {
 	datasets []Dataset
 }
 
-func NewGridProcessor(options []string) (t GridProcessor) {
-	opts := newGDALGridOptions(options)
+func gridOptions(options []string) (opts GDALGridOptions, err error) {
+	cpl.ErrorReset()
+	opts = newGDALGridOptions(options)
+	err = cpl.LastError()
+	if err != nil && opts != nil {
+		deleteGDALGridOptions(opts)
+	}
+	return
+}
+
+func NewGridProcessor(options []string) (t GridProcessor, err error) {
+	var opts GDALGridOptions
+	opts, err = gridOptions(options)
+	if err != nil {
+		return
+	}
+
 	t = &grid{
 		opts,
 		[]Dataset{},
@@ -43,11 +58,11 @@ func (t *grid) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	ds = wrapper_GDALGrid(name, t.datasets[0], t.options)
-	err = cpl.LastError()
-	if ds != nil || err != nil {
-		return
+	defer cpl.ErrorTrap()(&err)
+
+	if ds = wrapper_GDALGrid(name, t.datasets[0], t.options); ds == nil {
+		err = fmt.Errorf("Grid failed for %s", name)
 	}
-	err = fmt.Errorf("Grid failed for %s", name)
+
 	return
 }

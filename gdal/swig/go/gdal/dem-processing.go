@@ -24,8 +24,23 @@ type dem struct {
 	processing, colorfile string
 }
 
-func newDEM(options []string, processing string) (d *dem) {
-	opts := newGDALDEMProcessingOptions(options)
+func demProcessingOptions(options []string) (opts GDALDEMProcessingOptions, err error) {
+	cpl.ErrorReset()
+	opts = newGDALDEMProcessingOptions(options)
+	err = cpl.LastError()
+	if err != nil && opts != nil {
+		deleteGDALDEMProcessingOptions(opts)
+	}
+	return
+}
+
+func newDEM(options []string, processing string) (d *dem, err error) {
+	var opts GDALDEMProcessingOptions
+	opts, err = demProcessingOptions(options)
+	if err != nil {
+		return
+	}
+
 	d = &dem{
 		opts,
 		[]Dataset{},
@@ -39,32 +54,32 @@ func newDEM(options []string, processing string) (d *dem) {
 	return
 }
 
-func NewHillshadeProcessor(options []string) (h DEMProcessor) {
-	return DEMProcessor(newDEM(options, "hillshade"))
+func NewHillshadeProcessor(options []string) (DEMProcessor, error) {
+	return newDEM(options, "hillshade")
 }
 
-func NewSlopeProcessor(options []string) (h DEMProcessor) {
-	return DEMProcessor(newDEM(options, "slope"))
+func NewSlopeProcessor(options []string) (DEMProcessor, error) {
+	return newDEM(options, "slope")
 }
 
-func NewAspectProcessor(options []string) (h DEMProcessor) {
-	return DEMProcessor(newDEM(options, "aspect"))
+func NewAspectProcessor(options []string) (DEMProcessor, error) {
+	return newDEM(options, "aspect")
 }
 
-func NewColorReliefProcessor(options []string) (h ColorReliefProcessor) {
-	return ColorReliefProcessor(newDEM(options, "color-relief"))
+func NewColorReliefProcessor(options []string) (ColorReliefProcessor, error) {
+	return newDEM(options, "color-relief")
 }
 
-func NewTRIProcessor(options []string) (h DEMProcessor) {
-	return DEMProcessor(newDEM(options, "TRI"))
+func NewTRIProcessor(options []string) (DEMProcessor, error) {
+	return newDEM(options, "TRI")
 }
 
-func NewTPIProcessor(options []string) (h DEMProcessor) {
-	return DEMProcessor(newDEM(options, "TPI"))
+func NewTPIProcessor(options []string) (DEMProcessor, error) {
+	return newDEM(options, "TPI")
 }
 
-func NewRoughnessProcessor(options []string) (h DEMProcessor) {
-	return DEMProcessor(newDEM(options, "Roughness"))
+func NewRoughnessProcessor(options []string) (DEMProcessor, error) {
+	return newDEM(options, "Roughness")
 }
 
 func (d *dem) Processing() string {
@@ -93,11 +108,11 @@ func (d *dem) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	ds = wrapper_GDALDEMProcessing(name, d.datasets[0], d.processing, d.colorfile, d.options)
-	err = cpl.LastError()
-	if ds != nil || err != nil {
-		return
+	defer cpl.ErrorTrap()(&err)
+
+	if ds = wrapper_GDALDEMProcessing(name, d.datasets[0], d.processing, d.colorfile, d.options); ds == nil {
+		err = fmt.Errorf("DEM %s processing failed for %s", d.processing, name)
 	}
-	err = fmt.Errorf("DEM %s processing failed for %s", d.processing, name)
+
 	return
 }

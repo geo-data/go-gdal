@@ -62,3 +62,55 @@ func TestCustomHandlers(t *testing.T) {
 		t.Errorf("ErrorHandler: expected %d calls to local handler, got %d", workers, localCount)
 	}
 }
+
+// TestErrorTrap tests the error trapping idiom used throughout the package.
+func TestErrorTrap(t *testing.T) {
+
+	// Trigger and trap an error.
+	triggerError := func() (err error) {
+		defer cpl.ErrorTrap()(&err)
+
+		// Generate a new error.
+		e := cpl.NewError(constant.CE_Warning, constant.CPLE_AppDefined, "test error")
+		cpl.SetError(e)
+		return
+	}
+
+	// Have we trapped an error?
+	err := triggerError()
+	if err == nil {
+		t.Fatal("ErrorTrap(): error is nil")
+	}
+
+	// Is the error of the expected type?
+	cerr, ok := err.(cpl.Error)
+	if !ok {
+		t.Fatalf("ErrorTrap(): expected error type cpl.Error, got %T", err)
+	}
+
+	// Does the error have the expected number?
+	if cerr.ErrorNum() != constant.CPLE_AppDefined {
+		t.Errorf("ErrorTrap(): error number == %v, expected %v", cerr.ErrorNum(), constant.CPLE_AppDefined)
+	}
+
+	// Does the error have the expected type?
+	if cerr.ErrorType() != constant.CE_Warning {
+		t.Errorf("ErrorTrap(): error type == %v, expected %v", cerr.ErrorNum(), constant.CE_Warning)
+	}
+
+	// Does the error have the expected message?
+	if msg := cerr.Error(); msg != "test error" {
+		t.Errorf("ErrorTrap(): error message == %v, expected \"test error\"", msg)
+	}
+
+	// Do we have a previous error?
+	last := cpl.LastError()
+	if last == nil {
+		t.Fatal("LastError(): error is nil")
+	}
+
+	// Is the previous error the same as the triggered error?
+	if last.Error() != err.Error() {
+		t.Errorf("LastError() == %v, expected %v", last.Error(), err.Error())
+	}
+}

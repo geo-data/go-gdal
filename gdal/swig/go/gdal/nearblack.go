@@ -16,8 +16,23 @@ type nearblack struct {
 	datasets []Dataset
 }
 
-func NewNearblackProcessor(options []string) (nb NearblackProcessor) {
-	opts := newGDALNearblackOptions(options)
+func nearblackOptions(options []string) (opts GDALNearblackOptions, err error) {
+	cpl.ErrorReset()
+	opts = newGDALNearblackOptions(options)
+	err = cpl.LastError()
+	if err != nil && opts != nil {
+		deleteGDALNearblackOptions(opts)
+	}
+	return
+}
+
+func NewNearblackProcessor(options []string) (nb NearblackProcessor, err error) {
+	var opts GDALNearblackOptions
+	opts, err = nearblackOptions(options)
+	if err != nil {
+		return
+	}
+
 	nb = &nearblack{
 		opts,
 		[]Dataset{},
@@ -42,12 +57,13 @@ func (nb *nearblack) DestName(name string) (ds Dataset, err error) {
 		err = errors.New(dserr)
 		return
 	}
-	ds = wrapper_GDALNearblackDestName(name, nb.datasets[0], nb.options)
-	err = cpl.LastError()
-	if ds != nil || err != nil {
-		return
+
+	defer cpl.ErrorTrap()(&err)
+
+	if ds = wrapper_GDALNearblackDestName(name, nb.datasets[0], nb.options); ds == nil {
+		err = fmt.Errorf("Nearblack failed for %s", name)
 	}
-	err = fmt.Errorf("Nearblack failed for %s", name)
+
 	return
 }
 
@@ -56,11 +72,12 @@ func (nb *nearblack) DestDS(ds Dataset) (err error) {
 		err = errors.New(dserr)
 		return
 	}
-	ok := wrapper_GDALNearblackDestDS(ds, nb.datasets[0], nb.options)
-	err = cpl.LastError()
-	if ok == 1 || err != nil {
-		return
+
+	defer cpl.ErrorTrap()(&err)
+
+	if ok := wrapper_GDALNearblackDestDS(ds, nb.datasets[0], nb.options); ok != 1 {
+		err = errors.New("Nearblack failed for dataset")
 	}
-	err = errors.New("Nearblack failed for dataset")
+
 	return
 }

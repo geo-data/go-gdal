@@ -16,11 +16,9 @@ type VSIF interface {
 }
 
 func VSIFOpen(name, access string) (visf VSIF, err error) {
+	defer ErrorTrap()(&err)
+
 	r := vsi(VSIFOpenL(name, access))
-	err = LastError()
-	if err != nil {
-		return
-	}
 	if r == 0 {
 		err = fmt.Errorf("Cannot open file %v using %v", name, access)
 		return
@@ -30,17 +28,16 @@ func VSIFOpen(name, access string) (visf VSIF, err error) {
 }
 
 func (v vsi) Tell() (o int64, err error) {
+	defer ErrorTrap()(&err)
+
 	o = VSIFTellL(uintptr(v))
-	err = LastError()
 	return
 }
 
 func (v vsi) Seek(offset int64, whence int) (noffset int64, err error) {
+	defer ErrorTrap()(&err)
+
 	ret := VSIFSeekL(uintptr(v), offset, whence)
-	err = LastError()
-	if err != nil {
-		return
-	}
 	if ret != 0 {
 		err = errors.New("Seek failed")
 		return
@@ -50,13 +47,12 @@ func (v vsi) Seek(offset int64, whence int) (noffset int64, err error) {
 }
 
 func (v vsi) Read(p []byte) (n int, err error) {
+	defer ErrorTrap()(&err)
+
 	l := len(p)
 	up := uintptr(v)
 	n = int(VSIFReadL(p, 1, int64(l), up))
-	err = LastError()
-	if err != nil {
-		return
-	}
+
 	if VSIFEofL(up) == 1 {
 		err = io.EOF
 	}
@@ -64,24 +60,20 @@ func (v vsi) Read(p []byte) (n int, err error) {
 }
 
 func (v vsi) Write(p []byte) (n int, err error) {
+	defer ErrorTrap()(&err)
+
 	l := len(p)
 	n = int(VSIFWriteL(p, 1, int64(l), uintptr(v)))
-	err = LastError()
-	if err != nil {
-		return
-	}
 	if n != l {
 		err = fmt.Errorf("Write failed, only wrote %d of %d bytes", n, l)
 	}
 	return
 }
 
-func (v vsi) Close() error {
+func (v vsi) Close() (err error) {
+	defer ErrorTrap()(&err)
+
 	r := VSIFCloseL(uintptr(v))
-	err := LastError()
-	if err != nil {
-		return err
-	}
 	if r != 0 {
 		return errors.New("Close failed")
 	}
@@ -89,11 +81,9 @@ func (v vsi) Close() error {
 }
 
 func (v vsi) Truncate(size int64) (err error) {
+	defer ErrorTrap()(&err)
+
 	r := VSIFTruncateL(uintptr(v), size)
-	err = LastError()
-	if err != nil {
-		return
-	}
 	if r != 0 {
 		err = errors.New("Truncate failed")
 	}

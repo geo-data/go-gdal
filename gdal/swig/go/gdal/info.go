@@ -13,8 +13,23 @@ type info struct {
 	options GDALInfoOptions
 }
 
-func NewInformer(options []string) (i Informer) {
-	opts := newGDALInfoOptions(options)
+func infoOptions(options []string) (opts GDALInfoOptions, err error) {
+	cpl.ErrorReset()
+	opts = newGDALInfoOptions(options)
+	err = cpl.LastError()
+	if err != nil && opts != nil {
+		deleteGDALInfoOptions(opts)
+	}
+	return
+}
+
+func NewInformer(options []string) (i Informer, err error) {
+	var opts GDALInfoOptions
+	opts, err = infoOptions(options)
+	if err != nil {
+		return
+	}
+
 	i = &info{
 		opts,
 	}
@@ -26,7 +41,7 @@ func NewInformer(options []string) (i Informer) {
 }
 
 func (i *info) Info(ds Dataset) (result string, err error) {
+	defer cpl.ErrorTrap()(&err)
 	result = wrap_GDALInfo(ds, i.options)
-	err = cpl.LastError()
 	return
 }

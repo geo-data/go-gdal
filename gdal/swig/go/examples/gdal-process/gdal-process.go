@@ -41,7 +41,7 @@ provide an example and test of their use in Go.
 	os.Exit(status)
 }
 
-type Processor func(options []string) (processor gdal.NameProcessor)
+type Processor func(options []string) (processor gdal.NameProcessor, err error)
 
 type command struct {
 	processor     Processor
@@ -49,12 +49,16 @@ type command struct {
 	dataset_count int
 }
 
-func (c *command) Processor(options []string) (processor gdal.NameProcessor) {
+func (c *command) Processor(options []string) (processor gdal.NameProcessor, err error) {
 	return c.processor(options)
 }
 
 func (c *command) Convert(options []string, input []gdal.Dataset, output string) (result gdal.Dataset, err error) {
-	processor := c.Processor(options)
+	var processor gdal.NameProcessor
+	processor, err = c.Processor(options)
+	if err != nil {
+		return
+	}
 	processor.SetDatasets(input)
 	result, err = processor.DestName(output)
 	return
@@ -80,63 +84,68 @@ func main() {
 
 	switch subcommand {
 	case "translate":
-		cmd = NewCommand("gdal_translate", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdal_translate", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewTranslator(options)
 		}, 2)
 	case "vector-translate":
-		cmd = NewCommand("ogr2ogr", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("ogr2ogr", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewVectorTranslator(options)
 		}, 2)
 		showInfo = false
 	case "warp":
-		cmd = NewCommand("gdalwarp", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdalwarp", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewWarper(options)
 		}, -1)
 	case "nearblack":
-		cmd = NewCommand("nearblack", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("nearblack", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewNearblackProcessor(options)
 		}, 2)
 	case "grid":
-		cmd = NewCommand("gdal_grid", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdal_grid", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewGridProcessor(options)
 		}, 2)
 	case "rasterize":
-		cmd = NewCommand("gdal_rasterize", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdal_rasterize", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewRasterizer(options)
 		}, 2)
 	case "dem-hillshade":
-		cmd = NewCommand("gdaldem hillshade", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdaldem hillshade", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewHillshadeProcessor(options)
 		}, 2)
 	case "dem-slope":
-		cmd = NewCommand("gdaldem slope", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdaldem slope", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewSlopeProcessor(options)
 		}, 2)
 	case "dem-aspect":
-		cmd = NewCommand("gdaldem aspect", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdaldem aspect", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewAspectProcessor(options)
 		}, 2)
 	case "dem-color-relief":
 		colorf := action.String("color-filename", "", "color text file")
-		cmd = NewCommand("gdaldem color-relief", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdaldem color-relief", func(options []string) (np gdal.NameProcessor, err error) {
 			if len(*colorf) == 0 {
 				fmt.Fprintln(os.Stderr, "A color text file is required")
 				usage(1)
 			}
-			cr := gdal.NewColorReliefProcessor(options)
+			var cr gdal.ColorReliefProcessor
+			cr, err = gdal.NewColorReliefProcessor(options)
+			if err != nil {
+				return
+			}
 			cr.SetColorFilename(*colorf)
-			return cr
+			np = cr
+			return
 		}, 2)
 	case "dem-tri":
-		cmd = NewCommand("gdaldem TRI", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdaldem TRI", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewTRIProcessor(options)
 		}, 2)
 	case "dem-tpi":
-		cmd = NewCommand("gdaldem TPI", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdaldem TPI", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewTPIProcessor(options)
 		}, 2)
 	case "dem-roughness":
-		cmd = NewCommand("gdaldem roughness", func(options []string) gdal.NameProcessor {
+		cmd = NewCommand("gdaldem roughness", func(options []string) (gdal.NameProcessor, error) {
 			return gdal.NewRoughnessProcessor(options)
 		}, 2)
 	default:
@@ -200,7 +209,11 @@ func main() {
 
 	if showInfo {
 		o := cpl.ParseCommandLine(infoOpts)
-		i := gdal.NewInformer(o)
+		i, err := gdal.NewInformer(o)
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		info, err := i.Info(ds)
 		if err != nil {
 			log.Fatal(err)

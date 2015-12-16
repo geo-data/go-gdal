@@ -16,8 +16,23 @@ type translate struct {
 	datasets []Dataset
 }
 
-func NewTranslator(options []string) (t Translator) {
-	opts := newGDALTranslateOptions(options)
+func translateOptions(options []string) (opts GDALTranslateOptions, err error) {
+	cpl.ErrorReset()
+	opts = newGDALTranslateOptions(options)
+	err = cpl.LastError()
+	if err != nil && opts != nil {
+		deleteGDALTranslateOptions(opts)
+	}
+	return
+}
+
+func NewTranslator(options []string) (t Translator, err error) {
+	var opts GDALTranslateOptions
+	opts, err = translateOptions(options)
+	if err != nil {
+		return
+	}
+
 	t = &translate{
 		opts,
 		[]Dataset{},
@@ -43,11 +58,9 @@ func (t *translate) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	ds = wrapper_GDALTranslate(name, t.datasets[0], t.options)
-	err = cpl.LastError()
-	if ds != nil || err != nil {
-		return
+	defer cpl.ErrorTrap()(&err)
+	if ds = wrapper_GDALTranslate(name, t.datasets[0], t.options); ds == nil {
+		err = fmt.Errorf("Translate failed for %s", name)
 	}
-	err = fmt.Errorf("Translate failed for %s", name)
 	return
 }

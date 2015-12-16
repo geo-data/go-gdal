@@ -51,6 +51,5 @@ func LastError() (err Error) {
 		GetLastErrorNo(),
 		strings.TrimSpace(GetLastErrorMsg()),
 	)
-	ErrorReset()
 	return
 }
