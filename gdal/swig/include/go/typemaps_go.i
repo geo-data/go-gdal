@@ -118,7 +118,28 @@
         $result = progress.New(progf, $input)
     }
 %}
-%typemap(in) ( GDALProgressFunc callback = NULL) 
+%typemap(in) ( GDALProgressFunc callback = NULL)
+{
+  $1 = $input;
+}
+
+%typemap(gotype) ( void* user_data ) "interface{}"
+%typemap(imtype) ( void* user_data) "unsafe.Pointer"
+%typemap(gotype) ( CPLErrorHandler pfnErrorHandler ) "ErrorHandler"
+%typemap(imtype) ( CPLErrorHandler pfnErrorHandler ) "C.CPLErrorHandler"
+%typemap(goin) ( CPLErrorHandler pfnErrorHandler ) %{
+    var handler ErrorHandler
+	if $input != nil {
+        handler = $input
+        $result = C.CPLErrorHandler(CPLErrorHandler())
+    }
+%}
+%typemap(goin) ( void* user_data ) %{
+    if handler != nil {
+        $result = NewErrorHandler(handler, $input)
+    }
+%}
+%typemap(in) ( CPLErrorHandler pfnErrorHandler)
 {
   $1 = $input;
 }

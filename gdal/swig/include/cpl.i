@@ -57,7 +57,10 @@ typedef int VSI_RETVAL;
   void Debug( const char *msg_class, const char *message ) {
     CPLDebug( msg_class, "%s", message );
   }
+%}
 
+#ifndef SWIGGO
+%inline %{
   CPLErr SetErrorHandler( char const * pszCallbackName = NULL )
   {
     CPLErrorHandler pfnHandler = NULL;
@@ -76,6 +79,19 @@ typedef int VSI_RETVAL;
     return CE_None;
   }
 %}
+#else
+%inline %{
+  CPLErr SetErrorHandler( CPLErrorHandler pfnErrorHandler, void* user_data)
+  {
+    if( pfnErrorHandler == NULL ) {
+      CPLSetErrorHandler(NULL); /* Set the default handler. */
+    } else {
+      CPLSetErrorHandlerEx(pfnErrorHandler, user_data);
+    }
+    return CE_None;
+  }
+%}
+#endif  /* SWIGGO */
 
 #ifdef SWIGPYTHON
 
@@ -111,7 +127,14 @@ void CPL_STDCALL PyCPLErrorHandler(CPLErr eErrClass, int err_no, const char* psz
      CPLPopErrorHandler();
   }
 %}
-
+#elif defined(SWIGGO)
+%inline %{
+  CPLErr PushErrorHandler( CPLErrorHandler pfnErrorHandler, void* user_data)
+  {
+     CPLPushErrorHandlerEx(pfnErrorHandler, user_data);
+     return CE_None;
+  }
+%}
 #else
 %inline %{
   CPLErr PushErrorHandler( char const * pszCallbackName = NULL ) {
@@ -133,7 +156,7 @@ void CPL_STDCALL PyCPLErrorHandler(CPLErr eErrClass, int err_no, const char* psz
 %}
 #endif
 
-#ifdef SWIGJAVA
+#if defined(SWIGJAVA) || defined(SWIGGO)
 %inline%{
   void Error( CPLErr msg_class, int err_code, const char* msg ) {
     CPLError( msg_class, err_code, "%s", msg );
@@ -204,7 +227,7 @@ GOA2GetRefreshToken( const char *pszAuthToken, const char *pszScope );
 retStringAndCPLFree*
 GOA2GetAccessToken( const char *pszRefreshToken, const char *pszScope );
 
-#if !defined(SWIGJAVA) && !defined(SWIGPYTHON)
+#if !defined(SWIGJAVA) && !defined(SWIGPYTHON) && !defined(SWIGGO)
 void CPLPushErrorHandler( CPLErrorHandler );
 #endif
 

@@ -60,11 +60,11 @@ func TestOpenFail(t *testing.T) {
 	if !ok {
 		t.Fatalf("Open(%q) expected error type cpl.Error, got %T", bad, err)
 	}
-	if gerr.ErrorNo() != 4 {
-		t.Errorf("Open(%q): error number == %v, expected 4", bad, gerr.ErrorNo())
+	if gerr.ErrorNum() != 4 {
+		t.Errorf("Open(%q): error number == %v, expected 4", bad, gerr.ErrorNum())
 	}
 	if gerr.ErrorType() != 3 {
-		t.Errorf("Open(%q): error type == %v, expected 3", bad, gerr.ErrorNo())
+		t.Errorf("Open(%q): error type == %v, expected 3", bad, gerr.ErrorNum())
 	}
 	msg := gerr.Error()
 	substr := "does not exist"

@@ -2,18 +2,11 @@
     "Error": {
         "Rename": {
             "Function": {
-                "Prefix": "Set"
-            }
-        }
-    },
-    "ReadDir": {
-        "Rename": {
-            "Function": {
                 "Prefix": "wrap_"
             }
         }
     },
-    "SetErrorHandler": {
+    "ReadDir": {
         "Rename": {
             "Function": {
                 "Prefix": "wrap_"

@@ -52,6 +52,7 @@ $(CONSTANT_CPP) \
 $(CPL_GO) \
 $(CPL_CPP) \
 gdal/cpl/error.go \
+gdal/cpl/error-handler.go \
 gdal/cpl/vsi.go \
 gdal/cpl/wrap.go \
 gdal/apps.go \
@@ -81,6 +82,7 @@ gdal/wrap.go
 
 # The test files are in a separate package: they only affect the test target.
 TEST_FILES := gdal/cpl/cpl_test.go \
+gdal/cpl/error_test.go \
 gdal/cpl/vsi_test.go \
 gdal/concurrency_test.go \
 gdal/progress_test.go \
@@ -114,7 +116,7 @@ SWIG_MOD_OGR := ../include/ogr.i
 SWIG_MOD_GDAL := ../include/gdal.i
 
 # Swig include dependencies for defining modules.
-SWIG_SRC_CPL := ../include/cpl.i $(SWIG_MOD_CPL)
+SWIG_SRC_CPL := ../include/cpl.i $(SWIG_MOD_CPL) $(SWIG_I_TYPEMAPS_GO)
 SWIG_SRC_OSR := ../include/go/osr_go.i $(SWIG_MOD_OSR)
 SWIG_SRC_OGR := ../include/go/ogr_go.i ../include/go/typemaps_go.i $(SWIG_MOD_OGR) $(SWIG_SRC_OSR) $(SWIG_I_TYPEMAPS_GO)
 SWIG_SRC_GDAL := ../include/go/gdal_go.i $(SWIG_MOD_GDAL) $(SWIG_SRC_OGR) $(SWIG_SRC_CPL)
@@ -135,7 +137,15 @@ EX_SRC_OPEN_MEM := ./examples/open-mem/open-mem.go
 EX_BIN_GDAL_PROCESS := $(BUILD_DIR)/gdal-process
 EX_SRC_GDAL_PROCESS := ./examples/gdal-process/gdal-process.go
 
-EXAMPLES := $(EX_BIN_COPY_RASTER) $(EX_BIN_READ_VECTOR) $(EX_BIN_WRITE_VECTOR) $(EX_BIN_OPEN_MEM) $(EX_BIN_GDAL_PROCESS)
+EX_BIN_HANDLE_ERRORS := $(BUILD_DIR)/handle-errors
+EX_SRC_HANDLE_ERRORS := ./examples/handle-errors/handle-errors.go
+
+EXAMPLES := $(EX_BIN_COPY_RASTER) \
+$(EX_BIN_READ_VECTOR) \
+$(EX_BIN_WRITE_VECTOR) \
+$(EX_BIN_OPEN_MEM) \
+$(EX_BIN_GDAL_PROCESS) \
+$(EX_BIN_HANDLE_ERRORS)
 
 # Files tracking otherwise phony targets.
 TRK_INSTALL := $(BUILD_DIR)/.install
@@ -164,6 +174,7 @@ test: $(TRK_INSTALL) $(INSTALL_TEST_FILES) $(EXAMPLES)
 	$(EX_BIN_OPEN_MEM)
 	$(EX_BIN_COPY_RASTER) $(GDAL_ROOT)/../autotest/gcore/data/rgba.tif
 	$(EX_BIN_READ_VECTOR) $(GDAL_ROOT)/../autotest/ogr/data/poly.shp
+	$(EX_BIN_HANDLE_ERRORS)
 	$(EX_BIN_GDAL_PROCESS) warp $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.tif
 	$(EX_BIN_GDAL_PROCESS) warp -options "-of VRT" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/byte.vrt
 	$(EX_BIN_GDAL_PROCESS) translate -options "-ot Int16" $(GDAL_ROOT)/../autotest/gcore/data/byte.tif /vsimem/int16.tif
@@ -208,6 +219,8 @@ $(EX_BIN_OPEN_MEM): $(TRK_INSTALL) $(EX_SRC_OPEN_MEM)
 	GOPATH=$(GOPATH) go	build -o $(EX_BIN_OPEN_MEM) $(EX_SRC_OPEN_MEM)
 $(EX_BIN_GDAL_PROCESS): $(TRK_INSTALL) $(EX_SRC_GDAL_PROCESS)
 	GOPATH=$(GOPATH) go	build -o $(EX_BIN_GDAL_PROCESS) $(EX_SRC_GDAL_PROCESS)
+$(EX_BIN_HANDLE_ERRORS): $(TRK_INSTALL) $(EX_SRC_HANDLE_ERRORS)
+	GOPATH=$(GOPATH) go	build -o $(EX_BIN_HANDLE_ERRORS) $(EX_SRC_HANDLE_ERRORS)
 
 ##
 # Morph the swig generated module files.

@@ -62,8 +62,8 @@ func TestProgress(t *testing.T) {
 	if gerr.ErrorType() != constant.CE_Failure {
 		t.Errorf("CreateCopy() error type == %d, expected %d (CE_Failure)", gerr.ErrorType(), constant.CE_Failure)
 	}
-	if gerr.ErrorNo() != constant.CPLE_UserInterrupt {
-		t.Errorf("CreateCopy() errorno == %d, expected %d (CPLE_UserInterrupt)", gerr.ErrorNo(), constant.CPLE_UserInterrupt)
+	if gerr.ErrorNum() != constant.CPLE_UserInterrupt {
+		t.Errorf("CreateCopy() errorno == %d, expected %d (CPLE_UserInterrupt)", gerr.ErrorNum(), constant.CPLE_UserInterrupt)
 	}
 
 	if len(results) != 2 {

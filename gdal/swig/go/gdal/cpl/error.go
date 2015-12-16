@@ -1,13 +1,12 @@
 package cpl
 
 import (
-	"fmt"
 	"strings"
 )
 
 type Error interface {
 	error
-	ErrorNo() int
+	ErrorNum() int
 	ErrorType() int
 }
 
@@ -21,12 +20,24 @@ func (e *cerr) Error() string {
 	return e.m
 }
 
-func (e *cerr) ErrorNo() int {
+func (e *cerr) ErrorNum() int {
 	return e.n
 }
 
 func (e *cerr) ErrorType() int {
 	return e.t
+}
+
+func NewError(cls, num int, msg string) Error {
+	return &cerr{
+		num,
+		cls,
+		msg,
+	}
+}
+
+func SetError(err Error) {
+	wrap_Error(err.ErrorType(), err.ErrorNum(), err.Error())
 }
 
 func LastError() (err Error) {
@@ -35,18 +46,11 @@ func LastError() (err Error) {
 		return
 	}
 
-	err = &cerr{
-		GetLastErrorNo(),
+	err = NewError(
 		t,
+		GetLastErrorNo(),
 		strings.TrimSpace(GetLastErrorMsg()),
-	}
+	)
 	ErrorReset()
-	return
-}
-
-func SetErrorHandler(callbackName string) (err error) {
-	if wrap_SetErrorHandler(callbackName) != 0 {
-		err = fmt.Errorf("Non existent error handler: %s", callbackName)
-	}
 	return
 }

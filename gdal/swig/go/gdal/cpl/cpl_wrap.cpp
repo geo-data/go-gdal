@@ -254,44 +254,26 @@ typedef int VSI_RETVAL;
     CPLDebug( msg_class, "%s", message );
   }
 
-  CPLErr SetErrorHandler( char const * pszCallbackName = NULL )
+
+  CPLErr SetErrorHandler( CPLErrorHandler pfnErrorHandler, void* user_data)
   {
-    CPLErrorHandler pfnHandler = NULL;
-    if( pszCallbackName == NULL || EQUAL(pszCallbackName,"CPLQuietErrorHandler") )
-      pfnHandler = CPLQuietErrorHandler;
-    else if( EQUAL(pszCallbackName,"CPLDefaultErrorHandler") )
-      pfnHandler = CPLDefaultErrorHandler;
-    else if( EQUAL(pszCallbackName,"CPLLoggingErrorHandler") )
-      pfnHandler = CPLLoggingErrorHandler;
-
-    if ( pfnHandler == NULL )
-      return CE_Fatal;
-
-    CPLSetErrorHandler( pfnHandler );
-
+    if( pfnErrorHandler == NULL ) {
+      CPLSetErrorHandler(NULL); /* Set the default handler. */
+    } else {
+      CPLSetErrorHandlerEx(pfnErrorHandler, user_data);
+    }
     return CE_None;
   }
 
 
-  CPLErr PushErrorHandler( char const * pszCallbackName = NULL ) {
-    CPLErrorHandler pfnHandler = NULL;
-    if( pszCallbackName == NULL || EQUAL(pszCallbackName,"CPLQuietErrorHandler") )
-      pfnHandler = CPLQuietErrorHandler;
-    else if( EQUAL(pszCallbackName,"CPLDefaultErrorHandler") )
-      pfnHandler = CPLDefaultErrorHandler;
-    else if( EQUAL(pszCallbackName,"CPLLoggingErrorHandler") )
-      pfnHandler = CPLLoggingErrorHandler;
-
-    if ( pfnHandler == NULL )
-      return CE_Fatal;
-
-    CPLPushErrorHandler( pfnHandler );
-
-    return CE_None;
+  CPLErr PushErrorHandler( CPLErrorHandler pfnErrorHandler, void* user_data)
+  {
+     CPLPushErrorHandlerEx(pfnErrorHandler, user_data);
+     return CE_None;
   }
 
 
-  void Error( CPLErr msg_class = CE_Failure, int err_code = 0, const char* msg = "error" ) {
+  void Error( CPLErr msg_class, int err_code, const char* msg ) {
     CPLError( msg_class, err_code, "%s", msg );
   }
 
@@ -357,55 +339,41 @@ void _wrap_Debug_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0, _gostring_ _swig_go
 }
 
 
-intgo _wrap_SetErrorHandler__SWIG_0_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0) {
-  char *arg1 = (char *) 0 ;
+intgo _wrap_SetErrorHandler_cpl_47a89855fc1adaf7(CPLErrorHandler _swig_go_0, void *_swig_go_1) {
+  CPLErrorHandler arg1 ;
+  void *arg2 = (void *) 0 ;
   CPLErr result;
   intgo _swig_go_result;
   
-  arg1 = (char *)_swig_go_0.p; 
+  {
+    arg1 = _swig_go_0;
+  }
+  arg2 = *(void **)&_swig_go_1; 
   
-  result = (CPLErr)SetErrorHandler((char const *)arg1);
+  result = (CPLErr)SetErrorHandler(arg1,arg2);
   _swig_go_result = result; 
   return _swig_go_result;
 }
 
 
-intgo _wrap_SetErrorHandler__SWIG_1_cpl_47a89855fc1adaf7() {
+intgo _wrap_PushErrorHandler_cpl_47a89855fc1adaf7(CPLErrorHandler _swig_go_0, void *_swig_go_1) {
+  CPLErrorHandler arg1 ;
+  void *arg2 = (void *) 0 ;
   CPLErr result;
   intgo _swig_go_result;
   
+  {
+    arg1 = _swig_go_0;
+  }
+  arg2 = *(void **)&_swig_go_1; 
   
-  result = (CPLErr)SetErrorHandler();
+  result = (CPLErr)PushErrorHandler(arg1,arg2);
   _swig_go_result = result; 
   return _swig_go_result;
 }
 
 
-intgo _wrap_PushErrorHandler__SWIG_0_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0) {
-  char *arg1 = (char *) 0 ;
-  CPLErr result;
-  intgo _swig_go_result;
-  
-  arg1 = (char *)_swig_go_0.p; 
-  
-  result = (CPLErr)PushErrorHandler((char const *)arg1);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-intgo _wrap_PushErrorHandler__SWIG_1_cpl_47a89855fc1adaf7() {
-  CPLErr result;
-  intgo _swig_go_result;
-  
-  
-  result = (CPLErr)PushErrorHandler();
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-void _wrap_Error__SWIG_0_cpl_47a89855fc1adaf7(intgo _swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
+void _wrap_Error_cpl_47a89855fc1adaf7(intgo _swig_go_0, intgo _swig_go_1, _gostring_ _swig_go_2) {
   CPLErr arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
@@ -415,34 +383,6 @@ void _wrap_Error__SWIG_0_cpl_47a89855fc1adaf7(intgo _swig_go_0, intgo _swig_go_1
   arg3 = (char *)_swig_go_2.p; 
   
   Error(arg1,arg2,(char const *)arg3);
-  
-}
-
-
-void _wrap_Error__SWIG_1_cpl_47a89855fc1adaf7(intgo _swig_go_0, intgo _swig_go_1) {
-  CPLErr arg1 ;
-  int arg2 ;
-  
-  arg1 = (CPLErr)_swig_go_0; 
-  arg2 = (int)_swig_go_1; 
-  
-  Error(arg1,arg2);
-  
-}
-
-
-void _wrap_Error__SWIG_2_cpl_47a89855fc1adaf7(intgo _swig_go_0) {
-  CPLErr arg1 ;
-  
-  arg1 = (CPLErr)_swig_go_0; 
-  
-  Error(arg1);
-  
-}
-
-
-void _wrap_Error__SWIG_3_cpl_47a89855fc1adaf7() {
-  Error();
   
 }
 
@@ -487,23 +427,6 @@ _gostring_ _wrap_GOA2GetAccessToken_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0, 
   result = (retStringAndCPLFree *)GOA2GetAccessToken((char const *)arg1,(char const *)arg2);
   _swig_go_result = Swig_AllocateString((char*)result, result ? strlen((char*)result) : 0); 
   return _swig_go_result;
-}
-
-
-void _wrap_PushErrorHandler__SWIG_2_cpl_47a89855fc1adaf7(CPLErrorHandler *_swig_go_0) {
-  CPLErrorHandler arg1 ;
-  CPLErrorHandler *argp1 ;
-  
-  
-  argp1 = (CPLErrorHandler *)_swig_go_0;
-  if (argp1 == NULL) {
-    _swig_gopanic("Attempt to dereference null CPLErrorHandler");
-  }
-  arg1 = (CPLErrorHandler)*argp1;
-  
-  
-  CPLPushErrorHandler(arg1);
-  
 }
 
 
