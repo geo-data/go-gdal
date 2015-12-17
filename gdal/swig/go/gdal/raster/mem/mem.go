@@ -31,7 +31,7 @@ func (m *MemOptions) Dataset() (dataset gdal.Dataset, err error) {
 	dtn := gdal.GetDataTypeName(m.Type)
 
 	connstr := fmt.Sprintf("MEM:::DATAPOINTER=%p,PIXELS=%d,LINES=%d,DATATYPE=%s,BANDS=%d,PIXELOFFSET=%d,LINE0FFSET=%d,BANDOFFSET=%d", &m.Buffer[0], m.Pixels, m.Lines, dtn, m.Bands, m.PixelOffset, m.LineOffset, m.BandOffset)
-	dataset, err = gdal.Open(connstr)
+	dataset, err = gdal.Open(connstr, constant.OF_VERBOSE_ERROR)
 	return
 }
 
