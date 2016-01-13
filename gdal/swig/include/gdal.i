@@ -78,7 +78,7 @@ typedef void GDALAsyncReaderShadow;
 
 #if defined(SWIGPYTHON) || defined(SWIGJAVA) || defined(SWIGPERL) || defined(SWIGGO)
 %{
-#ifdef DEBUG 
+#ifdef DEBUG
 typedef struct OGRSpatialReferenceHS OSRSpatialReferenceShadow;
 typedef struct OGRLayerHS OGRLayerShadow;
 typedef struct OGRGeometryHS OGRGeometryShadow;
@@ -163,7 +163,7 @@ typedef enum
 
 /*! Types of color interpretations for a GDALColorTable. */
 %rename (PaletteInterp) GDALPaletteInterp;
-typedef enum 
+typedef enum
 {
   /*! Grayscale (in GDALColorEntry.c1) */                      GPI_Gray=0,
   /*! Red, Green, Blue and Alpha in (in c1, c2, c3 and c4) */  GPI_RGB=1,
@@ -207,7 +207,7 @@ typedef enum {
   /*! Cubic Convolution Approximation (4x4 kernel) */  GRA_Cubic=2,
   /*! Cubic B-Spline Approximation (4x4 kernel) */     GRA_CubicSpline=3,
   /*! Lanczos windowed sinc interpolation (6x6 kernel) */ GRA_Lanczos=4,
-  /*! Average (computes the average of all non-NODATA contributing pixels) */ GRA_Average=5, 
+  /*! Average (computes the average of all non-NODATA contributing pixels) */ GRA_Average=5,
   /*! Mode (selects the value which appears most often of all the sampled points) */ GRA_Mode=6
 } GDALResampleAlg;
 
@@ -238,7 +238,6 @@ typedef enum {
 %include "gdal_typemaps.i"
 #endif
 
-
 /* Default memberin typemaps required to support SWIG 1.3.39 and above */
 %typemap(memberin) char *Info %{
 /* char* Info memberin typemap */
@@ -251,7 +250,7 @@ $1;
 %}
 
 //************************************************************************
-// Apply NONNULL to all utf8_path's. 
+// Apply NONNULL to all utf8_path's.
 %apply Pointer NONNULL { const char* utf8_path };
 
 //************************************************************************
@@ -289,7 +288,6 @@ typedef char retStringAndCPLFree;
 //
 //************************************************************************
 %include "Driver.i"
-
 
 
 #if defined(SWIGPYTHON) || defined(SWIGJAVA) || defined(SWIGPERL)
@@ -360,16 +358,20 @@ typedef char retStringAndCPLFree;
 //************************************************************************
 #if !defined(SWIGPERL) && !defined(SWIGJAVA)
 %rename (ColorEntry) GDALColorEntry;
+#ifdef SWIGPYTHON
+%nodefaultctor GDALColorEntry;
+%nodefaultdtor GDALColorEntry;
+#endif
 typedef struct
 {
     /*! gray, red, cyan or hue */
-    short      c1;      
-    /*! green, magenta, or lightness */    
-    short      c2;      
+    short      c1;
+    /*! green, magenta, or lightness */
+    short      c2;
     /*! blue, yellow, or saturation */
-    short      c3;      
+    short      c3;
     /*! alpha or blackband */
-    short      c4;      
+    short      c4;
 } GDALColorEntry;
 #endif
 
@@ -418,8 +420,6 @@ struct GDAL_GCP {
       CPLFree( self->pszId );
     CPLFree( self );
   }
-
-
 } /* extend */
 }; /* GDAL_GCP */
 
@@ -460,7 +460,7 @@ const char * GDAL_GCP_Info_get( GDAL_GCP *gcp ) {
   return gcp->pszInfo;
 }
 void GDAL_GCP_Info_set( GDAL_GCP *gcp, const char * pszInfo ) {
-  if ( gcp->pszInfo ) 
+  if ( gcp->pszInfo )
     CPLFree( gcp->pszInfo );
   gcp->pszInfo = CPLStrdup(pszInfo);
 }
@@ -468,15 +468,15 @@ const char * GDAL_GCP_Id_get( GDAL_GCP *gcp ) {
   return gcp->pszId;
 }
 void GDAL_GCP_Id_set( GDAL_GCP *gcp, const char * pszId ) {
-  if ( gcp->pszId ) 
+  if ( gcp->pszId )
     CPLFree( gcp->pszId );
   gcp->pszId = CPLStrdup(pszId);
 }
-%} //%inline 
+%} //%inline
 
 #if defined(SWIGCSHARP)
 %inline %{
-/* Duplicate, but transposed names for C# because 
+/* Duplicate, but transposed names for C# because
 *  the C# module outputs backwards names
 */
 double GDAL_GCP_get_GCPX( GDAL_GCP *gcp ) {
@@ -513,7 +513,7 @@ const char * GDAL_GCP_get_Info( GDAL_GCP *gcp ) {
   return gcp->pszInfo;
 }
 void GDAL_GCP_set_Info( GDAL_GCP *gcp, const char * pszInfo ) {
-  if ( gcp->pszInfo ) 
+  if ( gcp->pszInfo )
     CPLFree( gcp->pszInfo );
   gcp->pszInfo = CPLStrdup(pszInfo);
 }
@@ -521,11 +521,11 @@ const char * GDAL_GCP_get_Id( GDAL_GCP *gcp ) {
   return gcp->pszId;
 }
 void GDAL_GCP_set_Id( GDAL_GCP *gcp, const char * pszId ) {
-  if ( gcp->pszId ) 
+  if ( gcp->pszId )
     CPLFree( gcp->pszId );
   gcp->pszId = CPLStrdup(pszId);
 }
-%} //%inline 
+%} //%inline
 #endif //if defined(SWIGCSHARP)
 
 %clear GDAL_GCP *gcp;
@@ -534,7 +534,7 @@ void GDAL_GCP_set_Id( GDAL_GCP *gcp, const char * pszId ) {
 %rename (GCPsToGeoTransform) wrapper_GDALGCPsToGeoTransform;
 %inline
 {
-int wrapper_GDALGCPsToGeoTransform( int nGCPs, GDAL_GCP const * pGCPs, 
+int wrapper_GDALGCPsToGeoTransform( int nGCPs, GDAL_GCP const * pGCPs,
     	                             double argout[6], int bApproxOK = 1 )
 {
     return GDALGCPsToGeoTransform(nGCPs, pGCPs, argout, bApproxOK);
@@ -542,8 +542,8 @@ int wrapper_GDALGCPsToGeoTransform( int nGCPs, GDAL_GCP const * pGCPs,
 }
 #else
 %apply (IF_FALSE_RETURN_NONE) { (RETURN_NONE) };
-RETURN_NONE GDALGCPsToGeoTransform( int nGCPs, GDAL_GCP const * pGCPs, 
-    	                             double argout[6], int bApproxOK = 1 ); 
+RETURN_NONE GDALGCPsToGeoTransform( int nGCPs, GDAL_GCP const * pGCPs,
+    	                             double argout[6], int bApproxOK = 1 );
 %clear (RETURN_NONE);
 #endif
 
@@ -587,8 +587,8 @@ RETURN_NONE GDALGCPsToGeoTransform( int nGCPs, GDAL_GCP const * pGCPs,
 %apply (double argin[ANY]) {(double padfGeoTransform[6])};
 %apply (double *OUTPUT) {(double *pdfGeoX)};
 %apply (double *OUTPUT) {(double *pdfGeoY)};
-void GDALApplyGeoTransform( double padfGeoTransform[6], 
-                            double dfPixel, double dfLine, 
+void GDALApplyGeoTransform( double padfGeoTransform[6],
+                            double dfPixel, double dfLine,
                             double *pdfGeoX, double *pdfGeoY );
 %clear (double *padfGeoTransform);
 %clear (double *pdfGeoX);
@@ -848,9 +848,9 @@ GDALDatasetShadow* OpenShared( char const* utf8_path, GDALAccess eAccess = GA_Re
 
 %apply (char **options) {char **papszSiblings};
 %inline %{
-GDALDriverShadow *IdentifyDriver( const char *utf8_path, 
+GDALDriverShadow *IdentifyDriver( const char *utf8_path,
                                   char **papszSiblings = NULL ) {
-    return (GDALDriverShadow *) GDALIdentifyDriver( utf8_path, 
+    return (GDALDriverShadow *) GDALIdentifyDriver( utf8_path,
 	                                            papszSiblings );
 }
 %}
@@ -866,7 +866,6 @@ GDALDriverShadow *IdentifyDriver( const char *utf8_path,
 // CreateAndReprojectImage
 // GCPsToGeoTransform
 
-
 #if defined(SWIGPYTHON) || defined(SWIGJAVA) || defined(SWIGGO)
 /* FIXME: other bindings should also use those typemaps to avoid memory leaks */
 %apply (char **options) {char ** papszArgv};
@@ -879,15 +878,15 @@ GDALDriverShadow *IdentifyDriver( const char *utf8_path,
 %inline %{
   char **GeneralCmdLineProcessor( char **papszArgv, int nOptions = 0 ) {
     int nResArgCount;
-    
+
     /* We must add a 'dummy' element in front of the real argument list */
     /* as Java doesn't include the binary name as the first */
     /* argument, as C does... */
     char** papszArgvModBefore = CSLInsertString(CSLDuplicate(papszArgv), 0, "dummy");
     char** papszArgvModAfter = papszArgvModBefore;
 
-    nResArgCount = 
-      GDALGeneralCmdLineProcessor( CSLCount(papszArgvModBefore), &papszArgvModAfter, nOptions ); 
+    nResArgCount =
+      GDALGeneralCmdLineProcessor( CSLCount(papszArgvModBefore), &papszArgvModAfter, nOptions );
 
     CSLDestroy(papszArgvModBefore);
 
@@ -909,8 +908,11 @@ GDALDriverShadow *IdentifyDriver( const char *utf8_path,
   char **GeneralCmdLineProcessor( char **papszArgv, int nOptions = 0 ) {
     int nResArgCount;
 
-    nResArgCount = 
-      GDALGeneralCmdLineProcessor( CSLCount(papszArgv), &papszArgv, nOptions ); 
+    if( papszArgv == NULL )
+        return NULL;
+
+    nResArgCount =
+      GDALGeneralCmdLineProcessor( CSLCount(papszArgv), &papszArgv, nOptions );
 
     if( nResArgCount <= 0 )
         return NULL;
@@ -935,7 +937,7 @@ GDALDriverShadow *IdentifyDriver( const char *utf8_path,
 #ifdef SWIGPYTHON
 /* Add a __version__ attribute to match the convention */
 %pythoncode %{
-__version__ = _gdal.VersionInfo("RELEASE_NAME") 
+__version__ = _gdal.VersionInfo("RELEASE_NAME")
 %}
 #endif
 
@@ -946,7 +948,7 @@ __version__ = _gdal.VersionInfo("RELEASE_NAME")
 //************************************************************************
 
 %{
-#include "gdal_utils.h"   
+#include "gdal_utils.h"
 %}
 
 %apply (const char* utf8_path) {(const char* dest)};
@@ -1019,7 +1021,7 @@ GDALDatasetShadow* wrapper_GDALTranslate( const char* dest,
         }
         GDALTranslateOptionsSetProgress(translateOptions, callback, callback_data);
     }
-    GDALDatasetH hDSRet = GDALTranslate(dest, dataset, translateOptions, &usageError);    
+    GDALDatasetH hDSRet = GDALTranslate(dest, dataset, translateOptions, &usageError);
     if( bFreeOptions )
         GDALTranslateOptionsFree(translateOptions);
     return hDSRet;
@@ -1234,7 +1236,7 @@ GDALDatasetShadow* wrapper_GDALDEMProcessing( const char* dest,
         }
         GDALDEMProcessingOptionsSetProgress(options, callback, callback_data);
     }
-    GDALDatasetH hDSRet = GDALDEMProcessing(dest, dataset, pszProcessing, pszColorFilename, options, &usageError);    
+    GDALDatasetH hDSRet = GDALDEMProcessing(dest, dataset, pszProcessing, pszColorFilename, options, &usageError);
     if( bFreeOptions )
         GDALDEMProcessingOptionsFree(options);
     return hDSRet;
@@ -1364,7 +1366,7 @@ GDALDatasetShadow* wrapper_GDALGrid( const char* dest,
         }
         GDALGridOptionsSetProgress(options, callback, callback_data);
     }
-    GDALDatasetH hDSRet = GDALGrid(dest, dataset, options, &usageError);    
+    GDALDatasetH hDSRet = GDALGrid(dest, dataset, options, &usageError);
     if( bFreeOptions )
         GDALGridOptionsFree(options);
     return hDSRet;

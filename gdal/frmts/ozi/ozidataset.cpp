@@ -27,16 +27,13 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 #include "zlib.h"
 
 /* g++ -fPIC -g -Wall frmts/ozi/ozidataset.cpp -shared -o gdal_OZI.so -Iport -Igcore -Iogr -L. -lgdal  */
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_OZI();
-CPL_C_END
 
 /************************************************************************/
 /* ==================================================================== */
@@ -545,7 +542,7 @@ GDALDataset *OZIDataset::Open( GDALOpenInfo * poOpenInfo )
         /* Some files have 8 extra bytes before the marker. I'm not sure */
         /* what they are used for. So just skeep them and hope that */
         /* we'll find the marker */
-        nSeparator = ReadInt(fp);
+        CPL_IGNORE_RET_VAL(ReadInt(fp));
         nSeparator = ReadInt(fp);
         if (nSeparator != 0x77777777)
         {

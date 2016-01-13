@@ -28,13 +28,10 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_JDEM();
-CPL_C_END
 
 /************************************************************************/
 /*                            JDEMGetField()                            */
@@ -225,7 +222,7 @@ JDEMDataset::~JDEMDataset()
 {
     FlushCache();
     if( fp != NULL )
-        VSIFCloseL( fp );
+        CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
 }
 
 /************************************************************************/

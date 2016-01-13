@@ -34,17 +34,15 @@
 * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 * POSSIBILITY OF SUCH DAMAGE.
 ****************************************************************************/
+
 #include "mg4lidar_headers.h"
 
 #include <float.h>
 LT_USE_LIDAR_NAMESPACE
 
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 // #include "gdal_alg.h" // 1.6 and later have gridding algorithms
-
-CPL_C_START
-void CPL_DLL GDALRegister_MG4Lidar();
-CPL_C_END
 
 /************************************************************************/
 /* ==================================================================== */
@@ -424,7 +422,7 @@ CPLErr   MG4LidarRasterBand::doReadBlock(int nBlockXOff, int nBlockYOff, void * 
                static_cast<DTYPE *>(pImage)[offset] > value)
                static_cast<DTYPE *>(pImage)[offset] = value;
          }
-         else if (EQUAL(Aggregation, "Mean"))
+         else if (EQUAL(Aggregation, "Mean") && Accumulator != NULL)
          {
             DTYPE value = GetChannelElement<DTYPE>(*channel, i);
             Accumulator[offset].count++;
@@ -661,7 +659,7 @@ CPLErr MG4LidarDataset::OpenZoomLevel( int iZoom )
    const ChannelInfo *ci = NULL;
    for (int i=0; i<nBands; i++)
    {
-      ci = reader->getChannel(dynamic_cast<MG4LidarRasterBand*>(papoBands[i])->ChannelName);
+      ci = reader->getChannel(static_cast<MG4LidarRasterBand*>(papoBands[i])->ChannelName);
       requiredChannels.getChannel(i).init(*ci);
    }
    int iSDKChannels = nBands;

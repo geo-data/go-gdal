@@ -29,21 +29,22 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#include "gdal_pam.h"
+// We need cpl_port as first include to avoid VSIStatBufL being not
+// defined on i586-mingw32msvc.
+#include "cpl_port.h"
+
 #include <ctype.h>
-#include <limits.h>
+#include <climits>
+
 #include "cpl_string.h"
+#include "gdal_pam.h"
+#include "gdal_frmts.h"
 #include "ogr_spatialref.h"
 
 CPL_CVSID("$Id$");
 
-CPL_C_START
-void GDALRegister_AAIGrid();
-void GDALRegister_GRASSASCIIGrid();
-CPL_C_END
-
-static CPLString OSR_GDS( char **papszNV, const char * pszField, 
-                           const char *pszDefaultValue );
+static CPLString OSR_GDS( char **papszNV, const char * pszField,
+                          const char *pszDefaultValue );
 
 typedef enum
 {
@@ -68,7 +69,6 @@ class CPL_DLL AAIGDataset : public GDALPamDataset
     char        **papszPrj;
     CPLString   osPrjFilename;
     char        *pszProjection;
-
 
     unsigned char achReadBuf[256];
     GUIntBig    nBufferOffset;
@@ -100,9 +100,11 @@ class CPL_DLL AAIGDataset : public GDALPamDataset
     static int          Identify( GDALOpenInfo * );
     static CPLErr       Delete( const char *pszFilename );
     static CPLErr       Remove( const char *pszFilename, int bRepError );
-    static GDALDataset *CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
-                                int bStrict, char ** papszOptions,
-                                GDALProgressFunc pfnProgress, void * pProgressData );
+    static GDALDataset *CreateCopy( const char * pszFilename,
+                                    GDALDataset *poSrcDS,
+                                    int bStrict, char ** papszOptions,
+                                    GDALProgressFunc pfnProgress,
+                                    void * pProgressData );
 
     virtual CPLErr GetGeoTransform( double * );
     virtual const char *GetProjectionRef(void);
@@ -346,7 +348,12 @@ AAIGDataset::~AAIGDataset()
     FlushCache();
 
     if( fp != NULL )
-        VSIFCloseL( fp );
+    {
+        if( VSIFCloseL( fp ) != 0 )
+        {
+            CPLError(CE_Failure, CPLE_FileIO, "I/O error");
+        }
+    }
 
     CPLFree( pszProjection );
     CSLDestroy( papszPrj );
@@ -1097,7 +1104,7 @@ GDALDataset * AAIGDataset::CreateCopy(
 
     if( VSIFWriteL( szHeader, strlen(szHeader), 1, fpImage ) != 1)
     {
-        VSIFCloseL(fpImage);
+        CPL_IGNORE_RET_VAL(VSIFCloseL(fpImage));
         return NULL;
     }
 
@@ -1191,7 +1198,8 @@ GDALDataset * AAIGDataset::CreateCopy(
 
     CPLFree( panScanline );
     CPLFree( padfScanline );
-    VSIFCloseL( fpImage );
+    if( VSIFCloseL( fpImage ) != 0 )
+        eErr = CE_Failure;
 
     if( eErr != CE_None )
         return NULL;
@@ -1222,7 +1230,7 @@ GDALDataset * AAIGDataset::CreateCopy(
             oSRS.exportToWkt( &pszESRIProjection );
             CPL_IGNORE_RET_VAL(VSIFWriteL( pszESRIProjection, 1, strlen(pszESRIProjection), fp ));
 
-            VSIFCloseL( fp );
+            CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
             CPLFree( pszESRIProjection );
         }
         else

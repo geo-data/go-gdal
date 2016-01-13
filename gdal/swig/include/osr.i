@@ -121,7 +121,7 @@ OGRErr GetWellKnownGeogCSAsWKT( const char *name, char **argout ) {
   OGRSpatialReferenceH srs = OSRNewSpatialReference("");
   OGRErr rcode = OSRSetWellKnownGeogCS( srs, name );
   if( rcode == OGRERR_NONE )
-      rcode = OSRExportToWkt ( srs, argout );  
+      rcode = OSRExportToWkt ( srs, argout );
   OSRDestroySpatialReference( srs );
   return rcode;
 }
@@ -135,7 +135,7 @@ OGRErr GetUserInputAsWKT( const char *name, char **argout ) {
   OGRSpatialReferenceH srs = OSRNewSpatialReference("");
   OGRErr rcode = OSRSetFromUserInput( srs, name );
   if( rcode == OGRERR_NONE )
-      rcode = OSRExportToWkt ( srs, argout );  
+      rcode = OSRExportToWkt ( srs, argout );
   OSRDestroySpatialReference( srs );
   return rcode;
 }
@@ -150,7 +150,7 @@ OGRErr GetUserInputAsWKT( const char *name, char **argout ) {
  *
  * All other languages will have a more simplistic interface which is
  * exactly the same as the C api.
- * 
+ *
  */
 
 #if !defined(SWIGPYTHON)
@@ -290,7 +290,7 @@ public:
 */
 
   OGRErr SetAttrValue( const char *name, const char *value ) {
-    return OSRSetAttrValue( self, name, value ); 
+    return OSRSetAttrValue( self, name, value );
   }
 
 /*
@@ -334,7 +334,7 @@ public:
       name = OSRGetAttrValue( self, "LOCAL_CS|UNIT", 0 );
     }
 
-    if (name != 0) 
+    if (name != 0)
       return name;
 
     return "Meter";
@@ -353,8 +353,8 @@ public:
   }
 
   int GetUTMZone() {
-    // Note: we will return south zones as negative since it is 
-    // hard to return two values as the C API does. 
+    // Note: we will return south zones as negative since it is
+    // hard to return two values as the C API does.
     int bNorth = FALSE;
     int nZone = OSRGetUTMZone( self, &bNorth );
     if( !bNorth )
@@ -375,7 +375,7 @@ public:
   }
 
   OGRErr SetProjParm( const char *name, double val ) {
-    return OSRSetProjParm( self, name, val ); 
+    return OSRSetProjParm( self, name, val );
   }
 
   double GetProjParm( const char *name, double default_val = 0.0 ) {
@@ -411,14 +411,14 @@ public:
   OGRErr SetACEA( double stdp1, double stdp2,
  		double clat, double clong,
                 double fe, double fn ) {
-    return OSRSetACEA( self, stdp1, stdp2, clat, clong, 
+    return OSRSetACEA( self, stdp1, stdp2, clat, clong,
                        fe, fn );
-  }    
+  }
 
 %feature( "kwargs" ) SetAE;
   OGRErr SetAE( double clat, double clong,
               double fe, double fn ) {
-    return OSRSetAE( self, clat, clong, 
+    return OSRSetAE( self, clat, clong,
                      fe, fn );
   }
 
@@ -430,14 +430,14 @@ public:
 %feature( "kwargs" ) SetCEA;
   OGRErr SetCEA( double stdp1, double cm,
                double fe, double fn ) {
-    return OSRSetCEA( self, stdp1, cm, 
+    return OSRSetCEA( self, stdp1, cm,
                       fe, fn );
   }
 
 %feature( "kwargs" ) SetCS;
   OGRErr SetCS( double clat, double clong,
               double fe, double fn ) {
-    return OSRSetCS( self, clat, clong, 
+    return OSRSetCS( self, clat, clong,
                      fe, fn );
   }
 
@@ -445,7 +445,7 @@ public:
   OGRErr SetEC( double stdp1, double stdp2,
               double clat, double clong,
               double fe, double fn ) {
-    return OSRSetEC( self, stdp1, stdp2, clat, clong, 
+    return OSRSetEC( self, stdp1, stdp2, clat, clong,
                      fe, fn );
   }
 
@@ -464,7 +464,7 @@ public:
 %feature( "kwargs" ) SetEquirectangular;
   OGRErr SetEquirectangular( double clat, double clong,
                            double fe, double fn ) {
-    return OSRSetEquirectangular( self, clat, clong, 
+    return OSRSetEquirectangular( self, clat, clong,
                                   fe, fn );
   }
 
@@ -487,7 +487,7 @@ public:
               double fe, double fn ) {
     return OSRSetGS( self, cm, fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetGH;
   OGRErr SetGH( double cm,
               double fe, double fn ) {
@@ -497,18 +497,18 @@ public:
   OGRErr SetIGH() {
     return OSRSetIGH( self );
   }
-    
+
 %feature( "kwargs" ) SetGEOS;
   OGRErr SetGEOS( double cm, double satelliteheight,
                 double fe, double fn ) {
     return OSRSetGEOS( self, cm, satelliteheight,
                        fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetGnomonic;
   OGRErr SetGnomonic( double clat, double clong,
                     double fe, double fn ) {
-    return OSRSetGnomonic( self, clat, clong, 
+    return OSRSetGnomonic( self, clat, clong,
                            fe, fn );
   }
 
@@ -527,24 +527,24 @@ public:
                    double dfLat2, double dfLong2,
                    double scale,
                    double fe, double fn ) {
-    return OSRSetHOM2PNO( self, clat, dfLat1, dfLong1, dfLat2, dfLong2, 
+    return OSRSetHOM2PNO( self, clat, dfLat1, dfLong1, dfLat2, dfLong2,
                           scale, fe, fn );
   }
 
 %feature( "kwargs" ) SetKrovak;
   OGRErr SetKrovak( double clat, double clong,
                   double azimuth, double pseudostdparallellat,
-                  double scale, 
+                  double scale,
                   double fe, double fn ) {
-    return OSRSetKrovak( self, clat, clong, 
-                         azimuth, pseudostdparallellat, 
+    return OSRSetKrovak( self, clat, clong,
+                         azimuth, pseudostdparallellat,
                          scale, fe, fn );
   }
 
 %feature( "kwargs" ) SetLAEA;
   OGRErr SetLAEA( double clat, double clong,
                 double fe, double fn ) {
-    return OSRSetLAEA( self, clat, clong, 
+    return OSRSetLAEA( self, clat, clong,
                        fe, fn );
   }
 
@@ -552,7 +552,7 @@ public:
   OGRErr SetLCC( double stdp1, double stdp2,
                double clat, double clong,
                double fe, double fn ) {
-    return OSRSetLCC( self, stdp1, stdp2, clat, clong, 
+    return OSRSetLCC( self, stdp1, stdp2, clat, clong,
                       fe, fn );
   }
 
@@ -560,7 +560,7 @@ public:
   OGRErr SetLCC1SP( double clat, double clong,
                   double scale,
                   double fe, double fn ) {
-    return OSRSetLCC1SP( self, clat, clong, scale, 
+    return OSRSetLCC1SP( self, clat, clong, scale,
                          fe, fn );
   }
 
@@ -568,36 +568,36 @@ public:
   OGRErr SetLCCB( double stdp1, double stdp2,
                 double clat, double clong,
                 double fe, double fn ) {
-    return OSRSetLCCB( self, stdp1, stdp2, clat, clong, 
+    return OSRSetLCCB( self, stdp1, stdp2, clat, clong,
                        fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetMC;
   OGRErr SetMC( double clat, double clong,
               double fe, double fn ) {
-    return OSRSetMC( self, clat, clong,    
+    return OSRSetMC( self, clat, clong,
                      fe, fn );
   }
 
 %feature( "kwargs" ) SetMercator;
   OGRErr SetMercator( double clat, double clong,
-                    double scale, 
+                    double scale,
                     double fe, double fn ) {
-    return OSRSetMercator( self, clat, clong, 
+    return OSRSetMercator( self, clat, clong,
                            scale, fe, fn );
   }
 
 %feature( "kwargs" ) SetMollweide;
   OGRErr  SetMollweide( double cm,
                       double fe, double fn ) {
-    return OSRSetMollweide( self, cm, 
+    return OSRSetMollweide( self, cm,
                             fe, fn );
   }
 
 %feature( "kwargs" ) SetNZMG;
   OGRErr SetNZMG( double clat, double clong,
                 double fe, double fn ) {
-    return OSRSetNZMG( self, clat, clong, 
+    return OSRSetNZMG( self, clat, clong,
                        fe, fn );
   }
 
@@ -605,21 +605,21 @@ public:
   OGRErr SetOS( double dfOriginLat, double dfCMeridian,
               double scale,
               double fe,double fn) {
-    return OSRSetOS( self, dfOriginLat, dfCMeridian, scale, 
+    return OSRSetOS( self, dfOriginLat, dfCMeridian, scale,
                      fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetOrthographic;
   OGRErr SetOrthographic( double clat, double clong,
                         double fe,double fn) {
-    return OSRSetOrthographic( self, clat, clong, 
+    return OSRSetOrthographic( self, clat, clong,
                                fe, fn );
   }
 
 %feature( "kwargs" ) SetPolyconic;
   OGRErr SetPolyconic( double clat, double clong,
                      double fe, double fn ) {
-    return OSRSetPolyconic( self, clat, clong, 
+    return OSRSetPolyconic( self, clat, clong,
                             fe, fn );
   }
 
@@ -630,39 +630,39 @@ public:
     return OSRSetPS( self, clat, clong, scale,
                      fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetRobinson;
-  OGRErr SetRobinson( double clong, 
+  OGRErr SetRobinson( double clong,
                     double fe, double fn ) {
     return OSRSetRobinson( self, clong, fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetSinusoidal;
-  OGRErr SetSinusoidal( double clong, 
+  OGRErr SetSinusoidal( double clong,
                       double fe, double fn ) {
     return OSRSetSinusoidal( self, clong, fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetStereographic;
   OGRErr SetStereographic( double clat, double clong,
                          double scale,
                          double fe,double fn) {
-    return OSRSetStereographic( self, clat, clong, scale, 
+    return OSRSetStereographic( self, clat, clong, scale,
                                 fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetSOC;
   OGRErr SetSOC( double latitudeoforigin, double cm,
                double fe, double fn ) {
     return OSRSetSOC( self, latitudeoforigin, cm,
 	              fe, fn );
   }
-    
+
 %feature( "kwargs" ) SetTM;
   OGRErr SetTM( double clat, double clong,
               double scale,
               double fe, double fn ) {
-    return OSRSetTM( self, clat, clong, scale, 
+    return OSRSetTM( self, clat, clong, scale,
                      fe, fn );
   }
 
@@ -671,14 +671,14 @@ public:
                      double clat, double clong,
                      double scale,
                      double fe, double fn ) {
-    return OSRSetTMVariant( self, pszVariantName, clat, clong,  
+    return OSRSetTMVariant( self, pszVariantName, clat, clong,
                             scale, fe, fn );
   }
 
 %feature( "kwargs" ) SetTMG;
-  OGRErr SetTMG( double clat, double clong, 
+  OGRErr SetTMG( double clat, double clong,
                double fe, double fn ) {
-    return OSRSetTMG( self, clat, clong, 
+    return OSRSetTMG( self, clat, clong,
                       fe, fn );
   }
 
@@ -686,7 +686,7 @@ public:
   OGRErr SetTMSO( double clat, double clong,
                 double scale,
                 double fe, double fn ) {
-    return OSRSetTMSO( self, clat, clong, scale, 
+    return OSRSetTMSO( self, clat, clong, scale,
                        fe, fn );
   }
 
@@ -753,10 +753,10 @@ public:
                     const char *VertDatumName = "unnamed",
                     int VertDatumType = 0) {
     return OSRSetVertCS( self, VertCSName, VertDatumName, VertDatumType );
-  }  
+  }
 
 %apply Pointer NONNULL {OSRSpatialReferenceShadow* horizcs};
-%apply Pointer NONNULL {OSRSpatialReferenceShadow* vertcs};  
+%apply Pointer NONNULL {OSRSpatialReferenceShadow* vertcs};
   OGRErr SetCompoundCS( const char *name,
                         OSRSpatialReferenceShadow *horizcs,
                         OSRSpatialReferenceShadow *vertcs ) {
@@ -855,7 +855,7 @@ public:
   OGRErr ExportToXML( char **argout, const char *dialect = "" ) {
     return OSRExportToXML( self, argout, dialect );
   }
-  
+
   OGRErr ExportToMICoordSys( char **argout ) {
     return OSRExportToMICoordSys( self, argout );
   }
@@ -893,7 +893,6 @@ public:
   OGRErr MorphFromESRI() {
     return OSRMorphFromESRI(self);
   }
-
 
 } /* %extend */
 };
@@ -948,7 +947,7 @@ public:
     argout[2] = z;
     OCTTransform( self, 1, &argout[0], &argout[1], &argout[2] );
   }
-  
+
 #ifdef SWIGCSHARP
   %apply (double *inout) {(double*)};
 #endif

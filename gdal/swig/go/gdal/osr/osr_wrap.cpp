@@ -264,7 +264,7 @@ OGRErr GetWellKnownGeogCSAsWKT( const char *name, char **argout ) {
   OGRSpatialReferenceH srs = OSRNewSpatialReference("");
   OGRErr rcode = OSRSetWellKnownGeogCS( srs, name );
   if( rcode == OGRERR_NONE )
-      rcode = OSRExportToWkt ( srs, argout );  
+      rcode = OSRExportToWkt ( srs, argout );
   OSRDestroySpatialReference( srs );
   return rcode;
 }
@@ -274,7 +274,7 @@ OGRErr GetUserInputAsWKT( const char *name, char **argout ) {
   OGRSpatialReferenceH srs = OSRNewSpatialReference("");
   OGRErr rcode = OSRSetFromUserInput( srs, name );
   if( rcode == OGRERR_NONE )
-      rcode = OSRExportToWkt ( srs, argout );  
+      rcode = OSRExportToWkt ( srs, argout );
   OSRDestroySpatialReference( srs );
   return rcode;
 }
@@ -332,7 +332,7 @@ SWIGINTERN char const *OSRSpatialReferenceShadow_GetAttrValue(OSRSpatialReferenc
     return OSRGetAttrValue( self, name, child );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetAttrValue(OSRSpatialReferenceShadow *self,char const *name,char const *value){
-    return OSRSetAttrValue( self, name, value ); 
+    return OSRSetAttrValue( self, name, value );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetAngularUnits(OSRSpatialReferenceShadow *self,char const *name,double to_radians){
     return OSRSetAngularUnits( self, name, to_radians );
@@ -363,7 +363,7 @@ SWIGINTERN char const *OSRSpatialReferenceShadow_GetLinearUnitsName(OSRSpatialRe
       name = OSRGetAttrValue( self, "LOCAL_CS|UNIT", 0 );
     }
 
-    if (name != 0) 
+    if (name != 0)
       return name;
 
     return "Meter";
@@ -378,8 +378,8 @@ SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetUTM(OSRSpatialReferenceShadow *se
     return OSRSetUTM( self, zone, north );
   }
 SWIGINTERN int OSRSpatialReferenceShadow_GetUTMZone(OSRSpatialReferenceShadow *self){
-    // Note: we will return south zones as negative since it is 
-    // hard to return two values as the C API does. 
+    // Note: we will return south zones as negative since it is
+    // hard to return two values as the C API does.
     int bNorth = FALSE;
     int nZone = OSRGetUTMZone( self, &bNorth );
     if( !bNorth )
@@ -396,7 +396,7 @@ SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetProjection(OSRSpatialReferenceSha
     return OSRSetProjection( self, arg );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetProjParm(OSRSpatialReferenceShadow *self,char const *name,double val){
-    return OSRSetProjParm( self, name, val ); 
+    return OSRSetProjParm( self, name, val );
   }
 SWIGINTERN double OSRSpatialReferenceShadow_GetProjParm(OSRSpatialReferenceShadow *self,char const *name,double default_val=0.0){
     // Return code ignored.
@@ -422,26 +422,26 @@ SWIGINTERN double OSRSpatialReferenceShadow_GetInvFlattening(OSRSpatialReference
     return OSRGetInvFlattening( self, 0 );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetACEA(OSRSpatialReferenceShadow *self,double stdp1,double stdp2,double clat,double clong,double fe,double fn){
-    return OSRSetACEA( self, stdp1, stdp2, clat, clong, 
+    return OSRSetACEA( self, stdp1, stdp2, clat, clong,
                        fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetAE(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetAE( self, clat, clong, 
+    return OSRSetAE( self, clat, clong,
                      fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetBonne(OSRSpatialReferenceShadow *self,double stdp,double cm,double fe,double fn){
     return OSRSetBonne( self, stdp, cm, fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetCEA(OSRSpatialReferenceShadow *self,double stdp1,double cm,double fe,double fn){
-    return OSRSetCEA( self, stdp1, cm, 
+    return OSRSetCEA( self, stdp1, cm,
                       fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetCS(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetCS( self, clat, clong, 
+    return OSRSetCS( self, clat, clong,
                      fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetEC(OSRSpatialReferenceShadow *self,double stdp1,double stdp2,double clat,double clong,double fe,double fn){
-    return OSRSetEC( self, stdp1, stdp2, clat, clong, 
+    return OSRSetEC( self, stdp1, stdp2, clat, clong,
                      fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetEckertIV(OSRSpatialReferenceShadow *self,double cm,double fe,double fn){
@@ -451,7 +451,7 @@ SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetEckertVI(OSRSpatialReferenceShado
     return OSRSetEckertVI( self, cm, fe, fn);
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetEquirectangular(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetEquirectangular( self, clat, clong, 
+    return OSRSetEquirectangular( self, clat, clong,
                                   fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetEquirectangular2(OSRSpatialReferenceShadow *self,double clat,double clong,double pseudostdparallellat,double fe,double fn){
@@ -476,7 +476,7 @@ SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetGEOS(OSRSpatialReferenceShadow *s
                        fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetGnomonic(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetGnomonic( self, clat, clong, 
+    return OSRSetGnomonic( self, clat, clong,
                            fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetHOM(OSRSpatialReferenceShadow *self,double clat,double clong,double azimuth,double recttoskew,double scale,double fe,double fn){
@@ -484,56 +484,56 @@ SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetHOM(OSRSpatialReferenceShadow *se
                       scale, fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetHOM2PNO(OSRSpatialReferenceShadow *self,double clat,double dfLat1,double dfLong1,double dfLat2,double dfLong2,double scale,double fe,double fn){
-    return OSRSetHOM2PNO( self, clat, dfLat1, dfLong1, dfLat2, dfLong2, 
+    return OSRSetHOM2PNO( self, clat, dfLat1, dfLong1, dfLat2, dfLong2,
                           scale, fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetKrovak(OSRSpatialReferenceShadow *self,double clat,double clong,double azimuth,double pseudostdparallellat,double scale,double fe,double fn){
-    return OSRSetKrovak( self, clat, clong, 
-                         azimuth, pseudostdparallellat, 
+    return OSRSetKrovak( self, clat, clong,
+                         azimuth, pseudostdparallellat,
                          scale, fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetLAEA(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetLAEA( self, clat, clong, 
+    return OSRSetLAEA( self, clat, clong,
                        fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetLCC(OSRSpatialReferenceShadow *self,double stdp1,double stdp2,double clat,double clong,double fe,double fn){
-    return OSRSetLCC( self, stdp1, stdp2, clat, clong, 
+    return OSRSetLCC( self, stdp1, stdp2, clat, clong,
                       fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetLCC1SP(OSRSpatialReferenceShadow *self,double clat,double clong,double scale,double fe,double fn){
-    return OSRSetLCC1SP( self, clat, clong, scale, 
+    return OSRSetLCC1SP( self, clat, clong, scale,
                          fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetLCCB(OSRSpatialReferenceShadow *self,double stdp1,double stdp2,double clat,double clong,double fe,double fn){
-    return OSRSetLCCB( self, stdp1, stdp2, clat, clong, 
+    return OSRSetLCCB( self, stdp1, stdp2, clat, clong,
                        fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetMC(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetMC( self, clat, clong,    
+    return OSRSetMC( self, clat, clong,
                      fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetMercator(OSRSpatialReferenceShadow *self,double clat,double clong,double scale,double fe,double fn){
-    return OSRSetMercator( self, clat, clong, 
+    return OSRSetMercator( self, clat, clong,
                            scale, fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetMollweide(OSRSpatialReferenceShadow *self,double cm,double fe,double fn){
-    return OSRSetMollweide( self, cm, 
+    return OSRSetMollweide( self, cm,
                             fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetNZMG(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetNZMG( self, clat, clong, 
+    return OSRSetNZMG( self, clat, clong,
                        fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetOS(OSRSpatialReferenceShadow *self,double dfOriginLat,double dfCMeridian,double scale,double fe,double fn){
-    return OSRSetOS( self, dfOriginLat, dfCMeridian, scale, 
+    return OSRSetOS( self, dfOriginLat, dfCMeridian, scale,
                      fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetOrthographic(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetOrthographic( self, clat, clong, 
+    return OSRSetOrthographic( self, clat, clong,
                                fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetPolyconic(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetPolyconic( self, clat, clong, 
+    return OSRSetPolyconic( self, clat, clong,
                             fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetPS(OSRSpatialReferenceShadow *self,double clat,double clong,double scale,double fe,double fn){
@@ -547,7 +547,7 @@ SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetSinusoidal(OSRSpatialReferenceSha
     return OSRSetSinusoidal( self, clong, fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetStereographic(OSRSpatialReferenceShadow *self,double clat,double clong,double scale,double fe,double fn){
-    return OSRSetStereographic( self, clat, clong, scale, 
+    return OSRSetStereographic( self, clat, clong, scale,
                                 fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetSOC(OSRSpatialReferenceShadow *self,double latitudeoforigin,double cm,double fe,double fn){
@@ -555,19 +555,19 @@ SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetSOC(OSRSpatialReferenceShadow *se
 	              fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetTM(OSRSpatialReferenceShadow *self,double clat,double clong,double scale,double fe,double fn){
-    return OSRSetTM( self, clat, clong, scale, 
+    return OSRSetTM( self, clat, clong, scale,
                      fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetTMVariant(OSRSpatialReferenceShadow *self,char const *pszVariantName,double clat,double clong,double scale,double fe,double fn){
-    return OSRSetTMVariant( self, pszVariantName, clat, clong,  
+    return OSRSetTMVariant( self, pszVariantName, clat, clong,
                             scale, fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetTMG(OSRSpatialReferenceShadow *self,double clat,double clong,double fe,double fn){
-    return OSRSetTMG( self, clat, clong, 
+    return OSRSetTMG( self, clat, clong,
                       fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetTMSO(OSRSpatialReferenceShadow *self,double clat,double clong,double scale,double fe,double fn){
-    return OSRSetTMSO( self, clat, clong, scale, 
+    return OSRSetTMSO( self, clat, clong, scale,
                        fe, fn );
   }
 SWIGINTERN OGRErr OSRSpatialReferenceShadow_SetVDG(OSRSpatialReferenceShadow *self,double clong,double fe,double fn){
@@ -725,7 +725,7 @@ SWIGINTERN void OSRCoordinateTransformationShadow_TransformPoints(OSRCoordinateT
 extern "C" {
 #endif
 
-void _wrap_Swig_free_osr_b6aadf85dd55cdd7(void *_swig_go_0) {
+void _wrap_Swig_free_osr_09662cf3c15b8b8e(void *_swig_go_0) {
   void *arg1 = (void *) 0 ;
   
   arg1 = *(void **)&_swig_go_0; 
@@ -735,7 +735,7 @@ void _wrap_Swig_free_osr_b6aadf85dd55cdd7(void *_swig_go_0) {
 }
 
 
-_gostring_ _wrap_SRS_WKT_WGS84_osr_b6aadf85dd55cdd7() {
+_gostring_ _wrap_SRS_WKT_WGS84_osr_09662cf3c15b8b8e() {
   char *result = 0 ;
   _gostring_ _swig_go_result;
   
@@ -747,7 +747,7 @@ _gostring_ _wrap_SRS_WKT_WGS84_osr_b6aadf85dd55cdd7() {
 }
 
 
-intgo _wrap_GetWellKnownGeogCSAsWKT_osr_b6aadf85dd55cdd7(_gostring_ _swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_GetWellKnownGeogCSAsWKT_osr_09662cf3c15b8b8e(_gostring_ _swig_go_0, _gostring_* _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -768,7 +768,7 @@ intgo _wrap_GetWellKnownGeogCSAsWKT_osr_b6aadf85dd55cdd7(_gostring_ _swig_go_0, 
 }
 
 
-intgo _wrap_GetUserInputAsWKT_osr_b6aadf85dd55cdd7(_gostring_ _swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_GetUserInputAsWKT_osr_09662cf3c15b8b8e(_gostring_ _swig_go_0, _gostring_* _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -789,7 +789,7 @@ intgo _wrap_GetUserInputAsWKT_osr_b6aadf85dd55cdd7(_gostring_ _swig_go_0, _gostr
 }
 
 
-_gostring_* _wrap_GetProjectionMethods_osr_b6aadf85dd55cdd7() {
+_gostring_* _wrap_GetProjectionMethods_osr_09662cf3c15b8b8e() {
   char **result = 0 ;
   _gostring_* _swig_go_result;
   
@@ -800,7 +800,7 @@ _gostring_* _wrap_GetProjectionMethods_osr_b6aadf85dd55cdd7() {
 }
 
 
-_gostring_* _wrap_GetProjectionMethodParameterList_osr_b6aadf85dd55cdd7(_gostring_ _swig_go_0, _gostring_* _swig_go_1) {
+_gostring_* _wrap_GetProjectionMethodParameterList_osr_09662cf3c15b8b8e(_gostring_ _swig_go_0, _gostring_* _swig_go_1) {
   char *arg1 = (char *) 0 ;
   char **arg2 = (char **) 0 ;
   char **result = 0 ;
@@ -815,7 +815,7 @@ _gostring_* _wrap_GetProjectionMethodParameterList_osr_b6aadf85dd55cdd7(_gostrin
 }
 
 
-void _wrap_GetProjectionMethodParamInfo_osr_b6aadf85dd55cdd7(_gostring_ _swig_go_0, _gostring_ _swig_go_1, _gostring_* _swig_go_2, _gostring_* _swig_go_3, double *_swig_go_4) {
+void _wrap_GetProjectionMethodParamInfo_osr_09662cf3c15b8b8e(_gostring_ _swig_go_0, _gostring_ _swig_go_1, _gostring_* _swig_go_2, _gostring_* _swig_go_3, double *_swig_go_4) {
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
   char **arg3 = (char **) 0 ;
@@ -833,7 +833,7 @@ void _wrap_GetProjectionMethodParamInfo_osr_b6aadf85dd55cdd7(_gostring_ _swig_go
 }
 
 
-OSRSpatialReferenceShadow *_wrap_new_SpatialReference_osr_b6aadf85dd55cdd7(intgo _swig_optargc, _gostring_ _swig_go_0) {
+OSRSpatialReferenceShadow *_wrap_new_SpatialReference_osr_09662cf3c15b8b8e(intgo _swig_optargc, _gostring_ _swig_go_0) {
   char *arg1 = (char *) "" ;
   OSRSpatialReferenceShadow *result = 0 ;
   OSRSpatialReferenceShadow *_swig_go_result;
@@ -848,7 +848,7 @@ OSRSpatialReferenceShadow *_wrap_new_SpatialReference_osr_b6aadf85dd55cdd7(intgo
 }
 
 
-void _wrap_delete_SpatialReference_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+void _wrap_delete_SpatialReference_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   
   arg1 = *(OSRSpatialReferenceShadow **)&_swig_go_0; 
@@ -858,7 +858,7 @@ void _wrap_delete_SpatialReference_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-_gostring_ _wrap_SpatialReference___str___osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+_gostring_ _wrap_SpatialReference___str___osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -872,7 +872,7 @@ _gostring_ _wrap_SpatialReference___str___osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_IsSame_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+intgo _wrap_SpatialReference_IsSame_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
@@ -893,7 +893,7 @@ intgo _wrap_SpatialReference_IsSame_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_IsSameGeogCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+intgo _wrap_SpatialReference_IsSameGeogCS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
@@ -914,7 +914,7 @@ intgo _wrap_SpatialReference_IsSameGeogCS_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_IsSameVertCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+intgo _wrap_SpatialReference_IsSameVertCS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
@@ -935,7 +935,7 @@ intgo _wrap_SpatialReference_IsSameVertCS_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_IsGeographic_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_IsGeographic_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -948,7 +948,7 @@ intgo _wrap_SpatialReference_IsGeographic_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_IsProjected_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_IsProjected_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -961,7 +961,7 @@ intgo _wrap_SpatialReference_IsProjected_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_IsCompound_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_IsCompound_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -974,7 +974,7 @@ intgo _wrap_SpatialReference_IsCompound_osr_b6aadf85dd55cdd7(OSRSpatialReference
 }
 
 
-intgo _wrap_SpatialReference_IsGeocentric_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_IsGeocentric_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -987,7 +987,7 @@ intgo _wrap_SpatialReference_IsGeocentric_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_IsLocal_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_IsLocal_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1000,7 +1000,7 @@ intgo _wrap_SpatialReference_IsLocal_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSha
 }
 
 
-intgo _wrap_SpatialReference_IsVertical_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_IsVertical_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1013,7 +1013,7 @@ intgo _wrap_SpatialReference_IsVertical_osr_b6aadf85dd55cdd7(OSRSpatialReference
 }
 
 
-intgo _wrap_SpatialReference_EPSGTreatsAsLatLong_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_EPSGTreatsAsLatLong_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1026,7 +1026,7 @@ intgo _wrap_SpatialReference_EPSGTreatsAsLatLong_osr_b6aadf85dd55cdd7(OSRSpatial
 }
 
 
-intgo _wrap_SpatialReference_EPSGTreatsAsNorthingEasting_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_EPSGTreatsAsNorthingEasting_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1039,7 +1039,7 @@ intgo _wrap_SpatialReference_EPSGTreatsAsNorthingEasting_osr_b6aadf85dd55cdd7(OS
 }
 
 
-intgo _wrap_SpatialReference_SetAuthority_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, intgo _swig_go_3) {
+intgo _wrap_SpatialReference_SetAuthority_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, intgo _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1058,7 +1058,7 @@ intgo _wrap_SpatialReference_SetAuthority_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-_gostring_ _wrap_SpatialReference_GetAttrValue_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
+_gostring_ _wrap_SpatialReference_GetAttrValue_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, intgo _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   int arg3 = (int) 0 ;
@@ -1083,7 +1083,7 @@ _gostring_ _wrap_SpatialReference_GetAttrValue_osr_b6aadf85dd55cdd7(intgo _swig_
 }
 
 
-intgo _wrap_SpatialReference_SetAttrValue_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_SpatialReference_SetAttrValue_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1106,7 +1106,7 @@ intgo _wrap_SpatialReference_SetAttrValue_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_SetAngularUnits_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+intgo _wrap_SpatialReference_SetAngularUnits_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 ;
@@ -1129,7 +1129,7 @@ intgo _wrap_SpatialReference_SetAngularUnits_osr_b6aadf85dd55cdd7(OSRSpatialRefe
 }
 
 
-double _wrap_SpatialReference_GetAngularUnits_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+double _wrap_SpatialReference_GetAngularUnits_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -1142,7 +1142,7 @@ double _wrap_SpatialReference_GetAngularUnits_osr_b6aadf85dd55cdd7(OSRSpatialRef
 }
 
 
-intgo _wrap_SpatialReference_SetTargetLinearUnits_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetTargetLinearUnits_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -1167,7 +1167,7 @@ intgo _wrap_SpatialReference_SetTargetLinearUnits_osr_b6aadf85dd55cdd7(OSRSpatia
 }
 
 
-intgo _wrap_SpatialReference_SetLinearUnits_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+intgo _wrap_SpatialReference_SetLinearUnits_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 ;
@@ -1190,7 +1190,7 @@ intgo _wrap_SpatialReference_SetLinearUnits_osr_b6aadf85dd55cdd7(OSRSpatialRefer
 }
 
 
-intgo _wrap_SpatialReference_SetLinearUnitsAndUpdateParameters_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+intgo _wrap_SpatialReference_SetLinearUnitsAndUpdateParameters_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 ;
@@ -1213,7 +1213,7 @@ intgo _wrap_SpatialReference_SetLinearUnitsAndUpdateParameters_osr_b6aadf85dd55c
 }
 
 
-double _wrap_SpatialReference_GetLinearUnits_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+double _wrap_SpatialReference_GetLinearUnits_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -1226,7 +1226,7 @@ double _wrap_SpatialReference_GetLinearUnits_osr_b6aadf85dd55cdd7(OSRSpatialRefe
 }
 
 
-_gostring_ _wrap_SpatialReference_GetLinearUnitsName_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+_gostring_ _wrap_SpatialReference_GetLinearUnitsName_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *result = 0 ;
   _gostring_ _swig_go_result;
@@ -1239,7 +1239,7 @@ _gostring_ _wrap_SpatialReference_GetLinearUnitsName_osr_b6aadf85dd55cdd7(OSRSpa
 }
 
 
-_gostring_ _wrap_SpatialReference_GetAuthorityCode_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_SpatialReference_GetAuthorityCode_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *result = 0 ;
@@ -1254,7 +1254,7 @@ _gostring_ _wrap_SpatialReference_GetAuthorityCode_osr_b6aadf85dd55cdd7(OSRSpati
 }
 
 
-_gostring_ _wrap_SpatialReference_GetAuthorityName_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+_gostring_ _wrap_SpatialReference_GetAuthorityName_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *result = 0 ;
@@ -1269,7 +1269,7 @@ _gostring_ _wrap_SpatialReference_GetAuthorityName_osr_b6aadf85dd55cdd7(OSRSpati
 }
 
 
-intgo _wrap_SpatialReference_SetUTM_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_SpatialReference_SetUTM_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int arg2 ;
   int arg3 = (int) 1 ;
@@ -1288,7 +1288,7 @@ intgo _wrap_SpatialReference_SetUTM_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OS
 }
 
 
-intgo _wrap_SpatialReference_GetUTMZone_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_GetUTMZone_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int result;
   intgo _swig_go_result;
@@ -1301,7 +1301,7 @@ intgo _wrap_SpatialReference_GetUTMZone_osr_b6aadf85dd55cdd7(OSRSpatialReference
 }
 
 
-intgo _wrap_SpatialReference_SetStatePlane_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, _gostring_ _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetStatePlane_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1, intgo _swig_go_2, _gostring_ _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int arg2 ;
   int arg3 = (int) 1 ;
@@ -1328,7 +1328,7 @@ intgo _wrap_SpatialReference_SetStatePlane_osr_b6aadf85dd55cdd7(intgo _swig_opta
 }
 
 
-intgo _wrap_SpatialReference_AutoIdentifyEPSG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_AutoIdentifyEPSG_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -1341,7 +1341,7 @@ intgo _wrap_SpatialReference_AutoIdentifyEPSG_osr_b6aadf85dd55cdd7(OSRSpatialRef
 }
 
 
-intgo _wrap_SpatialReference_SetProjection_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_SetProjection_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -1356,7 +1356,7 @@ intgo _wrap_SpatialReference_SetProjection_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_SetProjParm_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+intgo _wrap_SpatialReference_SetProjParm_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 ;
@@ -1379,7 +1379,7 @@ intgo _wrap_SpatialReference_SetProjParm_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-double _wrap_SpatialReference_GetProjParm_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+double _wrap_SpatialReference_GetProjParm_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 = (double) 0.0 ;
@@ -1404,7 +1404,7 @@ double _wrap_SpatialReference_GetProjParm_osr_b6aadf85dd55cdd7(intgo _swig_optar
 }
 
 
-intgo _wrap_SpatialReference_SetNormProjParm_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+intgo _wrap_SpatialReference_SetNormProjParm_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 ;
@@ -1427,7 +1427,7 @@ intgo _wrap_SpatialReference_SetNormProjParm_osr_b6aadf85dd55cdd7(OSRSpatialRefe
 }
 
 
-double _wrap_SpatialReference_GetNormProjParm_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
+double _wrap_SpatialReference_GetNormProjParm_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 = (double) 0.0 ;
@@ -1452,7 +1452,7 @@ double _wrap_SpatialReference_GetNormProjParm_osr_b6aadf85dd55cdd7(intgo _swig_o
 }
 
 
-double _wrap_SpatialReference_GetSemiMajor_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+double _wrap_SpatialReference_GetSemiMajor_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -1465,7 +1465,7 @@ double _wrap_SpatialReference_GetSemiMajor_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-double _wrap_SpatialReference_GetSemiMinor_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+double _wrap_SpatialReference_GetSemiMinor_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -1478,7 +1478,7 @@ double _wrap_SpatialReference_GetSemiMinor_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-double _wrap_SpatialReference_GetInvFlattening_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+double _wrap_SpatialReference_GetInvFlattening_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double result;
   double _swig_go_result;
@@ -1491,7 +1491,7 @@ double _wrap_SpatialReference_GetInvFlattening_osr_b6aadf85dd55cdd7(OSRSpatialRe
 }
 
 
-intgo _wrap_SpatialReference_SetACEA_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
+intgo _wrap_SpatialReference_SetACEA_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1516,7 +1516,7 @@ intgo _wrap_SpatialReference_SetACEA_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSha
 }
 
 
-intgo _wrap_SpatialReference_SetAE_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetAE_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1537,7 +1537,7 @@ intgo _wrap_SpatialReference_SetAE_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetBonne_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetBonne_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1558,7 +1558,7 @@ intgo _wrap_SpatialReference_SetBonne_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSh
 }
 
 
-intgo _wrap_SpatialReference_SetCEA_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetCEA_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1579,7 +1579,7 @@ intgo _wrap_SpatialReference_SetCEA_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_SetCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetCS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1600,7 +1600,7 @@ intgo _wrap_SpatialReference_SetCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetEC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
+intgo _wrap_SpatialReference_SetEC_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1625,7 +1625,7 @@ intgo _wrap_SpatialReference_SetEC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetEckertIV_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetEckertIV_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1644,7 +1644,7 @@ intgo _wrap_SpatialReference_SetEckertIV_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_SetEckertVI_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetEckertVI_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1663,7 +1663,7 @@ intgo _wrap_SpatialReference_SetEckertVI_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_SetEquirectangular_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetEquirectangular_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1684,7 +1684,7 @@ intgo _wrap_SpatialReference_SetEquirectangular_osr_b6aadf85dd55cdd7(OSRSpatialR
 }
 
 
-intgo _wrap_SpatialReference_SetEquirectangular2_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetEquirectangular2_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1707,7 +1707,7 @@ intgo _wrap_SpatialReference_SetEquirectangular2_osr_b6aadf85dd55cdd7(OSRSpatial
 }
 
 
-intgo _wrap_SpatialReference_SetGaussSchreiberTMercator_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetGaussSchreiberTMercator_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1730,7 +1730,7 @@ intgo _wrap_SpatialReference_SetGaussSchreiberTMercator_osr_b6aadf85dd55cdd7(OSR
 }
 
 
-intgo _wrap_SpatialReference_SetGS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetGS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1749,7 +1749,7 @@ intgo _wrap_SpatialReference_SetGS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetGH_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetGH_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1768,7 +1768,7 @@ intgo _wrap_SpatialReference_SetGH_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetIGH_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_SetIGH_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -1781,7 +1781,7 @@ intgo _wrap_SpatialReference_SetIGH_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_SetGEOS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetGEOS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1802,7 +1802,7 @@ intgo _wrap_SpatialReference_SetGEOS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSha
 }
 
 
-intgo _wrap_SpatialReference_SetGnomonic_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetGnomonic_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1823,7 +1823,7 @@ intgo _wrap_SpatialReference_SetGnomonic_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_SetHOM_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7) {
+intgo _wrap_SpatialReference_SetHOM_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1850,7 +1850,7 @@ intgo _wrap_SpatialReference_SetHOM_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_SetHOM2PNO_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7, double _swig_go_8) {
+intgo _wrap_SpatialReference_SetHOM2PNO_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7, double _swig_go_8) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1879,7 +1879,7 @@ intgo _wrap_SpatialReference_SetHOM2PNO_osr_b6aadf85dd55cdd7(OSRSpatialReference
 }
 
 
-intgo _wrap_SpatialReference_SetKrovak_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7) {
+intgo _wrap_SpatialReference_SetKrovak_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1906,7 +1906,7 @@ intgo _wrap_SpatialReference_SetKrovak_osr_b6aadf85dd55cdd7(OSRSpatialReferenceS
 }
 
 
-intgo _wrap_SpatialReference_SetLAEA_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetLAEA_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1927,7 +1927,7 @@ intgo _wrap_SpatialReference_SetLAEA_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSha
 }
 
 
-intgo _wrap_SpatialReference_SetLCC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
+intgo _wrap_SpatialReference_SetLCC_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1952,7 +1952,7 @@ intgo _wrap_SpatialReference_SetLCC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_SetLCC1SP_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetLCC1SP_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -1975,7 +1975,7 @@ intgo _wrap_SpatialReference_SetLCC1SP_osr_b6aadf85dd55cdd7(OSRSpatialReferenceS
 }
 
 
-intgo _wrap_SpatialReference_SetLCCB_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
+intgo _wrap_SpatialReference_SetLCCB_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2000,7 +2000,7 @@ intgo _wrap_SpatialReference_SetLCCB_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSha
 }
 
 
-intgo _wrap_SpatialReference_SetMC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetMC_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2021,7 +2021,7 @@ intgo _wrap_SpatialReference_SetMC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetMercator_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetMercator_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2044,7 +2044,7 @@ intgo _wrap_SpatialReference_SetMercator_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_SetMollweide_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetMollweide_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2063,7 +2063,7 @@ intgo _wrap_SpatialReference_SetMollweide_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_SetNZMG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetNZMG_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2084,7 +2084,7 @@ intgo _wrap_SpatialReference_SetNZMG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSha
 }
 
 
-intgo _wrap_SpatialReference_SetOS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetOS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2107,7 +2107,7 @@ intgo _wrap_SpatialReference_SetOS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetOrthographic_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetOrthographic_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2128,7 +2128,7 @@ intgo _wrap_SpatialReference_SetOrthographic_osr_b6aadf85dd55cdd7(OSRSpatialRefe
 }
 
 
-intgo _wrap_SpatialReference_SetPolyconic_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetPolyconic_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2149,7 +2149,7 @@ intgo _wrap_SpatialReference_SetPolyconic_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_SetPS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetPS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2172,7 +2172,7 @@ intgo _wrap_SpatialReference_SetPS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetRobinson_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetRobinson_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2191,7 +2191,7 @@ intgo _wrap_SpatialReference_SetRobinson_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_SetSinusoidal_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetSinusoidal_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2210,7 +2210,7 @@ intgo _wrap_SpatialReference_SetSinusoidal_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_SetStereographic_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetStereographic_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2233,7 +2233,7 @@ intgo _wrap_SpatialReference_SetStereographic_osr_b6aadf85dd55cdd7(OSRSpatialRef
 }
 
 
-intgo _wrap_SpatialReference_SetSOC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetSOC_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2254,7 +2254,7 @@ intgo _wrap_SpatialReference_SetSOC_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_SetTM_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetTM_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2277,7 +2277,7 @@ intgo _wrap_SpatialReference_SetTM_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_SetTMVariant_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
+intgo _wrap_SpatialReference_SetTMVariant_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   double arg3 ;
@@ -2302,7 +2302,7 @@ intgo _wrap_SpatialReference_SetTMVariant_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_SetTMG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+intgo _wrap_SpatialReference_SetTMG_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2323,7 +2323,7 @@ intgo _wrap_SpatialReference_SetTMG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_SetTMSO_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
+intgo _wrap_SpatialReference_SetTMSO_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2346,7 +2346,7 @@ intgo _wrap_SpatialReference_SetTMSO_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSha
 }
 
 
-intgo _wrap_SpatialReference_SetVDG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
+intgo _wrap_SpatialReference_SetVDG_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2365,7 +2365,7 @@ intgo _wrap_SpatialReference_SetVDG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShad
 }
 
 
-intgo _wrap_SpatialReference_SetWellKnownGeogCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_SetWellKnownGeogCS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2386,7 +2386,7 @@ intgo _wrap_SpatialReference_SetWellKnownGeogCS_osr_b6aadf85dd55cdd7(OSRSpatialR
 }
 
 
-intgo _wrap_SpatialReference_SetFromUserInput_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_SetFromUserInput_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2407,7 +2407,7 @@ intgo _wrap_SpatialReference_SetFromUserInput_osr_b6aadf85dd55cdd7(OSRSpatialRef
 }
 
 
-intgo _wrap_SpatialReference_CopyGeogCSFrom_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+intgo _wrap_SpatialReference_CopyGeogCSFrom_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
@@ -2428,7 +2428,7 @@ intgo _wrap_SpatialReference_CopyGeogCSFrom_osr_b6aadf85dd55cdd7(OSRSpatialRefer
 }
 
 
-intgo _wrap_SpatialReference_SetTOWGS84_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7) {
+intgo _wrap_SpatialReference_SetTOWGS84_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, double _swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4, double _swig_go_5, double _swig_go_6, double _swig_go_7) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double arg2 ;
   double arg3 ;
@@ -2463,7 +2463,7 @@ intgo _wrap_SpatialReference_SetTOWGS84_osr_b6aadf85dd55cdd7(intgo _swig_optargc
 }
 
 
-intgo _wrap_SpatialReference_GetTOWGS84_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, double *_swig_go_1) {
+intgo _wrap_SpatialReference_GetTOWGS84_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, double *_swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   double *arg2 ;
   OGRErr result;
@@ -2478,7 +2478,7 @@ intgo _wrap_SpatialReference_GetTOWGS84_osr_b6aadf85dd55cdd7(OSRSpatialReference
 }
 
 
-intgo _wrap_SpatialReference_SetLocalCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_SetLocalCS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2493,7 +2493,7 @@ intgo _wrap_SpatialReference_SetLocalCS_osr_b6aadf85dd55cdd7(OSRSpatialReference
 }
 
 
-intgo _wrap_SpatialReference_SetGeogCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3, double _swig_go_4, double _swig_go_5, _gostring_ _swig_go_6, double _swig_go_7, _gostring_ _swig_go_8, double _swig_go_9) {
+intgo _wrap_SpatialReference_SetGeogCS_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3, double _swig_go_4, double _swig_go_5, _gostring_ _swig_go_6, double _swig_go_7, _gostring_ _swig_go_8, double _swig_go_9) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -2532,7 +2532,7 @@ intgo _wrap_SpatialReference_SetGeogCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc,
 }
 
 
-intgo _wrap_SpatialReference_SetProjCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_SetProjCS_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) "unnamed" ;
   OGRErr result;
@@ -2555,7 +2555,7 @@ intgo _wrap_SpatialReference_SetProjCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc,
 }
 
 
-intgo _wrap_SpatialReference_SetGeocCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_SetGeocCS_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) "unnamed" ;
   OGRErr result;
@@ -2578,7 +2578,7 @@ intgo _wrap_SpatialReference_SetGeocCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc,
 }
 
 
-intgo _wrap_SpatialReference_SetVertCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, intgo _swig_go_3) {
+intgo _wrap_SpatialReference_SetVertCS_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, intgo _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) "unnamed" ;
   char *arg3 = (char *) "unnamed" ;
@@ -2603,7 +2603,7 @@ intgo _wrap_SpatialReference_SetVertCS_osr_b6aadf85dd55cdd7(intgo _swig_optargc,
 }
 
 
-intgo _wrap_SpatialReference_SetCompoundCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2, OSRSpatialReferenceShadow *_swig_go_3) {
+intgo _wrap_SpatialReference_SetCompoundCS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, OSRSpatialReferenceShadow *_swig_go_2, OSRSpatialReferenceShadow *_swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OSRSpatialReferenceShadow *arg3 = (OSRSpatialReferenceShadow *) 0 ;
@@ -2640,7 +2640,7 @@ intgo _wrap_SpatialReference_SetCompoundCS_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_ImportFromWkt_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromWkt_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -2655,7 +2655,7 @@ intgo _wrap_SpatialReference_ImportFromWkt_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_ImportFromProj4_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromProj4_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2670,7 +2670,7 @@ intgo _wrap_SpatialReference_ImportFromProj4_osr_b6aadf85dd55cdd7(OSRSpatialRefe
 }
 
 
-intgo _wrap_SpatialReference_ImportFromUrl_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromUrl_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2691,7 +2691,7 @@ intgo _wrap_SpatialReference_ImportFromUrl_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_ImportFromESRI_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromESRI_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -2706,7 +2706,7 @@ intgo _wrap_SpatialReference_ImportFromESRI_osr_b6aadf85dd55cdd7(OSRSpatialRefer
 }
 
 
-intgo _wrap_SpatialReference_ImportFromEPSG_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromEPSG_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int arg2 ;
   OGRErr result;
@@ -2721,7 +2721,7 @@ intgo _wrap_SpatialReference_ImportFromEPSG_osr_b6aadf85dd55cdd7(OSRSpatialRefer
 }
 
 
-intgo _wrap_SpatialReference_ImportFromEPSGA_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromEPSGA_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, intgo _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   int arg2 ;
   OGRErr result;
@@ -2736,7 +2736,7 @@ intgo _wrap_SpatialReference_ImportFromEPSGA_osr_b6aadf85dd55cdd7(OSRSpatialRefe
 }
 
 
-intgo _wrap_SpatialReference_ImportFromPCI_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double *_swig_go_3) {
+intgo _wrap_SpatialReference_ImportFromPCI_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, double *_swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) "METRE" ;
@@ -2759,7 +2759,7 @@ intgo _wrap_SpatialReference_ImportFromPCI_osr_b6aadf85dd55cdd7(intgo _swig_opta
 }
 
 
-intgo _wrap_SpatialReference_ImportFromUSGS_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, long long _swig_go_1, long long _swig_go_2, double *_swig_go_3, long long _swig_go_4) {
+intgo _wrap_SpatialReference_ImportFromUSGS_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, long long _swig_go_1, long long _swig_go_2, double *_swig_go_3, long long _swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   long arg2 ;
   long arg3 = (long) 0 ;
@@ -2786,7 +2786,7 @@ intgo _wrap_SpatialReference_ImportFromUSGS_osr_b6aadf85dd55cdd7(intgo _swig_opt
 }
 
 
-intgo _wrap_SpatialReference_ImportFromXML_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromXML_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2801,7 +2801,7 @@ intgo _wrap_SpatialReference_ImportFromXML_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_ImportFromERM_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
+intgo _wrap_SpatialReference_ImportFromERM_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1, _gostring_ _swig_go_2, _gostring_ _swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
@@ -2832,7 +2832,7 @@ intgo _wrap_SpatialReference_ImportFromERM_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_ImportFromMICoordSys_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromMICoordSys_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_ _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char *arg2 = (char *) 0 ;
   OGRErr result;
@@ -2847,7 +2847,7 @@ intgo _wrap_SpatialReference_ImportFromMICoordSys_osr_b6aadf85dd55cdd7(OSRSpatia
 }
 
 
-intgo _wrap_SpatialReference_ImportFromOzi_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_SpatialReference_ImportFromOzi_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -2868,7 +2868,7 @@ intgo _wrap_SpatialReference_ImportFromOzi_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_ExportToWkt_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_SpatialReference_ExportToWkt_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -2883,7 +2883,7 @@ intgo _wrap_SpatialReference_ExportToWkt_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_ExportToPrettyWkt_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1, intgo _swig_go_2) {
+intgo _wrap_SpatialReference_ExportToPrettyWkt_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1, intgo _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   int arg3 = (int) 0 ;
@@ -2902,7 +2902,7 @@ intgo _wrap_SpatialReference_ExportToPrettyWkt_osr_b6aadf85dd55cdd7(intgo _swig_
 }
 
 
-intgo _wrap_SpatialReference_ExportToProj4_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_SpatialReference_ExportToProj4_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -2917,7 +2917,7 @@ intgo _wrap_SpatialReference_ExportToProj4_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_ExportToPCI_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_* _swig_go_2, double **_swig_go_3) {
+intgo _wrap_SpatialReference_ExportToPCI_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_* _swig_go_2, double **_swig_go_3) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   char **arg3 = (char **) 0 ;
@@ -2936,7 +2936,7 @@ intgo _wrap_SpatialReference_ExportToPCI_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_ExportToUSGS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, long long *_swig_go_1, long long *_swig_go_2, double **_swig_go_3, long long *_swig_go_4) {
+intgo _wrap_SpatialReference_ExportToUSGS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, long long *_swig_go_1, long long *_swig_go_2, double **_swig_go_3, long long *_swig_go_4) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   long *arg2 = (long *) 0 ;
   long *arg3 = (long *) 0 ;
@@ -2957,7 +2957,7 @@ intgo _wrap_SpatialReference_ExportToUSGS_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_ExportToXML_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_ _swig_go_2) {
+intgo _wrap_SpatialReference_ExportToXML_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1, _gostring_ _swig_go_2) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   char *arg3 = (char *) "" ;
@@ -2976,7 +2976,7 @@ intgo _wrap_SpatialReference_ExportToXML_osr_b6aadf85dd55cdd7(intgo _swig_optarg
 }
 
 
-intgo _wrap_SpatialReference_ExportToMICoordSys_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
+intgo _wrap_SpatialReference_ExportToMICoordSys_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, _gostring_* _swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   char **arg2 = (char **) 0 ;
   OGRErr result;
@@ -2991,7 +2991,7 @@ intgo _wrap_SpatialReference_ExportToMICoordSys_osr_b6aadf85dd55cdd7(OSRSpatialR
 }
 
 
-OSRSpatialReferenceShadow *_wrap_SpatialReference_CloneGeogCS_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+OSRSpatialReferenceShadow *_wrap_SpatialReference_CloneGeogCS_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *result = 0 ;
   OSRSpatialReferenceShadow *_swig_go_result;
@@ -3004,7 +3004,7 @@ OSRSpatialReferenceShadow *_wrap_SpatialReference_CloneGeogCS_osr_b6aadf85dd55cd
 }
 
 
-OSRSpatialReferenceShadow *_wrap_SpatialReference_Clone_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+OSRSpatialReferenceShadow *_wrap_SpatialReference_Clone_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *result = 0 ;
   OSRSpatialReferenceShadow *_swig_go_result;
@@ -3017,7 +3017,7 @@ OSRSpatialReferenceShadow *_wrap_SpatialReference_Clone_osr_b6aadf85dd55cdd7(OSR
 }
 
 
-intgo _wrap_SpatialReference_Validate_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_Validate_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -3030,7 +3030,7 @@ intgo _wrap_SpatialReference_Validate_osr_b6aadf85dd55cdd7(OSRSpatialReferenceSh
 }
 
 
-intgo _wrap_SpatialReference_StripCTParms_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_StripCTParms_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -3043,7 +3043,7 @@ intgo _wrap_SpatialReference_StripCTParms_osr_b6aadf85dd55cdd7(OSRSpatialReferen
 }
 
 
-intgo _wrap_SpatialReference_FixupOrdering_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_FixupOrdering_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -3056,7 +3056,7 @@ intgo _wrap_SpatialReference_FixupOrdering_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-intgo _wrap_SpatialReference_Fixup_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_Fixup_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -3069,7 +3069,7 @@ intgo _wrap_SpatialReference_Fixup_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShado
 }
 
 
-intgo _wrap_SpatialReference_MorphToESRI_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_MorphToESRI_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -3082,7 +3082,7 @@ intgo _wrap_SpatialReference_MorphToESRI_osr_b6aadf85dd55cdd7(OSRSpatialReferenc
 }
 
 
-intgo _wrap_SpatialReference_MorphFromESRI_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0) {
+intgo _wrap_SpatialReference_MorphFromESRI_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OGRErr result;
   intgo _swig_go_result;
@@ -3095,7 +3095,7 @@ intgo _wrap_SpatialReference_MorphFromESRI_osr_b6aadf85dd55cdd7(OSRSpatialRefere
 }
 
 
-OSRCoordinateTransformationShadow *_wrap_new_CoordinateTransformation_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+OSRCoordinateTransformationShadow *_wrap_new_CoordinateTransformation_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   OSRCoordinateTransformationShadow *result = 0 ;
@@ -3110,7 +3110,7 @@ OSRCoordinateTransformationShadow *_wrap_new_CoordinateTransformation_osr_b6aadf
 }
 
 
-void _wrap_delete_CoordinateTransformation_osr_b6aadf85dd55cdd7(OSRCoordinateTransformationShadow *_swig_go_0) {
+void _wrap_delete_CoordinateTransformation_osr_09662cf3c15b8b8e(OSRCoordinateTransformationShadow *_swig_go_0) {
   OSRCoordinateTransformationShadow *arg1 = (OSRCoordinateTransformationShadow *) 0 ;
   
   arg1 = *(OSRCoordinateTransformationShadow **)&_swig_go_0; 
@@ -3120,7 +3120,7 @@ void _wrap_delete_CoordinateTransformation_osr_b6aadf85dd55cdd7(OSRCoordinateTra
 }
 
 
-void _wrap_CoordinateTransformation_TransformPoint__SWIG_0_osr_b6aadf85dd55cdd7(OSRCoordinateTransformationShadow *_swig_go_0, double *_swig_go_1) {
+void _wrap_CoordinateTransformation_TransformPoint__SWIG_0_osr_09662cf3c15b8b8e(OSRCoordinateTransformationShadow *_swig_go_0, double *_swig_go_1) {
   OSRCoordinateTransformationShadow *arg1 = (OSRCoordinateTransformationShadow *) 0 ;
   double *arg2 ;
   
@@ -3132,7 +3132,7 @@ void _wrap_CoordinateTransformation_TransformPoint__SWIG_0_osr_b6aadf85dd55cdd7(
 }
 
 
-void _wrap_CoordinateTransformation_TransformPoint__SWIG_1_osr_b6aadf85dd55cdd7(intgo _swig_optargc, OSRCoordinateTransformationShadow *_swig_go_0, double *_swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
+void _wrap_CoordinateTransformation_TransformPoint__SWIG_1_osr_09662cf3c15b8b8e(intgo _swig_optargc, OSRCoordinateTransformationShadow *_swig_go_0, double *_swig_go_1, double _swig_go_2, double _swig_go_3, double _swig_go_4) {
   OSRCoordinateTransformationShadow *arg1 = (OSRCoordinateTransformationShadow *) 0 ;
   double *arg2 ;
   double arg3 ;
@@ -3152,7 +3152,7 @@ void _wrap_CoordinateTransformation_TransformPoint__SWIG_1_osr_b6aadf85dd55cdd7(
 }
 
 
-void _wrap_CoordinateTransformation_TransformPoints_osr_b6aadf85dd55cdd7(OSRCoordinateTransformationShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2, double *_swig_go_3, double *_swig_go_4) {
+void _wrap_CoordinateTransformation_TransformPoints_osr_09662cf3c15b8b8e(OSRCoordinateTransformationShadow *_swig_go_0, intgo _swig_go_1, double *_swig_go_2, double *_swig_go_3, double *_swig_go_4) {
   OSRCoordinateTransformationShadow *arg1 = (OSRCoordinateTransformationShadow *) 0 ;
   int arg2 ;
   double *arg3 = (double *) 0 ;
@@ -3170,7 +3170,7 @@ void _wrap_CoordinateTransformation_TransformPoints_osr_b6aadf85dd55cdd7(OSRCoor
 }
 
 
-OSRCoordinateTransformationShadow *_wrap_CreateCoordinateTransformation_osr_b6aadf85dd55cdd7(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
+OSRCoordinateTransformationShadow *_wrap_CreateCoordinateTransformation_osr_09662cf3c15b8b8e(OSRSpatialReferenceShadow *_swig_go_0, OSRSpatialReferenceShadow *_swig_go_1) {
   OSRSpatialReferenceShadow *arg1 = (OSRSpatialReferenceShadow *) 0 ;
   OSRSpatialReferenceShadow *arg2 = (OSRSpatialReferenceShadow *) 0 ;
   OSRCoordinateTransformationShadow *result = 0 ;

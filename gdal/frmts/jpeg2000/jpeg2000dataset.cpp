@@ -28,18 +28,15 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
+#include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "gdaljp2abstractdataset.h"
 #include "gdaljp2metadata.h"
-#include "cpl_string.h"
 
 #include <jasper/jasper.h>
 #include "jpeg2000_vsil_io.h"
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_JPEG2000();
-CPL_C_END
 
 // XXX: Part of code below extracted from the JasPer internal headers and
 // must be in sync with JasPer version (this one works with JasPer 1.900.1)
@@ -647,7 +644,7 @@ GDALDataset *JPEG2000Dataset::Open( GDALOpenInfo * poOpenInfo )
                 /* ISO/IEC 15444-1:2004 I.5.3.1 specifies that 255 means that all */
                 /* components have not the same bit depth and/or sign and that a */
                 /* BPCC box must then follow to specify them for each component */
-                if ( box->data.ihdr.bpc != 255 )
+                if ( box->data.ihdr.bpc != 255 && paiDepth == NULL && pabSignedness == NULL )
                 {
                     paiDepth = (int *)CPLMalloc(poDS->nBands * sizeof(int));
                     pabSignedness = (int *)CPLMalloc(poDS->nBands * sizeof(int));
@@ -712,12 +709,16 @@ GDALDataset *JPEG2000Dataset::Open( GDALOpenInfo * poOpenInfo )
         {
             delete poDS;
             CPLDebug( "JPEG2000", "Unable to read JP2 header boxes.\n" );
+            CPLFree( paiDepth );
+            CPLFree( pabSignedness );
             return NULL;
         }
         if ( jas_stream_rewind( poDS->psStream ) < 0 )
         {
             delete poDS;
             CPLDebug( "JPEG2000", "Unable to rewind input stream.\n" );
+            CPLFree( paiDepth );
+            CPLFree( pabSignedness );
             return NULL;
         }
     }
@@ -775,10 +776,8 @@ GDALDataset *JPEG2000Dataset::Open( GDALOpenInfo * poOpenInfo )
 
     }
 
-    if ( paiDepth )
-        CPLFree( paiDepth );
-    if ( pabSignedness )
-        CPLFree( pabSignedness );
+    CPLFree( paiDepth );
+    CPLFree( pabSignedness );
 
     poDS->LoadJP2Metadata(poOpenInfo);
 
@@ -893,6 +892,7 @@ JPEG2000CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
     {
         CPLError( CE_Failure, CPLE_OutOfMemory, "Unable to create image %s.\n", 
                   pszFilename );
+        jas_stream_close( psStream );
         return NULL;
     }
 
@@ -914,6 +914,7 @@ JPEG2000CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
                   "Unable to create matrix with size %dx%d.\n", 1, nYSize );
         CPLFree( sComps );
         jas_image_destroy( psImage );
+        jas_stream_close( psStream );
         return NULL;
     }
     paiScanline = (GUInt32 *) CPLMalloc( nXSize *
@@ -963,6 +964,7 @@ JPEG2000CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
                 CPLFree( paiScanline );
                 CPLFree( sComps );
                 jas_image_destroy( psImage );
+                jas_stream_close( psStream );
                 return NULL;
             }
 
@@ -1153,6 +1155,7 @@ JPEG2000CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
                 CPLFree( paiScanline );
                 CPLFree( sComps );
                 jas_image_destroy( psImage );
+                jas_stream_close( psStream );
                 return NULL;
             }
             jp2_box_destroy( box );
@@ -1168,6 +1171,7 @@ JPEG2000CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
                 CPLFree( paiScanline );
                 CPLFree( sComps );
                 jas_image_destroy( psImage );
+                jas_stream_close( psStream );
                 return NULL;
             }
 #ifdef HAVE_JASPER_UUID
@@ -1184,6 +1188,7 @@ JPEG2000CreateCopy( const char * pszFilename, GDALDataset *poSrcDS,
             CPLFree( paiScanline );
             CPLFree( sComps );
             jas_image_destroy( psImage );
+            jas_stream_close( psStream );
             return NULL;
         }
     }

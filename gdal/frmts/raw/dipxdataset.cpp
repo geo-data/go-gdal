@@ -28,19 +28,16 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#include "rawdataset.h"
 #include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "ogr_spatialref.h"
+#include "rawdataset.h"
 
 #include <algorithm>
 
 using std::fill;
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_DIPEx();
-CPL_C_END
 
 typedef struct {
     GInt32      NBIH;   /* bytes in header, normally 1024 */
@@ -166,7 +163,7 @@ DIPExDataset::~DIPExDataset()
 
 {
     if (fp)
-        VSIFCloseL( fp );
+        CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
     fp = NULL;
 }
 

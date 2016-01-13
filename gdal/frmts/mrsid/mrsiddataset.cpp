@@ -30,10 +30,11 @@
 
 #define NO_DELETE
 
-#include "gdaljp2abstractdataset.h"
-#include "ogr_spatialref.h"
 #include "cpl_string.h"
+#include "gdal_frmts.h"
+#include "gdaljp2abstractdataset.h"
 #include "gdaljp2metadata.h"
+#include "ogr_spatialref.h"
 #include <string>
 
 #include <geo_normalize.h>
@@ -1108,7 +1109,7 @@ char *MrSIDDataset::SerializeMetadataRec( const LTIMetadataRecord *poMetadataRec
             pszMetadata = (char *)CPLRealloc( pszMetadata, iLength );
             if ( !EQUAL( pszMetadata, "" ) )
                 strncat( pszMetadata, ",", 1 );
-            strncat( pszMetadata, osTemp, iLength );
+            CPLStrlcat( pszMetadata, osTemp, iLength );
         }
     }
 
@@ -2799,6 +2800,8 @@ char *MrSIDDataset::GetOGISDefn( GTIFDefn *psDefnIn )
 
         for( i = 0; i < MIN(10,psDefnIn->nParms); i++ )
             adfParm[i] = psDefnIn->ProjParm[i];
+        for( ; i < 10; i++)
+            adfParm[i] = 0;
 
         adfParm[0] /= psDefnIn->UOMAngleInDegrees;
         adfParm[1] /= psDefnIn->UOMAngleInDegrees;

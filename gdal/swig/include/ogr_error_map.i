@@ -30,7 +30,7 @@
 #if defined(SWIGRUBY) || defined(SWIGGO)
 %header 
 #else
-%fragment("OGRErrMessages","header") 
+%fragment("OGRErrMessages","header")
 #endif
 %{
 

@@ -35,6 +35,7 @@
 #include <limits.h>
 #include <assert.h>
 
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 
 #ifndef DBL_MAX
@@ -62,10 +63,6 @@
 #endif /* SHRT_MAX */
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_GSBG();
-CPL_C_END
 
 /************************************************************************/
 /* ==================================================================== */
@@ -290,7 +287,7 @@ CPLErr GSBGRasterBand::IReadBlock( int nBlockXOff, int nBlockYOff,
     GSBGDataset *poGDS = reinterpret_cast<GSBGDataset *>(poDS);
     if( VSIFSeekL( poGDS->fp,
 		   GSBGDataset::nHEADER_SIZE +
-                        4 * nRasterXSize * (nRasterYSize - nBlockYOff - 1),
+                        4 * static_cast<vsi_l_offset>(nRasterXSize) * (nRasterYSize - nBlockYOff - 1),
 		   SEEK_SET ) != 0 )
     {
 	CPLError( CE_Failure, CPLE_FileIO,

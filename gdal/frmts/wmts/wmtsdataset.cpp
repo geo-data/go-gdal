@@ -28,10 +28,11 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#include "gdal_pam.h"
-#include "ogr_spatialref.h"
 #include "cpl_http.h"
 #include "cpl_minixml.h"
+#include "gdal_frmts.h"
+#include "gdal_pam.h"
+#include "ogr_spatialref.h"
 #include "../vrt/gdal_vrt.h"
 #include <vector>
 #include <set>
@@ -1552,7 +1553,7 @@ GDALDataset* WMTSDataset::Open(GDALOpenInfo* poOpenInfo)
             sAOI.MaxY = oTM.dfTLY;
             sAOI.MaxX = oTM.dfTLX + oTM.nMatrixWidth  * oTM.dfPixelSize * oTM.nTileWidth;
             sAOI.MinY = oTM.dfTLY - oTM.nMatrixHeight * oTM.dfPixelSize * oTM.nTileHeight;
-            bHasAOI = TRUE;
+            /*bHasAOI = TRUE;*/
         }
         else
         {
@@ -1982,7 +1983,6 @@ GDALDataset *WMTSDataset::CreateCopy( const char * pszFilename,
 void GDALRegister_WMTS()
 
 {
-
     if( !GDAL_CHECK_VERSION( "WMTS driver" ) )
         return;
 

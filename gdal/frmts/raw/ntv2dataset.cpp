@@ -30,9 +30,10 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#include "rawdataset.h"
 #include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "ogr_srs_api.h"
+#include "rawdataset.h"
 
 CPL_CVSID("$Id$");
 
@@ -133,7 +134,12 @@ NTv2Dataset::~NTv2Dataset()
     FlushCache();
 
     if( fpImage != NULL )
-        VSIFCloseL( fpImage );
+    {
+        if( VSIFCloseL( fpImage ) != 0 )
+        {
+            CPLError(CE_Failure, CPLE_FileIO, "I/O error");
+        }
+    }
 }
 
 /************************************************************************/
@@ -823,7 +829,7 @@ GDALDataset *NTv2Dataset::Create( const char * pszFilename,
     memset( achHeader, 0, 16 );
     memcpy( achHeader, "END     ", 8 );
     CPL_IGNORE_RET_VAL(VSIFWriteL( achHeader, 1, 16, fp ));
-    VSIFCloseL( fp );
+    CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
 
     if( nNumFile == 1 )
       return reinterpret_cast<GDALDataset *>(

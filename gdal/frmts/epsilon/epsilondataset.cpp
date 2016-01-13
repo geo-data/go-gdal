@@ -27,6 +27,7 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 
 #include "epsilon.h"
@@ -306,13 +307,13 @@ CPLErr EpsilonRasterBand::IReadBlock( int nBlockXOff,
         if (eps_decode_truecolor_block (pTempData[0], pTempData[1], pTempData[2],
                                         poGDS->pabyBlockData, &hdr) != EPS_OK)
         {
-            for(iBand=0;iBand<poGDS->nBands;iBand++)
+            for(iBand=0;iBand<3;iBand++)
                 CPLFree(pTempData[iBand]);
             memset(pImage, 0, nBlockXSize * nBlockYSize);
             return CE_Failure;
         }
 
-        for(iBand=0;iBand<poGDS->nBands;iBand++)
+        for(iBand=0;iBand<3;iBand++)
             CPLFree(pTempData[iBand]);
 
         poGDS->nBufferedBlock = nBlock;
@@ -323,7 +324,7 @@ CPLErr EpsilonRasterBand::IReadBlock( int nBlockXOff,
         if (nBand == 1)
         {
             int iOtherBand;
-            for(iOtherBand=2;iOtherBand<=poGDS->nBands;iOtherBand++)
+            for(iOtherBand=2;iOtherBand<=3;iOtherBand++)
             {
                 GDALRasterBlock *poBlock;
 
@@ -545,8 +546,14 @@ int EpsilonDataset::ScanBlocks(int* pnBands)
             break;
         }
 
+        BlockDesc* pasNewBlocks = (BlockDesc*)VSI_REALLOC_VERBOSE(pasBlocks, sizeof(BlockDesc) * (nBlocks+1));
+        if( pasNewBlocks == NULL )
+        {
+            bRet = FALSE;
+            break;
+        }
+        pasBlocks = pasNewBlocks;
         nBlocks++;
-        pasBlocks = (BlockDesc*)VSIRealloc(pasBlocks, sizeof(BlockDesc) * nBlocks);
         pasBlocks[nBlocks-1].x = x;
         pasBlocks[nBlocks-1].y = y;
         pasBlocks[nBlocks-1].w = w;

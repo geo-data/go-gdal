@@ -41,17 +41,14 @@
 #pragma warning( pop ) 
 #endif
 
+#include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 #include "gdal_priv.h"
-#include "cpl_string.h"
 #include "hdf5dataset.h"
 #include "ogr_spatialref.h"
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_HDF5Image();
-CPL_C_END
 
 /* release 1.6.3 or 1.6.4 changed the type of count in some api functions */
 
@@ -413,6 +410,8 @@ CPLErr HDF5ImageRasterBand::IReadBlock( int nBlockXOff, int nBlockYOff,
                                    H5S_SELECT_SET,
                                    offset, NULL,
                                    count, NULL );
+    if( status < 0 )
+        return CE_Failure;
 
 /* -------------------------------------------------------------------- */
 /*      Create memory space to receive the data                         */
@@ -426,6 +425,8 @@ CPLErr HDF5ImageRasterBand::IReadBlock( int nBlockXOff, int nBlockYOff,
                                   H5S_SELECT_SET,
                                   mem_offset, NULL,
                                   count, NULL);
+    if( status < 0 )
+        return CE_Failure;
 
     status = H5Dread ( poGDS->dataset_id,
                        poGDS->native,
@@ -731,10 +732,10 @@ CPLErr HDF5ImageDataset::CreateODIMH5Projection()
 /************************************************************************/
 CPLErr HDF5ImageDataset::CreateProjections()
 {
-    switch(iSubdatasetType)
-    {
-    case CSK_PRODUCT:
-    {
+ switch(iSubdatasetType)
+ {
+  case CSK_PRODUCT:
+  {
         const char *osMissionLevel = NULL;
         int productType = PROD_UNKNOWN;
 
@@ -764,9 +765,9 @@ CPLErr HDF5ImageDataset::CreateProjections()
         CaptureCSKGCPs(productType);
 
         break;
-    }
-    case UNKNOWN_PRODUCT:
-    {
+  }
+  case UNKNOWN_PRODUCT:
+  {
 #define NBGCPLAT 100
 #define NBGCPLON 30
 
@@ -878,10 +879,10 @@ CPLErr HDF5ImageDataset::CreateProjections()
     if( LongitudeDatasetID > 0 )
         H5Dclose(LongitudeDatasetID);
 
-        break;
-    }
-    }
-    return CE_None;
+    break;
+  }
+ }
+ return CE_None;
 
 }
 /************************************************************************/

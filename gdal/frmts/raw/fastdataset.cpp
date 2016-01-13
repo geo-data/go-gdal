@@ -29,14 +29,11 @@
  ****************************************************************************/
 #include "cpl_conv.h"
 #include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "ogr_spatialref.h"
 #include "rawdataset.h"
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_FAST();
-CPL_C_END
 
 // static const int ADM_STD_HEADER_SIZE = 4608;  // XXX: Format specification says it
 static const int ADM_HEADER_SIZE = 5000;  // should be 4608, but some vendors
@@ -212,9 +209,9 @@ FASTDataset::~FASTDataset()
 	CPLFree( pszProjection );
     for ( int i = 0; i < nBands; i++ )
 	if ( fpChannels[i] )
-	    VSIFCloseL( fpChannels[i] );
+	    CPL_IGNORE_RET_VAL(VSIFCloseL( fpChannels[i] ));
     if( fpHeader != NULL )
-        VSIFCloseL( fpHeader );
+        CPL_IGNORE_RET_VAL(VSIFCloseL( fpHeader ));
 }
 
 /************************************************************************/
@@ -356,7 +353,7 @@ VSILFILE *FASTDataset::FOpenChannel( const char *pszBandname, int iBand, int iFA
             break;
     }
 
-    CPLDebug( "FAST", "Band %d filename=%s", iBand + 1, pszChannelFilename);
+    CPLDebug( "FAST", "Band %d filename=%s", iBand + 1, pszChannelFilename ? pszChannelFilename : "(null)");
 
     CPLFree( pszPrefix );
     CPLFree( pszSuffix );
@@ -834,7 +831,15 @@ GDALDataset *FASTDataset::Open( GDALOpenInfo * poOpenInfo )
     // Read gains and biases. This is a trick!
     pszTemp = strstr( pszHeader, "BIASES" );// It may be "BIASES AND GAINS"
                                             // or "GAINS AND BIASES"
-    if ( pszTemp > strstr( pszHeader, "GAINS" ) )
+    const char* pszGains = strstr( pszHeader, "GAINS" );
+    if( pszTemp == NULL || pszGains == NULL )
+    {
+        CPLDebug("FAST", "No BIASES and/or GAINS");
+        CPLFree(pszHeader);
+        delete poDS;
+        return NULL;
+    }
+    if ( pszTemp > pszGains )
     {
         pszFirst = "GAIN%d";
         pszSecond = "BIAS%d";

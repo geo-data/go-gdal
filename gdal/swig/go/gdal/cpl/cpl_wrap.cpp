@@ -283,6 +283,12 @@ char* EscapeString(int len, char *bin_string , int scheme=CPLES_SQL) {
 } 
 
 
+char **wrapper_VSIReadDirEx( const char * utf8_path, int nMaxFiles = 0 )
+{
+    return VSIReadDirEx(utf8_path, nMaxFiles);
+}
+
+
 const char *wrapper_CPLGetConfigOption( const char * pszKey, const char * pszDefault = NULL )
 {
     return CPLGetConfigOption( pszKey, pszDefault );
@@ -554,7 +560,27 @@ _gostring_ _wrap_FindFile_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0, _gostring_
 }
 
 
-char **_wrap_ReadDir_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0) {
+char **_wrap_ReadDir__SWIG_0_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0, intgo _swig_go_1) {
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  char **result = 0 ;
+  char **_swig_go_result;
+  
+  {
+    arg1 = (char *)_swig_go_0.p;       /* From the default swig string typemap. */
+    if (!arg1) {
+      arg1 = (char *)"";
+    }
+  }
+  arg2 = (int)_swig_go_1; 
+  
+  result = (char **)wrapper_VSIReadDirEx((char const *)arg1,arg2);
+  *(char ***)&_swig_go_result = (char **)result; 
+  return _swig_go_result;
+}
+
+
+char **_wrap_ReadDir__SWIG_1_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0) {
   char *arg1 = (char *) 0 ;
   char **result = 0 ;
   char **_swig_go_result;
@@ -566,7 +592,7 @@ char **_wrap_ReadDir_cpl_47a89855fc1adaf7(_gostring_ _swig_go_0) {
     }
   }
   
-  result = (char **)VSIReadDir((char const *)arg1);
+  result = (char **)wrapper_VSIReadDirEx((char const *)arg1);
   *(char ***)&_swig_go_result = (char **)result; 
   return _swig_go_result;
 }

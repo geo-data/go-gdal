@@ -29,16 +29,13 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#include "rawdataset.h"
 #include "cpl_port.h"
-#include "ogr_spatialref.h"
 #include "cpl_string.h"
+#include "gdal_frmts.h"
+#include "ogr_spatialref.h"
+#include "rawdataset.h"
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_LCP();
-CPL_C_END
 
 static const size_t LCP_HEADER_SIZE = 7316;
 static const int LCP_MAX_BANDS = 10;
@@ -104,7 +101,12 @@ LCPDataset::~LCPDataset()
 {
     FlushCache();
     if( fpImage != NULL )
-        VSIFCloseL( fpImage );
+    {
+        if( VSIFCloseL( fpImage ) != 0 )
+        {
+            CPLError(CE_Failure, CPLE_FileIO, "I/O error");
+        }
+    }
     CPLFree(pszProjection);
 }
 
@@ -1574,7 +1576,7 @@ GDALDataset *LCPDataset::CreateCopy( const char * pszFilename,
 
     if( !pfnProgress( 0.0, NULL, pProgressData ) )
     {
-        VSIFCloseL( fp );
+        CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
         VSIFree( reinterpret_cast<void *>( panScanline ) );
         return NULL;
     }
@@ -1605,12 +1607,12 @@ GDALDataset *LCPDataset::CreateCopy( const char * pszFilename,
         if( !pfnProgress( iLine / (double)nYSize, NULL, pProgressData ) )
         {
             VSIFree( reinterpret_cast<void *>( panScanline ) );
-            VSIFCloseL( fp );
+            CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
             return NULL;
         }
     }
     VSIFree( panScanline );
-    VSIFCloseL( fp );
+    CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
     if( !pfnProgress( 1.0, NULL, pProgressData ) )
     {
         return NULL;
@@ -1640,7 +1642,7 @@ GDALDataset *LCPDataset::CreateCopy( const char * pszFilename,
             oSRS.exportToWkt( &pszESRIProjection );
             CPL_IGNORE_RET_VAL(VSIFWriteL( pszESRIProjection, 1, strlen(pszESRIProjection), fp ));
 
-            VSIFCloseL( fp );
+            CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
             CPLFree( pszESRIProjection );
         }
         else

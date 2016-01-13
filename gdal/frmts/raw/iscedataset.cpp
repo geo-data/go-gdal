@@ -27,13 +27,10 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
+#include "gdal_frmts.h"
 #include "rawdataset.h"
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_ISCE();
-CPL_C_END
 
 static const char * const apszISCE2GDALDatatypes[] = {
     "BYTE:Byte",
@@ -177,7 +174,10 @@ ISCEDataset::~ISCEDataset( void )
     FlushCache();
     if ( fpImage != NULL )
     {
-        VSIFCloseL( fpImage );
+        if( VSIFCloseL( fpImage ) != 0 )
+        {
+            CPLError(CE_Failure, CPLE_FileIO, "I/O error");
+        }
     }
     CPLFree( pszXMLFilename );
 }
@@ -496,7 +496,7 @@ GDALDataset *ISCEDataset::Open( GDALOpenInfo *poOpenInfo )
 /* -------------------------------------------------------------------- */
 /*      Set all the other header metadata into the ISCE domain       */
 /* -------------------------------------------------------------------- */
-    for (int i = 0; i < CSLCount( papszXmlProps ); i++)
+    for (int i = 0; papszXmlProps != NULL && papszXmlProps[i] != NULL; i++)
     {
         char **papszTokens;
         papszTokens = CSLTokenizeString2( papszXmlProps[i],
@@ -566,7 +566,7 @@ GDALDataset *ISCEDataset::Create( const char *pszFilename,
 /*      file, and then close it.                                        */
 /* -------------------------------------------------------------------- */
     CPL_IGNORE_RET_VAL(VSIFWriteL( (void *) "\0\0", 2, 1, fp ));
-    VSIFCloseL( fp );
+    CPL_IGNORE_RET_VAL(VSIFCloseL( fp ));
 
 /* -------------------------------------------------------------------- */
 /*      Create a minimal XML document.                                  */

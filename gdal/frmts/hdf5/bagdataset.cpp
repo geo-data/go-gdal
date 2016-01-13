@@ -30,16 +30,13 @@
 
 #include "gh5_convenience.h"
 
+#include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 #include "gdal_priv.h"
 #include "ogr_spatialref.h"
-#include "cpl_string.h"
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_BAG();
-CPL_C_END
 
 OGRErr OGR_SRS_ImportFromISO19115( OGRSpatialReference *poThis, 
                                    const char *pszISOXML );
@@ -330,6 +327,8 @@ CPLErr BAGRasterBand::IReadBlock( int nBlockXOff, int nBlockYOff,
                                    H5S_SELECT_SET,
                                    offset, NULL,
                                    count, NULL );
+    if( status < 0 )
+        return CE_Failure;
 
 /* -------------------------------------------------------------------- */
 /*      Create memory space to receive the data                         */
@@ -342,6 +341,8 @@ CPLErr BAGRasterBand::IReadBlock( int nBlockXOff, int nBlockYOff,
                                   H5S_SELECT_SET,
                                   mem_offset, NULL,
                                   count, NULL);
+    if( status < 0 )
+        return CE_Failure;
 
     status = H5Dread ( hDatasetID,
                        native,

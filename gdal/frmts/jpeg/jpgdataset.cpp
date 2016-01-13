@@ -31,7 +31,10 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
+#undef ENABLE_LIBJPEG_NO_RETURN
+
 #include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "gdal_pam.h"
 #include "gdalexif.h"
 #include "memdataset.h"
@@ -91,10 +94,6 @@ GDALDataset* JPEGDataset12CreateCopy( const char * pszFilename,
                                     GDALProgressFunc pfnProgress,
                                     void * pProgressData );
 #endif
-
-CPL_C_START
-void GDALRegister_JPEG();
-CPL_C_END
 
 #include "vsidataio.h"
 
@@ -1254,12 +1253,13 @@ GDALDataset* JPGDatasetCommon::InitEXIFOverview()
 /* -------------------------------------------------------------------- */
 /*      Read number of entry in directory                               */
 /* -------------------------------------------------------------------- */
-    if( VSIFSeekL(fpImage, nTiffDirStart+nTIFFHEADER, SEEK_SET) != 0
+    if( nTiffDirStart > INT_MAX - nTIFFHEADER ||
+        VSIFSeekL(fpImage, nTiffDirStart+nTIFFHEADER, SEEK_SET) != 0
         || VSIFReadL(&nEntryCount,1,sizeof(GUInt16),fpImage) != sizeof(GUInt16) )
     {
         CPLError( CE_Failure, CPLE_AppDefined,
-                "Error reading EXIF Directory count at %d.",
-                nTiffDirStart + nTIFFHEADER );
+                "Error reading EXIF Directory count at " CPL_FRMT_GUIB,
+                 static_cast<vsi_l_offset>(nTiffDirStart) + nTIFFHEADER );
         return NULL;
     }
 
@@ -3183,7 +3183,7 @@ void   JPGAddEXIFOverview( GDALDataType eWorkDT,
             p_jpeg_write_m_byte( cinfo, 0 );
             p_jpeg_write_m_byte( cinfo, 0 );
 
-            p_jpeg_write_m_byte( cinfo, nJPEGIfByteCount & 0xff );
+            p_jpeg_write_m_byte( cinfo, static_cast<GByte>(nJPEGIfByteCount & 0xff) );
             p_jpeg_write_m_byte( cinfo, static_cast<GByte>(nJPEGIfByteCount >> 8) );
             p_jpeg_write_m_byte( cinfo, 0 );
             p_jpeg_write_m_byte( cinfo, 0 );

@@ -85,8 +85,8 @@ typedef _gostring_ swig_type_54;
 typedef _gostring_ swig_type_55;
 typedef _gostring_ swig_type_56;
 typedef _gostring_ swig_type_57;
-extern void _wrap_Swig_free_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_type_1 _wrap_SRS_WKT_WGS84_osr_b6aadf85dd55cdd7(void);
+extern void _wrap_Swig_free_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_type_1 _wrap_SRS_WKT_WGS84_osr_09662cf3c15b8b8e(void);
 
 // "cpl_string.h" is needed to declare CSLDestroy.
 #include "cpl_string.h"
@@ -94,133 +94,133 @@ extern swig_type_1 _wrap_SRS_WKT_WGS84_osr_b6aadf85dd55cdd7(void);
 // We need to link against GDAL when building the Go module.
 #cgo LDFLAGS: -lgdal
 
-extern swig_intgo _wrap_GetWellKnownGeogCSAsWKT_osr_b6aadf85dd55cdd7(swig_type_2 arg1, swig_voidp arg2);
-extern swig_intgo _wrap_GetUserInputAsWKT_osr_b6aadf85dd55cdd7(swig_type_3 arg1, swig_voidp arg2);
-extern swig_voidp _wrap_GetProjectionMethods_osr_b6aadf85dd55cdd7(void);
-extern swig_voidp _wrap_GetProjectionMethodParameterList_osr_b6aadf85dd55cdd7(swig_type_4 arg1, swig_voidp arg2);
-extern void _wrap_GetProjectionMethodParamInfo_osr_b6aadf85dd55cdd7(swig_type_5 arg1, swig_type_6 arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
-extern uintptr_t _wrap_new_SpatialReference_osr_b6aadf85dd55cdd7(intgo _swig_args, swig_type_7 arg1);
-extern void _wrap_delete_SpatialReference_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_type_8 _wrap_SpatialReference___str___osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_IsSame_osr_b6aadf85dd55cdd7(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_SpatialReference_IsSameGeogCS_osr_b6aadf85dd55cdd7(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_SpatialReference_IsSameVertCS_osr_b6aadf85dd55cdd7(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_SpatialReference_IsGeographic_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_IsProjected_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_IsCompound_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_IsGeocentric_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_IsLocal_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_IsVertical_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_EPSGTreatsAsLatLong_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_EPSGTreatsAsNorthingEasting_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_SetAuthority_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_9 arg2, swig_type_10 arg3, swig_intgo arg4);
-extern swig_type_11 _wrap_SpatialReference_GetAttrValue_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_12 arg2, swig_intgo arg3);
-extern swig_intgo _wrap_SpatialReference_SetAttrValue_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_13 arg2, swig_type_14 arg3);
-extern swig_intgo _wrap_SpatialReference_SetAngularUnits_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_15 arg2, double arg3);
-extern double _wrap_SpatialReference_GetAngularUnits_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_SetTargetLinearUnits_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_16 arg2, swig_type_17 arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetLinearUnits_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_18 arg2, double arg3);
-extern swig_intgo _wrap_SpatialReference_SetLinearUnitsAndUpdateParameters_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_19 arg2, double arg3);
-extern double _wrap_SpatialReference_GetLinearUnits_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_type_20 _wrap_SpatialReference_GetLinearUnitsName_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_type_21 _wrap_SpatialReference_GetAuthorityCode_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_22 arg2);
-extern swig_type_23 _wrap_SpatialReference_GetAuthorityName_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_24 arg2);
-extern swig_intgo _wrap_SpatialReference_SetUTM_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern swig_intgo _wrap_SpatialReference_GetUTMZone_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_SetStatePlane_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_type_25 arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_AutoIdentifyEPSG_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_SetProjection_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_26 arg2);
-extern swig_intgo _wrap_SpatialReference_SetProjParm_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_27 arg2, double arg3);
-extern double _wrap_SpatialReference_GetProjParm_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_28 arg2, double arg3);
-extern swig_intgo _wrap_SpatialReference_SetNormProjParm_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_29 arg2, double arg3);
-extern double _wrap_SpatialReference_GetNormProjParm_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_30 arg2, double arg3);
-extern double _wrap_SpatialReference_GetSemiMajor_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern double _wrap_SpatialReference_GetSemiMinor_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern double _wrap_SpatialReference_GetInvFlattening_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_SetACEA_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
-extern swig_intgo _wrap_SpatialReference_SetAE_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetBonne_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetCEA_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetCS_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetEC_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
-extern swig_intgo _wrap_SpatialReference_SetEckertIV_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetEckertVI_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetEquirectangular_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetEquirectangular2_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetGaussSchreiberTMercator_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetGS_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetGH_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetIGH_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_SetGEOS_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetGnomonic_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetHOM_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8);
-extern swig_intgo _wrap_SpatialReference_SetHOM2PNO_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8, double arg9);
-extern swig_intgo _wrap_SpatialReference_SetKrovak_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8);
-extern swig_intgo _wrap_SpatialReference_SetLAEA_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetLCC_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
-extern swig_intgo _wrap_SpatialReference_SetLCC1SP_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetLCCB_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
-extern swig_intgo _wrap_SpatialReference_SetMC_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetMercator_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetMollweide_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetNZMG_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetOS_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetOrthographic_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetPolyconic_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetPS_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetRobinson_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetSinusoidal_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetStereographic_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetSOC_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetTM_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetTMVariant_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_31 arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
-extern swig_intgo _wrap_SpatialReference_SetTMG_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_SpatialReference_SetTMSO_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_SpatialReference_SetVDG_osr_b6aadf85dd55cdd7(uintptr_t arg1, double arg2, double arg3, double arg4);
-extern swig_intgo _wrap_SpatialReference_SetWellKnownGeogCS_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_32 arg2);
-extern swig_intgo _wrap_SpatialReference_SetFromUserInput_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_33 arg2);
-extern swig_intgo _wrap_SpatialReference_CopyGeogCSFrom_osr_b6aadf85dd55cdd7(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_SpatialReference_SetTOWGS84_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8);
-extern swig_intgo _wrap_SpatialReference_GetTOWGS84_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_SpatialReference_SetLocalCS_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_34 arg2);
-extern swig_intgo _wrap_SpatialReference_SetGeogCS_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_35 arg2, swig_type_36 arg3, swig_type_37 arg4, double arg5, double arg6, swig_type_38 arg7, double arg8, swig_type_39 arg9, double arg10);
-extern swig_intgo _wrap_SpatialReference_SetProjCS_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_40 arg2);
-extern swig_intgo _wrap_SpatialReference_SetGeocCS_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_41 arg2);
-extern swig_intgo _wrap_SpatialReference_SetVertCS_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_42 arg2, swig_type_43 arg3, swig_intgo arg4);
-extern swig_intgo _wrap_SpatialReference_SetCompoundCS_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_44 arg2, uintptr_t arg3, uintptr_t arg4);
-extern swig_intgo _wrap_SpatialReference_ImportFromWkt_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromProj4_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_45 arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromUrl_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_46 arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromESRI_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromEPSG_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromEPSGA_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromPCI_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_47 arg2, swig_type_48 arg3, swig_voidp arg4);
-extern swig_intgo _wrap_SpatialReference_ImportFromUSGS_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_type_49 arg2, swig_type_50 arg3, swig_voidp arg4, swig_type_51 arg5);
-extern swig_intgo _wrap_SpatialReference_ImportFromXML_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_52 arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromERM_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_53 arg2, swig_type_54 arg3, swig_type_55 arg4);
-extern swig_intgo _wrap_SpatialReference_ImportFromMICoordSys_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_type_56 arg2);
-extern swig_intgo _wrap_SpatialReference_ImportFromOzi_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_SpatialReference_ExportToWkt_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_SpatialReference_ExportToPrettyWkt_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
-extern swig_intgo _wrap_SpatialReference_ExportToProj4_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_SpatialReference_ExportToPCI_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_voidp arg4);
-extern swig_intgo _wrap_SpatialReference_ExportToUSGS_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
-extern swig_intgo _wrap_SpatialReference_ExportToXML_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_type_57 arg3);
-extern swig_intgo _wrap_SpatialReference_ExportToMICoordSys_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern uintptr_t _wrap_SpatialReference_CloneGeogCS_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern uintptr_t _wrap_SpatialReference_Clone_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_Validate_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_StripCTParms_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_FixupOrdering_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_Fixup_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_MorphToESRI_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern swig_intgo _wrap_SpatialReference_MorphFromESRI_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern uintptr_t _wrap_new_CoordinateTransformation_osr_b6aadf85dd55cdd7(uintptr_t arg1, uintptr_t arg2);
-extern void _wrap_delete_CoordinateTransformation_osr_b6aadf85dd55cdd7(uintptr_t arg1);
-extern void _wrap_CoordinateTransformation_TransformPoint__SWIG_0_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_voidp arg2);
-extern void _wrap_CoordinateTransformation_TransformPoint__SWIG_1_osr_b6aadf85dd55cdd7(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, double arg3, double arg4, double arg5);
-extern void _wrap_CoordinateTransformation_TransformPoints_osr_b6aadf85dd55cdd7(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
-extern uintptr_t _wrap_CreateCoordinateTransformation_osr_b6aadf85dd55cdd7(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_GetWellKnownGeogCSAsWKT_osr_09662cf3c15b8b8e(swig_type_2 arg1, swig_voidp arg2);
+extern swig_intgo _wrap_GetUserInputAsWKT_osr_09662cf3c15b8b8e(swig_type_3 arg1, swig_voidp arg2);
+extern swig_voidp _wrap_GetProjectionMethods_osr_09662cf3c15b8b8e(void);
+extern swig_voidp _wrap_GetProjectionMethodParameterList_osr_09662cf3c15b8b8e(swig_type_4 arg1, swig_voidp arg2);
+extern void _wrap_GetProjectionMethodParamInfo_osr_09662cf3c15b8b8e(swig_type_5 arg1, swig_type_6 arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
+extern uintptr_t _wrap_new_SpatialReference_osr_09662cf3c15b8b8e(intgo _swig_args, swig_type_7 arg1);
+extern void _wrap_delete_SpatialReference_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_type_8 _wrap_SpatialReference___str___osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_IsSame_osr_09662cf3c15b8b8e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_SpatialReference_IsSameGeogCS_osr_09662cf3c15b8b8e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_SpatialReference_IsSameVertCS_osr_09662cf3c15b8b8e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_SpatialReference_IsGeographic_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_IsProjected_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_IsCompound_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_IsGeocentric_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_IsLocal_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_IsVertical_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_EPSGTreatsAsLatLong_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_EPSGTreatsAsNorthingEasting_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_SetAuthority_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_9 arg2, swig_type_10 arg3, swig_intgo arg4);
+extern swig_type_11 _wrap_SpatialReference_GetAttrValue_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_12 arg2, swig_intgo arg3);
+extern swig_intgo _wrap_SpatialReference_SetAttrValue_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_13 arg2, swig_type_14 arg3);
+extern swig_intgo _wrap_SpatialReference_SetAngularUnits_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_15 arg2, double arg3);
+extern double _wrap_SpatialReference_GetAngularUnits_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_SetTargetLinearUnits_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_16 arg2, swig_type_17 arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetLinearUnits_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_18 arg2, double arg3);
+extern swig_intgo _wrap_SpatialReference_SetLinearUnitsAndUpdateParameters_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_19 arg2, double arg3);
+extern double _wrap_SpatialReference_GetLinearUnits_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_type_20 _wrap_SpatialReference_GetLinearUnitsName_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_type_21 _wrap_SpatialReference_GetAuthorityCode_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_22 arg2);
+extern swig_type_23 _wrap_SpatialReference_GetAuthorityName_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_24 arg2);
+extern swig_intgo _wrap_SpatialReference_SetUTM_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern swig_intgo _wrap_SpatialReference_GetUTMZone_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_SetStatePlane_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_type_25 arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_AutoIdentifyEPSG_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_SetProjection_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_26 arg2);
+extern swig_intgo _wrap_SpatialReference_SetProjParm_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_27 arg2, double arg3);
+extern double _wrap_SpatialReference_GetProjParm_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_28 arg2, double arg3);
+extern swig_intgo _wrap_SpatialReference_SetNormProjParm_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_29 arg2, double arg3);
+extern double _wrap_SpatialReference_GetNormProjParm_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_30 arg2, double arg3);
+extern double _wrap_SpatialReference_GetSemiMajor_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern double _wrap_SpatialReference_GetSemiMinor_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern double _wrap_SpatialReference_GetInvFlattening_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_SetACEA_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
+extern swig_intgo _wrap_SpatialReference_SetAE_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetBonne_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetCEA_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetCS_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetEC_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
+extern swig_intgo _wrap_SpatialReference_SetEckertIV_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetEckertVI_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetEquirectangular_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetEquirectangular2_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetGaussSchreiberTMercator_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetGS_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetGH_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetIGH_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_SetGEOS_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetGnomonic_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetHOM_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8);
+extern swig_intgo _wrap_SpatialReference_SetHOM2PNO_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8, double arg9);
+extern swig_intgo _wrap_SpatialReference_SetKrovak_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8);
+extern swig_intgo _wrap_SpatialReference_SetLAEA_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetLCC_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
+extern swig_intgo _wrap_SpatialReference_SetLCC1SP_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetLCCB_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
+extern swig_intgo _wrap_SpatialReference_SetMC_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetMercator_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetMollweide_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetNZMG_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetOS_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetOrthographic_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetPolyconic_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetPS_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetRobinson_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetSinusoidal_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetStereographic_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetSOC_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetTM_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetTMVariant_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_31 arg2, double arg3, double arg4, double arg5, double arg6, double arg7);
+extern swig_intgo _wrap_SpatialReference_SetTMG_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_SpatialReference_SetTMSO_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_SpatialReference_SetVDG_osr_09662cf3c15b8b8e(uintptr_t arg1, double arg2, double arg3, double arg4);
+extern swig_intgo _wrap_SpatialReference_SetWellKnownGeogCS_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_32 arg2);
+extern swig_intgo _wrap_SpatialReference_SetFromUserInput_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_33 arg2);
+extern swig_intgo _wrap_SpatialReference_CopyGeogCSFrom_osr_09662cf3c15b8b8e(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_SpatialReference_SetTOWGS84_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, double arg4, double arg5, double arg6, double arg7, double arg8);
+extern swig_intgo _wrap_SpatialReference_GetTOWGS84_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_SpatialReference_SetLocalCS_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_34 arg2);
+extern swig_intgo _wrap_SpatialReference_SetGeogCS_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_35 arg2, swig_type_36 arg3, swig_type_37 arg4, double arg5, double arg6, swig_type_38 arg7, double arg8, swig_type_39 arg9, double arg10);
+extern swig_intgo _wrap_SpatialReference_SetProjCS_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_40 arg2);
+extern swig_intgo _wrap_SpatialReference_SetGeocCS_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_41 arg2);
+extern swig_intgo _wrap_SpatialReference_SetVertCS_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_42 arg2, swig_type_43 arg3, swig_intgo arg4);
+extern swig_intgo _wrap_SpatialReference_SetCompoundCS_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_44 arg2, uintptr_t arg3, uintptr_t arg4);
+extern swig_intgo _wrap_SpatialReference_ImportFromWkt_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromProj4_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_45 arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromUrl_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_46 arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromESRI_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromEPSG_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromEPSGA_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromPCI_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_47 arg2, swig_type_48 arg3, swig_voidp arg4);
+extern swig_intgo _wrap_SpatialReference_ImportFromUSGS_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_type_49 arg2, swig_type_50 arg3, swig_voidp arg4, swig_type_51 arg5);
+extern swig_intgo _wrap_SpatialReference_ImportFromXML_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_52 arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromERM_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_53 arg2, swig_type_54 arg3, swig_type_55 arg4);
+extern swig_intgo _wrap_SpatialReference_ImportFromMICoordSys_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_type_56 arg2);
+extern swig_intgo _wrap_SpatialReference_ImportFromOzi_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_SpatialReference_ExportToWkt_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_SpatialReference_ExportToPrettyWkt_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
+extern swig_intgo _wrap_SpatialReference_ExportToProj4_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_SpatialReference_ExportToPCI_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_voidp arg4);
+extern swig_intgo _wrap_SpatialReference_ExportToUSGS_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
+extern swig_intgo _wrap_SpatialReference_ExportToXML_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_type_57 arg3);
+extern swig_intgo _wrap_SpatialReference_ExportToMICoordSys_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern uintptr_t _wrap_SpatialReference_CloneGeogCS_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern uintptr_t _wrap_SpatialReference_Clone_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_Validate_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_StripCTParms_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_FixupOrdering_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_Fixup_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_MorphToESRI_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern swig_intgo _wrap_SpatialReference_MorphFromESRI_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern uintptr_t _wrap_new_CoordinateTransformation_osr_09662cf3c15b8b8e(uintptr_t arg1, uintptr_t arg2);
+extern void _wrap_delete_CoordinateTransformation_osr_09662cf3c15b8b8e(uintptr_t arg1);
+extern void _wrap_CoordinateTransformation_TransformPoint__SWIG_0_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_voidp arg2);
+extern void _wrap_CoordinateTransformation_TransformPoint__SWIG_1_osr_09662cf3c15b8b8e(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, double arg3, double arg4, double arg5);
+extern void _wrap_CoordinateTransformation_TransformPoints_osr_09662cf3c15b8b8e(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
+extern uintptr_t _wrap_CreateCoordinateTransformation_osr_09662cf3c15b8b8e(uintptr_t arg1, uintptr_t arg2);
 #undef intgo
 */
 import "C"
@@ -255,12 +255,12 @@ func swigCopyString(s string) string {
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0))
 }
 
 func _swig_getSRS_WKT_WGS84() (_swig_ret string) {
 	var swig_r string
-	swig_r_p := C._wrap_SRS_WKT_WGS84_osr_b6aadf85dd55cdd7()
+	swig_r_p := C._wrap_SRS_WKT_WGS84_osr_09662cf3c15b8b8e()
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -336,6 +336,7 @@ const SRS_PT_WINKEL_TRIPEL string = "Winkel_Tripel"
 const SRS_PT_CRASTER_PARABOLIC string = "Craster_Parabolic"
 const SRS_PT_LOXIMUTHAL string = "Loximuthal"
 const SRS_PT_QUARTIC_AUTHALIC string = "Quartic_Authalic"
+const SRS_PT_SCH string = "Spherical_Cross_Track_Height"
 const SRS_PP_CENTRAL_MERIDIAN string = "central_meridian"
 const SRS_PP_SCALE_FACTOR string = "scale_factor"
 const SRS_PP_STANDARD_PARALLEL_1 string = "standard_parallel_1"
@@ -365,6 +366,10 @@ const SRS_PP_LATITUDE_OF_1ST_POINT string = "Latitude_Of_1st_Point"
 const SRS_PP_LONGITUDE_OF_1ST_POINT string = "Longitude_Of_1st_Point"
 const SRS_PP_LATITUDE_OF_2ND_POINT string = "Latitude_Of_2nd_Point"
 const SRS_PP_LONGITUDE_OF_2ND_POINT string = "Longitude_Of_2nd_Point"
+const SRS_PP_PEG_POINT_LATITUDE string = "peg_point_latitude"
+const SRS_PP_PEG_POINT_LONGITUDE string = "peg_point_longitude"
+const SRS_PP_PEG_POINT_HEADING string = "peg_point_heading"
+const SRS_PP_PEG_POINT_HEIGHT string = "peg_point_height"
 const SRS_UL_METER string = "Meter"
 const SRS_UL_FOOT string = "Foot (International)"
 const SRS_UL_FOOT_CONV string = "0.3048"
@@ -432,7 +437,7 @@ func GetWellKnownGeogCSAsWKT(arg1 string, arg2 *string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_GetWellKnownGeogCSAsWKT_osr_b6aadf85dd55cdd7(*(*C.swig_type_2)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_GetWellKnownGeogCSAsWKT_osr_09662cf3c15b8b8e(*(*C.swig_type_2)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -443,7 +448,7 @@ func GetUserInputAsWKT(arg1 string, arg2 *string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_GetUserInputAsWKT_osr_b6aadf85dd55cdd7(*(*C.swig_type_3)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_GetUserInputAsWKT_osr_09662cf3c15b8b8e(*(*C.swig_type_3)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -452,7 +457,7 @@ func GetUserInputAsWKT(arg1 string, arg2 *string) (_swig_ret int) {
 
 func GetProjectionMethods() (_swig_ret *string) {
 	var swig_r *string
-	swig_r = (*string)(C._wrap_GetProjectionMethods_osr_b6aadf85dd55cdd7())
+	swig_r = (*string)(C._wrap_GetProjectionMethods_osr_09662cf3c15b8b8e())
 	return swig_r
 }
 
@@ -460,7 +465,7 @@ func GetProjectionMethodParameterList(arg1 string, arg2 *string) (_swig_ret *str
 	var swig_r *string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (*string)(C._wrap_GetProjectionMethodParameterList_osr_b6aadf85dd55cdd7(*(*C.swig_type_4)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
+	swig_r = (*string)(C._wrap_GetProjectionMethodParameterList_osr_09662cf3c15b8b8e(*(*C.swig_type_4)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -473,7 +478,7 @@ func GetProjectionMethodParamInfo(arg1 string, arg2 string, arg3 *string, arg4 *
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	C._wrap_GetProjectionMethodParamInfo_osr_b6aadf85dd55cdd7(*(*C.swig_type_5)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4))
+	C._wrap_GetProjectionMethodParamInfo_osr_09662cf3c15b8b8e(*(*C.swig_type_5)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -498,7 +503,7 @@ func NewSpatialReference(_swig_args ...interface{}) (_swig_ret SpatialReference)
 	}
 	var swig_r SpatialReference
 	_swig_i_0 := arg1
-	swig_r = (SpatialReference)(SwigcptrSpatialReference(C._wrap_new_SpatialReference_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (SpatialReference)(SwigcptrSpatialReference(C._wrap_new_SpatialReference_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -507,13 +512,13 @@ func NewSpatialReference(_swig_args ...interface{}) (_swig_ret SpatialReference)
 
 func DeleteSpatialReference(arg1 SpatialReference) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_SpatialReference_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_SpatialReference_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrSpatialReference) X__str__() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_SpatialReference___str___osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_SpatialReference___str___osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -524,7 +529,7 @@ func (arg1 SwigcptrSpatialReference) IsSame(arg2 SpatialReference) (_swig_ret in
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_SpatialReference_IsSame_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_IsSame_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -532,7 +537,7 @@ func (arg1 SwigcptrSpatialReference) IsSameGeogCS(arg2 SpatialReference) (_swig_
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_SpatialReference_IsSameGeogCS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_IsSameGeogCS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -540,63 +545,63 @@ func (arg1 SwigcptrSpatialReference) IsSameVertCS(arg2 SpatialReference) (_swig_
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_SpatialReference_IsSameVertCS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_IsSameVertCS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) IsGeographic() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_IsGeographic_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_IsGeographic_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) IsProjected() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_IsProjected_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_IsProjected_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) IsCompound() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_IsCompound_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_IsCompound_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) IsGeocentric() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_IsGeocentric_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_IsGeocentric_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) IsLocal() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_IsLocal_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_IsLocal_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) IsVertical() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_IsVertical_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_IsVertical_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) EPSGTreatsAsLatLong() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_EPSGTreatsAsLatLong_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_EPSGTreatsAsLatLong_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) EPSGTreatsAsNorthingEasting() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_EPSGTreatsAsNorthingEasting_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_EPSGTreatsAsNorthingEasting_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -606,7 +611,7 @@ func (arg1 SwigcptrSpatialReference) SetAuthority(arg2 string, arg3 string, arg4
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetAuthority_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_2)), C.swig_intgo(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetAuthority_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_2)), C.swig_intgo(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -625,7 +630,7 @@ func (arg1 SwigcptrSpatialReference) GetAttrValue(arg2 string, _swig_args ...int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r_p := C._wrap_SpatialReference_GetAttrValue_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))
+	swig_r_p := C._wrap_SpatialReference_GetAttrValue_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -640,7 +645,7 @@ func (arg1 SwigcptrSpatialReference) SetAttrValue(arg2 string, arg3 string) (_sw
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_SetAttrValue_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_13)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_14)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_SpatialReference_SetAttrValue_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_13)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_14)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -655,7 +660,7 @@ func (arg1 SwigcptrSpatialReference) SetAngularUnits(arg2 string, arg3 float64) 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_SetAngularUnits_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_15)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
+	swig_r = (int)(C._wrap_SpatialReference_SetAngularUnits_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_15)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -665,7 +670,7 @@ func (arg1 SwigcptrSpatialReference) SetAngularUnits(arg2 string, arg3 float64) 
 func (arg1 SwigcptrSpatialReference) GetAngularUnits() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_SpatialReference_GetAngularUnits_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_SpatialReference_GetAngularUnits_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -675,7 +680,7 @@ func (arg1 SwigcptrSpatialReference) SetTargetLinearUnits(arg2 string, arg3 stri
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetTargetLinearUnits_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_16)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_17)(unsafe.Pointer(&_swig_i_2)), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetTargetLinearUnits_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_16)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_17)(unsafe.Pointer(&_swig_i_2)), C.double(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -690,7 +695,7 @@ func (arg1 SwigcptrSpatialReference) SetLinearUnits(arg2 string, arg3 float64) (
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_SetLinearUnits_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_18)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
+	swig_r = (int)(C._wrap_SpatialReference_SetLinearUnits_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_18)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -702,7 +707,7 @@ func (arg1 SwigcptrSpatialReference) SetLinearUnitsAndUpdateParameters(arg2 stri
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_SetLinearUnitsAndUpdateParameters_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
+	swig_r = (int)(C._wrap_SpatialReference_SetLinearUnitsAndUpdateParameters_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -712,14 +717,14 @@ func (arg1 SwigcptrSpatialReference) SetLinearUnitsAndUpdateParameters(arg2 stri
 func (arg1 SwigcptrSpatialReference) GetLinearUnits() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_SpatialReference_GetLinearUnits_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_SpatialReference_GetLinearUnits_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) GetLinearUnitsName() (_swig_ret string) {
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_SpatialReference_GetLinearUnitsName_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_SpatialReference_GetLinearUnitsName_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
  swig_r_1 = swigCopyString(swig_r) 
@@ -730,7 +735,7 @@ func (arg1 SwigcptrSpatialReference) GetAuthorityCode(arg2 string) (_swig_ret st
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_SpatialReference_GetAuthorityCode_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_22)(unsafe.Pointer(&_swig_i_1)))
+	swig_r_p := C._wrap_SpatialReference_GetAuthorityCode_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_22)(unsafe.Pointer(&_swig_i_1)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -744,7 +749,7 @@ func (arg1 SwigcptrSpatialReference) GetAuthorityName(arg2 string) (_swig_ret st
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_SpatialReference_GetAuthorityName_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_1)))
+	swig_r_p := C._wrap_SpatialReference_GetAuthorityName_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_1)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -763,14 +768,14 @@ func (arg1 SwigcptrSpatialReference) SetUTM(arg2 int, _swig_args ...interface{})
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_SetUTM_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_SpatialReference_SetUTM_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) GetUTMZone() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_GetUTMZone_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_GetUTMZone_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -793,7 +798,7 @@ func (arg1 SwigcptrSpatialReference) SetStatePlane(arg2 int, _swig_args ...inter
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetStatePlane_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), *(*C.swig_type_25)(unsafe.Pointer(&_swig_i_3)), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetStatePlane_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), *(*C.swig_type_25)(unsafe.Pointer(&_swig_i_3)), C.double(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg4
 	}
@@ -803,7 +808,7 @@ func (arg1 SwigcptrSpatialReference) SetStatePlane(arg2 int, _swig_args ...inter
 func (arg1 SwigcptrSpatialReference) AutoIdentifyEPSG() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_AutoIdentifyEPSG_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_AutoIdentifyEPSG_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -811,7 +816,7 @@ func (arg1 SwigcptrSpatialReference) SetProjection(arg2 string) (_swig_ret int) 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_SetProjection_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_SetProjection_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -823,7 +828,7 @@ func (arg1 SwigcptrSpatialReference) SetProjParm(arg2 string, arg3 float64) (_sw
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_SetProjParm_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_27)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
+	swig_r = (int)(C._wrap_SpatialReference_SetProjParm_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_27)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -839,7 +844,7 @@ func (arg1 SwigcptrSpatialReference) GetProjParm(arg2 string, _swig_args ...inte
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (float64)(C._wrap_SpatialReference_GetProjParm_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_28)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
+	swig_r = (float64)(C._wrap_SpatialReference_GetProjParm_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_28)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -851,7 +856,7 @@ func (arg1 SwigcptrSpatialReference) SetNormProjParm(arg2 string, arg3 float64) 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_SetNormProjParm_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
+	swig_r = (int)(C._wrap_SpatialReference_SetNormProjParm_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -867,7 +872,7 @@ func (arg1 SwigcptrSpatialReference) GetNormProjParm(arg2 string, _swig_args ...
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (float64)(C._wrap_SpatialReference_GetNormProjParm_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_30)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
+	swig_r = (float64)(C._wrap_SpatialReference_GetNormProjParm_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_30)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -877,21 +882,21 @@ func (arg1 SwigcptrSpatialReference) GetNormProjParm(arg2 string, _swig_args ...
 func (arg1 SwigcptrSpatialReference) GetSemiMajor() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_SpatialReference_GetSemiMajor_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_SpatialReference_GetSemiMajor_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) GetSemiMinor() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_SpatialReference_GetSemiMinor_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_SpatialReference_GetSemiMinor_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) GetInvFlattening() (_swig_ret float64) {
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_SpatialReference_GetInvFlattening_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_SpatialReference_GetInvFlattening_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -904,7 +909,7 @@ func (arg1 SwigcptrSpatialReference) SetACEA(arg2 float64, arg3 float64, arg4 fl
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_SpatialReference_SetACEA_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
+	swig_r = (int)(C._wrap_SpatialReference_SetACEA_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
 	return swig_r
 }
 
@@ -915,7 +920,7 @@ func (arg1 SwigcptrSpatialReference) SetAE(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetAE_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetAE_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -926,7 +931,7 @@ func (arg1 SwigcptrSpatialReference) SetBonne(arg2 float64, arg3 float64, arg4 f
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetBonne_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetBonne_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -937,7 +942,7 @@ func (arg1 SwigcptrSpatialReference) SetCEA(arg2 float64, arg3 float64, arg4 flo
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetCEA_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetCEA_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -948,7 +953,7 @@ func (arg1 SwigcptrSpatialReference) SetCS(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetCS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetCS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -961,7 +966,7 @@ func (arg1 SwigcptrSpatialReference) SetEC(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_SpatialReference_SetEC_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
+	swig_r = (int)(C._wrap_SpatialReference_SetEC_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
 	return swig_r
 }
 
@@ -971,7 +976,7 @@ func (arg1 SwigcptrSpatialReference) SetEckertIV(arg2 float64, arg3 float64, arg
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetEckertIV_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetEckertIV_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
@@ -981,7 +986,7 @@ func (arg1 SwigcptrSpatialReference) SetEckertVI(arg2 float64, arg3 float64, arg
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetEckertVI_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetEckertVI_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
@@ -992,7 +997,7 @@ func (arg1 SwigcptrSpatialReference) SetEquirectangular(arg2 float64, arg3 float
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetEquirectangular_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetEquirectangular_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1004,7 +1009,7 @@ func (arg1 SwigcptrSpatialReference) SetEquirectangular2(arg2 float64, arg3 floa
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetEquirectangular2_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetEquirectangular2_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1016,7 +1021,7 @@ func (arg1 SwigcptrSpatialReference) SetGaussSchreiberTMercator(arg2 float64, ar
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetGaussSchreiberTMercator_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetGaussSchreiberTMercator_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1026,7 +1031,7 @@ func (arg1 SwigcptrSpatialReference) SetGS(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetGS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetGS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
@@ -1036,14 +1041,14 @@ func (arg1 SwigcptrSpatialReference) SetGH(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetGH_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetGH_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) SetIGH() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_SetIGH_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_SetIGH_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1054,7 +1059,7 @@ func (arg1 SwigcptrSpatialReference) SetGEOS(arg2 float64, arg3 float64, arg4 fl
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetGEOS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetGEOS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1065,7 +1070,7 @@ func (arg1 SwigcptrSpatialReference) SetGnomonic(arg2 float64, arg3 float64, arg
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetGnomonic_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetGnomonic_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1079,7 +1084,7 @@ func (arg1 SwigcptrSpatialReference) SetHOM(arg2 float64, arg3 float64, arg4 flo
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
-	swig_r = (int)(C._wrap_SpatialReference_SetHOM_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7)))
+	swig_r = (int)(C._wrap_SpatialReference_SetHOM_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7)))
 	return swig_r
 }
 
@@ -1094,7 +1099,7 @@ func (arg1 SwigcptrSpatialReference) SetHOM2PNO(arg2 float64, arg3 float64, arg4
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	swig_r = (int)(C._wrap_SpatialReference_SetHOM2PNO_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7), C.double(_swig_i_8)))
+	swig_r = (int)(C._wrap_SpatialReference_SetHOM2PNO_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7), C.double(_swig_i_8)))
 	return swig_r
 }
 
@@ -1108,7 +1113,7 @@ func (arg1 SwigcptrSpatialReference) SetKrovak(arg2 float64, arg3 float64, arg4 
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
-	swig_r = (int)(C._wrap_SpatialReference_SetKrovak_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7)))
+	swig_r = (int)(C._wrap_SpatialReference_SetKrovak_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7)))
 	return swig_r
 }
 
@@ -1119,7 +1124,7 @@ func (arg1 SwigcptrSpatialReference) SetLAEA(arg2 float64, arg3 float64, arg4 fl
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetLAEA_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetLAEA_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1132,7 +1137,7 @@ func (arg1 SwigcptrSpatialReference) SetLCC(arg2 float64, arg3 float64, arg4 flo
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_SpatialReference_SetLCC_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
+	swig_r = (int)(C._wrap_SpatialReference_SetLCC_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
 	return swig_r
 }
 
@@ -1144,7 +1149,7 @@ func (arg1 SwigcptrSpatialReference) SetLCC1SP(arg2 float64, arg3 float64, arg4 
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetLCC1SP_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetLCC1SP_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1157,7 +1162,7 @@ func (arg1 SwigcptrSpatialReference) SetLCCB(arg2 float64, arg3 float64, arg4 fl
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_SpatialReference_SetLCCB_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
+	swig_r = (int)(C._wrap_SpatialReference_SetLCCB_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
 	return swig_r
 }
 
@@ -1168,7 +1173,7 @@ func (arg1 SwigcptrSpatialReference) SetMC(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetMC_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetMC_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1180,7 +1185,7 @@ func (arg1 SwigcptrSpatialReference) SetMercator(arg2 float64, arg3 float64, arg
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetMercator_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetMercator_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1190,7 +1195,7 @@ func (arg1 SwigcptrSpatialReference) SetMollweide(arg2 float64, arg3 float64, ar
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetMollweide_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetMollweide_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
@@ -1201,7 +1206,7 @@ func (arg1 SwigcptrSpatialReference) SetNZMG(arg2 float64, arg3 float64, arg4 fl
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetNZMG_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetNZMG_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1213,7 +1218,7 @@ func (arg1 SwigcptrSpatialReference) SetOS(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetOS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetOS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1224,7 +1229,7 @@ func (arg1 SwigcptrSpatialReference) SetOrthographic(arg2 float64, arg3 float64,
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetOrthographic_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetOrthographic_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1235,7 +1240,7 @@ func (arg1 SwigcptrSpatialReference) SetPolyconic(arg2 float64, arg3 float64, ar
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetPolyconic_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetPolyconic_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1247,7 +1252,7 @@ func (arg1 SwigcptrSpatialReference) SetPS(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetPS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetPS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1257,7 +1262,7 @@ func (arg1 SwigcptrSpatialReference) SetRobinson(arg2 float64, arg3 float64, arg
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetRobinson_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetRobinson_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
@@ -1267,7 +1272,7 @@ func (arg1 SwigcptrSpatialReference) SetSinusoidal(arg2 float64, arg3 float64, a
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetSinusoidal_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetSinusoidal_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
@@ -1279,7 +1284,7 @@ func (arg1 SwigcptrSpatialReference) SetStereographic(arg2 float64, arg3 float64
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetStereographic_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetStereographic_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1290,7 +1295,7 @@ func (arg1 SwigcptrSpatialReference) SetSOC(arg2 float64, arg3 float64, arg4 flo
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetSOC_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetSOC_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1302,7 +1307,7 @@ func (arg1 SwigcptrSpatialReference) SetTM(arg2 float64, arg3 float64, arg4 floa
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetTM_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetTM_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1315,7 +1320,7 @@ func (arg1 SwigcptrSpatialReference) SetTMVariant(arg2 string, arg3 float64, arg
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_SpatialReference_SetTMVariant_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_31)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
+	swig_r = (int)(C._wrap_SpatialReference_SetTMVariant_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_31)(unsafe.Pointer(&_swig_i_1)), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1329,7 +1334,7 @@ func (arg1 SwigcptrSpatialReference) SetTMG(arg2 float64, arg3 float64, arg4 flo
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_SetTMG_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_SetTMG_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r
 }
 
@@ -1341,7 +1346,7 @@ func (arg1 SwigcptrSpatialReference) SetTMSO(arg2 float64, arg3 float64, arg4 fl
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_SpatialReference_SetTMSO_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_SpatialReference_SetTMSO_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r
 }
 
@@ -1351,7 +1356,7 @@ func (arg1 SwigcptrSpatialReference) SetVDG(arg2 float64, arg3 float64, arg4 flo
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetVDG_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetVDG_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3)))
 	return swig_r
 }
 
@@ -1359,7 +1364,7 @@ func (arg1 SwigcptrSpatialReference) SetWellKnownGeogCS(arg2 string) (_swig_ret 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_SetWellKnownGeogCS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_32)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_SetWellKnownGeogCS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_32)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1370,7 +1375,7 @@ func (arg1 SwigcptrSpatialReference) SetFromUserInput(arg2 string) (_swig_ret in
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_SetFromUserInput_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_33)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_SetFromUserInput_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_33)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1381,7 +1386,7 @@ func (arg1 SwigcptrSpatialReference) CopyGeogCSFrom(arg2 SpatialReference) (_swi
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_SpatialReference_CopyGeogCSFrom_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_CopyGeogCSFrom_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1411,7 +1416,7 @@ func (arg1 SwigcptrSpatialReference) SetTOWGS84(arg2 float64, arg3 float64, arg4
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
-	swig_r = (int)(C._wrap_SpatialReference_SetTOWGS84_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7)))
+	swig_r = (int)(C._wrap_SpatialReference_SetTOWGS84_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7)))
 	return swig_r
 }
 
@@ -1419,7 +1424,7 @@ func (arg1 SwigcptrSpatialReference) GetTOWGS84(arg2 *float64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_GetTOWGS84_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_GetTOWGS84_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -1427,7 +1432,7 @@ func (arg1 SwigcptrSpatialReference) SetLocalCS(arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_SetLocalCS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_SetLocalCS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1462,7 +1467,7 @@ func (arg1 SwigcptrSpatialReference) SetGeogCS(arg2 string, arg3 string, arg4 st
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
 	_swig_i_9 := arg10
-	swig_r = (int)(C._wrap_SpatialReference_SetGeogCS_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_35)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_36)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_37)(unsafe.Pointer(&_swig_i_3)), C.double(_swig_i_4), C.double(_swig_i_5), *(*C.swig_type_38)(unsafe.Pointer(&_swig_i_6)), C.double(_swig_i_7), *(*C.swig_type_39)(unsafe.Pointer(&_swig_i_8)), C.double(_swig_i_9)))
+	swig_r = (int)(C._wrap_SpatialReference_SetGeogCS_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_35)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_36)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_37)(unsafe.Pointer(&_swig_i_3)), C.double(_swig_i_4), C.double(_swig_i_5), *(*C.swig_type_38)(unsafe.Pointer(&_swig_i_6)), C.double(_swig_i_7), *(*C.swig_type_39)(unsafe.Pointer(&_swig_i_8)), C.double(_swig_i_9)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1489,7 +1494,7 @@ func (arg1 SwigcptrSpatialReference) SetProjCS(_swig_args ...interface{}) (_swig
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_SetProjCS_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_40)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_SetProjCS_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_40)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1504,7 +1509,7 @@ func (arg1 SwigcptrSpatialReference) SetGeocCS(_swig_args ...interface{}) (_swig
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_SetGeocCS_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_41)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_SetGeocCS_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_41)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1529,7 +1534,7 @@ func (arg1 SwigcptrSpatialReference) SetVertCS(_swig_args ...interface{}) (_swig
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_SetVertCS_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_42)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_43)(unsafe.Pointer(&_swig_i_2)), C.swig_intgo(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetVertCS_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_42)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_43)(unsafe.Pointer(&_swig_i_2)), C.swig_intgo(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1545,7 +1550,7 @@ func (arg1 SwigcptrSpatialReference) SetCompoundCS(arg2 string, arg3 SpatialRefe
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	swig_r = (int)(C._wrap_SpatialReference_SetCompoundCS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_44)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_SetCompoundCS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_44)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1556,7 +1561,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromWkt(arg2 *string) (_swig_ret int)
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromWkt_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromWkt_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -1564,7 +1569,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromProj4(arg2 string) (_swig_ret int
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromProj4_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_45)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromProj4_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_45)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1575,7 +1580,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromUrl(arg2 string) (_swig_ret int) 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromUrl_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_46)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromUrl_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_46)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1586,7 +1591,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromESRI(arg2 *string) (_swig_ret int
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromESRI_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromESRI_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -1594,7 +1599,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromEPSG(arg2 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromEPSG_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromEPSG_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -1602,7 +1607,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromEPSGA(arg2 int) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromEPSGA_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromEPSGA_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r
 }
 
@@ -1620,7 +1625,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromPCI(arg2 string, _swig_args ...in
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromPCI_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_47)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromPCI_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_47)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1649,7 +1654,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromUSGS(arg2 int64, _swig_args ...in
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromUSGS_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_type_49(_swig_i_1), C.swig_type_50(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_51(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromUSGS_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_type_49(_swig_i_1), C.swig_type_50(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_51(_swig_i_4)))
 	return swig_r
 }
 
@@ -1657,7 +1662,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromXML(arg2 string) (_swig_ret int) 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromXML_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_52)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromXML_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_52)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1670,7 +1675,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromERM(arg2 string, arg3 string, arg
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromERM_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_53)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_55)(unsafe.Pointer(&_swig_i_3))))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromERM_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_53)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_55)(unsafe.Pointer(&_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1687,7 +1692,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromMICoordSys(arg2 string) (_swig_re
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromMICoordSys_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), *(*C.swig_type_56)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromMICoordSys_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), *(*C.swig_type_56)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1698,7 +1703,7 @@ func (arg1 SwigcptrSpatialReference) ImportFromOzi(arg2 *string) (_swig_ret int)
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ImportFromOzi_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ImportFromOzi_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -1706,7 +1711,7 @@ func (arg1 SwigcptrSpatialReference) ExportToWkt(arg2 *string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ExportToWkt_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ExportToWkt_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -1719,7 +1724,7 @@ func (arg1 SwigcptrSpatialReference) ExportToPrettyWkt(arg2 *string, _swig_args 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_ExportToPrettyWkt_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_SpatialReference_ExportToPrettyWkt_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r
 }
 
@@ -1727,7 +1732,7 @@ func (arg1 SwigcptrSpatialReference) ExportToProj4(arg2 *string) (_swig_ret int)
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ExportToProj4_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ExportToProj4_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -1737,7 +1742,7 @@ func (arg1 SwigcptrSpatialReference) ExportToPCI(arg2 *string, arg3 *string, arg
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_SpatialReference_ExportToPCI_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_SpatialReference_ExportToPCI_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	return swig_r
 }
 
@@ -1748,7 +1753,7 @@ func (arg1 SwigcptrSpatialReference) ExportToUSGS(arg2 *int64, arg3 *int64, arg4
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_SpatialReference_ExportToUSGS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_SpatialReference_ExportToUSGS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r
 }
 
@@ -1761,7 +1766,7 @@ func (arg1 SwigcptrSpatialReference) ExportToXML(arg2 *string, _swig_args ...int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_SpatialReference_ExportToXML_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), *(*C.swig_type_57)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_SpatialReference_ExportToXML_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), *(*C.swig_type_57)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -1772,63 +1777,63 @@ func (arg1 SwigcptrSpatialReference) ExportToMICoordSys(arg2 *string) (_swig_ret
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_SpatialReference_ExportToMICoordSys_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_SpatialReference_ExportToMICoordSys_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) CloneGeogCS() (_swig_ret SpatialReference) {
 	var swig_r SpatialReference
 	_swig_i_0 := arg1
-	swig_r = (SpatialReference)(SwigcptrSpatialReference(C._wrap_SpatialReference_CloneGeogCS_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0))))
+	swig_r = (SpatialReference)(SwigcptrSpatialReference(C._wrap_SpatialReference_CloneGeogCS_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) Clone() (_swig_ret SpatialReference) {
 	var swig_r SpatialReference
 	_swig_i_0 := arg1
-	swig_r = (SpatialReference)(SwigcptrSpatialReference(C._wrap_SpatialReference_Clone_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0))))
+	swig_r = (SpatialReference)(SwigcptrSpatialReference(C._wrap_SpatialReference_Clone_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) Validate() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_Validate_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_Validate_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) StripCTParms() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_StripCTParms_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_StripCTParms_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) FixupOrdering() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_FixupOrdering_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_FixupOrdering_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) Fixup() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_Fixup_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_Fixup_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) MorphToESRI() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_MorphToESRI_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_MorphToESRI_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func (arg1 SwigcptrSpatialReference) MorphFromESRI() (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_SpatialReference_MorphFromESRI_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_SpatialReference_MorphFromESRI_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1964,19 +1969,19 @@ func NewCoordinateTransformation(arg1 SpatialReference, arg2 SpatialReference) (
 	var swig_r CoordinateTransformation
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (CoordinateTransformation)(SwigcptrCoordinateTransformation(C._wrap_new_CoordinateTransformation_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (CoordinateTransformation)(SwigcptrCoordinateTransformation(C._wrap_new_CoordinateTransformation_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 
 func DeleteCoordinateTransformation(arg1 CoordinateTransformation) {
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_CoordinateTransformation_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_CoordinateTransformation_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrCoordinateTransformation) TransformPoint__SWIG_0(arg2 *float64) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_CoordinateTransformation_TransformPoint__SWIG_0_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_CoordinateTransformation_TransformPoint__SWIG_0_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrCoordinateTransformation) TransformPoint__SWIG_1(arg2 *float64, arg3 float64, arg4 float64, _swig_args ...interface{}) {
@@ -1989,7 +1994,7 @@ func (arg1 SwigcptrCoordinateTransformation) TransformPoint__SWIG_1(arg2 *float6
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	C._wrap_CoordinateTransformation_TransformPoint__SWIG_1_osr_b6aadf85dd55cdd7(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
+	C._wrap_CoordinateTransformation_TransformPoint__SWIG_1_osr_09662cf3c15b8b8e(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
 }
 
 func (p SwigcptrCoordinateTransformation) TransformPoint(a ...interface{}) {
@@ -2017,7 +2022,7 @@ func (arg1 SwigcptrCoordinateTransformation) TransformPoints(arg2 int, arg3 *flo
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	C._wrap_CoordinateTransformation_TransformPoints_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4))
+	C._wrap_CoordinateTransformation_TransformPoints_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4))
 }
 
 type CoordinateTransformation interface {
@@ -2031,7 +2036,7 @@ func CreateCoordinateTransformation(arg1 SpatialReference, arg2 SpatialReference
 	var swig_r CoordinateTransformation
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (CoordinateTransformation)(SwigcptrCoordinateTransformation(C._wrap_CreateCoordinateTransformation_osr_b6aadf85dd55cdd7(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
+	swig_r = (CoordinateTransformation)(SwigcptrCoordinateTransformation(C._wrap_CreateCoordinateTransformation_osr_09662cf3c15b8b8e(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
 	return swig_r
 }
 

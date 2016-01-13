@@ -28,10 +28,11 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
-#include "gdaljp2abstractdataset.h"
-#include "gdaljp2metadata.h"
 #include "cpl_string.h"
 #include "cpl_multiproc.h"
+#include "gdal_frmts.h"
+#include "gdaljp2abstractdataset.h"
+#include "gdaljp2metadata.h"
 
 #include "../mem/memdataset.h"
 
@@ -54,7 +55,7 @@ CPL_CVSID("$Id$");
     using namespace kdu_supp;
 #endif
 
-// #define KAKADU_JPX	1
+// #define KAKADU_JPX 1
 
 static int kakadu_initialized = FALSE;
 
@@ -195,6 +196,8 @@ class JP2KAKRasterBand : public GDALPamRasterBand
 class kdu_cpl_error_message : public kdu_thread_safe_message 
 {
 public: // Member classes
+    using kdu_thread_safe_message::put_text;
+
     kdu_cpl_error_message( CPLErr eErrClass ) 
     {
         m_eErrClass = eErrClass;

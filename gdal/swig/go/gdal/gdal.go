@@ -133,7 +133,7 @@ typedef _gostring_ swig_type_102;
 typedef _gostring_ swig_type_103;
 typedef _gostring_ swig_type_104;
 typedef _gostring_ swig_type_105;
-extern void _wrap_Swig_free_gdal_a300ce886cc7d02a(uintptr_t arg1);
+extern void _wrap_Swig_free_gdal_8039be23513eb05d(uintptr_t arg1);
 
 // "gdal.h" is needed to declare GDALProgressFunc.
 #include "gdal.h"
@@ -144,262 +144,262 @@ extern void _wrap_Swig_free_gdal_a300ce886cc7d02a(uintptr_t arg1);
 // We need to link against GDAL when building the Go module.
 #cgo LDFLAGS: -lgdal
 
-extern swig_type_1 _wrap_MajorObject_GetDescription_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_MajorObject_SetDescription_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_2 arg2);
-extern swig_voidp _wrap_MajorObject_GetMetadataDomainList_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_voidp _wrap_MajorObject_GetMetadata_Dict_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_3 arg2);
-extern swig_voidp _wrap_MajorObject_GetMetadata_List_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_4 arg2);
-extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_0_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_type_5 arg3);
-extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_1_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_6 arg2, swig_type_7 arg3);
-extern swig_type_8 _wrap_MajorObject_GetMetadataItem_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_9 arg2, swig_type_10 arg3);
-extern swig_intgo _wrap_MajorObject_SetMetadataItem_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_11 arg2, swig_type_12 arg3, swig_type_13 arg4);
-extern swig_type_14 _wrap_Driver_ShortName_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_15 _wrap_Driver_LongName_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_16 _wrap_Driver_HelpTopic_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Driver_Create_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_17 arg2, swig_intgo arg3, swig_intgo arg4, swig_intgo arg5, swig_intgo arg6, swig_voidp arg7);
-extern uintptr_t _wrap_Driver_CreateCopy_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_18 arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
-extern swig_intgo _wrap_Driver_Delete_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_19 arg2);
-extern swig_intgo _wrap_Driver_Rename_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_20 arg2, swig_type_21 arg3);
-extern swig_intgo _wrap_Driver_CopyFiles_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_22 arg2, swig_type_23 arg3);
-extern swig_intgo _wrap_Driver_Register_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_Driver_Deregister_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_ColorEntry_c1_set_gdal_a300ce886cc7d02a(uintptr_t arg1, short arg2);
-extern short _wrap_ColorEntry_c1_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_ColorEntry_c2_set_gdal_a300ce886cc7d02a(uintptr_t arg1, short arg2);
-extern short _wrap_ColorEntry_c2_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_ColorEntry_c3_set_gdal_a300ce886cc7d02a(uintptr_t arg1, short arg2);
-extern short _wrap_ColorEntry_c3_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_ColorEntry_c4_set_gdal_a300ce886cc7d02a(uintptr_t arg1, short arg2);
-extern short _wrap_ColorEntry_c4_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_new_ColorEntry_gdal_a300ce886cc7d02a(void);
-extern void _wrap_delete_ColorEntry_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GCP_GCPX_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GCP_GCPX_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GCP_GCPY_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GCP_GCPY_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GCP_GCPZ_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GCP_GCPZ_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GCP_GCPPixel_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GCP_GCPPixel_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GCP_GCPLine_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GCP_GCPLine_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GCP_Info_set_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_24 arg2);
-extern swig_type_25 _wrap_GCP_Info_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GCP_Id_set_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_26 arg2);
-extern swig_type_27 _wrap_GCP_Id_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_new_GCP_gdal_a300ce886cc7d02a(intgo _swig_args, double arg1, double arg2, double arg3, double arg4, double arg5, swig_type_28 arg6, swig_type_29 arg7);
-extern void _wrap_delete_GCP_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern double _wrap_GDAL_GCP_GCPX_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GDAL_GCP_GCPX_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GDAL_GCP_GCPY_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GDAL_GCP_GCPY_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GDAL_GCP_GCPZ_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GDAL_GCP_GCPZ_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GDAL_GCP_GCPPixel_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GDAL_GCP_GCPPixel_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern double _wrap_GDAL_GCP_GCPLine_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GDAL_GCP_GCPLine_set_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern swig_type_30 _wrap_GDAL_GCP_Info_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GDAL_GCP_Info_set_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_31 arg2);
-extern swig_type_32 _wrap_GDAL_GCP_Id_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_GDAL_GCP_Id_set_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_33 arg2);
-extern swig_intgo _wrap_GCPsToGeoTransform_gdal_a300ce886cc7d02a(intgo _swig_args, swig_intgo arg1, uintptr_t arg2, swig_voidp arg3, swig_intgo arg4);
-extern void _wrap_delete_AsyncReader_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_AsyncReader_GetNextUpdatedRegion_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2, swig_type_34 arg3, swig_type_35 arg4, swig_type_36 arg5, swig_type_37 arg6);
-extern swig_intgo _wrap_AsyncReader_LockBuffer_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern void _wrap_AsyncReader_UnlockBuffer_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Dataset_RasterXSize_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Dataset_RasterYSize_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Dataset_RasterCount_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_delete_Dataset_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_Dataset_Close_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Dataset_GetDriver_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Dataset_GetRasterBand_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_type_38 _wrap_Dataset_GetProjection_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_39 _wrap_Dataset_GetProjectionRef_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Dataset_SetProjection_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_40 arg2);
-extern void _wrap_Dataset_GetGeoTransform_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_Dataset_SetGeoTransform_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_Dataset_BuildOverviews_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_41 arg2, swig_intgo arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_Dataset_GetGCPCount_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_42 _wrap_Dataset_GetGCPProjection_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_Dataset_GetGCPs_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2, uintptr_t arg3);
-extern swig_intgo _wrap_Dataset_SetGCPs_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_type_43 arg4);
-extern void _wrap_Dataset_FlushCache_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Dataset_AddBand_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern swig_intgo _wrap_Dataset_CreateMaskBand_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_voidp _wrap_Dataset_GetFileList_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Dataset_CreateLayer_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_44 arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5);
-extern uintptr_t _wrap_Dataset_CopyLayer_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_45 arg3, swig_voidp arg4);
-extern swig_intgo _wrap_Dataset_DeleteLayer_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Dataset_GetLayerCount_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Dataset_GetLayerByIndex_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern uintptr_t _wrap_Dataset_GetLayerByName_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_46 arg2);
-extern _Bool _wrap_Dataset_TestCapability_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_47 arg2);
-extern uintptr_t _wrap_Dataset_ExecuteSQL_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_48 arg2, uintptr_t arg3, swig_type_49 arg4);
-extern void _wrap_Dataset_ReleaseResultSet_gdal_a300ce886cc7d02a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Dataset_GetStyleTable_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_Dataset_SetStyleTable_gdal_a300ce886cc7d02a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Dataset_StartTransaction_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Dataset_CommitTransaction_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Dataset_RollbackTransaction_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_XSize_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_YSize_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_DataType_get_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Band_GetDataset_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_GetBand_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_Band_GetBlockSize_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_50 arg2, swig_type_51 arg3);
-extern swig_intgo _wrap_Band_GetColorInterpretation_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_GetRasterColorInterpretation_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_SetColorInterpretation_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Band_SetRasterColorInterpretation_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern void _wrap_Band_GetNoDataValue_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
-extern swig_intgo _wrap_Band_SetNoDataValue_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern swig_intgo _wrap_Band_DeleteNoDataValue_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_52 _wrap_Band_GetUnitType_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_SetUnitType_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_53 arg2);
-extern swig_voidp _wrap_Band_GetRasterCategoryNames_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_SetRasterCategoryNames_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2);
-extern void _wrap_Band_GetMinimum_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
-extern void _wrap_Band_GetMaximum_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
-extern void _wrap_Band_GetOffset_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
-extern void _wrap_Band_GetScale_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
-extern swig_intgo _wrap_Band_SetOffset_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern swig_intgo _wrap_Band_SetScale_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern swig_intgo _wrap_Band_GetStatistics_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_type_54 arg4, swig_type_55 arg5, swig_type_56 arg6, swig_type_57 arg7);
-extern swig_intgo _wrap_Band_ComputeStatistics_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, _Bool arg2, swig_type_58 arg3, swig_type_59 arg4, swig_type_60 arg5, swig_type_61 arg6, GDALProgressFunc arg7, swig_voidp arg8);
-extern swig_intgo _wrap_Band_SetStatistics_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
-extern swig_intgo _wrap_Band_GetOverviewCount_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Band_GetOverview_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Band_Checksum_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4, swig_voidp arg5);
-extern void _wrap_Band_ComputeRasterMinMax_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
-extern void _wrap_Band_ComputeBandStats_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
-extern swig_intgo _wrap_Band_Fill_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, double arg2, double arg3);
-extern void _wrap_Band_FlushCache_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Band_GetRasterColorTable_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_Band_GetColorTable_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_SetRasterColorTable_gdal_a300ce886cc7d02a(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_Band_SetColorTable_gdal_a300ce886cc7d02a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Band_GetDefaultRAT_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_SetDefaultRAT_gdal_a300ce886cc7d02a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_Band_GetMaskBand_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_GetMaskFlags_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_CreateMaskBand_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_Band_GetHistogram_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, swig_intgo arg4, uintptr_t arg5, swig_intgo arg6, swig_intgo arg7, GDALProgressFunc arg8, swig_voidp arg9);
-extern swig_intgo _wrap_Band_GetDefaultHistogram_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_voidp arg4, uintptr_t arg5, swig_intgo arg6, GDALProgressFunc arg7, swig_voidp arg8);
-extern swig_intgo _wrap_Band_SetDefaultHistogram_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2, double arg3, swig_intgo arg4, uintptr_t arg5);
-extern _Bool _wrap_Band_HasArbitraryOverviews_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_voidp _wrap_Band_GetCategoryNames_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Band_SetCategoryNames_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_voidp arg2);
-extern uintptr_t _wrap_new_ColorTable_gdal_a300ce886cc7d02a(intgo _swig_args, swig_intgo arg1);
-extern void _wrap_delete_ColorTable_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_ColorTable_Clone_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_ColorTable_GetPaletteInterpretation_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_ColorTable_GetCount_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_ColorTable_GetColorEntry_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_ColorTable_GetColorEntryAsRGB_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern void _wrap_ColorTable_SetColorEntry_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
-extern void _wrap_ColorTable_CreateColorRamp_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_intgo arg4, uintptr_t arg5);
-extern uintptr_t _wrap_new_RasterAttributeTable_gdal_a300ce886cc7d02a(void);
-extern void _wrap_delete_RasterAttributeTable_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_RasterAttributeTable_Clone_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_RasterAttributeTable_GetColumnCount_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_62 _wrap_RasterAttributeTable_GetNameOfCol_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_RasterAttributeTable_GetUsageOfCol_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_RasterAttributeTable_GetTypeOfCol_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_RasterAttributeTable_GetColOfUsage_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_RasterAttributeTable_GetRowCount_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_63 _wrap_RasterAttributeTable_GetValueAsString_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern swig_intgo _wrap_RasterAttributeTable_GetValueAsInt_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern double _wrap_RasterAttributeTable_GetValueAsDouble_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
-extern void _wrap_RasterAttributeTable_SetValueAsString_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_type_64 arg4);
-extern void _wrap_RasterAttributeTable_SetValueAsInt_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_intgo arg4);
-extern void _wrap_RasterAttributeTable_SetValueAsDouble_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, double arg4);
-extern void _wrap_RasterAttributeTable_SetRowCount_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2);
-extern swig_intgo _wrap_RasterAttributeTable_CreateColumn_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_65 arg2, swig_intgo arg3, swig_intgo arg4);
-extern _Bool _wrap_RasterAttributeTable_GetLinearBinning_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_type_66 arg2, swig_type_67 arg3);
-extern swig_intgo _wrap_RasterAttributeTable_SetLinearBinning_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2, double arg3);
-extern swig_intgo _wrap_RasterAttributeTable_GetRowOfValue_gdal_a300ce886cc7d02a(uintptr_t arg1, double arg2);
-extern swig_intgo _wrap_RasterAttributeTable_ChangesAreWrittenToFile_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern void _wrap_RasterAttributeTable_DumpReadable_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_TermProgress_nocb_gdal_a300ce886cc7d02a(intgo _swig_args, double arg1, swig_type_68 arg2, uintptr_t arg3);
-extern swig_type_69 _wrap_TermProgress_gdal_a300ce886cc7d02a(void);
-extern swig_intgo _wrap_ComputeMedianCutPCT_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, uintptr_t arg5, GDALProgressFunc arg6, swig_voidp arg7);
-extern swig_intgo _wrap_DitherRGB2PCT_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5, GDALProgressFunc arg6, swig_voidp arg7);
-extern swig_intgo _wrap_ReprojectImage_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_70 arg3, swig_type_71 arg4, swig_intgo arg5, double arg6, double arg7, GDALProgressFunc arg8, swig_voidp arg9, swig_voidp arg10);
-extern swig_intgo _wrap_ComputeProximity_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern swig_intgo _wrap_RasterizeLayer_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, swig_intgo arg7, swig_voidp arg8, swig_voidp arg9, GDALProgressFunc arg10, swig_voidp arg11);
-extern swig_intgo _wrap_Polygonize_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
-extern swig_intgo _wrap_FPolygonize_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
-extern swig_intgo _wrap_FillNodata_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, double arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
-extern swig_intgo _wrap_SieveFilter_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, swig_intgo arg5, swig_voidp arg6, GDALProgressFunc arg7, swig_voidp arg8);
-extern swig_intgo _wrap_RegenerateOverviews_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_type_72 arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern swig_intgo _wrap_RegenerateOverview_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_73 arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern swig_intgo _wrap_ContourGenerate_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, swig_intgo arg4, swig_voidp arg5, swig_intgo arg6, double arg7, uintptr_t arg8, swig_intgo arg9, swig_intgo arg10, GDALProgressFunc arg11, swig_voidp arg12);
-extern uintptr_t _wrap_AutoCreateWarpedVRT_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_type_74 arg2, swig_type_75 arg3, swig_intgo arg4, double arg5);
-extern uintptr_t _wrap_CreatePansharpenedVRT_gdal_a300ce886cc7d02a(swig_type_76 arg1, uintptr_t arg2, swig_intgo arg3, uintptr_t arg4);
-extern uintptr_t _wrap_new_Transformer_gdal_a300ce886cc7d02a(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
-extern void _wrap_delete_Transformer_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_Transformer_TransformPoint__SWIG_0_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
-extern swig_intgo _wrap_Transformer_TransformPoint__SWIG_1_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3, double arg4, double arg5, double arg6);
-extern swig_intgo _wrap_Transformer_TransformPoints_gdal_a300ce886cc7d02a(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4, swig_voidp arg5, swig_voidp arg6, swig_voidp arg7);
-extern swig_intgo _wrap_Transformer_TransformGeolocations_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, GDALProgressFunc arg5, swig_voidp arg6, swig_voidp arg7);
-extern void _wrap_ApplyGeoTransform_gdal_a300ce886cc7d02a(swig_voidp arg1, double arg2, double arg3, swig_type_77 arg4, swig_type_78 arg5);
-extern swig_intgo _wrap_InvGeoTransform_gdal_a300ce886cc7d02a(swig_voidp arg1, swig_voidp arg2);
-extern swig_type_79 _wrap_VersionInfo_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_80 arg1);
-extern void _wrap_AllRegister_gdal_a300ce886cc7d02a(void);
-extern void _wrap_GDALDestroyDriverManager_gdal_a300ce886cc7d02a(void);
-extern swig_intgo _wrap_GetCacheMax_gdal_a300ce886cc7d02a(void);
-extern swig_intgo _wrap_GetCacheUsed_gdal_a300ce886cc7d02a(void);
-extern void _wrap_SetCacheMax_gdal_a300ce886cc7d02a(swig_intgo arg1);
-extern swig_intgo _wrap_GetDataTypeSize_gdal_a300ce886cc7d02a(swig_intgo arg1);
-extern swig_intgo _wrap_DataTypeIsComplex_gdal_a300ce886cc7d02a(swig_intgo arg1);
-extern swig_type_81 _wrap_GetDataTypeName_gdal_a300ce886cc7d02a(swig_intgo arg1);
-extern swig_intgo _wrap_GetDataTypeByName_gdal_a300ce886cc7d02a(swig_type_82 arg1);
-extern swig_type_83 _wrap_GetColorInterpretationName_gdal_a300ce886cc7d02a(swig_intgo arg1);
-extern swig_type_84 _wrap_GetPaletteInterpretationName_gdal_a300ce886cc7d02a(swig_intgo arg1);
-extern swig_type_85 _wrap_DecToDMS_gdal_a300ce886cc7d02a(intgo _swig_args, double arg1, swig_type_86 arg2, swig_intgo arg3);
-extern double _wrap_PackedDMSToDec_gdal_a300ce886cc7d02a(double arg1);
-extern double _wrap_DecToPackedDMS_gdal_a300ce886cc7d02a(double arg1);
-extern uintptr_t _wrap_ParseXMLString_gdal_a300ce886cc7d02a(swig_type_87 arg1);
-extern swig_type_88 _wrap_SerializeXMLTree_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_89 _wrap_GetJPEG2000StructureAsString_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_90 arg1, swig_voidp arg2);
-extern swig_intgo _wrap_GetDriverCount_gdal_a300ce886cc7d02a(void);
-extern uintptr_t _wrap_GetDriverByName_gdal_a300ce886cc7d02a(swig_type_91 arg1);
-extern uintptr_t _wrap_GetDriver_gdal_a300ce886cc7d02a(swig_intgo arg1);
-extern uintptr_t _wrap_Open_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_92 arg1, swig_intgo arg2);
-extern uintptr_t _wrap_OpenEx_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_93 arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
-extern uintptr_t _wrap_OpenShared_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_94 arg1, swig_intgo arg2);
-extern uintptr_t _wrap_IdentifyDriver_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_95 arg1, swig_voidp arg2);
-extern swig_voidp _wrap_GeneralCmdLineProcessor_gdal_a300ce886cc7d02a(intgo _swig_args, swig_voidp arg1, swig_intgo arg2);
-extern uintptr_t _wrap_new_GDALInfoOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALInfoOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_type_96 _wrap_GDALInfo_gdal_a300ce886cc7d02a(uintptr_t arg1, uintptr_t arg2);
-extern uintptr_t _wrap_new_GDALTranslateOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALTranslateOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_wrapper_GDALTranslate_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_97 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern uintptr_t _wrap_new_GDALWarpAppOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALWarpAppOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_wrapper_GDALWarpDestDS_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, uintptr_t arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern uintptr_t _wrap_wrapper_GDALWarpDestName_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_98 arg1, swig_intgo arg2, swig_voidp arg3, uintptr_t arg4, GDALProgressFunc arg5, swig_voidp arg6);
-extern uintptr_t _wrap_new_GDALVectorTranslateOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALVectorTranslateOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_wrapper_GDALVectorTranslateDestDS_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern uintptr_t _wrap_wrapper_GDALVectorTranslateDestName_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_99 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern uintptr_t _wrap_new_GDALDEMProcessingOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALDEMProcessingOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_wrapper_GDALDEMProcessing_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_100 arg1, uintptr_t arg2, swig_type_101 arg3, swig_type_102 arg4, uintptr_t arg5, GDALProgressFunc arg6, swig_voidp arg7);
-extern uintptr_t _wrap_new_GDALNearblackOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALNearblackOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_wrapper_GDALNearblackDestDS_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern uintptr_t _wrap_wrapper_GDALNearblackDestName_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_103 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern uintptr_t _wrap_new_GDALGridOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALGridOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern uintptr_t _wrap_wrapper_GDALGrid_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_104 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern uintptr_t _wrap_new_GDALRasterizeOptions_gdal_a300ce886cc7d02a(swig_voidp arg1);
-extern void _wrap_delete_GDALRasterizeOptions_gdal_a300ce886cc7d02a(uintptr_t arg1);
-extern swig_intgo _wrap_wrapper_GDALRasterizeDestDS_gdal_a300ce886cc7d02a(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
-extern uintptr_t _wrap_wrapper_GDALRasterizeDestName_gdal_a300ce886cc7d02a(intgo _swig_args, swig_type_105 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern swig_type_1 _wrap_MajorObject_GetDescription_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_MajorObject_SetDescription_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_2 arg2);
+extern swig_voidp _wrap_MajorObject_GetMetadataDomainList_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_voidp _wrap_MajorObject_GetMetadata_Dict_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_3 arg2);
+extern swig_voidp _wrap_MajorObject_GetMetadata_List_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_4 arg2);
+extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_0_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_type_5 arg3);
+extern swig_intgo _wrap_MajorObject_SetMetadata__SWIG_1_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_6 arg2, swig_type_7 arg3);
+extern swig_type_8 _wrap_MajorObject_GetMetadataItem_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_9 arg2, swig_type_10 arg3);
+extern swig_intgo _wrap_MajorObject_SetMetadataItem_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_11 arg2, swig_type_12 arg3, swig_type_13 arg4);
+extern swig_type_14 _wrap_Driver_ShortName_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_15 _wrap_Driver_LongName_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_16 _wrap_Driver_HelpTopic_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Driver_Create_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_17 arg2, swig_intgo arg3, swig_intgo arg4, swig_intgo arg5, swig_intgo arg6, swig_voidp arg7);
+extern uintptr_t _wrap_Driver_CreateCopy_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_18 arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
+extern swig_intgo _wrap_Driver_Delete_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_19 arg2);
+extern swig_intgo _wrap_Driver_Rename_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_20 arg2, swig_type_21 arg3);
+extern swig_intgo _wrap_Driver_CopyFiles_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_22 arg2, swig_type_23 arg3);
+extern swig_intgo _wrap_Driver_Register_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_Driver_Deregister_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_ColorEntry_c1_set_gdal_8039be23513eb05d(uintptr_t arg1, short arg2);
+extern short _wrap_ColorEntry_c1_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_ColorEntry_c2_set_gdal_8039be23513eb05d(uintptr_t arg1, short arg2);
+extern short _wrap_ColorEntry_c2_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_ColorEntry_c3_set_gdal_8039be23513eb05d(uintptr_t arg1, short arg2);
+extern short _wrap_ColorEntry_c3_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_ColorEntry_c4_set_gdal_8039be23513eb05d(uintptr_t arg1, short arg2);
+extern short _wrap_ColorEntry_c4_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_new_ColorEntry_gdal_8039be23513eb05d(void);
+extern void _wrap_delete_ColorEntry_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GCP_GCPX_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GCP_GCPX_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GCP_GCPY_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GCP_GCPY_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GCP_GCPZ_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GCP_GCPZ_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GCP_GCPPixel_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GCP_GCPPixel_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GCP_GCPLine_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GCP_GCPLine_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GCP_Info_set_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_24 arg2);
+extern swig_type_25 _wrap_GCP_Info_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GCP_Id_set_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_26 arg2);
+extern swig_type_27 _wrap_GCP_Id_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_new_GCP_gdal_8039be23513eb05d(intgo _swig_args, double arg1, double arg2, double arg3, double arg4, double arg5, swig_type_28 arg6, swig_type_29 arg7);
+extern void _wrap_delete_GCP_gdal_8039be23513eb05d(uintptr_t arg1);
+extern double _wrap_GDAL_GCP_GCPX_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GDAL_GCP_GCPX_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GDAL_GCP_GCPY_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GDAL_GCP_GCPY_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GDAL_GCP_GCPZ_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GDAL_GCP_GCPZ_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GDAL_GCP_GCPPixel_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GDAL_GCP_GCPPixel_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern double _wrap_GDAL_GCP_GCPLine_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GDAL_GCP_GCPLine_set_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern swig_type_30 _wrap_GDAL_GCP_Info_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GDAL_GCP_Info_set_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_31 arg2);
+extern swig_type_32 _wrap_GDAL_GCP_Id_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_GDAL_GCP_Id_set_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_33 arg2);
+extern swig_intgo _wrap_GCPsToGeoTransform_gdal_8039be23513eb05d(intgo _swig_args, swig_intgo arg1, uintptr_t arg2, swig_voidp arg3, swig_intgo arg4);
+extern void _wrap_delete_AsyncReader_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_AsyncReader_GetNextUpdatedRegion_gdal_8039be23513eb05d(uintptr_t arg1, double arg2, swig_type_34 arg3, swig_type_35 arg4, swig_type_36 arg5, swig_type_37 arg6);
+extern swig_intgo _wrap_AsyncReader_LockBuffer_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern void _wrap_AsyncReader_UnlockBuffer_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Dataset_RasterXSize_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Dataset_RasterYSize_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Dataset_RasterCount_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_delete_Dataset_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_Dataset_Close_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Dataset_GetDriver_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Dataset_GetRasterBand_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_type_38 _wrap_Dataset_GetProjection_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_39 _wrap_Dataset_GetProjectionRef_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Dataset_SetProjection_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_40 arg2);
+extern void _wrap_Dataset_GetGeoTransform_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_Dataset_SetGeoTransform_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_Dataset_BuildOverviews_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_41 arg2, swig_intgo arg3, swig_voidp arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_Dataset_GetGCPCount_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_42 _wrap_Dataset_GetGCPProjection_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_Dataset_GetGCPs_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2, uintptr_t arg3);
+extern swig_intgo _wrap_Dataset_SetGCPs_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_type_43 arg4);
+extern void _wrap_Dataset_FlushCache_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Dataset_AddBand_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern swig_intgo _wrap_Dataset_CreateMaskBand_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_voidp _wrap_Dataset_GetFileList_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Dataset_CreateLayer_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_44 arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5);
+extern uintptr_t _wrap_Dataset_CopyLayer_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_45 arg3, swig_voidp arg4);
+extern swig_intgo _wrap_Dataset_DeleteLayer_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Dataset_GetLayerCount_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Dataset_GetLayerByIndex_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern uintptr_t _wrap_Dataset_GetLayerByName_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_46 arg2);
+extern _Bool _wrap_Dataset_TestCapability_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_47 arg2);
+extern uintptr_t _wrap_Dataset_ExecuteSQL_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_48 arg2, uintptr_t arg3, swig_type_49 arg4);
+extern void _wrap_Dataset_ReleaseResultSet_gdal_8039be23513eb05d(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Dataset_GetStyleTable_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_Dataset_SetStyleTable_gdal_8039be23513eb05d(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Dataset_StartTransaction_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Dataset_CommitTransaction_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Dataset_RollbackTransaction_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_XSize_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_YSize_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_DataType_get_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Band_GetDataset_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_GetBand_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_Band_GetBlockSize_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_50 arg2, swig_type_51 arg3);
+extern swig_intgo _wrap_Band_GetColorInterpretation_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_GetRasterColorInterpretation_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_SetColorInterpretation_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Band_SetRasterColorInterpretation_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern void _wrap_Band_GetNoDataValue_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
+extern swig_intgo _wrap_Band_SetNoDataValue_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern swig_intgo _wrap_Band_DeleteNoDataValue_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_52 _wrap_Band_GetUnitType_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_SetUnitType_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_53 arg2);
+extern swig_voidp _wrap_Band_GetRasterCategoryNames_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_SetRasterCategoryNames_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2);
+extern void _wrap_Band_GetMinimum_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
+extern void _wrap_Band_GetMaximum_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
+extern void _wrap_Band_GetOffset_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
+extern void _wrap_Band_GetScale_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2, swig_voidp arg3);
+extern swig_intgo _wrap_Band_SetOffset_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern swig_intgo _wrap_Band_SetScale_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern swig_intgo _wrap_Band_GetStatistics_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_type_54 arg4, swig_type_55 arg5, swig_type_56 arg6, swig_type_57 arg7);
+extern swig_intgo _wrap_Band_ComputeStatistics_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, _Bool arg2, swig_type_58 arg3, swig_type_59 arg4, swig_type_60 arg5, swig_type_61 arg6, GDALProgressFunc arg7, swig_voidp arg8);
+extern swig_intgo _wrap_Band_SetStatistics_gdal_8039be23513eb05d(uintptr_t arg1, double arg2, double arg3, double arg4, double arg5);
+extern swig_intgo _wrap_Band_GetOverviewCount_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Band_GetOverview_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Band_Checksum_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4, swig_voidp arg5);
+extern void _wrap_Band_ComputeRasterMinMax_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
+extern void _wrap_Band_ComputeBandStats_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3);
+extern swig_intgo _wrap_Band_Fill_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, double arg2, double arg3);
+extern void _wrap_Band_FlushCache_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Band_GetRasterColorTable_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_Band_GetColorTable_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_SetRasterColorTable_gdal_8039be23513eb05d(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_Band_SetColorTable_gdal_8039be23513eb05d(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Band_GetDefaultRAT_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_SetDefaultRAT_gdal_8039be23513eb05d(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_Band_GetMaskBand_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_GetMaskFlags_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_CreateMaskBand_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_Band_GetHistogram_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, swig_intgo arg4, uintptr_t arg5, swig_intgo arg6, swig_intgo arg7, GDALProgressFunc arg8, swig_voidp arg9);
+extern swig_intgo _wrap_Band_GetDefaultHistogram_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_voidp arg3, swig_voidp arg4, uintptr_t arg5, swig_intgo arg6, GDALProgressFunc arg7, swig_voidp arg8);
+extern swig_intgo _wrap_Band_SetDefaultHistogram_gdal_8039be23513eb05d(uintptr_t arg1, double arg2, double arg3, swig_intgo arg4, uintptr_t arg5);
+extern _Bool _wrap_Band_HasArbitraryOverviews_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_voidp _wrap_Band_GetCategoryNames_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Band_SetCategoryNames_gdal_8039be23513eb05d(uintptr_t arg1, swig_voidp arg2);
+extern uintptr_t _wrap_new_ColorTable_gdal_8039be23513eb05d(intgo _swig_args, swig_intgo arg1);
+extern void _wrap_delete_ColorTable_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_ColorTable_Clone_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_ColorTable_GetPaletteInterpretation_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_ColorTable_GetCount_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_ColorTable_GetColorEntry_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_ColorTable_GetColorEntryAsRGB_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern void _wrap_ColorTable_SetColorEntry_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3);
+extern void _wrap_ColorTable_CreateColorRamp_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_intgo arg4, uintptr_t arg5);
+extern uintptr_t _wrap_new_RasterAttributeTable_gdal_8039be23513eb05d(void);
+extern void _wrap_delete_RasterAttributeTable_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_RasterAttributeTable_Clone_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_RasterAttributeTable_GetColumnCount_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_62 _wrap_RasterAttributeTable_GetNameOfCol_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_RasterAttributeTable_GetUsageOfCol_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_RasterAttributeTable_GetTypeOfCol_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_RasterAttributeTable_GetColOfUsage_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_RasterAttributeTable_GetRowCount_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_63 _wrap_RasterAttributeTable_GetValueAsString_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern swig_intgo _wrap_RasterAttributeTable_GetValueAsInt_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern double _wrap_RasterAttributeTable_GetValueAsDouble_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3);
+extern void _wrap_RasterAttributeTable_SetValueAsString_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_type_64 arg4);
+extern void _wrap_RasterAttributeTable_SetValueAsInt_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_intgo arg4);
+extern void _wrap_RasterAttributeTable_SetValueAsDouble_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, double arg4);
+extern void _wrap_RasterAttributeTable_SetRowCount_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2);
+extern swig_intgo _wrap_RasterAttributeTable_CreateColumn_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_65 arg2, swig_intgo arg3, swig_intgo arg4);
+extern _Bool _wrap_RasterAttributeTable_GetLinearBinning_gdal_8039be23513eb05d(uintptr_t arg1, swig_type_66 arg2, swig_type_67 arg3);
+extern swig_intgo _wrap_RasterAttributeTable_SetLinearBinning_gdal_8039be23513eb05d(uintptr_t arg1, double arg2, double arg3);
+extern swig_intgo _wrap_RasterAttributeTable_GetRowOfValue_gdal_8039be23513eb05d(uintptr_t arg1, double arg2);
+extern swig_intgo _wrap_RasterAttributeTable_ChangesAreWrittenToFile_gdal_8039be23513eb05d(uintptr_t arg1);
+extern void _wrap_RasterAttributeTable_DumpReadable_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_TermProgress_nocb_gdal_8039be23513eb05d(intgo _swig_args, double arg1, swig_type_68 arg2, uintptr_t arg3);
+extern swig_type_69 _wrap_TermProgress_gdal_8039be23513eb05d(void);
+extern swig_intgo _wrap_ComputeMedianCutPCT_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, uintptr_t arg5, GDALProgressFunc arg6, swig_voidp arg7);
+extern swig_intgo _wrap_DitherRGB2PCT_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5, GDALProgressFunc arg6, swig_voidp arg7);
+extern swig_intgo _wrap_ReprojectImage_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_70 arg3, swig_type_71 arg4, swig_intgo arg5, double arg6, double arg7, GDALProgressFunc arg8, swig_voidp arg9, swig_voidp arg10);
+extern swig_intgo _wrap_ComputeProximity_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern swig_intgo _wrap_RasterizeLayer_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, uintptr_t arg4, uintptr_t arg5, uintptr_t arg6, swig_intgo arg7, swig_voidp arg8, swig_voidp arg9, GDALProgressFunc arg10, swig_voidp arg11);
+extern swig_intgo _wrap_Polygonize_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
+extern swig_intgo _wrap_FPolygonize_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
+extern swig_intgo _wrap_FillNodata_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, double arg3, swig_intgo arg4, swig_voidp arg5, GDALProgressFunc arg6, swig_voidp arg7);
+extern swig_intgo _wrap_SieveFilter_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_intgo arg4, swig_intgo arg5, swig_voidp arg6, GDALProgressFunc arg7, swig_voidp arg8);
+extern swig_intgo _wrap_RegenerateOverviews_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, uintptr_t arg3, swig_type_72 arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern swig_intgo _wrap_RegenerateOverview_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, swig_type_73 arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern swig_intgo _wrap_ContourGenerate_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, double arg2, double arg3, swig_intgo arg4, swig_voidp arg5, swig_intgo arg6, double arg7, uintptr_t arg8, swig_intgo arg9, swig_intgo arg10, GDALProgressFunc arg11, swig_voidp arg12);
+extern uintptr_t _wrap_AutoCreateWarpedVRT_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_type_74 arg2, swig_type_75 arg3, swig_intgo arg4, double arg5);
+extern uintptr_t _wrap_CreatePansharpenedVRT_gdal_8039be23513eb05d(swig_type_76 arg1, uintptr_t arg2, swig_intgo arg3, uintptr_t arg4);
+extern uintptr_t _wrap_new_Transformer_gdal_8039be23513eb05d(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
+extern void _wrap_delete_Transformer_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_Transformer_TransformPoint__SWIG_0_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_voidp arg3);
+extern swig_intgo _wrap_Transformer_TransformPoint__SWIG_1_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_voidp arg2, swig_intgo arg3, double arg4, double arg5, double arg6);
+extern swig_intgo _wrap_Transformer_TransformPoints_gdal_8039be23513eb05d(uintptr_t arg1, swig_intgo arg2, swig_intgo arg3, swig_voidp arg4, swig_voidp arg5, swig_voidp arg6, swig_voidp arg7);
+extern swig_intgo _wrap_Transformer_TransformGeolocations_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4, GDALProgressFunc arg5, swig_voidp arg6, swig_voidp arg7);
+extern void _wrap_ApplyGeoTransform_gdal_8039be23513eb05d(swig_voidp arg1, double arg2, double arg3, swig_type_77 arg4, swig_type_78 arg5);
+extern swig_intgo _wrap_InvGeoTransform_gdal_8039be23513eb05d(swig_voidp arg1, swig_voidp arg2);
+extern swig_type_79 _wrap_VersionInfo_gdal_8039be23513eb05d(intgo _swig_args, swig_type_80 arg1);
+extern void _wrap_AllRegister_gdal_8039be23513eb05d(void);
+extern void _wrap_GDALDestroyDriverManager_gdal_8039be23513eb05d(void);
+extern swig_intgo _wrap_GetCacheMax_gdal_8039be23513eb05d(void);
+extern swig_intgo _wrap_GetCacheUsed_gdal_8039be23513eb05d(void);
+extern void _wrap_SetCacheMax_gdal_8039be23513eb05d(swig_intgo arg1);
+extern swig_intgo _wrap_GetDataTypeSize_gdal_8039be23513eb05d(swig_intgo arg1);
+extern swig_intgo _wrap_DataTypeIsComplex_gdal_8039be23513eb05d(swig_intgo arg1);
+extern swig_type_81 _wrap_GetDataTypeName_gdal_8039be23513eb05d(swig_intgo arg1);
+extern swig_intgo _wrap_GetDataTypeByName_gdal_8039be23513eb05d(swig_type_82 arg1);
+extern swig_type_83 _wrap_GetColorInterpretationName_gdal_8039be23513eb05d(swig_intgo arg1);
+extern swig_type_84 _wrap_GetPaletteInterpretationName_gdal_8039be23513eb05d(swig_intgo arg1);
+extern swig_type_85 _wrap_DecToDMS_gdal_8039be23513eb05d(intgo _swig_args, double arg1, swig_type_86 arg2, swig_intgo arg3);
+extern double _wrap_PackedDMSToDec_gdal_8039be23513eb05d(double arg1);
+extern double _wrap_DecToPackedDMS_gdal_8039be23513eb05d(double arg1);
+extern uintptr_t _wrap_ParseXMLString_gdal_8039be23513eb05d(swig_type_87 arg1);
+extern swig_type_88 _wrap_SerializeXMLTree_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_89 _wrap_GetJPEG2000StructureAsString_gdal_8039be23513eb05d(intgo _swig_args, swig_type_90 arg1, swig_voidp arg2);
+extern swig_intgo _wrap_GetDriverCount_gdal_8039be23513eb05d(void);
+extern uintptr_t _wrap_GetDriverByName_gdal_8039be23513eb05d(swig_type_91 arg1);
+extern uintptr_t _wrap_GetDriver_gdal_8039be23513eb05d(swig_intgo arg1);
+extern uintptr_t _wrap_Open_gdal_8039be23513eb05d(intgo _swig_args, swig_type_92 arg1, swig_intgo arg2);
+extern uintptr_t _wrap_OpenEx_gdal_8039be23513eb05d(intgo _swig_args, swig_type_93 arg1, swig_intgo arg2, swig_voidp arg3, swig_voidp arg4, swig_voidp arg5);
+extern uintptr_t _wrap_OpenShared_gdal_8039be23513eb05d(intgo _swig_args, swig_type_94 arg1, swig_intgo arg2);
+extern uintptr_t _wrap_IdentifyDriver_gdal_8039be23513eb05d(intgo _swig_args, swig_type_95 arg1, swig_voidp arg2);
+extern swig_voidp _wrap_GeneralCmdLineProcessor_gdal_8039be23513eb05d(intgo _swig_args, swig_voidp arg1, swig_intgo arg2);
+extern uintptr_t _wrap_new_GDALInfoOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALInfoOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_type_96 _wrap_GDALInfo_gdal_8039be23513eb05d(uintptr_t arg1, uintptr_t arg2);
+extern uintptr_t _wrap_new_GDALTranslateOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALTranslateOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_wrapper_GDALTranslate_gdal_8039be23513eb05d(intgo _swig_args, swig_type_97 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern uintptr_t _wrap_new_GDALWarpAppOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALWarpAppOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_wrapper_GDALWarpDestDS_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, swig_intgo arg2, swig_voidp arg3, uintptr_t arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern uintptr_t _wrap_wrapper_GDALWarpDestName_gdal_8039be23513eb05d(intgo _swig_args, swig_type_98 arg1, swig_intgo arg2, swig_voidp arg3, uintptr_t arg4, GDALProgressFunc arg5, swig_voidp arg6);
+extern uintptr_t _wrap_new_GDALVectorTranslateOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALVectorTranslateOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_wrapper_GDALVectorTranslateDestDS_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern uintptr_t _wrap_wrapper_GDALVectorTranslateDestName_gdal_8039be23513eb05d(intgo _swig_args, swig_type_99 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern uintptr_t _wrap_new_GDALDEMProcessingOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALDEMProcessingOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_wrapper_GDALDEMProcessing_gdal_8039be23513eb05d(intgo _swig_args, swig_type_100 arg1, uintptr_t arg2, swig_type_101 arg3, swig_type_102 arg4, uintptr_t arg5, GDALProgressFunc arg6, swig_voidp arg7);
+extern uintptr_t _wrap_new_GDALNearblackOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALNearblackOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_wrapper_GDALNearblackDestDS_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern uintptr_t _wrap_wrapper_GDALNearblackDestName_gdal_8039be23513eb05d(intgo _swig_args, swig_type_103 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern uintptr_t _wrap_new_GDALGridOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALGridOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern uintptr_t _wrap_wrapper_GDALGrid_gdal_8039be23513eb05d(intgo _swig_args, swig_type_104 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern uintptr_t _wrap_new_GDALRasterizeOptions_gdal_8039be23513eb05d(swig_voidp arg1);
+extern void _wrap_delete_GDALRasterizeOptions_gdal_8039be23513eb05d(uintptr_t arg1);
+extern swig_intgo _wrap_wrapper_GDALRasterizeDestDS_gdal_8039be23513eb05d(intgo _swig_args, uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
+extern uintptr_t _wrap_wrapper_GDALRasterizeDestName_gdal_8039be23513eb05d(intgo _swig_args, swig_type_105 arg1, uintptr_t arg2, uintptr_t arg3, GDALProgressFunc arg4, swig_voidp arg5);
 #undef intgo
 */
 import "C"
@@ -436,7 +436,7 @@ func swigCopyString(s string) string {
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 }
 
 type SwigcptrMajorObject uintptr
@@ -455,7 +455,7 @@ func (arg1 SwigcptrMajorObject) GetDescription() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_MajorObject_GetDescription_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_MajorObject_GetDescription_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -468,7 +468,7 @@ func (arg1 SwigcptrMajorObject) SetDescription(arg2 string) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_MajorObject_SetDescription_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_2)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_MajorObject_SetDescription_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_2)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -482,7 +482,7 @@ func (arg1 SwigcptrMajorObject) GetMetadataDomainList() (_swig_ret []string, err
 
 	var swig_r **C.char
 	_swig_i_0 := arg1
-	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadataDomainList_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadataDomainList_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	var swig_r_1 []string
 
 	if swig_r != nil {
@@ -515,7 +515,7 @@ func (arg1 SwigcptrMajorObject) GetMetadata_Dict(_swig_args ...interface{}) (_sw
 	var swig_r *string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (*string)(C._wrap_MajorObject_GetMetadata_Dict_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_3)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (*string)(C._wrap_MajorObject_GetMetadata_Dict_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_3)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -535,7 +535,7 @@ func (arg1 SwigcptrMajorObject) GetMetadata_List(_swig_args ...interface{}) (_sw
 	var swig_r **C.char
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadata_List_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_4)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadata_List_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_4)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -571,7 +571,7 @@ func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_0(arg2 *string, _swig_args ...
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_0_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), *(*C.swig_type_5)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_0_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), *(*C.swig_type_5)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -592,7 +592,7 @@ func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_1(arg2 string, _swig_args ...i
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_1_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_MajorObject_SetMetadata__SWIG_1_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_6)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_7)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -641,7 +641,7 @@ func (arg1 SwigcptrMajorObject) GetMetadataItem(arg2 string, _swig_args ...inter
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r_p := C._wrap_MajorObject_GetMetadataItem_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_2)))
+	swig_r_p := C._wrap_MajorObject_GetMetadataItem_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_9)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_10)(unsafe.Pointer(&_swig_i_2)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -669,7 +669,7 @@ func (arg1 SwigcptrMajorObject) SetMetadataItem(arg2 string, arg3 string, _swig_
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_MajorObject_SetMetadataItem_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_11)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_13)(unsafe.Pointer(&_swig_i_3))))
+	swig_r = (int)(C._wrap_MajorObject_SetMetadataItem_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_11)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_12)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_13)(unsafe.Pointer(&_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -726,7 +726,7 @@ func (arg1 SwigcptrDriver) GetShortName() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Driver_ShortName_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Driver_ShortName_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -744,7 +744,7 @@ func (arg1 SwigcptrDriver) GetLongName() (_swig_ret string) {
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Driver_LongName_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Driver_LongName_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -758,7 +758,7 @@ func (arg1 SwigcptrDriver) GetHelpTopic() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Driver_HelpTopic_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Driver_HelpTopic_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -801,7 +801,7 @@ func (arg1 SwigcptrDriver) Create(arg2 string, arg3 int, arg4 int, _swig_args ..
 	_swig_i_6_i[arg7_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_6 = &_swig_i_6_i[0]
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Driver_Create_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_17)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_voidp(_swig_i_6))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Driver_Create_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_17)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_voidp(_swig_i_6))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -868,7 +868,7 @@ func (arg1 SwigcptrDriver) CreateCopy(arg2 string, arg3 Dataset, _swig_args ...i
 		_swig_i_6 = progress.New(progf, arg7)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Driver_CreateCopy_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_18)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Driver_CreateCopy_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_18)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -892,7 +892,7 @@ func (arg1 SwigcptrDriver) Delete(arg2 string) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Driver_Delete_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Driver_Delete_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_19)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -909,7 +909,7 @@ func (arg1 SwigcptrDriver) Rename(arg2 string, arg3 string) (_swig_ret int, err 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Driver_Rename_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_20)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_21)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_Driver_Rename_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_20)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_21)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -929,7 +929,7 @@ func (arg1 SwigcptrDriver) CopyFiles(arg2 string, arg3 string) (_swig_ret int, e
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Driver_CopyFiles_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_22)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_23)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (int)(C._wrap_Driver_CopyFiles_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_22)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_23)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -947,7 +947,7 @@ func (arg1 SwigcptrDriver) Register() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Driver_Register_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Driver_Register_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -956,7 +956,7 @@ func (arg1 SwigcptrDriver) Deregister() (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1
-	C._wrap_Driver_Deregister_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_Driver_Deregister_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1015,7 +1015,7 @@ func (arg1 SwigcptrColorEntry) SetC1(arg2 int16) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_ColorEntry_c1_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_ColorEntry_c1_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 	return
 }
 
@@ -1026,7 +1026,7 @@ func (arg1 SwigcptrColorEntry) GetC1() (_swig_ret int16, err error,
 
 	var swig_r int16
 	_swig_i_0 := arg1
-	swig_r = (int16)(C._wrap_ColorEntry_c1_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int16)(C._wrap_ColorEntry_c1_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1036,7 +1036,7 @@ func (arg1 SwigcptrColorEntry) SetC2(arg2 int16) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_ColorEntry_c2_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_ColorEntry_c2_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 	return
 }
 
@@ -1047,7 +1047,7 @@ func (arg1 SwigcptrColorEntry) GetC2() (_swig_ret int16, err error,
 
 	var swig_r int16
 	_swig_i_0 := arg1
-	swig_r = (int16)(C._wrap_ColorEntry_c2_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int16)(C._wrap_ColorEntry_c2_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1057,7 +1057,7 @@ func (arg1 SwigcptrColorEntry) SetC3(arg2 int16) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_ColorEntry_c3_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_ColorEntry_c3_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 	return
 }
 
@@ -1068,7 +1068,7 @@ func (arg1 SwigcptrColorEntry) GetC3() (_swig_ret int16, err error,
 
 	var swig_r int16
 	_swig_i_0 := arg1
-	swig_r = (int16)(C._wrap_ColorEntry_c3_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int16)(C._wrap_ColorEntry_c3_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1078,7 +1078,7 @@ func (arg1 SwigcptrColorEntry) SetC4(arg2 int16) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_ColorEntry_c4_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
+	C._wrap_ColorEntry_c4_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.short(_swig_i_1))
 	return
 }
 
@@ -1089,7 +1089,7 @@ func (arg1 SwigcptrColorEntry) GetC4() (_swig_ret int16, err error,
 
 	var swig_r int16
 	_swig_i_0 := arg1
-	swig_r = (int16)(C._wrap_ColorEntry_c4_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int16)(C._wrap_ColorEntry_c4_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1100,7 +1100,7 @@ func NewColorEntry() (_swig_ret ColorEntry, err error,
 	defer cpl.ErrorTrap()(&err)
 
 	var swig_r ColorEntry
-	swig_r = (ColorEntry)(SwigcptrColorEntry(C._wrap_new_ColorEntry_gdal_a300ce886cc7d02a()))
+	swig_r = (ColorEntry)(SwigcptrColorEntry(C._wrap_new_ColorEntry_gdal_8039be23513eb05d()))
 	return swig_r, err
 
 }
@@ -1109,7 +1109,7 @@ func DeleteColorEntry(arg1 ColorEntry) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_ColorEntry_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_ColorEntry_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1152,7 +1152,7 @@ func (arg1 SwigcptrGCP) SetGCPX(arg2 float64) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GCP_GCPX_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GCP_GCPX_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1163,7 +1163,7 @@ func (arg1 SwigcptrGCP) GetGCPX() (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_GCP_GCPX_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GCP_GCPX_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1173,7 +1173,7 @@ func (arg1 SwigcptrGCP) SetGCPY(arg2 float64) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GCP_GCPY_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GCP_GCPY_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1184,7 +1184,7 @@ func (arg1 SwigcptrGCP) GetGCPY() (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_GCP_GCPY_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GCP_GCPY_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1194,7 +1194,7 @@ func (arg1 SwigcptrGCP) SetGCPZ(arg2 float64) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GCP_GCPZ_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GCP_GCPZ_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1205,7 +1205,7 @@ func (arg1 SwigcptrGCP) GetGCPZ() (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_GCP_GCPZ_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GCP_GCPZ_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1215,7 +1215,7 @@ func (arg1 SwigcptrGCP) SetGCPPixel(arg2 float64) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GCP_GCPPixel_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GCP_GCPPixel_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1226,7 +1226,7 @@ func (arg1 SwigcptrGCP) GetGCPPixel() (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_GCP_GCPPixel_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GCP_GCPPixel_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1236,7 +1236,7 @@ func (arg1 SwigcptrGCP) SetGCPLine(arg2 float64) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GCP_GCPLine_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GCP_GCPLine_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1247,7 +1247,7 @@ func (arg1 SwigcptrGCP) GetGCPLine() (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_GCP_GCPLine_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GCP_GCPLine_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1257,7 +1257,7 @@ func (arg1 SwigcptrGCP) SetInfo(arg2 string) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GCP_Info_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_GCP_Info_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1271,7 +1271,7 @@ func (arg1 SwigcptrGCP) GetInfo() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GCP_Info_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_GCP_Info_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1284,7 +1284,7 @@ func (arg1 SwigcptrGCP) SetId(arg2 string) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_GCP_Id_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_GCP_Id_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_26)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1298,7 +1298,7 @@ func (arg1 SwigcptrGCP) GetId() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GCP_Id_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_GCP_Id_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1347,7 +1347,7 @@ func NewGCP(_swig_args ...interface{}) (_swig_ret GCP, err error,
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (GCP)(SwigcptrGCP(C._wrap_new_GCP_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.double(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), *(*C.swig_type_28)(unsafe.Pointer(&_swig_i_5)), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_6)))))
+	swig_r = (GCP)(SwigcptrGCP(C._wrap_new_GCP_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.double(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), *(*C.swig_type_28)(unsafe.Pointer(&_swig_i_5)), *(*C.swig_type_29)(unsafe.Pointer(&_swig_i_6)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg6
 	}
@@ -1362,7 +1362,7 @@ func DeleteGCP(arg1 GCP) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GCP_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GCP_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1413,7 +1413,7 @@ func GDAL_GCP_GCPX_get(arg1 GCP) (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (float64)(C._wrap_GDAL_GCP_GCPX_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GDAL_GCP_GCPX_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1423,7 +1423,7 @@ func GDAL_GCP_GCPX_set(arg1 GCP, arg2 float64) (err error) {
 
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	C._wrap_GDAL_GCP_GCPX_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GDAL_GCP_GCPX_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1434,7 +1434,7 @@ func GDAL_GCP_GCPY_get(arg1 GCP) (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (float64)(C._wrap_GDAL_GCP_GCPY_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GDAL_GCP_GCPY_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1444,7 +1444,7 @@ func GDAL_GCP_GCPY_set(arg1 GCP, arg2 float64) (err error) {
 
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	C._wrap_GDAL_GCP_GCPY_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GDAL_GCP_GCPY_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1455,7 +1455,7 @@ func GDAL_GCP_GCPZ_get(arg1 GCP) (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (float64)(C._wrap_GDAL_GCP_GCPZ_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GDAL_GCP_GCPZ_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1465,7 +1465,7 @@ func GDAL_GCP_GCPZ_set(arg1 GCP, arg2 float64) (err error) {
 
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	C._wrap_GDAL_GCP_GCPZ_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GDAL_GCP_GCPZ_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1476,7 +1476,7 @@ func GDAL_GCP_GCPPixel_get(arg1 GCP) (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (float64)(C._wrap_GDAL_GCP_GCPPixel_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GDAL_GCP_GCPPixel_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1486,7 +1486,7 @@ func GDAL_GCP_GCPPixel_set(arg1 GCP, arg2 float64) (err error) {
 
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	C._wrap_GDAL_GCP_GCPPixel_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GDAL_GCP_GCPPixel_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1497,7 +1497,7 @@ func GDAL_GCP_GCPLine_get(arg1 GCP) (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (float64)(C._wrap_GDAL_GCP_GCPLine_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (float64)(C._wrap_GDAL_GCP_GCPLine_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1507,7 +1507,7 @@ func GDAL_GCP_GCPLine_set(arg1 GCP, arg2 float64) (err error) {
 
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	C._wrap_GDAL_GCP_GCPLine_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	C._wrap_GDAL_GCP_GCPLine_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
 	return
 }
 
@@ -1518,7 +1518,7 @@ func GDAL_GCP_Info_get(arg1 GCP) (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r_p := C._wrap_GDAL_GCP_Info_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_GDAL_GCP_Info_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1531,7 +1531,7 @@ func GDAL_GCP_Info_set(arg1 GCP, arg2 string) (err error) {
 
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	C._wrap_GDAL_GCP_Info_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_31)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_GDAL_GCP_Info_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_31)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1545,7 +1545,7 @@ func GDAL_GCP_Id_get(arg1 GCP) (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r_p := C._wrap_GDAL_GCP_Id_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_GDAL_GCP_Id_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1558,7 +1558,7 @@ func GDAL_GCP_Id_set(arg1 GCP, arg2 string) (err error) {
 
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	C._wrap_GDAL_GCP_Id_set_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_33)(unsafe.Pointer(&_swig_i_1)))
+	C._wrap_GDAL_GCP_Id_set_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_33)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1582,7 +1582,7 @@ func GCPsToGeoTransform(arg1 int, arg2 GCP, arg3 []float64, _swig_args ...interf
 	_swig_i_2 = (*C.double)(unsafe.Pointer(&arg3[0]))
 
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_GCPsToGeoTransform_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	swig_r = (int)(C._wrap_GCPsToGeoTransform_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
 	return swig_r, err
 
 }
@@ -1600,7 +1600,7 @@ func DeleteAsyncReader(arg1 AsyncReader) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_AsyncReader_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_AsyncReader_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1616,7 +1616,7 @@ func (arg1 SwigcptrAsyncReader) GetNextUpdatedRegion(arg2 float64, arg3 []int, a
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_AsyncReader_GetNextUpdatedRegion_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_35)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_36)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_37)(unsafe.Pointer(&_swig_i_5))))
+	swig_r = (int)(C._wrap_AsyncReader_GetNextUpdatedRegion_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), *(*C.swig_type_34)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_35)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_36)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_37)(unsafe.Pointer(&_swig_i_5))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -1641,7 +1641,7 @@ func (arg1 SwigcptrAsyncReader) LockBuffer(arg2 float64) (_swig_ret int, err err
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_AsyncReader_LockBuffer_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
+	swig_r = (int)(C._wrap_AsyncReader_LockBuffer_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -1650,7 +1650,7 @@ func (arg1 SwigcptrAsyncReader) UnlockBuffer() (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1
-	C._wrap_AsyncReader_UnlockBuffer_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_AsyncReader_UnlockBuffer_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1685,7 +1685,7 @@ func (arg1 SwigcptrDataset) GetRasterXSize() (_swig_ret int) {
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Dataset_RasterXSize_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Dataset_RasterXSize_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1699,7 +1699,7 @@ func (arg1 SwigcptrDataset) GetRasterYSize() (_swig_ret int) {
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Dataset_RasterYSize_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Dataset_RasterYSize_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1710,7 +1710,7 @@ func (arg1 SwigcptrDataset) GetRasterCount() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Dataset_RasterCount_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Dataset_RasterCount_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1719,7 +1719,7 @@ func DeleteDataset(arg1 Dataset) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_Dataset_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_Dataset_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1727,7 +1727,7 @@ func (arg1 SwigcptrDataset) Close() (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1
-	C._wrap_Dataset_Close_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_Dataset_Close_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1741,7 +1741,7 @@ func (arg1 SwigcptrDataset) GetDriver() (_swig_ret Driver) {
 
 	var swig_r Driver
 	_swig_i_0 := arg1
-	swig_r = (Driver)(SwigcptrDriver(C._wrap_Dataset_GetDriver_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (Driver)(SwigcptrDriver(C._wrap_Dataset_GetDriver_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	var swig_r_1 Driver
 
 	if swig_r.Swigcptr() > 0 {
@@ -1764,7 +1764,7 @@ func (arg1 SwigcptrDataset) GetRasterBand(arg2 int) (_swig_ret Band) {
 	var swig_r Band
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Band)(SwigcptrBand(C._wrap_Dataset_GetRasterBand_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (Band)(SwigcptrBand(C._wrap_Dataset_GetRasterBand_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r
 }
 
@@ -1775,7 +1775,7 @@ func (arg1 SwigcptrDataset) GetProjection() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Dataset_GetProjection_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Dataset_GetProjection_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1790,7 +1790,7 @@ func (arg1 SwigcptrDataset) GetProjectionRef() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Dataset_GetProjectionRef_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Dataset_GetProjectionRef_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1806,7 +1806,7 @@ func (arg1 SwigcptrDataset) SetProjection(arg2 string) (_swig_ret int, err error
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Dataset_SetProjection_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_40)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Dataset_SetProjection_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_40)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1827,7 +1827,7 @@ func (arg1 SwigcptrDataset) wrap_GetGeoTransform(arg2 []float64) {
 
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
-	C._wrap_Dataset_GetGeoTransform_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	C._wrap_Dataset_GetGeoTransform_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
 }
 
 func (arg1 SwigcptrDataset) wrap_SetGeoTransform(arg2 []float64) (_swig_ret int, err error,
@@ -1841,7 +1841,7 @@ func (arg1 SwigcptrDataset) wrap_SetGeoTransform(arg2 []float64) (_swig_ret int,
 
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
-	swig_r = (int)(C._wrap_Dataset_SetGeoTransform_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_Dataset_SetGeoTransform_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -1890,7 +1890,7 @@ func (arg1 SwigcptrDataset) BuildOverviews(_swig_args ...interface{}) (_swig_ret
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_Dataset_BuildOverviews_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_41)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_Dataset_BuildOverviews_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_41)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1905,7 +1905,7 @@ func (arg1 SwigcptrDataset) GetGCPCount() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Dataset_GetGCPCount_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Dataset_GetGCPCount_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -1917,7 +1917,7 @@ func (arg1 SwigcptrDataset) GetGCPProjection() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Dataset_GetGCPProjection_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Dataset_GetGCPProjection_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -1931,7 +1931,7 @@ func (arg1 SwigcptrDataset) GetGCPs(arg2 *int, arg3 GCP) (err error) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_Dataset_GetGCPs_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_Dataset_GetGCPs_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.uintptr_t(_swig_i_2))
 	return
 }
 
@@ -1945,7 +1945,7 @@ func (arg1 SwigcptrDataset) SetGCPs(arg2 int, arg3 GCP, arg4 string) (_swig_ret 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_Dataset_SetGCPs_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), *(*C.swig_type_43)(unsafe.Pointer(&_swig_i_3))))
+	swig_r = (int)(C._wrap_Dataset_SetGCPs_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), *(*C.swig_type_43)(unsafe.Pointer(&_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg4
 	}
@@ -1957,7 +1957,7 @@ func (arg1 SwigcptrDataset) FlushCache() (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1
-	C._wrap_Dataset_FlushCache_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_Dataset_FlushCache_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -1988,7 +1988,7 @@ func (arg1 SwigcptrDataset) AddBand(_swig_args ...interface{}) (_swig_ret int, e
 	_swig_i_2_i[arg3_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_2 = &_swig_i_2_i[0]
 
-	swig_r = (int)(C._wrap_Dataset_AddBand_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_Dataset_AddBand_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r, err
 
 }
@@ -2001,7 +2001,7 @@ func (arg1 SwigcptrDataset) CreateMaskBand(arg2 int) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Dataset_CreateMaskBand_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Dataset_CreateMaskBand_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2016,7 +2016,7 @@ func (arg1 SwigcptrDataset) GetFileList() (_swig_ret []string) {
 
 	var swig_r **C.char
 	_swig_i_0 := arg1
-	swig_r = (**C.char)(C._wrap_Dataset_GetFileList_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (**C.char)(C._wrap_Dataset_GetFileList_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	var swig_r_1 []string
 
 	if swig_r != nil {
@@ -2062,7 +2062,7 @@ func (arg1 SwigcptrDataset) CreateLayer(arg2 string, arg3 osr.SpatialReference, 
 	_swig_i_4_i[arg5_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_4 = &_swig_i_4_i[0]
 
-	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_CreateLayer_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_44)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_CreateLayer_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_44)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2102,7 +2102,7 @@ func (arg1 SwigcptrDataset) CopyLayer(arg2 ogr.Layer, arg3 string, _swig_args ..
 	_swig_i_3_i[arg4_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_3 = &_swig_i_3_i[0]
 
-	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_CopyLayer_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_45)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3))))
+	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_CopyLayer_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_45)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -2126,7 +2126,7 @@ func (arg1 SwigcptrDataset) DeleteLayer(arg2 int) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Dataset_DeleteLayer_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Dataset_DeleteLayer_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2141,7 +2141,7 @@ func (arg1 SwigcptrDataset) GetLayerCount() (_swig_ret int) {
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Dataset_GetLayerCount_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Dataset_GetLayerCount_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2160,7 +2160,7 @@ func (arg1 SwigcptrDataset) GetLayerByIndex(_swig_args ...interface{}) (_swig_re
 	var swig_r ogr.Layer
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_GetLayerByIndex_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_GetLayerByIndex_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	var swig_r_1 ogr.Layer
 
 	if swig_r.Swigcptr() > 0 {
@@ -2180,7 +2180,7 @@ func (arg1 SwigcptrDataset) GetLayerByName(arg2 string) (_swig_ret ogr.Layer, er
 	var swig_r ogr.Layer
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_GetLayerByName_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_46)(unsafe.Pointer(&_swig_i_1)))))
+	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_GetLayerByName_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_46)(unsafe.Pointer(&_swig_i_1)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2204,7 +2204,7 @@ func (arg1 SwigcptrDataset) TestCapability(arg2 string) (_swig_ret bool, err err
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (bool)(C._wrap_Dataset_TestCapability_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_47)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (bool)(C._wrap_Dataset_TestCapability_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_47)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2230,7 +2230,7 @@ func (arg1 SwigcptrDataset) ExecuteSQL(arg2 string, _swig_args ...interface{}) (
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_ExecuteSQL_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), *(*C.swig_type_49)(unsafe.Pointer(&_swig_i_3)))))
+	swig_r = (ogr.Layer)(ogr.SwigcptrLayer(C._wrap_Dataset_ExecuteSQL_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_48)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), *(*C.swig_type_49)(unsafe.Pointer(&_swig_i_3)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2254,7 +2254,7 @@ func (arg1 SwigcptrDataset) ReleaseResultSet(arg2 ogr.Layer) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_Dataset_ReleaseResultSet_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_Dataset_ReleaseResultSet_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 	return
 }
 
@@ -2265,7 +2265,7 @@ func (arg1 SwigcptrDataset) GetStyleTable() (_swig_ret ogr.StyleTable, err error
 
 	var swig_r ogr.StyleTable
 	_swig_i_0 := arg1
-	swig_r = (ogr.StyleTable)(ogr.SwigcptrStyleTable(C._wrap_Dataset_GetStyleTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (ogr.StyleTable)(ogr.SwigcptrStyleTable(C._wrap_Dataset_GetStyleTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -2275,7 +2275,7 @@ func (arg1 SwigcptrDataset) SetStyleTable(arg2 ogr.StyleTable) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	C._wrap_Dataset_SetStyleTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	C._wrap_Dataset_SetStyleTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 	return
 }
 
@@ -2291,7 +2291,7 @@ func (arg1 SwigcptrDataset) StartTransaction(_swig_args ...interface{}) (_swig_r
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Dataset_StartTransaction_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Dataset_StartTransaction_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2303,7 +2303,7 @@ func (arg1 SwigcptrDataset) CommitTransaction() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Dataset_CommitTransaction_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Dataset_CommitTransaction_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2315,7 +2315,7 @@ func (arg1 SwigcptrDataset) RollbackTransaction() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Dataset_RollbackTransaction_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Dataset_RollbackTransaction_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2430,7 +2430,7 @@ func (arg1 SwigcptrBand) GetXSize() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_XSize_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_XSize_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2442,7 +2442,7 @@ func (arg1 SwigcptrBand) GetYSize() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_YSize_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_YSize_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2457,7 +2457,7 @@ func (arg1 SwigcptrBand) GetDataType() (_swig_ret int) {
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_DataType_get_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_DataType_get_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2468,7 +2468,7 @@ func (arg1 SwigcptrBand) GetDataset() (_swig_ret Dataset, err error,
 
 	var swig_r Dataset
 	_swig_i_0 := arg1
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Band_GetDataset_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Band_GetDataset_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	var swig_r_1 Dataset
 
 	if swig_r.Swigcptr() > 0 {
@@ -2488,7 +2488,7 @@ func (arg1 SwigcptrBand) GetBand() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_GetBand_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_GetBand_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2499,7 +2499,7 @@ func (arg1 SwigcptrBand) GetBlockSize(arg2 []int, arg3 []int) (err error) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Band_GetBlockSize_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_50)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_51)(unsafe.Pointer(&_swig_i_2)))
+	C._wrap_Band_GetBlockSize_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_50)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_51)(unsafe.Pointer(&_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2516,7 +2516,7 @@ func (arg1 SwigcptrBand) GetColorInterpretation() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_GetColorInterpretation_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_GetColorInterpretation_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2528,7 +2528,7 @@ func (arg1 SwigcptrBand) GetRasterColorInterpretation() (_swig_ret int, err erro
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_GetRasterColorInterpretation_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_GetRasterColorInterpretation_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2541,7 +2541,7 @@ func (arg1 SwigcptrBand) SetColorInterpretation(arg2 int) (_swig_ret int, err er
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Band_SetColorInterpretation_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetColorInterpretation_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2554,7 +2554,7 @@ func (arg1 SwigcptrBand) SetRasterColorInterpretation(arg2 int) (_swig_ret int, 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Band_SetRasterColorInterpretation_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetRasterColorInterpretation_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2565,7 +2565,7 @@ func (arg1 SwigcptrBand) GetNoDataValue(arg2 *float64, arg3 *int) (err error) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Band_GetNoDataValue_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Band_GetNoDataValue_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
 	return
 }
 
@@ -2577,7 +2577,7 @@ func (arg1 SwigcptrBand) SetNoDataValue(arg2 float64) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Band_SetNoDataValue_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetNoDataValue_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2589,7 +2589,7 @@ func (arg1 SwigcptrBand) DeleteNoDataValue() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_DeleteNoDataValue_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_DeleteNoDataValue_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2601,7 +2601,7 @@ func (arg1 SwigcptrBand) GetUnitType() (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_Band_GetUnitType_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_Band_GetUnitType_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -2617,7 +2617,7 @@ func (arg1 SwigcptrBand) SetUnitType(arg2 string) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Band_SetUnitType_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_53)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_Band_SetUnitType_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_53)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -2632,7 +2632,7 @@ func (arg1 SwigcptrBand) GetRasterCategoryNames() (_swig_ret []string, err error
 
 	var swig_r **C.char
 	_swig_i_0 := arg1
-	swig_r = (**C.char)(C._wrap_Band_GetRasterCategoryNames_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (**C.char)(C._wrap_Band_GetRasterCategoryNames_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	var swig_r_1 []string
 
 	if swig_r != nil {
@@ -2670,7 +2670,7 @@ func (arg1 SwigcptrBand) SetRasterCategoryNames(arg2 []string) (_swig_ret int, e
 	_swig_i_1_i[arg2_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_1 = &_swig_i_1_i[0]
 
-	swig_r = (int)(C._wrap_Band_SetRasterCategoryNames_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetRasterCategoryNames_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2681,7 +2681,7 @@ func (arg1 SwigcptrBand) GetMinimum(arg2 *float64, arg3 *int) (err error) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Band_GetMinimum_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Band_GetMinimum_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
 	return
 }
 
@@ -2691,7 +2691,7 @@ func (arg1 SwigcptrBand) GetMaximum(arg2 *float64, arg3 *int) (err error) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Band_GetMaximum_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Band_GetMaximum_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
 	return
 }
 
@@ -2701,7 +2701,7 @@ func (arg1 SwigcptrBand) GetOffset(arg2 *float64, arg3 *int) (err error) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Band_GetOffset_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Band_GetOffset_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
 	return
 }
 
@@ -2711,7 +2711,7 @@ func (arg1 SwigcptrBand) GetScale(arg2 *float64, arg3 *int) (err error) {
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	C._wrap_Band_GetScale_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
+	C._wrap_Band_GetScale_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2))
 	return
 }
 
@@ -2723,7 +2723,7 @@ func (arg1 SwigcptrBand) SetOffset(arg2 float64) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Band_SetOffset_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetOffset_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2736,7 +2736,7 @@ func (arg1 SwigcptrBand) SetScale(arg2 float64) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Band_SetScale_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetScale_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -2754,7 +2754,7 @@ func (arg1 SwigcptrBand) GetStatistics(arg2 int, arg3 int, arg4 []float64, arg5 
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_Band_GetStatistics_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_55)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_56)(unsafe.Pointer(&_swig_i_5)), *(*C.swig_type_57)(unsafe.Pointer(&_swig_i_6))))
+	swig_r = (int)(C._wrap_Band_GetStatistics_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), *(*C.swig_type_54)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_55)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_56)(unsafe.Pointer(&_swig_i_5)), *(*C.swig_type_57)(unsafe.Pointer(&_swig_i_6))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg4
 	}
@@ -2821,7 +2821,7 @@ func (arg1 SwigcptrBand) ComputeStatistics(arg2 bool, _swig_args ...interface{})
 		_swig_i_7 = progress.New(progf, arg8)
 	}
 
-	swig_r = (int)(C._wrap_Band_ComputeStatistics_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1), *(*C.swig_type_58)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_59)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_60)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_61)(unsafe.Pointer(&_swig_i_5)), C.GDALProgressFunc(_swig_i_6), C.swig_voidp(_swig_i_7)))
+	swig_r = (int)(C._wrap_Band_ComputeStatistics_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C._Bool(_swig_i_1), *(*C.swig_type_58)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_59)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_60)(unsafe.Pointer(&_swig_i_4)), *(*C.swig_type_61)(unsafe.Pointer(&_swig_i_5)), C.GDALProgressFunc(_swig_i_6), C.swig_voidp(_swig_i_7)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -2849,7 +2849,7 @@ func (arg1 SwigcptrBand) SetStatistics(arg2 float64, arg3 float64, arg4 float64,
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_Band_SetStatistics_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
+	swig_r = (int)(C._wrap_Band_SetStatistics_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4)))
 	return swig_r, err
 
 }
@@ -2861,7 +2861,7 @@ func (arg1 SwigcptrBand) GetOverviewCount() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_GetOverviewCount_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_GetOverviewCount_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -2874,7 +2874,7 @@ func (arg1 SwigcptrBand) GetOverview(arg2 int) (_swig_ret Band, err error,
 	var swig_r Band
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Band)(SwigcptrBand(C._wrap_Band_GetOverview_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (Band)(SwigcptrBand(C._wrap_Band_GetOverview_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r, err
 
 }
@@ -2906,7 +2906,7 @@ func (arg1 SwigcptrBand) Checksum(_swig_args ...interface{}) (_swig_ret int, err
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_Band_Checksum_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_Band_Checksum_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r, err
 
 }
@@ -2924,7 +2924,7 @@ func (arg1 SwigcptrBand) ComputeRasterMinMax(arg2 []float64, _swig_args ...inter
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
 	_swig_i_2 := arg3
-	C._wrap_Band_ComputeRasterMinMax_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_Band_ComputeRasterMinMax_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2))
 	return
 }
 
@@ -2941,7 +2941,7 @@ func (arg1 SwigcptrBand) ComputeBandStats(arg2 []float64, _swig_args ...interfac
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
 	_swig_i_2 := arg3
-	C._wrap_Band_ComputeBandStats_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2))
+	C._wrap_Band_ComputeBandStats_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2))
 	return
 }
 
@@ -2958,7 +2958,7 @@ func (arg1 SwigcptrBand) Fill(arg2 float64, _swig_args ...interface{}) (_swig_re
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_Band_Fill_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2)))
+	swig_r = (int)(C._wrap_Band_Fill_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2)))
 	return swig_r, err
 
 }
@@ -2967,7 +2967,7 @@ func (arg1 SwigcptrBand) FlushCache() (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1
-	C._wrap_Band_FlushCache_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_Band_FlushCache_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -2978,7 +2978,7 @@ func (arg1 SwigcptrBand) GetRasterColorTable() (_swig_ret ColorTable, err error,
 
 	var swig_r ColorTable
 	_swig_i_0 := arg1
-	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_Band_GetRasterColorTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_Band_GetRasterColorTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -2990,7 +2990,7 @@ func (arg1 SwigcptrBand) GetColorTable() (_swig_ret ColorTable, err error,
 
 	var swig_r ColorTable
 	_swig_i_0 := arg1
-	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_Band_GetColorTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_Band_GetColorTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -3003,7 +3003,7 @@ func (arg1 SwigcptrBand) SetRasterColorTable(arg2 ColorTable) (_swig_ret int, er
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Band_SetRasterColorTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetRasterColorTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3016,7 +3016,7 @@ func (arg1 SwigcptrBand) SetColorTable(arg2 ColorTable) (_swig_ret int, err erro
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Band_SetColorTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetColorTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3028,7 +3028,7 @@ func (arg1 SwigcptrBand) GetDefaultRAT() (_swig_ret RasterAttributeTable, err er
 
 	var swig_r RasterAttributeTable
 	_swig_i_0 := arg1
-	swig_r = (RasterAttributeTable)(SwigcptrRasterAttributeTable(C._wrap_Band_GetDefaultRAT_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (RasterAttributeTable)(SwigcptrRasterAttributeTable(C._wrap_Band_GetDefaultRAT_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -3041,7 +3041,7 @@ func (arg1 SwigcptrBand) SetDefaultRAT(arg2 RasterAttributeTable) (_swig_ret int
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_Band_SetDefaultRAT_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetDefaultRAT_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3053,7 +3053,7 @@ func (arg1 SwigcptrBand) GetMaskBand() (_swig_ret Band, err error,
 
 	var swig_r Band
 	_swig_i_0 := arg1
-	swig_r = (Band)(SwigcptrBand(C._wrap_Band_GetMaskBand_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (Band)(SwigcptrBand(C._wrap_Band_GetMaskBand_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -3065,7 +3065,7 @@ func (arg1 SwigcptrBand) GetMaskFlags() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_Band_GetMaskFlags_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_Band_GetMaskFlags_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -3078,7 +3078,7 @@ func (arg1 SwigcptrBand) CreateMaskBand(arg2 int) (_swig_ret int, err error,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_Band_CreateMaskBand_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_CreateMaskBand_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3142,7 +3142,7 @@ func (arg1 SwigcptrBand) GetHistogram(_swig_args ...interface{}) (_swig_ret int,
 		_swig_i_8 = progress.New(progf, arg9)
 	}
 
-	swig_r = (int)(C._wrap_Band_GetHistogram_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_intgo(_swig_i_6), C.GDALProgressFunc(_swig_i_7), C.swig_voidp(_swig_i_8)))
+	swig_r = (int)(C._wrap_Band_GetHistogram_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_intgo(_swig_i_6), C.GDALProgressFunc(_swig_i_7), C.swig_voidp(_swig_i_8)))
 	return swig_r, err
 
 }
@@ -3201,7 +3201,7 @@ func (arg1 SwigcptrBand) GetDefaultHistogram(_swig_args ...interface{}) (_swig_r
 		_swig_i_7 = progress.New(progf, arg8)
 	}
 
-	swig_r = (int)(C._wrap_Band_GetDefaultHistogram_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_intgo(_swig_i_5), C.GDALProgressFunc(_swig_i_6), C.swig_voidp(_swig_i_7)))
+	swig_r = (int)(C._wrap_Band_GetDefaultHistogram_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_intgo(_swig_i_5), C.GDALProgressFunc(_swig_i_6), C.swig_voidp(_swig_i_7)))
 	return swig_r, err
 
 }
@@ -3217,7 +3217,7 @@ func (arg1 SwigcptrBand) SetDefaultHistogram(arg2 float64, arg3 float64, arg4 in
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5.Swigcptr()
-	swig_r = (int)(C._wrap_Band_SetDefaultHistogram_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4)))
+	swig_r = (int)(C._wrap_Band_SetDefaultHistogram_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4)))
 	return swig_r, err
 
 }
@@ -3229,7 +3229,7 @@ func (arg1 SwigcptrBand) HasArbitraryOverviews() (_swig_ret bool, err error,
 
 	var swig_r bool
 	_swig_i_0 := arg1
-	swig_r = (bool)(C._wrap_Band_HasArbitraryOverviews_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (bool)(C._wrap_Band_HasArbitraryOverviews_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -3241,7 +3241,7 @@ func (arg1 SwigcptrBand) GetCategoryNames() (_swig_ret []string, err error,
 
 	var swig_r **C.char
 	_swig_i_0 := arg1
-	swig_r = (**C.char)(C._wrap_Band_GetCategoryNames_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (**C.char)(C._wrap_Band_GetCategoryNames_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	var swig_r_1 []string
 
 	if swig_r != nil {
@@ -3279,7 +3279,7 @@ func (arg1 SwigcptrBand) SetCategoryNames(arg2 []string) (_swig_ret int, err err
 	_swig_i_1_i[arg2_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_1 = &_swig_i_1_i[0]
 
-	swig_r = (int)(C._wrap_Band_SetCategoryNames_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_Band_SetCategoryNames_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3451,7 +3451,7 @@ func NewColorTable(_swig_args ...interface{}) (_swig_ret ColorTable, err error,
 	}
 	var swig_r ColorTable
 	_swig_i_0 := arg1
-	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_new_ColorTable_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0))))
+	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_new_ColorTable_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -3460,7 +3460,7 @@ func DeleteColorTable(arg1 ColorTable) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_ColorTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_ColorTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -3471,7 +3471,7 @@ func (arg1 SwigcptrColorTable) Clone() (_swig_ret ColorTable, err error,
 
 	var swig_r ColorTable
 	_swig_i_0 := arg1
-	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_ColorTable_Clone_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (ColorTable)(SwigcptrColorTable(C._wrap_ColorTable_Clone_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -3483,7 +3483,7 @@ func (arg1 SwigcptrColorTable) GetPaletteInterpretation() (_swig_ret int, err er
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_ColorTable_GetPaletteInterpretation_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_ColorTable_GetPaletteInterpretation_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -3495,7 +3495,7 @@ func (arg1 SwigcptrColorTable) GetCount() (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_ColorTable_GetCount_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_ColorTable_GetCount_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -3508,7 +3508,7 @@ func (arg1 SwigcptrColorTable) GetColorEntry(arg2 int) (_swig_ret ColorEntry, er
 	var swig_r ColorEntry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (ColorEntry)(SwigcptrColorEntry(C._wrap_ColorTable_GetColorEntry_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
+	swig_r = (ColorEntry)(SwigcptrColorEntry(C._wrap_ColorTable_GetColorEntry_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
 	return swig_r, err
 
 }
@@ -3522,7 +3522,7 @@ func (arg1 SwigcptrColorTable) GetColorEntryAsRGB(arg2 int, arg3 ColorEntry) (_s
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_ColorTable_GetColorEntryAsRGB_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_ColorTable_GetColorEntryAsRGB_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r, err
 
 }
@@ -3533,7 +3533,7 @@ func (arg1 SwigcptrColorTable) SetColorEntry(arg2 int, arg3 ColorEntry) (err err
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	C._wrap_ColorTable_SetColorEntry_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
+	C._wrap_ColorTable_SetColorEntry_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
 	return
 }
 
@@ -3545,7 +3545,7 @@ func (arg1 SwigcptrColorTable) CreateColorRamp(arg2 int, arg3 ColorEntry, arg4 i
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5.Swigcptr()
-	C._wrap_ColorTable_CreateColorRamp_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4))
+	C._wrap_ColorTable_CreateColorRamp_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4))
 	return
 }
 
@@ -3587,7 +3587,7 @@ func NewRasterAttributeTable() (_swig_ret RasterAttributeTable, err error,
 	defer cpl.ErrorTrap()(&err)
 
 	var swig_r RasterAttributeTable
-	swig_r = (RasterAttributeTable)(SwigcptrRasterAttributeTable(C._wrap_new_RasterAttributeTable_gdal_a300ce886cc7d02a()))
+	swig_r = (RasterAttributeTable)(SwigcptrRasterAttributeTable(C._wrap_new_RasterAttributeTable_gdal_8039be23513eb05d()))
 	return swig_r, err
 
 }
@@ -3596,7 +3596,7 @@ func DeleteRasterAttributeTable(arg1 RasterAttributeTable) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_RasterAttributeTable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_RasterAttributeTable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -3607,7 +3607,7 @@ func (arg1 SwigcptrRasterAttributeTable) Clone() (_swig_ret RasterAttributeTable
 
 	var swig_r RasterAttributeTable
 	_swig_i_0 := arg1
-	swig_r = (RasterAttributeTable)(SwigcptrRasterAttributeTable(C._wrap_RasterAttributeTable_Clone_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))))
+	swig_r = (RasterAttributeTable)(SwigcptrRasterAttributeTable(C._wrap_RasterAttributeTable_Clone_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -3619,7 +3619,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetColumnCount() (_swig_ret int, err er
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_RasterAttributeTable_GetColumnCount_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_GetColumnCount_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -3632,7 +3632,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetNameOfCol(arg2 int) (_swig_ret strin
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r_p := C._wrap_RasterAttributeTable_GetNameOfCol_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	swig_r_p := C._wrap_RasterAttributeTable_GetNameOfCol_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3648,7 +3648,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetUsageOfCol(arg2 int) (_swig_ret int,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_RasterAttributeTable_GetUsageOfCol_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_GetUsageOfCol_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3661,7 +3661,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetTypeOfCol(arg2 int) (_swig_ret int, 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_RasterAttributeTable_GetTypeOfCol_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_GetTypeOfCol_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3674,7 +3674,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetColOfUsage(arg2 int) (_swig_ret int,
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_RasterAttributeTable_GetColOfUsage_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_GetColOfUsage_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3686,7 +3686,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetRowCount() (_swig_ret int, err error
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_RasterAttributeTable_GetRowCount_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_GetRowCount_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -3700,7 +3700,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetValueAsString(arg2 int, arg3 int) (_
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r_p := C._wrap_RasterAttributeTable_GetValueAsString_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2))
+	swig_r_p := C._wrap_RasterAttributeTable_GetValueAsString_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -3717,7 +3717,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetValueAsInt(arg2 int, arg3 int) (_swi
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_RasterAttributeTable_GetValueAsInt_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_GetValueAsInt_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r, err
 
 }
@@ -3731,7 +3731,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetValueAsDouble(arg2 int, arg3 int) (_
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (float64)(C._wrap_RasterAttributeTable_GetValueAsDouble_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
+	swig_r = (float64)(C._wrap_RasterAttributeTable_GetValueAsDouble_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
 	return swig_r, err
 
 }
@@ -3743,7 +3743,7 @@ func (arg1 SwigcptrRasterAttributeTable) SetValueAsString(arg2 int, arg3 int, ar
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_RasterAttributeTable_SetValueAsString_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), *(*C.swig_type_64)(unsafe.Pointer(&_swig_i_3)))
+	C._wrap_RasterAttributeTable_SetValueAsString_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), *(*C.swig_type_64)(unsafe.Pointer(&_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg4
 	}
@@ -3757,7 +3757,7 @@ func (arg1 SwigcptrRasterAttributeTable) SetValueAsInt(arg2 int, arg3 int, arg4 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_RasterAttributeTable_SetValueAsInt_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3))
+	C._wrap_RasterAttributeTable_SetValueAsInt_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3))
 	return
 }
 
@@ -3768,7 +3768,7 @@ func (arg1 SwigcptrRasterAttributeTable) SetValueAsDouble(arg2 int, arg3 int, ar
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	C._wrap_RasterAttributeTable_SetValueAsDouble_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.double(_swig_i_3))
+	C._wrap_RasterAttributeTable_SetValueAsDouble_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.double(_swig_i_3))
 	return
 }
 
@@ -3777,7 +3777,7 @@ func (arg1 SwigcptrRasterAttributeTable) SetRowCount(arg2 int) (err error) {
 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	C._wrap_RasterAttributeTable_SetRowCount_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	C._wrap_RasterAttributeTable_SetRowCount_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
 	return
 }
 
@@ -3791,7 +3791,7 @@ func (arg1 SwigcptrRasterAttributeTable) CreateColumn(arg2 string, arg3 int, arg
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_RasterAttributeTable_CreateColumn_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_65)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_CreateColumn_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_65)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3808,7 +3808,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetLinearBinning(arg2 []float64, arg3 [
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (bool)(C._wrap_RasterAttributeTable_GetLinearBinning_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), *(*C.swig_type_66)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_67)(unsafe.Pointer(&_swig_i_2))))
+	swig_r = (bool)(C._wrap_RasterAttributeTable_GetLinearBinning_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), *(*C.swig_type_66)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_67)(unsafe.Pointer(&_swig_i_2))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3828,7 +3828,7 @@ func (arg1 SwigcptrRasterAttributeTable) SetLinearBinning(arg2 float64, arg3 flo
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_RasterAttributeTable_SetLinearBinning_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_SetLinearBinning_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2)))
 	return swig_r, err
 
 }
@@ -3841,7 +3841,7 @@ func (arg1 SwigcptrRasterAttributeTable) GetRowOfValue(arg2 float64) (_swig_ret 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_RasterAttributeTable_GetRowOfValue_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_GetRowOfValue_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.double(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -3853,7 +3853,7 @@ func (arg1 SwigcptrRasterAttributeTable) ChangesAreWrittenToFile() (_swig_ret in
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_RasterAttributeTable_ChangesAreWrittenToFile_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_RasterAttributeTable_ChangesAreWrittenToFile_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -3862,7 +3862,7 @@ func (arg1 SwigcptrRasterAttributeTable) DumpReadable() (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1
-	C._wrap_RasterAttributeTable_DumpReadable_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_RasterAttributeTable_DumpReadable_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -3942,7 +3942,7 @@ func TermProgress_nocb(arg1 float64, _swig_args ...interface{}) (_swig_ret int, 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_TermProgress_nocb_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.double(_swig_i_0), *(*C.swig_type_68)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_TermProgress_nocb_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.double(_swig_i_0), *(*C.swig_type_68)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -3952,7 +3952,7 @@ func TermProgress_nocb(arg1 float64, _swig_args ...interface{}) (_swig_ret int, 
 
 func _swig_getTermProgress() (_swig_ret _swig_fnptr) {
 	var swig_r _swig_fnptr
-	swig_r = (_swig_fnptr)(C._wrap_TermProgress_gdal_a300ce886cc7d02a())
+	swig_r = (_swig_fnptr)(C._wrap_TermProgress_gdal_8039be23513eb05d())
 	return swig_r
 }
 
@@ -3991,7 +3991,7 @@ func ComputeMedianCutPCT(arg1 Band, arg2 Band, arg3 Band, arg4 int, arg5 ColorTa
 		_swig_i_6 = progress.New(progf, arg7)
 	}
 
-	swig_r = (int)(C._wrap_ComputeMedianCutPCT_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_ComputeMedianCutPCT_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.uintptr_t(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r, err
 
 }
@@ -4029,7 +4029,7 @@ func DitherRGB2PCT(arg1 Band, arg2 Band, arg3 Band, arg4 Band, arg5 ColorTable, 
 		_swig_i_6 = progress.New(progf, arg7)
 	}
 
-	swig_r = (int)(C._wrap_DitherRGB2PCT_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_DitherRGB2PCT_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r, err
 
 }
@@ -4104,7 +4104,7 @@ func ReprojectImage(arg1 Dataset, arg2 Dataset, _swig_args ...interface{}) (_swi
 	_swig_i_9_i[arg10_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_9 = &_swig_i_9_i[0]
 
-	swig_r = (int)(C._wrap_ReprojectImage_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_70)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_71)(unsafe.Pointer(&_swig_i_3)), C.swig_intgo(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.GDALProgressFunc(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_voidp(_swig_i_9)))
+	swig_r = (int)(C._wrap_ReprojectImage_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_70)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_71)(unsafe.Pointer(&_swig_i_3)), C.swig_intgo(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.GDALProgressFunc(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_voidp(_swig_i_9)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -4160,7 +4160,7 @@ func ComputeProximity(arg1 Band, arg2 Band, _swig_args ...interface{}) (_swig_re
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (int)(C._wrap_ComputeProximity_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_ComputeProximity_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r, err
 
 }
@@ -4232,7 +4232,7 @@ func RasterizeLayer(arg1 Dataset, arg2 int, arg3 *int, arg4 ogr.Layer, _swig_arg
 		_swig_i_10 = progress.New(progf, arg11)
 	}
 
-	swig_r = (int)(C._wrap_RasterizeLayer_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.swig_intgo(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_voidp(_swig_i_8), C.GDALProgressFunc(_swig_i_9), C.swig_voidp(_swig_i_10)))
+	swig_r = (int)(C._wrap_RasterizeLayer_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.swig_intgo(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_voidp(_swig_i_8), C.GDALProgressFunc(_swig_i_9), C.swig_voidp(_swig_i_10)))
 	return swig_r, err
 
 }
@@ -4284,7 +4284,7 @@ func Polygonize(arg1 Band, arg2 Band, arg3 ogr.Layer, arg4 int, _swig_args ...in
 		_swig_i_6 = progress.New(progf, arg7)
 	}
 
-	swig_r = (int)(C._wrap_Polygonize_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_Polygonize_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r, err
 
 }
@@ -4336,7 +4336,7 @@ func FPolygonize(arg1 Band, arg2 Band, arg3 ogr.Layer, arg4 int, _swig_args ...i
 		_swig_i_6 = progress.New(progf, arg7)
 	}
 
-	swig_r = (int)(C._wrap_FPolygonize_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_FPolygonize_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r, err
 
 }
@@ -4388,7 +4388,7 @@ func FillNodata(arg1 Band, arg2 Band, arg3 float64, arg4 int, _swig_args ...inte
 		_swig_i_6 = progress.New(progf, arg7)
 	}
 
-	swig_r = (int)(C._wrap_FillNodata_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_FillNodata_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r, err
 
 }
@@ -4445,7 +4445,7 @@ func SieveFilter(arg1 Band, arg2 Band, arg3 Band, arg4 int, _swig_args ...interf
 		_swig_i_7 = progress.New(progf, arg8)
 	}
 
-	swig_r = (int)(C._wrap_SieveFilter_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_voidp(_swig_i_5), C.GDALProgressFunc(_swig_i_6), C.swig_voidp(_swig_i_7)))
+	swig_r = (int)(C._wrap_SieveFilter_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_voidp(_swig_i_5), C.GDALProgressFunc(_swig_i_6), C.swig_voidp(_swig_i_7)))
 	return swig_r, err
 
 }
@@ -4486,7 +4486,7 @@ func RegenerateOverviews(arg1 Band, arg2 int, arg3 Band, _swig_args ...interface
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_RegenerateOverviews_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), *(*C.swig_type_72)(unsafe.Pointer(&_swig_i_3)), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_RegenerateOverviews_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), *(*C.swig_type_72)(unsafe.Pointer(&_swig_i_3)), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg4
 	}
@@ -4529,7 +4529,7 @@ func RegenerateOverview(arg1 Band, arg2 Band, _swig_args ...interface{}) (_swig_
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (int)(C._wrap_RegenerateOverview_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_73)(unsafe.Pointer(&_swig_i_2)), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_RegenerateOverview_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), *(*C.swig_type_73)(unsafe.Pointer(&_swig_i_2)), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -4575,7 +4575,7 @@ func ContourGenerate(arg1 Band, arg2 float64, arg3 float64, arg4 int, arg5 *floa
 		_swig_i_11 = progress.New(progf, arg12)
 	}
 
-	swig_r = (int)(C._wrap_ContourGenerate_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_intgo(_swig_i_5), C.double(_swig_i_6), C.uintptr_t(_swig_i_7), C.swig_intgo(_swig_i_8), C.swig_intgo(_swig_i_9), C.GDALProgressFunc(_swig_i_10), C.swig_voidp(_swig_i_11)))
+	swig_r = (int)(C._wrap_ContourGenerate_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_intgo(_swig_i_5), C.double(_swig_i_6), C.uintptr_t(_swig_i_7), C.swig_intgo(_swig_i_8), C.swig_intgo(_swig_i_9), C.GDALProgressFunc(_swig_i_10), C.swig_voidp(_swig_i_11)))
 	return swig_r, err
 
 }
@@ -4607,7 +4607,7 @@ func AutoCreateWarpedVRT(arg1 Dataset, _swig_args ...interface{}) (_swig_ret Dat
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_AutoCreateWarpedVRT_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_74)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_75)(unsafe.Pointer(&_swig_i_2)), C.swig_intgo(_swig_i_3), C.double(_swig_i_4))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_AutoCreateWarpedVRT_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), *(*C.swig_type_74)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_75)(unsafe.Pointer(&_swig_i_2)), C.swig_intgo(_swig_i_3), C.double(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -4636,7 +4636,7 @@ func CreatePansharpenedVRT(arg1 string, arg2 Band, arg3 int, arg4 Band) (_swig_r
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_CreatePansharpenedVRT_gdal_a300ce886cc7d02a(*(*C.swig_type_76)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.uintptr_t(_swig_i_3))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_CreatePansharpenedVRT_gdal_8039be23513eb05d(*(*C.swig_type_76)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.uintptr_t(_swig_i_3))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -4680,7 +4680,7 @@ func NewTransformer(arg1 Dataset, arg2 Dataset, arg3 []string) (_swig_ret Transf
 	_swig_i_2_i[arg3_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_2 = &_swig_i_2_i[0]
 
-	swig_r = (Transformer)(SwigcptrTransformer(C._wrap_new_Transformer_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2))))
+	swig_r = (Transformer)(SwigcptrTransformer(C._wrap_new_Transformer_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2))))
 	return swig_r, err
 
 }
@@ -4689,7 +4689,7 @@ func DeleteTransformer(arg1 Transformer) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_Transformer_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_Transformer_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -4705,7 +4705,7 @@ func (arg1 SwigcptrTransformer) TransformPoint__SWIG_0(arg2 int, arg3 []float64)
 
 	_swig_i_2 = (*C.double)(unsafe.Pointer(&arg3[0]))
 
-	swig_r = (int)(C._wrap_Transformer_TransformPoint__SWIG_0_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_Transformer_TransformPoint__SWIG_0_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r, err
 
 }
@@ -4729,7 +4729,7 @@ func (arg1 SwigcptrTransformer) TransformPoint__SWIG_1(arg2 []float64, arg3 int,
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_Transformer_TransformPoint__SWIG_1_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
+	swig_r = (int)(C._wrap_Transformer_TransformPoint__SWIG_1_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5)))
 	return swig_r, err
 
 }
@@ -4763,7 +4763,7 @@ func (arg1 SwigcptrTransformer) TransformPoints(arg2 int, arg3 int, arg4 *float6
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_Transformer_TransformPoints_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_Transformer_TransformPoints_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r, err
 
 }
@@ -4815,7 +4815,7 @@ func (arg1 SwigcptrTransformer) TransformGeolocations(arg2 Band, arg3 Band, arg4
 	_swig_i_6_i[arg7_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_6 = &_swig_i_6_i[0]
 
-	swig_r = (int)(C._wrap_Transformer_TransformGeolocations_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_Transformer_TransformGeolocations_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r, err
 
 }
@@ -4844,7 +4844,7 @@ func wrap_ApplyGeoTransform(arg1 []float64, arg2 float64, arg3 float64, arg4 []f
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	C._wrap_ApplyGeoTransform_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), *(*C.swig_type_77)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_78)(unsafe.Pointer(&_swig_i_4)))
+	C._wrap_ApplyGeoTransform_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), *(*C.swig_type_77)(unsafe.Pointer(&_swig_i_3)), *(*C.swig_type_78)(unsafe.Pointer(&_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg4
 	}
@@ -4868,7 +4868,7 @@ func wrap_InvGeoTransform(arg1 []float64, arg2 []float64) (_swig_ret int, err er
 
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
-	swig_r = (int)(C._wrap_InvGeoTransform_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_InvGeoTransform_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r, err
 
 }
@@ -4887,7 +4887,7 @@ func VersionInfo(_swig_args ...interface{}) (_swig_ret string) {
 	}
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_VersionInfo_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_80)(unsafe.Pointer(&_swig_i_0)))
+	swig_r_p := C._wrap_VersionInfo_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_80)(unsafe.Pointer(&_swig_i_0)))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
@@ -4905,13 +4905,13 @@ func AllRegister() {
 		}
 	}()
 
-	C._wrap_AllRegister_gdal_a300ce886cc7d02a()
+	C._wrap_AllRegister_gdal_8039be23513eb05d()
 }
 
 func GDALDestroyDriverManager() (err error) {
 	defer cpl.ErrorTrap()(&err)
 
-	C._wrap_GDALDestroyDriverManager_gdal_a300ce886cc7d02a()
+	C._wrap_GDALDestroyDriverManager_gdal_8039be23513eb05d()
 	return
 }
 
@@ -4921,7 +4921,7 @@ func GetCacheMax() (_swig_ret int, err error,
 	defer cpl.ErrorTrap()(&err)
 
 	var swig_r int
-	swig_r = (int)(C._wrap_GetCacheMax_gdal_a300ce886cc7d02a())
+	swig_r = (int)(C._wrap_GetCacheMax_gdal_8039be23513eb05d())
 	return swig_r, err
 
 }
@@ -4932,7 +4932,7 @@ func GetCacheUsed() (_swig_ret int, err error,
 	defer cpl.ErrorTrap()(&err)
 
 	var swig_r int
-	swig_r = (int)(C._wrap_GetCacheUsed_gdal_a300ce886cc7d02a())
+	swig_r = (int)(C._wrap_GetCacheUsed_gdal_8039be23513eb05d())
 	return swig_r, err
 
 }
@@ -4941,7 +4941,7 @@ func SetCacheMax(arg1 int) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1
-	C._wrap_SetCacheMax_gdal_a300ce886cc7d02a(C.swig_intgo(_swig_i_0))
+	C._wrap_SetCacheMax_gdal_8039be23513eb05d(C.swig_intgo(_swig_i_0))
 	return
 }
 
@@ -4952,7 +4952,7 @@ func GetDataTypeSize(arg1 int) (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GetDataTypeSize_gdal_a300ce886cc7d02a(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_GetDataTypeSize_gdal_8039be23513eb05d(C.swig_intgo(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -4964,7 +4964,7 @@ func DataTypeIsComplex(arg1 int) (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_DataTypeIsComplex_gdal_a300ce886cc7d02a(C.swig_intgo(_swig_i_0)))
+	swig_r = (int)(C._wrap_DataTypeIsComplex_gdal_8039be23513eb05d(C.swig_intgo(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -4979,7 +4979,7 @@ func GetDataTypeName(arg1 int) (_swig_ret string) {
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GetDataTypeName_gdal_a300ce886cc7d02a(C.swig_intgo(_swig_i_0))
+	swig_r_p := C._wrap_GetDataTypeName_gdal_8039be23513eb05d(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -4993,7 +4993,7 @@ func GetDataTypeByName(arg1 string) (_swig_ret int, err error,
 
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_GetDataTypeByName_gdal_a300ce886cc7d02a(*(*C.swig_type_82)(unsafe.Pointer(&_swig_i_0))))
+	swig_r = (int)(C._wrap_GetDataTypeByName_gdal_8039be23513eb05d(*(*C.swig_type_82)(unsafe.Pointer(&_swig_i_0))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5008,7 +5008,7 @@ func GetColorInterpretationName(arg1 int) (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GetColorInterpretationName_gdal_a300ce886cc7d02a(C.swig_intgo(_swig_i_0))
+	swig_r_p := C._wrap_GetColorInterpretationName_gdal_8039be23513eb05d(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -5023,7 +5023,7 @@ func GetPaletteInterpretationName(arg1 int) (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1
-	swig_r_p := C._wrap_GetPaletteInterpretationName_gdal_a300ce886cc7d02a(C.swig_intgo(_swig_i_0))
+	swig_r_p := C._wrap_GetPaletteInterpretationName_gdal_8039be23513eb05d(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -5044,7 +5044,7 @@ func DecToDMS(arg1 float64, arg2 string, _swig_args ...interface{}) (_swig_ret s
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r_p := C._wrap_DecToDMS_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.double(_swig_i_0), *(*C.swig_type_86)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))
+	swig_r_p := C._wrap_DecToDMS_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.double(_swig_i_0), *(*C.swig_type_86)(unsafe.Pointer(&_swig_i_1)), C.swig_intgo(_swig_i_2))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
@@ -5062,7 +5062,7 @@ func PackedDMSToDec(arg1 float64) (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_PackedDMSToDec_gdal_a300ce886cc7d02a(C.double(_swig_i_0)))
+	swig_r = (float64)(C._wrap_PackedDMSToDec_gdal_8039be23513eb05d(C.double(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -5074,7 +5074,7 @@ func DecToPackedDMS(arg1 float64) (_swig_ret float64, err error,
 
 	var swig_r float64
 	_swig_i_0 := arg1
-	swig_r = (float64)(C._wrap_DecToPackedDMS_gdal_a300ce886cc7d02a(C.double(_swig_i_0)))
+	swig_r = (float64)(C._wrap_DecToPackedDMS_gdal_8039be23513eb05d(C.double(_swig_i_0)))
 	return swig_r, err
 
 }
@@ -5086,7 +5086,7 @@ func ParseXMLString(arg1 string) (_swig_ret CPLXMLNode, err error,
 
 	var swig_r CPLXMLNode
 	_swig_i_0 := arg1
-	swig_r = (CPLXMLNode)(SwigcptrCPLXMLNode(C._wrap_ParseXMLString_gdal_a300ce886cc7d02a(*(*C.swig_type_87)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (CPLXMLNode)(SwigcptrCPLXMLNode(C._wrap_ParseXMLString_gdal_8039be23513eb05d(*(*C.swig_type_87)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5101,7 +5101,7 @@ func SerializeXMLTree(arg1 CPLXMLNode) (_swig_ret string, err error,
 
 	var swig_r string
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r_p := C._wrap_SerializeXMLTree_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	swig_r_p := C._wrap_SerializeXMLTree_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -5131,7 +5131,7 @@ func GetJPEG2000StructureAsString(arg1 string, _swig_args ...interface{}) (_swig
 	_swig_i_1_i[arg2_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_1 = &_swig_i_1_i[0]
 
-	swig_r_p := C._wrap_GetJPEG2000StructureAsString_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_90)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1))
+	swig_r_p := C._wrap_GetJPEG2000StructureAsString_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_90)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
@@ -5151,7 +5151,7 @@ func GetDriverCount() (_swig_ret int) {
 	}()
 
 	var swig_r int
-	swig_r = (int)(C._wrap_GetDriverCount_gdal_a300ce886cc7d02a())
+	swig_r = (int)(C._wrap_GetDriverCount_gdal_8039be23513eb05d())
 	return swig_r
 }
 
@@ -5162,7 +5162,7 @@ func GetDriverByName(arg1 string) (_swig_ret Driver, err error,
 
 	var swig_r Driver
 	_swig_i_0 := arg1
-	swig_r = (Driver)(SwigcptrDriver(C._wrap_GetDriverByName_gdal_a300ce886cc7d02a(*(*C.swig_type_91)(unsafe.Pointer(&_swig_i_0)))))
+	swig_r = (Driver)(SwigcptrDriver(C._wrap_GetDriverByName_gdal_8039be23513eb05d(*(*C.swig_type_91)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5188,7 +5188,7 @@ func GetDriver(arg1 int) (_swig_ret Driver) {
 
 	var swig_r Driver
 	_swig_i_0 := arg1
-	swig_r = (Driver)(SwigcptrDriver(C._wrap_GetDriver_gdal_a300ce886cc7d02a(C.swig_intgo(_swig_i_0))))
+	swig_r = (Driver)(SwigcptrDriver(C._wrap_GetDriver_gdal_8039be23513eb05d(C.swig_intgo(_swig_i_0))))
 	var swig_r_1 Driver
 
 	if swig_r.Swigcptr() > 0 {
@@ -5212,7 +5212,7 @@ func wrap_Open(arg1 string, _swig_args ...interface{}) (_swig_ret Dataset, err e
 	var swig_r Dataset
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Open_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_92)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_Open_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_92)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5285,7 +5285,7 @@ func wrap_OpenEx(arg1 string, _swig_args ...interface{}) (_swig_ret Dataset, err
 	_swig_i_4_i[arg5_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_4 = &_swig_i_4_i[0]
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_OpenEx_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_93)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_OpenEx_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_93)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5313,7 +5313,7 @@ func OpenShared(arg1 string, _swig_args ...interface{}) (_swig_ret Dataset, err 
 	var swig_r Dataset
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_OpenShared_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_94)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_OpenShared_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_94)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5351,7 +5351,7 @@ func IdentifyDriver(arg1 string, _swig_args ...interface{}) (_swig_ret Driver, e
 	_swig_i_1_i[arg2_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_1 = &_swig_i_1_i[0]
 
-	swig_r = (Driver)(SwigcptrDriver(C._wrap_IdentifyDriver_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_95)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1))))
+	swig_r = (Driver)(SwigcptrDriver(C._wrap_IdentifyDriver_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_95)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5389,7 +5389,7 @@ func GeneralCmdLineProcessor(arg1 []string, _swig_args ...interface{}) (_swig_re
 	_swig_i_0 = &_swig_i_0_i[0]
 
 	_swig_i_1 := arg2
-	swig_r = (**C.char)(C._wrap_GeneralCmdLineProcessor_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.swig_voidp(_swig_i_0), C.swig_intgo(_swig_i_1)))
+	swig_r = (**C.char)(C._wrap_GeneralCmdLineProcessor_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.swig_voidp(_swig_i_0), C.swig_intgo(_swig_i_1)))
 	var swig_r_1 []string
 
 	if swig_r != nil {
@@ -5436,7 +5436,7 @@ func newGDALInfoOptions(arg1 []string) (_swig_ret GDALInfoOptions, err error,
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALInfoOptions)(SwigcptrGDALInfoOptions(C._wrap_new_GDALInfoOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALInfoOptions)(SwigcptrGDALInfoOptions(C._wrap_new_GDALInfoOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -5445,7 +5445,7 @@ func deleteGDALInfoOptions(arg1 GDALInfoOptions) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALInfoOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALInfoOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -5462,7 +5462,7 @@ func wrap_GDALInfo(arg1 Dataset, arg2 GDALInfoOptions) (_swig_ret string, err er
 	var swig_r string
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r_p := C._wrap_GDALInfo_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	swig_r_p := C._wrap_GDALInfo_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
@@ -5496,7 +5496,7 @@ func newGDALTranslateOptions(arg1 []string) (_swig_ret GDALTranslateOptions, err
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALTranslateOptions)(SwigcptrGDALTranslateOptions(C._wrap_new_GDALTranslateOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALTranslateOptions)(SwigcptrGDALTranslateOptions(C._wrap_new_GDALTranslateOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -5505,7 +5505,7 @@ func deleteGDALTranslateOptions(arg1 GDALTranslateOptions) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALTranslateOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALTranslateOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -5545,7 +5545,7 @@ func wrapper_GDALTranslate(arg1 string, arg2 Dataset, arg3 GDALTranslateOptions,
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALTranslate_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_97)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALTranslate_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_97)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5587,7 +5587,7 @@ func newGDALWarpAppOptions(arg1 []string) (_swig_ret GDALWarpAppOptions, err err
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALWarpAppOptions)(SwigcptrGDALWarpAppOptions(C._wrap_new_GDALWarpAppOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALWarpAppOptions)(SwigcptrGDALWarpAppOptions(C._wrap_new_GDALWarpAppOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -5596,7 +5596,7 @@ func deleteGDALWarpAppOptions(arg1 GDALWarpAppOptions) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALWarpAppOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALWarpAppOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -5645,7 +5645,7 @@ func wrapper_GDALWarpDestDS(arg1 Dataset, arg2 int, arg3 []Dataset, arg4 GDALWar
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (int)(C._wrap_wrapper_GDALWarpDestDS_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.uintptr_t(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wrapper_GDALWarpDestDS_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.uintptr_t(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r, err
 
 }
@@ -5690,7 +5690,7 @@ func wrapper_GDALWarpDestName(arg1 string, arg2 int, arg3 []Dataset, arg4 GDALWa
 		_swig_i_5 = progress.New(progf, arg6)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALWarpDestName_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_98)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.uintptr_t(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALWarpDestName_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_98)(unsafe.Pointer(&_swig_i_0)), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.uintptr_t(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5732,7 +5732,7 @@ func newGDALVectorTranslateOptions(arg1 []string) (_swig_ret GDALVectorTranslate
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALVectorTranslateOptions)(SwigcptrGDALVectorTranslateOptions(C._wrap_new_GDALVectorTranslateOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALVectorTranslateOptions)(SwigcptrGDALVectorTranslateOptions(C._wrap_new_GDALVectorTranslateOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -5741,7 +5741,7 @@ func deleteGDALVectorTranslateOptions(arg1 GDALVectorTranslateOptions) (err erro
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALVectorTranslateOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALVectorTranslateOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -5781,7 +5781,7 @@ func wrapper_GDALVectorTranslateDestDS(arg1 Dataset, arg2 Dataset, arg3 GDALVect
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (int)(C._wrap_wrapper_GDALVectorTranslateDestDS_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wrapper_GDALVectorTranslateDestDS_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r, err
 
 }
@@ -5817,7 +5817,7 @@ func wrapper_GDALVectorTranslateDestName(arg1 string, arg2 Dataset, arg3 GDALVec
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALVectorTranslateDestName_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_99)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALVectorTranslateDestName_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_99)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5859,7 +5859,7 @@ func newGDALDEMProcessingOptions(arg1 []string) (_swig_ret GDALDEMProcessingOpti
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALDEMProcessingOptions)(SwigcptrGDALDEMProcessingOptions(C._wrap_new_GDALDEMProcessingOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALDEMProcessingOptions)(SwigcptrGDALDEMProcessingOptions(C._wrap_new_GDALDEMProcessingOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -5868,7 +5868,7 @@ func deleteGDALDEMProcessingOptions(arg1 GDALDEMProcessingOptions) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALDEMProcessingOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALDEMProcessingOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -5910,7 +5910,7 @@ func wrapper_GDALDEMProcessing(arg1 string, arg2 Dataset, arg3 string, arg4 stri
 		_swig_i_6 = progress.New(progf, arg7)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALDEMProcessing_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_100)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), *(*C.swig_type_101)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_102)(unsafe.Pointer(&_swig_i_3)), C.uintptr_t(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALDEMProcessing_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_100)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), *(*C.swig_type_101)(unsafe.Pointer(&_swig_i_2)), *(*C.swig_type_102)(unsafe.Pointer(&_swig_i_3)), C.uintptr_t(_swig_i_4), C.GDALProgressFunc(_swig_i_5), C.swig_voidp(_swig_i_6))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -5958,7 +5958,7 @@ func newGDALNearblackOptions(arg1 []string) (_swig_ret GDALNearblackOptions, err
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALNearblackOptions)(SwigcptrGDALNearblackOptions(C._wrap_new_GDALNearblackOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALNearblackOptions)(SwigcptrGDALNearblackOptions(C._wrap_new_GDALNearblackOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -5967,7 +5967,7 @@ func deleteGDALNearblackOptions(arg1 GDALNearblackOptions) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALNearblackOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALNearblackOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -6007,7 +6007,7 @@ func wrapper_GDALNearblackDestDS(arg1 Dataset, arg2 Dataset, arg3 GDALNearblackO
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (int)(C._wrap_wrapper_GDALNearblackDestDS_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wrapper_GDALNearblackDestDS_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r, err
 
 }
@@ -6043,7 +6043,7 @@ func wrapper_GDALNearblackDestName(arg1 string, arg2 Dataset, arg3 GDALNearblack
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALNearblackDestName_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_103)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALNearblackDestName_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_103)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -6085,7 +6085,7 @@ func newGDALGridOptions(arg1 []string) (_swig_ret GDALGridOptions, err error,
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALGridOptions)(SwigcptrGDALGridOptions(C._wrap_new_GDALGridOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALGridOptions)(SwigcptrGDALGridOptions(C._wrap_new_GDALGridOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -6094,7 +6094,7 @@ func deleteGDALGridOptions(arg1 GDALGridOptions) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALGridOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALGridOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -6134,7 +6134,7 @@ func wrapper_GDALGrid(arg1 string, arg2 Dataset, arg3 GDALGridOptions, _swig_arg
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALGrid_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_104)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALGrid_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_104)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -6176,7 +6176,7 @@ func newGDALRasterizeOptions(arg1 []string) (_swig_ret GDALRasterizeOptions, err
 	_swig_i_0_i[arg1_l] = (*C.char)(unsafe.Pointer(nil))
 	_swig_i_0 = &_swig_i_0_i[0]
 
-	swig_r = (GDALRasterizeOptions)(SwigcptrGDALRasterizeOptions(C._wrap_new_GDALRasterizeOptions_gdal_a300ce886cc7d02a(C.swig_voidp(_swig_i_0))))
+	swig_r = (GDALRasterizeOptions)(SwigcptrGDALRasterizeOptions(C._wrap_new_GDALRasterizeOptions_gdal_8039be23513eb05d(C.swig_voidp(_swig_i_0))))
 	return swig_r, err
 
 }
@@ -6185,7 +6185,7 @@ func deleteGDALRasterizeOptions(arg1 GDALRasterizeOptions) (err error) {
 	defer cpl.ErrorTrap()(&err)
 
 	_swig_i_0 := arg1.Swigcptr()
-	C._wrap_delete_GDALRasterizeOptions_gdal_a300ce886cc7d02a(C.uintptr_t(_swig_i_0))
+	C._wrap_delete_GDALRasterizeOptions_gdal_8039be23513eb05d(C.uintptr_t(_swig_i_0))
 	return
 }
 
@@ -6225,7 +6225,7 @@ func wrapper_GDALRasterizeDestDS(arg1 Dataset, arg2 Dataset, arg3 GDALRasterizeO
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (int)(C._wrap_wrapper_GDALRasterizeDestDS_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wrapper_GDALRasterizeDestDS_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r, err
 
 }
@@ -6261,7 +6261,7 @@ func wrapper_GDALRasterizeDestName(arg1 string, arg2 Dataset, arg3 GDALRasterize
 		_swig_i_4 = progress.New(progf, arg5)
 	}
 
-	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALRasterizeDestName_gdal_a300ce886cc7d02a(C.swig_intgo(len(_swig_args)), *(*C.swig_type_105)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
+	swig_r = (Dataset)(SwigcptrDataset(C._wrap_wrapper_GDALRasterizeDestName_gdal_8039be23513eb05d(C.swig_intgo(len(_swig_args)), *(*C.swig_type_105)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.GDALProgressFunc(_swig_i_3), C.swig_voidp(_swig_i_4))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}

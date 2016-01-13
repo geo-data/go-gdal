@@ -181,7 +181,7 @@ void CPL_STDCALL PyCPLErrorHandler(CPLErr eErrClass, int err_no, const char* psz
 %rename (pop_finder_location) CPLPopFinderLocation;
 %rename (finder_clean) CPLFinderClean;
 %rename (find_file) CPLFindFile;
-%rename (read_dir) VSIReadDir;
+%rename (read_dir) wrapper_VSIReadDirEx;
 %rename (read_dir_recursive) VSIReadDirRecursive;
 %rename (mkdir) VSIMkdir;
 %rename (rmdir) VSIRmdir;
@@ -204,7 +204,7 @@ void CPL_STDCALL PyCPLErrorHandler(CPLErr eErrClass, int err_no, const char* psz
 %rename (PopFinderLocation) CPLPopFinderLocation;
 %rename (FinderClean) CPLFinderClean;
 %rename (FindFile) CPLFindFile;
-%rename (ReadDir) VSIReadDir;
+%rename (ReadDir) wrapper_VSIReadDirEx;
 %rename (ReadDirRecursive) VSIReadDirRecursive;
 %rename (Mkdir) VSIMkdir;
 %rename (Rmdir) VSIRmdir;
@@ -286,6 +286,11 @@ char* EscapeString(int len, char *bin_string , int scheme=CPLES_SQL) {
 /* call */
 %exception CPLGetLastErrorNo
 {
+#ifdef SWIGPYTHON
+%#ifdef SED_HACKS
+    if( bUseExceptions ) bLocalUseExceptionsCode = FALSE;
+%#endif
+#endif
     result = CPLGetLastErrorNo();
 }
 #endif
@@ -296,6 +301,11 @@ int CPLGetLastErrorNo();
 /* call */
 %exception CPLGetLastErrorType
 {
+#ifdef SWIGPYTHON
+%#ifdef SED_HACKS
+    if( bUseExceptions ) bLocalUseExceptionsCode = FALSE;
+%#endif
+#endif
     result = CPLGetLastErrorType();
 }
 int CPLGetLastErrorType();
@@ -308,6 +318,11 @@ CPLErr CPLGetLastErrorType();
 /* call */
 %exception CPLGetLastErrorMsg
 {
+#ifdef SWIGPYTHON
+%#ifdef SED_HACKS
+    if( bUseExceptions ) bLocalUseExceptionsCode = FALSE;
+%#endif
+#endif
     result = (char*)CPLGetLastErrorMsg();
 }
 #endif
@@ -322,7 +337,12 @@ void CPLFinderClean();
 const char * CPLFindFile( const char *pszClass, const char *utf8_path );
 
 %apply (char **CSL) {char **};
-char **VSIReadDir( const char * utf8_path );
+%inline {
+char **wrapper_VSIReadDirEx( const char * utf8_path, int nMaxFiles = 0 )
+{
+    return VSIReadDirEx(utf8_path, nMaxFiles);
+}
+}
 %clear char **;
 
 %apply (char **CSL) {char **};

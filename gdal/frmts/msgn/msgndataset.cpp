@@ -28,6 +28,7 @@
  * DEALINGS IN THE SOFTWARE.
  ****************************************************************************/
 
+#include "gdal_frmts.h"
 #include "gdal_priv.h"
 #include "ogr_spatialref.h"
 
@@ -35,10 +36,6 @@
 using namespace msg_native_format;
 
 CPL_CVSID("$Id$");
-
-CPL_C_START
-void GDALRegister_MSGN();
-CPL_C_END
 
 typedef enum {
     MODE_VISIR,     // Visible and Infrared bands (1 through 11) in 10-bit raw mode
@@ -167,7 +164,7 @@ CPLErr MSGNRasterBand::IReadBlock( CPL_UNUSED int nBlockXOff,
 
     char       *pszRecord;
 
-    unsigned int data_length =  bytes_per_line + sizeof(SUB_VISIRLINE);
+    unsigned int data_length =  bytes_per_line + (unsigned int)sizeof(SUB_VISIRLINE);
     unsigned int data_offset = 0;
 
     if (open_mode != MODE_HRV) {

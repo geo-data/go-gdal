@@ -28,13 +28,14 @@
  * DEALINGS IN THE SOFTWARE.
  *****************************************************************************/
 
-#include "gdal_priv.h"
 #include "cpl_conv.h"
-#include "cpl_string.h"
 #include "cpl_csv.h"
-#include "ogr_spatialref.h"
-#include "gdal_pam.h"
+#include "cpl_string.h"
+#include "gdal_frmts.h"
 #include "gdal_alg.h"
+#include "gdal_pam.h"
+#include "gdal_priv.h"
+#include "ogr_spatialref.h"
 
 #include "IntergraphDataset.h"
 #include "IntergraphBand.h"
@@ -320,11 +321,21 @@ GDALDataset *IntergraphDataset::Open( GDALOpenInfo *poOpenInfo )
     {
         VSIFSeekL( poDS->fp, nBandOffset, SEEK_SET );
 
-        VSIFReadL( abyBuf, 1, SIZEOF_HDR1, poDS->fp );
+        if( VSIFReadL( abyBuf, 1, SIZEOF_HDR1, poDS->fp ) != SIZEOF_HDR1 )
+            break;
 
         INGR_HeaderOneDiskToMem( &poDS->hHeaderOne, abyBuf );
+        if( hHeaderOne.PixelsPerLine != poDS->hHeaderOne.PixelsPerLine ||
+            hHeaderOne.NumberOfLines != poDS->hHeaderOne.NumberOfLines )
+        {
+            CPLError(CE_Failure, CPLE_NotSupported,
+                     "Not all bands have same dimensions");
+            delete poDS;
+            return NULL;
+        }
 
-        VSIFReadL( abyBuf, 1, SIZEOF_HDR2_A, poDS->fp );
+        if( VSIFReadL( abyBuf, 1, SIZEOF_HDR2_A, poDS->fp ) != SIZEOF_HDR2_A )
+            break;
 
         INGR_HeaderTwoADiskToMem( &poDS->hHeaderTwo, abyBuf );
 
@@ -794,6 +805,8 @@ GDALDataset *IntergraphDataset::CreateCopy( const char *pszFilename,
                     eType, 0, 0, NULL );
                 if( eErr != CE_None )
                 {
+                    CPLFree( pData );
+                    delete poDstDS;
                     return NULL;
                 }
                 eErr = poDstBand->RasterIO( GF_Write, 
@@ -803,14 +816,18 @@ GDALDataset *IntergraphDataset::CreateCopy( const char *pszFilename,
                     eType, 0, 0, NULL );
                 if( eErr != CE_None )
                 {
+                    CPLFree( pData );
+                    delete poDstDS;
                     return NULL;
                 }
             }
             if( ( eErr == CE_None ) && ( ! pfnProgress( 
                 ( iYOffset + 1 ) / ( double ) nYSize, NULL, pProgressData ) ) )
             {
-                eErr = CE_Failure;
                 CPLError( CE_Failure, CPLE_UserInterrupt, "User terminated CreateCopy()" );
+                CPLFree( pData );
+                delete poDstDS;
+                return NULL;
             }
         }
         CPLFree( pData );
