@@ -487,6 +487,7 @@ import "unsafe"
 import _ "runtime/cgo"
 import "sync"
 import "github.com/geo-data/go-gdal/gdal/swig/go/gdal/progress"
+import "github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 import "github.com/geo-data/go-gdal/gdal/swig/go/gdal/osr"
 
 type _ unsafe.Pointer
@@ -616,26 +617,38 @@ func (p SwigcptrMajorObject) Swigcptr() uintptr {
 func (p SwigcptrMajorObject) SwigIsMajorObject() {
 }
 
-func (arg1 SwigcptrMajorObject) GetDescription() (_swig_ret string) {
+func (arg1 SwigcptrMajorObject) GetDescription() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_MajorObject_GetDescription_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrMajorObject) SetDescription(arg2 string) {
+func (arg1 SwigcptrMajorObject) SetDescription(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_MajorObject_SetDescription_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_2)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (arg1 SwigcptrMajorObject) GetMetadataDomainList() (_swig_ret []string) {
+func (arg1 SwigcptrMajorObject) GetMetadataDomainList() (_swig_ret []string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r **C.char
 	_swig_i_0 := arg1
 	swig_r = (**C.char)(C._wrap_MajorObject_GetMetadataDomainList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
@@ -655,10 +668,15 @@ func (arg1 SwigcptrMajorObject) GetMetadataDomainList() (_swig_ret []string) {
 		}
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrMajorObject) GetMetadata_Dict(_swig_args ...interface{}) (_swig_ret *string) {
+func (arg1 SwigcptrMajorObject) GetMetadata_Dict(_swig_args ...interface{}) (_swig_ret *string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 string
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(string)
@@ -670,10 +688,15 @@ func (arg1 SwigcptrMajorObject) GetMetadata_Dict(_swig_args ...interface{}) (_sw
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrMajorObject) GetMetadata_List(_swig_args ...interface{}) (_swig_ret []string) {
+func (arg1 SwigcptrMajorObject) GetMetadata_List(_swig_args ...interface{}) (_swig_ret []string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 string
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(string)
@@ -700,10 +723,15 @@ func (arg1 SwigcptrMajorObject) GetMetadata_List(_swig_args ...interface{}) (_sw
 		}
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_0(arg2 *string, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_0(arg2 *string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 string
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(string)
@@ -716,10 +744,15 @@ func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_0(arg2 *string, _swig_args ...
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_1(arg2 string, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_1(arg2 string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 string
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(string)
@@ -735,10 +768,11 @@ func (arg1 SwigcptrMajorObject) SetMetadata__SWIG_1(arg2 string, _swig_args ...i
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrMajorObject) SetMetadata(a ...interface{}) int {
+func (p SwigcptrMajorObject) SetMetadata(a ...interface{}) (int, error) {
 	argc := len(a)
 	if argc >= 1 && argc <= 2 {
 		if _, ok := a[0].(*string); !ok {
@@ -763,7 +797,11 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrMajorObject) GetMetadataItem(arg2 string, _swig_args ...interface{}) (_swig_ret string) {
+func (arg1 SwigcptrMajorObject) GetMetadataItem(arg2 string, _swig_args ...interface{}) (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 string
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(string)
@@ -782,10 +820,15 @@ func (arg1 SwigcptrMajorObject) GetMetadataItem(arg2 string, _swig_args ...inter
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrMajorObject) SetMetadataItem(arg2 string, arg3 string, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrMajorObject) SetMetadataItem(arg2 string, arg3 string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].(string)
@@ -805,20 +848,35 @@ func (arg1 SwigcptrMajorObject) SetMetadataItem(arg2 string, arg3 string, _swig_
 	if Swig_escape_always_false {
 		Swig_escape_val = arg4
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
 type MajorObject interface {
 	Swigcptr() uintptr
 	SwigIsMajorObject()
-	GetDescription() (_swig_ret string)
-	SetDescription(arg2 string)
-	GetMetadataDomainList() (_swig_ret []string)
-	GetMetadata_Dict(_swig_args ...interface{}) (_swig_ret *string)
-	GetMetadata_List(_swig_args ...interface{}) (_swig_ret []string)
-	SetMetadata(a ...interface{}) int
-	GetMetadataItem(arg2 string, _swig_args ...interface{}) (_swig_ret string)
-	SetMetadataItem(arg2 string, arg3 string, _swig_args ...interface{}) (_swig_ret int)
+	GetDescription() (_swig_ret string, err error,
+
+	)
+	SetDescription(arg2 string) (err error)
+
+	GetMetadataDomainList() (_swig_ret []string, err error,
+
+	)
+	GetMetadata_Dict(_swig_args ...interface{}) (_swig_ret *string, err error,
+
+	)
+	GetMetadata_List(_swig_args ...interface{}) (_swig_ret []string, err error,
+
+	)
+	SetMetadata(a ...interface{}) (int, error)
+
+	GetMetadataItem(arg2 string, _swig_args ...interface{}) (_swig_ret string, err error,
+
+	)
+	SetMetadataItem(arg2 string, arg3 string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
 }
 
 type SwigcptrStyleTable uintptr
@@ -830,18 +888,30 @@ func (p SwigcptrStyleTable) Swigcptr() uintptr {
 func (p SwigcptrStyleTable) SwigIsStyleTable() {
 }
 
-func NewStyleTable() (_swig_ret StyleTable) {
+func NewStyleTable() (_swig_ret StyleTable, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r StyleTable
 	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_new_StyleTable_ogr_8e1b66f4430553e5()))
-	return swig_r
+	return swig_r, err
+
 }
 
-func DeleteStyleTable(arg1 StyleTable) {
+func DeleteStyleTable(arg1 StyleTable) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1.Swigcptr()
 	C._wrap_delete_StyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrStyleTable) AddStyle(arg2 string, arg3 string) (_swig_ret int) {
+func (arg1 SwigcptrStyleTable) AddStyle(arg2 string, arg3 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -853,10 +923,15 @@ func (arg1 SwigcptrStyleTable) AddStyle(arg2 string, arg3 string) (_swig_ret int
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrStyleTable) LoadStyleTable(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrStyleTable) LoadStyleTable(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -864,10 +939,15 @@ func (arg1 SwigcptrStyleTable) LoadStyleTable(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrStyleTable) SaveStyleTable(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrStyleTable) SaveStyleTable(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -875,10 +955,15 @@ func (arg1 SwigcptrStyleTable) SaveStyleTable(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrStyleTable) Find(arg2 string) (_swig_ret string) {
+func (arg1 SwigcptrStyleTable) Find(arg2 string) (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -889,44 +974,71 @@ func (arg1 SwigcptrStyleTable) Find(arg2 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrStyleTable) ResetStyleStringReading() {
+func (arg1 SwigcptrStyleTable) ResetStyleStringReading() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_StyleTable_ResetStyleStringReading_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrStyleTable) GetNextStyle() (_swig_ret string) {
+func (arg1 SwigcptrStyleTable) GetNextStyle() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_StyleTable_GetNextStyle_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrStyleTable) GetLastStyleName() (_swig_ret string) {
+func (arg1 SwigcptrStyleTable) GetLastStyleName() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_StyleTable_GetLastStyleName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
 type StyleTable interface {
 	Swigcptr() uintptr
 	SwigIsStyleTable()
-	AddStyle(arg2 string, arg3 string) (_swig_ret int)
-	LoadStyleTable(arg2 string) (_swig_ret int)
-	SaveStyleTable(arg2 string) (_swig_ret int)
-	Find(arg2 string) (_swig_ret string)
-	ResetStyleStringReading()
-	GetNextStyle() (_swig_ret string)
-	GetLastStyleName() (_swig_ret string)
+	AddStyle(arg2 string, arg3 string) (_swig_ret int, err error,
+
+	)
+	LoadStyleTable(arg2 string) (_swig_ret int, err error,
+
+	)
+	SaveStyleTable(arg2 string) (_swig_ret int, err error,
+
+	)
+	Find(arg2 string) (_swig_ret string, err error,
+
+	)
+	ResetStyleStringReading() (err error)
+
+	GetNextStyle() (_swig_ret string, err error,
+
+	)
+	GetLastStyleName() (_swig_ret string, err error,
+
+	)
 }
 
 type SwigcptrDriver uintptr
@@ -939,6 +1051,13 @@ func (p SwigcptrDriver) SwigIsDriver() {
 }
 
 func (arg1 SwigcptrDriver) GetName() (_swig_ret string) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Driver_name_get_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
@@ -948,7 +1067,11 @@ func (arg1 SwigcptrDriver) GetName() (_swig_ret string) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrDriver) CreateDataSource(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource) {
+func (arg1 SwigcptrDriver) CreateDataSource(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 []string
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].([]string)
@@ -971,10 +1094,15 @@ func (arg1 SwigcptrDriver) CreateDataSource(arg2 string, _swig_args ...interface
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDriver) CopyDataSource(arg2 DataSource, arg3 string, _swig_args ...interface{}) (_swig_ret DataSource) {
+func (arg1 SwigcptrDriver) CopyDataSource(arg2 DataSource, arg3 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -998,10 +1126,15 @@ func (arg1 SwigcptrDriver) CopyDataSource(arg2 DataSource, arg3 string, _swig_ar
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDriver) Open(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource) {
+func (arg1 SwigcptrDriver) Open(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -1014,10 +1147,15 @@ func (arg1 SwigcptrDriver) Open(arg2 string, _swig_args ...interface{}) (_swig_r
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDriver) DeleteDataSource(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrDriver) DeleteDataSource(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -1025,10 +1163,15 @@ func (arg1 SwigcptrDriver) DeleteDataSource(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDriver) TestCapability(arg2 string) (_swig_ret bool) {
+func (arg1 SwigcptrDriver) TestCapability(arg2 string) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -1036,17 +1179,24 @@ func (arg1 SwigcptrDriver) TestCapability(arg2 string) (_swig_ret bool) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDriver) Register() {
+func (arg1 SwigcptrDriver) Register() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_Driver_Register_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrDriver) Deregister() {
+func (arg1 SwigcptrDriver) Deregister() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_Driver_Deregister_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
 func (p SwigcptrDriver) SwigIsMajorObject() {
@@ -1060,13 +1210,25 @@ type Driver interface {
 	Swigcptr() uintptr
 	SwigIsDriver()
 	GetName() (_swig_ret string)
-	CreateDataSource(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource)
-	CopyDataSource(arg2 DataSource, arg3 string, _swig_args ...interface{}) (_swig_ret DataSource)
-	Open(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource)
-	DeleteDataSource(arg2 string) (_swig_ret int)
-	TestCapability(arg2 string) (_swig_ret bool)
-	Register()
-	Deregister()
+	CreateDataSource(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+	)
+	CopyDataSource(arg2 DataSource, arg3 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+	)
+	Open(arg2 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+	)
+	DeleteDataSource(arg2 string) (_swig_ret int, err error,
+
+	)
+	TestCapability(arg2 string) (_swig_ret bool, err error,
+
+	)
+	Register() (err error)
+
+	Deregister() (err error)
+
 	SwigIsMajorObject()
 	SwigGetMajorObject() MajorObject
 }
@@ -1081,6 +1243,13 @@ func (p SwigcptrDataSource) SwigIsDataSource() {
 }
 
 func (arg1 SwigcptrDataSource) GetName() (_swig_ret string) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_DataSource_name_get_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
@@ -1090,60 +1259,100 @@ func (arg1 SwigcptrDataSource) GetName() (_swig_ret string) {
 	return swig_r_1
 }
 
-func DeleteDataSource(arg1 DataSource) {
+func DeleteDataSource(arg1 DataSource) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1.Swigcptr()
 	C._wrap_delete_DataSource_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrDataSource) GetRefCount() (_swig_ret int) {
+func (arg1 SwigcptrDataSource) GetRefCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_DataSource_GetRefCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) GetSummaryRefCount() (_swig_ret int) {
+func (arg1 SwigcptrDataSource) GetSummaryRefCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_DataSource_GetSummaryRefCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) GetLayerCount() (_swig_ret int) {
+func (arg1 SwigcptrDataSource) GetLayerCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_DataSource_GetLayerCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) GetDriver() (_swig_ret Driver) {
+func (arg1 SwigcptrDataSource) GetDriver() (_swig_ret Driver, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Driver
 	_swig_i_0 := arg1
 	swig_r = (Driver)(SwigcptrDriver(C._wrap_DataSource_GetDriver_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) DeleteLayer(arg2 int) (_swig_ret int) {
+func (arg1 SwigcptrDataSource) DeleteLayer(arg2 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_DataSource_DeleteLayer_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) SyncToDisk() (_swig_ret int) {
+func (arg1 SwigcptrDataSource) SyncToDisk() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_DataSource_SyncToDisk_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) FlushCache() {
+func (arg1 SwigcptrDataSource) FlushCache() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_DataSource_FlushCache_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrDataSource) CreateLayer(arg2 string, _swig_args ...interface{}) (_swig_ret Layer) {
+func (arg1 SwigcptrDataSource) CreateLayer(arg2 string, _swig_args ...interface{}) (_swig_ret Layer, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 osr.SpatialReference
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(osr.SpatialReference)
@@ -1189,10 +1398,15 @@ func (arg1 SwigcptrDataSource) CreateLayer(arg2 string, _swig_args ...interface{
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrDataSource) CopyLayer(arg2 Layer, arg3 string, _swig_args ...interface{}) (_swig_ret Layer) {
+func (arg1 SwigcptrDataSource) CopyLayer(arg2 Layer, arg3 string, _swig_args ...interface{}) (_swig_ret Layer, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -1224,10 +1438,15 @@ func (arg1 SwigcptrDataSource) CopyLayer(arg2 Layer, arg3 string, _swig_args ...
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrDataSource) GetLayerByIndex(_swig_args ...interface{}) (_swig_ret Layer) {
+func (arg1 SwigcptrDataSource) GetLayerByIndex(_swig_args ...interface{}) (_swig_ret Layer, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -1244,10 +1463,15 @@ func (arg1 SwigcptrDataSource) GetLayerByIndex(_swig_args ...interface{}) (_swig
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrDataSource) GetLayerByName(arg2 string) (_swig_ret Layer) {
+func (arg1 SwigcptrDataSource) GetLayerByName(arg2 string) (_swig_ret Layer, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Layer
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -1263,10 +1487,15 @@ func (arg1 SwigcptrDataSource) GetLayerByName(arg2 string) (_swig_ret Layer) {
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrDataSource) TestCapability(arg2 string) (_swig_ret bool) {
+func (arg1 SwigcptrDataSource) TestCapability(arg2 string) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -1274,10 +1503,15 @@ func (arg1 SwigcptrDataSource) TestCapability(arg2 string) (_swig_ret bool) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) ExecuteSQL(arg2 string, _swig_args ...interface{}) (_swig_ret Layer) {
+func (arg1 SwigcptrDataSource) ExecuteSQL(arg2 string, _swig_args ...interface{}) (_swig_ret Layer, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 Geometry
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(Geometry)
@@ -1306,29 +1540,45 @@ func (arg1 SwigcptrDataSource) ExecuteSQL(arg2 string, _swig_args ...interface{}
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrDataSource) ReleaseResultSet(arg2 Layer) {
+func (arg1 SwigcptrDataSource) ReleaseResultSet(arg2 Layer) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_DataSource_ReleaseResultSet_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrDataSource) GetStyleTable() (_swig_ret StyleTable) {
+func (arg1 SwigcptrDataSource) GetStyleTable() (_swig_ret StyleTable, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r StyleTable
 	_swig_i_0 := arg1
 	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_DataSource_GetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) SetStyleTable(arg2 StyleTable) {
+func (arg1 SwigcptrDataSource) SetStyleTable(arg2 StyleTable) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_DataSource_SetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrDataSource) StartTransaction(_swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrDataSource) StartTransaction(_swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -1337,21 +1587,32 @@ func (arg1 SwigcptrDataSource) StartTransaction(_swig_args ...interface{}) (_swi
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_DataSource_StartTransaction_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) CommitTransaction() (_swig_ret int) {
+func (arg1 SwigcptrDataSource) CommitTransaction() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_DataSource_CommitTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrDataSource) RollbackTransaction() (_swig_ret int) {
+func (arg1 SwigcptrDataSource) RollbackTransaction() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_DataSource_RollbackTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
 func (p SwigcptrDataSource) SwigIsMajorObject() {
@@ -1365,25 +1626,60 @@ type DataSource interface {
 	Swigcptr() uintptr
 	SwigIsDataSource()
 	GetName() (_swig_ret string)
-	GetRefCount() (_swig_ret int)
-	GetSummaryRefCount() (_swig_ret int)
-	GetLayerCount() (_swig_ret int)
-	GetDriver() (_swig_ret Driver)
-	DeleteLayer(arg2 int) (_swig_ret int)
-	SyncToDisk() (_swig_ret int)
-	FlushCache()
-	CreateLayer(arg2 string, _swig_args ...interface{}) (_swig_ret Layer)
-	CopyLayer(arg2 Layer, arg3 string, _swig_args ...interface{}) (_swig_ret Layer)
-	GetLayerByIndex(_swig_args ...interface{}) (_swig_ret Layer)
-	GetLayerByName(arg2 string) (_swig_ret Layer)
-	TestCapability(arg2 string) (_swig_ret bool)
-	ExecuteSQL(arg2 string, _swig_args ...interface{}) (_swig_ret Layer)
-	ReleaseResultSet(arg2 Layer)
-	GetStyleTable() (_swig_ret StyleTable)
-	SetStyleTable(arg2 StyleTable)
-	StartTransaction(_swig_args ...interface{}) (_swig_ret int)
-	CommitTransaction() (_swig_ret int)
-	RollbackTransaction() (_swig_ret int)
+	GetRefCount() (_swig_ret int, err error,
+
+	)
+	GetSummaryRefCount() (_swig_ret int, err error,
+
+	)
+	GetLayerCount() (_swig_ret int, err error,
+
+	)
+	GetDriver() (_swig_ret Driver, err error,
+
+	)
+	DeleteLayer(arg2 int) (_swig_ret int, err error,
+
+	)
+	SyncToDisk() (_swig_ret int, err error,
+
+	)
+	FlushCache() (err error)
+
+	CreateLayer(arg2 string, _swig_args ...interface{}) (_swig_ret Layer, err error,
+
+	)
+	CopyLayer(arg2 Layer, arg3 string, _swig_args ...interface{}) (_swig_ret Layer, err error,
+
+	)
+	GetLayerByIndex(_swig_args ...interface{}) (_swig_ret Layer, err error,
+
+	)
+	GetLayerByName(arg2 string) (_swig_ret Layer, err error,
+
+	)
+	TestCapability(arg2 string) (_swig_ret bool, err error,
+
+	)
+	ExecuteSQL(arg2 string, _swig_args ...interface{}) (_swig_ret Layer, err error,
+
+	)
+	ReleaseResultSet(arg2 Layer) (err error)
+
+	GetStyleTable() (_swig_ret StyleTable, err error,
+
+	)
+	SetStyleTable(arg2 StyleTable) (err error)
+
+	StartTransaction(_swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	CommitTransaction() (_swig_ret int, err error,
+
+	)
+	RollbackTransaction() (_swig_ret int, err error,
+
+	)
 	SwigIsMajorObject()
 	SwigGetMajorObject() MajorObject
 }
@@ -1397,36 +1693,52 @@ func (p SwigcptrLayer) Swigcptr() uintptr {
 func (p SwigcptrLayer) SwigIsLayer() {
 }
 
-func (arg1 SwigcptrLayer) GetRefCount() (_swig_ret int) {
+func (arg1 SwigcptrLayer) GetRefCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Layer_GetRefCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) SetSpatialFilter__SWIG_0(arg2 Geometry) {
+func (arg1 SwigcptrLayer) SetSpatialFilter__SWIG_0(arg2 Geometry) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_Layer_SetSpatialFilter__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_0(arg2 float64, arg3 float64, arg4 float64, arg5 float64) {
+func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_0(arg2 float64, arg3 float64, arg4 float64, arg5 float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	C._wrap_Layer_SetSpatialFilterRect__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
+	return
 }
 
-func (arg1 SwigcptrLayer) SetSpatialFilter__SWIG_1(arg2 int, arg3 Geometry) {
+func (arg1 SwigcptrLayer) SetSpatialFilter__SWIG_1(arg2 int, arg3 Geometry) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	C._wrap_Layer_SetSpatialFilter__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
+	return
 }
 
-func (p SwigcptrLayer) SetSpatialFilter(a ...interface{}) {
+func (p SwigcptrLayer) SetSpatialFilter(a ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	argc := len(a)
 	if argc == 1 {
 		p.SetSpatialFilter__SWIG_0(a[0].(Geometry))
@@ -1437,9 +1749,12 @@ func (p SwigcptrLayer) SetSpatialFilter(a ...interface{}) {
 		return
 	}
 	panic("No match for overloaded function call")
+	return
 }
 
-func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_1(arg2 int, arg3 float64, arg4 float64, arg5 float64, arg6 float64) {
+func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_1(arg2 int, arg3 float64, arg4 float64, arg5 float64, arg6 float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -1447,9 +1762,12 @@ func (arg1 SwigcptrLayer) SetSpatialFilterRect__SWIG_1(arg2 int, arg3 float64, a
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	C._wrap_Layer_SetSpatialFilterRect__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5))
+	return
 }
 
-func (p SwigcptrLayer) SetSpatialFilterRect(a ...interface{}) {
+func (p SwigcptrLayer) SetSpatialFilterRect(a ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	argc := len(a)
 	if argc == 4 {
 		p.SetSpatialFilterRect__SWIG_0(a[0].(float64), a[1].(float64), a[2].(float64), a[3].(float64))
@@ -1460,16 +1778,26 @@ func (p SwigcptrLayer) SetSpatialFilterRect(a ...interface{}) {
 		return
 	}
 	panic("No match for overloaded function call")
+	return
 }
 
-func (arg1 SwigcptrLayer) GetSpatialFilter() (_swig_ret Geometry) {
+func (arg1 SwigcptrLayer) GetSpatialFilter() (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Layer_GetSpatialFilter_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) SetAttributeFilter(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrLayer) SetAttributeFilter(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -1477,15 +1805,30 @@ func (arg1 SwigcptrLayer) SetAttributeFilter(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrLayer) ResetReading() {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	_swig_i_0 := arg1
 	C._wrap_Layer_ResetReading_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 }
 
 func (arg1 SwigcptrLayer) GetName() (_swig_ret string) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Layer_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
@@ -1495,34 +1838,53 @@ func (arg1 SwigcptrLayer) GetName() (_swig_ret string) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrLayer) GetGeomType() (_swig_ret int) {
+func (arg1 SwigcptrLayer) GetGeomType() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Layer_GetGeomType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) GetGeometryColumn() (_swig_ret string) {
+func (arg1 SwigcptrLayer) GetGeometryColumn() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Layer_GetGeometryColumn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrLayer) GetFIDColumn() (_swig_ret string) {
+func (arg1 SwigcptrLayer) GetFIDColumn() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Layer_GetFIDColumn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrLayer) GetFeature(arg2 GIntBig) (_swig_ret Feature) {
+func (arg1 SwigcptrLayer) GetFeature(arg2 GIntBig) (_swig_ret Feature, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Feature
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
@@ -1535,10 +1897,18 @@ func (arg1 SwigcptrLayer) GetFeature(arg2 GIntBig) (_swig_ret Feature) {
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
 func (arg1 SwigcptrLayer) GetNextFeature() (_swig_ret Feature) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r Feature
 	_swig_i_0 := arg1
 	swig_r = (Feature)(SwigcptrFeature(C._wrap_Layer_GetNextFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
@@ -1553,53 +1923,89 @@ func (arg1 SwigcptrLayer) GetNextFeature() (_swig_ret Feature) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrLayer) SetNextByIndex(arg2 GIntBig) (_swig_ret int) {
+func (arg1 SwigcptrLayer) SetNextByIndex(arg2 GIntBig) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Layer_SetNextByIndex_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) SetFeature(arg2 Feature) (_swig_ret int) {
+func (arg1 SwigcptrLayer) SetFeature(arg2 Feature) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Layer_SetFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) wrap_CreateFeature(arg2 Feature) (_swig_ret int) {
+func (arg1 SwigcptrLayer) wrap_CreateFeature(arg2 Feature) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Layer_CreateFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) DeleteFeature(arg2 GIntBig) (_swig_ret int) {
+func (arg1 SwigcptrLayer) DeleteFeature(arg2 GIntBig) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Layer_DeleteFeature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) SyncToDisk() (_swig_ret int) {
+func (arg1 SwigcptrLayer) SyncToDisk() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Layer_SyncToDisk_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrLayer) GetLayerDefn() (_swig_ret FeatureDefn) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r FeatureDefn
 	_swig_i_0 := arg1
 	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_Layer_GetLayerDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
-func (arg1 SwigcptrLayer) GetFeatureCount(_swig_args ...interface{}) (_swig_ret GIntBig) {
+func (arg1 SwigcptrLayer) GetFeatureCount(_swig_args ...interface{}) (_swig_ret GIntBig, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -1608,10 +2014,15 @@ func (arg1 SwigcptrLayer) GetFeatureCount(_swig_args ...interface{}) (_swig_ret 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Layer_GetFeatureCount_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) GetExtent(arg2 []float64, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) GetExtent(arg2 []float64, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -1624,10 +2035,15 @@ func (arg1 SwigcptrLayer) GetExtent(arg2 []float64, _swig_args ...interface{}) (
 
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_Layer_GetExtent_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) TestCapability(arg2 string) (_swig_ret bool) {
+func (arg1 SwigcptrLayer) TestCapability(arg2 string) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -1635,10 +2051,15 @@ func (arg1 SwigcptrLayer) TestCapability(arg2 string) (_swig_ret bool) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) wrap_CreateField(arg2 FieldDefn, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) wrap_CreateField(arg2 FieldDefn, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -1648,46 +2069,71 @@ func (arg1 SwigcptrLayer) wrap_CreateField(arg2 FieldDefn, _swig_args ...interfa
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_Layer_CreateField_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) DeleteField(arg2 int) (_swig_ret int) {
+func (arg1 SwigcptrLayer) DeleteField(arg2 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_Layer_DeleteField_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) ReorderField(arg2 int, arg3 int) (_swig_ret int) {
+func (arg1 SwigcptrLayer) ReorderField(arg2 int, arg3 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_Layer_ReorderField_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) ReorderFields(arg2 int, arg3 *int) (_swig_ret int) {
+func (arg1 SwigcptrLayer) ReorderFields(arg2 int, arg3 *int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_Layer_ReorderFields_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) AlterFieldDefn(arg2 int, arg3 FieldDefn, arg4 int) (_swig_ret int) {
+func (arg1 SwigcptrLayer) AlterFieldDefn(arg2 int, arg3 FieldDefn, arg4 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
 	swig_r = (int)(C._wrap_Layer_AlterFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_intgo(_swig_i_3)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) CreateGeomField(arg2 GeomFieldDefn, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) CreateGeomField(arg2 GeomFieldDefn, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -1697,31 +2143,51 @@ func (arg1 SwigcptrLayer) CreateGeomField(arg2 GeomFieldDefn, _swig_args ...inte
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_Layer_CreateGeomField_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) StartTransaction() (_swig_ret int) {
+func (arg1 SwigcptrLayer) StartTransaction() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Layer_StartTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) CommitTransaction() (_swig_ret int) {
+func (arg1 SwigcptrLayer) CommitTransaction() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Layer_CommitTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) RollbackTransaction() (_swig_ret int) {
+func (arg1 SwigcptrLayer) RollbackTransaction() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Layer_RollbackTransaction_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) FindFieldIndex(arg2 string, arg3 int) (_swig_ret int) {
+func (arg1 SwigcptrLayer) FindFieldIndex(arg2 string, arg3 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -1730,24 +2196,39 @@ func (arg1 SwigcptrLayer) FindFieldIndex(arg2 string, arg3 int) (_swig_ret int) 
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) GetSpatialRef() (_swig_ret osr.SpatialReference) {
+func (arg1 SwigcptrLayer) GetSpatialRef() (_swig_ret osr.SpatialReference, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r osr.SpatialReference
 	_swig_i_0 := arg1
 	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_Layer_GetSpatialRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) GetFeaturesRead() (_swig_ret GIntBig) {
+func (arg1 SwigcptrLayer) GetFeaturesRead() (_swig_ret GIntBig, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r GIntBig
 	_swig_i_0 := arg1
 	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Layer_GetFeaturesRead_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) SetIgnoredFields(arg2 []string) (_swig_ret int) {
+func (arg1 SwigcptrLayer) SetIgnoredFields(arg2 []string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	var _swig_i_1 **C.char
@@ -1762,10 +2243,15 @@ func (arg1 SwigcptrLayer) SetIgnoredFields(arg2 []string) (_swig_ret int) {
 	_swig_i_1 = &_swig_i_1_i[0]
 
 	swig_r = (int)(C._wrap_Layer_SetIgnoredFields_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) Intersection(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) Intersection(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -1808,10 +2294,15 @@ func (arg1 SwigcptrLayer) Intersection(arg2 Layer, arg3 Layer, _swig_args ...int
 	}
 
 	swig_r = (int)(C._wrap_Layer_Intersection_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) Union(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) Union(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -1854,10 +2345,15 @@ func (arg1 SwigcptrLayer) Union(arg2 Layer, arg3 Layer, _swig_args ...interface{
 	}
 
 	swig_r = (int)(C._wrap_Layer_Union_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) SymDifference(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) SymDifference(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -1900,10 +2396,15 @@ func (arg1 SwigcptrLayer) SymDifference(arg2 Layer, arg3 Layer, _swig_args ...in
 	}
 
 	swig_r = (int)(C._wrap_Layer_SymDifference_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) Identity(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) Identity(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -1946,10 +2447,15 @@ func (arg1 SwigcptrLayer) Identity(arg2 Layer, arg3 Layer, _swig_args ...interfa
 	}
 
 	swig_r = (int)(C._wrap_Layer_Identity_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) Update(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) Update(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -1992,10 +2498,15 @@ func (arg1 SwigcptrLayer) Update(arg2 Layer, arg3 Layer, _swig_args ...interface
 	}
 
 	swig_r = (int)(C._wrap_Layer_Update_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) Clip(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) Clip(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -2038,10 +2549,15 @@ func (arg1 SwigcptrLayer) Clip(arg2 Layer, arg3 Layer, _swig_args ...interface{}
 	}
 
 	swig_r = (int)(C._wrap_Layer_Clip_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) Erase(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrLayer) Erase(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 []string
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].([]string)
@@ -2084,20 +2600,29 @@ func (arg1 SwigcptrLayer) Erase(arg2 Layer, arg3 Layer, _swig_args ...interface{
 	}
 
 	swig_r = (int)(C._wrap_Layer_Erase_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.GDALProgressFunc(_swig_i_4), C.swig_voidp(_swig_i_5)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) GetStyleTable() (_swig_ret StyleTable) {
+func (arg1 SwigcptrLayer) GetStyleTable() (_swig_ret StyleTable, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r StyleTable
 	_swig_i_0 := arg1
 	swig_r = (StyleTable)(SwigcptrStyleTable(C._wrap_Layer_GetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrLayer) SetStyleTable(arg2 StyleTable) {
+func (arg1 SwigcptrLayer) SetStyleTable(arg2 StyleTable) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_Layer_SetStyleTable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
 func (p SwigcptrLayer) SwigIsMajorObject() {
@@ -2110,49 +2635,120 @@ func (p SwigcptrLayer) SwigGetMajorObject() MajorObject {
 type Layer interface {
 	Swigcptr() uintptr
 	SwigIsLayer()
-	GetRefCount() (_swig_ret int)
-	SetSpatialFilter(a ...interface{})
-	SetSpatialFilterRect(a ...interface{})
-	GetSpatialFilter() (_swig_ret Geometry)
-	SetAttributeFilter(arg2 string) (_swig_ret int)
+	GetRefCount() (_swig_ret int, err error,
+
+	)
+	SetSpatialFilter(a ...interface{}) (err error)
+
+	SetSpatialFilterRect(a ...interface{}) (err error)
+
+	GetSpatialFilter() (_swig_ret Geometry, err error,
+
+	)
+	SetAttributeFilter(arg2 string) (_swig_ret int, err error,
+
+	)
 	ResetReading()
 	GetName() (_swig_ret string)
-	GetGeomType() (_swig_ret int)
-	GetGeometryColumn() (_swig_ret string)
-	GetFIDColumn() (_swig_ret string)
-	GetFeature(arg2 GIntBig) (_swig_ret Feature)
+	GetGeomType() (_swig_ret int, err error,
+
+	)
+	GetGeometryColumn() (_swig_ret string, err error,
+
+	)
+	GetFIDColumn() (_swig_ret string, err error,
+
+	)
+	GetFeature(arg2 GIntBig) (_swig_ret Feature, err error,
+
+	)
 	GetNextFeature() (_swig_ret Feature)
-	SetNextByIndex(arg2 GIntBig) (_swig_ret int)
-	SetFeature(arg2 Feature) (_swig_ret int)
+	SetNextByIndex(arg2 GIntBig) (_swig_ret int, err error,
 
-	DeleteFeature(arg2 GIntBig) (_swig_ret int)
-	SyncToDisk() (_swig_ret int)
+	)
+	SetFeature(arg2 Feature) (_swig_ret int, err error,
+
+	)
+
+	DeleteFeature(arg2 GIntBig) (_swig_ret int, err error,
+
+	)
+	SyncToDisk() (_swig_ret int, err error,
+
+	)
 	GetLayerDefn() (_swig_ret FeatureDefn)
-	GetFeatureCount(_swig_args ...interface{}) (_swig_ret GIntBig)
-	GetExtent(arg2 []float64, _swig_args ...interface{}) (_swig_ret int)
-	TestCapability(arg2 string) (_swig_ret bool)
+	GetFeatureCount(_swig_args ...interface{}) (_swig_ret GIntBig, err error,
 
-	DeleteField(arg2 int) (_swig_ret int)
-	ReorderField(arg2 int, arg3 int) (_swig_ret int)
-	ReorderFields(arg2 int, arg3 *int) (_swig_ret int)
-	AlterFieldDefn(arg2 int, arg3 FieldDefn, arg4 int) (_swig_ret int)
-	CreateGeomField(arg2 GeomFieldDefn, _swig_args ...interface{}) (_swig_ret int)
-	StartTransaction() (_swig_ret int)
-	CommitTransaction() (_swig_ret int)
-	RollbackTransaction() (_swig_ret int)
-	FindFieldIndex(arg2 string, arg3 int) (_swig_ret int)
-	GetSpatialRef() (_swig_ret osr.SpatialReference)
-	GetFeaturesRead() (_swig_ret GIntBig)
-	SetIgnoredFields(arg2 []string) (_swig_ret int)
-	Intersection(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int)
-	Union(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int)
-	SymDifference(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int)
-	Identity(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int)
-	Update(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int)
-	Clip(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int)
-	Erase(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int)
-	GetStyleTable() (_swig_ret StyleTable)
-	SetStyleTable(arg2 StyleTable)
+	)
+	GetExtent(arg2 []float64, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	TestCapability(arg2 string) (_swig_ret bool, err error,
+
+	)
+
+	DeleteField(arg2 int) (_swig_ret int, err error,
+
+	)
+	ReorderField(arg2 int, arg3 int) (_swig_ret int, err error,
+
+	)
+	ReorderFields(arg2 int, arg3 *int) (_swig_ret int, err error,
+
+	)
+	AlterFieldDefn(arg2 int, arg3 FieldDefn, arg4 int) (_swig_ret int, err error,
+
+	)
+	CreateGeomField(arg2 GeomFieldDefn, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	StartTransaction() (_swig_ret int, err error,
+
+	)
+	CommitTransaction() (_swig_ret int, err error,
+
+	)
+	RollbackTransaction() (_swig_ret int, err error,
+
+	)
+	FindFieldIndex(arg2 string, arg3 int) (_swig_ret int, err error,
+
+	)
+	GetSpatialRef() (_swig_ret osr.SpatialReference, err error,
+
+	)
+	GetFeaturesRead() (_swig_ret GIntBig, err error,
+
+	)
+	SetIgnoredFields(arg2 []string) (_swig_ret int, err error,
+
+	)
+	Intersection(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	Union(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	SymDifference(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	Identity(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	Update(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	Clip(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	Erase(arg2 Layer, arg3 Layer, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	GetStyleTable() (_swig_ret StyleTable, err error,
+
+	)
+	SetStyleTable(arg2 StyleTable) (err error)
+
 	SwigIsMajorObject()
 	SwigGetMajorObject() MajorObject
 	CreateField(f FieldDefn, approxok int) (err error)
@@ -2168,12 +2764,19 @@ func (p SwigcptrFeature) Swigcptr() uintptr {
 func (p SwigcptrFeature) SwigIsFeature() {
 }
 
-func DeleteFeature(arg1 Feature) {
+func DeleteFeature(arg1 Feature) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1.Swigcptr()
 	C._wrap_delete_Feature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func wrap_NewFeature(arg1 FeatureDefn) (_swig_ret Feature) {
+func NewFeature(arg1 FeatureDefn) (_swig_ret Feature, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Feature
 	_swig_i_0 := arg1.Swigcptr()
 	swig_r = (Feature)(SwigcptrFeature(C._wrap_new_Feature_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
@@ -2185,49 +2788,81 @@ func wrap_NewFeature(arg1 FeatureDefn) (_swig_ret Feature) {
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFeature) GetDefnRef() (_swig_ret FeatureDefn) {
+func (arg1 SwigcptrFeature) GetDefnRef() (_swig_ret FeatureDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r FeatureDefn
 	_swig_i_0 := arg1
 	swig_r = (FeatureDefn)(SwigcptrFeatureDefn(C._wrap_Feature_GetDefnRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) wrap_SetGeometry(arg2 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrFeature) wrap_SetGeometry(arg2 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Feature_SetGeometry_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) SetGeometryDirectly(arg2 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetGeometryDirectly(arg2 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Feature_SetGeometryDirectly_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrFeature) GetGeometryRef() (_swig_ret Geometry) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeometryRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
-func (arg1 SwigcptrFeature) SetGeomField__SWIG_0(arg2 int, arg3 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetGeomField__SWIG_0(arg2 int, arg3 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	swig_r = (int)(C._wrap_Feature_SetGeomField__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) SetGeomField__SWIG_1(arg2 string, arg3 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetGeomField__SWIG_1(arg2 string, arg3 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2236,10 +2871,11 @@ func (arg1 SwigcptrFeature) SetGeomField__SWIG_1(arg2 string, arg3 Geometry) (_s
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) SetGeomField(a ...interface{}) int {
+func (p SwigcptrFeature) SetGeomField(a ...interface{}) (int, error) {
 	argc := len(a)
 	if argc == 2 {
 		if _, ok := a[0].(int); !ok {
@@ -2254,16 +2890,25 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) SetGeomFieldDirectly__SWIG_0(arg2 int, arg3 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetGeomFieldDirectly__SWIG_0(arg2 int, arg3 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	swig_r = (int)(C._wrap_Feature_SetGeomFieldDirectly__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) SetGeomFieldDirectly__SWIG_1(arg2 string, arg3 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetGeomFieldDirectly__SWIG_1(arg2 string, arg3 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2272,10 +2917,11 @@ func (arg1 SwigcptrFeature) SetGeomFieldDirectly__SWIG_1(arg2 string, arg3 Geome
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) SetGeomFieldDirectly(a ...interface{}) int {
+func (p SwigcptrFeature) SetGeomFieldDirectly(a ...interface{}) (int, error) {
 	argc := len(a)
 	if argc == 2 {
 		if _, ok := a[0].(int); !ok {
@@ -2290,15 +2936,24 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) GetGeomFieldRef__SWIG_0(arg2 int) (_swig_ret Geometry) {
+func (arg1 SwigcptrFeature) GetGeomFieldRef__SWIG_0(arg2 int) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Feature_GetGeomFieldRef__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetGeomFieldRef__SWIG_1(arg2 string) (_swig_ret Geometry) {
+func (arg1 SwigcptrFeature) GetGeomFieldRef__SWIG_1(arg2 string) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2306,10 +2961,11 @@ func (arg1 SwigcptrFeature) GetGeomFieldRef__SWIG_1(arg2 string) (_swig_ret Geom
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) GetGeomFieldRef(a ...interface{}) Geometry {
+func (p SwigcptrFeature) GetGeomFieldRef(a ...interface{}) (Geometry, error) {
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2324,7 +2980,11 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) Clone() (_swig_ret Feature) {
+func (arg1 SwigcptrFeature) Clone() (_swig_ret Feature, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Feature
 	_swig_i_0 := arg1
 	swig_r = (Feature)(SwigcptrFeature(C._wrap_Feature_Clone_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
@@ -2336,33 +2996,55 @@ func (arg1 SwigcptrFeature) Clone() (_swig_ret Feature) {
 		swig_r_1 = nil
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFeature) Equal(arg2 Feature) (_swig_ret bool) {
+func (arg1 SwigcptrFeature) Equal(arg2 Feature) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Feature_Equal_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrFeature) GetFieldCount() (_swig_ret int) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Feature_GetFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
-func (arg1 SwigcptrFeature) GetFieldDefnRef__SWIG_0(arg2 int) (_swig_ret FieldDefn) {
+func (arg1 SwigcptrFeature) GetFieldDefnRef__SWIG_0(arg2 int) (_swig_ret FieldDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r FieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (FieldDefn)(SwigcptrFieldDefn(C._wrap_Feature_GetFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetFieldDefnRef__SWIG_1(arg2 string) (_swig_ret FieldDefn) {
+func (arg1 SwigcptrFeature) GetFieldDefnRef__SWIG_1(arg2 string) (_swig_ret FieldDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r FieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2370,10 +3052,11 @@ func (arg1 SwigcptrFeature) GetFieldDefnRef__SWIG_1(arg2 string) (_swig_ret Fiel
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) GetFieldDefnRef(a ...interface{}) FieldDefn {
+func (p SwigcptrFeature) GetFieldDefnRef(a ...interface{}) (FieldDefn, error) {
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2388,22 +3071,36 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) GetGeomFieldCount() (_swig_ret int) {
+func (arg1 SwigcptrFeature) GetGeomFieldCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Feature_GetGeomFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetGeomFieldDefnRef__SWIG_0(arg2 int) (_swig_ret GeomFieldDefn) {
+func (arg1 SwigcptrFeature) GetGeomFieldDefnRef__SWIG_0(arg2 int) (_swig_ret GeomFieldDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r GeomFieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_Feature_GetGeomFieldDefnRef__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetGeomFieldDefnRef__SWIG_1(arg2 string) (_swig_ret GeomFieldDefn) {
+func (arg1 SwigcptrFeature) GetGeomFieldDefnRef__SWIG_1(arg2 string) (_swig_ret GeomFieldDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r GeomFieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2411,10 +3108,11 @@ func (arg1 SwigcptrFeature) GetGeomFieldDefnRef__SWIG_1(arg2 string) (_swig_ret 
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) GetGeomFieldDefnRef(a ...interface{}) GeomFieldDefn {
+func (p SwigcptrFeature) GetGeomFieldDefnRef(a ...interface{}) (GeomFieldDefn, error) {
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2455,6 +3153,13 @@ func (arg1 SwigcptrFeature) GetFieldAsString__SWIG_1(arg2 string) (_swig_ret str
 }
 
 func (p SwigcptrFeature) GetFieldAsString(a ...interface{}) string {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2489,6 +3194,13 @@ func (arg1 SwigcptrFeature) GetFieldAsInteger__SWIG_1(arg2 string) (_swig_ret in
 }
 
 func (p SwigcptrFeature) GetFieldAsInteger(a ...interface{}) int {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2503,15 +3215,24 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsInteger64__SWIG_0(arg2 int) (_swig_ret GIntBig) {
+func (arg1 SwigcptrFeature) GetFieldAsInteger64__SWIG_0(arg2 int) (_swig_ret GIntBig, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r GIntBig
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFieldAsInteger64__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsInteger64__SWIG_1(arg2 string) (_swig_ret GIntBig) {
+func (arg1 SwigcptrFeature) GetFieldAsInteger64__SWIG_1(arg2 string) (_swig_ret GIntBig, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r GIntBig
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2519,10 +3240,11 @@ func (arg1 SwigcptrFeature) GetFieldAsInteger64__SWIG_1(arg2 string) (_swig_ret 
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) GetFieldAsInteger64(a ...interface{}) GIntBig {
+func (p SwigcptrFeature) GetFieldAsInteger64(a ...interface{}) (GIntBig, error) {
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2557,6 +3279,13 @@ func (arg1 SwigcptrFeature) GetFieldAsDouble__SWIG_1(arg2 string) (_swig_ret flo
 }
 
 func (p SwigcptrFeature) GetFieldAsDouble(a ...interface{}) float64 {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2571,7 +3300,9 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsDateTime(arg2 int, arg3 []int, arg4 []int, arg5 []int, arg6 []int, arg7 []int, arg8 []float32, arg9 []int) {
+func (arg1 SwigcptrFeature) GetFieldAsDateTime(arg2 int, arg3 []int, arg4 []int, arg5 []int, arg6 []int, arg7 []int, arg8 []float32, arg9 []int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2603,42 +3334,61 @@ func (arg1 SwigcptrFeature) GetFieldAsDateTime(arg2 int, arg3 []int, arg4 []int,
 	if Swig_escape_always_false {
 		Swig_escape_val = arg9
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsIntegerList(arg2 int, arg3 *int, arg4 **int) {
+func (arg1 SwigcptrFeature) GetFieldAsIntegerList(arg2 int, arg3 *int, arg4 **int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	C._wrap_Feature_GetFieldAsIntegerList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3))
+	return
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsDoubleList(arg2 int, arg3 *int, arg4 **float64) {
+func (arg1 SwigcptrFeature) GetFieldAsDoubleList(arg2 int, arg3 *int, arg4 **float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	C._wrap_Feature_GetFieldAsDoubleList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3))
+	return
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsStringList(arg2 int, arg3 **string) {
+func (arg1 SwigcptrFeature) GetFieldAsStringList(arg2 int, arg3 **string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	C._wrap_Feature_GetFieldAsStringList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_0(arg2 int, arg3 *int, arg4 *string) (_swig_ret int) {
+func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_0(arg2 int, arg3 *int, arg4 *string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	swig_r = (int)(C._wrap_Feature_GetFieldAsBinary__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_voidp(_swig_i_3)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_1(arg2 string, arg3 *int, arg4 *string) (_swig_ret int) {
+func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_1(arg2 string, arg3 *int, arg4 *string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2648,10 +3398,11 @@ func (arg1 SwigcptrFeature) GetFieldAsBinary__SWIG_1(arg2 string, arg3 *int, arg
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) GetFieldAsBinary(a ...interface{}) int {
+func (p SwigcptrFeature) GetFieldAsBinary(a ...interface{}) (int, error) {
 	argc := len(a)
 	if argc == 3 {
 		if _, ok := a[0].(int); !ok {
@@ -2666,15 +3417,24 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) IsFieldSet__SWIG_0(arg2 int) (_swig_ret bool) {
+func (arg1 SwigcptrFeature) IsFieldSet__SWIG_0(arg2 int) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (bool)(C._wrap_Feature_IsFieldSet__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) IsFieldSet__SWIG_1(arg2 string) (_swig_ret bool) {
+func (arg1 SwigcptrFeature) IsFieldSet__SWIG_1(arg2 string) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2682,10 +3442,11 @@ func (arg1 SwigcptrFeature) IsFieldSet__SWIG_1(arg2 string) (_swig_ret bool) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) IsFieldSet(a ...interface{}) bool {
+func (p SwigcptrFeature) IsFieldSet(a ...interface{}) (bool, error) {
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2700,7 +3461,11 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) GetFieldIndex(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrFeature) GetFieldIndex(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2708,10 +3473,15 @@ func (arg1 SwigcptrFeature) GetFieldIndex(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrFeature) GetGeomFieldIndex(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -2719,45 +3489,67 @@ func (arg1 SwigcptrFeature) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetFID() (_swig_ret GIntBig) {
+func (arg1 SwigcptrFeature) GetFID() (_swig_ret GIntBig, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r GIntBig
 	_swig_i_0 := arg1
 	swig_r = (GIntBig)(SwigcptrGIntBig(C._wrap_Feature_GetFID_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) SetFID(arg2 GIntBig) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetFID(arg2 GIntBig) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Feature_SetFID_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) DumpReadable() {
+func (arg1 SwigcptrFeature) DumpReadable() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_Feature_DumpReadable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrFeature) UnsetField__SWIG_0(arg2 int) {
+func (arg1 SwigcptrFeature) UnsetField__SWIG_0(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Feature_UnsetField__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFeature) UnsetField__SWIG_1(arg2 string) {
+func (arg1 SwigcptrFeature) UnsetField__SWIG_1(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Feature_UnsetField__SWIG_1_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_63)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (p SwigcptrFeature) UnsetField(a ...interface{}) {
+func (p SwigcptrFeature) UnsetField(a ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -2772,9 +3564,12 @@ check_1:
 		return
 	}
 	panic("No match for overloaded function call")
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_0(arg2 int, arg3 string) {
+func (arg1 SwigcptrFeature) SetField__SWIG_0(arg2 int, arg3 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2782,9 +3577,12 @@ func (arg1 SwigcptrFeature) SetField__SWIG_0(arg2 int, arg3 string) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_1(arg2 string, arg3 string) {
+func (arg1 SwigcptrFeature) SetField__SWIG_1(arg2 string, arg3 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2795,23 +3593,32 @@ func (arg1 SwigcptrFeature) SetField__SWIG_1(arg2 string, arg3 string) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) SetFieldInteger64(arg2 int, arg3 GIntBig) {
+func (arg1 SwigcptrFeature) SetFieldInteger64(arg2 int, arg3 GIntBig) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	C._wrap_Feature_SetFieldInteger64_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.uintptr_t(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_2(arg2 int, arg3 int) {
+func (arg1 SwigcptrFeature) SetField__SWIG_2(arg2 int, arg3 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	C._wrap_Feature_SetField__SWIG_2_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_3(arg2 string, arg3 int) {
+func (arg1 SwigcptrFeature) SetField__SWIG_3(arg2 string, arg3 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2819,16 +3626,22 @@ func (arg1 SwigcptrFeature) SetField__SWIG_3(arg2 string, arg3 int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_4(arg2 int, arg3 float64) {
+func (arg1 SwigcptrFeature) SetField__SWIG_4(arg2 int, arg3 float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	C._wrap_Feature_SetField__SWIG_4_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_5(arg2 string, arg3 float64) {
+func (arg1 SwigcptrFeature) SetField__SWIG_5(arg2 string, arg3 float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2836,9 +3649,12 @@ func (arg1 SwigcptrFeature) SetField__SWIG_5(arg2 string, arg3 float64) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_6(arg2 int, arg3 int, arg4 int, arg5 int, arg6 int, arg7 int, arg8 float32, arg9 int) {
+func (arg1 SwigcptrFeature) SetField__SWIG_6(arg2 int, arg3 int, arg4 int, arg5 int, arg6 int, arg7 int, arg8 float32, arg9 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2849,9 +3665,12 @@ func (arg1 SwigcptrFeature) SetField__SWIG_6(arg2 int, arg3 int, arg4 int, arg5 
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
 	C._wrap_Feature_SetField__SWIG_6_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_intgo(_swig_i_4), C.swig_intgo(_swig_i_5), C.swig_intgo(_swig_i_6), C.float(_swig_i_7), C.swig_intgo(_swig_i_8))
+	return
 }
 
-func (arg1 SwigcptrFeature) SetField__SWIG_7(arg2 string, arg3 int, arg4 int, arg5 int, arg6 int, arg7 int, arg8 float32, arg9 int) {
+func (arg1 SwigcptrFeature) SetField__SWIG_7(arg2 string, arg3 int, arg4 int, arg5 int, arg6 int, arg7 int, arg8 float32, arg9 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2865,9 +3684,12 @@ func (arg1 SwigcptrFeature) SetField__SWIG_7(arg2 string, arg3 int, arg4 int, ar
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (p SwigcptrFeature) wrap_SetField(a ...interface{}) {
+func (p SwigcptrFeature) SetField(a ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	argc := len(a)
 	if argc == 2 {
 		if _, ok := a[0].(int); !ok {
@@ -2935,25 +3757,34 @@ check_7:
 		return
 	}
 	panic("No match for overloaded function call")
+	return
 }
 
-func (arg1 SwigcptrFeature) SetFieldIntegerList(arg2 int, arg3 int, arg4 *int) {
+func (arg1 SwigcptrFeature) SetFieldIntegerList(arg2 int, arg3 int, arg4 *int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	C._wrap_Feature_SetFieldIntegerList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3))
+	return
 }
 
-func (arg1 SwigcptrFeature) SetFieldDoubleList(arg2 int, arg3 int, arg4 *float64) {
+func (arg1 SwigcptrFeature) SetFieldDoubleList(arg2 int, arg3 int, arg4 *float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	C._wrap_Feature_SetFieldDoubleList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_voidp(_swig_i_3))
+	return
 }
 
-func (arg1 SwigcptrFeature) SetFieldStringList(arg2 int, arg3 []string) {
+func (arg1 SwigcptrFeature) SetFieldStringList(arg2 int, arg3 []string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	var _swig_i_2 **C.char
@@ -2968,9 +3799,12 @@ func (arg1 SwigcptrFeature) SetFieldStringList(arg2 int, arg3 []string) {
 	_swig_i_2 = &_swig_i_2_i[0]
 
 	C._wrap_Feature_SetFieldStringList_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_0(arg2 int, arg3 string) {
+func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_0(arg2 int, arg3 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2978,9 +3812,12 @@ func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_0(arg2 int, arg3 s
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_1(arg2 string, arg3 string) {
+func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_1(arg2 string, arg3 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
@@ -2991,9 +3828,12 @@ func (arg1 SwigcptrFeature) SetFieldBinaryFromHexString__SWIG_1(arg2 string, arg
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
+	return
 }
 
-func (p SwigcptrFeature) SetFieldBinaryFromHexString(a ...interface{}) {
+func (p SwigcptrFeature) SetFieldBinaryFromHexString(a ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	argc := len(a)
 	if argc == 2 {
 		if _, ok := a[0].(int); !ok {
@@ -3008,9 +3848,14 @@ check_1:
 		return
 	}
 	panic("No match for overloaded function call")
+	return
 }
 
-func (arg1 SwigcptrFeature) SetFrom(arg2 Feature, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetFrom(arg2 Feature, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -3020,10 +3865,15 @@ func (arg1 SwigcptrFeature) SetFrom(arg2 Feature, _swig_args ...interface{}) (_s
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_Feature_SetFrom_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) SetFromWithMap(arg2 Feature, arg3 int, arg4 int, arg5 *int) (_swig_ret int) {
+func (arg1 SwigcptrFeature) SetFromWithMap(arg2 Feature, arg3 int, arg4 int, arg5 *int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
@@ -3031,37 +3881,55 @@ func (arg1 SwigcptrFeature) SetFromWithMap(arg2 Feature, arg3 int, arg4 int, arg
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	swig_r = (int)(C._wrap_Feature_SetFromWithMap_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_intgo(_swig_i_2), C.swig_intgo(_swig_i_3), C.swig_voidp(_swig_i_4)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetStyleString() (_swig_ret string) {
+func (arg1 SwigcptrFeature) GetStyleString() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Feature_GetStyleString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFeature) SetStyleString(arg2 string) {
+func (arg1 SwigcptrFeature) SetStyleString(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Feature_SetStyleString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_74)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) GetFieldType__SWIG_0(arg2 int) (_swig_ret int) {
+func (arg1 SwigcptrFeature) GetFieldType__SWIG_0(arg2 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_Feature_GetFieldType__SWIG_0_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) GetFieldType__SWIG_1(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrFeature) GetFieldType__SWIG_1(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -3069,10 +3937,11 @@ func (arg1 SwigcptrFeature) GetFieldType__SWIG_1(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (p SwigcptrFeature) GetFieldType(a ...interface{}) int {
+func (p SwigcptrFeature) GetFieldType(a ...interface{}) (int, error) {
 	argc := len(a)
 	if argc == 1 {
 		if _, ok := a[0].(int); !ok {
@@ -3087,7 +3956,11 @@ check_1:
 	panic("No match for overloaded function call")
 }
 
-func (arg1 SwigcptrFeature) Validate(_swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrFeature) Validate(_swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -3101,10 +3974,13 @@ func (arg1 SwigcptrFeature) Validate(_swig_args ...interface{}) (_swig_ret int) 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_Feature_Validate_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeature) FillUnsetWithDefault(_swig_args ...interface{}) {
+func (arg1 SwigcptrFeature) FillUnsetWithDefault(_swig_args ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -3127,96 +4003,167 @@ func (arg1 SwigcptrFeature) FillUnsetWithDefault(_swig_args ...interface{}) {
 	_swig_i_2 = &_swig_i_2_i[0]
 
 	C._wrap_Feature_FillUnsetWithDefault_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrFeature) GetNativeData() (_swig_ret string) {
+func (arg1 SwigcptrFeature) GetNativeData() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Feature_GetNativeData_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFeature) GetNativeMediaType() (_swig_ret string) {
+func (arg1 SwigcptrFeature) GetNativeMediaType() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Feature_GetNativeMediaType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFeature) SetNativeData(arg2 string) {
+func (arg1 SwigcptrFeature) SetNativeData(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Feature_SetNativeData_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_78)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (arg1 SwigcptrFeature) SetNativeMediaType(arg2 string) {
+func (arg1 SwigcptrFeature) SetNativeMediaType(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Feature_SetNativeMediaType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_79)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
 type Feature interface {
 	Swigcptr() uintptr
 	SwigIsFeature()
-	GetDefnRef() (_swig_ret FeatureDefn)
+	GetDefnRef() (_swig_ret FeatureDefn, err error,
 
-	SetGeometryDirectly(arg2 Geometry) (_swig_ret int)
+	)
+
+	SetGeometryDirectly(arg2 Geometry) (_swig_ret int, err error,
+
+	)
 	GetGeometryRef() (_swig_ret Geometry)
-	SetGeomField(a ...interface{}) int
-	SetGeomFieldDirectly(a ...interface{}) int
-	GetGeomFieldRef(a ...interface{}) Geometry
-	Clone() (_swig_ret Feature)
-	Equal(arg2 Feature) (_swig_ret bool)
+	SetGeomField(a ...interface{}) (int, error)
+
+	SetGeomFieldDirectly(a ...interface{}) (int, error)
+
+	GetGeomFieldRef(a ...interface{}) (Geometry, error)
+
+	Clone() (_swig_ret Feature, err error,
+
+	)
+	Equal(arg2 Feature) (_swig_ret bool, err error,
+
+	)
 	GetFieldCount() (_swig_ret int)
-	GetFieldDefnRef(a ...interface{}) FieldDefn
-	GetGeomFieldCount() (_swig_ret int)
-	GetGeomFieldDefnRef(a ...interface{}) GeomFieldDefn
+	GetFieldDefnRef(a ...interface{}) (FieldDefn, error)
+
+	GetGeomFieldCount() (_swig_ret int, err error,
+
+	)
+	GetGeomFieldDefnRef(a ...interface{}) (GeomFieldDefn, error)
+
 	GetFieldAsString(a ...interface{}) string
 	GetFieldAsInteger(a ...interface{}) int
-	GetFieldAsInteger64(a ...interface{}) GIntBig
-	GetFieldAsDouble(a ...interface{}) float64
-	GetFieldAsDateTime(arg2 int, arg3 []int, arg4 []int, arg5 []int, arg6 []int, arg7 []int, arg8 []float32, arg9 []int)
-	GetFieldAsIntegerList(arg2 int, arg3 *int, arg4 **int)
-	GetFieldAsDoubleList(arg2 int, arg3 *int, arg4 **float64)
-	GetFieldAsStringList(arg2 int, arg3 **string)
-	GetFieldAsBinary(a ...interface{}) int
-	IsFieldSet(a ...interface{}) bool
-	GetFieldIndex(arg2 string) (_swig_ret int)
-	GetGeomFieldIndex(arg2 string) (_swig_ret int)
-	GetFID() (_swig_ret GIntBig)
-	SetFID(arg2 GIntBig) (_swig_ret int)
-	DumpReadable()
-	UnsetField(a ...interface{})
-	SetFieldInteger64(arg2 int, arg3 GIntBig)
+	GetFieldAsInteger64(a ...interface{}) (GIntBig, error)
 
-	SetFieldIntegerList(arg2 int, arg3 int, arg4 *int)
-	SetFieldDoubleList(arg2 int, arg3 int, arg4 *float64)
-	SetFieldStringList(arg2 int, arg3 []string)
-	SetFieldBinaryFromHexString(a ...interface{})
-	SetFrom(arg2 Feature, _swig_args ...interface{}) (_swig_ret int)
-	SetFromWithMap(arg2 Feature, arg3 int, arg4 int, arg5 *int) (_swig_ret int)
-	GetStyleString() (_swig_ret string)
-	SetStyleString(arg2 string)
-	GetFieldType(a ...interface{}) int
-	Validate(_swig_args ...interface{}) (_swig_ret int)
-	FillUnsetWithDefault(_swig_args ...interface{})
-	GetNativeData() (_swig_ret string)
-	GetNativeMediaType() (_swig_ret string)
-	SetNativeData(arg2 string)
-	SetNativeMediaType(arg2 string)
-	SetField(a ...interface{}) error
+	GetFieldAsDouble(a ...interface{}) float64
+	GetFieldAsDateTime(arg2 int, arg3 []int, arg4 []int, arg5 []int, arg6 []int, arg7 []int, arg8 []float32, arg9 []int) (err error)
+
+	GetFieldAsIntegerList(arg2 int, arg3 *int, arg4 **int) (err error)
+
+	GetFieldAsDoubleList(arg2 int, arg3 *int, arg4 **float64) (err error)
+
+	GetFieldAsStringList(arg2 int, arg3 **string) (err error)
+
+	GetFieldAsBinary(a ...interface{}) (int, error)
+
+	IsFieldSet(a ...interface{}) (bool, error)
+
+	GetFieldIndex(arg2 string) (_swig_ret int, err error,
+
+	)
+	GetGeomFieldIndex(arg2 string) (_swig_ret int, err error,
+
+	)
+	GetFID() (_swig_ret GIntBig, err error,
+
+	)
+	SetFID(arg2 GIntBig) (_swig_ret int, err error,
+
+	)
+	DumpReadable() (err error)
+
+	UnsetField(a ...interface{}) (err error)
+
+	SetFieldInteger64(arg2 int, arg3 GIntBig) (err error)
+
+	SetField(a ...interface{}) (err error)
+
+	SetFieldIntegerList(arg2 int, arg3 int, arg4 *int) (err error)
+
+	SetFieldDoubleList(arg2 int, arg3 int, arg4 *float64) (err error)
+
+	SetFieldStringList(arg2 int, arg3 []string) (err error)
+
+	SetFieldBinaryFromHexString(a ...interface{}) (err error)
+
+	SetFrom(arg2 Feature, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	SetFromWithMap(arg2 Feature, arg3 int, arg4 int, arg5 *int) (_swig_ret int, err error,
+
+	)
+	GetStyleString() (_swig_ret string, err error,
+
+	)
+	SetStyleString(arg2 string) (err error)
+
+	GetFieldType(a ...interface{}) (int, error)
+
+	Validate(_swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	FillUnsetWithDefault(_swig_args ...interface{}) (err error)
+
+	GetNativeData() (_swig_ret string, err error,
+
+	)
+	GetNativeMediaType() (_swig_ret string, err error,
+
+	)
+	SetNativeData(arg2 string) (err error)
+
+	SetNativeMediaType(arg2 string) (err error)
+
 	SetGeometry(geom Geometry) (err error)
 }
 
@@ -3229,12 +4176,19 @@ func (p SwigcptrFeatureDefn) Swigcptr() uintptr {
 func (p SwigcptrFeatureDefn) SwigIsFeatureDefn() {
 }
 
-func DeleteFeatureDefn(arg1 FeatureDefn) {
+func DeleteFeatureDefn(arg1 FeatureDefn) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1.Swigcptr()
 	C._wrap_delete_FeatureDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func NewFeatureDefn(_swig_args ...interface{}) (_swig_ret FeatureDefn) {
+func NewFeatureDefn(_swig_args ...interface{}) (_swig_ret FeatureDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg1 string
 	if len(_swig_args) > 0 {
 		arg1 = _swig_args[0].(string)
@@ -3245,10 +4199,18 @@ func NewFeatureDefn(_swig_args ...interface{}) (_swig_ret FeatureDefn) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrFeatureDefn) GetName() (_swig_ret string) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_FeatureDefn_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
@@ -3259,6 +4221,13 @@ func (arg1 SwigcptrFeatureDefn) GetName() (_swig_ret string) {
 }
 
 func (arg1 SwigcptrFeatureDefn) GetFieldCount() (_swig_ret int) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FeatureDefn_GetFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
@@ -3266,6 +4235,13 @@ func (arg1 SwigcptrFeatureDefn) GetFieldCount() (_swig_ret int) {
 }
 
 func (arg1 SwigcptrFeatureDefn) GetFieldDefn(arg2 int) (_swig_ret FieldDefn) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r FieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -3273,7 +4249,11 @@ func (arg1 SwigcptrFeatureDefn) GetFieldDefn(arg2 int) (_swig_ret FieldDefn) {
 	return swig_r
 }
 
-func (arg1 SwigcptrFeatureDefn) GetFieldIndex(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) GetFieldIndex(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -3281,31 +4261,49 @@ func (arg1 SwigcptrFeatureDefn) GetFieldIndex(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) AddFieldDefn(arg2 FieldDefn) {
+func (arg1 SwigcptrFeatureDefn) AddFieldDefn(arg2 FieldDefn) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_FeatureDefn_AddFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFeatureDefn) GetGeomFieldCount() (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) GetGeomFieldCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FeatureDefn_GetGeomFieldCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) GetGeomFieldDefn(arg2 int) (_swig_ret GeomFieldDefn) {
+func (arg1 SwigcptrFeatureDefn) GetGeomFieldDefn(arg2 int) (_swig_ret GeomFieldDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r GeomFieldDefn
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (GeomFieldDefn)(SwigcptrGeomFieldDefn(C._wrap_FeatureDefn_GetGeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) GetGeomFieldIndex(arg2 string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -3313,75 +4311,118 @@ func (arg1 SwigcptrFeatureDefn) GetGeomFieldIndex(arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) AddGeomFieldDefn(arg2 GeomFieldDefn) {
+func (arg1 SwigcptrFeatureDefn) AddGeomFieldDefn(arg2 GeomFieldDefn) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_FeatureDefn_AddGeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFeatureDefn) DeleteGeomFieldDefn(arg2 int) (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) DeleteGeomFieldDefn(arg2 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_FeatureDefn_DeleteGeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) GetGeomType() (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) GetGeomType() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FeatureDefn_GetGeomType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) SetGeomType(arg2 int) {
+func (arg1 SwigcptrFeatureDefn) SetGeomType(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FeatureDefn_SetGeomType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFeatureDefn) GetReferenceCount() (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) GetReferenceCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FeatureDefn_GetReferenceCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) IsGeometryIgnored() (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) IsGeometryIgnored() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FeatureDefn_IsGeometryIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) SetGeometryIgnored(arg2 int) {
+func (arg1 SwigcptrFeatureDefn) SetGeometryIgnored(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FeatureDefn_SetGeometryIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFeatureDefn) IsStyleIgnored() (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) IsStyleIgnored() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FeatureDefn_IsStyleIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFeatureDefn) SetStyleIgnored(arg2 int) {
+func (arg1 SwigcptrFeatureDefn) SetStyleIgnored(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FeatureDefn_SetStyleIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFeatureDefn) IsSame(arg2 FeatureDefn) (_swig_ret int) {
+func (arg1 SwigcptrFeatureDefn) IsSame(arg2 FeatureDefn) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_FeatureDefn_IsSame_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
 type FeatureDefn interface {
@@ -3390,21 +4431,46 @@ type FeatureDefn interface {
 	GetName() (_swig_ret string)
 	GetFieldCount() (_swig_ret int)
 	GetFieldDefn(arg2 int) (_swig_ret FieldDefn)
-	GetFieldIndex(arg2 string) (_swig_ret int)
-	AddFieldDefn(arg2 FieldDefn)
-	GetGeomFieldCount() (_swig_ret int)
-	GetGeomFieldDefn(arg2 int) (_swig_ret GeomFieldDefn)
-	GetGeomFieldIndex(arg2 string) (_swig_ret int)
-	AddGeomFieldDefn(arg2 GeomFieldDefn)
-	DeleteGeomFieldDefn(arg2 int) (_swig_ret int)
-	GetGeomType() (_swig_ret int)
-	SetGeomType(arg2 int)
-	GetReferenceCount() (_swig_ret int)
-	IsGeometryIgnored() (_swig_ret int)
-	SetGeometryIgnored(arg2 int)
-	IsStyleIgnored() (_swig_ret int)
-	SetStyleIgnored(arg2 int)
-	IsSame(arg2 FeatureDefn) (_swig_ret int)
+	GetFieldIndex(arg2 string) (_swig_ret int, err error,
+
+	)
+	AddFieldDefn(arg2 FieldDefn) (err error)
+
+	GetGeomFieldCount() (_swig_ret int, err error,
+
+	)
+	GetGeomFieldDefn(arg2 int) (_swig_ret GeomFieldDefn, err error,
+
+	)
+	GetGeomFieldIndex(arg2 string) (_swig_ret int, err error,
+
+	)
+	AddGeomFieldDefn(arg2 GeomFieldDefn) (err error)
+
+	DeleteGeomFieldDefn(arg2 int) (_swig_ret int, err error,
+
+	)
+	GetGeomType() (_swig_ret int, err error,
+
+	)
+	SetGeomType(arg2 int) (err error)
+
+	GetReferenceCount() (_swig_ret int, err error,
+
+	)
+	IsGeometryIgnored() (_swig_ret int, err error,
+
+	)
+	SetGeometryIgnored(arg2 int) (err error)
+
+	IsStyleIgnored() (_swig_ret int, err error,
+
+	)
+	SetStyleIgnored(arg2 int) (err error)
+
+	IsSame(arg2 FeatureDefn) (_swig_ret int, err error,
+
+	)
 }
 
 type SwigcptrFieldDefn uintptr
@@ -3416,12 +4482,19 @@ func (p SwigcptrFieldDefn) Swigcptr() uintptr {
 func (p SwigcptrFieldDefn) SwigIsFieldDefn() {
 }
 
-func DeleteFieldDefn(arg1 FieldDefn) {
+func DeleteFieldDefn(arg1 FieldDefn) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1.Swigcptr()
 	C._wrap_delete_FieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func NewFieldDefn(_swig_args ...interface{}) (_swig_ret FieldDefn) {
+func NewFieldDefn(_swig_args ...interface{}) (_swig_ret FieldDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg1 string
 	if len(_swig_args) > 0 {
 		arg1 = _swig_args[0].(string)
@@ -3437,10 +4510,18 @@ func NewFieldDefn(_swig_args ...interface{}) (_swig_ret FieldDefn) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrFieldDefn) GetName() (_swig_ret string) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_FieldDefn_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
@@ -3450,91 +4531,148 @@ func (arg1 SwigcptrFieldDefn) GetName() (_swig_ret string) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrFieldDefn) GetNameRef() (_swig_ret string) {
+func (arg1 SwigcptrFieldDefn) GetNameRef() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_FieldDefn_GetNameRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetName(arg2 string) {
+func (arg1 SwigcptrFieldDefn) SetName(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_87)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
 func (arg1 SwigcptrFieldDefn) GetType() (_swig_ret int) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_GetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
-func (arg1 SwigcptrFieldDefn) SetType(arg2 int) {
+func (arg1 SwigcptrFieldDefn) SetType(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFieldDefn) GetSubType() (_swig_ret int) {
+func (arg1 SwigcptrFieldDefn) GetSubType() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_GetSubType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetSubType(arg2 int) {
+func (arg1 SwigcptrFieldDefn) SetSubType(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetSubType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFieldDefn) GetJustify() (_swig_ret int) {
+func (arg1 SwigcptrFieldDefn) GetJustify() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_GetJustify_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetJustify(arg2 int) {
+func (arg1 SwigcptrFieldDefn) SetJustify(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetJustify_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFieldDefn) GetWidth() (_swig_ret int) {
+func (arg1 SwigcptrFieldDefn) GetWidth() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_GetWidth_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetWidth(arg2 int) {
+func (arg1 SwigcptrFieldDefn) SetWidth(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetWidth_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFieldDefn) GetPrecision() (_swig_ret int) {
+func (arg1 SwigcptrFieldDefn) GetPrecision() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_GetPrecision_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetPrecision(arg2 int) {
+func (arg1 SwigcptrFieldDefn) SetPrecision(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetPrecision_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
 func (arg1 SwigcptrFieldDefn) GetTypeName() (_swig_ret string) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_FieldDefn_GetTypeName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
@@ -3544,7 +4682,11 @@ func (arg1 SwigcptrFieldDefn) GetTypeName() (_swig_ret string) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrFieldDefn) GetFieldTypeName(arg2 int) (_swig_ret string) {
+func (arg1 SwigcptrFieldDefn) GetFieldTypeName(arg2 int) (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -3552,86 +4694,145 @@ func (arg1 SwigcptrFieldDefn) GetFieldTypeName(arg2 int) (_swig_ret string) {
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) IsIgnored() (_swig_ret int) {
+func (arg1 SwigcptrFieldDefn) IsIgnored() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_IsIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetIgnored(arg2 int) {
+func (arg1 SwigcptrFieldDefn) SetIgnored(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFieldDefn) IsNullable() (_swig_ret int) {
+func (arg1 SwigcptrFieldDefn) IsNullable() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_IsNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetNullable(arg2 int) {
+func (arg1 SwigcptrFieldDefn) SetNullable(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrFieldDefn) GetDefault() (_swig_ret string) {
+func (arg1 SwigcptrFieldDefn) GetDefault() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_FieldDefn_GetDefault_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrFieldDefn) SetDefault(arg2 string) {
+func (arg1 SwigcptrFieldDefn) SetDefault(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_FieldDefn_SetDefault_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_91)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func (arg1 SwigcptrFieldDefn) IsDefaultDriverSpecific() (_swig_ret int) {
+func (arg1 SwigcptrFieldDefn) IsDefaultDriverSpecific() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_FieldDefn_IsDefaultDriverSpecific_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
 type FieldDefn interface {
 	Swigcptr() uintptr
 	SwigIsFieldDefn()
 	GetName() (_swig_ret string)
-	GetNameRef() (_swig_ret string)
-	SetName(arg2 string)
+	GetNameRef() (_swig_ret string, err error,
+
+	)
+	SetName(arg2 string) (err error)
+
 	GetType() (_swig_ret int)
-	SetType(arg2 int)
-	GetSubType() (_swig_ret int)
-	SetSubType(arg2 int)
-	GetJustify() (_swig_ret int)
-	SetJustify(arg2 int)
-	GetWidth() (_swig_ret int)
-	SetWidth(arg2 int)
-	GetPrecision() (_swig_ret int)
-	SetPrecision(arg2 int)
+	SetType(arg2 int) (err error)
+
+	GetSubType() (_swig_ret int, err error,
+
+	)
+	SetSubType(arg2 int) (err error)
+
+	GetJustify() (_swig_ret int, err error,
+
+	)
+	SetJustify(arg2 int) (err error)
+
+	GetWidth() (_swig_ret int, err error,
+
+	)
+	SetWidth(arg2 int) (err error)
+
+	GetPrecision() (_swig_ret int, err error,
+
+	)
+	SetPrecision(arg2 int) (err error)
+
 	GetTypeName() (_swig_ret string)
-	GetFieldTypeName(arg2 int) (_swig_ret string)
-	IsIgnored() (_swig_ret int)
-	SetIgnored(arg2 int)
-	IsNullable() (_swig_ret int)
-	SetNullable(arg2 int)
-	GetDefault() (_swig_ret string)
-	SetDefault(arg2 string)
-	IsDefaultDriverSpecific() (_swig_ret int)
+	GetFieldTypeName(arg2 int) (_swig_ret string, err error,
+
+	)
+	IsIgnored() (_swig_ret int, err error,
+
+	)
+	SetIgnored(arg2 int) (err error)
+
+	IsNullable() (_swig_ret int, err error,
+
+	)
+	SetNullable(arg2 int) (err error)
+
+	GetDefault() (_swig_ret string, err error,
+
+	)
+	SetDefault(arg2 string) (err error)
+
+	IsDefaultDriverSpecific() (_swig_ret int, err error,
+
+	)
 }
 
 type SwigcptrGeomFieldDefn uintptr
@@ -3643,12 +4844,19 @@ func (p SwigcptrGeomFieldDefn) Swigcptr() uintptr {
 func (p SwigcptrGeomFieldDefn) SwigIsGeomFieldDefn() {
 }
 
-func DeleteGeomFieldDefn(arg1 GeomFieldDefn) {
+func DeleteGeomFieldDefn(arg1 GeomFieldDefn) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1.Swigcptr()
 	C._wrap_delete_GeomFieldDefn_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func NewGeomFieldDefn(_swig_args ...interface{}) (_swig_ret GeomFieldDefn) {
+func NewGeomFieldDefn(_swig_args ...interface{}) (_swig_ret GeomFieldDefn, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg1 string
 	if len(_swig_args) > 0 {
 		arg1 = _swig_args[0].(string)
@@ -3664,10 +4872,18 @@ func NewGeomFieldDefn(_swig_args ...interface{}) (_swig_ret GeomFieldDefn) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrGeomFieldDefn) GetName() (_swig_ret string) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_GeomFieldDefn_GetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
@@ -3677,46 +4893,71 @@ func (arg1 SwigcptrGeomFieldDefn) GetName() (_swig_ret string) {
 	return swig_r_1
 }
 
-func (arg1 SwigcptrGeomFieldDefn) GetNameRef() (_swig_ret string) {
+func (arg1 SwigcptrGeomFieldDefn) GetNameRef() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_GeomFieldDefn_GetNameRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrGeomFieldDefn) SetName(arg2 string) {
+func (arg1 SwigcptrGeomFieldDefn) SetName(arg2 string) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_GeomFieldDefn_SetName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), *(*C.swig_type_95)(unsafe.Pointer(&_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
 func (arg1 SwigcptrGeomFieldDefn) GetType() (_swig_ret int) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GeomFieldDefn_GetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
-func (arg1 SwigcptrGeomFieldDefn) SetType(arg2 int) {
+func (arg1 SwigcptrGeomFieldDefn) SetType(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_GeomFieldDefn_SetType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrGeomFieldDefn) GetSpatialRef() (_swig_ret osr.SpatialReference) {
+func (arg1 SwigcptrGeomFieldDefn) GetSpatialRef() (_swig_ret osr.SpatialReference, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r osr.SpatialReference
 	_swig_i_0 := arg1
 	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_GeomFieldDefn_GetSpatialRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeomFieldDefn) SetSpatialRef(arg2 osr.SpatialReference) {
+func (arg1 SwigcptrGeomFieldDefn) SetSpatialRef(arg2 osr.SpatialReference) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	var _swig_i_1 uintptr
 
@@ -3725,51 +4966,84 @@ func (arg1 SwigcptrGeomFieldDefn) SetSpatialRef(arg2 osr.SpatialReference) {
 	}
 
 	C._wrap_GeomFieldDefn_SetSpatialRef_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrGeomFieldDefn) IsIgnored() (_swig_ret int) {
+func (arg1 SwigcptrGeomFieldDefn) IsIgnored() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GeomFieldDefn_IsIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeomFieldDefn) SetIgnored(arg2 int) {
+func (arg1 SwigcptrGeomFieldDefn) SetIgnored(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_GeomFieldDefn_SetIgnored_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrGeomFieldDefn) IsNullable() (_swig_ret int) {
+func (arg1 SwigcptrGeomFieldDefn) IsNullable() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GeomFieldDefn_IsNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeomFieldDefn) SetNullable(arg2 int) {
+func (arg1 SwigcptrGeomFieldDefn) SetNullable(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_GeomFieldDefn_SetNullable_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
 type GeomFieldDefn interface {
 	Swigcptr() uintptr
 	SwigIsGeomFieldDefn()
 	GetName() (_swig_ret string)
-	GetNameRef() (_swig_ret string)
-	SetName(arg2 string)
+	GetNameRef() (_swig_ret string, err error,
+
+	)
+	SetName(arg2 string) (err error)
+
 	GetType() (_swig_ret int)
-	SetType(arg2 int)
-	GetSpatialRef() (_swig_ret osr.SpatialReference)
-	SetSpatialRef(arg2 osr.SpatialReference)
-	IsIgnored() (_swig_ret int)
-	SetIgnored(arg2 int)
-	IsNullable() (_swig_ret int)
-	SetNullable(arg2 int)
+	SetType(arg2 int) (err error)
+
+	GetSpatialRef() (_swig_ret osr.SpatialReference, err error,
+
+	)
+	SetSpatialRef(arg2 osr.SpatialReference) (err error)
+
+	IsIgnored() (_swig_ret int, err error,
+
+	)
+	SetIgnored(arg2 int) (err error)
+
+	IsNullable() (_swig_ret int, err error,
+
+	)
+	SetNullable(arg2 int) (err error)
 }
 
-func CreateGeometryFromWkb(arg1 int, arg2 string, _swig_args ...interface{}) (_swig_ret Geometry) {
+func CreateGeometryFromWkb(arg1 int, arg2 string, _swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 osr.SpatialReference
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(osr.SpatialReference)
@@ -3782,10 +5056,15 @@ func CreateGeometryFromWkb(arg1 int, arg2 string, _swig_args ...interface{}) (_s
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func CreateGeometryFromWkt(arg1 *string, _swig_args ...interface{}) (_swig_ret Geometry) {
+func CreateGeometryFromWkt(arg1 *string, _swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 osr.SpatialReference
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(osr.SpatialReference)
@@ -3794,30 +5073,45 @@ func CreateGeometryFromWkt(arg1 *string, _swig_args ...interface{}) (_swig_ret G
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromWkt_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.swig_voidp(_swig_i_0), C.uintptr_t(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func CreateGeometryFromGML(arg1 string) (_swig_ret Geometry) {
+func CreateGeometryFromGML(arg1 string) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromGML_ogr_8e1b66f4430553e5(*(*C.swig_type_97)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func CreateGeometryFromJson(arg1 string) (_swig_ret Geometry) {
+func CreateGeometryFromJson(arg1 string) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_CreateGeometryFromJson_ogr_8e1b66f4430553e5(*(*C.swig_type_98)(unsafe.Pointer(&_swig_i_0)))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func BuildPolygonFromEdges(arg1 Geometry, _swig_args ...interface{}) (_swig_ret Geometry) {
+func BuildPolygonFromEdges(arg1 Geometry, _swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -3836,10 +5130,15 @@ func BuildPolygonFromEdges(arg1 Geometry, _swig_args ...interface{}) (_swig_ret 
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_BuildPolygonFromEdges_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2), C.double(_swig_i_3))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ApproximateArcAngles(arg1 float64, arg2 float64, arg3 float64, arg4 float64, arg5 float64, arg6 float64, arg7 float64, arg8 float64, arg9 float64) (_swig_ret Geometry) {
+func ApproximateArcAngles(arg1 float64, arg2 float64, arg3 float64, arg4 float64, arg5 float64, arg6 float64, arg7 float64, arg8 float64, arg9 float64) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -3851,45 +5150,75 @@ func ApproximateArcAngles(arg1 float64, arg2 float64, arg3 float64, arg4 float64
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ApproximateArcAngles_ogr_8e1b66f4430553e5(C.double(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4), C.double(_swig_i_5), C.double(_swig_i_6), C.double(_swig_i_7), C.double(_swig_i_8))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ForceToPolygon(arg1 Geometry) (_swig_ret Geometry) {
+func ForceToPolygon(arg1 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToPolygon_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ForceToLineString(arg1 Geometry) (_swig_ret Geometry) {
+func ForceToLineString(arg1 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToLineString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ForceToMultiPolygon(arg1 Geometry) (_swig_ret Geometry) {
+func ForceToMultiPolygon(arg1 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiPolygon_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ForceToMultiPoint(arg1 Geometry) (_swig_ret Geometry) {
+func ForceToMultiPoint(arg1 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiPoint_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ForceToMultiLineString(arg1 Geometry) (_swig_ret Geometry) {
+func ForceToMultiLineString(arg1 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceToMultiLineString_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ForceTo(arg1 Geometry, arg2 int, _swig_args ...interface{}) (_swig_ret Geometry) {
+func ForceTo(arg1 Geometry, arg2 int, _swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 []string
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].([]string)
@@ -3909,7 +5238,8 @@ func ForceTo(arg1 Geometry, arg2 int, _swig_args ...interface{}) (_swig_ret Geom
 	_swig_i_2 = &_swig_i_2_i[0]
 
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_ForceTo_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))))
-	return swig_r
+	return swig_r, err
+
 }
 
 type SwigcptrGeometry uintptr
@@ -3921,12 +5251,19 @@ func (p SwigcptrGeometry) Swigcptr() uintptr {
 func (p SwigcptrGeometry) SwigIsGeometry() {
 }
 
-func DeleteGeometry(arg1 Geometry) {
+func DeleteGeometry(arg1 Geometry) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1.Swigcptr()
 	C._wrap_delete_Geometry_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func wrap_NewGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
+func NewGeometry(_swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg1 int
 	if len(_swig_args) > 0 {
 		arg1 = _swig_args[0].(int)
@@ -3963,26 +5300,41 @@ func wrap_NewGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg5
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) ExportToWkt(arg2 *string) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) ExportToWkt(arg2 *string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_Geometry_ExportToWkt_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) ExportToIsoWkt(arg2 *string) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) ExportToIsoWkt(arg2 *string) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_Geometry_ExportToIsoWkt_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) ExportToWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) ExportToWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 int
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].(int)
@@ -3993,10 +5345,15 @@ func (arg1 SwigcptrGeometry) ExportToWkb(arg2 *int, arg3 *string, _swig_args ...
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	swig_r = (int)(C._wrap_Geometry_ExportToWkb_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) ExportToIsoWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) ExportToIsoWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 int
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].(int)
@@ -4007,20 +5364,30 @@ func (arg1 SwigcptrGeometry) ExportToIsoWkb(arg2 *int, arg3 *string, _swig_args 
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	swig_r = (int)(C._wrap_Geometry_ExportToIsoWkb_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_intgo(_swig_i_3)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) ExportToGML() (_swig_ret string) {
+func (arg1 SwigcptrGeometry) ExportToGML() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Geometry_ExportToGML_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrGeometry) ExportToKML(_swig_args ...interface{}) (_swig_ret string) {
+func (arg1 SwigcptrGeometry) ExportToKML(_swig_args ...interface{}) (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 string
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(string)
@@ -4035,20 +5402,28 @@ func (arg1 SwigcptrGeometry) ExportToKML(_swig_args ...interface{}) (_swig_ret s
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrGeometry) ExportToJson() (_swig_ret string) {
+func (arg1 SwigcptrGeometry) ExportToJson() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Geometry_ExportToJson_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrGeometry) AddPoint(arg2 float64, arg3 float64, _swig_args ...interface{}) {
+func (arg1 SwigcptrGeometry) AddPoint(arg2 float64, arg3 float64, _swig_args ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg4 float64
 	if len(_swig_args) > 0 {
 		arg4 = _swig_args[0].(float64)
@@ -4058,84 +5433,142 @@ func (arg1 SwigcptrGeometry) AddPoint(arg2 float64, arg3 float64, _swig_args ...
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	C._wrap_Geometry_AddPoint_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3))
+	return
 }
 
-func (arg1 SwigcptrGeometry) AddPoint_2D(arg2 float64, arg3 float64) {
+func (arg1 SwigcptrGeometry) AddPoint_2D(arg2 float64, arg3 float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	C._wrap_Geometry_AddPoint_2D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.double(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrGeometry) AddGeometryDirectly(arg2 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) AddGeometryDirectly(arg2 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Geometry_AddGeometryDirectly_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) AddGeometry(arg2 Geometry) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) AddGeometry(arg2 Geometry) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Geometry_AddGeometry_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Clone() (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Clone() (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Clone_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrGeometry) GetGeometryType() (_swig_ret int) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Geometry_GetGeometryType_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
-func (arg1 SwigcptrGeometry) GetGeometryName() (_swig_ret string) {
+func (arg1 SwigcptrGeometry) GetGeometryName() (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_Geometry_GetGeometryName_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func (arg1 SwigcptrGeometry) Length() (_swig_ret float64) {
+func (arg1 SwigcptrGeometry) Length() (_swig_ret float64, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r float64
 	_swig_i_0 := arg1
 	swig_r = (float64)(C._wrap_Geometry_Length_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Area() (_swig_ret float64) {
+func (arg1 SwigcptrGeometry) Area() (_swig_ret float64, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r float64
 	_swig_i_0 := arg1
 	swig_r = (float64)(C._wrap_Geometry_Area_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetArea() (_swig_ret float64) {
+func (arg1 SwigcptrGeometry) GetArea() (_swig_ret float64, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r float64
 	_swig_i_0 := arg1
 	swig_r = (float64)(C._wrap_Geometry_GetArea_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetPointCount() (_swig_ret int) {
+func (arg1 SwigcptrGeometry) GetPointCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Geometry_GetPointCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
 func (arg1 SwigcptrGeometry) GetX(_swig_args ...interface{}) (_swig_ret float64) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4148,6 +5581,13 @@ func (arg1 SwigcptrGeometry) GetX(_swig_args ...interface{}) (_swig_ret float64)
 }
 
 func (arg1 SwigcptrGeometry) GetY(_swig_args ...interface{}) (_swig_ret float64) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4159,7 +5599,11 @@ func (arg1 SwigcptrGeometry) GetY(_swig_args ...interface{}) (_swig_ret float64)
 	return swig_r
 }
 
-func (arg1 SwigcptrGeometry) GetZ(_swig_args ...interface{}) (_swig_ret float64) {
+func (arg1 SwigcptrGeometry) GetZ(_swig_args ...interface{}) (_swig_ret float64, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4168,10 +5612,13 @@ func (arg1 SwigcptrGeometry) GetZ(_swig_args ...interface{}) (_swig_ret float64)
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (float64)(C._wrap_Geometry_GetZ_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetPoint(_swig_args ...interface{}) {
+func (arg1 SwigcptrGeometry) GetPoint(_swig_args ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4187,9 +5634,12 @@ func (arg1 SwigcptrGeometry) GetPoint(_swig_args ...interface{}) {
 	_swig_i_2 = (*C.double)(unsafe.Pointer(&arg3[0]))
 
 	C._wrap_Geometry_GetPoint_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrGeometry) GetPoint_2D(_swig_args ...interface{}) {
+func (arg1 SwigcptrGeometry) GetPoint_2D(_swig_args ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4205,16 +5655,24 @@ func (arg1 SwigcptrGeometry) GetPoint_2D(_swig_args ...interface{}) {
 	_swig_i_2 = (*C.double)(unsafe.Pointer(&arg3[0]))
 
 	C._wrap_Geometry_GetPoint_2D_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_voidp(_swig_i_2))
+	return
 }
 
-func (arg1 SwigcptrGeometry) GetGeometryCount() (_swig_ret int) {
+func (arg1 SwigcptrGeometry) GetGeometryCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Geometry_GetGeometryCount_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) SetPoint(arg2 int, arg3 float64, arg4 float64, _swig_args ...interface{}) {
+func (arg1 SwigcptrGeometry) SetPoint(arg2 int, arg3 float64, arg4 float64, _swig_args ...interface{}) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg5 float64
 	if len(_swig_args) > 0 {
 		arg5 = _swig_args[0].(float64)
@@ -4225,17 +5683,28 @@ func (arg1 SwigcptrGeometry) SetPoint(arg2 int, arg3 float64, arg4 float64, _swi
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	C._wrap_Geometry_SetPoint_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3), C.double(_swig_i_4))
+	return
 }
 
-func (arg1 SwigcptrGeometry) wrap_SetPoint_2D(arg2 int, arg3 float64, arg4 float64) {
+func (arg1 SwigcptrGeometry) SetPoint2D(arg2 int, arg3 float64, arg4 float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	C._wrap_Geometry_SetPoint_2D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1), C.double(_swig_i_2), C.double(_swig_i_3))
+	return
 }
 
 func (arg1 SwigcptrGeometry) GetGeometryRef(arg2 int) (_swig_ret Geometry) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -4243,23 +5712,37 @@ func (arg1 SwigcptrGeometry) GetGeometryRef(arg2 int) (_swig_ret Geometry) {
 	return swig_r
 }
 
-func (arg1 SwigcptrGeometry) Simplify(arg2 float64) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Simplify(arg2 float64) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Simplify_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) SimplifyPreserveTopology(arg2 float64) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) SimplifyPreserveTopology(arg2 float64) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SimplifyPreserveTopology_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) DelaunayTriangulation(_swig_args ...interface{}) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) DelaunayTriangulation(_swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 float64
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(float64)
@@ -4273,31 +5756,51 @@ func (arg1 SwigcptrGeometry) DelaunayTriangulation(_swig_args ...interface{}) (_
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_DelaunayTriangulation_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_intgo(_swig_i_2))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Boundary() (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Boundary() (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Boundary_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetBoundary() (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) GetBoundary() (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetBoundary_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) ConvexHull() (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) ConvexHull() (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_ConvexHull_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Buffer(arg2 float64, _swig_args ...interface{}) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Buffer(arg2 float64, _swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -4307,282 +5810,458 @@ func (arg1 SwigcptrGeometry) Buffer(arg2 float64, _swig_args ...interface{}) (_s
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Buffer_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_intgo(_swig_i_2))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Intersection(arg2 Geometry) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Intersection(arg2 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Intersection_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Union(arg2 Geometry) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Union(arg2 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Union_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) UnionCascaded() (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) UnionCascaded() (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_UnionCascaded_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Difference(arg2 Geometry) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Difference(arg2 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Difference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) SymDifference(arg2 Geometry) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) SymDifference(arg2 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SymDifference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) SymmetricDifference(arg2 Geometry) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) SymmetricDifference(arg2 Geometry) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_SymmetricDifference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Distance(arg2 Geometry) (_swig_ret float64) {
+func (arg1 SwigcptrGeometry) Distance(arg2 Geometry) (_swig_ret float64, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r float64
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (float64)(C._wrap_Geometry_Distance_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Empty() {
+func (arg1 SwigcptrGeometry) Empty() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_Geometry_Empty_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrGeometry) IsEmpty() (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) IsEmpty() (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	swig_r = (bool)(C._wrap_Geometry_IsEmpty_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) IsValid() (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) IsValid() (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	swig_r = (bool)(C._wrap_Geometry_IsValid_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) IsSimple() (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) IsSimple() (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	swig_r = (bool)(C._wrap_Geometry_IsSimple_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) IsRing() (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) IsRing() (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	swig_r = (bool)(C._wrap_Geometry_IsRing_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Intersects(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Intersects(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Intersects_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Intersect(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Intersect(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Intersect_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Equals(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Equals(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Equals_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Equal(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Equal(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Equal_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Disjoint(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Disjoint(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Disjoint_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Touches(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Touches(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Touches_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Crosses(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Crosses(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Crosses_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Within(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Within(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Within_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Contains(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Contains(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Contains_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Overlaps(arg2 Geometry) (_swig_ret bool) {
+func (arg1 SwigcptrGeometry) Overlaps(arg2 Geometry) (_swig_ret bool, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r bool
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (bool)(C._wrap_Geometry_Overlaps_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) TransformTo(arg2 osr.SpatialReference) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) TransformTo(arg2 osr.SpatialReference) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Geometry_TransformTo_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Transform(arg2 osr.CoordinateTransformation) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) Transform(arg2 osr.CoordinateTransformation) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	swig_r = (int)(C._wrap_Geometry_Transform_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetSpatialReference() (_swig_ret osr.SpatialReference) {
+func (arg1 SwigcptrGeometry) GetSpatialReference() (_swig_ret osr.SpatialReference, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r osr.SpatialReference
 	_swig_i_0 := arg1
 	swig_r = (osr.SpatialReference)(osr.SwigcptrSpatialReference(C._wrap_Geometry_GetSpatialReference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) AssignSpatialReference(arg2 osr.SpatialReference) {
+func (arg1 SwigcptrGeometry) AssignSpatialReference(arg2 osr.SpatialReference) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	C._wrap_Geometry_AssignSpatialReference_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrGeometry) CloseRings() {
+func (arg1 SwigcptrGeometry) CloseRings() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_Geometry_CloseRings_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrGeometry) FlattenTo2D() {
+func (arg1 SwigcptrGeometry) FlattenTo2D() (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_Geometry_FlattenTo2D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))
+	return
 }
 
-func (arg1 SwigcptrGeometry) Segmentize(arg2 float64) {
+func (arg1 SwigcptrGeometry) Segmentize(arg2 float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Geometry_Segmentize_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrGeometry) GetEnvelope(arg2 []float64) {
+func (arg1 SwigcptrGeometry) GetEnvelope(arg2 []float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	var _swig_i_1 *C.double
 
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
 	C._wrap_Geometry_GetEnvelope_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrGeometry) GetEnvelope3D(arg2 []float64) {
+func (arg1 SwigcptrGeometry) GetEnvelope3D(arg2 []float64) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	var _swig_i_1 *C.double
 
 	_swig_i_1 = (*C.double)(unsafe.Pointer(&arg2[0]))
 
 	C._wrap_Geometry_GetEnvelope3D_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))
+	return
 }
 
 func (arg1 SwigcptrGeometry) Centroid() (_swig_ret Geometry) {
+	cpl.ErrorReset()
+	defer func() {
+		if err := cpl.LastError(); err != nil {
+			panic(err)
+		}
+	}()
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Centroid_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
 	return swig_r
 }
 
-func (arg1 SwigcptrGeometry) PointOnSurface() (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) PointOnSurface() (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_PointOnSurface_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) WkbSize() (_swig_ret int) {
+func (arg1 SwigcptrGeometry) WkbSize() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Geometry_WkbSize_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetCoordinateDimension() (_swig_ret int) {
+func (arg1 SwigcptrGeometry) GetCoordinateDimension() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Geometry_GetCoordinateDimension_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) SetCoordinateDimension(arg2 int) {
+func (arg1 SwigcptrGeometry) SetCoordinateDimension(arg2 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Geometry_SetCoordinateDimension_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1))
+	return
 }
 
-func (arg1 SwigcptrGeometry) GetDimension() (_swig_ret int) {
+func (arg1 SwigcptrGeometry) GetDimension() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Geometry_GetDimension_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) HasCurveGeometry(_swig_args ...interface{}) (_swig_ret int) {
+func (arg1 SwigcptrGeometry) HasCurveGeometry(_swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4591,10 +6270,15 @@ func (arg1 SwigcptrGeometry) HasCurveGeometry(_swig_args ...interface{}) (_swig_
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_Geometry_HasCurveGeometry_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetLinearGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) GetLinearGeometry(_swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 float64
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(float64)
@@ -4618,10 +6302,15 @@ func (arg1 SwigcptrGeometry) GetLinearGeometry(_swig_args ...interface{}) (_swig
 	_swig_i_2 = &_swig_i_2_i[0]
 
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetLinearGeometry_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.double(_swig_i_1), C.swig_voidp(_swig_i_2))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) GetCurveGeometry(_swig_args ...interface{}) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) GetCurveGeometry(_swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 []string
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].([]string)
@@ -4640,162 +6329,336 @@ func (arg1 SwigcptrGeometry) GetCurveGeometry(_swig_args ...interface{}) (_swig_
 	_swig_i_1 = &_swig_i_1_i[0]
 
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_GetCurveGeometry_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func (arg1 SwigcptrGeometry) Value(arg2 float64) (_swig_ret Geometry) {
+func (arg1 SwigcptrGeometry) Value(arg2 float64) (_swig_ret Geometry, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r Geometry
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (Geometry)(SwigcptrGeometry(C._wrap_Geometry_Value_ogr_8e1b66f4430553e5(C.uintptr_t(_swig_i_0), C.double(_swig_i_1))))
-	return swig_r
+	return swig_r, err
+
 }
 
 type Geometry interface {
 	Swigcptr() uintptr
 	SwigIsGeometry()
-	ExportToWkt(arg2 *string) (_swig_ret int)
-	ExportToIsoWkt(arg2 *string) (_swig_ret int)
-	ExportToWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int)
-	ExportToIsoWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int)
-	ExportToGML() (_swig_ret string)
-	ExportToKML(_swig_args ...interface{}) (_swig_ret string)
-	ExportToJson() (_swig_ret string)
-	AddPoint(arg2 float64, arg3 float64, _swig_args ...interface{})
-	AddPoint_2D(arg2 float64, arg3 float64)
-	AddGeometryDirectly(arg2 Geometry) (_swig_ret int)
-	AddGeometry(arg2 Geometry) (_swig_ret int)
-	Clone() (_swig_ret Geometry)
+	ExportToWkt(arg2 *string) (_swig_ret int, err error,
+
+	)
+	ExportToIsoWkt(arg2 *string) (_swig_ret int, err error,
+
+	)
+	ExportToWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	ExportToIsoWkb(arg2 *int, arg3 *string, _swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	ExportToGML() (_swig_ret string, err error,
+
+	)
+	ExportToKML(_swig_args ...interface{}) (_swig_ret string, err error,
+
+	)
+	ExportToJson() (_swig_ret string, err error,
+
+	)
+	AddPoint(arg2 float64, arg3 float64, _swig_args ...interface{}) (err error)
+
+	AddPoint_2D(arg2 float64, arg3 float64) (err error)
+
+	AddGeometryDirectly(arg2 Geometry) (_swig_ret int, err error,
+
+	)
+	AddGeometry(arg2 Geometry) (_swig_ret int, err error,
+
+	)
+	Clone() (_swig_ret Geometry, err error,
+
+	)
 	GetGeometryType() (_swig_ret int)
-	GetGeometryName() (_swig_ret string)
-	Length() (_swig_ret float64)
-	Area() (_swig_ret float64)
-	GetArea() (_swig_ret float64)
-	GetPointCount() (_swig_ret int)
+	GetGeometryName() (_swig_ret string, err error,
+
+	)
+	Length() (_swig_ret float64, err error,
+
+	)
+	Area() (_swig_ret float64, err error,
+
+	)
+	GetArea() (_swig_ret float64, err error,
+
+	)
+	GetPointCount() (_swig_ret int, err error,
+
+	)
 	GetX(_swig_args ...interface{}) (_swig_ret float64)
 	GetY(_swig_args ...interface{}) (_swig_ret float64)
-	GetZ(_swig_args ...interface{}) (_swig_ret float64)
-	GetPoint(_swig_args ...interface{})
-	GetPoint_2D(_swig_args ...interface{})
-	GetGeometryCount() (_swig_ret int)
-	SetPoint(arg2 int, arg3 float64, arg4 float64, _swig_args ...interface{})
+	GetZ(_swig_args ...interface{}) (_swig_ret float64, err error,
+
+	)
+	GetPoint(_swig_args ...interface{}) (err error)
+
+	GetPoint_2D(_swig_args ...interface{}) (err error)
+
+	GetGeometryCount() (_swig_ret int, err error,
+
+	)
+	SetPoint(arg2 int, arg3 float64, arg4 float64, _swig_args ...interface{}) (err error)
+	SetPoint2D(arg2 int, arg3 float64, arg4 float64) (err error)
 
 	GetGeometryRef(arg2 int) (_swig_ret Geometry)
-	Simplify(arg2 float64) (_swig_ret Geometry)
-	SimplifyPreserveTopology(arg2 float64) (_swig_ret Geometry)
-	DelaunayTriangulation(_swig_args ...interface{}) (_swig_ret Geometry)
-	Boundary() (_swig_ret Geometry)
-	GetBoundary() (_swig_ret Geometry)
-	ConvexHull() (_swig_ret Geometry)
-	Buffer(arg2 float64, _swig_args ...interface{}) (_swig_ret Geometry)
-	Intersection(arg2 Geometry) (_swig_ret Geometry)
-	Union(arg2 Geometry) (_swig_ret Geometry)
-	UnionCascaded() (_swig_ret Geometry)
-	Difference(arg2 Geometry) (_swig_ret Geometry)
-	SymDifference(arg2 Geometry) (_swig_ret Geometry)
-	SymmetricDifference(arg2 Geometry) (_swig_ret Geometry)
-	Distance(arg2 Geometry) (_swig_ret float64)
-	Empty()
-	IsEmpty() (_swig_ret bool)
-	IsValid() (_swig_ret bool)
-	IsSimple() (_swig_ret bool)
-	IsRing() (_swig_ret bool)
-	Intersects(arg2 Geometry) (_swig_ret bool)
-	Intersect(arg2 Geometry) (_swig_ret bool)
-	Equals(arg2 Geometry) (_swig_ret bool)
-	Equal(arg2 Geometry) (_swig_ret bool)
-	Disjoint(arg2 Geometry) (_swig_ret bool)
-	Touches(arg2 Geometry) (_swig_ret bool)
-	Crosses(arg2 Geometry) (_swig_ret bool)
-	Within(arg2 Geometry) (_swig_ret bool)
-	Contains(arg2 Geometry) (_swig_ret bool)
-	Overlaps(arg2 Geometry) (_swig_ret bool)
-	TransformTo(arg2 osr.SpatialReference) (_swig_ret int)
-	Transform(arg2 osr.CoordinateTransformation) (_swig_ret int)
-	GetSpatialReference() (_swig_ret osr.SpatialReference)
-	AssignSpatialReference(arg2 osr.SpatialReference)
-	CloseRings()
-	FlattenTo2D()
-	Segmentize(arg2 float64)
-	GetEnvelope(arg2 []float64)
-	GetEnvelope3D(arg2 []float64)
+	Simplify(arg2 float64) (_swig_ret Geometry, err error,
+
+	)
+	SimplifyPreserveTopology(arg2 float64) (_swig_ret Geometry, err error,
+
+	)
+	DelaunayTriangulation(_swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+	)
+	Boundary() (_swig_ret Geometry, err error,
+
+	)
+	GetBoundary() (_swig_ret Geometry, err error,
+
+	)
+	ConvexHull() (_swig_ret Geometry, err error,
+
+	)
+	Buffer(arg2 float64, _swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+	)
+	Intersection(arg2 Geometry) (_swig_ret Geometry, err error,
+
+	)
+	Union(arg2 Geometry) (_swig_ret Geometry, err error,
+
+	)
+	UnionCascaded() (_swig_ret Geometry, err error,
+
+	)
+	Difference(arg2 Geometry) (_swig_ret Geometry, err error,
+
+	)
+	SymDifference(arg2 Geometry) (_swig_ret Geometry, err error,
+
+	)
+	SymmetricDifference(arg2 Geometry) (_swig_ret Geometry, err error,
+
+	)
+	Distance(arg2 Geometry) (_swig_ret float64, err error,
+
+	)
+	Empty() (err error)
+
+	IsEmpty() (_swig_ret bool, err error,
+
+	)
+	IsValid() (_swig_ret bool, err error,
+
+	)
+	IsSimple() (_swig_ret bool, err error,
+
+	)
+	IsRing() (_swig_ret bool, err error,
+
+	)
+	Intersects(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Intersect(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Equals(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Equal(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Disjoint(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Touches(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Crosses(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Within(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Contains(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	Overlaps(arg2 Geometry) (_swig_ret bool, err error,
+
+	)
+	TransformTo(arg2 osr.SpatialReference) (_swig_ret int, err error,
+
+	)
+	Transform(arg2 osr.CoordinateTransformation) (_swig_ret int, err error,
+
+	)
+	GetSpatialReference() (_swig_ret osr.SpatialReference, err error,
+
+	)
+	AssignSpatialReference(arg2 osr.SpatialReference) (err error)
+
+	CloseRings() (err error)
+
+	FlattenTo2D() (err error)
+
+	Segmentize(arg2 float64) (err error)
+
+	GetEnvelope(arg2 []float64) (err error)
+
+	GetEnvelope3D(arg2 []float64) (err error)
+
 	Centroid() (_swig_ret Geometry)
-	PointOnSurface() (_swig_ret Geometry)
-	WkbSize() (_swig_ret int)
-	GetCoordinateDimension() (_swig_ret int)
-	SetCoordinateDimension(arg2 int)
-	GetDimension() (_swig_ret int)
-	HasCurveGeometry(_swig_args ...interface{}) (_swig_ret int)
-	GetLinearGeometry(_swig_args ...interface{}) (_swig_ret Geometry)
-	GetCurveGeometry(_swig_args ...interface{}) (_swig_ret Geometry)
-	Value(arg2 float64) (_swig_ret Geometry)
-	SetPoint2D(i int, x, y float64) (err error)
+	PointOnSurface() (_swig_ret Geometry, err error,
+
+	)
+	WkbSize() (_swig_ret int, err error,
+
+	)
+	GetCoordinateDimension() (_swig_ret int, err error,
+
+	)
+	SetCoordinateDimension(arg2 int) (err error)
+
+	GetDimension() (_swig_ret int, err error,
+
+	)
+	HasCurveGeometry(_swig_args ...interface{}) (_swig_ret int, err error,
+
+	)
+	GetLinearGeometry(_swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+	)
+	GetCurveGeometry(_swig_args ...interface{}) (_swig_ret Geometry, err error,
+
+	)
+	Value(arg2 float64) (_swig_ret Geometry, err error,
+
+	)
 }
 
-func OGRGetDriverCount() (_swig_ret int) {
+func OGRGetDriverCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	swig_r = (int)(C._wrap_OGRGetDriverCount_ogr_8e1b66f4430553e5())
-	return swig_r
+	return swig_r, err
+
 }
 
-func OGRGetOpenDSCount() (_swig_ret int) {
+func OGRGetOpenDSCount() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	swig_r = (int)(C._wrap_OGRGetOpenDSCount_ogr_8e1b66f4430553e5())
-	return swig_r
+	return swig_r, err
+
 }
 
-func OGRSetGenerate_DB2_V72_BYTE_ORDER(arg1 int) (_swig_ret int) {
+func OGRSetGenerate_DB2_V72_BYTE_ORDER(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_OGRSetGenerate_DB2_V72_BYTE_ORDER_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GeometryTypeToName(arg1 int) (_swig_ret string) {
+func GeometryTypeToName(arg1 int) (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_GeometryTypeToName_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func GetFieldTypeName(arg1 int) (_swig_ret string) {
+func GetFieldTypeName(arg1 int) (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_GetFieldTypeName_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func GetFieldSubTypeName(arg1 int) (_swig_ret string) {
+func GetFieldSubTypeName(arg1 int) (_swig_ret string, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_GetFieldSubTypeName_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func GT_Flatten(arg1 int) (_swig_ret int) {
+func GT_Flatten(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_Flatten_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_SetZ(arg1 int) (_swig_ret int) {
+func GT_SetZ(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_SetZ_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_SetModifier(arg1 int, arg2 int, _swig_args ...interface{}) (_swig_ret int) {
+func GT_SetModifier(arg1 int, arg2 int, _swig_args ...interface{}) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg3 int
 	if len(_swig_args) > 0 {
 		arg3 = _swig_args[0].(int)
@@ -4805,85 +6668,143 @@ func GT_SetModifier(arg1 int, arg2 int, _swig_args ...interface{}) (_swig_ret in
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_GT_SetModifier_ogr_8e1b66f4430553e5(C.swig_intgo(len(_swig_args)), C.swig_intgo(_swig_i_0), C.swig_intgo(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_HasZ(arg1 int) (_swig_ret int) {
+func GT_HasZ(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_HasZ_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_IsSubClassOf(arg1 int, arg2 int) (_swig_ret int) {
+func GT_IsSubClassOf(arg1 int, arg2 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_GT_IsSubClassOf_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0), C.swig_intgo(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_IsCurve(arg1 int) (_swig_ret int) {
+func GT_IsCurve(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_IsCurve_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_IsSurface(arg1 int) (_swig_ret int) {
+func GT_IsSurface(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_IsSurface_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_IsNonLinear(arg1 int) (_swig_ret int) {
+func GT_IsNonLinear(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_IsNonLinear_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_GetCollection(arg1 int) (_swig_ret int) {
+func GT_GetCollection(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_GetCollection_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_GetCurve(arg1 int) (_swig_ret int) {
+func GT_GetCurve(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_GetCurve_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func GT_GetLinear(arg1 int) (_swig_ret int) {
+func GT_GetLinear(arg1 int) (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_GT_GetLinear_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func SetNonLinearGeometriesEnabledFlag(arg1 int) {
+func SetNonLinearGeometriesEnabledFlag(arg1 int) (err error) {
+	defer cpl.ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_SetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))
+	return
 }
 
-func GetNonLinearGeometriesEnabledFlag() (_swig_ret int) {
+func GetNonLinearGeometriesEnabledFlag() (_swig_ret int, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r int
 	swig_r = (int)(C._wrap_GetNonLinearGeometriesEnabledFlag_ogr_8e1b66f4430553e5())
-	return swig_r
+	return swig_r, err
+
 }
 
-func GetOpenDS(arg1 int) (_swig_ret DataSource) {
+func GetOpenDS(arg1 int) (_swig_ret DataSource, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var swig_r DataSource
 	_swig_i_0 := arg1
 	swig_r = (DataSource)(SwigcptrDataSource(C._wrap_GetOpenDS_ogr_8e1b66f4430553e5(C.swig_intgo(_swig_i_0))))
-	return swig_r
+	return swig_r, err
+
 }
 
-func Open(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource) {
+func Open(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4895,10 +6816,15 @@ func Open(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func OpenShared(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource) {
+func OpenShared(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource, err error,
+
+) {
+	defer cpl.ErrorTrap()(&err)
+
 	var arg2 int
 	if len(_swig_args) > 0 {
 		arg2 = _swig_args[0].(int)
@@ -4910,7 +6836,8 @@ func OpenShared(arg1 string, _swig_args ...interface{}) (_swig_ret DataSource) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
 type SwigcptrGIntBig uintptr

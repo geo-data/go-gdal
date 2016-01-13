@@ -2,8 +2,6 @@ package gdal
 
 import (
 	"errors"
-	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -17,9 +15,7 @@ type translate struct {
 }
 
 func translateOptions(options []string) (opts GDALTranslateOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALTranslateOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALTranslateOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALTranslateOptions(opts)
 	}
@@ -58,9 +54,5 @@ func (t *translate) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-	if ds = wrapper_GDALTranslate(name, t.datasets[0], t.options); ds == nil {
-		err = fmt.Errorf("Translate failed for %s", name)
-	}
-	return
+	return wrapper_GDALTranslate(name, t.datasets[0], t.options)
 }

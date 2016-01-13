@@ -9,10 +9,5 @@ type Layer interface {
 }
 
 type Feature interface {
-	SetField(a ...interface{}) error
 	SetGeometry(geom Geometry) (err error)
-}
-
-type Geometry interface {
-	SetPoint2D(i int, x, y float64) (err error)
 }

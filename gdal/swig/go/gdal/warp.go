@@ -2,8 +2,6 @@ package gdal
 
 import (
 	"errors"
-	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -19,9 +17,7 @@ type warp struct {
 }
 
 func warpAppOptions(options []string) (opts GDALWarpAppOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALWarpAppOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALWarpAppOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALWarpAppOptions(opts)
 	}
@@ -60,13 +56,7 @@ func (w *warp) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ds = wrapper_GDALWarpDestName(name, len(w.datasets), w.datasets, w.options); ds == nil {
-		err = fmt.Errorf("Warp failed for %s", name)
-	}
-
-	return
+	return wrapper_GDALWarpDestName(name, len(w.datasets), w.datasets, w.options)
 }
 
 func (w *warp) DestDS(ds Dataset) (err error) {
@@ -75,9 +65,9 @@ func (w *warp) DestDS(ds Dataset) (err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ok := wrapper_GDALWarpDestDS(ds, len(w.datasets), w.datasets, w.options); ok == 1 {
+	var ok int
+	ok, err = wrapper_GDALWarpDestDS(ds, len(w.datasets), w.datasets, w.options)
+	if ok != 1 && err == nil {
 		err = errors.New("Warp failed for dataset")
 	}
 

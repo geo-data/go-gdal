@@ -1,7 +1,6 @@
 package gdal
 
 import (
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -14,9 +13,7 @@ type info struct {
 }
 
 func infoOptions(options []string) (opts GDALInfoOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALInfoOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALInfoOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALInfoOptions(opts)
 	}
@@ -41,7 +38,5 @@ func NewInformer(options []string) (i Informer, err error) {
 }
 
 func (i *info) Info(ds Dataset) (result string, err error) {
-	defer cpl.ErrorTrap()(&err)
-	result = wrap_GDALInfo(ds, i.options)
-	return
+	return wrap_GDALInfo(ds, i.options)
 }

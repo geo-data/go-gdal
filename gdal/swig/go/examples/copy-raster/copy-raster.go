@@ -26,30 +26,27 @@ func main() {
 
 	gdal.AllRegister()
 
-	/*gdal.Debug("trial", "setting CPLQuietErrorHandler")
-	if err := gdal.SetErrorHandler("CPLQuietErrorHandler"); err != nil {
+	var ds gdal.Dataset
+	var err error
+	if ds, err = gdal.Open(input, constant.OF_READONLY|constant.OF_VERBOSE_ERROR); err != nil {
 		log.Fatal(err)
-	}*/
-
-	ds, gerr := gdal.Open(input, constant.OF_READONLY|constant.OF_VERBOSE_ERROR)
-	if gerr != nil {
-		log.Fatal(gerr)
 	}
 
 	fmt.Printf("Opened input dataset (%dx%d).\n", ds.GetRasterXSize(), ds.GetRasterYSize())
+
 	driver := ds.GetDriver()
 	fmt.Printf("Input driver is %s.\n", driver.GetLongName())
 
-	output_dir, err := ioutil.TempDir("", "create-raster-copy-")
-	if err != nil {
+	var dout string
+	if dout, err = ioutil.TempDir("", "create-raster-copy-"); err != nil {
 		log.Fatal(err)
 	}
 
 	// Delete the directory if required when the program exits.
 	defer func() {
 		if !*keep {
-			log.Printf("Removing output directory %s", output_dir)
-			if err := os.RemoveAll(output_dir); err != nil {
+			log.Printf("Removing output directory %s", dout)
+			if err := os.RemoveAll(dout); err != nil {
 				log.Fatal(err)
 			}
 		}
@@ -60,8 +57,7 @@ func main() {
 	*keep = false
 
 	var png_driver gdal.Driver
-	png_driver, err = gdal.GetDriverByName("PNG")
-	if err != nil {
+	if png_driver, err = gdal.GetDriverByName("PNG"); err != nil {
 		log.Fatal(err)
 	}
 
@@ -75,11 +71,12 @@ func main() {
 		return 1
 	})
 
-	output := path.Join(output_dir, "copy.png")
-	png, gerr := png_driver.CreateCopy(output, ds, 0, options, prog, "")
+	var png gdal.Dataset
+	output := path.Join(dout, "copy.png")
+	png, err = png_driver.CreateCopy(output, ds, 0, options, prog, "")
 	bar.Finish()
-	if gerr != nil {
-		log.Fatal(gerr)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	fmt.Printf("PNG dataset created (%dx%d): %s\n", png.GetRasterXSize(), png.GetRasterYSize(), output)

@@ -47,11 +47,17 @@ func TestOpenFail(t *testing.T) {
 	bad := "nothing here"
 	// Open without GDAL error
 	ds, err := gdal.Open(bad, constant.OF_READONLY)
-	if err == nil {
-		t.Fatalf("Open(%q): error is nil", bad)
+	if ds != nil {
+		t.Fatalf("Open(%q): dataset is not nil", bad)
+	}
+	if err != nil {
+		t.Fatalf("Open(%q): error is not nil: %s", bad, err)
 	}
 
 	ds, err = gdal.Open(bad, constant.OF_READONLY|constant.OF_VERBOSE_ERROR)
+	if ds != nil {
+		t.Fatalf("Open(%q): dataset is not nil", bad)
+	}
 	if err == nil {
 		t.Fatalf("Open(%q): error is nil", bad)
 	}

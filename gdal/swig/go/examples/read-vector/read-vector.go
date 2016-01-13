@@ -18,13 +18,9 @@ func main() {
 
 	gdal.AllRegister()
 
-	/*gdal.Debug("trial", "setting CPLQuietErrorHandler")
-	if err := gdal.SetErrorHandler("CPLQuietErrorHandler"); err != nil {
-		log.Fatal(err)
-	}*/
-
-	ds, err := gdal.Open(input, constant.OF_VECTOR|constant.OF_READONLY|constant.OF_VERBOSE_ERROR)
-	if err != nil {
+	var ds gdal.Dataset
+	var err error
+	if ds, err = gdal.Open(input, constant.OF_VECTOR|constant.OF_READONLY|constant.OF_VERBOSE_ERROR); err != nil {
 		log.Fatal(err)
 	}
 
@@ -33,12 +29,16 @@ func main() {
 
 	lyr := ds.GetLayerByIndex(0)
 	lyr.ResetReading()
+
 	for feat := lyr.GetNextFeature(); feat != nil; feat = lyr.GetNextFeature() {
 		featdefn := lyr.GetLayerDefn()
+
 		for i := 0; i < featdefn.GetFieldCount(); i++ {
 			fielddefn := featdefn.GetFieldDefn(i)
+
 			fname := fielddefn.GetName()
 			ftype := fielddefn.GetTypeName()
+
 			switch fielddefn.GetType() {
 			case ogr.OFTInteger:
 				fallthrough

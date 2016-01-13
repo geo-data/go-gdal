@@ -1,24 +1,4 @@
 {
-    "Create": {
-        "Delete": ["Driver"],
-        "Rename": {
-            "Method": {
-                "SwigcptrDriver": {
-                    "Prefix": "wrap_"
-                }
-            }
-        }
-    },
-    "CreateLayer": {
-        "Delete": ["Dataset"],
-        "Rename": {
-            "Method": {
-                "SwigcptrDataset": {
-                    "Prefix": "wrap_"
-                }
-            }
-        }
-    },
     "SetGeoTransform": {
         "Delete": ["Dataset"],
         "Rename": {
@@ -29,48 +9,11 @@
             }
         }
     },
-    "GetDriverByName": {
-        "Rename": {
-            "Function": {
-                "Prefix": "wrap_"
-            }
-        }
-    },
     "GetGeoTransform": {
         "Delete": ["Dataset"],
         "Rename": {
             "Method": {
                 "SwigcptrDataset": {
-                    "Prefix": "wrap_"
-                }
-            }
-        }
-    },
-    "GetLayerByName": {
-        "Delete": ["Dataset"],
-        "Rename": {
-            "Method": {
-                "SwigcptrDataset": {
-                    "Prefix": "wrap_"
-                }
-            }
-        }
-    },
-    "Create": {
-        "Delete": ["Driver"],
-        "Rename": {
-            "Method": {
-                "SwigcptrDriver": {
-                    "Prefix": "wrap_"
-                }
-            }
-        }
-    },
-    "CreateCopy": {
-        "Delete": ["Driver"],
-        "Rename": {
-            "Method": {
-                "SwigcptrDriver": {
                     "Prefix": "wrap_"
                 }
             }

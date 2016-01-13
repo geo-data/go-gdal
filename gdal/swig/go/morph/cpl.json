@@ -5,12 +5,5 @@
                 "Prefix": "wrap_"
             }
         }
-    },
-    "ReadDir": {
-        "Rename": {
-            "Function": {
-                "Prefix": "wrap_"
-            }
-        }
     }
 }

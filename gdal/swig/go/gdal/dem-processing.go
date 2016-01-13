@@ -2,8 +2,6 @@ package gdal
 
 import (
 	"errors"
-	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -25,9 +23,7 @@ type dem struct {
 }
 
 func demProcessingOptions(options []string) (opts GDALDEMProcessingOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALDEMProcessingOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALDEMProcessingOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALDEMProcessingOptions(opts)
 	}
@@ -108,11 +104,5 @@ func (d *dem) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ds = wrapper_GDALDEMProcessing(name, d.datasets[0], d.processing, d.colorfile, d.options); ds == nil {
-		err = fmt.Errorf("DEM %s processing failed for %s", d.processing, name)
-	}
-
-	return
+	return wrapper_GDALDEMProcessing(name, d.datasets[0], d.processing, d.colorfile, d.options)
 }

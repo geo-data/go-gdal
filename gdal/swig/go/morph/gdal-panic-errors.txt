@@ -1,0 +1,14 @@
+AllRegister
+GetDataType
+GetDataTypeName
+GetDriver
+GetDriverCount
+GetFileList
+GetGeoTransform
+GetLayerByIndex
+GetLayerCount
+GetLongName
+GetRasterBand
+GetRasterXSize
+GetRasterYSize
+VersionInfo

@@ -1,0 +1,5 @@
+Error
+ErrorReset
+GetLastErrorNo
+GetLastErrorType
+GetLastErrorMsg

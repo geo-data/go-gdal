@@ -160,7 +160,9 @@ func Swig_free(arg1 uintptr) {
 	C._wrap_Swig_free_cpl_47a89855fc1adaf7(C.uintptr_t(_swig_i_0))
 }
 
-func Debug(arg1 string, arg2 string) {
+func Debug(arg1 string, arg2 string) (err error) {
+	defer ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_Debug_cpl_47a89855fc1adaf7(*(*C.swig_type_1)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_2)(unsafe.Pointer(&_swig_i_1)))
@@ -170,9 +172,14 @@ func Debug(arg1 string, arg2 string) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func SetErrorHandler(arg1 ErrorHandler, arg2 interface{}) (_swig_ret int) {
+func SetErrorHandler(arg1 ErrorHandler, arg2 interface{}) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	var _swig_i_0 C.CPLErrorHandler
 
@@ -189,10 +196,15 @@ func SetErrorHandler(arg1 ErrorHandler, arg2 interface{}) (_swig_ret int) {
 	}
 
 	swig_r = (int)(C._wrap_SetErrorHandler_cpl_47a89855fc1adaf7(C.CPLErrorHandler(_swig_i_0), C.swig_voidp(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func PushErrorHandler(arg1 ErrorHandler, arg2 interface{}) (_swig_ret int) {
+func PushErrorHandler(arg1 ErrorHandler, arg2 interface{}) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	var _swig_i_0 C.CPLErrorHandler
 
@@ -209,7 +221,8 @@ func PushErrorHandler(arg1 ErrorHandler, arg2 interface{}) (_swig_ret int) {
 	}
 
 	swig_r = (int)(C._wrap_PushErrorHandler_cpl_47a89855fc1adaf7(C.CPLErrorHandler(_swig_i_0), C.swig_voidp(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
 func wrap_Error(arg1 int, arg2 int, arg3 string) {
@@ -222,7 +235,11 @@ func wrap_Error(arg1 int, arg2 int, arg3 string) {
 	}
 }
 
-func GOA2GetAuthorizationURL(arg1 string) (_swig_ret string) {
+func GOA2GetAuthorizationURL(arg1 string) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_GOA2GetAuthorizationURL_cpl_47a89855fc1adaf7(*(*C.swig_type_5)(unsafe.Pointer(&_swig_i_0)))
@@ -232,10 +249,15 @@ func GOA2GetAuthorizationURL(arg1 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func GOA2GetRefreshToken(arg1 string, arg2 string) (_swig_ret string) {
+func GOA2GetRefreshToken(arg1 string, arg2 string) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -249,10 +271,15 @@ func GOA2GetRefreshToken(arg1 string, arg2 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func GOA2GetAccessToken(arg1 string, arg2 string) (_swig_ret string) {
+func GOA2GetAccessToken(arg1 string, arg2 string) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -266,18 +293,26 @@ func GOA2GetAccessToken(arg1 string, arg2 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func PopErrorHandler() {
+func PopErrorHandler() (err error) {
+	defer ErrorTrap()(&err)
+
 	C._wrap_PopErrorHandler_cpl_47a89855fc1adaf7()
+	return
 }
 
 func ErrorReset() {
 	C._wrap_ErrorReset_cpl_47a89855fc1adaf7()
 }
 
-func EscapeString__SWIG_0(arg1 int, arg2 string, arg3 int) (_swig_ret string) {
+func EscapeString__SWIG_0(arg1 int, arg2 string, arg3 int) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -289,10 +324,15 @@ func EscapeString__SWIG_0(arg1 int, arg2 string, arg3 int) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func EscapeString__SWIG_1(arg1 int, arg2 string) (_swig_ret string) {
+func EscapeString__SWIG_1(arg1 int, arg2 string) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -303,10 +343,11 @@ func EscapeString__SWIG_1(arg1 int, arg2 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func EscapeString(a ...interface{}) string {
+func EscapeString(a ...interface{}) (string, error) {
 	argc := len(a)
 	if argc == 2 {
 		return EscapeString__SWIG_1(a[0].(int), a[1].(string))
@@ -338,23 +379,36 @@ func GetLastErrorMsg() (_swig_ret string) {
 	return swig_r_1
 }
 
-func PushFinderLocation(arg1 string) {
+func PushFinderLocation(arg1 string) (err error) {
+	defer ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	C._wrap_PushFinderLocation_cpl_47a89855fc1adaf7(*(*C.swig_type_17)(unsafe.Pointer(&_swig_i_0)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
+	return
 }
 
-func PopFinderLocation() {
+func PopFinderLocation() (err error) {
+	defer ErrorTrap()(&err)
+
 	C._wrap_PopFinderLocation_cpl_47a89855fc1adaf7()
+	return
 }
 
-func FinderClean() {
+func FinderClean() (err error) {
+	defer ErrorTrap()(&err)
+
 	C._wrap_FinderClean_cpl_47a89855fc1adaf7()
+	return
 }
 
-func FindFile(arg1 string, arg2 string) (_swig_ret string) {
+func FindFile(arg1 string, arg2 string) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -368,10 +422,15 @@ func FindFile(arg1 string, arg2 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func wrap_ReadDir(arg1 string) (_swig_ret []string) {
+func ReadDir(arg1 string) (_swig_ret []string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r **C.char
 	_swig_i_0 := arg1
 	swig_r = (**C.char)(C._wrap_ReadDir_cpl_47a89855fc1adaf7(*(*C.swig_type_21)(unsafe.Pointer(&_swig_i_0))))
@@ -394,10 +453,15 @@ func wrap_ReadDir(arg1 string) (_swig_ret []string) {
 		}
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func ReadDirRecursive(arg1 string) (_swig_ret []string) {
+func ReadDirRecursive(arg1 string) (_swig_ret []string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r **C.char
 	_swig_i_0 := arg1
 	swig_r = (**C.char)(C._wrap_ReadDirRecursive_cpl_47a89855fc1adaf7(*(*C.swig_type_22)(unsafe.Pointer(&_swig_i_0))))
@@ -420,10 +484,13 @@ func ReadDirRecursive(arg1 string) (_swig_ret []string) {
 		}
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func SetConfigOption(arg1 string, arg2 string) {
+func SetConfigOption(arg1 string, arg2 string) (err error) {
+	defer ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	C._wrap_SetConfigOption_cpl_47a89855fc1adaf7(*(*C.swig_type_23)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_24)(unsafe.Pointer(&_swig_i_1)))
@@ -433,9 +500,14 @@ func SetConfigOption(arg1 string, arg2 string) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
+	return
 }
 
-func GetConfigOption__SWIG_0(arg1 string, arg2 string) (_swig_ret string) {
+func GetConfigOption__SWIG_0(arg1 string, arg2 string) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -449,10 +521,15 @@ func GetConfigOption__SWIG_0(arg1 string, arg2 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func GetConfigOption__SWIG_1(arg1 string) (_swig_ret string) {
+func GetConfigOption__SWIG_1(arg1 string) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	swig_r_p := C._wrap_GetConfigOption__SWIG_1_cpl_47a89855fc1adaf7(*(*C.swig_type_29)(unsafe.Pointer(&_swig_i_0)))
@@ -462,10 +539,11 @@ func GetConfigOption__SWIG_1(arg1 string) (_swig_ret string) {
 	}
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func GetConfigOption(a ...interface{}) string {
+func GetConfigOption(a ...interface{}) (string, error) {
 	argc := len(a)
 	if argc == 1 {
 		return GetConfigOption__SWIG_1(a[0].(string))
@@ -476,7 +554,11 @@ func GetConfigOption(a ...interface{}) string {
 	panic("No match for overloaded function call")
 }
 
-func CPLBinaryToHex(arg1 int, arg2 GByte) (_swig_ret string) {
+func CPLBinaryToHex(arg1 int, arg2 GByte) (_swig_ret string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r string
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
@@ -484,10 +566,15 @@ func CPLBinaryToHex(arg1 int, arg2 GByte) (_swig_ret string) {
 	swig_r = *(*string)(unsafe.Pointer(&swig_r_p))
 	var swig_r_1 string
 	swig_r_1 = swigCopyString(swig_r)
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
-func CPLHexToBinary(arg1 string, arg2 *int) (_swig_ret GByte) {
+func CPLHexToBinary(arg1 string, arg2 *int) (_swig_ret GByte, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r GByte
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -495,10 +582,13 @@ func CPLHexToBinary(arg1 string, arg2 *int) (_swig_ret GByte) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func FileFromMemBuffer(arg1 string, arg2 int, arg3 GByte) {
+func FileFromMemBuffer(arg1 string, arg2 int, arg3 GByte) (err error) {
+	defer ErrorTrap()(&err)
+
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
@@ -506,25 +596,40 @@ func FileFromMemBuffer(arg1 string, arg2 int, arg3 GByte) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
+	return
 }
 
-func Unlink(arg1 string) (_swig_ret int) {
+func Unlink(arg1 string) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Unlink_cpl_47a89855fc1adaf7(*(*C.swig_type_33)(unsafe.Pointer(&_swig_i_0))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func HasThreadSupport() (_swig_ret int) {
+func HasThreadSupport() (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	swig_r = (int)(C._wrap_HasThreadSupport_cpl_47a89855fc1adaf7())
-	return swig_r
+	return swig_r, err
+
 }
 
-func Mkdir(arg1 string, arg2 int) (_swig_ret int) {
+func Mkdir(arg1 string, arg2 int) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -532,20 +637,30 @@ func Mkdir(arg1 string, arg2 int) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func Rmdir(arg1 string) (_swig_ret int) {
+func Rmdir(arg1 string) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_Rmdir_cpl_47a89855fc1adaf7(*(*C.swig_type_35)(unsafe.Pointer(&_swig_i_0))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func Rename(arg1 string, arg2 string) (_swig_ret int) {
+func Rename(arg1 string, arg2 string) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -556,10 +671,15 @@ func Rename(arg1 string, arg2 string) (_swig_ret int) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFOpenL(arg1 string, arg2 string) (_swig_ret uintptr) {
+func VSIFOpenL(arg1 string, arg2 string) (_swig_ret uintptr, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r uintptr
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
@@ -570,48 +690,78 @@ func VSIFOpenL(arg1 string, arg2 string) (_swig_ret uintptr) {
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFCloseL(arg1 uintptr) (_swig_ret int) {
+func VSIFCloseL(arg1 uintptr) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_VSIFCloseL_cpl_47a89855fc1adaf7(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFSeekL(arg1 uintptr, arg2 int64, arg3 int) (_swig_ret int) {
+func VSIFSeekL(arg1 uintptr, arg2 int64, arg3 int) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	swig_r = (int)(C._wrap_VSIFSeekL_cpl_47a89855fc1adaf7(C.uintptr_t(_swig_i_0), C.swig_type_40(_swig_i_1), C.swig_intgo(_swig_i_2)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFTellL(arg1 uintptr) (_swig_ret int64) {
+func VSIFTellL(arg1 uintptr) (_swig_ret int64, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int64
 	_swig_i_0 := arg1
 	swig_r = (int64)(C._wrap_VSIFTellL_cpl_47a89855fc1adaf7(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFTruncateL(arg1 uintptr, arg2 int64) (_swig_ret int) {
+func VSIFTruncateL(arg1 uintptr, arg2 int64) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	swig_r = (int)(C._wrap_VSIFTruncateL_cpl_47a89855fc1adaf7(C.uintptr_t(_swig_i_0), C.swig_type_42(_swig_i_1)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFEofL(arg1 uintptr) (_swig_ret int) {
+func VSIFEofL(arg1 uintptr) (_swig_ret int, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int
 	_swig_i_0 := arg1
 	swig_r = (int)(C._wrap_VSIFEofL_cpl_47a89855fc1adaf7(C.uintptr_t(_swig_i_0)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFWriteL(arg1 []byte, arg2 int64, arg3 int64, arg4 uintptr) (_swig_ret int64) {
+func VSIFWriteL(arg1 []byte, arg2 int64, arg3 int64, arg4 uintptr) (_swig_ret int64, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int64
 	var _swig_i_0 *C.char
 
@@ -621,10 +771,15 @@ func VSIFWriteL(arg1 []byte, arg2 int64, arg3 int64, arg4 uintptr) (_swig_ret in
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	swig_r = (int64)(C._wrap_VSIFWriteL_cpl_47a89855fc1adaf7(C.swig_voidp(_swig_i_0), C.swig_type_44(_swig_i_1), C.swig_type_45(_swig_i_2), C.uintptr_t(_swig_i_3)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func VSIFReadL(arg1 []byte, arg2 int64, arg3 int64, arg4 uintptr) (_swig_ret int64) {
+func VSIFReadL(arg1 []byte, arg2 int64, arg3 int64, arg4 uintptr) (_swig_ret int64, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r int64
 	var _swig_i_0 *C.char
 
@@ -634,10 +789,15 @@ func VSIFReadL(arg1 []byte, arg2 int64, arg3 int64, arg4 uintptr) (_swig_ret int
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	swig_r = (int64)(C._wrap_VSIFReadL_cpl_47a89855fc1adaf7(C.swig_voidp(_swig_i_0), C.swig_type_47(_swig_i_1), C.swig_type_48(_swig_i_2), C.uintptr_t(_swig_i_3)))
-	return swig_r
+	return swig_r, err
+
 }
 
-func ParseCommandLine(arg1 string) (_swig_ret []string) {
+func ParseCommandLine(arg1 string) (_swig_ret []string, err error,
+
+) {
+	defer ErrorTrap()(&err)
+
 	var swig_r **C.char
 	_swig_i_0 := arg1
 	swig_r = (**C.char)(C._wrap_ParseCommandLine_cpl_47a89855fc1adaf7(*(*C.swig_type_49)(unsafe.Pointer(&_swig_i_0))))
@@ -660,7 +820,8 @@ func ParseCommandLine(arg1 string) (_swig_ret []string) {
 		}
 	}
 
-	return swig_r_1
+	return swig_r_1, err
+
 }
 
 type SwigcptrGByte uintptr

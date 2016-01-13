@@ -1,4 +1,5 @@
 %go_import("github.com/geo-data/go-gdal/gdal/swig/go/gdal/progress")
+%go_import("github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl")
 
 %include "typemaps_go.i"
 

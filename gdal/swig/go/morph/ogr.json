@@ -19,30 +19,6 @@
             }
         }
     },
-    "NewFeature": {
-        "Rename": {
-            "Function": {
-                "Prefix": "wrap_"
-            }
-        }
-    },
-    "NewGeometry": {
-        "Rename": {
-            "Function": {
-                "Prefix": "wrap_"
-            }
-        }
-    },
-    "SetField": {
-        "Delete": ["Feature"],
-        "Rename": {
-            "Method": {
-                "SwigcptrFeature": {
-                    "Prefix": "wrap_"
-                }
-            }
-        }
-    },
     "SetGeometry": {
         "Delete": ["Feature"],
         "Rename": {
@@ -54,11 +30,15 @@
         }
     },
     "SetPoint_2D": {
-        "Delete": ["Geometry"],
         "Rename": {
             "Method": {
                 "SwigcptrGeometry": {
-                    "Prefix": "wrap_"
+                    "Replace": "SetPoint2D"
+                }
+            },
+            "Interface": {
+                "Geometry": {
+                    "Replace": "SetPoint2D"
                 }
             }
         }

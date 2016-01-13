@@ -49,7 +49,7 @@ func TestReadDir(t *testing.T) {
 		}
 
 		f, e := os.Open(dir)
-		if err != nil {
+		if e != nil {
 			t.Errorf("os.Open(%q): unexpected error, %v", dir, e)
 			continue
 		}
@@ -96,7 +96,10 @@ func TestParseCommandLine(t *testing.T) {
 		opts := pt.opts
 		expect := pt.expect
 
-		result := cpl.ParseCommandLine(opts)
+		result, err := cpl.ParseCommandLine(opts)
+		if err != nil {
+			t.Errorf("ParseCommandLine(%q) err != nil: %s", opts, err)
+		}
 
 		if !reflect.DeepEqual(result, expect) {
 			t.Errorf("ParseCommandLine(%q) == %q, does not match %q", opts, result, expect)

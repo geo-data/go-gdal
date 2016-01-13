@@ -1,0 +1,16 @@
+Centroid
+GetFieldAsDouble
+GetFieldAsInteger
+GetFieldAsString
+GetFieldCount
+GetFieldDefn
+GetGeometryRef
+GetGeometryType
+GetLayerDefn
+GetName
+GetNextFeature
+GetType
+GetTypeName
+GetX
+GetY
+ResetReading

@@ -20,6 +20,7 @@ func main() {
 	var driver gdal.Driver
 	var ds gdal.Dataset
 	var lyr ogr.Layer
+	var fielddefn ogr.FieldDefn
 	var err error
 
 	flag.Parse()
@@ -31,22 +32,24 @@ func main() {
 		log.Fatal(err)
 	}
 
-	ds, err = driver.Create(*output, 0, 0, 0, constant.GDT_Unknown, nil)
-	if err != nil {
+	if ds, err = driver.Create(*output, 0, 0, 0, constant.GDT_Unknown); err != nil {
 		log.Fatal(err)
 	}
 	defer ds.Close()
 
-	lyr, err = ds.CreateLayer(*layername, nil, ogr.WkbPoint, nil)
-	if err != nil {
+	if lyr, err = ds.CreateLayer(*layername, nil, ogr.WkbPoint, nil); err != nil {
 		log.Fatal(err)
 	}
 
-	fielddefn := ogr.NewFieldDefn(*fieldname, ogr.OFTString)
-	fielddefn.SetWidth(32)
+	if fielddefn, err = ogr.NewFieldDefn(*fieldname, ogr.OFTString); err != nil {
+		log.Fatal(err)
+	}
 
-	err = lyr.CreateField(fielddefn, 1)
-	if err != nil {
+	if err = fielddefn.SetWidth(32); err != nil {
+		log.Fatal(err)
+	}
+
+	if err = lyr.CreateField(fielddefn, 1); err != nil {
 		log.Fatal(err)
 	}
 	// TODO: destroy fielddefn
@@ -64,8 +67,7 @@ func main() {
 		}
 
 		var feat ogr.Feature
-		feat, err = ogr.NewFeature(lyr.GetLayerDefn())
-		if err != nil {
+		if feat, err = ogr.NewFeature(lyr.GetLayerDefn()); err != nil {
 			log.Fatal(err)
 		}
 
@@ -75,8 +77,7 @@ func main() {
 		}
 
 		var pt ogr.Geometry
-		pt, err = ogr.NewGeometry(ogr.WkbPoint)
-		if err != nil {
+		if pt, err = ogr.NewGeometry(ogr.WkbPoint); err != nil {
 			log.Fatal(err)
 		}
 

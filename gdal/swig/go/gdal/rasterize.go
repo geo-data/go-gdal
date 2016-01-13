@@ -2,8 +2,6 @@ package gdal
 
 import (
 	"errors"
-	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -17,9 +15,7 @@ type rasterize struct {
 }
 
 func rasterizeOptions(options []string) (opts GDALRasterizeOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALRasterizeOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALRasterizeOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALRasterizeOptions(opts)
 	}
@@ -58,13 +54,7 @@ func (r *rasterize) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ds = wrapper_GDALRasterizeDestName(name, r.datasets[0], r.options); ds == nil {
-		err = fmt.Errorf("Rasterize failed for %s", name)
-	}
-
-	return
+	return wrapper_GDALRasterizeDestName(name, r.datasets[0], r.options)
 }
 
 func (r *rasterize) DestDS(ds Dataset) (err error) {
@@ -73,9 +63,9 @@ func (r *rasterize) DestDS(ds Dataset) (err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ok := wrapper_GDALRasterizeDestDS(ds, r.datasets[0], r.options); ok != 1 {
+	var ok int
+	ok, err = wrapper_GDALRasterizeDestDS(ds, r.datasets[0], r.options)
+	if ok != 1 && err == nil {
 		err = errors.New("Rasterize failed for dataset")
 	}
 

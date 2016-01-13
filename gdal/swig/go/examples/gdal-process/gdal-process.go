@@ -180,7 +180,12 @@ func main() {
 	args := action.Args()
 
 	// Get the GDAL specific options.
-	options := cpl.ParseCommandLine(*opts)
+	var err error
+	var options []string
+	if options, err = cpl.ParseCommandLine(*opts); err != nil {
+		log.Println(err)
+		usage(1)
+	}
 
 	inputs := args[:len(args)-1]
 	output := args[len(args)-1]
@@ -198,24 +203,32 @@ func main() {
 		datasets[i] = ds
 	}
 
-	ds, err := cmd.Convert(options, datasets, output)
-	if err != nil {
+	var ds gdal.Dataset
+	if ds, err = cmd.Convert(options, datasets, output); err != nil {
 		log.Fatal(err)
 	}
 	defer func() {
-		ds.FlushCache()
-		ds.Close()
+		if err = ds.FlushCache(); err != nil {
+			log.Fatal(err)
+		}
+		if err = ds.Close(); err != nil {
+			log.Fatal(err)
+		}
 	}()
 
 	if showInfo {
-		o := cpl.ParseCommandLine(infoOpts)
-		i, err := gdal.NewInformer(o)
-		if err != nil {
+		var o []string
+		if o, err = cpl.ParseCommandLine(infoOpts); err != nil {
+			log.Println(err)
+			usage(1)
+		}
+		var i gdal.Informer
+		if i, err = gdal.NewInformer(o); err != nil {
 			log.Fatal(err)
 		}
 
-		info, err := i.Info(ds)
-		if err != nil {
+		var info string
+		if info, err = i.Info(ds); err != nil {
 			log.Fatal(err)
 		}
 		fmt.Println(info)

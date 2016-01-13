@@ -2,8 +2,6 @@ package gdal
 
 import (
 	"errors"
-	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -17,9 +15,7 @@ type grid struct {
 }
 
 func gridOptions(options []string) (opts GDALGridOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALGridOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALGridOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALGridOptions(opts)
 	}
@@ -58,11 +54,5 @@ func (t *grid) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ds = wrapper_GDALGrid(name, t.datasets[0], t.options); ds == nil {
-		err = fmt.Errorf("Grid failed for %s", name)
-	}
-
-	return
+	return wrapper_GDALGrid(name, t.datasets[0], t.options)
 }

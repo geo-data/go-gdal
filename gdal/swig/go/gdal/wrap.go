@@ -2,24 +2,10 @@ package gdal
 
 import (
 	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 )
 
 func Open(filename string, args ...interface{}) (ret Dataset, err error) {
-	defer cpl.ErrorTrap()(&err)
-	ret = wrap_OpenEx(filename, args...)
-	if ret == nil {
-		err = fmt.Errorf("The dataset cannot be opened: %v", filename)
-	}
-	return
-}
-
-func GetDriverByName(name string) (driver Driver, err error) {
-	defer cpl.ErrorTrap()(&err)
-	driver = wrap_GetDriverByName(name)
-	if driver == nil {
-		err = fmt.Errorf("The driver is not registered: %v", name)
-	}
+	ret, err = wrap_OpenEx(filename, args...)
 	return
 }
 
@@ -32,11 +18,11 @@ func ApplyGeoTransform(transform [6]float64, pixel float64, line float64) (geox 
 }
 
 func InvGeoTransform(gtin [6]float64) (gtout []float64, err error) {
-	defer cpl.ErrorTrap()(&err)
-
 	out := [6]float64{}
 	gtout = out[:]
-	if ok := wrap_InvGeoTransform(gtin[:], gtout); ok != 1 {
+	var ok int
+	ok, err = wrap_InvGeoTransform(gtin[:], gtout)
+	if err == nil && ok != 1 {
 		err = fmt.Errorf("Non invertible transform: %v", gtin)
 	}
 	return

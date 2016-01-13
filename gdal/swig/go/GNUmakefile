@@ -40,11 +40,14 @@ MORPH_BIN := $(BUILD_DIR)/morph
 # Input files to morph.
 MORPH_MODS_GDAL := ./morph/gdal.json
 MORPH_MERGE_GDAL := ./morph/gdal.go
+MORPH_GDAL_PANIC_ERRORS := ./morph/gdal-panic-errors.txt
 
 MORPH_MODS_OGR := ./morph/ogr.json
 MORPH_MERGE_OGR := ./morph/ogr.go
+MORPH_OGR_PANIC_ERRORS := ./morph/ogr-panic-errors.txt
 
 MORPH_MODS_CPL := ./morph/cpl.json
+MORPH_CPL_NO_ERRORS := ./morph/cpl-no-errors.txt
 
 # Files representing the final Go package.
 SRC_FILES := $(CONSTANT_GO) \
@@ -55,11 +58,9 @@ gdal/cpl/error.go \
 gdal/cpl/error-handler.go \
 gdal/cpl/error-trap.go \
 gdal/cpl/vsi.go \
-gdal/cpl/wrap.go \
 gdal/apps.go \
 gdal/dataset.go \
 gdal/dem-processing.go \
-gdal/driver.go \
 gdal/grid.go \
 gdal/info.go \
 $(GDAL_GO) \
@@ -67,7 +68,6 @@ $(GDAL_CPP) \
 $(OGR_GO) \
 $(OGR_CPP) \
 gdal/ogr/feature.go \
-gdal/ogr/geometry.go \
 gdal/ogr/layer.go \
 gdal/ogr/errors/errors.go \
 $(OSR_GO) \
@@ -230,14 +230,14 @@ $(EX_BIN_HANDLE_ERRORS): $(TRK_INSTALL) $(EX_SRC_HANDLE_ERRORS)
 # directory and saves the output to the appropriate package directory.
 #
 
-$(GDAL_GO): $(SWIG_OUTPUT_GDAL) $(MORPH_MERGE_GDAL) $(MORPH_MODS_GDAL) $(MORPH_BIN)
-	$(MORPH_BIN) -mods $(MORPH_MODS_GDAL) -merge $(MORPH_MERGE_GDAL) -in $(GDAL_GO_BUILD) -out $(GDAL_GO)
+$(GDAL_GO): $(SWIG_OUTPUT_GDAL) $(MORPH_MERGE_GDAL) $(MORPH_MODS_GDAL) $(MORPH_BIN) $(MORPH_GDAL_PANIC_ERRORS)
+	$(MORPH_BIN) -panic-errors $(MORPH_GDAL_PANIC_ERRORS) -mods $(MORPH_MODS_GDAL) -merge $(MORPH_MERGE_GDAL) -in $(GDAL_GO_BUILD) -out $(GDAL_GO)
 
-$(OGR_GO): $(SWIG_OUTPUT_OGR) $(MORPH_MERGE_OGR) $(MORPH_MODS_OGR) $(MORPH_BIN)
-	$(MORPH_BIN) -mods $(MORPH_MODS_OGR) -merge $(MORPH_MERGE_OGR) -in $(OGR_GO_BUILD) -out $(OGR_GO)
+$(OGR_GO): $(SWIG_OUTPUT_OGR) $(MORPH_MERGE_OGR) $(MORPH_MODS_OGR) $(MORPH_BIN) $(MORPH_OGR_PANIC_ERRORS)
+	$(MORPH_BIN) -panic-errors $(MORPH_OGR_PANIC_ERRORS) -mods $(MORPH_MODS_OGR) -merge $(MORPH_MERGE_OGR) -in $(OGR_GO_BUILD) -out $(OGR_GO)
 
-$(CPL_GO): $(SWIG_OUTPUT_CPL) $(MORPH_MODS_CPL) $(MORPH_BIN)
-	$(MORPH_BIN) -mods $(MORPH_MODS_CPL) -in $(CPL_GO_BUILD) -out $(CPL_GO)
+$(CPL_GO): $(SWIG_OUTPUT_CPL) $(MORPH_MODS_CPL) $(MORPH_BIN) $(MORPH_CPL_NO_ERRORS)
+	$(MORPH_BIN) -error-pkg "" -no-errors $(MORPH_CPL_NO_ERRORS) -mods $(MORPH_MODS_CPL) -in $(CPL_GO_BUILD) -out $(CPL_GO)
 
 $(OSR_GO): $(SWIG_OUTPUT_OSR)
 	cp $(OSR_GO_BUILD) $(OSR_GO)

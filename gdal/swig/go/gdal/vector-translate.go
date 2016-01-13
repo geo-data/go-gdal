@@ -2,8 +2,6 @@ package gdal
 
 import (
 	"errors"
-	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -17,9 +15,7 @@ type vtranslate struct {
 }
 
 func vectorTranslateOptions(options []string) (opts GDALVectorTranslateOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALVectorTranslateOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALVectorTranslateOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALVectorTranslateOptions(opts)
 	}
@@ -58,13 +54,7 @@ func (t *vtranslate) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ds = wrapper_GDALVectorTranslateDestName(name, t.datasets[0], t.options); ds == nil {
-		err = fmt.Errorf("Vector translate failed for %s", name)
-	}
-
-	return
+	return wrapper_GDALVectorTranslateDestName(name, t.datasets[0], t.options)
 }
 
 func (t *vtranslate) DestDS(ds Dataset) (err error) {
@@ -73,9 +63,9 @@ func (t *vtranslate) DestDS(ds Dataset) (err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ok := wrapper_GDALVectorTranslateDestDS(ds, t.datasets[0], t.options); ok != 1 {
+	var ok int
+	ok, err = wrapper_GDALVectorTranslateDestDS(ds, t.datasets[0], t.options)
+	if ok != 1 && err == nil {
 		err = errors.New("Vector translate failed for dataset")
 	}
 

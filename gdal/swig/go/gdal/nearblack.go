@@ -2,8 +2,6 @@ package gdal
 
 import (
 	"errors"
-	"fmt"
-	"github.com/geo-data/go-gdal/gdal/swig/go/gdal/cpl"
 	"runtime"
 )
 
@@ -17,9 +15,7 @@ type nearblack struct {
 }
 
 func nearblackOptions(options []string) (opts GDALNearblackOptions, err error) {
-	cpl.ErrorReset()
-	opts = newGDALNearblackOptions(options)
-	err = cpl.LastError()
+	opts, err = newGDALNearblackOptions(options)
 	if err != nil && opts != nil {
 		deleteGDALNearblackOptions(opts)
 	}
@@ -58,13 +54,7 @@ func (nb *nearblack) DestName(name string) (ds Dataset, err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ds = wrapper_GDALNearblackDestName(name, nb.datasets[0], nb.options); ds == nil {
-		err = fmt.Errorf("Nearblack failed for %s", name)
-	}
-
-	return
+	return wrapper_GDALNearblackDestName(name, nb.datasets[0], nb.options)
 }
 
 func (nb *nearblack) DestDS(ds Dataset) (err error) {
@@ -73,9 +63,9 @@ func (nb *nearblack) DestDS(ds Dataset) (err error) {
 		return
 	}
 
-	defer cpl.ErrorTrap()(&err)
-
-	if ok := wrapper_GDALNearblackDestDS(ds, nb.datasets[0], nb.options); ok != 1 {
+	var ok int
+	ok, err = wrapper_GDALNearblackDestDS(ds, nb.datasets[0], nb.options)
+	if ok != 1 && err == nil {
 		err = errors.New("Nearblack failed for dataset")
 	}
 
